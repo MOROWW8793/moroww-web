@@ -34,7 +34,7 @@ export function EigenaarContent() {
   return (
     <>
       {/* ── SECTIE 1: HERO ── */}
-      <section className="-mt-16 relative w-full overflow-hidden" style={{ height: "100dvh", overflow: "hidden" }}>
+      <section className="-mt-16 relative w-full min-h-screen overflow-hidden flex flex-col md:flex-row">
         <Image
           src="/images/gradient-hero.png"
           alt=""
@@ -43,39 +43,41 @@ export function EigenaarContent() {
           priority
         />
 
-        {/* Label — top left */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeOut" as const }}
-          className="absolute top-24 left-8 md:left-16 z-10 text-xs font-normal uppercase tracking-widest text-white/70"
+        {/* Linkerkolom — label + headline */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" as const }}
+          className="relative z-10 w-full md:w-1/2 flex flex-col justify-end pb-12 px-6 md:pb-16 md:pl-16 md:pr-0"
         >
-          founding partner programma
-        </motion.p>
-
-        {/* Headline linksonder + subline rechtsonder */}
-        <div className="absolute bottom-8 md:bottom-16 left-8 md:left-16 right-8 md:right-16 z-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" as const }}
-            className="font-bold lowercase text-white leading-[0.95] tracking-[-0.03em] md:max-w-[60vw]"
-            style={{ fontSize: "clamp(48px,7vw,100px)" }}
+          <p className="text-white/60 uppercase text-xs tracking-widest font-medium mb-8">
+            founding partner programma
+          </p>
+          <h1
+            className="text-white font-bold lowercase leading-none tracking-[-0.03em]"
+            style={{ fontSize: "clamp(56px,8vw,120px)" }}
           >
             de eerste<br />tien tellen<br />het meest.
-          </motion.h1>
+          </h1>
+        </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" as const }}
-            className="text-white/80 font-normal leading-relaxed max-w-xs md:text-right shrink-0"
-            style={{ fontSize: 16 }}
-          >
+        {/* Rechterkolom — subline + counter */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" as const }}
+          className="relative z-10 w-full md:w-1/2 flex flex-col justify-end pb-12 px-6 md:pb-16 md:pr-16 md:pl-0 md:items-end md:text-right"
+        >
+          <p className="text-white/80 font-normal text-xl max-w-sm leading-relaxed mb-8">
             De eerste tien eigenaars krijgen voorwaarden
             die we daarna nooit meer aanbieden.
-          </motion.p>
-        </div>
+          </p>
+          <div className="border border-white/30 rounded-full px-6 py-3 inline-block">
+            <p className="text-white font-medium text-sm">
+              10 plaatsen · nog 10 beschikbaar
+            </p>
+          </div>
+        </motion.div>
       </section>
 
       {/* ── SECTIE 2: VERHAAL + FOTO ── */}
