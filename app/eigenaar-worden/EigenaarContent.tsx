@@ -116,25 +116,22 @@ export function EigenaarContent() {
 
         {/* Foto rechts */}
         <div className="relative w-full md:w-1/2 h-[400px] md:h-[600px] overflow-hidden">
-          <Image
+          <img
             src="/images/fp-interieur-1.jpg"
             alt=""
-            fill
-            className="object-cover"
-            style={{ objectPosition: "center center" }}
-            sizes="(max-width: 768px) 100vw, 50vw"
+            className="w-full h-full object-cover"
+            style={{ display: "block" }}
           />
         </div>
       </section>
 
       {/* ── SECTIE A: FULLWIDTH FOTO MET OVERLAY ── */}
       <section className="relative w-full h-[60vh] overflow-hidden">
-        <Image
+        <img
           src="/images/fp-exterieur.jpg"
           alt=""
-          fill
-          className="object-cover"
-          sizes="100vw"
+          className="w-full h-full object-cover"
+          style={{ display: "block" }}
         />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <motion.div {...fadeUp} className="text-center text-white px-8">
@@ -186,13 +183,11 @@ export function EigenaarContent() {
       {/* ── SECTIE B: FOTO LINKS + WIE WE ZOEKEN ── */}
       <section className="w-full flex flex-col md:flex-row min-h-[500px]">
         <div className="relative w-full md:w-1/2 h-[400px] md:h-[500px] overflow-hidden">
-          <Image
+          <img
             src="/images/fp-interieur-2.jpg"
             alt=""
-            fill
-            className="object-cover"
-            style={{ objectPosition: "center center" }}
-            sizes="(max-width: 768px) 100vw, 50vw"
+            className="w-full h-full object-cover"
+            style={{ display: "block" }}
           />
         </div>
         <motion.div
@@ -244,13 +239,11 @@ export function EigenaarContent() {
           </div>
         </motion.div>
         <div className="relative w-full md:w-1/2 h-[400px] md:h-[500px] overflow-hidden order-first md:order-last">
-          <Image
+          <img
             src="/images/fp-founders.jpg"
             alt=""
-            fill
-            className="object-cover"
-            style={{ objectPosition: "center 40%" }}
-            sizes="(max-width: 768px) 100vw, 50vw"
+            className="w-full h-full object-cover"
+            style={{ display: "block" }}
           />
         </div>
       </section>
