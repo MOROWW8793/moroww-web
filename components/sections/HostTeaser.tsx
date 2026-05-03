@@ -6,10 +6,10 @@ import { motion } from "framer-motion";
 
 export function HostTeaser() {
   return (
-    <section className="bg-white overflow-hidden">
+    <section className="bg-white w-full overflow-hidden">
       <div className="flex flex-col md:flex-row min-h-[600px]">
-        {/* Photo — top on mobile, right on desktop */}
-        <div className="relative h-[300px] md:h-auto md:w-1/2 order-first md:order-last">
+        {/* Foto — boven op mobiel, rechts op desktop */}
+        <div className="relative h-[300px] md:h-auto md:w-1/2 min-h-[400px] order-first md:order-last">
           <Image
             src="/images/host-teaser.jpg"
             alt="moroww eigenaar"
@@ -19,15 +19,15 @@ export function HostTeaser() {
           />
         </div>
 
-        {/* Text — left on desktop */}
+        {/* Tekst — links op desktop */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="flex items-center px-8 py-16 md:px-16 lg:px-24 md:w-1/2"
+          className="flex items-center px-6 py-16 md:px-16 lg:px-24 md:w-1/2"
         >
-          <div className="max-w-md">
+          <div className="max-w-md w-full">
             <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
               Voor eigenaars
             </p>

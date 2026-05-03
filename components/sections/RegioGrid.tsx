@@ -20,7 +20,7 @@ const collecties = [
 
 export function RegioGrid() {
   return (
-    <section className="bg-white py-24 px-6 md:px-16">
+    <section className="bg-white py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -53,7 +53,10 @@ export function RegioGrid() {
             >
               <div className="absolute inset-0 bg-black/10 rounded-3xl" />
               <div className="relative z-10">
-                <p className="text-white font-semibold lowercase leading-[1.0] tracking-[-0.02em] mb-1" style={{ fontSize: "clamp(1.75rem,3vw,2.5rem)" }}>
+                <p
+                  className="text-white font-semibold lowercase leading-[1.0] tracking-[-0.02em] mb-1"
+                  style={{ fontSize: "clamp(1.75rem,3vw,2.5rem)" }}
+                >
                   {c.naam}
                 </p>
                 <p className="text-white/75 text-sm font-normal">{c.sub}</p>

@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 
 export function Founders() {
   return (
-    <section className="bg-moroww-blush py-24 px-6 md:px-16 overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-24">
-        {/* Oval photos — overlapping */}
+    <section className="bg-moroww-blush py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full overflow-hidden">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-24">
+        {/* Ovale foto's — overlappend */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -17,16 +17,10 @@ export function Founders() {
           className="relative shrink-0 mx-auto md:mx-0"
           style={{ width: 320, height: 380 }}
         >
-          {/* Noam — higher, left */}
+          {/* Noam — hoger, links */}
           <div
             className="absolute shadow-lg overflow-hidden"
-            style={{
-              width: 180,
-              height: 240,
-              borderRadius: "50%",
-              top: 0,
-              left: 0,
-            }}
+            style={{ width: 180, height: 240, borderRadius: "50%", top: 0, left: 0 }}
           >
             <Image
               src="/images/noam.jpg"
@@ -36,16 +30,10 @@ export function Founders() {
               sizes="180px"
             />
           </div>
-          {/* Brent — lower, right */}
+          {/* Brent — lager, rechts */}
           <div
             className="absolute shadow-lg overflow-hidden"
-            style={{
-              width: 180,
-              height: 240,
-              borderRadius: "50%",
-              top: 110,
-              left: 120,
-            }}
+            style={{ width: 180, height: 240, borderRadius: "50%", top: 110, left: 120 }}
           >
             <Image
               src="/images/brent.jpg"
@@ -57,7 +45,7 @@ export function Founders() {
           </div>
         </motion.div>
 
-        {/* Text */}
+        {/* Tekst */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

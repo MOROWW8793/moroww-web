@@ -33,7 +33,7 @@ function AccordionItem({
   v: string; a: string; open: boolean; onToggle: () => void;
 }) {
   return (
-    <div className="rounded-2xl overflow-hidden mb-3">
+    <div className="rounded-2xl overflow-hidden mb-3 w-full">
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between px-6 py-5 bg-moroww-orange text-white font-semibold text-left text-base"
@@ -66,9 +66,9 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="bg-white py-24 px-6 md:px-16">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16">
-        {/* Left */}
+    <section className="bg-white py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-16">
+        {/* Links */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -93,13 +93,13 @@ export function FAQ() {
           </p>
         </motion.div>
 
-        {/* Right accordion */}
+        {/* Accordion */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
-          className="flex-1"
+          className="flex-1 w-full"
         >
           {faqs.map((faq, i) => (
             <AccordionItem

@@ -23,9 +23,9 @@ const pillars = [
 
 export function TrustBar() {
   return (
-    <section className="bg-moroww-blush pt-20 pb-12 px-6 md:px-16">
-      <div className="mx-auto max-w-5xl">
-        <div className="grid gap-6 md:grid-cols-3">
+    <section className="bg-moroww-blush py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
           {pillars.map(({ icon: Icon, label, body }, i) => (
             <motion.div
               key={label}

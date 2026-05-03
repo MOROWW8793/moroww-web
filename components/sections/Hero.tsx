@@ -13,15 +13,14 @@ export function Hero() {
         priority
         className="object-cover"
         sizes="100vw"
+        style={{ objectPosition: "center center" }}
       />
 
-      {/* Subtiele overlay voor leesbaarheid */}
       <div
         className="absolute inset-0"
         style={{ background: "rgba(0,0,0,0.38)" }}
       />
 
-      {/* Headline gecentreerd midden op de foto */}
       <div className="absolute inset-0 flex items-center justify-center px-8">
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
@@ -32,7 +31,7 @@ export function Hero() {
         >
           a new standard for
           <span className="inline-block min-w-[200px]" />
-          short term rentals.
+          <span className="font-normal">short term rentals.</span>
         </motion.h1>
       </div>
     </section>

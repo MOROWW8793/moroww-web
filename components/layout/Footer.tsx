@@ -3,8 +3,8 @@ import Image from "next/image";
 
 export function Footer() {
   return (
-    <footer className="bg-[#1A1A1A] text-white">
-      <div className="mx-auto max-w-7xl px-6 py-16">
+    <footer className="bg-[#1A1A1A] text-white w-full">
+      <div className="mx-auto max-w-6xl px-6 md:px-16 lg:px-24 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Logo + tagline */}
           <div>
