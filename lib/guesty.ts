@@ -8,15 +8,15 @@ async function getGuestyToken(): Promise<string> {
     {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
         Accept: "application/json",
       },
-      body: JSON.stringify({
+      body: new URLSearchParams({
         grant_type: "client_credentials",
         scope: "open-api",
-        client_id: process.env.GUESTY_CLIENT_ID,
-        client_secret: process.env.GUESTY_CLIENT_SECRET,
-      }),
+        client_id: process.env.GUESTY_CLIENT_ID!,
+        client_secret: process.env.GUESTY_CLIENT_SECRET!,
+      }).toString(),
       cache: "no-store",
     }
   );
