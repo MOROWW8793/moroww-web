@@ -1,14 +1,17 @@
-import Link from "next/link";
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 export function HostTeaser() {
   return (
-    <section className="bg-white py-0 overflow-hidden">
-      <div className="grid md:grid-cols-2 min-h-[600px]">
-        {/* Image */}
-        <div className="relative min-h-[400px] md:min-h-full">
+    <section className="bg-white overflow-hidden">
+      <div className="flex flex-col md:flex-row min-h-[600px]">
+        {/* Photo — top on mobile, right on desktop */}
+        <div className="relative h-[300px] md:h-auto md:w-1/2 order-first md:order-last">
           <Image
-            src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=80"
+            src="/images/host-teaser.jpg"
             alt="moroww eigenaar"
             fill
             className="object-cover"
@@ -16,27 +19,38 @@ export function HostTeaser() {
           />
         </div>
 
-        {/* Text */}
-        <div className="flex items-center px-10 py-20 md:px-16 lg:px-24 bg-moroww-blush">
+        {/* Text — left on desktop */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="flex items-center px-8 py-16 md:px-16 lg:px-24 md:w-1/2"
+        >
           <div className="max-w-md">
-            <p className="text-xs font-semibold uppercase tracking-widest text-moroww-orange mb-4">Voor eigenaars</p>
-            <h2 className="font-bold text-moroww-black text-4xl md:text-5xl leading-tight mb-6">
-              Jouw asset.<br />Ons protocol.
+            <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
+              Voor eigenaars
+            </p>
+            <h2
+              className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-6"
+              style={{ fontSize: "clamp(2.25rem,4vw,3.5rem)" }}
+            >
+              jouw asset.<br />ons protocol.
             </h2>
-            <p className="text-moroww-black/60 text-base leading-relaxed mb-10">
+            <p className="text-moroww-black/60 leading-relaxed mb-10" style={{ fontSize: 17 }}>
               Je hebt een woning aangekocht als investering, niet als bijbaan.
               moroww beheert je eigendom met slimme technologie, een eigen
-              schoonmaakprotocol en een sensor die bewaakt wat jij niet kan zien.
+              schoonmaakprotocol en sensoren die bewaken wat jij niet kan zien.
               Jij bent stille investeerder. Wij zijn het systeem.
             </p>
             <Link
               href="/eigenaar-worden"
-              className="inline-flex items-center rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white font-semibold px-8 py-4 transition-colors duration-200"
+              className="inline-flex items-center rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white font-semibold px-8 py-4 text-base transition-colors duration-200"
             >
               Bekijk het Founding Partner-programma
             </Link>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
