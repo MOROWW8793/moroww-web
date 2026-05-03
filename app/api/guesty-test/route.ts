@@ -1,21 +1,18 @@
-import { NextResponse } from "next/server";
-
 export async function GET() {
   const clientId = process.env.GUESTY_CLIENT_ID;
   const clientSecret = process.env.GUESTY_CLIENT_SECRET;
 
-  if (!clientId || !clientSecret) {
-    return NextResponse.json({
-      error: "Credentials ontbreken",
-      clientId: !!clientId,
-      clientSecret: !!clientSecret,
-    });
-  }
+  const endpoints = [
+    "https://auth.guesty.com/oauth2/token",
+    "https://open-api.guesty.com/oauth2/token",
+    "https://api.guesty.com/oauth2/token",
+  ];
 
-  try {
-    const tokenResponse = await fetch(
-      "https://auth.guesty.com/oauth2/token",
-      {
+  const results: Record<string, unknown>[] = [];
+
+  for (const endpoint of endpoints) {
+    try {
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -23,47 +20,26 @@ export async function GET() {
         body: new URLSearchParams({
           grant_type: "client_credentials",
           scope: "open-api",
-          client_id: clientId,
-          client_secret: clientSecret,
+          client_id: clientId!,
+          client_secret: clientSecret!,
         }),
         cache: "no-store",
-      }
-    );
-
-    const tokenData = await tokenResponse.json();
-
-    if (!tokenResponse.ok) {
-      return NextResponse.json({
-        error: "Token fetch mislukt",
-        status: tokenResponse.status,
-        response: tokenData,
+        signal: AbortSignal.timeout(5000),
+      });
+      const data = await res.json();
+      results.push({
+        endpoint,
+        status: res.status,
+        ok: res.ok,
+        hasToken: !!data.access_token,
+      });
+    } catch (error) {
+      results.push({
+        endpoint,
+        error: String(error),
       });
     }
-
-    const listingsResponse = await fetch(
-      "https://open-api.guesty.com/v1/listings?limit=5",
-      {
-        headers: {
-          Authorization: `Bearer ${tokenData.access_token}`,
-          Accept: "application/json",
-        },
-        cache: "no-store",
-      }
-    );
-
-    const listingsData = await listingsResponse.json();
-
-    return NextResponse.json({
-      success: true,
-      tokenOk: true,
-      listingsStatus: listingsResponse.status,
-      count: listingsData.results?.length ?? 0,
-      first: listingsData.results?.[0] ?? null,
-    });
-  } catch (error) {
-    return NextResponse.json({
-      error: "Fetch failed",
-      message: String(error),
-    });
   }
+
+  return Response.json({ results });
 }
