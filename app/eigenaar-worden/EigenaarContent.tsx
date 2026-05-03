@@ -34,7 +34,7 @@ export function EigenaarContent() {
   return (
     <>
       {/* ── SECTIE 1: HERO ── */}
-      <section className="relative overflow-hidden py-40 px-6 md:px-16 lg:px-24 w-full">
+      <section className="-mt-16 relative w-full overflow-hidden" style={{ height: "100dvh" }}>
         <Image
           src="/images/gradient-hero.png"
           alt=""
@@ -42,64 +42,121 @@ export function EigenaarContent() {
           className="object-cover"
           priority
         />
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="relative z-10 max-w-3xl mx-auto text-center"
+
+        {/* Label — top left */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" as const }}
+          className="absolute top-24 left-8 md:left-16 z-10 text-xs font-normal uppercase tracking-widest text-white/70"
         >
-          <p className="text-xs font-normal uppercase tracking-widest text-moroww-black mb-6">
-            founding partner programma
-          </p>
-          <h1
-            className="font-bold lowercase text-white leading-[1.05] tracking-[-0.02em] mb-8"
-            style={{ fontSize: "clamp(3rem,6vw,5rem)" }}
+          founding partner programma
+        </motion.p>
+
+        {/* Headline + subline — bottom */}
+        <div className="absolute bottom-8 md:bottom-16 left-8 md:left-16 right-8 md:right-16 z-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" as const }}
+            className="font-bold lowercase text-white leading-[0.95] tracking-[-0.03em]"
+            style={{ fontSize: "clamp(64px,9vw,140px)" }}
           >
-            de eerste tien<br />tellen het meest.
-          </h1>
-          <p className="text-moroww-black/70 font-normal leading-relaxed max-w-xl mx-auto" style={{ fontSize: 20 }}>
-            moroww bouwt een gesloten collectie van premium vakantiewoningen.
-            De eerste tien eigenaars die instappen krijgen voorwaarden die we
-            daarna nooit meer aanbieden.
-          </p>
-        </motion.div>
+            de eerste<br />tien tellen<br />het meest.
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" as const }}
+            className="text-white/80 font-normal leading-relaxed max-w-sm md:text-right shrink-0"
+            style={{ fontSize: 18 }}
+          >
+            De eerste tien eigenaars krijgen voorwaarden
+            die we daarna nooit meer aanbieden.
+          </motion.p>
+        </div>
       </section>
 
-      {/* ── SECTIE 2: HET VERHAAL ── */}
-      <section className="bg-white py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full">
-        <motion.div {...fadeUp} className="max-w-2xl mx-auto">
-          <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
-            waarom nu
-          </p>
-          <h2
-            className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-8"
-            style={{ fontSize: "clamp(2rem,3.5vw,3rem)" }}
+      {/* ── SECTIE 2: VERHAAL + FOTO ── */}
+      <section className="bg-white w-full overflow-hidden">
+        <div className="flex flex-col md:flex-row min-h-[600px]">
+          {/* Tekst links */}
+          <motion.div
+            {...fadeUp}
+            className="w-full md:w-1/2 py-16 md:py-24 px-8 md:px-16 flex flex-col justify-center"
           >
-            een label in opbouw<br />heeft een andere waarde<br />dan een label in bloei.
-          </h2>
-          <div className="space-y-5 text-moroww-black/60 leading-relaxed" style={{ fontSize: 18 }}>
-            <p>
-              moroww staat aan het begin. We hebben de strategie, het systeem,
-              de standaard en de partners. Wat we nu bouwen is de collectie —
-              en die begint met eigenaars die begrijpen wat vroeg instappen betekent.
+            <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
+              waarom nu
             </p>
-            <p>
-              Als Founding Partner ben je niet zomaar een klant. Je bent deel van
-              de basis waarop moroww gebouwd wordt. Je woning draagt het label
-              vanaf dag één. Je relatie met ons begint op het moment dat wij het
-              meest gemotiveerd zijn om te bewijzen wat we waard zijn.
+            <h2
+              className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-6"
+              style={{ fontSize: "clamp(2.25rem,3.5vw,3.25rem)" }}
+            >
+              een label in opbouw<br />heeft een andere<br />waarde dan<br />een label in bloei.
+            </h2>
+            <div className="text-moroww-black/60 leading-relaxed space-y-4 max-w-sm" style={{ fontSize: 17 }}>
+              <p>
+                moroww staat aan het begin. We hebben de strategie,
+                het systeem, de standaard en de partners.
+                Wat we nu bouwen is de collectie.
+              </p>
+              <p>
+                Als Founding Partner ben je niet zomaar een klant.
+                Je bent deel van de basis waarop moroww gebouwd wordt.
+                Je woning draagt het label vanaf dag één.
+              </p>
+            </div>
+            <p
+              className="font-bold text-moroww-black mt-8"
+              style={{ fontSize: "clamp(20px,2vw,28px)" }}
+            >
+              Niet de korting. De positie.
             </p>
+          </motion.div>
+
+          {/* Foto rechts — bleeding edge, geen border-radius */}
+          <div className="relative w-full md:w-1/2 h-[300px] md:h-auto order-first md:order-last">
+            <Image
+              src="/images/fp-interieur-1.jpg"
+              alt="moroww interieur"
+              fill
+              className="object-cover"
+              style={{ objectPosition: "center center" }}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
           </div>
-          <p
-            className="font-bold text-moroww-black mt-8"
-            style={{ fontSize: "clamp(20px,2vw,28px)" }}
+        </div>
+      </section>
+
+      {/* ── SECTIE 3: FULLWIDTH FOTO MET OVERLAY ── */}
+      <section className="relative w-full overflow-hidden" style={{ height: "70vh" }}>
+        <Image
+          src="/images/fp-exterieur.jpg"
+          alt="moroww exterieur"
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.5)" }} />
+        <motion.div
+          {...fadeUp}
+          className="absolute inset-0 flex flex-col items-center justify-center px-8 text-center"
+        >
+          <h2
+            className="font-bold lowercase text-white leading-[1.05] tracking-[-0.02em] mb-4"
+            style={{ fontSize: "clamp(2.5rem,5vw,4.5rem)" }}
           >
-            Dat is de waarde van vroeg instappen. Niet de korting. De positie.
+            meer dan beheer.
+          </h2>
+          <p className="text-white/80 font-normal leading-relaxed max-w-xl mx-auto" style={{ fontSize: 20 }}>
+            Technologie die bewaakt. Een protocol dat garandeert.
+            Een team dat bereikbaar is.
           </p>
         </motion.div>
       </section>
 
-      {/* ── SECTIE 3: WAT JE KRIJGT ── */}
+      {/* ── SECTIE 4: 4 BLOKKEN ── */}
       <section className="bg-moroww-blush py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full">
         <div className="max-w-4xl mx-auto">
           <motion.div {...fadeUp} className="mb-12">
@@ -130,36 +187,91 @@ export function EigenaarContent() {
         </div>
       </section>
 
-      {/* ── SECTIE 4: DE STANDAARD ── */}
-      <section className="bg-white py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full">
-        <motion.div {...fadeUp} className="max-w-2xl mx-auto text-center">
-          <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
-            wie we zoeken
-          </p>
-          <h2
-            className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-8"
-            style={{ fontSize: "clamp(2rem,3.5vw,3rem)" }}
-          >
-            niet elke woning.<br />de juiste woning.
-          </h2>
-          <div className="space-y-5 text-moroww-black/60 leading-relaxed text-left" style={{ fontSize: 18 }}>
-            <p>
-              moroww inspecteert elk pand fysiek voor we een samenwerking aangaan.
-              We toetsen aan een set niet-onderhandelbare criteria: minimum 100m²,
-              eigen parkeerplaats, rustige of natuurlijke omgeving, lichtinval en
-              sfeer die kloppen.
-            </p>
-            <p>
-              We zeggen vaker nee dan ja. Dat is precies waarom jouw pand erbij
-              willen horen, de moeite waard is.
-            </p>
+      {/* ── SECTIE 5: SPLIT FOTO + STANDAARD TEKST ── */}
+      <section className="bg-white w-full overflow-hidden">
+        <div className="flex flex-col md:flex-row min-h-[500px]">
+          {/* Foto links — bleeding edge */}
+          <div className="relative w-full md:w-1/2 h-[300px] md:h-auto">
+            <Image
+              src="/images/fp-interieur-2.jpg"
+              alt="moroww interieur"
+              fill
+              className="object-cover"
+              style={{ objectPosition: "center center" }}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
           </div>
-        </motion.div>
+
+          {/* Tekst rechts */}
+          <motion.div
+            {...fadeUp}
+            className="w-full md:w-1/2 py-16 md:py-24 px-8 md:px-16 flex flex-col justify-center"
+          >
+            <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
+              wie we zoeken
+            </p>
+            <h2
+              className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-6"
+              style={{ fontSize: "clamp(2.25rem,3.5vw,3rem)" }}
+            >
+              niet elke woning.<br />de juiste woning.
+            </h2>
+            <div className="text-moroww-black/60 leading-relaxed space-y-4 max-w-sm" style={{ fontSize: 17 }}>
+              <p>
+                moroww inspecteert elk pand fysiek voor we een samenwerking aangaan.
+                Minimum 100m², eigen parkeerplaats, rustige omgeving, lichtinval
+                en sfeer die kloppen.
+              </p>
+              <p>
+                We zeggen vaker nee dan ja. Dat is precies waarom jouw pand
+                erbij willen horen, de moeite waard is.
+              </p>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
-      {/* ── SECTIE 5: FORMULIER ── */}
+      {/* ── SECTIE 6: FOUNDERS STRIP ── */}
+      <section className="bg-[#1A1A1A] w-full overflow-hidden">
+        <div className="flex flex-col md:flex-row min-h-[500px]">
+          {/* Tekst links */}
+          <motion.div
+            {...fadeUp}
+            className="w-full md:w-1/2 py-16 md:py-24 px-8 md:px-16 flex flex-col justify-center order-last md:order-first"
+          >
+            <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
+              het team
+            </p>
+            <h2
+              className="font-bold lowercase text-white leading-[1.05] tracking-[-0.02em] mb-6"
+              style={{ fontSize: "clamp(2.25rem,3.5vw,3rem)" }}
+            >
+              je werkt met<br />brent en noam.
+            </h2>
+            <p className="text-white/70 leading-relaxed max-w-sm" style={{ fontSize: 17 }}>
+              Geen callcenter. Geen tussenpersoon.
+              In jaar 1 heb je directe toegang tot de oprichters.
+              Jouw woning krijgt de aandacht die een investering verdient.
+            </p>
+          </motion.div>
+
+          {/* Foto rechts — bleeding edge */}
+          <div className="relative w-full md:w-1/2 h-[300px] md:h-auto order-first md:order-last">
+            <Image
+              src="/images/fp-founders.jpg"
+              alt="Brent en Noam"
+              fill
+              className="object-cover"
+              style={{ objectPosition: "center 40%" }}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTIE 7: FORMULIER ── */}
       <section className="bg-moroww-blush py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full">
-        <motion.div {...fadeUp} className="max-w-xl mx-auto">
+        <motion.div {...fadeUp} className="max-w-xl mx-auto text-center">
           <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
             klaar om in te stappen?
           </p>
@@ -176,9 +288,9 @@ export function EigenaarContent() {
 
           <LeadForm />
 
-          <p className="mt-6 text-xs text-moroww-black/40 text-center leading-relaxed">
-            Slechts 10 Founding Partner-plaatsen beschikbaar.
-            Op dit moment zijn er nog <strong className="text-moroww-black/60">10</strong> vrij.
+          <p className="mt-6 text-xs text-moroww-black/40 leading-relaxed">
+            Slechts 10 Founding Partner-plaatsen.
+            Er zijn er nog <strong className="text-moroww-black/60">10</strong> beschikbaar.
           </p>
         </motion.div>
       </section>
