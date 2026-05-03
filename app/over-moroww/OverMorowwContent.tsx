@@ -32,10 +32,10 @@ export function OverMorowwContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="text-white font-bold lowercase leading-[1.1] tracking-[-0.02em] text-center w-full"
-            style={{ fontSize: "clamp(40px,5vw,80px)" }}
+            style={{ fontSize: "clamp(32px,5vw,80px)" }}
           >
             a new standard.
-            <span className="inline-block w-24" />
+            <span className="inline-block w-4 md:w-24" />
             <span className="font-light">for good.</span>
           </motion.h1>
         </div>

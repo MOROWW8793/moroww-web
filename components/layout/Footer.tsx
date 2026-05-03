@@ -4,8 +4,8 @@ import Image from "next/image";
 export function Footer() {
   return (
     <footer className="bg-[#1A1A1A] text-white w-full">
-      <div className="mx-auto max-w-6xl px-6 md:px-16 lg:px-24 py-16 md:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="mx-auto max-w-6xl px-6 md:px-16 lg:px-24 py-12 md:py-16 lg:py-24">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12">
           {/* Logo + tagline */}
           <div>
             <Image
@@ -48,7 +48,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 border-t border-white/10 pt-8">
+        <div className="mt-12 md:mt-16 border-t border-white/10 pt-8">
           <p className="text-xs text-white/30">
             © 2026 moroww BV. Alle rechten voorbehouden.
           </p>

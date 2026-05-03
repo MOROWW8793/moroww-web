@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     v: "In welke regio's is moroww actief?",
-    a: "We opereren vandaag in drie Belgische clusters: de Kust, de Vlaamse Ardennen en de Ardennen. Uitbreiding naar Nederland en Noord-Frankrijk volgt in Fase 02.",
+    a: "We opereren vandaag in drie Belgische clusters: de Kust, het Meetjesland en de Ardennen. Uitbreiding naar Nederland en Noord-Frankrijk volgt in Fase 02.",
   },
 ];
 
@@ -36,10 +36,10 @@ function AccordionItem({
     <div className="rounded-2xl overflow-hidden mb-3 w-full">
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between px-6 py-5 bg-moroww-orange text-white font-semibold text-left text-base"
+        className="w-full flex items-center justify-between px-5 py-4 md:px-6 md:py-5 bg-moroww-orange text-white font-semibold text-left text-sm md:text-base"
       >
         <span>{v}</span>
-        <span className="ml-4 text-xl font-light shrink-0 leading-none">
+        <span className="ml-3 text-xl font-light shrink-0 leading-none">
           {open ? "−" : "+"}
         </span>
       </button>
@@ -52,7 +52,7 @@ function AccordionItem({
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="overflow-hidden"
           >
-            <div className="px-6 py-5 bg-moroww-orange/10 text-moroww-black/70 text-base leading-relaxed">
+            <div className="px-5 py-4 md:px-6 md:py-5 bg-moroww-orange/10 text-moroww-black/70 text-sm md:text-base leading-relaxed">
               {a}
             </div>
           </motion.div>
@@ -67,22 +67,22 @@ export function FAQ() {
 
   return (
     <section className="bg-white py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-16">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-10 md:gap-16">
         {/* Links */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: "easeOut" as const }}
           className="md:w-[30%] shrink-0"
         >
           <h2
-            className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-6"
-            style={{ fontSize: "clamp(2rem,3.5vw,3rem)" }}
+            className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-4 md:mb-6"
+            style={{ fontSize: "clamp(24px,3.5vw,3rem)" }}
           >
             veelgestelde vragen
           </h2>
-          <p className="text-moroww-black/50 text-base leading-relaxed">
+          <p className="text-moroww-black/50 text-sm md:text-base leading-relaxed">
             Staat jouw vraag er niet bij?{" "}
             <Link
               href="mailto:hello@moroww.com"
@@ -98,7 +98,7 @@ export function FAQ() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
+          transition={{ duration: 0.4, ease: "easeOut" as const, delay: 0.1 }}
           className="flex-1 w-full"
         >
           {faqs.map((faq, i) => (

@@ -25,12 +25,12 @@ export function RegioGrid() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
+        transition={{ duration: 0.4, ease: "easeOut" as const }}
         className="mb-12"
       >
         <h2
           className="font-bold lowercase leading-[1.05] tracking-[-0.02em]"
-          style={{ fontSize: "clamp(2rem,4vw,4rem)" }}
+          style={{ fontSize: "clamp(28px,4vw,56px)" }}
         >
           <span className="text-moroww-black">ontdek onze </span>
           <span className="text-moroww-orange">collecties</span>
@@ -44,18 +44,18 @@ export function RegioGrid() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
+            transition={{ duration: 0.4, ease: "easeOut" as const, delay: i * 0.08 }}
           >
             <Link
               href={c.href}
-              className="relative flex flex-col justify-end rounded-3xl overflow-hidden p-8 transition-transform duration-300 hover:scale-[1.02] block"
-              style={{ background: c.gradient, height: 380 }}
+              className="relative flex flex-col justify-end rounded-3xl overflow-hidden p-6 md:p-8 transition-transform duration-300 hover:scale-[1.02] block h-[240px] md:h-[380px]"
+              style={{ background: c.gradient }}
             >
               <div className="absolute inset-0 bg-black/10 rounded-3xl" />
               <div className="relative z-10">
                 <p
                   className="text-white font-semibold lowercase leading-[1.0] tracking-[-0.02em] mb-1"
-                  style={{ fontSize: "clamp(1.75rem,3vw,2.5rem)" }}
+                  style={{ fontSize: "clamp(1.5rem,3vw,2.5rem)" }}
                 >
                   {c.naam}
                 </p>

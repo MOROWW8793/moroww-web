@@ -23,14 +23,14 @@ export function FooterHero() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="absolute inset-0 flex items-center justify-center px-8"
+        className="absolute inset-0 flex items-center justify-center px-6 md:px-8"
       >
         <p
           className="text-white text-center lowercase tracking-[-0.02em] leading-[1.2]"
-          style={{ fontSize: "clamp(20px,3vw,48px)" }}
+          style={{ fontSize: "clamp(20px,4vw,56px)" }}
         >
           <span className="font-bold">no worries for the day of</span>
-          <span className="inline-block" style={{ width: "clamp(40px,8vw,120px)" }} />
+          <span className="inline-block w-4 md:w-24" />
           <span className="font-normal">moroww.</span>
         </p>
       </motion.div>

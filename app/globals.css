@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --text-display: clamp(36px, 8vw, 120px);
+  --text-h1: clamp(32px, 6vw, 80px);
+  --text-h2: clamp(24px, 4vw, 56px);
+  --text-h3: clamp(20px, 3vw, 36px);
+  --text-body: clamp(15px, 2vw, 18px);
+}
+
 @font-face {
   font-family: "OverusedGrotesk";
   src: url("/fonts/OverusedGrotesk-Book.otf") format("opentype");
@@ -40,5 +52,11 @@ body {
   color: #1A1A1A;
   font-family: "OverusedGrotesk", "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  max-width: 100vw;
+}
+
+img, video {
+  max-width: 100%;
 }

@@ -86,7 +86,7 @@ export function EigenaarContent() {
       <section className="w-full flex flex-col md:flex-row items-stretch">
         <motion.div
           {...fadeUp}
-          className="w-full md:w-1/2 bg-white flex flex-col justify-center py-24 px-8 md:px-16"
+          className="w-full md:w-1/2 bg-white flex flex-col justify-center py-10 px-6 md:py-24 md:px-16 order-last md:order-first"
         >
           <p className="text-[#FEA05E] uppercase text-xs tracking-widest font-medium mb-4">
             waarom nu
@@ -116,7 +116,7 @@ export function EigenaarContent() {
             Niet de korting. De positie.
           </p>
         </motion.div>
-        <div className="relative w-full md:w-1/2 min-h-[500px] overflow-hidden flex-shrink-0">
+        <div className="relative w-full md:w-1/2 h-[280px] md:min-h-[500px] overflow-hidden flex-shrink-0 order-first md:order-last">
           <img
             src="/images/fp-interieur-1.jpg"
             alt=""
@@ -183,7 +183,7 @@ export function EigenaarContent() {
 
       {/* ── SECTIE B: FOTO LINKS + WIE WE ZOEKEN ── */}
       <section className="w-full flex flex-col md:flex-row">
-        <div className="relative w-full md:w-1/2 h-[500px] overflow-hidden flex-shrink-0">
+        <div className="relative w-full md:w-1/2 h-[280px] md:h-[500px] overflow-hidden flex-shrink-0">
           <img
             src="/images/fp-interieur-2.jpg"
             alt=""
@@ -192,7 +192,7 @@ export function EigenaarContent() {
         </div>
         <motion.div
           {...fadeUp}
-          className="w-full md:w-1/2 bg-white flex items-center px-8 md:px-16 py-16"
+          className="w-full md:w-1/2 bg-white flex items-center px-6 py-10 md:px-16 md:py-16"
         >
           <div>
             <p className="text-[#FEA05E] uppercase text-xs tracking-widest font-medium mb-4">
@@ -219,7 +219,7 @@ export function EigenaarContent() {
       <section className="w-full flex flex-col md:flex-row">
         <motion.div
           {...fadeUp}
-          className="w-full md:w-1/2 bg-[#1A1A1A] flex items-center px-8 md:px-16 py-16 order-last md:order-first"
+          className="w-full md:w-1/2 bg-[#1A1A1A] flex items-center px-6 py-10 md:px-16 md:py-16 order-last md:order-first"
         >
           <div>
             <p className="text-[#FEA05E] uppercase text-xs tracking-widest font-medium mb-4">
@@ -238,7 +238,7 @@ export function EigenaarContent() {
             </p>
           </div>
         </motion.div>
-        <div className="relative w-full md:w-1/2 h-[500px] overflow-hidden flex-shrink-0 order-first md:order-last">
+        <div className="relative w-full md:w-1/2 h-[280px] md:h-[500px] overflow-hidden flex-shrink-0 order-first md:order-last">
           <img
             src="/images/fp-founders.jpg"
             alt=""
