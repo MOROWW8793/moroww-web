@@ -89,10 +89,13 @@ export function EigenaarContent() {
               vanaf dag één. Je relatie met ons begint op het moment dat wij het
               meest gemotiveerd zijn om te bewijzen wat we waard zijn.
             </p>
-            <p>
-              Dat is de waarde van vroeg instappen. Niet de korting. De positie.
-            </p>
           </div>
+          <p
+            className="font-bold text-moroww-black mt-8"
+            style={{ fontSize: "clamp(20px,2vw,28px)" }}
+          >
+            Dat is de waarde van vroeg instappen. Niet de korting. De positie.
+          </p>
         </motion.div>
       </section>
 
