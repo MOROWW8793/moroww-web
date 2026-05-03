@@ -10,6 +10,15 @@ const nextConfig = {
       { protocol: "https", hostname: "cdn.guesty.com" },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/about",
+        destination: "/over-moroww",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
