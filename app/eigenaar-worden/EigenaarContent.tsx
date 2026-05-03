@@ -34,7 +34,7 @@ export function EigenaarContent() {
   return (
     <>
       {/* ── SECTIE 1: HERO ── */}
-      <section className="-mt-16 relative w-full overflow-hidden" style={{ height: "100dvh" }}>
+      <section className="-mt-16 relative w-full overflow-hidden" style={{ height: "100dvh", overflow: "hidden" }}>
         <Image
           src="/images/gradient-hero.png"
           alt=""
@@ -59,8 +59,8 @@ export function EigenaarContent() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" as const }}
-            className="font-bold lowercase text-white leading-[0.95] tracking-[-0.03em]"
-            style={{ fontSize: "clamp(64px,9vw,120px)" }}
+            className="font-bold lowercase text-white leading-[0.95] tracking-[-0.03em] md:max-w-[60vw]"
+            style={{ fontSize: "clamp(48px,7vw,100px)" }}
           >
             de eerste<br />tien tellen<br />het meest.
           </motion.h1>
@@ -69,8 +69,8 @@ export function EigenaarContent() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" as const }}
-            className="text-white/80 font-normal leading-relaxed max-w-sm md:text-right shrink-0"
-            style={{ fontSize: 18 }}
+            className="text-white/80 font-normal leading-relaxed max-w-xs md:text-right shrink-0"
+            style={{ fontSize: 16 }}
           >
             De eerste tien eigenaars krijgen voorwaarden
             die we daarna nooit meer aanbieden.
@@ -78,35 +78,46 @@ export function EigenaarContent() {
         </div>
       </section>
 
-      {/* ── SECTIE 2: VERHAAL + FOTO (debug) ── */}
-      <section style={{
-        display: "flex",
-        width: "100%",
-        minHeight: "500px",
-        backgroundColor: "red",
-      }}>
-        <div style={{
-          position: "relative",
-          width: "50%",
-          height: "500px",
-          overflow: "hidden",
-          backgroundColor: "blue",
-        }}>
+      {/* ── SECTIE 2: VERHAAL + FOTO ── */}
+      <section className="w-full flex flex-col md:flex-row">
+        <motion.div
+          {...fadeUp}
+          className="w-full md:w-1/2 bg-white flex flex-col justify-center py-16 md:py-24 px-8 md:px-16"
+        >
+          <p className="text-[#FEA05E] uppercase text-xs tracking-widest font-medium mb-4">
+            waarom nu
+          </p>
+          <h2
+            className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-6"
+            style={{ fontSize: "clamp(2.25rem,3.5vw,3.25rem)" }}
+          >
+            een label in opbouw<br />heeft een andere<br />waarde dan<br />een label in bloei.
+          </h2>
+          <div className="text-gray-600 leading-relaxed space-y-4 max-w-sm" style={{ fontSize: 17 }}>
+            <p>
+              moroww staat aan het begin. We hebben de strategie,
+              het systeem, de standaard en de partners.
+              Wat we nu bouwen is de collectie.
+            </p>
+            <p>
+              Als Founding Partner ben je niet zomaar een klant.
+              Je bent deel van de basis waarop moroww gebouwd wordt.
+              Je woning draagt het label vanaf dag één.
+            </p>
+          </div>
+          <p
+            className="font-bold text-moroww-black mt-8"
+            style={{ fontSize: "clamp(20px,2vw,28px)" }}
+          >
+            Niet de korting. De positie.
+          </p>
+        </motion.div>
+        <div className="relative w-full md:w-1/2 h-[500px] overflow-hidden flex-shrink-0">
           <img
             src="/images/fp-interieur-1.jpg"
             alt=""
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-            }}
+            className="absolute inset-0 w-full h-full object-cover"
           />
-        </div>
-        <div style={{ width: "50%", padding: "2rem" }}>
-          <p>Tekst hier</p>
         </div>
       </section>
 
