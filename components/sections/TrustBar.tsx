@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle, EyeOff, Shield, Sparkles } from "lucide-react";
+import { CheckCircle, PhoneOff, Shield, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
 const pillars = [
@@ -10,9 +10,9 @@ const pillars = [
     body: "Elk pand persoonlijk bezocht vóór opname in de collectie.",
   },
   {
-    icon: EyeOff,
-    label: "Invisible high-touch",
-    body: "Temperatuur, licht, geur en muziek staan klaar. Geen receptie, geen gedoe.",
+    icon: PhoneOff,
+    label: "Geen telefoontjes om middernacht.",
+    body: "Onze technologie bewaakt. Onze mensen staan stand-by. Jij geniet — wij lossen op.",
   },
   {
     icon: Shield,
