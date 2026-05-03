@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -7,11 +8,12 @@ export function Hero() {
   return (
     <section className="relative h-screen flex items-end overflow-hidden">
       {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1800&q=80')",
-        }}
+      <Image
+        src="/images/hero.jpg"
+        alt="moroww — vakantiewoning"
+        fill
+        priority
+        className="object-cover"
       />
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/50" />
