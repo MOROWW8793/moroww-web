@@ -229,7 +229,7 @@ export function EigenaarContent() {
               className="font-bold lowercase text-white leading-tight mb-6"
               style={{ fontSize: "clamp(32px,4vw,52px)" }}
             >
-              je werkt met<br />brent en noam.
+              je werkt met<br />Brent en Noam.
             </h2>
             <p className="text-white/70 text-lg leading-relaxed max-w-sm">
               Geen callcenter. Geen tussenpersoon. In jaar 1 heb je directe

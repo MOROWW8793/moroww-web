@@ -72,7 +72,7 @@ export function Founders() {
           className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-6"
           style={{ fontSize: "clamp(28px,4vw,3.5rem)" }}
         >
-          brent & noam.
+          Brent & Noam.
         </h2>
         <p className="text-moroww-black/60 leading-relaxed mb-10 max-w-lg" style={{ fontSize: 17 }}>
           Wij zijn Brent en Noam. Twee ondernemers die te vaak

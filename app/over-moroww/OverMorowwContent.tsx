@@ -207,7 +207,7 @@ export function OverMorowwContent() {
               className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-6"
               style={{ fontSize: "clamp(2rem,4vw,3.5rem)" }}
             >
-              brent & noam.
+              Brent & Noam.
             </h2>
             <div className="text-moroww-black/60 leading-relaxed space-y-4 mb-10" style={{ fontSize: 17 }}>
               <p>
