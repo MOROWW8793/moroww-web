@@ -21,18 +21,19 @@ export function HostTeaser() {
           <div className="max-w-md">
             <p className="text-xs font-semibold uppercase tracking-widest text-moroww-orange mb-4">Voor eigenaars</p>
             <h2 className="font-bold text-moroww-black text-4xl md:text-5xl leading-tight mb-6">
-              Jouw woning.<br />Onze zorg.
+              Jouw asset.<br />Ons protocol.
             </h2>
             <p className="text-moroww-black/60 text-base leading-relaxed mb-10">
-              Je opent de deuren. Wij regelen de rest. moroww beheert je vakantiewoning
-              alsof het ons eigen is — met oog voor detail, respect voor je eigendom
-              en technologie die het zware werk doet.
+              Je hebt een woning aangekocht als investering, niet als bijbaan.
+              moroww beheert je eigendom met slimme technologie, een eigen
+              schoonmaakprotocol en een sensor die bewaakt wat jij niet kan zien.
+              Jij bent stille investeerder. Wij zijn het systeem.
             </p>
             <Link
               href="/eigenaar-worden"
               className="inline-flex items-center rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white font-semibold px-8 py-4 transition-colors duration-200"
             >
-              Eigenaar worden
+              Bekijk het Founding Partner-programma
             </Link>
           </div>
         </div>

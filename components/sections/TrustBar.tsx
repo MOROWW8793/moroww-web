@@ -1,20 +1,20 @@
-import { CheckCircle, Hotel, Cpu } from "lucide-react";
+import { CheckCircle, EyeOff, Shield } from "lucide-react";
 
 const pillars = [
   {
     icon: CheckCircle,
-    label: "Elk huis fysiek geïnspecteerd",
-    body: "Voordat het in de collectie komt",
+    label: "Fysiek geïnspecteerd",
+    body: "Elk pand persoonlijk bezocht vóór opname in de collectie.",
   },
   {
-    icon: Hotel,
-    label: "Hotelkwaliteit, privacycomfort",
-    body: "Geen receptie, geen gedoe",
+    icon: EyeOff,
+    label: "Invisible high-touch",
+    body: "Temperatuur, licht, geur en muziek staan klaar. Geen receptie, geen gedoe.",
   },
   {
-    icon: Cpu,
-    label: "Technologie die voor je werkt",
-    body: "Van sleutel tot sfeer, al geregeld",
+    icon: Shield,
+    label: "Eén label. Nul gokjes.",
+    body: "Elk moroww-pand draagt een kwaliteitsgarantie. Wie de standaard niet haalt, verlaat de collectie.",
   },
 ];
 

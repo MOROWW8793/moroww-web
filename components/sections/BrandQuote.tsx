@@ -7,9 +7,12 @@ export function BrandQuote() {
         <blockquote className="font-bold italic text-moroww-black text-3xl md:text-5xl leading-tight mb-8">
           &ldquo;A stay that works,<br className="hidden md:block" /> so you don&apos;t have to.&rdquo;
         </blockquote>
-        <p className="text-moroww-black/55 text-base md:text-lg mb-12 leading-relaxed">
-          Opgericht door Brent en Noam. Twee ondernemers<br className="hidden md:block" />
-          die de vakantie-loterij beu waren.
+        <p className="text-moroww-black/55 text-base md:text-lg mb-4 leading-relaxed">
+          Opgericht door Brent en Noam — twee ondernemers<br className="hidden md:block" />
+          die de vakantieloterij beu waren.
+        </p>
+        <p className="text-moroww-black/35 text-sm font-normal mb-12">
+          No worries for the day of moroww.
         </p>
         <Link
           href="/over-moroww"

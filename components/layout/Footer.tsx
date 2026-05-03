@@ -33,7 +33,7 @@ export function Footer() {
 
         <div className="mt-16 border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/30">
           <span>© {new Date().getFullYear()} moroww. Alle rechten voorbehouden.</span>
-          <span>Made in Belgium.</span>
+          <span>moroww BV · België · www.moroww.com</span>
         </div>
       </div>
     </footer>

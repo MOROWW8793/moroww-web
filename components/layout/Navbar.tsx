@@ -6,9 +6,9 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { label: "Collectie",      href: "/collectie" },
-  { label: "Over moroww",   href: "/over-moroww" },
-  { label: "Eigenaar worden", href: "/eigenaar-worden" },
+  { label: "De Collectie",    href: "/collectie" },
+  { label: "Over moroww",     href: "/over-moroww" },
+  { label: "Founding Partner", href: "/eigenaar-worden" },
 ];
 
 export function Navbar() {

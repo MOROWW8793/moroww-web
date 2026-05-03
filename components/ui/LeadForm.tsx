@@ -8,6 +8,10 @@ import { CheckCircle } from "lucide-react";
 
 const initial: LeadFormState = { success: false };
 
+const inputClass = "rounded-xl border border-moroww-border bg-moroww-blush/30 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-moroww-orange";
+const labelClass = "flex flex-col gap-1.5";
+const spanClass  = "text-xs font-semibold text-moroww-black/50 uppercase tracking-wide";
+
 export function LeadForm() {
   const [state, action] = useFormState(submitLead, initial);
   const formRef = useRef<HTMLFormElement>(null);
@@ -20,7 +24,8 @@ export function LeadForm() {
         </div>
         <h3 className="font-bold text-xl text-moroww-black">Aanvraag ontvangen</h3>
         <p className="text-moroww-black/60 text-sm leading-relaxed max-w-xs mx-auto">
-          Bedankt! We nemen binnen 48u contact op om je woning persoonlijk te bespreken.
+          Bedankt. We nemen binnen 48u persoonlijk contact op.
+          Elke woning wordt fysiek beoordeeld — dat is onze belofte.
         </p>
       </div>
     );
@@ -28,61 +33,53 @@ export function LeadForm() {
 
   return (
     <form ref={formRef} action={action} className="rounded-2xl bg-white p-8 md:p-10 space-y-5 shadow-sm">
-      <h3 className="font-bold text-xl text-moroww-black mb-2">Stuur je aanvraag</h3>
+      <h3 className="font-bold text-xl text-moroww-black mb-2">Aanmelden als Founding Partner</h3>
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <label className="flex flex-col gap-1.5">
-          <span className="text-xs font-semibold text-moroww-black/50 uppercase tracking-wide">Naam *</span>
-          <input
-            name="name"
-            required
-            placeholder="Jan Janssen"
-            className="rounded-xl border border-moroww-border bg-moroww-blush/30 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-moroww-orange"
-          />
+        <label className={labelClass}>
+          <span className={spanClass}>Naam *</span>
+          <input name="name" required placeholder="Jan Janssen" className={inputClass} />
         </label>
-        <label className="flex flex-col gap-1.5">
-          <span className="text-xs font-semibold text-moroww-black/50 uppercase tracking-wide">E-mail *</span>
-          <input
-            name="email"
-            type="email"
-            required
-            placeholder="jan@voorbeeld.be"
-            className="rounded-xl border border-moroww-border bg-moroww-blush/30 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-moroww-orange"
-          />
+        <label className={labelClass}>
+          <span className={spanClass}>E-mail *</span>
+          <input name="email" type="email" required placeholder="jan@voorbeeld.be" className={inputClass} />
         </label>
       </div>
 
-      <label className="flex flex-col gap-1.5">
-        <span className="text-xs font-semibold text-moroww-black/50 uppercase tracking-wide">Telefoon</span>
-        <input
-          name="phone"
-          type="tel"
-          placeholder="+32 470 00 00 00"
-          className="rounded-xl border border-moroww-border bg-moroww-blush/30 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-moroww-orange"
-        />
+      <label className={labelClass}>
+        <span className={spanClass}>Telefoon</span>
+        <input name="phone" type="tel" placeholder="+32 470 00 00 00" className={inputClass} />
       </label>
 
-      <label className="flex flex-col gap-1.5">
-        <span className="text-xs font-semibold text-moroww-black/50 uppercase tracking-wide">Beschrijf je woning</span>
+      <label className={labelClass}>
+        <span className={spanClass}>Beschrijf je woning</span>
         <textarea
           name="property_description"
           rows={4}
           placeholder="Type woning, ligging, capaciteit, wat maakt ze bijzonder…"
-          className="rounded-xl border border-moroww-border bg-moroww-blush/30 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-moroww-orange resize-none"
+          className={`${inputClass} resize-none`}
         />
       </label>
 
-      <label className="flex flex-col gap-1.5">
-        <span className="text-xs font-semibold text-moroww-black/50 uppercase tracking-wide">Regio</span>
-        <select
-          name="region"
-          className="rounded-xl border border-moroww-border bg-moroww-blush/30 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-moroww-orange"
-        >
+      <label className={labelClass}>
+        <span className={spanClass}>Regio</span>
+        <select name="region" className={inputClass}>
           <option value="">Kies een regio…</option>
           <option value="Kust">Kust</option>
+          <option value="Vlaamse Ardennen">Vlaamse Ardennen</option>
           <option value="Ardennen">Ardennen</option>
-          <option value="Heuvelland">Heuvelland</option>
           <option value="Andere">Andere</option>
+        </select>
+      </label>
+
+      <label className={labelClass}>
+        <span className={spanClass}>Beschikbaar per jaar (nachten)</span>
+        <select name="nights_per_year" className={inputClass}>
+          <option value="">Schat het aantal nachten…</option>
+          <option value="<60">&lt;60 nachten</option>
+          <option value="60-120">60 – 120 nachten</option>
+          <option value="120-180">120 – 180 nachten</option>
+          <option value="180+">180+ nachten</option>
         </select>
       </label>
 
@@ -94,7 +91,7 @@ export function LeadForm() {
         type="submit"
         className="w-full rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white font-semibold py-4 transition-colors duration-200"
       >
-        Stuur mijn aanvraag
+        Aanmelden als Founding Partner
       </button>
     </form>
   );

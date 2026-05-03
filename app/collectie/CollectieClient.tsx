@@ -5,7 +5,7 @@ import type { GuestyListing } from "@/types/guesty";
 import { PropertyCard } from "@/components/ui/PropertyCard";
 import { getRegion } from "@/lib/guesty";
 
-const REGIONS = ["Alles", "Kust", "Ardennen", "Heuvelland"];
+const REGIONS = ["Alles", "Kust", "Vlaamse Ardennen", "Ardennen"];
 
 export function CollectieClient({ listings }: { listings: GuestyListing[] }) {
   const [filter, setFilter] = useState("Alles");
@@ -16,6 +16,9 @@ export function CollectieClient({ listings }: { listings: GuestyListing[] }) {
 
   return (
     <div className="mx-auto max-w-7xl px-6 py-12">
+      <p className="text-xs font-normal text-moroww-black/40 tracking-widest uppercase mb-6">
+        Een gesloten collectie. Elk pand fysiek geselecteerd.
+      </p>
       {/* Filter chips */}
       <div className="flex gap-2 flex-wrap mb-10">
         {REGIONS.map(r => (

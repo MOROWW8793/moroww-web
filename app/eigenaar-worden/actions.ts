@@ -12,6 +12,7 @@ export async function submitLead(
   const phone                = (formData.get("phone") as string)?.trim() || null;
   const property_description = (formData.get("property_description") as string)?.trim() || null;
   const region               = (formData.get("region") as string) || null;
+  const nights_per_year      = (formData.get("nights_per_year") as string) || null;
 
   if (!name || !email) {
     return { success: false, error: "Naam en e-mail zijn verplicht." };
@@ -33,6 +34,8 @@ export async function submitLead(
     property_description,
     region,
     source: "eigenaar-worden",
+    // nights_per_year stored in property_description suffix for now (no schema change)
+    ...(nights_per_year ? { property_description: [property_description, `Beschikbaar: ${nights_per_year} nachten/jaar`].filter(Boolean).join(" · ") } : {}),
   });
 
   if (error) {
