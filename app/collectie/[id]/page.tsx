@@ -97,7 +97,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                 </div>
               )}
               <a
-                href={listing.externalLinks?.[0]?.url ?? "#"}
+                href="https://book.moroww.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white font-semibold py-4 transition-colors duration-200"

@@ -54,12 +54,14 @@ export function Navbar() {
               {l.label}
             </Link>
           ))}
-          <Link
-            href="/collectie"
+          <a
+            href="https://book.moroww.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white text-sm font-semibold px-5 py-2 transition-colors"
           >
             Maak een boeking
-          </Link>
+          </a>
         </div>
 
         <button
@@ -84,13 +86,15 @@ export function Navbar() {
               {l.label}
             </Link>
           ))}
-          <Link
-            href="/collectie"
+          <a
+            href="https://book.moroww.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="block rounded-full bg-moroww-orange text-white text-sm font-semibold px-5 py-3 text-center"
             onClick={() => setOpen(false)}
           >
             Maak een boeking
-          </Link>
+          </a>
         </div>
       )}
     </nav>
