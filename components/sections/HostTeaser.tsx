@@ -16,7 +16,7 @@ export function HostTeaser() {
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 50vw"
-            style={{ objectPosition: "center top" }}
+            style={{ objectPosition: "center 20%" }}
           />
         </div>
 
