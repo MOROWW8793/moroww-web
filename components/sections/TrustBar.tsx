@@ -23,7 +23,7 @@ const pillars = [
 
 export function TrustBar() {
   return (
-    <section className="bg-moroww-blush py-20 px-6 md:px-16">
+    <section className="bg-moroww-blush pt-20 pb-12 px-6 md:px-16">
       <div className="mx-auto max-w-5xl">
         <div className="grid gap-10 md:grid-cols-3">
           {pillars.map(({ icon: Icon, label, body }, i) => (

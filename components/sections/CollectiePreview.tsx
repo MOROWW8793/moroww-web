@@ -13,7 +13,7 @@ const cards = [
 
 export function CollectiePreview() {
   return (
-    <section className="bg-moroww-blush py-24 px-6 md:px-16">
+    <section className="bg-moroww-blush pt-12 pb-24 px-6 md:px-16">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
