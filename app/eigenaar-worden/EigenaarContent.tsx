@@ -83,10 +83,10 @@ export function EigenaarContent() {
       </section>
 
       {/* ── SECTIE 2: VERHAAL + FOTO ── */}
-      <section className="w-full flex flex-col md:flex-row">
+      <section className="w-full flex flex-col md:flex-row items-stretch">
         <motion.div
           {...fadeUp}
-          className="w-full md:w-1/2 bg-white flex flex-col justify-center py-16 md:py-24 px-8 md:px-16"
+          className="w-full md:w-1/2 bg-white flex flex-col justify-center py-24 px-8 md:px-16"
         >
           <p className="text-[#FEA05E] uppercase text-xs tracking-widest font-medium mb-4">
             waarom nu
@@ -116,11 +116,12 @@ export function EigenaarContent() {
             Niet de korting. De positie.
           </p>
         </motion.div>
-        <div className="relative w-full md:w-1/2 h-[500px] overflow-hidden flex-shrink-0">
+        <div className="relative w-full md:w-1/2 min-h-[500px] overflow-hidden flex-shrink-0">
           <img
             src="/images/fp-interieur-1.jpg"
             alt=""
             className="absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: "center top" }}
           />
         </div>
       </section>
