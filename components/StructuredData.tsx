@@ -12,7 +12,7 @@ export default function StructuredData() {
     },
     "contactPoint": {
       "@type": "ContactPoint",
-      "email": "hello@moroww.com",
+      "email": "info@moroww.com",
       "contactType": "customer service",
       "availableLanguage": "Dutch",
     },

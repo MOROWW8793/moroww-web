@@ -21,6 +21,9 @@ export function Footer() {
             <p className="text-xs text-white/25">
               moroww BV · België · www.moroww.com
             </p>
+            <p className="text-xs text-white/25 mt-1">
+              BTW BE1030.667.956
+            </p>
           </div>
 
           {/* Sitemap */}
@@ -39,8 +42,8 @@ export function Footer() {
           <div>
             <p className="text-sm font-semibold text-white mb-4">Contact</p>
             <div className="flex flex-col gap-2 text-sm text-white/50">
-              <Link href="mailto:hello@moroww.com" className="hover:text-white transition-colors">
-                hello@moroww.com
+              <Link href="mailto:info@moroww.com" className="hover:text-white transition-colors">
+                info@moroww.com
               </Link>
               <Link href="#" className="hover:text-white transition-colors">Instagram</Link>
               <Link href="#" className="hover:text-white transition-colors">LinkedIn</Link>

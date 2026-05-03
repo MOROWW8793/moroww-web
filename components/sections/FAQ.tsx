@@ -85,7 +85,7 @@ export function FAQ() {
           <p className="text-moroww-black/50 text-sm md:text-base leading-relaxed">
             Staat jouw vraag er niet bij?{" "}
             <Link
-              href="mailto:hello@moroww.com"
+              href="mailto:info@moroww.com"
               className="text-moroww-orange hover:underline underline-offset-2"
             >
               Stuur ons een bericht.
