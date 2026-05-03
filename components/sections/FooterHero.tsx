@@ -20,23 +20,26 @@ export function FooterHero() {
 
       {/* Headline gecentreerd midden op de foto */}
       <div className="absolute inset-0 flex items-center justify-center px-8">
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-white font-bold lowercase leading-[1.1] tracking-[-0.02em] text-center w-full"
-          style={{ fontSize: "clamp(28px,6vw,48px)" }}
+          className="flex flex-col items-center text-center"
         >
-          <span className="md:hidden">
-            no worries for the day of moroww.
-          </span>
-          <span className="hidden md:inline" style={{ fontSize: "clamp(40px,5vw,80px)" }}>
-            no worries for the day
-            <span className="inline-block min-w-[180px]" />
-            of moroww.
-          </span>
-        </motion.p>
+          <p
+            className="text-white font-bold lowercase leading-[1.1] tracking-[-0.02em]"
+            style={{ fontSize: "clamp(28px,5vw,80px)" }}
+          >
+            no worries for the day of
+          </p>
+          <p
+            className="text-white font-bold lowercase leading-[1.1] tracking-[-0.02em]"
+            style={{ fontSize: "clamp(28px,5vw,80px)" }}
+          >
+            moroww.
+          </p>
+        </motion.div>
       </div>
     </section>
   );
