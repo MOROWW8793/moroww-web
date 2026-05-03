@@ -13,7 +13,7 @@ export function Hero() {
         priority
         className="object-cover"
         sizes="100vw"
-        style={{ objectPosition: "35% center" }}
+        style={{ objectPosition: "center center" }}
       />
 
       <div
