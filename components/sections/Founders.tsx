@@ -45,9 +45,11 @@ export function Founders() {
             brent & noam.
           </h2>
           <p className="text-moroww-black/60 leading-relaxed mb-10" style={{ fontSize: 17 }}>
-            Twee ondernemers. Één standaard.
-            <br />
-            moroww is gebouwd omdat de markt het verdiende.
+            Wij zijn Brent en Noam. Twee ondernemers die te vaak
+            teleurgesteld thuiskwamen van een vakantie die er op foto
+            perfect uitzag. moroww is ons antwoord — een label dat
+            curateert, een systeem dat levert, en een standaard die
+            we nooit loslaten.
           </p>
           <Link
             href="/over-moroww"
