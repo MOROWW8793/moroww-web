@@ -55,7 +55,7 @@ export function Navbar() {
             </Link>
           ))}
           <a
-            href="https://calendar.app.google/BH8wYeA9AGf6KrUz7"
+            href="https://book.moroww.com"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white text-sm font-semibold px-5 py-2 transition-colors"
@@ -87,7 +87,7 @@ export function Navbar() {
             </Link>
           ))}
           <a
-            href="https://calendar.app.google/BH8wYeA9AGf6KrUz7"
+            href="https://book.moroww.com"
             target="_blank"
             rel="noopener noreferrer"
             className="block rounded-full bg-moroww-orange text-white text-sm font-semibold px-5 py-3 text-center"
