@@ -115,12 +115,11 @@ export function EigenaarContent() {
         </motion.div>
 
         {/* Foto rechts */}
-        <div className="relative w-full md:w-1/2 h-[400px] md:h-[600px] overflow-hidden">
+        <div className="relative w-full md:w-1/2 h-[500px] overflow-hidden flex-shrink-0">
           <img
             src="/images/fp-interieur-1.jpg"
             alt=""
-            className="w-full h-full object-cover"
-            style={{ display: "block" }}
+            className="absolute inset-0 w-full h-full object-cover"
           />
         </div>
       </section>
@@ -130,8 +129,7 @@ export function EigenaarContent() {
         <img
           src="/images/fp-exterieur.jpg"
           alt=""
-          className="w-full h-full object-cover"
-          style={{ display: "block" }}
+          className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <motion.div {...fadeUp} className="text-center text-white px-8">
@@ -181,13 +179,12 @@ export function EigenaarContent() {
       </section>
 
       {/* ── SECTIE B: FOTO LINKS + WIE WE ZOEKEN ── */}
-      <section className="w-full flex flex-col md:flex-row min-h-[500px]">
-        <div className="relative w-full md:w-1/2 h-[400px] md:h-[500px] overflow-hidden">
+      <section className="w-full flex flex-col md:flex-row">
+        <div className="relative w-full md:w-1/2 h-[500px] overflow-hidden flex-shrink-0">
           <img
             src="/images/fp-interieur-2.jpg"
             alt=""
-            className="w-full h-full object-cover"
-            style={{ display: "block" }}
+            className="absolute inset-0 w-full h-full object-cover"
           />
         </div>
         <motion.div
@@ -216,7 +213,7 @@ export function EigenaarContent() {
       </section>
 
       {/* ── SECTIE C: FOUNDERS STRIP ── */}
-      <section className="w-full flex flex-col md:flex-row min-h-[500px]">
+      <section className="w-full flex flex-col md:flex-row">
         <motion.div
           {...fadeUp}
           className="w-full md:w-1/2 bg-[#1A1A1A] flex items-center px-8 md:px-16 py-16 order-last md:order-first"
@@ -238,12 +235,11 @@ export function EigenaarContent() {
             </p>
           </div>
         </motion.div>
-        <div className="relative w-full md:w-1/2 h-[400px] md:h-[500px] overflow-hidden order-first md:order-last">
+        <div className="relative w-full md:w-1/2 h-[500px] overflow-hidden flex-shrink-0 order-first md:order-last">
           <img
             src="/images/fp-founders.jpg"
             alt=""
-            className="w-full h-full object-cover"
-            style={{ display: "block" }}
+            className="absolute inset-0 w-full h-full object-cover"
           />
         </div>
       </section>
