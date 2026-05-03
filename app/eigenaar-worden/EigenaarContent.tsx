@@ -48,7 +48,7 @@ export function EigenaarContent() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="relative z-10 max-w-3xl mx-auto text-center"
         >
-          <p className="text-xs font-normal uppercase tracking-widest text-white mb-6">
+          <p className="text-xs font-normal uppercase tracking-widest text-moroww-black mb-6">
             founding partner programma
           </p>
           <h1
@@ -57,7 +57,7 @@ export function EigenaarContent() {
           >
             de eerste tien<br />tellen het meest.
           </h1>
-          <p className="text-white/80 font-normal leading-relaxed max-w-xl mx-auto" style={{ fontSize: 20 }}>
+          <p className="text-moroww-black/70 font-normal leading-relaxed max-w-xl mx-auto" style={{ fontSize: 20 }}>
             moroww bouwt een gesloten collectie van premium vakantiewoningen.
             De eerste tien eigenaars die instappen krijgen voorwaarden die we
             daarna nooit meer aanbieden.
