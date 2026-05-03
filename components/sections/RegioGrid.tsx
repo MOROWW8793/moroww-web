@@ -3,24 +3,18 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-const regios = [
+const collecties = [
   {
-    naam: "Kust",
-    woningen: "3 woningen",
-    href: "/collectie?regio=kust",
-    gradient: "linear-gradient(135deg, #FEA05E 0%, #FAE4D6 100%)",
+    naam: "the shore",
+    sub: "2 woningen · Kust",
+    href: "/collectie?collectie=the-shore",
+    gradient: "linear-gradient(135deg, #FEA05E 0%, #E8894A 100%)",
   },
   {
-    naam: "Ardennen",
-    woningen: "4 woningen",
-    href: "/collectie?regio=ardennen",
-    gradient: "linear-gradient(135deg, #C8956B 0%, #E8894A 100%)",
-  },
-  {
-    naam: "Vlaamse Ardennen",
-    woningen: "2 woningen",
-    href: "/collectie?regio=vlaamse-ardennen",
-    gradient: "linear-gradient(135deg, #FAE4D6 0%, #FEA05E 100%)",
+    naam: "the fields",
+    sub: "2 woningen · Ardennen & Vlaamse Ardennen",
+    href: "/collectie?collectie=the-fields",
+    gradient: "linear-gradient(135deg, #C8956B 0%, #A0714F 100%)",
   },
 ];
 
@@ -43,26 +37,26 @@ export function RegioGrid() {
         </h2>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {regios.map((r, i) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {collecties.map((c, i) => (
           <motion.div
-            key={r.naam}
+            key={c.naam}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
           >
             <Link
-              href={r.href}
-              className="relative flex flex-col justify-end h-[240px] md:h-[320px] rounded-3xl overflow-hidden p-8 transition-transform duration-300 hover:scale-[1.02] block"
-              style={{ background: r.gradient }}
+              href={c.href}
+              className="relative flex flex-col justify-end rounded-3xl overflow-hidden p-8 transition-transform duration-300 hover:scale-[1.02] block"
+              style={{ background: c.gradient, height: 380 }}
             >
-              <div className="absolute inset-0 bg-black/15 rounded-3xl" />
+              <div className="absolute inset-0 bg-black/10 rounded-3xl" />
               <div className="relative z-10">
-                <p className="text-white font-semibold text-2xl md:text-3xl mb-1">
-                  {r.naam}
+                <p className="text-white font-semibold lowercase leading-[1.0] tracking-[-0.02em] mb-1" style={{ fontSize: "clamp(1.75rem,3vw,2.5rem)" }}>
+                  {c.naam}
                 </p>
-                <p className="text-white/70 text-sm font-normal">{r.woningen}</p>
+                <p className="text-white/75 text-sm font-normal">{c.sub}</p>
               </div>
             </Link>
           </motion.div>

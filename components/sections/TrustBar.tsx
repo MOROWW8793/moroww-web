@@ -25,7 +25,7 @@ export function TrustBar() {
   return (
     <section className="bg-moroww-blush pt-20 pb-12 px-6 md:px-16">
       <div className="mx-auto max-w-5xl">
-        <div className="grid gap-10 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3">
           {pillars.map(({ icon: Icon, label, body }, i) => (
             <motion.div
               key={label}
@@ -33,9 +33,9 @@ export function TrustBar() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
-              className="flex flex-col gap-3"
+              className="flex flex-col gap-3 bg-white rounded-2xl p-6 shadow-sm"
             >
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-moroww-blush flex items-center justify-center">
                 <Icon size={18} className="text-moroww-orange" />
               </div>
               <h3 className="font-semibold text-moroww-black text-base">{label}</h3>

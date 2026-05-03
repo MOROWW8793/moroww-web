@@ -5,47 +5,39 @@ import { motion } from "framer-motion";
 
 export function FooterHero() {
   return (
-    <section className="w-full flex flex-col md:flex-row" style={{ height: "60vh" }}>
-      {/* Linkerhelft: foto */}
-      <div className="relative w-full md:w-1/2 h-[30vh] md:h-full overflow-hidden">
-        <Image
-          src="/images/exterieur-1.jpg"
-          alt="moroww"
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 50vw"
-        />
-        <motion.div
+    <section className="relative w-full h-[50vh] md:h-[70vh] overflow-hidden">
+      <Image
+        src="/images/exterieur-1.jpg"
+        alt="moroww"
+        fill
+        className="object-cover"
+        sizes="100vw"
+      />
+      <div
+        className="absolute inset-0"
+        style={{ background: "rgba(0,0,0,0.35)" }}
+      />
+
+      {/* Headline gecentreerd midden op de foto */}
+      <div className="absolute inset-0 flex items-center justify-center px-8">
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="absolute bottom-8 left-8"
+          className="text-white font-bold lowercase leading-[1.1] tracking-[-0.02em] text-center w-full"
+          style={{ fontSize: "clamp(28px,6vw,48px)" }}
         >
-          <p
-            className="text-white font-bold lowercase leading-[1.0] tracking-[-0.02em]"
-            style={{ fontSize: "clamp(32px,4vw,64px)" }}
-          >
-            no worries
-          </p>
-        </motion.div>
+          <span className="md:hidden">
+            no worries for the day of moroww.
+          </span>
+          <span className="hidden md:inline" style={{ fontSize: "clamp(40px,5vw,80px)" }}>
+            no worries for the day
+            <span className="inline-block min-w-[180px]" />
+            of moroww.
+          </span>
+        </motion.p>
       </div>
-
-      {/* Rechterhelft: donker */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-        className="w-full md:w-1/2 h-[30vh] md:h-full bg-[#1A1A1A] flex items-center"
-      >
-        <p
-          className="text-white font-bold lowercase leading-[1.0] tracking-[-0.02em] pl-8 md:pl-12 max-w-sm"
-          style={{ fontSize: "clamp(32px,4vw,64px)" }}
-        >
-          for the day of moroww.
-        </p>
-      </motion.div>
     </section>
   );
 }

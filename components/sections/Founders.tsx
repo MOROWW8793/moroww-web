@@ -65,7 +65,7 @@ export function Founders() {
           transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
           className="flex-1"
         >
-          <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
+          <p className="text-xs font-medium uppercase tracking-widest text-moroww-black mb-4">
             De oprichters
           </p>
           <h2
