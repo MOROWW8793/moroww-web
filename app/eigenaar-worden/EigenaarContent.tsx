@@ -161,13 +161,13 @@ export function EigenaarContent() {
       <section className="bg-moroww-blush py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full">
         <motion.div {...fadeUp} className="max-w-xl mx-auto">
           <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
-            interesse?
+            klaar om in te stappen?
           </p>
           <h2
             className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-4"
             style={{ fontSize: "clamp(2rem,3.5vw,3rem)" }}
           >
-            laat je gegevens achter.
+            meld je aan.
           </h2>
           <p className="text-moroww-black/60 leading-relaxed mb-10" style={{ fontSize: 17 }}>
             We nemen binnen 48u persoonlijk contact op.
