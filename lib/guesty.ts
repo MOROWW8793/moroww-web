@@ -1,20 +1,25 @@
 import type { GuestyListing, GuestyListResponse } from "@/types/guesty";
 
-const AUTH_URL = "https://auth.guesty.com/oauth2/token";
 const BASE_URL = "https://open-api.guesty.com/v1";
 
 async function getGuestyToken(): Promise<string> {
-  const response = await fetch(AUTH_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({
-      grant_type: "client_credentials",
-      scope: "open-api",
-      client_id: process.env.GUESTY_CLIENT_ID!,
-      client_secret: process.env.GUESTY_CLIENT_SECRET!,
-    }),
-    next: { revalidate: 82800 }, // token 23u cachen
-  });
+  const response = await fetch(
+    "https://open-api.guesty.com/oauth2/token",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        grant_type: "client_credentials",
+        scope: "open-api",
+        client_id: process.env.GUESTY_CLIENT_ID,
+        client_secret: process.env.GUESTY_CLIENT_SECRET,
+      }),
+      cache: "no-store",
+    }
+  );
 
   if (!response.ok) {
     console.error("[guesty] token request failed:", response.status);
