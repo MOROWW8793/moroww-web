@@ -12,7 +12,7 @@ const collecties = [
   },
   {
     naam: "the fields",
-    sub: "2 woningen · Ardennen & Vlaamse Ardennen",
+    sub: "2 woningen · Meetjesland",
     href: "/collectie?collectie=the-fields",
     gradient: "linear-gradient(135deg, #C8956B 0%, #A0714F 100%)",
   },
