@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { LeadForm } from "@/components/ui/LeadForm";
 
@@ -33,23 +34,30 @@ export function EigenaarContent() {
   return (
     <>
       {/* ── SECTIE 1: HERO ── */}
-      <section className="bg-moroww-blush py-40 px-6 md:px-16 lg:px-24 w-full">
+      <section className="relative overflow-hidden py-40 px-6 md:px-16 lg:px-24 w-full">
+        <Image
+          src="/images/gradient-hero.png"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+        />
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="max-w-3xl mx-auto text-center"
+          className="relative z-10 max-w-3xl mx-auto text-center"
         >
-          <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-6">
+          <p className="text-xs font-normal uppercase tracking-widest text-white mb-6">
             founding partner programma
           </p>
           <h1
-            className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-8"
+            className="font-bold lowercase text-white leading-[1.05] tracking-[-0.02em] mb-8"
             style={{ fontSize: "clamp(3rem,6vw,5rem)" }}
           >
             de eerste tien<br />tellen het meest.
           </h1>
-          <p className="text-moroww-black/60 font-normal leading-relaxed max-w-xl mx-auto" style={{ fontSize: 20 }}>
+          <p className="text-white/80 font-normal leading-relaxed max-w-xl mx-auto" style={{ fontSize: 20 }}>
             moroww bouwt een gesloten collectie van premium vakantiewoningen.
             De eerste tien eigenaars die instappen krijgen voorwaarden die we
             daarna nooit meer aanbieden.
