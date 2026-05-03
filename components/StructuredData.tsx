@@ -17,8 +17,8 @@ export default function StructuredData() {
       "availableLanguage": "Dutch",
     },
     "sameAs": [
-      "https://www.instagram.com/moroww",
-      "https://www.linkedin.com/company/moroww",
+      "https://www.instagram.com/moroww.com_/",
+      "https://www.linkedin.com/company/moroww/",
     ],
   };
 

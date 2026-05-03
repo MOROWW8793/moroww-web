@@ -45,8 +45,9 @@ export function Footer() {
               <Link href="mailto:info@moroww.com" className="hover:text-white transition-colors">
                 info@moroww.com
               </Link>
-              <Link href="#" className="hover:text-white transition-colors">Instagram</Link>
-              <Link href="#" className="hover:text-white transition-colors">LinkedIn</Link>
+              <a href="https://www.instagram.com/moroww.com_/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a>
+              <a href="https://www.linkedin.com/company/moroww/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
+              <a href="https://calendar.app.google/BH8wYeA9AGf6KrUz7" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Een gesprek inplannen</a>
             </div>
           </div>
         </div>
