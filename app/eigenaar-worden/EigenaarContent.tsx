@@ -115,7 +115,7 @@ export function EigenaarContent() {
         </motion.div>
 
         {/* Foto rechts */}
-        <div className="relative w-full md:w-1/2 h-[400px] md:h-[600px]">
+        <div className="relative w-full md:w-1/2 h-[400px] md:h-[600px] overflow-hidden">
           <Image
             src="/images/fp-interieur-1.jpg"
             alt=""
@@ -185,7 +185,7 @@ export function EigenaarContent() {
 
       {/* ── SECTIE B: FOTO LINKS + WIE WE ZOEKEN ── */}
       <section className="w-full flex flex-col md:flex-row min-h-[500px]">
-        <div className="relative w-full md:w-1/2 h-[400px] md:h-[500px]">
+        <div className="relative w-full md:w-1/2 h-[400px] md:h-[500px] overflow-hidden">
           <Image
             src="/images/fp-interieur-2.jpg"
             alt=""
@@ -243,7 +243,7 @@ export function EigenaarContent() {
             </p>
           </div>
         </motion.div>
-        <div className="relative w-full md:w-1/2 h-[400px] md:h-[500px] order-first md:order-last">
+        <div className="relative w-full md:w-1/2 h-[400px] md:h-[500px] overflow-hidden order-first md:order-last">
           <Image
             src="/images/fp-founders.jpg"
             alt=""
