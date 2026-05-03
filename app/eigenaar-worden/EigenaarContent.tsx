@@ -132,6 +132,7 @@ export function EigenaarContent() {
           src="/images/fp-exterieur.jpg"
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: "center center" }}
         />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <motion.div {...fadeUp} className="text-center text-white px-8">
