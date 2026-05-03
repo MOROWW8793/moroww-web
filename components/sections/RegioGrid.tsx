@@ -8,19 +8,19 @@ const regios = [
     naam: "Kust",
     woningen: "3 woningen",
     href: "/collectie?regio=kust",
-    gradient: "linear-gradient(145deg, #F4C87A 0%, #FEA05E 50%, #E8894A 100%)",
+    gradient: "linear-gradient(135deg, #FEA05E 0%, #FAE4D6 100%)",
   },
   {
     naam: "Ardennen",
     woningen: "4 woningen",
     href: "/collectie?regio=ardennen",
-    gradient: "linear-gradient(145deg, #3D7A5C 0%, #2D6A4F 50%, #1E4D38 100%)",
+    gradient: "linear-gradient(135deg, #C8956B 0%, #E8894A 100%)",
   },
   {
     naam: "Vlaamse Ardennen",
     woningen: "2 woningen",
     href: "/collectie?regio=vlaamse-ardennen",
-    gradient: "linear-gradient(145deg, #C4956A 0%, #9B6B45 50%, #7A5035 100%)",
+    gradient: "linear-gradient(135deg, #FAE4D6 0%, #FEA05E 100%)",
   },
 ];
 

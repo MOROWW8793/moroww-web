@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export function Hero() {
   return (
-    <section className="relative -mt-16 w-full" style={{ height: "100dvh" }}>
+    <section className="relative -mt-16 w-full overflow-hidden" style={{ height: "100dvh" }}>
       {/* Fullscreen foto */}
       <Image
         src="/images/hero.jpg"
@@ -46,7 +46,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="text-white font-bold lowercase leading-[1.0] tracking-[-0.02em] mb-5"
-              style={{ fontSize: "clamp(3rem,6vw,6rem)" }}
+              style={{ fontSize: "clamp(40px,5vw,80px)" }}
             >
               geen gok.
               {/* Op mobiel staan beide delen in de h1 */}
@@ -82,12 +82,12 @@ export function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="hidden md:block"
+            className="hidden md:block pr-4"
             aria-hidden="true"
           >
             <span
               className="text-white font-bold lowercase leading-[1.0] tracking-[-0.02em]"
-              style={{ fontSize: "clamp(3rem,6vw,6rem)" }}
+              style={{ fontSize: "clamp(40px,5vw,80px)" }}
             >
               een garantie.
             </span>
