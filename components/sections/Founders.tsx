@@ -19,7 +19,7 @@ export function Founders() {
         >
           <Image
             src="/images/founders.jpg"
-            alt="Brent & Noam — moroww founders"
+            alt="Brent en Noam, oprichters van moroww"
             fill
             className="object-cover"
             style={{ objectPosition: "center center" }}

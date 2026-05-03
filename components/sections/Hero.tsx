@@ -8,7 +8,7 @@ export function Hero() {
     <section className="relative -mt-16 w-full overflow-hidden" style={{ height: "100dvh" }}>
       <Image
         src="/images/hero.jpg"
-        alt="moroww — vakantiewoning"
+        alt="moroww vakantiewoning — premium verblijf in België"
         fill
         priority
         className="object-cover"

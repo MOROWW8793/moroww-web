@@ -1,5 +1,10 @@
-export const metadata = {
-  title: "Contact — moroww",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Neem contact op met moroww. Vragen over boekingen, eigenaarschap of samenwerking.",
+  alternates: { canonical: "https://www.moroww.com/contact" },
 };
 
 export default function ContactPage() {
