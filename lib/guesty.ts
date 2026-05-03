@@ -2,7 +2,19 @@ import type { GuestyListing, GuestyListResponse } from "@/types/guesty";
 
 const BASE_URL = "https://open-api.guesty.com/v1";
 
+let tokenCache: { token: string; expiresAt: number } | null = null;
+
 async function getGuestyToken(): Promise<string> {
+  const now = Date.now();
+
+  if (tokenCache && tokenCache.expiresAt > now + 5 * 60 * 1000) {
+    return tokenCache.token;
+  }
+
+  if (!process.env.GUESTY_CLIENT_ID || !process.env.GUESTY_CLIENT_SECRET) {
+    throw new Error("Guesty credentials niet ingesteld");
+  }
+
   const response = await fetch(
     "https://open-api.guesty.com/oauth2/token",
     {
@@ -14,20 +26,26 @@ async function getGuestyToken(): Promise<string> {
       body: new URLSearchParams({
         grant_type: "client_credentials",
         scope: "open-api",
-        client_id: process.env.GUESTY_CLIENT_ID!,
-        client_secret: process.env.GUESTY_CLIENT_SECRET!,
+        client_id: process.env.GUESTY_CLIENT_ID,
+        client_secret: process.env.GUESTY_CLIENT_SECRET,
       }).toString(),
       cache: "no-store",
     }
   );
 
   if (!response.ok) {
-    console.error("[guesty] token request failed:", response.status);
-    return "";
+    const error = await response.json();
+    throw new Error(`Token request failed: ${response.status} ${JSON.stringify(error)}`);
   }
 
   const data = await response.json();
-  return data.access_token ?? "";
+
+  tokenCache = {
+    token: data.access_token,
+    expiresAt: now + 23 * 60 * 60 * 1000,
+  };
+
+  return data.access_token;
 }
 
 // ── Mock data voor development ─────────────────────────────────────────────
