@@ -4,7 +4,7 @@ const BASE_URL = "https://open-api.guesty.com/v1";
 
 let tokenCache: { token: string; expiresAt: number } | null = null;
 
-async function getGuestyToken(): Promise<string> {
+export async function getGuestyToken(): Promise<string> {
   const now = Date.now();
 
   if (tokenCache && tokenCache.expiresAt > now + 5 * 60 * 1000) {
