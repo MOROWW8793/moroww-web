@@ -14,7 +14,7 @@ const fadeUp = {
 const voordelen = [
   {
     titel: "preferentiële voorwaarden",
-    body: "Founding Partners stappen in op de beste commerciële voorwaarden die moroww ooit aanbiedt. Die worden contractueel vastgelegd voor de volledige eerste contractcyclus.",
+    body: "Founding Partners stappen in op voorwaarden die contractueel vergrendeld worden voor de volledige eerste contractcyclus. Wat je vandaag afspreekt, blijft gelden. Geen indexering. Geen verrassing.",
   },
   {
     titel: "directe founder-toegang",
