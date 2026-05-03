@@ -42,15 +42,17 @@ export function EigenaarContent() {
           className="object-cover"
           priority
         />
+        {/* Overlay voor leesbaarheid */}
+        <div className="absolute inset-0 bg-black/25 z-[1]" />
 
-        {/* Linkerkolom — label + headline */}
+        {/* Linkerkolom — label bovenaan, headline onderaan */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" as const }}
-          className="relative z-10 w-full md:w-1/2 flex flex-col justify-end pb-12 px-6 md:pb-16 md:pl-16 md:pr-0"
+          className="relative z-10 w-full md:w-1/2 flex flex-col justify-between pt-32 pb-12 px-6 md:pt-36 md:pb-16 md:pl-16 md:pr-0"
         >
-          <p className="text-white/60 uppercase text-xs tracking-widest font-medium mb-8">
+          <p className="text-white/70 uppercase text-xs tracking-widest font-medium">
             founding partner programma
           </p>
           <h1
@@ -61,7 +63,7 @@ export function EigenaarContent() {
           </h1>
         </motion.div>
 
-        {/* Rechterkolom — subline + counter */}
+        {/* Rechterkolom — subline + counter onderaan */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
