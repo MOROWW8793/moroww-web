@@ -4,7 +4,7 @@ import Link from "next/link";
 import { BedDouble, Bath, Users, MapPin, Wifi, Car, Flame, Waves } from "lucide-react";
 import { getListingById, getCoverImage, getRegion } from "@/lib/guesty";
 
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 const AMENITY_ICONS: Record<string, React.ReactNode> = {
   WiFi: <Wifi size={14} />,

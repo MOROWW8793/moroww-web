@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getListings } from "@/lib/guesty";
 import { CollectieClient } from "./CollectieClient";
 
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "De Collectie — Premium vakantiewoningen",

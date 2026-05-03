@@ -93,16 +93,13 @@ export async function getListings(): Promise<GuestyListing[]> {
     !process.env.GUESTY_CLIENT_ID ||
     process.env.GUESTY_CLIENT_ID === "placeholder"
   ) {
-    console.warn("[guesty] credentials niet ingesteld — mock data");
     return getMockListings();
   }
 
-  const token = await getGuestyToken();
-  if (!token) return getMockListings();
-
   try {
+    const token = await getGuestyToken();
     const response = await fetch(
-      `${BASE_URL}/listings?limit=25&skip=0`,
+      `${BASE_URL}/listings?limit=25`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -112,15 +109,12 @@ export async function getListings(): Promise<GuestyListing[]> {
       }
     );
 
-    if (!response.ok) {
-      console.error("[guesty] API error:", response.status);
-      return getMockListings();
-    }
+    if (!response.ok) return getMockListings();
 
     const data: GuestyListResponse = await response.json();
-    return data.results ?? [];
-  } catch (err) {
-    console.error("[guesty] fetch error:", err);
+    return data.results ?? getMockListings();
+  } catch (error) {
+    console.error("[guesty] fetch failed:", error);
     return getMockListings();
   }
 }
