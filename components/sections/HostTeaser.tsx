@@ -16,6 +16,7 @@ export function HostTeaser() {
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 50vw"
+            style={{ objectPosition: "center top" }}
           />
         </div>
 
@@ -29,25 +30,24 @@ export function HostTeaser() {
         >
           <div className="max-w-md w-full">
             <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
-              Voor eigenaars
+              voor eigenaars
             </p>
             <h2
               className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-6"
               style={{ fontSize: "clamp(2.25rem,4vw,3.5rem)" }}
             >
-              jouw asset.<br />ons protocol.
+              jij opent de deur.<br />wij doen de rest.
             </h2>
             <p className="text-moroww-black/60 leading-relaxed mb-10" style={{ fontSize: 17 }}>
-              Je hebt een woning aangekocht als investering, niet als bijbaan.
-              moroww beheert je eigendom met slimme technologie, een eigen
-              schoonmaakprotocol en sensoren die bewaken wat jij niet kan zien.
-              Jij bent stille investeerder. Wij zijn het systeem.
+              Geen telefoontjes, geen gedoe, geen verkeerde gasten.
+              Slimme technologie bewaakt. Ons protocol garandeert.
+              Jij houdt de controle.
             </p>
             <Link
               href="/eigenaar-worden"
               className="inline-flex items-center rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white font-semibold px-8 py-4 text-base transition-colors duration-200"
             >
-              Bekijk het Founding Partner-programma
+              Word Founding Partner
             </Link>
           </div>
         </motion.div>
