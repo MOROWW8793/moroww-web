@@ -4,8 +4,13 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Partners — Korteketen. Geen compromis.",
   description:
-    "moroww kiest bewust voor Belgische en Europese merken die onze standaard delen. Elke fles, elk product, elk detail — van een merk dat wij met naam en gezicht kennen.",
+    "moroww werkt uitsluitend samen met Belgische en Europese merken die onze standaard delen. Waaronder Moro Essentials voor badkamerproducten.",
   alternates: { canonical: "https://www.moroww.com/partners" },
+  openGraph: {
+    title: "Partners | moroww",
+    description: "Belgische en Europese merken die onze standaard delen.",
+    url: "https://www.moroww.com/partners",
+  },
 };
 
 export default function PartnersPage() {
@@ -14,7 +19,6 @@ export default function PartnersPage() {
 
       {/* ── 1. HERO ── */}
       <section className="relative overflow-hidden px-6 md:px-16 lg:px-24 pt-32 pb-24">
-        {/* Dot-pattern achtergrondtextuur */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -53,10 +57,7 @@ export default function PartnersPage() {
           className="bg-white rounded-3xl overflow-hidden"
           style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.08)" }}
         >
-          {/* Split: sfeerbeeld links (55%), content rechts (45%) */}
           <div className="flex flex-col md:flex-row min-h-[480px]">
-
-            {/* Sfeerbeeld — geen left border-radius, alleen right */}
             <div
               className="relative w-full md:w-[55%] h-[280px] md:h-auto overflow-hidden"
               style={{ borderRadius: "1.5rem 0 0 0" }}
@@ -68,9 +69,7 @@ export default function PartnersPage() {
               />
             </div>
 
-            {/* Content rechts */}
             <div className="w-full md:w-[45%] flex flex-col">
-              {/* Tekst */}
               <div className="px-10 py-8 flex flex-col justify-center flex-1">
                 <img
                   src="/images/partners/moro-essentials-logo.png"
@@ -107,8 +106,6 @@ export default function PartnersPage() {
               </div>
             </div>
           </div>
-
-
         </div>
       </section>
 
@@ -133,7 +130,7 @@ export default function PartnersPage() {
           ].map(({ categorie, tekst }) => (
             <div key={categorie} className="bg-white rounded-3xl overflow-hidden shadow-sm">
               <div className="h-[180px] bg-moroww-blush/60 flex items-center justify-center">
-                <p className="text-moroww-black/20 text-sm tracking-widest uppercase text-xs">Binnenkort</p>
+                <p className="text-moroww-black/20 tracking-widest uppercase text-xs">Binnenkort</p>
               </div>
               <div className="p-8">
                 <span className="inline-block text-xs font-medium uppercase tracking-widest text-moroww-black/30 bg-moroww-blush px-3 py-1 rounded-full mb-4">

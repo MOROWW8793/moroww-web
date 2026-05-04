@@ -2,10 +2,15 @@ import type { Metadata } from "next";
 import { EigenaarContent } from "./EigenaarContent";
 
 export const metadata: Metadata = {
-  title: "Founding Partner — Verhuur je woning via moroww",
+  title: "Eigenaar worden — Verhuur je woning via moroww",
   description:
-    "Sluit je aan als Founding Partner. moroww beheert je vakantiewoning met technologie en een standaard die we nooit loslaten. Slechts 10 plaatsen.",
+    "Sluit je aan bij moroww als eigenaar. Wij beheren de volledige gastervaring. Jij geniet van passief inkomen zonder operationele last. Persoonlijk geïnspecteerd.",
   alternates: { canonical: "https://www.moroww.com/eigenaar-worden" },
+  openGraph: {
+    title: "Eigenaar worden | moroww",
+    description: "Jouw pand. Onze standaard. Nul operationele last.",
+    url: "https://www.moroww.com/eigenaar-worden",
+  },
 };
 
 export default function EigenaarWordenPage() {

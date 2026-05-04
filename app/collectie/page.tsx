@@ -4,7 +4,7 @@ import { CollectieStatisch } from "./CollectieStatisch";
 export const metadata: Metadata = {
   title: "De Collectie — Premium vakantiewoningen",
   description:
-    "Ontdek de moroww collectie: Nosso in Knokke, Ann-Helena in Ursel, Oostende en Beernem. Gecureerde vakantiewoningen aan de kust en in het Meetjesland.",
+    "Ontdek de moroww collectie: Nosso Logies in Knokke, Chalet Ann-Helena in Ursel, Oostende en Beernem. Gecureerde vakantiewoningen aan de kust en in het Meetjesland.",
   alternates: { canonical: "https://www.moroww.com/collectie" },
   openGraph: {
     title: "De Collectie | moroww",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
         url: "/images/woningen/knokke/2026-AmelieBauwens-Moroww-V2-132.jpg",
         width: 1200,
         height: 630,
-        alt: "moroww collectie vakantiewoningen",
+        alt: "moroww collectie",
       },
     ],
   },

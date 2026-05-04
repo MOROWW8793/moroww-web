@@ -20,6 +20,8 @@ export const metadata: Metadata = {
     "vakantie Knokke",
     "vakantie Oostende",
     "vakantie Ursel",
+    "vakantie Beernem",
+    "chalet Meetjesland",
   ],
   authors: [{ name: "moroww", url: "https://www.moroww.com" }],
   creator: "moroww",
@@ -82,7 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               description:
                 "Een kwaliteitslabel voor premium vakantiewoningen in België.",
               url: "https://www.moroww.com",
-              logo: "https://www.moroww.com/images/logo.png",
+              logo: "https://www.moroww.com/icon.png",
               email: "info@moroww.com",
               areaServed: "Belgium",
               address: {
