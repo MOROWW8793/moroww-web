@@ -9,6 +9,8 @@ export interface Woning {
   maxGasten: number;
   oppervlakte: string | null;
   tags: string[];
+  slogan: string;
+  introductie: string;
   beschrijving: string;
   volledigeBeschrijving: string;
   hoogtepunten: string[];
@@ -31,6 +33,9 @@ export const woningen: Woning[] = [
     maxGasten: 6,
     oppervlakte: "110m²",
     tags: ["Strand op 2 min", "Privé koer", "2 badkamers"],
+    slogan: "Goed slapen, goed eten, goed ademen. Twee minuten van de zee.",
+    introductie:
+      "Sommige plekken voel je meteen. Nosso is er één van. Niet omdat het opschept — maar omdat het klopt. Het licht, de ruimte, de stilte van het koertje op een zaterdagochtend. Dit is geen Airbnb-gok. Dit is een woning die we persoonlijk hebben geïnspecteerd, ingericht en klaargemaakt voor mensen die weten wat ze willen.",
     beschrijving:
       "Op twee minuten van de Noordzee, verscholen in een rustige straat in Heist-aan-Zee. Een lichtrijk appartement van 110m² met twee slaapkamers, twee volledige badkamers en een privé koer.",
     volledigeBeschrijving:
@@ -70,6 +75,9 @@ export const woningen: Woning[] = [
     maxGasten: 5,
     oppervlakte: null,
     tags: ["Bosrand", "Privétuin met vijver", "Gezinsvriendelijk"],
+    slogan: "Tussen Gent en Brugge. Maar eigenlijk ergens heel anders.",
+    introductie:
+      "Er bestaat een moment waarop het bos begint te werken. Vijf minuten na aankomst laat je de snelweg los. Tien minuten later begint iedereen zachter te praten. Chalet Ann-Helena is gebouwd voor dat moment. Warm hout, hoge plafonds, een vijver die nergens naartoe hoeft. Dit is hoe ontsnappen aanvoelt als je het goed doet.",
     beschrijving:
       "Een warme houten chalet in het hart van het grootste bos van Oost-Vlaanderen. Hoge plafonds, natuurlijk hout, een privétuin met vijver en stilte als standaard.",
     volledigeBeschrijving:
@@ -109,6 +117,9 @@ export const woningen: Woning[] = [
     maxGasten: 4,
     oppervlakte: null,
     tags: ["16e verdieping", "Zeezicht", "Privé parking"],
+    slogan: "Hoog boven de kust. Helemaal voor jullie.",
+    introductie:
+      "Er is zeezicht. En dan is er dit. Zestien verdiepingen boven de drukte, met de Noordzee voor je neus en de golfers onder je. Geen gedeelde gang. Geen toevallige buren. Gewoon een appartement dat je het gevoel geeft dat Oostende van jou is — en een parkeerplaats die er echt bij hoort.",
     beschrijving:
       "Zestien verdiepingen hoog, met de Noordzee voor je en de Golf van Oostende aan je zij. Ensuite badkamers, panoramisch balkon en privé ondergrondse parking.",
     volledigeBeschrijving:
@@ -149,6 +160,9 @@ export const woningen: Woning[] = [
     maxGasten: 10,
     oppervlakte: null,
     tags: ["Zwembad", "Hottub", "Tuin met BBQ"],
+    slogan: "Groot genoeg voor het hele gezelschap. Rustig genoeg voor de rest.",
+    introductie:
+      "Voor groepen die echt samen willen zijn. Niet op elkaars lip — maar wel samen. Vier slaapkamers, een zwembad, een hottub, een vuurschaal en een tuin die groot genoeg is om iedereen hun eigen hoekje te geven. Beernem is geen bestemming die je kent. Dat is precies waarom het zo goed werkt.",
     beschrijving:
       "Stijlvolle vakantiewoning voor maximaal 10 gasten, midden in het groen in Beernem. Luxueuze badkamers, ruime tuin met overdekt terras, zwembad, vuurschaal en petanquebaan.",
     volledigeBeschrijving:

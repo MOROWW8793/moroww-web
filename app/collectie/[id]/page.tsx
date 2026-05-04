@@ -59,6 +59,9 @@ export default function WoningDetailPage({ params }: Props) {
             >
               {woning.naam}
             </h1>
+            <p className="italic text-sm mb-4" style={{ color: "#FEA05E" }}>
+              {woning.slogan}
+            </p>
             <div className="flex items-center gap-2 text-moroww-black/50 text-sm mb-6">
               <MapPin size={14} />
               {woning.locatie}
@@ -132,6 +135,9 @@ export default function WoningDetailPage({ params }: Props) {
         <div className="max-w-6xl mx-auto grid lg:grid-cols-[2fr_1fr] gap-10">
           <div>
             <h2 className="font-bold text-moroww-black text-xl mb-5">Over deze woning</h2>
+            <p className="font-semibold text-moroww-black leading-relaxed text-base mb-5">
+              {woning.introductie}
+            </p>
             <p className="text-moroww-black/65 leading-relaxed text-base whitespace-pre-line">
               {woning.volledigeBeschrijving}
             </p>
