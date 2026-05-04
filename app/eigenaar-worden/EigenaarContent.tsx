@@ -116,7 +116,7 @@ export function EigenaarContent() {
             Niet de korting. De positie.
           </p>
         </motion.div>
-        <div className="relative w-full md:w-1/2 h-[280px] md:min-h-[500px] overflow-hidden flex-shrink-0 order-first md:order-last">
+        <div className="relative w-full md:w-1/2 h-[280px] md:h-auto md:flex-1 overflow-hidden flex-shrink-0 order-first md:order-last">
           <img
             src="/images/fp-interieur-1.jpg"
             alt=""
@@ -182,8 +182,8 @@ export function EigenaarContent() {
       </section>
 
       {/* ── SECTIE B: FOTO LINKS + WIE WE ZOEKEN ── */}
-      <section className="w-full flex flex-col md:flex-row">
-        <div className="relative w-full md:w-1/2 h-[280px] md:h-[500px] overflow-hidden flex-shrink-0">
+      <section className="w-full flex flex-col md:flex-row md:items-stretch">
+        <div className="relative w-full md:w-1/2 h-[280px] md:h-auto md:flex-1 overflow-hidden flex-shrink-0">
           <img
             src="/images/fp-interieur-2.jpg"
             alt=""
@@ -216,7 +216,7 @@ export function EigenaarContent() {
       </section>
 
       {/* ── SECTIE C: FOUNDERS STRIP ── */}
-      <section className="w-full flex flex-col md:flex-row">
+      <section className="w-full flex flex-col md:flex-row md:items-stretch">
         <motion.div
           {...fadeUp}
           className="w-full md:w-1/2 bg-[#1A1A1A] flex items-center px-6 py-10 md:px-16 md:py-16 order-last md:order-first"
@@ -238,7 +238,7 @@ export function EigenaarContent() {
             </p>
           </div>
         </motion.div>
-        <div className="relative w-full md:w-1/2 h-[280px] md:h-[500px] overflow-hidden flex-shrink-0 order-first md:order-last">
+        <div className="relative w-full md:w-1/2 h-[280px] md:h-auto md:flex-1 overflow-hidden flex-shrink-0 order-first md:order-last">
           <img
             src="/images/fp-founders.jpg"
             alt=""
