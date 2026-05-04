@@ -35,8 +35,9 @@ export function OverMorowwContent() {
             style={{ fontSize: "clamp(32px,5vw,80px)" }}
           >
             a new standard.
-            <span className="inline-block w-4 md:w-24" />
-            <span className="font-light">for good.</span>
+            <span className="hidden sm:inline-block sm:w-24" />
+            <br className="sm:hidden" />
+            <span className="font-light whitespace-nowrap">for good.</span>
           </motion.h1>
         </div>
       </section>
