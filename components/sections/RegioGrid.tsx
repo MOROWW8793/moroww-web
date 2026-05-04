@@ -8,7 +8,7 @@ const collecties = [
     naam: "the shore",
     sub: "2 woningen · Kust",
     href: "/collectie?collectie=the-shore",
-    foto: "/images/woningen/knokke/2026-AmelieBauwens-Moroww-V2-132.jpg",
+    foto: "/images/woningen/oostende/6e71ca30-bb8f-11f0-96ff-dd8382026135 kopie.jpg",
   },
   {
     naam: "the fields",
