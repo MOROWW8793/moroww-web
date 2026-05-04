@@ -29,7 +29,7 @@ export const woningen: Woning[] = [
     tags: ["Strand op 2 min", "Privé koer", "2 badkamers"],
     beschrijving:
       "Op twee minuten van de Noordzee, verscholen in een rustige straat in Heist-aan-Zee. Een lichtrijk appartement van 110m² met twee slaapkamers, twee volledige badkamers en een privé koer.",
-    heroFoto: "/images/woningen/knokke/2026-AmelieBauwens-Moroww-V2-131.jpg",
+    heroFoto: "/images/woningen/knokke/2026-AmelieBauwens-Moroww-V2-132.jpg",
     fotos: [
       "/images/woningen/knokke/2026-AmelieBauwens-Moroww-V2-108.jpg",
       "/images/woningen/knokke/2026-AmelieBauwens-Moroww-V2-109.jpg",
