@@ -70,17 +70,14 @@ export default function PartnersPage() {
 
             {/* Content rechts */}
             <div className="w-full md:w-[45%] flex flex-col">
-              {/* Logo sectie — eigen witte zone met padding */}
-              <div className="px-10 pt-10 pb-6 border-b border-moroww-border/40">
+              {/* Tekst */}
+              <div className="px-10 py-8 flex flex-col justify-center flex-1">
                 <img
                   src="/images/partners/moro-essentials-logo.png"
                   alt="Moro Essentials"
-                  style={{ width: "auto", height: "auto", maxHeight: "140px", maxWidth: "180px", objectFit: "contain" }}
+                  style={{ width: "auto", height: "auto", maxHeight: "60px", objectFit: "contain" }}
+                  className="mb-5 self-start"
                 />
-              </div>
-
-              {/* Tekst */}
-              <div className="px-10 py-8 flex flex-col justify-center flex-1">
                 <span className="inline-block text-xs font-medium uppercase tracking-widest text-moroww-orange bg-moroww-blush px-3 py-1 rounded-full mb-5 self-start">
                   Belgisch merk
                 </span>
@@ -92,10 +89,12 @@ export default function PartnersPage() {
                 </h2>
                 <p className="text-moroww-orange text-sm font-medium mb-5">Badkamerproducten</p>
                 <p className="text-moroww-black/60 leading-relaxed mb-8" style={{ fontSize: 15 }}>
-                  De badkamer is waar het eerste oordeel valt. Moro Essentials is een Belgisch
-                  merk dat huidverzorging herdenkt — puur, eerlijk, zonder overbodige
-                  ingrediënten. In elke moroww-woning vind je hun producten. Niet als gadget,
-                  maar als standaard.
+                  De badkamer is de eerste test. Gasten voelen het meteen: goedkope zeep in een
+                  plastic flesje vertelt een verhaal — en niet het goede. Daarom kozen we voor
+                  Moro Essentials, een Belgisch merk dat huidverzorging herdenkt vanuit eerlijkheid.
+                  Geen overbodige ingrediënten, geen generieke geuren, geen massamarkt. Gewoon
+                  producten die werken, goed ruiken en kloppen met wie wij zijn. In elke
+                  moroww-woning. Geen uitzondering.
                 </p>
                 <a
                   href="https://moro-essentials.com/nl/collections/all-products-new?tw_source=google&tw_adid=706041070227&tw_campaign=21468923487&tw_kwdid=kwd-138535284&gad_source=1&gad_campaignid=21468923487&gbraid=0AAAAA9Yqje7Xtvry2zO4cbJROuoZXN0FK&gclid=CjwKCAjw5NvPBhAoEiwA_2egftD5W_eeUIjpMgnjq3KAso8SoI32AwN2S9eVgDrkTyrZFLwZZTVnTRoC_4oQAvD_BwE"
