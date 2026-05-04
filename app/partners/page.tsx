@@ -123,9 +123,15 @@ export default function PartnersPage() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {[
-            { categorie: "Poetspartners" },
-            { categorie: "Lokale handelaars in de buurt van onze panden" },
-          ].map(({ categorie }) => (
+            {
+              categorie: "Poetspartners",
+              tekst: "Elke moroww-woning wordt professioneel klaargemaakt volgens een vast protocol. We werken uitsluitend met poetspartners die onze standaard kennen, onze checklist volgen en dezelfde zorg voor detail hebben als wij. Belgische bedrijven, korte communicatielijnen, geen verrassingen.",
+            },
+            {
+              categorie: "Lokale handelaars",
+              tekst: "In elke regio waar moroww actief is, zoeken we contact met lokale bakkers, slagers, traiteurs en wijnhuizen. Gasten die willen weten waar ze terecht kunnen voor het beste van de streek, vinden dat via moroww. Geen gidsen, geen gesponsorde lijsten — enkel adressen waar we zelf voor instaan.",
+            },
+          ].map(({ categorie, tekst }) => (
             <div key={categorie} className="bg-white rounded-3xl overflow-hidden shadow-sm">
               <div className="h-[180px] bg-moroww-blush/60 flex items-center justify-center">
                 <p className="text-moroww-black/20 text-sm tracking-widest uppercase text-xs">Binnenkort</p>
@@ -135,9 +141,7 @@ export default function PartnersPage() {
                   Binnenkort
                 </span>
                 <p className="font-semibold text-moroww-black text-base mb-2">{categorie}</p>
-                <p className="text-moroww-black/50 text-sm leading-relaxed">
-                  We zijn op zoek naar Belgische en Europese merken die onze standaard delen.
-                </p>
+                <p className="text-moroww-black/55 text-sm leading-relaxed">{tekst}</p>
               </div>
             </div>
           ))}
