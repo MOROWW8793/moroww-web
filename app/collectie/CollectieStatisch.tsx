@@ -1,0 +1,133 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { BedDouble, Bath, Users } from "lucide-react";
+import { woningen } from "@/lib/woningen";
+
+type Filter = "Alles" | "the shore" | "the fields";
+
+export function CollectieStatisch() {
+  const [filter, setFilter] = useState<Filter>("Alles");
+
+  const gefilterd =
+    filter === "Alles" ? woningen : woningen.filter((w) => w.collectie === filter);
+
+  return (
+    <div>
+      {/* ── Filter tabs ── */}
+      <div className="px-6 md:px-16 lg:px-24 py-8">
+        <div className="flex flex-wrap gap-2">
+          {(["Alles", "the shore", "the fields"] as Filter[]).map((f) => (
+            <button
+              key={f}
+              onClick={() => setFilter(f)}
+              className={`rounded-full px-5 py-2 text-sm font-medium transition-colors duration-150 ${
+                filter === f
+                  ? "bg-moroww-black text-white"
+                  : "bg-white text-moroww-black/60 hover:text-moroww-black border border-moroww-border"
+              }`}
+            >
+              {f}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Woning kaarten ── */}
+      <div className="px-6 md:px-16 lg:px-24 pb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {gefilterd.map((w) => (
+            <div
+              key={w.id}
+              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col"
+            >
+              {/* Hero foto */}
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img
+                  src={w.heroFoto}
+                  alt={w.naam}
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
+                {/* Collectie badge */}
+                <span className="absolute top-4 left-4 bg-moroww-orange text-white text-xs font-medium uppercase tracking-widest px-3 py-1 rounded-full">
+                  {w.collectie}
+                </span>
+              </div>
+
+              {/* Content */}
+              <div className="p-6 flex flex-col flex-1">
+                <div className="mb-3">
+                  <h2 className="font-bold text-moroww-black text-xl leading-tight">
+                    {w.naam}
+                  </h2>
+                  <p className="text-moroww-black/50 text-sm mt-1">{w.locatie}</p>
+                </div>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {w.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs font-medium text-moroww-black/60 bg-moroww-blush px-3 py-1 rounded-full"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Specs */}
+                <div className="flex gap-5 text-sm text-moroww-black/55 mb-5">
+                  <span className="flex items-center gap-1.5">
+                    <BedDouble size={14} />
+                    {w.slaapkamers} slk.
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <Bath size={14} />
+                    {w.badkamers} badk.
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <Users size={14} />
+                    {w.maxGasten} gasten
+                  </span>
+                  {w.oppervlakte && (
+                    <span className="text-moroww-black/40">{w.oppervlakte}</span>
+                  )}
+                </div>
+
+                {/* Prijs + CTA */}
+                <div className="flex items-center justify-between mt-auto pt-4 border-t border-moroww-border">
+                  <div>
+                    <span className="font-bold text-xl text-moroww-black">€{w.prijs}</span>
+                    <span className="text-sm text-moroww-black/45 ml-1">/ nacht</span>
+                  </div>
+                  <Link
+                    href={`/collectie/${w.id}`}
+                    className="rounded-full bg-moroww-black hover:bg-moroww-black/80 text-white font-semibold text-sm px-5 py-2.5 transition-colors duration-200"
+                  >
+                    Bekijk woning
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── CTA onderaan ── */}
+      <div className="px-6 md:px-16 lg:px-24 pb-24">
+        <div className="bg-moroww-orange rounded-3xl p-10 md:p-16 text-center">
+          <h2
+            className="font-bold lowercase text-white leading-[1.05] tracking-[-0.02em] mb-4"
+            style={{ fontSize: "clamp(1.5rem,3vw,2.25rem)" }}
+          >
+            elke woning is persoonlijk geïnspecteerd.
+          </h2>
+          <p className="text-white/80 leading-relaxed max-w-xl mx-auto" style={{ fontSize: 16 }}>
+            Geen algoritme. Geen massa. Alleen woningen die onze standaard halen.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}

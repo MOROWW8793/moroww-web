@@ -1,119 +1,134 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
-import { BedDouble, Bath, Users, MapPin, Wifi, Car, Flame, Waves } from "lucide-react";
-import { getListingById, getCoverImage, getRegion } from "@/lib/guesty";
-
-export const dynamic = "force-dynamic";
-
-const AMENITY_ICONS: Record<string, React.ReactNode> = {
-  WiFi: <Wifi size={14} />,
-  Parking: <Car size={14} />,
-  Fireplace: <Flame size={14} />,
-  Pool: <Waves size={14} />,
-};
+import { BedDouble, Bath, Users, MapPin } from "lucide-react";
+import { woningen } from "@/lib/woningen";
 
 interface Props { params: { id: string } }
 
-export async function generateMetadata({ params }: Props) {
-  const listing = await getListingById(params.id);
-  return { title: listing ? `${listing.title} — moroww` : "Woning — moroww" };
+export function generateStaticParams() {
+  return woningen.map((w) => ({ id: w.id }));
 }
 
-export default async function PropertyDetailPage({ params }: Props) {
-  const listing = await getListingById(params.id);
-  if (!listing) notFound();
+export async function generateMetadata({ params }: Props) {
+  const woning = woningen.find((w) => w.id === params.id);
+  return {
+    title: woning ? `${woning.naam} — moroww` : "Woning — moroww",
+    description: woning?.beschrijving,
+  };
+}
 
-  const cover  = getCoverImage(listing);
-  const region = getRegion(listing.address?.city);
-  const price  = listing.prices?.basePrice;
-  const desc   = listing.publicDescription?.summary ?? listing.publicDescription?.space;
+export default function WoningDetailPage({ params }: Props) {
+  const woning = woningen.find((w) => w.id === params.id);
+  if (!woning) notFound();
 
   return (
     <div className="bg-moroww-blush min-h-screen">
-      {/* Hero image */}
-      <div className="relative w-full h-[60vh] bg-moroww-black">
-        <Image src={cover} alt={listing.title} fill className="object-cover opacity-90" priority sizes="100vw" />
-        <div className="absolute inset-0 bg-gradient-to-t from-moroww-blush via-transparent to-transparent" />
+
+      {/* ── Hero foto ── */}
+      <div className="relative w-full h-[55vh] md:h-[65vh] overflow-hidden bg-moroww-black">
+        <img
+          src={woning.heroFoto}
+          alt={woning.naam}
+          style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(to top, rgba(250,228,214,0.9) 0%, transparent 60%)" }}
+        />
+        {/* Collectie badge */}
+        <span className="absolute top-24 left-6 md:left-12 bg-moroww-orange text-white text-xs font-medium uppercase tracking-widest px-3 py-1 rounded-full">
+          {woning.collectie}
+        </span>
       </div>
 
-      <div className="mx-auto max-w-5xl px-6 -mt-20 relative z-10 pb-32">
+      {/* ── Content ── */}
+      <div className="mx-auto max-w-5xl px-6 md:px-12 -mt-16 relative z-10 pb-32">
         <div className="grid lg:grid-cols-[1fr_340px] gap-10 items-start">
 
-          {/* Left: details */}
+          {/* Links: details */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-moroww-orange mb-2">{region}</p>
-            <h1 className="font-bold text-moroww-black text-4xl md:text-5xl leading-tight mb-6">
-              {listing.title}
+            <h1
+              className="font-bold text-moroww-black leading-[1.05] tracking-[-0.02em] mb-2"
+              style={{ fontSize: "clamp(2rem,5vw,3.5rem)" }}
+            >
+              {woning.naam}
             </h1>
 
+            <div className="flex items-center gap-2 text-moroww-black/50 text-sm mb-6">
+              <MapPin size={14} />
+              {woning.locatie}
+            </div>
+
             {/* Specs */}
-            <div className="flex flex-wrap gap-5 text-sm text-moroww-black/60 mb-8">
-              {listing.address?.city && (
-                <span className="flex items-center gap-1.5"><MapPin size={15} />{listing.address.city}</span>
-              )}
-              {listing.bedrooms != null && (
-                <span className="flex items-center gap-1.5"><BedDouble size={15} />{listing.bedrooms} slaapkamers</span>
-              )}
-              {listing.bathrooms != null && (
-                <span className="flex items-center gap-1.5"><Bath size={15} />{listing.bathrooms} badkamers</span>
-              )}
-              {listing.accommodates != null && (
-                <span className="flex items-center gap-1.5"><Users size={15} />Max {listing.accommodates} gasten</span>
+            <div className="flex flex-wrap gap-6 mb-8">
+              <div className="flex items-center gap-2 text-moroww-black/70 text-sm">
+                <BedDouble size={16} className="text-moroww-orange" />
+                <span>{woning.slaapkamers} slaapkamers</span>
+              </div>
+              <div className="flex items-center gap-2 text-moroww-black/70 text-sm">
+                <Bath size={16} className="text-moroww-orange" />
+                <span>{woning.badkamers} badkamers</span>
+              </div>
+              <div className="flex items-center gap-2 text-moroww-black/70 text-sm">
+                <Users size={16} className="text-moroww-orange" />
+                <span>Max {woning.maxGasten} gasten</span>
+              </div>
+              {woning.oppervlakte && (
+                <div className="text-moroww-black/50 text-sm">{woning.oppervlakte}</div>
               )}
             </div>
 
-            {/* Description */}
-            {desc && (
-              <div className="max-w-prose mb-10">
-                <h2 className="font-semibold text-lg text-moroww-black mb-3">Over dit verblijf</h2>
-                <p className="text-moroww-black/65 leading-relaxed text-base">{desc}</p>
-              </div>
-            )}
+            {/* Beschrijving */}
+            <div className="bg-white rounded-2xl p-6 md:p-8 mb-6 shadow-sm">
+              <h2 className="font-semibold text-moroww-black text-base mb-3">Over dit verblijf</h2>
+              <p className="text-moroww-black/65 leading-relaxed">{woning.beschrijving}</p>
+            </div>
 
-            {/* Amenities */}
-            {(listing.amenities?.length ?? 0) > 0 && (
-              <div>
-                <h2 className="font-semibold text-lg text-moroww-black mb-4">Voorzieningen</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  {listing.amenities!.map(a => (
-                    <div key={a} className="flex items-center gap-2 text-sm text-moroww-black/65">
-                      <span className="text-moroww-orange">{AMENITY_ICONS[a] ?? "·"}</span>
-                      {a}
-                    </div>
-                  ))}
-                </div>
+            {/* Tags */}
+            <div>
+              <h2 className="font-semibold text-moroww-black text-base mb-4">Kenmerken</h2>
+              <div className="flex flex-wrap gap-2">
+                {woning.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-sm font-medium text-moroww-black/65 bg-white border border-moroww-border px-4 py-2 rounded-full"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
-            )}
+            </div>
           </div>
 
-          {/* Right: booking CTA (sticky) */}
+          {/* Rechts: boekings-CTA sticky */}
           <div className="lg:sticky lg:top-24">
             <div className="rounded-2xl bg-white shadow-sm p-7">
-              {price != null && (
-                <div className="mb-6">
-                  <span className="font-bold text-3xl text-moroww-black">€ {price}</span>
-                  <span className="text-moroww-black/50 text-sm ml-1">/ nacht</span>
-                </div>
-              )}
+              <div className="mb-6">
+                <span className="font-bold text-3xl text-moroww-black">€{woning.prijs}</span>
+                <span className="text-moroww-black/50 text-sm ml-1">/ nacht</span>
+              </div>
               <a
-                href="https://book.moroww.com"
+                href={woning.boekUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white font-semibold py-4 transition-colors duration-200"
               >
-                Beschikbaarheid checken
+                Boek direct
               </a>
               <p className="text-xs text-moroww-black/40 text-center mt-4 leading-relaxed">
                 Je wordt doorgestuurd naar onze boekingspagina.
               </p>
             </div>
             <div className="mt-4 text-center">
-              <Link href="/collectie" className="text-xs text-moroww-black/40 hover:text-moroww-black transition-colors underline underline-offset-2">
+              <Link
+                href="/collectie"
+                className="text-xs text-moroww-black/40 hover:text-moroww-black transition-colors underline underline-offset-2"
+              >
                 ← Terug naar collectie
               </Link>
             </div>
           </div>
+
         </div>
       </div>
     </div>
