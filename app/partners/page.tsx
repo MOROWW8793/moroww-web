@@ -47,9 +47,12 @@ export default function PartnersPage() {
 
             {/* Tekst */}
             <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-              {/* Logo placeholder */}
-              <div className="w-32 h-12 bg-moroww-blush rounded-lg flex items-center justify-center mb-6">
-                <p className="text-moroww-black/30 text-xs">Logo</p>
+              <div className="w-40 mb-6">
+                <img
+                  src="/images/partners/moro-essentials-logo.png"
+                  alt="Moro Essentials"
+                  style={{ width: "100%", height: "auto", maxHeight: "80px", objectFit: "contain" }}
+                />
               </div>
 
               <span className="inline-block text-xs font-medium uppercase tracking-widest text-moroww-orange bg-moroww-blush px-3 py-1 rounded-full mb-4 self-start">
