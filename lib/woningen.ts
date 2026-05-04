@@ -18,7 +18,7 @@ export interface Woning {
 export const woningen: Woning[] = [
   {
     id: "nosso-knokke",
-    naam: "Nosso",
+    naam: "Nosso Logies",
     collectie: "the shore",
     locatie: "Heist-aan-Zee, Knokke",
     prijs: 370,
@@ -45,7 +45,7 @@ export const woningen: Woning[] = [
   },
   {
     id: "ann-helena-ursel",
-    naam: "Ann-Helena",
+    naam: "Chalet Ann-Helena",
     collectie: "the fields",
     locatie: "Ursel, Meetjesland",
     prijs: 220,
