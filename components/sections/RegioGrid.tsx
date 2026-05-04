@@ -8,15 +8,17 @@ const collecties = [
     naam: "the shore",
     sub: "2 woningen · Kust",
     href: "/collectie?collectie=the-shore",
-    gradient: "linear-gradient(135deg, #FEA05E 0%, #E8894A 100%)",
+    foto: "/images/woningen/knokke/2026-AmelieBauwens-Moroww-V2-132.jpg",
   },
   {
     naam: "the fields",
     sub: "2 woningen · Meetjesland",
     href: "/collectie?collectie=the-fields",
-    gradient: "linear-gradient(135deg, #C8956B 0%, #A0714F 100%)",
+    foto: "/images/woningen/ursel/Bogaertstraat 17 Ursel-64.jpg",
   },
 ];
+
+const overlay = "linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 60%)";
 
 export function RegioGrid() {
   return (
@@ -48,11 +50,31 @@ export function RegioGrid() {
           >
             <Link
               href={c.href}
-              className="relative flex flex-col justify-end rounded-3xl overflow-hidden p-6 md:p-8 transition-transform duration-300 hover:scale-[1.02] block h-[240px] md:h-[380px]"
-              style={{ background: c.gradient }}
+              className="relative block rounded-3xl overflow-hidden h-[240px] md:h-[380px] group"
             >
-              <div className="absolute inset-0 bg-black/10 rounded-3xl" />
-              <div className="relative z-10">
+              {/* Foto met hover zoom */}
+              <img
+                src={c.foto}
+                alt={c.naam}
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  transition: "transform 0.4s ease",
+                }}
+                className="group-hover:scale-[1.03]"
+              />
+
+              {/* Gradient overlay */}
+              <div
+                className="absolute inset-0"
+                style={{ background: overlay }}
+              />
+
+              {/* Tekst onderaan */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
                 <p
                   className="text-white font-semibold lowercase leading-[1.0] tracking-[-0.02em] mb-1"
                   style={{ fontSize: "clamp(1.5rem,3vw,2.5rem)" }}
