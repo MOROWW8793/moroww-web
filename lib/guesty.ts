@@ -1,37 +1,34 @@
 import type { GuestyListing, GuestyListResponse } from "@/types/guesty";
+import { createClient } from "@supabase/supabase-js";
 
 const BASE_URL = "https://open-api.guesty.com/v1";
 
-let tokenCache: { token: string; expiresAt: number } | null = null;
+function getSupabase() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
+}
 
-export async function getGuestyToken(): Promise<string> {
-  const now = Date.now();
-
-  if (tokenCache && tokenCache.expiresAt > now + 5 * 60 * 1000) {
-    return tokenCache.token;
-  }
-
+async function fetchFreshToken(): Promise<string> {
   if (!process.env.GUESTY_CLIENT_ID || !process.env.GUESTY_CLIENT_SECRET) {
     throw new Error("Guesty credentials niet ingesteld");
   }
 
-  const response = await fetch(
-    "https://open-api.guesty.com/oauth2/token",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        Accept: "application/json",
-      },
-      body: new URLSearchParams({
-        grant_type: "client_credentials",
-        scope: "open-api",
-        client_id: process.env.GUESTY_CLIENT_ID,
-        client_secret: process.env.GUESTY_CLIENT_SECRET,
-      }).toString(),
-      cache: "no-store",
-    }
-  );
+  const response = await fetch("https://open-api.guesty.com/oauth2/token", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      Accept: "application/json",
+    },
+    body: new URLSearchParams({
+      grant_type: "client_credentials",
+      scope: "open-api",
+      client_id: process.env.GUESTY_CLIENT_ID,
+      client_secret: process.env.GUESTY_CLIENT_SECRET,
+    }).toString(),
+    cache: "no-store",
+  });
 
   if (!response.ok) {
     const error = await response.json();
@@ -39,13 +36,35 @@ export async function getGuestyToken(): Promise<string> {
   }
 
   const data = await response.json();
+  return data.access_token as string;
+}
 
-  tokenCache = {
-    token: data.access_token,
-    expiresAt: now + 23 * 60 * 60 * 1000,
-  };
+export async function getGuestyToken(): Promise<string> {
+  const supabase = getSupabase();
 
-  return data.access_token;
+  // 1. Probeer geldig gecached token uit Supabase
+  const { data: cached } = await supabase
+    .from("guesty_token_cache")
+    .select("access_token, expires_at")
+    .eq("id", "singleton")
+    .gt("expires_at", new Date().toISOString())
+    .maybeSingle();
+
+  if (cached?.access_token) {
+    return cached.access_token as string;
+  }
+
+  // 2. Token ontbreekt of verlopen — haal nieuw op
+  const token = await fetchFreshToken();
+
+  const expiresAt = new Date(Date.now() + 23 * 60 * 60 * 1000).toISOString();
+
+  await supabase.from("guesty_token_cache").upsert(
+    { id: "singleton", access_token: token, expires_at: expiresAt },
+    { onConflict: "id" }
+  );
+
+  return token;
 }
 
 // ── Mock data voor development ─────────────────────────────────────────────
