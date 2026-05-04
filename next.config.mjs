@@ -17,6 +17,16 @@ const nextConfig = {
         destination: "/over-moroww",
         permanent: true,
       },
+      {
+        source: "/nl",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/nl/:path*",
+        destination: "/:path*",
+        permanent: true,
+      },
     ];
   },
 };
