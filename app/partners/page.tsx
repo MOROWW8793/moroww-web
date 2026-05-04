@@ -40,9 +40,11 @@ export default function PartnersPage() {
             {/* Sfeerbeeld placeholder */}
             <div className="relative w-full md:w-1/2 h-[280px] md:h-auto bg-moroww-blush flex items-center justify-center">
               {/* Vervang dit door <Image> zodra moro-essentials-sfeer.jpg beschikbaar is */}
-              <div className="w-full h-full bg-gradient-to-br from-moroww-blush to-moroww-border flex items-center justify-center">
-                <p className="text-moroww-black/30 text-sm">Sfeerbeeld</p>
-              </div>
+              <img
+                src="/images/partners/moro-essentials-sfeer.jpg"
+                alt="Moro Essentials sfeerbeeld"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
             </div>
 
             {/* Tekst */}
@@ -51,7 +53,7 @@ export default function PartnersPage() {
                 <img
                   src="/images/partners/moro-essentials-logo.png"
                   alt="Moro Essentials"
-                  style={{ width: "100%", height: "auto", maxHeight: "80px", objectFit: "contain" }}
+                  style={{ width: "100%", height: "auto", maxHeight: "140px", objectFit: "contain" }}
                 />
               </div>
 
