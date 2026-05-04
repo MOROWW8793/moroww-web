@@ -14,11 +14,6 @@ export default function PartnersPage() {
 
       {/* ── 1. HERO ── */}
       <section className="relative overflow-hidden px-6 md:px-16 lg:px-24 pt-32 pb-24">
-        {/* Decoratief oranje blob rechtsboven */}
-        <div
-          className="absolute -top-24 -right-24 w-[480px] h-[480px] rounded-full pointer-events-none"
-          style={{ background: "#FEA05E", opacity: 0.15 }}
-        />
         {/* Dot-pattern achtergrondtextuur */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -96,47 +91,24 @@ export default function PartnersPage() {
                   Moro Essentials
                 </h2>
                 <p className="text-moroww-orange text-sm font-medium mb-5">Badkamerproducten</p>
-                <p className="text-moroww-black/60 leading-relaxed" style={{ fontSize: 15 }}>
+                <p className="text-moroww-black/60 leading-relaxed mb-8" style={{ fontSize: 15 }}>
                   De badkamer is waar het eerste oordeel valt. Moro Essentials is een Belgisch
                   merk dat huidverzorging herdenkt — puur, eerlijk, zonder overbodige
                   ingrediënten. In elke moroww-woning vind je hun producten. Niet als gadget,
                   maar als standaard.
                 </p>
+                <a
+                  href="https://moro-essentials.com/nl/collections/all-products-new?tw_source=google&tw_adid=706041070227&tw_campaign=21468923487&tw_kwdid=kwd-138535284&gad_source=1&gad_campaignid=21468923487&gbraid=0AAAAA9Yqje7Xtvry2zO4cbJROuoZXN0FK&gclid=CjwKCAjw5NvPBhAoEiwA_2egftD5W_eeUIjpMgnjq3KAso8SoI32AwN2S9eVgDrkTyrZFLwZZTVnTRoC_4oQAvD_BwE"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white font-semibold px-7 py-3 text-sm transition-colors duration-200 self-start"
+                >
+                  Bekijk collectie
+                </a>
               </div>
             </div>
           </div>
 
-          {/* QR blok — donkere achtergrond */}
-          <div className="bg-[#1A1A1A] px-10 py-8 flex flex-col sm:flex-row items-center gap-8 rounded-b-3xl">
-            {/* QR gestippeld vierkant */}
-            <div
-              className="w-28 h-28 shrink-0 flex items-center justify-center rounded-xl"
-              style={{
-                border: "2px dashed #FEA05E",
-                background: "rgba(254,160,94,0.08)",
-              }}
-            >
-              <p className="text-moroww-orange/60 text-xs text-center leading-tight px-2 font-medium">
-                QR-code
-              </p>
-            </div>
-            <div>
-              <p className="font-semibold text-white text-base mb-2">
-                Gevonden in onze woningen. Ook thuis te gebruiken.
-              </p>
-              <p className="text-white/55 leading-relaxed mb-3" style={{ fontSize: 15 }}>
-                Scan de QR-code in de woning en bestel rechtstreeks bij Moro Essentials.
-              </p>
-              <a
-                href="https://moro-essentials.be"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-moroww-orange text-sm hover:underline underline-offset-2"
-              >
-                of bezoek moro-essentials.be →
-              </a>
-            </div>
-          </div>
 
         </div>
       </section>
@@ -151,8 +123,8 @@ export default function PartnersPage() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {[
-            { categorie: "Poetsproducten" },
-            { categorie: "Lokale partner" },
+            { categorie: "Poetspartners" },
+            { categorie: "Lokale handelaars in de buurt van onze panden" },
           ].map(({ categorie }) => (
             <div key={categorie} className="bg-white rounded-3xl overflow-hidden shadow-sm">
               <div className="h-[180px] bg-moroww-blush/60 flex items-center justify-center">
