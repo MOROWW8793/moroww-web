@@ -75,7 +75,7 @@ export default function PartnersPage() {
                 <img
                   src="/images/partners/moro-essentials-logo.png"
                   alt="Moro Essentials"
-                  style={{ width: "auto", height: "auto", maxHeight: "60px", objectFit: "contain" }}
+                  style={{ width: "auto", height: "auto", maxHeight: "100px", objectFit: "contain" }}
                   className="mb-5 self-start"
                 />
                 <span className="inline-block text-xs font-medium uppercase tracking-widest text-moroww-orange bg-moroww-blush px-3 py-1 rounded-full mb-5 self-start">
