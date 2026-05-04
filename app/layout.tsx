@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import StructuredData from "@/components/StructuredData";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.moroww.com"),
@@ -11,28 +10,20 @@ export const metadata: Metadata = {
     template: "%s | moroww",
   },
   description:
-    "moroww is een kwaliteitslabel voor premium vakantiewoningen in België. Elk pand fysiek geïnspecteerd. Hotelkwaliteit, privacycomfort. Kust, Ardennen en Meetjesland.",
+    "moroww is een kwaliteitslabel voor premium vakantiewoningen in België. Gecureerde woningen aan de kust en in het Meetjesland. Geen platform — een standaard.",
   keywords: [
-    "vakantiewoning België",
+    "vakantiewoningen België",
+    "vakantiewoning kust",
+    "vakantiewoning Meetjesland",
     "premium vakantieverblijf",
-    "vakantiehuisje kust België",
-    "vakantiewoning Ardennen",
-    "luxe vakantiewoning",
-    "vakantiewoning huren België",
-    "kwaliteit vakantiewoning",
-    "moroww",
+    "holiday home Belgium",
+    "vakantie Knokke",
+    "vakantie Oostende",
+    "vakantie Ursel",
   ],
-  authors: [{ name: "moroww BV" }],
-  creator: "moroww BV",
-  publisher: "moroww BV",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-    },
-  },
+  authors: [{ name: "moroww", url: "https://www.moroww.com" }],
+  creator: "moroww",
+  publisher: "moroww",
   openGraph: {
     type: "website",
     locale: "nl_BE",
@@ -40,33 +31,34 @@ export const metadata: Metadata = {
     siteName: "moroww",
     title: "moroww — Gecureerde vakantiewoningen in België",
     description:
-      "Geen gok. Een garantie. moroww selecteert vakantiewoningen die aan elk detail kloppen.",
+      "Een kwaliteitslabel voor premium vakantiewoningen. Gecureerde woningen aan de kust en in het Meetjesland.",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "/images/woningen/knokke/2026-AmelieBauwens-Moroww-V2-132.jpg",
         width: 1200,
         height: 630,
-        alt: "moroww — premium vakantiewoningen België",
+        alt: "moroww — Premium vakantiewoningen in België",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "moroww — Gecureerde vakantiewoningen in België",
-    description:
-      "Geen gok. Een garantie. moroww selecteert vakantiewoningen die aan elk detail kloppen.",
-    images: ["/images/og-image.jpg"],
+    description: "Een kwaliteitslabel voor premium vakantiewoningen in België.",
+    images: ["/images/woningen/knokke/2026-AmelieBauwens-Moroww-V2-132.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   alternates: {
     canonical: "https://www.moroww.com",
-    languages: {
-      "nl-BE": "https://www.moroww.com",
-    },
-  },
-  other: {
-    "geo.region": "BE",
-    "geo.country": "Belgium",
-    language: "nl-BE",
   },
 };
 
@@ -76,15 +68,34 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="nl">
       <body className="antialiased font-sans bg-moroww-blush text-moroww-black">
-        <StructuredData />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LodgingBusiness",
+              name: "moroww",
+              description:
+                "Een kwaliteitslabel voor premium vakantiewoningen in België.",
+              url: "https://www.moroww.com",
+              logo: "https://www.moroww.com/images/logo.png",
+              email: "info@moroww.com",
+              areaServed: "Belgium",
+              address: {
+                "@type": "PostalAddress",
+                addressCountry: "BE",
+              },
+              sameAs: [
+                "https://www.instagram.com/moroww.com_/",
+                "https://www.linkedin.com/company/moroww/",
+              ],
+            }),
+          }}
+        />
         <Navbar />
         <main className="pt-16">{children}</main>
         <Footer />

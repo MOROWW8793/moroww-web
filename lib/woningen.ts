@@ -10,6 +10,10 @@ export interface Woning {
   oppervlakte: string | null;
   tags: string[];
   beschrijving: string;
+  volledigeBeschrijving: string;
+  hoogtepunten: string[];
+  inCheckin: string;
+  uitCheckin: string;
   heroFoto: string;
   fotos: string[];
   boekUrl: string;
@@ -29,6 +33,18 @@ export const woningen: Woning[] = [
     tags: ["Strand op 2 min", "Privé koer", "2 badkamers"],
     beschrijving:
       "Op twee minuten van de Noordzee, verscholen in een rustige straat in Heist-aan-Zee. Een lichtrijk appartement van 110m² met twee slaapkamers, twee volledige badkamers en een privé koer.",
+    volledigeBeschrijving:
+      "Op twee minuten van de Noordzee, verscholen in een rustige straat in Heist-aan-Zee. Een lichtrijk appartement van 110m² met twee slaapkamers, twee volledige badkamers en een privé koer — ontworpen voor families en vrienden die van de kust willen genieten zonder de drukte. Geen vroege wekkers. Geen haast. Gewoon rustig opstaan, blootsvoets naar het strand wandelen en thuiskomen in een plek die echt als de jouwe aanvoelt. De open leefruimte baadt de hele dag in natuurlijk licht en loopt naadloos over in een volledig uitgeruste keuken. Stap buiten op het privé koertje: beschut, groen en rustig van jou. Ochtendkoffie, een aperitief bij zonsondergang, een glas wijn nadat de kinderen slapen.",
+    hoogtepunten: [
+      "110m² — ruimte om te ademen",
+      "Strand op 2 minuten te voet",
+      "Privé koertje — jouw stille oase",
+      "2 volledige badkamers — nooit wachten",
+      "Volledig uitgeruste keuken",
+      "Zelf inchecken via slim slot",
+    ],
+    inCheckin: "15:00",
+    uitCheckin: "10:00",
     heroFoto: "/images/woningen/knokke/2026-AmelieBauwens-Moroww-V2-132.jpg",
     fotos: [
       "/images/woningen/knokke/2026-AmelieBauwens-Moroww-V2-108.jpg",
@@ -56,6 +72,18 @@ export const woningen: Woning[] = [
     tags: ["Bosrand", "Privétuin met vijver", "Gezinsvriendelijk"],
     beschrijving:
       "Een warme houten chalet in het hart van het grootste bos van Oost-Vlaanderen. Hoge plafonds, natuurlijk hout, een privétuin met vijver en stilte als standaard.",
+    volledigeBeschrijving:
+      "Een warme houten chalet in het hart van het grootste bos van Oost-Vlaanderen. Hoge plafonds, natuurlijk hout door het hele huis, een privétuin met vijver en stilte als standaard. Wandel door eeuwenoude boswegen vanaf de voordeur, ontdek het Kabouter Wandelpad met de kinderen, of ontspan op het terras met een glas wijn. De open leefruimte draait om een lichte woonkamer met grote ramen die uitkijken op de tuin. Nestel je in de ruime leren hoeksalon met een plaid en een kaars, of kom samen aan de eettafel voor lange, ongehaaste maaltijden. Buiten nodigt een ruim privéterras met tuinmeubelen uit tot buiten eten, terwijl de sfeervol vijver en de volledig omheinde tuin kinderen de vrijheid geven om veilig te spelen.",
+    hoogtepunten: [
+      "Hart van het Drongengoedbos",
+      "Privétuin met vijver",
+      "Gratis parkeren voor 2 wagens",
+      "Kindvriendelijk — stapelbed, reisbedje, speelgoed",
+      "Terras en balkon met bosuitkijk",
+      "Tussen Gent (30 min) en Brugge (25 min)",
+    ],
+    inCheckin: "17:00",
+    uitCheckin: "10:00",
     heroFoto: "/images/woningen/ursel/Bogaertstraat 17 Ursel-64.jpg",
     fotos: [
       "/images/woningen/ursel/Bogaertstraat 17 Ursel-10.jpg",
@@ -83,6 +111,18 @@ export const woningen: Woning[] = [
     tags: ["16e verdieping", "Zeezicht", "Privé parking"],
     beschrijving:
       "Zestien verdiepingen hoog, met de Noordzee voor je en de Golf van Oostende aan je zij. Ensuite badkamers, panoramisch balkon en privé ondergrondse parking.",
+    volledigeBeschrijving:
+      "Zestien verdiepingen hoog, met de Noordzee voor je en de Golf van Oostende aan je zij. Een licht, modern appartement met ensuite badkamers in elke slaapkamer, een panoramisch balkon en privé ondergrondse parking — een van de zeldzaamste dingen die je in Oostende vindt. De open leefruimte baadt de hele dag in natuurlijk licht. Stap op het privébalkon en laat het uitzicht de rest doen: zonsopgang boven de golfbaan, zonsondergang boven de zee. Elke slaapkamer is een privéretraite met eigen ensuite badkamer. En dan is er nog de parking. Een privé ondergrondse plaats, inbegrepen — een echte zeldzaamheid in Oostende.",
+    hoogtepunten: [
+      "16e verdieping — panoramisch zeezicht",
+      "Ensuite badkamer in elke slaapkamer",
+      "Privé ondergrondse parking inbegrepen",
+      "Golf van Oostende aan je zij",
+      "Kusttram voor de deur",
+      "Brugge op 15 min met de trein",
+    ],
+    inCheckin: "17:00",
+    uitCheckin: "10:00",
     heroFoto:
       "/images/woningen/oostende/6e71ca30-bb8f-11f0-96ff-dd8382026135 kopie.jpg",
     fotos: [
@@ -111,6 +151,18 @@ export const woningen: Woning[] = [
     tags: ["Zwembad", "Hottub", "Tuin met BBQ"],
     beschrijving:
       "Stijlvolle vakantiewoning voor maximaal 10 gasten, midden in het groen in Beernem. Luxueuze badkamers, ruime tuin met overdekt terras, zwembad, vuurschaal en petanquebaan.",
+    volledigeBeschrijving:
+      "Kom volledig tot rust in deze stijlvolle vakantiewoning voor maximaal 10 gasten, midden in het groen in Beernem. Luxueuze badkamers, een ruime tuin met overdekt terras, zwembad, vuurschaal, BBQ en petanquebaan. Binnen vind je vier gezellige slaapkamers met kwalitatieve boxspringbedden. De open leefruimte bestaat uit een lichtrijke zithoek, een grote eettafel en een volledig uitgeruste keuken. Buiten wacht je privé tuin — de absolute troef van deze woning. Ontspan in de hottub, steek de vuurschaal aan, neem een duik in het zwembad of speel een potje pétanque. Met een centrale ligging op 14 km van Brugge, 25 km van de kust en 35 km van Gent biedt deze woning de perfecte balans tussen rust en bereikbaarheid.",
+    hoogtepunten: [
+      "Zwembad, hottub en vuurschaal",
+      "Tuin met BBQ en petanquebaan",
+      "Tot 10 gasten",
+      "14 km van Brugge",
+      "Parkeren voor 5 wagens",
+      "4 slaapkamers met boxspringbedden",
+    ],
+    inCheckin: "15:00",
+    uitCheckin: "11:00",
     heroFoto:
       "/images/woningen/beernem/WhatsApp Image 2025-11-02 at 14.42.01.jpeg",
     fotos: [
