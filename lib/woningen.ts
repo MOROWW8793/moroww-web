@@ -29,7 +29,7 @@ export const woningen: Woning[] = [
     tags: ["Strand op 2 min", "Privé koer", "2 badkamers"],
     beschrijving:
       "Op twee minuten van de Noordzee, verscholen in een rustige straat in Heist-aan-Zee. Een lichtrijk appartement van 110m² met twee slaapkamers, twee volledige badkamers en een privé koer.",
-    heroFoto: "/images/woningen/knokke/2026-AmelieBauwens-Moroww-V2-108.jpg",
+    heroFoto: "/images/woningen/knokke/2026-AmelieBauwens-Moroww-V2-131.jpg",
     fotos: [
       "/images/woningen/knokke/2026-AmelieBauwens-Moroww-V2-108.jpg",
       "/images/woningen/knokke/2026-AmelieBauwens-Moroww-V2-109.jpg",
@@ -56,7 +56,7 @@ export const woningen: Woning[] = [
     tags: ["Bosrand", "Privétuin met vijver", "Gezinsvriendelijk"],
     beschrijving:
       "Een warme houten chalet in het hart van het grootste bos van Oost-Vlaanderen. Hoge plafonds, natuurlijk hout, een privétuin met vijver en stilte als standaard.",
-    heroFoto: "/images/woningen/ursel/Bogaertstraat 17 Ursel-10.jpg",
+    heroFoto: "/images/woningen/ursel/Bogaertstraat 17 Ursel-64.jpg",
     fotos: [
       "/images/woningen/ursel/Bogaertstraat 17 Ursel-10.jpg",
       "/images/woningen/ursel/Bogaertstraat 17 Ursel-11.jpg",
@@ -112,7 +112,7 @@ export const woningen: Woning[] = [
     beschrijving:
       "Stijlvolle vakantiewoning voor maximaal 10 gasten, midden in het groen in Beernem. Luxueuze badkamers, ruime tuin met overdekt terras, zwembad, vuurschaal en petanquebaan.",
     heroFoto:
-      "/images/woningen/beernem/WhatsApp Image 2025-11-02 at 14.18.18 (1).jpeg",
+      "/images/woningen/beernem/WhatsApp Image 2025-11-02 at 14.42.01.jpeg",
     fotos: [
       "/images/woningen/beernem/WhatsApp Image 2025-11-02 at 14.18.18 (1).jpeg",
       "/images/woningen/beernem/WhatsApp Image 2025-11-02 at 14.18.18 (2).jpeg",
