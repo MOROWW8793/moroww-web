@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { BedDouble, Bath, Users } from "lucide-react";
-import { woningen } from "@/lib/woningen";
+import { woningen, BADGE_STYLES } from "@/lib/woningen";
 
 type Filter = "Alles" | "the shore" | "the fields";
 
@@ -50,7 +50,10 @@ export function CollectieStatisch() {
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
                 {/* Collectie badge */}
-                <span className="absolute top-4 left-4 bg-moroww-orange text-white text-xs font-medium uppercase tracking-widest px-3 py-1 rounded-full">
+                <span
+                  className="absolute top-4 left-4 text-xs font-medium uppercase tracking-widest px-3 py-1 rounded-full"
+                  style={{ background: BADGE_STYLES[w.collectie].bg, color: BADGE_STYLES[w.collectie].color }}
+                >
                   {w.collectie}
                 </span>
               </div>

@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { BedDouble, Bath, Users, MapPin } from "lucide-react";
-import { woningen } from "@/lib/woningen";
+import { woningen, BADGE_STYLES } from "@/lib/woningen";
+import { WoningGalerij } from "./WoningGalerij";
 
 interface Props { params: { id: string } }
 
@@ -21,44 +22,57 @@ export default function WoningDetailPage({ params }: Props) {
   const woning = woningen.find((w) => w.id === params.id);
   if (!woning) notFound();
 
+  const badge = BADGE_STYLES[woning.collectie];
+
   return (
     <div className="bg-moroww-blush min-h-screen">
+      <div className="mx-auto max-w-6xl px-6 md:px-12 pt-28 pb-32">
 
-      {/* ── Hero foto ── */}
-      <div className="relative w-full h-[55vh] md:h-[65vh] overflow-hidden bg-moroww-black">
-        <img
-          src={woning.heroFoto}
-          alt={woning.naam}
-          style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(to top, rgba(250,228,214,0.9) 0%, transparent 60%)" }}
-        />
-        {/* Collectie badge */}
-        <span className="absolute top-24 left-6 md:left-12 bg-moroww-orange text-white text-xs font-medium uppercase tracking-widest px-3 py-1 rounded-full">
-          {woning.collectie}
-        </span>
-      </div>
+        {/* ── Breadcrumb ── */}
+        <div className="flex items-center gap-2 text-sm text-moroww-black/40 mb-6">
+          <Link href="/collectie" className="hover:text-moroww-black transition-colors">
+            De Collectie
+          </Link>
+          <span>/</span>
+          <span className="text-moroww-black/70">{woning.naam}</span>
+        </div>
 
-      {/* ── Content ── */}
-      <div className="mx-auto max-w-5xl px-6 md:px-12 -mt-16 relative z-10 pb-32">
-        <div className="grid lg:grid-cols-[1fr_340px] gap-10 items-start">
-
-          {/* Links: details */}
+        {/* ── Naam + locatie + badge ── */}
+        <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
           <div>
+            <span
+              className="inline-block text-xs font-medium uppercase tracking-widest px-3 py-1 rounded-full mb-3"
+              style={{ background: badge.bg, color: badge.color }}
+            >
+              {woning.collectie}
+            </span>
             <h1
-              className="font-bold text-moroww-black leading-[1.05] tracking-[-0.02em] mb-2"
+              className="font-bold text-moroww-black leading-[1.05] tracking-[-0.02em]"
               style={{ fontSize: "clamp(2rem,5vw,3.5rem)" }}
             >
               {woning.naam}
             </h1>
-
-            <div className="flex items-center gap-2 text-moroww-black/50 text-sm mb-6">
+            <div className="flex items-center gap-2 text-moroww-black/50 text-sm mt-2">
               <MapPin size={14} />
               {woning.locatie}
             </div>
+          </div>
+          <div className="text-right">
+            <span className="font-bold text-3xl text-moroww-black">€{woning.prijs}</span>
+            <span className="text-moroww-black/50 text-sm ml-1">/ nacht</span>
+          </div>
+        </div>
 
+        {/* ── Galerij ── */}
+        <div className="mb-10">
+          <WoningGalerij fotos={woning.fotos} naam={woning.naam} />
+        </div>
+
+        {/* ── Content grid ── */}
+        <div className="grid lg:grid-cols-[1fr_340px] gap-10 items-start">
+
+          {/* Links: details */}
+          <div>
             {/* Specs */}
             <div className="flex flex-wrap gap-6 mb-8">
               <div className="flex items-center gap-2 text-moroww-black/70 text-sm">
@@ -74,7 +88,7 @@ export default function WoningDetailPage({ params }: Props) {
                 <span>Max {woning.maxGasten} gasten</span>
               </div>
               {woning.oppervlakte && (
-                <div className="text-moroww-black/50 text-sm">{woning.oppervlakte}</div>
+                <span className="text-moroww-black/50 text-sm">{woning.oppervlakte}</span>
               )}
             </div>
 

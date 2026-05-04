@@ -27,10 +27,10 @@ export default function CollectiePage() {
           Vier woningen. Twee collecties. Één standaard.
         </p>
         <div className="flex flex-wrap gap-3 justify-center">
-          <span className="bg-moroww-orange text-white text-xs font-medium uppercase tracking-widest px-4 py-2 rounded-full">
+          <span className="text-xs font-medium uppercase tracking-widest px-4 py-2 rounded-full" style={{ background: "#EEBC9D", color: "#1A1A1A" }}>
             the shore — Kust
           </span>
-          <span className="bg-moroww-black text-white text-xs font-medium uppercase tracking-widest px-4 py-2 rounded-full">
+          <span className="text-xs font-medium uppercase tracking-widest px-4 py-2 rounded-full" style={{ background: "#CBD085", color: "#1A1A1A" }}>
             the fields — Meetjesland
           </span>
         </div>
