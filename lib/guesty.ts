@@ -54,7 +54,7 @@ export async function getGuestyToken(): Promise<string> {
     return cached.access_token as string;
   }
 
-  // 2. Token ontbreekt of verlopen — haal nieuw op
+  // 2. Token ontbreekt of verlopen - haal nieuw op
   const token = await fetchFreshToken();
 
   const expiresAt = new Date(Date.now() + 23 * 60 * 60 * 1000).toISOString();

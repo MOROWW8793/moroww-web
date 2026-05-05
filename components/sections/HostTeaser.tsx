@@ -8,11 +8,11 @@ export function HostTeaser() {
   return (
     <section className="bg-white w-full overflow-hidden">
       <div className="flex flex-col md:flex-row min-h-[500px] md:min-h-[600px]">
-        {/* Foto — boven op mobiel, rechts op desktop */}
+        {/* Foto - boven op mobiel, rechts op desktop */}
         <div className="relative h-[300px] md:h-auto md:w-1/2 min-h-[300px] md:min-h-full order-first md:order-last">
           <Image
             src="/images/host-teaser.jpg"
-            alt="moroww eigenaar — vakantiewoning beheer"
+            alt="moroww eigenaar - vakantiewoning beheer"
             fill
             className="object-cover"
             style={{ objectPosition: "center 70%" }}

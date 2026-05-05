@@ -13,7 +13,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const woning = woningen.find((w) => w.id === params.id);
   return {
-    title: woning ? `${woning.naam} — moroww` : "Woning — moroww",
+    title: woning ? `${woning.naam} - moroww` : "Woning - moroww",
     description: woning?.beschrijving,
   };
 }

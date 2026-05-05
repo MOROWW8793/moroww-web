@@ -45,7 +45,7 @@ export function EigenaarContent() {
         {/* Overlay voor leesbaarheid */}
         <div className="absolute inset-0 bg-black/25 z-[1]" />
 
-        {/* Linkerkolom — label bovenaan, headline onderaan */}
+        {/* Linkerkolom - label bovenaan, headline onderaan */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -63,7 +63,7 @@ export function EigenaarContent() {
           </h1>
         </motion.div>
 
-        {/* Rechterkolom — subline + counter onderaan */}
+        {/* Rechterkolom - subline + counter onderaan */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}

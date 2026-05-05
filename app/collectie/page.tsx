@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { CollectieStatisch } from "./CollectieStatisch";
 
 export const metadata: Metadata = {
-  title: "De Collectie — Premium vakantiewoningen",
+  title: "De Collectie - Premium vakantiewoningen",
   description:
     "Ontdek de moroww collectie: Nosso Logies in Knokke, Chalet Ann-Helena in Ursel, Oostende en Beernem. Gecureerde vakantiewoningen aan de kust en in het Meetjesland.",
   alternates: { canonical: "https://www.moroww.com/collectie" },
@@ -42,13 +42,13 @@ export default function CollectiePage() {
             className="text-xs font-medium uppercase tracking-widest px-4 py-2 rounded-full"
             style={{ background: "#EEBC9D", color: "#1A1A1A" }}
           >
-            the shore — Kust
+            the shore - Kust
           </span>
           <span
             className="text-xs font-medium uppercase tracking-widest px-4 py-2 rounded-full"
             style={{ background: "#CBD085", color: "#1A1A1A" }}
           >
-            the fields — Meetjesland
+            the fields - Meetjesland
           </span>
         </div>
       </div>

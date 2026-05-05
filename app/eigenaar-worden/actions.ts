@@ -23,7 +23,7 @@ export async function submitLead(
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   if (!url || url === "placeholder_vervang_dit_later") {
-    console.warn("[leads] Supabase not configured — lead not saved:", { name, email });
+    console.warn("[leads] Supabase not configured - lead not saved:", { name, email });
     return { success: true };
   }
 

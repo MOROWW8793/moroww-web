@@ -78,7 +78,7 @@ export function Founders() {
           Wij zijn Brent en Noam. Twee ondernemers die te vaak
           teleurgesteld thuiskwamen van een vakantie die er op foto
           perfect uitzag maar ter plaatse tegenviel. moroww is ons
-          antwoord — een label dat curateert, een systeem dat levert,
+          antwoord - een label dat curateert, een systeem dat levert,
           en een standaard die we nooit loslaten.
         </p>
         <Link

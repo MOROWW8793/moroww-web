@@ -35,16 +35,16 @@ export const woningen: Woning[] = [
     tags: ["Strand op 2 min", "Privé koer", "2 badkamers"],
     slogan: "Goed slapen, goed eten, goed ademen. Twee minuten van de zee.",
     introductie:
-      "Sommige plekken voel je meteen. Nosso is er één van. Niet omdat het opschept — maar omdat het klopt. Het licht, de ruimte, de stilte van het koertje op een zaterdagochtend. Dit is geen Airbnb-gok. Dit is een woning die we persoonlijk hebben geïnspecteerd, ingericht en klaargemaakt voor mensen die weten wat ze willen.",
+      "Sommige plekken voel je meteen. Nosso is er één van. Niet omdat het opschept - maar omdat het klopt. Het licht, de ruimte, de stilte van het koertje op een zaterdagochtend. Dit is geen Airbnb-gok. Dit is een woning die we persoonlijk hebben geïnspecteerd, ingericht en klaargemaakt voor mensen die weten wat ze willen.",
     beschrijving:
       "Op twee minuten van de Noordzee, verscholen in een rustige straat in Heist-aan-Zee. Een lichtrijk appartement van 110m² met twee slaapkamers, twee volledige badkamers en een privé koer.",
     volledigeBeschrijving:
-      "Op twee minuten van de Noordzee, verscholen in een rustige straat in Heist-aan-Zee. Een lichtrijk appartement van 110m² met twee slaapkamers, twee volledige badkamers en een privé koer — ontworpen voor families en vrienden die van de kust willen genieten zonder de drukte. Geen vroege wekkers. Geen haast. Gewoon rustig opstaan, blootsvoets naar het strand wandelen en thuiskomen in een plek die echt als de jouwe aanvoelt. De open leefruimte baadt de hele dag in natuurlijk licht en loopt naadloos over in een volledig uitgeruste keuken. Stap buiten op het privé koertje: beschut, groen en rustig van jou. Ochtendkoffie, een aperitief bij zonsondergang, een glas wijn nadat de kinderen slapen.",
+      "Op twee minuten van de Noordzee, verscholen in een rustige straat in Heist-aan-Zee. Een lichtrijk appartement van 110m² met twee slaapkamers, twee volledige badkamers en een privé koer - ontworpen voor families en vrienden die van de kust willen genieten zonder de drukte. Geen vroege wekkers. Geen haast. Gewoon rustig opstaan, blootsvoets naar het strand wandelen en thuiskomen in een plek die echt als de jouwe aanvoelt. De open leefruimte baadt de hele dag in natuurlijk licht en loopt naadloos over in een volledig uitgeruste keuken. Stap buiten op het privé koertje: beschut, groen en rustig van jou. Ochtendkoffie, een aperitief bij zonsondergang, een glas wijn nadat de kinderen slapen.",
     hoogtepunten: [
-      "110m² — ruimte om te ademen",
+      "110m² - ruimte om te ademen",
       "Strand op 2 minuten te voet",
-      "Privé koertje — jouw stille oase",
-      "2 volledige badkamers — nooit wachten",
+      "Privé koertje - jouw stille oase",
+      "2 volledige badkamers - nooit wachten",
       "Volledig uitgeruste keuken",
       "Zelf inchecken via slim slot",
     ],
@@ -86,7 +86,7 @@ export const woningen: Woning[] = [
       "Hart van het Drongengoedbos",
       "Privétuin met vijver",
       "Gratis parkeren voor 2 wagens",
-      "Kindvriendelijk — stapelbed, reisbedje, speelgoed",
+      "Kindvriendelijk - stapelbed, reisbedje, speelgoed",
       "Terras en balkon met bosuitkijk",
       "Tussen Gent (30 min) en Brugge (25 min)",
     ],
@@ -119,13 +119,13 @@ export const woningen: Woning[] = [
     tags: ["16e verdieping", "Zeezicht", "Privé parking"],
     slogan: "Hoog boven de kust. Helemaal voor jullie.",
     introductie:
-      "Er is zeezicht. En dan is er dit. Zestien verdiepingen boven de drukte, met de Noordzee voor je neus en de golfers onder je. Geen gedeelde gang. Geen toevallige buren. Gewoon een appartement dat je het gevoel geeft dat Oostende van jou is — en een parkeerplaats die er echt bij hoort.",
+      "Er is zeezicht. En dan is er dit. Zestien verdiepingen boven de drukte, met de Noordzee voor je neus en de golfers onder je. Geen gedeelde gang. Geen toevallige buren. Gewoon een appartement dat je het gevoel geeft dat Oostende van jou is - en een parkeerplaats die er echt bij hoort.",
     beschrijving:
       "Zestien verdiepingen hoog, met de Noordzee voor je en de Golf van Oostende aan je zij. Ensuite badkamers, panoramisch balkon en privé ondergrondse parking.",
     volledigeBeschrijving:
-      "Zestien verdiepingen hoog, met de Noordzee voor je en de Golf van Oostende aan je zij. Een licht, modern appartement met ensuite badkamers in elke slaapkamer, een panoramisch balkon en privé ondergrondse parking — een van de zeldzaamste dingen die je in Oostende vindt. De open leefruimte baadt de hele dag in natuurlijk licht. Stap op het privébalkon en laat het uitzicht de rest doen: zonsopgang boven de golfbaan, zonsondergang boven de zee. Elke slaapkamer is een privéretraite met eigen ensuite badkamer. En dan is er nog de parking. Een privé ondergrondse plaats, inbegrepen — een echte zeldzaamheid in Oostende.",
+      "Zestien verdiepingen hoog, met de Noordzee voor je en de Golf van Oostende aan je zij. Een licht, modern appartement met ensuite badkamers in elke slaapkamer, een panoramisch balkon en privé ondergrondse parking - een van de zeldzaamste dingen die je in Oostende vindt. De open leefruimte baadt de hele dag in natuurlijk licht. Stap op het privébalkon en laat het uitzicht de rest doen: zonsopgang boven de golfbaan, zonsondergang boven de zee. Elke slaapkamer is een privéretraite met eigen ensuite badkamer. En dan is er nog de parking. Een privé ondergrondse plaats, inbegrepen - een echte zeldzaamheid in Oostende.",
     hoogtepunten: [
-      "16e verdieping — panoramisch zeezicht",
+      "16e verdieping - panoramisch zeezicht",
       "Ensuite badkamer in elke slaapkamer",
       "Privé ondergrondse parking inbegrepen",
       "Golf van Oostende aan je zij",
@@ -162,11 +162,11 @@ export const woningen: Woning[] = [
     tags: ["Zwembad", "Hottub", "Tuin met BBQ"],
     slogan: "Groot genoeg voor het hele gezelschap. Rustig genoeg voor de rest.",
     introductie:
-      "Voor groepen die echt samen willen zijn. Niet op elkaars lip — maar wel samen. Vier slaapkamers, een zwembad, een hottub, een vuurschaal en een tuin die groot genoeg is om iedereen hun eigen hoekje te geven. Beernem is geen bestemming die je kent. Dat is precies waarom het zo goed werkt.",
+      "Voor groepen die echt samen willen zijn. Niet op elkaars lip - maar wel samen. Vier slaapkamers, een zwembad, een hottub, een vuurschaal en een tuin die groot genoeg is om iedereen hun eigen hoekje te geven. Beernem is geen bestemming die je kent. Dat is precies waarom het zo goed werkt.",
     beschrijving:
       "Stijlvolle vakantiewoning voor maximaal 10 gasten, midden in het groen in Beernem. Luxueuze badkamers, ruime tuin met overdekt terras, zwembad, vuurschaal en petanquebaan.",
     volledigeBeschrijving:
-      "Kom volledig tot rust in deze stijlvolle vakantiewoning voor maximaal 10 gasten, midden in het groen in Beernem. Luxueuze badkamers, een ruime tuin met overdekt terras, zwembad, vuurschaal, BBQ en petanquebaan. Binnen vind je vier gezellige slaapkamers met kwalitatieve boxspringbedden. De open leefruimte bestaat uit een lichtrijke zithoek, een grote eettafel en een volledig uitgeruste keuken. Buiten wacht je privé tuin — de absolute troef van deze woning. Ontspan in de hottub, steek de vuurschaal aan, neem een duik in het zwembad of speel een potje pétanque. Met een centrale ligging op 14 km van Brugge, 25 km van de kust en 35 km van Gent biedt deze woning de perfecte balans tussen rust en bereikbaarheid.",
+      "Kom volledig tot rust in deze stijlvolle vakantiewoning voor maximaal 10 gasten, midden in het groen in Beernem. Luxueuze badkamers, een ruime tuin met overdekt terras, zwembad, vuurschaal, BBQ en petanquebaan. Binnen vind je vier gezellige slaapkamers met kwalitatieve boxspringbedden. De open leefruimte bestaat uit een lichtrijke zithoek, een grote eettafel en een volledig uitgeruste keuken. Buiten wacht je privé tuin - de absolute troef van deze woning. Ontspan in de hottub, steek de vuurschaal aan, neem een duik in het zwembad of speel een potje pétanque. Met een centrale ligging op 14 km van Brugge, 25 km van de kust en 35 km van Gent biedt deze woning de perfecte balans tussen rust en bereikbaarheid.",
     hoogtepunten: [
       "Zwembad, hottub en vuurschaal",
       "Tuin met BBQ en petanquebaan",

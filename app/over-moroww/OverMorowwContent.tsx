@@ -18,7 +18,7 @@ export function OverMorowwContent() {
       <section className="relative -mt-16 w-full overflow-hidden" style={{ height: "100dvh" }}>
         <Image
           src="/images/over-hero.jpg"
-          alt="moroww — over ons"
+          alt="moroww - over ons"
           fill
           priority
           className="object-cover"
@@ -59,7 +59,7 @@ export function OverMorowwContent() {
             <div className="text-moroww-black/60 leading-relaxed space-y-4 max-w-prose" style={{ fontSize: 17 }}>
               <p>
                 Je kent het wel. Je stapt een woning binnen en het klopt gewoon.
-                De lucht, het licht, de sfeer — alles.
+                De lucht, het licht, de sfeer - alles.
               </p>
               <p>
                 Wij zijn Brent en Noam. Twee ondernemers die te vaak teleurgesteld

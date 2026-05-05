@@ -12,7 +12,7 @@ const pillars = [
   {
     icon: PhoneOff,
     label: "Geen telefoontjes om middernacht.",
-    body: "Onze technologie bewaakt. Onze mensen staan stand-by. Jij geniet — wij lossen op.",
+    body: "Onze technologie bewaakt. Onze mensen staan stand-by. Jij geniet - wij lossen op.",
   },
   {
     icon: Shield,

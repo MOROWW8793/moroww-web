@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "moroww curates een selectie premium vakantiewoningen aan de Belgische kust en in het Meetjesland. Vier woningen. Twee collecties. Één standaard.",
   alternates: { canonical: "https://www.moroww.com" },
   openGraph: {
-    title: "moroww — Gecureerde vakantiewoningen in België",
+    title: "moroww - Gecureerde vakantiewoningen in België",
     description: "Vier gecureerde vakantiewoningen. Twee collecties. Één standaard.",
     url: "https://www.moroww.com",
     images: [

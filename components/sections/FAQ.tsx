@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     v: "Hoe werkt de sleutelloze aankomst?",
-    a: "Je ontvangt voor aankomst een unieke digitale code. Geen sleutelafspraak, geen wachten. De sfeer staat al klaar — van temperatuur tot verlichting.",
+    a: "Je ontvangt voor aankomst een unieke digitale code. Geen sleutelafspraak, geen wachten. De sfeer staat al klaar - van temperatuur tot verlichting.",
   },
   {
     v: "Wat houdt het Founding Partner-programma in?",

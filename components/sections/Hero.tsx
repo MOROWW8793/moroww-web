@@ -8,7 +8,7 @@ export function Hero() {
     <section className="relative -mt-16 w-full overflow-hidden" style={{ height: "100dvh" }}>
       <Image
         src="/images/hero.jpg"
-        alt="moroww vakantiewoning — premium verblijf in België"
+        alt="moroww vakantiewoning - premium verblijf in België"
         fill
         priority
         className="object-cover"
@@ -16,7 +16,7 @@ export function Hero() {
         style={{ objectPosition: "center center" }}
       />
 
-      {/* Overlay — stronger on mobile */}
+      {/* Overlay - stronger on mobile */}
       <div className="absolute inset-0 bg-black/50 md:bg-black/38" />
 
       <div className="absolute inset-0 flex items-center justify-center px-6 md:px-8">

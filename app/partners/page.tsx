@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Partners — Korteketen. Geen compromis.",
+  title: "Partners - Korteketen. Geen compromis.",
   description:
     "moroww werkt uitsluitend samen met Belgische en Europese merken die onze standaard delen. Waaronder Moro Essentials voor badkamerproducten.",
   alternates: { canonical: "https://www.moroww.com/partners" },
@@ -39,19 +39,19 @@ export default function PartnersPage() {
             className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-10"
             style={{ fontSize: "clamp(2.5rem,5vw,4.5rem)" }}
           >
-            korteketen. <span className="text-moroww-orange">—</span> geen compromis.
+            korteketen. <span className="text-moroww-orange">-</span> geen compromis.
           </h1>
 
           <p className="text-moroww-black/60 leading-relaxed max-w-xl" style={{ fontSize: 18 }}>
             moroww kiest bewust voor Belgische en Europese merken die onze standaard delen.
-            Niet omdat het moet — omdat het klopt. Elke fles, elk product, elk detail in onze
+            Niet omdat het moet - omdat het klopt. Elke fles, elk product, elk detail in onze
             woningen komt van een merk dat wij met naam en gezicht kennen. Korte keten betekent:
             wij weten wie het maakt, hoe het gemaakt wordt, en waarom het goed is.
           </p>
         </div>
       </section>
 
-      {/* ── 2. PARTNER SPOTLIGHT — Moro Essentials ── */}
+      {/* ── 2. PARTNER SPOTLIGHT - Moro Essentials ── */}
       <section className="px-6 md:px-16 lg:px-24 pb-32 max-w-6xl mx-auto">
         <div
           className="bg-white rounded-3xl overflow-hidden"
@@ -89,7 +89,7 @@ export default function PartnersPage() {
                 <p className="text-moroww-orange text-sm font-medium mb-5">Badkamerproducten</p>
                 <p className="text-moroww-black/60 leading-relaxed mb-8" style={{ fontSize: 15 }}>
                   De badkamer is de eerste test. Gasten voelen het meteen: goedkope zeep in een
-                  plastic flesje vertelt een verhaal — en niet het goede. Daarom kozen we voor
+                  plastic flesje vertelt een verhaal - en niet het goede. Daarom kozen we voor
                   Moro Essentials, een Belgisch merk dat huidverzorging herdenkt vanuit eerlijkheid.
                   Geen overbodige ingrediënten, geen generieke geuren, geen massamarkt. Gewoon
                   producten die werken, goed ruiken en kloppen met wie wij zijn. In elke
@@ -125,7 +125,7 @@ export default function PartnersPage() {
             },
             {
               categorie: "Lokale handelaars",
-              tekst: "In elke regio waar moroww actief is, zoeken we contact met lokale bakkers, slagers, traiteurs en wijnhuizen. Gasten die willen weten waar ze terecht kunnen voor het beste van de streek, vinden dat via moroww. Geen gidsen, geen gesponsorde lijsten — enkel adressen waar we zelf voor instaan.",
+              tekst: "In elke regio waar moroww actief is, zoeken we contact met lokale bakkers, slagers, traiteurs en wijnhuizen. Gasten die willen weten waar ze terecht kunnen voor het beste van de streek, vinden dat via moroww. Geen gidsen, geen gesponsorde lijsten - enkel adressen waar we zelf voor instaan.",
             },
           ].map(({ categorie, tekst }) => (
             <div key={categorie} className="bg-white rounded-3xl overflow-hidden shadow-sm">

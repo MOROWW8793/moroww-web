@@ -25,7 +25,7 @@ export function LeadForm() {
         <h3 className="font-bold text-xl text-moroww-black">Aanvraag ontvangen</h3>
         <p className="text-moroww-black/60 text-sm leading-relaxed max-w-xs mx-auto">
           Bedankt. We nemen binnen 48u persoonlijk contact op.
-          Elke woning wordt fysiek beoordeeld — dat is onze belofte.
+          Elke woning wordt fysiek beoordeeld - dat is onze belofte.
         </p>
       </div>
     );
