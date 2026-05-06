@@ -28,6 +28,8 @@ export async function POST(request: NextRequest) {
     const beschikbaarheid       = formData.get('beschikbaarheid') as string
     const verwachte_inkomsten   = formData.get('verwachte_inkomsten') as string
     const opmerkingen           = formData.get('opmerkingen') as string
+    const live_gaan             = formData.get('live_gaan') as string
+    const sleuteloverdracht     = formData.get('sleuteloverdracht') as string
 
     // Upload foto's naar Supabase Storage
     const fotoFiles = formData.getAll('fotos') as File[]
@@ -64,6 +66,7 @@ export async function POST(request: NextRequest) {
         eigenaar_of_beheerder, hoe_lang_verhuurd,
         huidig_platform, beschikbaarheid,
         verwachte_inkomsten, opmerkingen,
+        live_gaan, sleuteloverdracht,
         foto_urls,
       })
 
@@ -75,16 +78,15 @@ export async function POST(request: NextRequest) {
     await resend.emails.send({
       from: 'moroww <info@moroww.com>',
       to: email,
-      subject: 'We hebben je aanvraag ontvangen - moroww',
+      subject: 'Je onboarding is gestart - moroww',
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
           <img src="https://www.moroww.com/icon.png" alt="moroww" style="height: 40px; margin-bottom: 32px;" />
-          <h1 style="font-size: 28px; color: #1A1A1A; margin-bottom: 16px;">Ontvangen, ${firstName}.</h1>
+          <h1 style="font-size: 28px; color: #1A1A1A; margin-bottom: 16px;">We gaan aan de slag, ${firstName}.</h1>
           <p style="color: #555; font-size: 16px; line-height: 1.6;">
-            We hebben je onboardingaanvraag goed ontvangen.
-            Ons team bekijkt je pand op <strong>${adres}</strong>
-            en neemt binnen 48 uur contact met je op via
-            <strong>${email}</strong> of <strong>${telefoon}</strong>.
+            Je onboarding voor het pand op <strong>${adres}</strong> is officieel gestart.
+            Ons team neemt binnen 24 uur contact met je op
+            om de eerste stappen te bespreken.
           </p>
           <p style="color: #555; font-size: 16px; line-height: 1.6; margin-top: 16px;">
             Heb je in de tussentijd vragen? Stuur een mail naar

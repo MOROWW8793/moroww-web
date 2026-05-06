@@ -76,6 +76,7 @@ type FormData = {
   eigenaar_of_beheerder: string; hoe_lang_verhuurd: string
   huidig_platform: string; beschikbaarheid: string
   verwachte_inkomsten: string; opmerkingen: string
+  live_gaan: string; sleuteloverdracht: string
   fotos: File[]
 }
 
@@ -85,7 +86,8 @@ const empty: FormData = {
   slaapkamers: '', badkamers: '', regio: '',
   eigenaar_of_beheerder: '', hoe_lang_verhuurd: '',
   huidig_platform: '', beschikbaarheid: '',
-  verwachte_inkomsten: '', opmerkingen: '', fotos: [],
+  verwachte_inkomsten: '', opmerkingen: '',
+  live_gaan: '', sleuteloverdracht: '', fotos: [],
 }
 
 // ── Stap 1 ─────────────────────────────────────────────────────────────────
@@ -190,6 +192,14 @@ function Stap3({ data, set, setFiles }: {
         name="verwachte_inkomsten"
         options={['Nog geen idee', '< €10.000', '€10.000-€25.000', '€25.000-€50.000', '> €50.000']}
         value={data.verwachte_inkomsten} onChange={v => set('verwachte_inkomsten', v)} />
+      <SelectField label="Wanneer wil je live gaan?"
+        name="live_gaan"
+        options={['Zo snel mogelijk', 'Binnen 1 maand', 'Binnen 3 maanden', 'Nog niet zeker']}
+        value={data.live_gaan} onChange={v => set('live_gaan', v)} />
+      <SelectField label="Voorkeur sleuteloverdracht"
+        name="sleuteloverdracht"
+        options={['Sleutelkluisje', 'Persoonlijke overdracht', 'Nog te bespreken']}
+        value={data.sleuteloverdracht} onChange={v => set('sleuteloverdracht', v)} />
       <Field label="Opmerkingen of vragen">
         <textarea name="opmerkingen" rows={4} value={data.opmerkingen}
           onChange={e => set('opmerkingen', e.target.value)}
@@ -287,11 +297,11 @@ export default function OnboardingPage() {
           </div>
           <h1 className="font-bold text-moroww-black lowercase leading-tight tracking-[-0.02em] mb-4"
             style={{ fontSize: 'clamp(2rem,5vw,3rem)' }}>
-            ontvangen{firstName ? `, ${firstName}` : ''}.
+            perfect{firstName ? `, ${firstName}` : ''}. we gaan aan de slag.
           </h1>
           <p className="text-moroww-black/60 leading-relaxed" style={{ fontSize: 17 }}>
-            We hebben je aanvraag goed ontvangen.
-            Je krijgt binnen 48 uur een bevestiging van ons team.
+            Je onboarding is gestart. Ons team neemt binnen 24 uur contact met je op
+            om de volgende stappen te bespreken.
           </p>
           <p className="mt-6 text-sm text-moroww-black/40">
             Vragen? Stuur een mail naar{' '}
@@ -313,15 +323,15 @@ export default function OnboardingPage() {
         {/* Hero */}
         <div className="mb-12 text-center">
           <p className="text-xs font-medium uppercase tracking-widest text-moroww-orange mb-4">
-            Eigenaar onboarding
+            Welkom bij moroww
           </p>
           <h1 className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-4"
             style={{ fontSize: 'clamp(2rem,5vw,3rem)' }}>
-            welkom. laten we starten.
+            goed dat je er bent. laten we starten.
           </h1>
           <p className="text-moroww-black/55 leading-relaxed max-w-sm mx-auto" style={{ fontSize: 16 }}>
-            Vul dit formulier zo volledig mogelijk in. We gebruiken deze info om jouw pand te beoordelen
-            en het onboardingproces op te starten. Dit duurt ongeveer 5 minuten.
+            Je bent geselecteerd als moroww eigenaar. Dit formulier helpt ons jouw pand correct op te
+            zetten. Vul alles zo volledig mogelijk in - hoe meer detail, hoe sneller we kunnen starten.
           </p>
         </div>
 
@@ -375,7 +385,7 @@ export default function OnboardingPage() {
                 disabled={submitting}
                 className="flex flex-1 items-center justify-center gap-2 rounded-full bg-moroww-orange hover:bg-moroww-orange-dark disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 text-sm transition-colors"
               >
-                {submitting ? 'Versturen...' : 'Verstuur aanvraag'}
+                {submitting ? 'Versturen...' : 'Onboarding opstarten'}
               </button>
             )}
           </div>
