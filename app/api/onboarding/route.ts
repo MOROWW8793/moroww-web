@@ -55,7 +55,10 @@ export async function POST(request: NextRequest) {
     const gemiddelde_beoordeling = formData.get('gemiddelde_beoordeling') as string
 
     // Upload foto's naar Supabase Storage
+    console.log('Onboarding submit ontvangen')
+
     const fotoFiles = formData.getAll('fotos') as File[]
+    console.log('Foto bestanden:', fotoFiles.length)
     const foto_urls: string[] = []
 
     for (const foto of fotoFiles) {
@@ -196,6 +199,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error('[onboarding] error:', error)
-    return NextResponse.json({ success: false, error: String(error) }, { status: 500 })
+    return NextResponse.json({
+      success: false,
+      error: error instanceof Error ? error.message : String(error),
+    }, { status: 500 })
   }
 }

@@ -469,8 +469,9 @@ export default function OnboardingPage() {
       const json = await res.json()
       if (!res.ok) throw new Error(json.error ?? 'Onbekende fout')
       setDone(true)
-    } catch (e) {
-      setError(e instanceof Error ? e.message : 'Er ging iets mis. Probeer opnieuw.')
+    } catch (error) {
+      console.error('Submit error:', error)
+      setError(error instanceof Error ? error.message : 'Er ging iets mis. Probeer opnieuw.')
     } finally {
       setSubmitting(false)
     }
