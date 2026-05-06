@@ -30,6 +30,29 @@ export async function POST(request: NextRequest) {
     const opmerkingen           = formData.get('opmerkingen') as string
     const live_gaan             = formData.get('live_gaan') as string
     const sleuteloverdracht     = formData.get('sleuteloverdracht') as string
+    // Stap 4
+    const lift                  = formData.get('lift') as string
+    const tuin                  = formData.get('tuin') as string
+    const zwembad               = formData.get('zwembad') as string
+    const hottub                = formData.get('hottub') as string
+    const parkeerplaatsen       = formData.get('parkeerplaatsen') as string
+    const huisdieren_toegelaten = formData.get('huisdieren_toegelaten') as string
+    const slim_slot             = formData.get('slim_slot') as string
+    const checkin_systeem       = formData.get('checkin_systeem') as string
+    const iban                  = formData.get('iban') as string
+    const btw_plichtig          = formData.get('btw_plichtig') as string
+    const btw_nummer            = formData.get('btw_nummer') as string
+    const rookbeleid            = formData.get('rookbeleid') as string
+    const feesten               = formData.get('feesten') as string
+    const max_gasten_huis       = formData.get('max_gasten_huis') as string
+    const huisdieren_huis       = formData.get('huisdieren_huis') as string
+    const contactpersoon_naam   = formData.get('contactpersoon_naam') as string
+    const contactpersoon_telefoon = formData.get('contactpersoon_telefoon') as string
+    const contactpersoon_relatie  = formData.get('contactpersoon_relatie') as string
+    const airbnb_link           = formData.get('airbnb_link') as string
+    const booking_link          = formData.get('booking_link') as string
+    const andere_platforms      = formData.get('andere_platforms') as string
+    const gemiddelde_beoordeling = formData.get('gemiddelde_beoordeling') as string
 
     // Upload foto's naar Supabase Storage
     const fotoFiles = formData.getAll('fotos') as File[]
@@ -67,6 +90,13 @@ export async function POST(request: NextRequest) {
         huidig_platform, beschikbaarheid,
         verwachte_inkomsten, opmerkingen,
         live_gaan, sleuteloverdracht,
+        lift, tuin, zwembad, hottub,
+        parkeerplaatsen, huisdieren_toegelaten,
+        slim_slot, checkin_systeem,
+        iban, btw_plichtig, btw_nummer,
+        rookbeleid, feesten, max_gasten_huis, huisdieren_huis,
+        contactpersoon_naam, contactpersoon_telefoon, contactpersoon_relatie,
+        airbnb_link, booking_link, andere_platforms, gemiddelde_beoordeling,
         foto_urls,
       })
 
@@ -122,8 +152,34 @@ export async function POST(request: NextRequest) {
             <tr><td style="padding: 8px 0; color: #999;">Huidig platform</td><td style="padding: 8px 0; color: #1A1A1A;">${huidig_platform || '-'}</td></tr>
             <tr><td style="padding: 8px 0; color: #999;">Beschikbaarheid</td><td style="padding: 8px 0; color: #1A1A1A;">${beschikbaarheid || '-'}</td></tr>
             <tr><td style="padding: 8px 0; color: #999;">Verwachte inkomsten</td><td style="padding: 8px 0; color: #1A1A1A;">${verwachte_inkomsten || '-'}</td></tr>
+            <tr><td style="padding: 8px 0; color: #999;">Live gaan</td><td style="padding: 8px 0; color: #1A1A1A;">${live_gaan || '-'}</td></tr>
+            <tr><td style="padding: 8px 0; color: #999;">Sleuteloverdracht</td><td style="padding: 8px 0; color: #1A1A1A;">${sleuteloverdracht || '-'}</td></tr>
             <tr><td style="padding: 8px 0; color: #999;">Opmerkingen</td><td style="padding: 8px 0; color: #1A1A1A;">${opmerkingen || '-'}</td></tr>
           </table>
+
+          <h2 style="margin-top: 32px; font-size: 18px;">Voorzieningen & details</h2>
+          <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+            <tr><td style="padding: 8px 0; color: #999; width: 200px;">Lift</td><td>${lift}</td></tr>
+            <tr><td style="padding: 8px 0; color: #999;">Tuin</td><td>${tuin}</td></tr>
+            <tr><td style="padding: 8px 0; color: #999;">Zwembad</td><td>${zwembad}</td></tr>
+            <tr><td style="padding: 8px 0; color: #999;">Hottub</td><td>${hottub}</td></tr>
+            <tr><td style="padding: 8px 0; color: #999;">Parkeerplaatsen</td><td>${parkeerplaatsen}</td></tr>
+            <tr><td style="padding: 8px 0; color: #999;">Slim slot</td><td>${slim_slot}</td></tr>
+            <tr><td style="padding: 8px 0; color: #999;">Check-in systeem</td><td>${checkin_systeem}</td></tr>
+            <tr><td style="padding: 8px 0; color: #999;">IBAN</td><td>${iban}</td></tr>
+            <tr><td style="padding: 8px 0; color: #999;">BTW-plichtig</td><td>${btw_plichtig}</td></tr>
+            <tr><td style="padding: 8px 0; color: #999;">BTW-nummer</td><td>${btw_nummer || '-'}</td></tr>
+            <tr><td style="padding: 8px 0; color: #999;">Rookbeleid</td><td>${rookbeleid}</td></tr>
+            <tr><td style="padding: 8px 0; color: #999;">Feesten</td><td>${feesten}</td></tr>
+            <tr><td style="padding: 8px 0; color: #999;">Max gasten</td><td>${max_gasten_huis}</td></tr>
+            <tr><td style="padding: 8px 0; color: #999;">Huisdieren</td><td>${huisdieren_huis}</td></tr>
+            <tr><td style="padding: 8px 0; color: #999;">Contactpersoon</td><td>${contactpersoon_naam} - ${contactpersoon_telefoon} (${contactpersoon_relatie})</td></tr>
+            <tr><td style="padding: 8px 0; color: #999;">Airbnb</td><td>${airbnb_link || '-'}</td></tr>
+            <tr><td style="padding: 8px 0; color: #999;">Booking.com</td><td>${booking_link || '-'}</td></tr>
+            <tr><td style="padding: 8px 0; color: #999;">Andere platforms</td><td>${andere_platforms || '-'}</td></tr>
+            <tr><td style="padding: 8px 0; color: #999;">Gemiddelde beoordeling</td><td>${gemiddelde_beoordeling}</td></tr>
+          </table>
+
           ${foto_urls.length > 0 ? `
             <h2 style="margin-top: 32px; font-size: 18px;">Foto's (${foto_urls.length})</h2>
             <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px;">
