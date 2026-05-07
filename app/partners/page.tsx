@@ -29,7 +29,7 @@ export default function PartnersPage() {
 
         <div className="relative max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-8">
-            <p className="text-xs font-medium uppercase tracking-widest text-moroww-orange">
+            <p className="text-xs font-medium uppercase tracking-widest text-[#C08D6E]">
               Onze partners
             </p>
             <div className="h-px flex-1 max-w-[60px] bg-moroww-orange opacity-50" />

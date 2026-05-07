@@ -29,7 +29,7 @@ export function HostTeaser() {
           className="flex items-center px-6 py-10 md:px-16 lg:px-24 md:w-1/2"
         >
           <div className="w-full">
-            <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
+            <p className="text-xs font-normal uppercase tracking-widest text-[#C08D6E] mb-4">
               Voor eigenaars
             </p>
             <h2

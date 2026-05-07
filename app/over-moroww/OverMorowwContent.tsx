@@ -47,7 +47,7 @@ export function OverMorowwContent() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-16">
           {/* Tekst links */}
           <motion.div {...fadeUp} className="flex-1">
-            <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
+            <p className="text-xs font-normal uppercase tracking-widest text-[#C08D6E] mb-4">
               Ons verhaal
             </p>
             <h2
@@ -152,7 +152,7 @@ export function OverMorowwContent() {
             transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
             className="flex-1"
           >
-            <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
+            <p className="text-xs font-normal uppercase tracking-widest text-[#C08D6E] mb-4">
               De standaard
             </p>
             <h2
@@ -201,7 +201,7 @@ export function OverMorowwContent() {
             transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
             className="flex-1 flex flex-col justify-center"
           >
-            <p className="text-xs font-medium uppercase tracking-widest text-moroww-black mb-4">
+            <p className="text-xs font-medium uppercase tracking-widest text-[#C08D6E] mb-4">
               De oprichters
             </p>
             <h2

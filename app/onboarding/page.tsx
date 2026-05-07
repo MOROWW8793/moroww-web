@@ -66,7 +66,7 @@ function RadioGroup({
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-xs font-semibold uppercase tracking-widest text-moroww-orange pt-2 pb-1 border-b border-moroww-border">
+    <p className="text-xs font-semibold uppercase tracking-widest text-[#C08D6E] pt-2 pb-1 border-b border-moroww-border">
       {children}
     </p>
   )
@@ -91,7 +91,7 @@ function StepIndicator({ current, total }: { current: number; total: number }) {
           </div>
         ))}
       </div>
-      <p className="text-xs font-medium text-moroww-orange uppercase tracking-widest text-center">
+      <p className="text-xs font-medium text-[#C08D6E] uppercase tracking-widest text-center">
         Stap {current + 1} van {total} - {labels[current]}
       </p>
     </div>
@@ -540,7 +540,7 @@ export default function OnboardingPage() {
 
         {/* Hero */}
         <div className="mb-12 text-center">
-          <p className="text-xs font-medium uppercase tracking-widest text-moroww-orange mb-4">
+          <p className="text-xs font-medium uppercase tracking-widest text-[#C08D6E] mb-4">
             Welkom bij moroww
           </p>
           <h1 className="lowercase leading-[1.05] tracking-[-0.02em] mb-4"

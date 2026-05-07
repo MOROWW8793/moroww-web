@@ -152,7 +152,7 @@ export default function WoningDetailPage({ params }: Props) {
                   <LogIn size={16} className="text-moroww-orange" />
                 </div>
                 <div>
-                  <p className="text-xs text-moroww-black/40 uppercase tracking-widest font-medium mb-0.5">Inchecken</p>
+                  <p className="text-xs text-[#C08D6E] uppercase tracking-widest font-medium mb-0.5">Inchecken</p>
                   <p className="font-semibold text-moroww-black">Vanaf {woning.inCheckin}</p>
                 </div>
               </div>
@@ -161,7 +161,7 @@ export default function WoningDetailPage({ params }: Props) {
                   <LogOut size={16} className="text-moroww-orange" />
                 </div>
                 <div>
-                  <p className="text-xs text-moroww-black/40 uppercase tracking-widest font-medium mb-0.5">Uitchecken</p>
+                  <p className="text-xs text-[#C08D6E] uppercase tracking-widest font-medium mb-0.5">Uitchecken</p>
                   <p className="font-semibold text-moroww-black">Voor {woning.uitCheckin}</p>
                 </div>
               </div>
@@ -170,7 +170,7 @@ export default function WoningDetailPage({ params }: Props) {
                   <Users size={16} className="text-moroww-orange" />
                 </div>
                 <div>
-                  <p className="text-xs text-moroww-black/40 uppercase tracking-widest font-medium mb-0.5">Max gasten</p>
+                  <p className="text-xs text-[#C08D6E] uppercase tracking-widest font-medium mb-0.5">Max gasten</p>
                   <p className="font-semibold text-moroww-black">{woning.maxGasten} personen</p>
                 </div>
               </div>

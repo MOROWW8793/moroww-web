@@ -52,7 +52,7 @@ export function EigenaarContent() {
           transition={{ duration: 0.7, ease: "easeOut" as const }}
           className="relative z-10 w-full md:w-1/2 flex flex-col justify-between pt-32 pb-12 px-6 md:pt-36 md:pb-16 md:pl-16 md:pr-0"
         >
-          <p className="text-white/70 uppercase text-xs tracking-widest font-medium">
+          <p className="text-[#C08D6E] uppercase text-xs tracking-widest font-medium">
             Founding Partner programma
           </p>
           <h1
@@ -88,7 +88,7 @@ export function EigenaarContent() {
           {...fadeUp}
           className="w-full md:w-1/2 bg-white flex flex-col justify-center py-10 px-6 md:py-24 md:px-16 order-last md:order-first"
         >
-          <p className="text-[#FEA05E] uppercase text-xs tracking-widest font-medium mb-4">
+          <p className="text-[#C08D6E] uppercase text-xs tracking-widest font-medium mb-4">
             Waarom nu
           </p>
           <h2
@@ -154,7 +154,7 @@ export function EigenaarContent() {
       <section className="bg-moroww-blush py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full">
         <div className="max-w-4xl mx-auto">
           <motion.div {...fadeUp} className="mb-12">
-            <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
+            <p className="text-xs font-normal uppercase tracking-widest text-[#C08D6E] mb-4">
               Wat Founding Partners krijgen
             </p>
             <h2
@@ -195,7 +195,7 @@ export function EigenaarContent() {
           className="w-full md:w-1/2 bg-white flex items-center px-6 py-10 md:px-16 md:py-16"
         >
           <div>
-            <p className="text-[#FEA05E] uppercase text-xs tracking-widest font-medium mb-4">
+            <p className="text-[#C08D6E] uppercase text-xs tracking-widest font-medium mb-4">
               Wie we zoeken
             </p>
             <h2
@@ -222,7 +222,7 @@ export function EigenaarContent() {
           className="w-full md:w-1/2 bg-[#1A1A1A] flex items-center px-6 py-10 md:px-16 md:py-16 order-last md:order-first"
         >
           <div>
-            <p className="text-[#FEA05E] uppercase text-xs tracking-widest font-medium mb-4">
+            <p className="text-[#C08D6E] uppercase text-xs tracking-widest font-medium mb-4">
               Het team
             </p>
             <h2
@@ -250,7 +250,7 @@ export function EigenaarContent() {
       {/* ── SECTIE 7: FORMULIER ── */}
       <section className="bg-moroww-blush py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full">
         <motion.div {...fadeUp} className="max-w-xl mx-auto text-center">
-          <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
+          <p className="text-xs font-normal uppercase tracking-widest text-[#C08D6E] mb-4">
             Klaar om in te stappen?
           </p>
           <h2

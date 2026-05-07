@@ -25,7 +25,7 @@ export default function CollectiePage() {
   return (
     <div className="min-h-screen bg-moroww-blush">
       <div className="px-6 md:px-16 lg:px-24 pt-32 pb-12 max-w-4xl mx-auto text-center">
-        <p className="text-xs font-medium uppercase tracking-widest text-moroww-orange mb-6">
+        <p className="text-xs font-medium uppercase tracking-widest text-[#C08D6E] mb-6">
           Gecureerde selectie
         </p>
         <h1
