@@ -489,7 +489,8 @@ export default function OnboardingPage() {
     }
   }
 
-  const firstName = data.naam.split(' ')[0]
+  const rawFirst = data.naam.trim().split(/\s+/)[0] ?? ''
+  const firstName = rawFirst.charAt(0).toUpperCase() + rawFirst.slice(1)
 
   // ── Success state ──────────────────────────────────────────────────────
 
@@ -506,9 +507,9 @@ export default function OnboardingPage() {
           <div className="w-16 h-16 rounded-full bg-moroww-orange flex items-center justify-center mx-auto mb-8">
             <Check size={28} className="text-white" strokeWidth={3} />
           </div>
-          <h1 className="font-bold text-moroww-black lowercase leading-tight tracking-[-0.02em] mb-4"
+          <h1 className="font-bold text-moroww-black leading-tight tracking-[-0.02em] mb-4"
             style={{ fontSize: 'clamp(2rem,5vw,3rem)' }}>
-            perfect{firstName ? `, ${firstName}` : ''}. we gaan aan de slag.
+            Perfect{firstName ? `, ${firstName}` : ''}. We gaan aan de slag.
           </h1>
           <p className="text-moroww-black/60 leading-relaxed" style={{ fontSize: 17 }}>
             Je onboarding is gestart. Ons team neemt binnen 24 uur contact met je op
