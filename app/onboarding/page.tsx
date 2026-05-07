@@ -495,7 +495,13 @@ export default function OnboardingPage() {
 
   if (done) {
     return (
-      <div className="min-h-screen flex items-center justify-center px-6 py-24" style={{ background: 'linear-gradient(135deg, #F5C4A8 0%, #FAE4D6 40%, #E8D5C4 100%)' }}>
+      <div className="min-h-screen flex items-center justify-center px-6 py-24" style={{
+          backgroundImage: 'url(/images/gradient-1.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          minHeight: '100vh',
+        }}>
         <div className="max-w-md text-center">
           <div className="w-16 h-16 rounded-full bg-moroww-orange flex items-center justify-center mx-auto mb-8">
             <Check size={28} className="text-white" strokeWidth={3} />
@@ -522,7 +528,13 @@ export default function OnboardingPage() {
   // ── Form ───────────────────────────────────────────────────────────────
 
   return (
-    <div className="min-h-screen px-6 py-16 md:py-24" style={{ background: 'linear-gradient(135deg, #F5C4A8 0%, #FAE4D6 40%, #E8D5C4 100%)' }}>
+    <div className="min-h-screen px-6 py-16 md:py-24" style={{
+          backgroundImage: 'url(/images/gradient-1.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          minHeight: '100vh',
+        }}>
       <div className="mx-auto max-w-xl">
 
         {/* Hero */}
