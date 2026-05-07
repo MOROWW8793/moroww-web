@@ -465,9 +465,21 @@ export default function OnboardingPage() {
       })
       data.fotos.forEach(f => fd.append('fotos', f))
 
-      const res = await fetch('/api/onboarding', { method: 'POST', body: fd })
-      const json = await res.json()
-      if (!res.ok) throw new Error(json.error ?? 'Onbekende fout')
+      const response = await fetch('/api/onboarding', {
+        method: 'POST',
+        body: fd,
+      })
+
+      const result = await response.json()
+      console.log('API response:', result)
+
+      if (!response.ok || !result.success) {
+        setError(typeof result.error === 'string'
+          ? result.error
+          : JSON.stringify(result.error) || 'Er ging iets mis. Probeer opnieuw.')
+        return
+      }
+
       setDone(true)
     } catch (error) {
       console.error('Submit error:', error)

@@ -48,7 +48,7 @@ export function OverMorowwContent() {
           {/* Tekst links */}
           <motion.div {...fadeUp} className="flex-1">
             <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
-              ons verhaal
+              Ons verhaal
             </p>
             <h2
               className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-6"
@@ -153,7 +153,7 @@ export function OverMorowwContent() {
             className="flex-1"
           >
             <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
-              de standaard
+              De standaard
             </p>
             <h2
               className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-6"

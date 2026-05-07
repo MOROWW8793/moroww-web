@@ -30,7 +30,7 @@ export function HostTeaser() {
         >
           <div className="w-full">
             <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
-              voor eigenaars
+              Voor eigenaars
             </p>
             <h2
               className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-6"

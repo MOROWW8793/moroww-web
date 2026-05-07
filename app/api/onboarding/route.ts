@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from 'next/server'
 export const dynamic = 'force-dynamic'
 
 export async function POST(request: NextRequest) {
+  console.log('=== ONBOARDING SUBMIT START ===')
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
@@ -12,6 +13,7 @@ export async function POST(request: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY)
   try {
     const formData = await request.formData()
+    console.log('1. FormData ontvangen')
 
     const naam                  = formData.get('naam') as string
     const email                 = formData.get('email') as string
@@ -55,10 +57,8 @@ export async function POST(request: NextRequest) {
     const gemiddelde_beoordeling = formData.get('gemiddelde_beoordeling') as string
 
     // Upload foto's naar Supabase Storage
-    console.log('Onboarding submit ontvangen')
-
     const fotoFiles = formData.getAll('fotos') as File[]
-    console.log('Foto bestanden:', fotoFiles.length)
+    console.log('2. Foto upload start, aantal:', fotoFiles.length)
     const foto_urls: string[] = []
 
     for (const foto of fotoFiles) {
@@ -84,6 +84,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Sla op in Supabase
+    console.log('3. Supabase insert start')
     const { error: dbError } = await supabase
       .from('onboarding_leads')
       .insert({
@@ -106,6 +107,7 @@ export async function POST(request: NextRequest) {
     if (dbError) throw dbError
 
     const firstName = naam.split(' ')[0]
+    console.log('4. Resend mails start')
 
     // Bevestigingsmail naar eigenaar
     await resend.emails.send({
@@ -198,7 +200,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ success: true })
   } catch (error) {
-    console.error('[onboarding] error:', error)
+    console.error('=== ONBOARDING ERROR ===', error)
     return NextResponse.json({
       success: false,
       error: error instanceof Error ? error.message : String(error),

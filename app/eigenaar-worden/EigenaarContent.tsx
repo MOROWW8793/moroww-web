@@ -53,7 +53,7 @@ export function EigenaarContent() {
           className="relative z-10 w-full md:w-1/2 flex flex-col justify-between pt-32 pb-12 px-6 md:pt-36 md:pb-16 md:pl-16 md:pr-0"
         >
           <p className="text-white/70 uppercase text-xs tracking-widest font-medium">
-            founding partner programma
+            Founding Partner programma
           </p>
           <h1
             className="text-white font-bold lowercase leading-none tracking-[-0.03em]"
@@ -89,7 +89,7 @@ export function EigenaarContent() {
           className="w-full md:w-1/2 bg-white flex flex-col justify-center py-10 px-6 md:py-24 md:px-16 order-last md:order-first"
         >
           <p className="text-[#FEA05E] uppercase text-xs tracking-widest font-medium mb-4">
-            waarom nu
+            Waarom nu
           </p>
           <h2
             className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-6"
@@ -155,7 +155,7 @@ export function EigenaarContent() {
         <div className="max-w-4xl mx-auto">
           <motion.div {...fadeUp} className="mb-12">
             <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
-              wat founding partners krijgen
+              Wat Founding Partners krijgen
             </p>
             <h2
               className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em]"
@@ -196,7 +196,7 @@ export function EigenaarContent() {
         >
           <div>
             <p className="text-[#FEA05E] uppercase text-xs tracking-widest font-medium mb-4">
-              wie we zoeken
+              Wie we zoeken
             </p>
             <h2
               className="font-bold lowercase text-moroww-black leading-tight mb-6"
@@ -223,7 +223,7 @@ export function EigenaarContent() {
         >
           <div>
             <p className="text-[#FEA05E] uppercase text-xs tracking-widest font-medium mb-4">
-              het team
+              Het team
             </p>
             <h2
               className="font-bold lowercase text-white leading-tight mb-6"
@@ -251,7 +251,7 @@ export function EigenaarContent() {
       <section className="bg-moroww-blush py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full">
         <motion.div {...fadeUp} className="max-w-xl mx-auto text-center">
           <p className="text-xs font-normal uppercase tracking-widest text-moroww-orange mb-4">
-            klaar om in te stappen?
+            Klaar om in te stappen?
           </p>
           <h2
             className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-4"
