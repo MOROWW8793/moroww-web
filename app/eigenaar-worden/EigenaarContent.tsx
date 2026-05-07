@@ -76,7 +76,7 @@ export function EigenaarContent() {
           </p>
           <div className="border border-white/30 rounded-full px-6 py-3 inline-block">
             <p className="text-white font-medium text-sm">
-              10 plaatsen · nog 10 beschikbaar
+              10 plaatsen · nog 9 beschikbaar
             </p>
           </div>
         </motion.div>
@@ -268,7 +268,7 @@ export function EigenaarContent() {
 
           <p className="mt-6 text-xs text-moroww-black/40 leading-relaxed">
             Slechts 10 Founding Partner-plaatsen.
-            Er zijn er nog <strong className="text-moroww-black/60">10</strong> beschikbaar.
+            Er zijn er nog <strong className="text-moroww-black/60">9</strong> beschikbaar.
           </p>
         </motion.div>
       </section>
