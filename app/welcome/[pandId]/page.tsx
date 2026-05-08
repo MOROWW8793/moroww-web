@@ -12,20 +12,31 @@ export default async function WelcomePage({
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   )
 
-  const { data, error } = await supabase
+  const { data: page } = await supabase
     .from('welcome_pages')
     .select('*')
     .eq('pand_id', params.pandId)
+    .eq('actief', true)
     .maybeSingle()
 
+  const { data: tips } = await supabase
+    .from('lokale_tips')
+    .select('*')
+    .eq('pand_id', params.pandId)
+    .order('categorie', { ascending: true })
+
+  if (!page) {
+    return <div>Pagina niet gevonden voor {params.pandId}</div>
+  }
+
+  // Dynamische import om compile errors te isoleren
+  const { WelcomeClient } = await import('./WelcomeClient')
+
   return (
-    <div style={{ padding: '40px', fontFamily: 'sans-serif' }}>
-      <h1>Debug</h1>
-      <p>Pand ID: {params.pandId}</p>
-      <p>Error: {error ? JSON.stringify(error) : 'geen'}</p>
-      <p>Data: {data ? JSON.stringify(data).slice(0, 200) : 'null'}</p>
-      <p>URL: {process.env.NEXT_PUBLIC_SUPABASE_URL ? 'aanwezig' : 'ONTBREEKT'}</p>
-      <p>Key: {process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ? 'aanwezig' : 'ONTBREEKT'}</p>
-    </div>
+    <WelcomeClient
+      page={page}
+      tips={tips ?? []}
+      pandNaam={page.pand_naam}
+    />
   )
 }
