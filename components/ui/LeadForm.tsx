@@ -2,7 +2,7 @@
 
 import { useFormState } from "react-dom";
 import { useRef } from "react";
-import { submitLead } from "@/app/eigenaar-worden/actions";
+import { submitLead } from "@/app/(main)/eigenaar-worden/actions";
 import type { LeadFormState } from "@/types/lead";
 import { CheckCircle } from "lucide-react";
 

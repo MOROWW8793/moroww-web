@@ -27,17 +27,17 @@ export default async function WelcomePage({
     .order('categorie', { ascending: true })
 
   if (!page) {
-    return <div>Pagina niet gevonden voor {params.pandId}</div>
+    return <div style={{ padding: 40 }}>Pagina niet gevonden voor {params.pandId}</div>
   }
 
-  // Dynamische import om compile errors te isoleren
   const { WelcomeClient } = await import('./WelcomeClient')
 
   return (
     <WelcomeClient
       page={page}
       tips={tips ?? []}
-      pandNaam={page.pand_naam}
+      pandNaam={page.pand_naam ?? params.pandId}
+      pandId={params.pandId}
     />
   )
 }
