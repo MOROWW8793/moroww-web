@@ -16,7 +16,7 @@ export default async function WelcomePage({
     .from('welcome_pages')
     .select('*')
     .eq('pand_id', params.pandId)
-    .eq('actief', true)
+    .is('actief', true)
     .maybeSingle()
 
   const { data: tips } = await supabase
