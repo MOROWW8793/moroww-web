@@ -41,6 +41,50 @@ function CopyButton({ text }: { text: string }) {
   )
 }
 
+function FormattedText({ text }: { text: string }) {
+  if (!text) return null
+
+  const lines = text.split(/(?=\b[A-Z]{2,}[A-Z\s]+ - )/)
+
+  if (lines.length <= 1) {
+    const sentences = text.split('\n').filter(Boolean)
+    return (
+      <div className="space-y-2">
+        {sentences.map((sentence, i) => (
+          <p key={i} className="text-moroww-black/70 text-sm leading-relaxed">
+            {sentence}
+          </p>
+        ))}
+      </div>
+    )
+  }
+
+  return (
+    <div className="space-y-4">
+      {lines.filter(Boolean).map((section, i) => {
+        const dashIndex = section.indexOf(' - ')
+        if (dashIndex === -1) return (
+          <p key={i} className="text-moroww-black/70 text-sm leading-relaxed">
+            {section}
+          </p>
+        )
+        const title = section.slice(0, dashIndex)
+        const content = section.slice(dashIndex + 3)
+        return (
+          <div key={i}>
+            <p className="font-semibold text-moroww-black text-sm mb-1">
+              {title}
+            </p>
+            <p className="text-moroww-black/70 text-sm leading-relaxed">
+              {content}
+            </p>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="mb-8">
@@ -196,7 +240,7 @@ export function WelcomeClient({ page, tips, pandNaam }: { page: WelcomePage; tip
         {t('slot_instructies') && (
           <Section title="Slotinstructies">
             <Card>
-              <p className="text-moroww-black/70 text-sm leading-relaxed whitespace-pre-line">{t('slot_instructies')}</p>
+              <FormattedText text={t('slot_instructies')} />
             </Card>
           </Section>
         )}
@@ -205,7 +249,7 @@ export function WelcomeClient({ page, tips, pandNaam }: { page: WelcomePage; tip
         {t('huisregels') && (
           <Section title="Huisregels">
             <Card>
-              <p className="text-moroww-black/70 text-sm leading-relaxed whitespace-pre-line">{t('huisregels')}</p>
+              <FormattedText text={t('huisregels')} />
             </Card>
           </Section>
         )}
@@ -214,7 +258,7 @@ export function WelcomeClient({ page, tips, pandNaam }: { page: WelcomePage; tip
         {t('handleiding') && (
           <Section title="Handleiding">
             <Card>
-              <p className="text-moroww-black/70 text-sm leading-relaxed whitespace-pre-line">{t('handleiding')}</p>
+              <FormattedText text={t('handleiding')} />
             </Card>
           </Section>
         )}
