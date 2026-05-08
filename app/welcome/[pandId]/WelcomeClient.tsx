@@ -69,14 +69,19 @@ function Card({ children }: { children: React.ReactNode }) {
 function FormattedText({ text }: { text: string }) {
   if (!text) return null
 
-  const lines = text.split(/(?=\b[A-Z]{2,}[A-Z\s]+ - )/)
+  // Splits op patronen zoals "WOORD - " of "WOORD & WOORD - "
+  // Werkt voor NL (VERWARMING), FR (CHAUFFAGE), EN (HEATING)
+  const sectionRegex = /(?=\b[A-ZÀÂÇÉÈÊËÎÏÔÙÛÜŸÆŒ][A-ZÀÂÇÉÈÊËÎÏÔÙÛÜŸÆŒ\s&]+\s+-\s)/
+  const lines = text.split(sectionRegex).filter(Boolean)
 
   if (lines.length <= 1) {
     const sentences = text.split('\n').filter(Boolean)
     return (
       <div className="space-y-2">
         {sentences.map((sentence, i) => (
-          <p key={i} className="text-moroww-black/70 text-sm leading-relaxed">{sentence}</p>
+          <p key={i} className="text-moroww-black/70 text-sm leading-relaxed">
+            {sentence}
+          </p>
         ))}
       </div>
     )
@@ -87,14 +92,20 @@ function FormattedText({ text }: { text: string }) {
       {lines.filter(Boolean).map((section, i) => {
         const dashIndex = section.indexOf(' - ')
         if (dashIndex === -1) return (
-          <p key={i} className="text-moroww-black/70 text-sm leading-relaxed">{section}</p>
+          <p key={i} className="text-moroww-black/70 text-sm leading-relaxed">
+            {section}
+          </p>
         )
-        const title = section.slice(0, dashIndex)
-        const content = section.slice(dashIndex + 3)
+        const title = section.slice(0, dashIndex).trim()
+        const content = section.slice(dashIndex + 3).trim()
         return (
           <div key={i}>
-            <p className="font-semibold text-moroww-black text-sm mb-1">{title}</p>
-            <p className="text-moroww-black/70 text-sm leading-relaxed">{content}</p>
+            <p className="font-semibold text-moroww-black text-sm mb-1">
+              {title}
+            </p>
+            <p className="text-moroww-black/70 text-sm leading-relaxed">
+              {content}
+            </p>
           </div>
         )
       })}
