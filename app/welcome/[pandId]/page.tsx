@@ -1,3 +1,4 @@
+// Welcome page v2
 import { notFound } from 'next/navigation'
 import { createClient } from '@supabase/supabase-js'
 import { WelcomeClient } from './WelcomeClient'
