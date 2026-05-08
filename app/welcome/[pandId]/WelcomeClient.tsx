@@ -25,10 +25,49 @@ const BOEK_URLS: Record<string, string> = {
   'cozy-relax-beernem': 'https://book.moroww.com/nl/properties/690781db69d1700012bf6dd3?minOccupancy=1',
 }
 
-const CTA_TEXT = {
-  title:  { nl: 'Wil je terugkomen?',                                   fr: 'Vous souhaitez revenir?',                                    en: 'Want to come back?' },
-  sub:    { nl: 'Boek je volgende verblijf rechtstreeks via moroww.',    fr: 'Réservez votre prochain séjour directement via moroww.',     en: 'Book your next stay directly through moroww.' },
-  button: { nl: 'Boek direct',                                           fr: 'Réserver',                                                   en: 'Book now' },
+const labels = {
+  nl: {
+    praktisch:    'Praktische info',
+    checkin:      'Check-in',
+    checkout:     'Checkout',
+    wifi:         'Wifi',
+    noodcontact:  'Noodcontact',
+    slot:         'Slotinstructies',
+    huisregels:   'Huisregels',
+    handleiding:  'Handleiding',
+    tips:         'Lokale tips',
+    cta_titel:    'Wil je terugkomen?',
+    cta_sub:      'Boek je volgende verblijf rechtstreeks via moroww.',
+    cta_knop:     'Boek direct',
+  },
+  fr: {
+    praktisch:    'Informations pratiques',
+    checkin:      'Check-in',
+    checkout:     'Check-out',
+    wifi:         'Wifi',
+    noodcontact:  "Contact d'urgence",
+    slot:         'Accès & clés',
+    huisregels:   'Règles de la maison',
+    handleiding:  'Guide pratique',
+    tips:         'Bons plans locaux',
+    cta_titel:    'Vous souhaitez revenir?',
+    cta_sub:      'Réservez votre prochain séjour directement via moroww.',
+    cta_knop:     'Réserver',
+  },
+  en: {
+    praktisch:    'Practical info',
+    checkin:      'Check-in',
+    checkout:     'Check-out',
+    wifi:         'Wifi',
+    noodcontact:  'Emergency contact',
+    slot:         'Access & keys',
+    huisregels:   'House rules',
+    handleiding:  'House guide',
+    tips:         'Local tips',
+    cta_titel:    'Want to come back?',
+    cta_sub:      'Book your next stay directly through moroww.',
+    cta_knop:     'Book now',
+  },
 }
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
@@ -130,6 +169,7 @@ export function WelcomeClient({
   }
 
   const boekUrl = BOEK_URLS[pandId] ?? 'https://book.moroww.com'
+  const l = labels[lang] ?? labels.nl
 
   const tipsByCategorie = tips.reduce<Record<string, Tip[]>>((acc, tip) => {
     if (!acc[tip.categorie]) acc[tip.categorie] = []
@@ -189,7 +229,7 @@ export function WelcomeClient({
         </div>
 
         {/* ── Praktische info ── */}
-        <Section title="Praktische info">
+        <Section title={l.praktisch}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
 
             {/* Check-in / checkout */}
@@ -202,7 +242,7 @@ export function WelcomeClient({
                         <LogIn size={15} className="text-moroww-orange" />
                       </div>
                       <div>
-                        <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 1.5, color: 'rgba(26,26,26,0.4)', fontWeight: 600, marginBottom: 2 }}>Check-in</p>
+                        <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 1.5, color: 'rgba(26,26,26,0.4)', fontWeight: 600, marginBottom: 2 }}>{l.checkin}</p>
                         <p style={{ fontWeight: 700, color: '#1A1A1A', fontSize: 15 }}>Vanaf {page.checkin_tijd}</p>
                       </div>
                     </div>
@@ -213,7 +253,7 @@ export function WelcomeClient({
                         <LogOut size={15} className="text-moroww-orange" />
                       </div>
                       <div>
-                        <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 1.5, color: 'rgba(26,26,26,0.4)', fontWeight: 600, marginBottom: 2 }}>Checkout</p>
+                        <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 1.5, color: 'rgba(26,26,26,0.4)', fontWeight: 600, marginBottom: 2 }}>{l.checkout}</p>
                         <p style={{ fontWeight: 700, color: '#1A1A1A', fontSize: 15 }}>Voor {page.checkout_tijd}</p>
                       </div>
                     </div>
@@ -230,7 +270,7 @@ export function WelcomeClient({
                     <Wifi size={15} className="text-moroww-orange" />
                   </div>
                   <div style={{ flex: 1 }}>
-                    <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 1.5, color: 'rgba(26,26,26,0.4)', fontWeight: 600, marginBottom: 6 }}>Wifi</p>
+                    <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 1.5, color: 'rgba(26,26,26,0.4)', fontWeight: 600, marginBottom: 6 }}>{l.wifi}</p>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                       <span style={{ fontWeight: 600, color: '#1A1A1A', fontSize: 15 }}>{page.wifi_naam}</span>
                       <CopyButton text={page.wifi_naam} />
@@ -252,7 +292,7 @@ export function WelcomeClient({
                     <Phone size={15} className="text-moroww-orange" />
                   </div>
                   <div style={{ flex: 1 }}>
-                    <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 1.5, color: 'rgba(26,26,26,0.4)', fontWeight: 600, marginBottom: 2 }}>Noodcontact</p>
+                    <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 1.5, color: 'rgba(26,26,26,0.4)', fontWeight: 600, marginBottom: 2 }}>{l.noodcontact}</p>
                     <p style={{ fontWeight: 700, color: '#1A1A1A', fontSize: 15 }}>{page.noodcontact_naam}</p>
                   </div>
                   <a
@@ -269,7 +309,7 @@ export function WelcomeClient({
 
         {/* ── Slot instructies ── */}
         {t('slot_instructies') && (
-          <Section title="Slotinstructies">
+          <Section title={l.slot}>
             <Card>
               <FormattedText text={t('slot_instructies')} />
             </Card>
@@ -278,7 +318,7 @@ export function WelcomeClient({
 
         {/* ── Huisregels ── */}
         {t('huisregels') && (
-          <Section title="Huisregels">
+          <Section title={l.huisregels}>
             <Card>
               <FormattedText text={t('huisregels')} />
             </Card>
@@ -287,7 +327,7 @@ export function WelcomeClient({
 
         {/* ── Handleiding ── */}
         {t('handleiding') && (
-          <Section title="Handleiding">
+          <Section title={l.handleiding}>
             <Card>
               <FormattedText text={t('handleiding')} />
             </Card>
@@ -296,7 +336,7 @@ export function WelcomeClient({
 
         {/* ── Lokale tips ── */}
         {tips.length > 0 && (
-          <Section title="Lokale tips">
+          <Section title={l.tips}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
               {Object.entries(tipsByCategorie).map(([categorie, catTips]) => (
                 <div key={categorie}>
@@ -356,10 +396,10 @@ export function WelcomeClient({
         {/* ── CTA ── */}
         <section style={{ marginTop: 48, background: '#1A1A1A', borderRadius: 24, padding: '40px 28px', textAlign: 'center' }}>
           <h2 style={{ fontSize: 26, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em', marginBottom: 12 }}>
-            {CTA_TEXT.title[lang]}
+            {l.cta_titel}
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 15, lineHeight: 1.6, marginBottom: 28, maxWidth: 320, margin: '0 auto 28px' }}>
-            {CTA_TEXT.sub[lang]}
+            {l.cta_sub}
           </p>
           <a
             href={boekUrl}
@@ -367,7 +407,7 @@ export function WelcomeClient({
             rel="noopener noreferrer"
             style={{ display: 'inline-block', background: '#FEA05E', color: '#fff', fontWeight: 700, fontSize: 16, padding: '14px 36px', borderRadius: 100, textDecoration: 'none' }}
           >
-            {CTA_TEXT.button[lang]}
+            {l.cta_knop}
           </a>
         </section>
 
