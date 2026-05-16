@@ -142,47 +142,64 @@ export function OverMorowwContent() {
       </section>
 
       {/* ── SECTIE 3 — HET SYSTEEM (donker) ── */}
-      <section className="w-full py-28" style={{ background: 'linear-gradient(160deg, #2C1A0E 0%, #1A1209 50%, #1C1510 100%)' }}>
-        <motion.div
-          {...fadeUp}
-          className="max-w-4xl mx-auto px-6 md:px-16 mb-20"
-        >
-          <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-5">
-            Het systeem
-          </p>
-          <h2 className="text-[clamp(1.9rem,3.8vw,3.5rem)] font-bold leading-[1.15] text-white">
-            vier systemen.<br />
-            <span className="font-light text-[#9CA3AF]">één belofte.</span>
-          </h2>
-          <p className="mt-5 text-lg font-normal text-[#C08D6E]/80 max-w-lg leading-relaxed">
-            moroww levert geen geluk. Het levert architectuur. Elk systeem bestaat
-            zodat de gast niets hoeft te regelen en de host nergens wakker van ligt.
-          </p>
-        </motion.div>
+      <section
+        className="w-full py-28 relative overflow-hidden"
+        style={{ backgroundColor: '#1C1005' }}
+      >
+        {/* Gradient achtergrond */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/gradient-1.png"
+            alt=""
+            fill
+            className="object-cover opacity-60 mix-blend-luminosity"
+            priority={false}
+          />
+        </div>
 
-        {systeem.map((item, i) => (
+        {/* Content */}
+        <div className="relative z-10">
           <motion.div
-            key={item.nr}
             {...fadeUp}
-            transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.07 }}
-            className="w-full border-t border-[#C08D6E]/20"
+            className="max-w-4xl mx-auto px-6 md:px-16 mb-20"
           >
-            <div className="max-w-4xl mx-auto px-6 md:px-16 py-12 flex items-start gap-8 md:gap-20">
-              <span
-                className="font-bold leading-none text-[#FEA05E] select-none hidden md:block"
-                style={{ fontSize: "clamp(4rem,9vw,7rem)", opacity: 0.15 }}
-              >
-                {item.nr}
-              </span>
-              <div className="flex-1 pt-2">
-                <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-3 md:hidden">{item.nr}</p>
-                <h3 className="text-xl md:text-2xl font-semibold text-[#FAE4D6] mb-3">{item.titel}</h3>
-                <p className="text-base font-normal leading-relaxed text-[#C08D6E]/70">{item.tekst}</p>
-              </div>
-            </div>
+            <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-5">
+              Het systeem
+            </p>
+            <h2 className="text-[clamp(1.9rem,3.8vw,3.5rem)] font-bold leading-[1.15] text-white">
+              vier systemen.<br />
+              <span className="font-light text-[#9CA3AF]">één belofte.</span>
+            </h2>
+            <p className="mt-5 text-lg font-normal text-[#C08D6E]/80 max-w-lg leading-relaxed">
+              moroww levert geen geluk. Het levert architectuur. Elk systeem bestaat
+              zodat de gast niets hoeft te regelen en de host nergens wakker van ligt.
+            </p>
           </motion.div>
-        ))}
-        <div className="border-b border-[#C08D6E]/20" />
+
+          {systeem.map((item, i) => (
+            <motion.div
+              key={item.nr}
+              {...fadeUp}
+              transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.07 }}
+              className="w-full border-t border-[#C08D6E]/20"
+            >
+              <div className="max-w-4xl mx-auto px-6 md:px-16 py-12 flex items-start gap-8 md:gap-20">
+                <span
+                  className="font-bold leading-none text-[#FEA05E] select-none hidden md:block"
+                  style={{ fontSize: "clamp(4rem,9vw,7rem)", opacity: 0.15 }}
+                >
+                  {item.nr}
+                </span>
+                <div className="flex-1 pt-2">
+                  <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-3 md:hidden">{item.nr}</p>
+                  <h3 className="text-xl md:text-2xl font-semibold text-[#FAE4D6] mb-3">{item.titel}</h3>
+                  <p className="text-base font-normal leading-relaxed text-[#C08D6E]/70">{item.tekst}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+          <div className="border-b border-[#C08D6E]/20" />
+        </div>
       </section>
 
       {/* ── SECTIE 4 — DE STANDAARD (gespiegeld) ── */}
