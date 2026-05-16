@@ -142,7 +142,7 @@ export function OverMorowwContent() {
       </section>
 
       {/* ── SECTIE 3 — HET SYSTEEM (donker) ── */}
-      <section className="w-full bg-[#1A1A1A] py-28">
+      <section className="w-full py-28" style={{ background: 'linear-gradient(160deg, #2C1A0E 0%, #1A1209 50%, #1C1510 100%)' }}>
         <motion.div
           {...fadeUp}
           className="max-w-4xl mx-auto px-6 md:px-16 mb-20"
@@ -154,7 +154,7 @@ export function OverMorowwContent() {
             vier systemen.<br />
             <span className="font-light text-[#9CA3AF]">één belofte.</span>
           </h2>
-          <p className="mt-5 text-lg text-[#9CA3AF] max-w-lg leading-relaxed">
+          <p className="mt-5 text-lg font-normal text-[#C08D6E]/80 max-w-lg leading-relaxed">
             moroww levert geen geluk. Het levert architectuur. Elk systeem bestaat
             zodat de gast niets hoeft te regelen en de host nergens wakker van ligt.
           </p>
@@ -165,7 +165,7 @@ export function OverMorowwContent() {
             key={item.nr}
             {...fadeUp}
             transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.07 }}
-            className="w-full border-t border-white/10"
+            className="w-full border-t border-[#C08D6E]/20"
           >
             <div className="max-w-4xl mx-auto px-6 md:px-16 py-12 flex items-start gap-8 md:gap-20">
               <span
@@ -176,13 +176,13 @@ export function OverMorowwContent() {
               </span>
               <div className="flex-1 pt-2">
                 <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-3 md:hidden">{item.nr}</p>
-                <h3 className="text-xl md:text-2xl font-semibold text-white mb-3">{item.titel}</h3>
-                <p className="text-base leading-relaxed text-[#9CA3AF]">{item.tekst}</p>
+                <h3 className="text-xl md:text-2xl font-semibold text-[#FAE4D6] mb-3">{item.titel}</h3>
+                <p className="text-base font-normal leading-relaxed text-[#C08D6E]/70">{item.tekst}</p>
               </div>
             </div>
           </motion.div>
         ))}
-        <div className="border-b border-white/10" />
+        <div className="border-b border-[#C08D6E]/20" />
       </section>
 
       {/* ── SECTIE 4 — DE STANDAARD (gespiegeld) ── */}
