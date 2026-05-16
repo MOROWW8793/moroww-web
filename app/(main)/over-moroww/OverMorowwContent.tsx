@@ -14,7 +14,7 @@ const fadeUp = {
 export function OverMorowwContent() {
   return (
     <>
-      {/* ── SECTIE 1: HERO ── */}
+      {/* ── SECTIE 1: HERO — ongewijzigd ── */}
       <section className="relative -mt-16 w-full overflow-hidden" style={{ height: "100dvh" }}>
         <Image
           src="/images/over-hero.jpg"
@@ -43,20 +43,20 @@ export function OverMorowwContent() {
       </section>
 
       {/* ── SECTIE 2: HET VERHAAL ── */}
-      <section className="bg-white py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full overflow-hidden">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-16">
+      <section className="bg-moroww-blush py-28 md:py-32 px-6 md:px-16 lg:px-24 w-full overflow-hidden">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20">
           {/* Tekst links */}
           <motion.div {...fadeUp} className="flex-1">
             <p className="text-xs font-normal uppercase tracking-widest text-[#C08D6E] mb-4">
               Ons verhaal
             </p>
             <h2
-              className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-6"
-              style={{ fontSize: "clamp(2.25rem,4vw,3.5rem)" }}
+              className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em]"
+              style={{ fontSize: "clamp(2.5rem,5vw,4.5rem)" }}
             >
               sommige huizen voelen<br />gewoon juist aan.
             </h2>
-            <div className="text-moroww-black/60 leading-relaxed space-y-4 max-w-prose" style={{ fontSize: 17 }}>
+            <div className="text-moroww-black/60 leading-relaxed space-y-4 max-w-sm mt-8" style={{ fontSize: 18 }}>
               <p>
                 Je kent het wel. Je stapt een woning binnen en het klopt gewoon.
                 De lucht, het licht, de sfeer - alles.
@@ -78,7 +78,7 @@ export function OverMorowwContent() {
           <motion.div
             {...fadeUp}
             transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
-            className="relative w-full md:w-1/2 shrink-0 h-[300px] md:h-[500px] rounded-3xl overflow-hidden"
+            className="relative w-full md:w-1/2 shrink-0 h-[300px] md:h-[520px] rounded-xl overflow-hidden shadow-md"
           >
             <Image
               src="/images/over-interieur-1.jpg"
@@ -91,9 +91,9 @@ export function OverMorowwContent() {
         </div>
       </section>
 
-      {/* ── SECTIE 3: WAT MOROWW IS ── */}
-      <section className="bg-moroww-blush py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* ── SECTIE 3: EEN LABEL. GEEN PLATFORM. ── */}
+      <section className="bg-moroww-blush py-28 md:py-32 px-6 md:px-16 lg:px-24 w-full">
+        <div className="max-w-4xl mx-auto">
           <motion.div {...fadeUp}>
             <h2
               className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-8"
@@ -101,7 +101,7 @@ export function OverMorowwContent() {
             >
               een label.<br />geen platform.
             </h2>
-            <p className="text-moroww-black/60 leading-relaxed mx-auto mb-16 max-w-2xl" style={{ fontSize: 20 }}>
+            <p className="text-moroww-black/60 leading-relaxed max-w-xl mb-16" style={{ fontSize: 18 }}>
               moroww beheert geen muren. moroww levert een belofte.
               Elke woning in de collectie is fysiek geïnspecteerd,
               sensorisch ingericht en technologisch bewaakt.
@@ -109,7 +109,7 @@ export function OverMorowwContent() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
             {[
               { symbool: "✗", tekst: "Geen anoniem platform" },
               { symbool: "✗", tekst: "Geen lokale co-host zonder systeem" },
@@ -118,36 +118,39 @@ export function OverMorowwContent() {
               <motion.div
                 key={tekst}
                 {...fadeUp}
-                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
-                className="bg-white rounded-2xl p-8 flex flex-col items-center gap-3 shadow-sm"
+                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.06 }}
+                className="flex items-center gap-6 py-5"
+                style={{ borderBottom: "1px solid rgba(192,141,110,0.2)" }}
               >
-                <span className="text-4xl font-bold text-moroww-orange">{symbool}</span>
-                <p className="text-moroww-black font-semibold text-base text-center">{tekst}</p>
+                <span className="text-2xl font-bold shrink-0" style={{ color: "#FEA05E" }}>{symbool}</span>
+                <p className="text-moroww-black font-semibold text-base">{tekst}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── SECTIE 3B: HET SYSTEEM ── */}
-      <section className="bg-moroww-blush py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full">
+      {/* ── SECTIE 4: HET SYSTEEM (dark break) ── */}
+      <section className="w-full py-28 px-6 md:px-16 lg:px-24" style={{ background: "#1A1A1A" }}>
         <div className="max-w-6xl mx-auto">
-          <motion.div {...fadeUp} className="mb-12">
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#C08D6E] mb-4">
+          {/* Header */}
+          <motion.div {...fadeUp} className="mb-16">
+            <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#FEA05E" }}>
               Het systeem
             </p>
             <h2
-              className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-4"
-              style={{ fontSize: "clamp(2rem,4vw,3.5rem)" }}
+              className="font-bold lowercase text-white leading-[1.05] tracking-[-0.02em] mb-4"
+              style={{ fontSize: "clamp(2.5rem,5vw,3.75rem)" }}
             >
               het systeem achter de standaard.
             </h2>
-            <p className="text-moroww-black/60 leading-relaxed max-w-xl" style={{ fontSize: 18 }}>
+            <p className="leading-relaxed max-w-lg" style={{ color: "#9CA3AF", fontSize: 18 }}>
               moroww levert geen geluk. Het levert architectuur.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2">
             {[
               {
                 nr: "01",
@@ -174,24 +177,26 @@ export function OverMorowwContent() {
                 key={nr}
                 {...fadeUp}
                 transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
-                className="bg-white rounded-2xl p-8"
+                className="p-10"
+                style={{ border: "1px solid rgba(255,255,255,0.1)" }}
               >
-                <p className="text-sm font-semibold mb-3" style={{ color: "#C08D6E" }}>{nr}</p>
-                <h3 className="font-bold lowercase text-moroww-black text-xl mb-3">{titel}</h3>
-                <p className="text-moroww-black/60 leading-relaxed" style={{ fontSize: 15 }}>{tekst}</p>
+                <p className="text-sm font-semibold tracking-widest mb-4" style={{ color: "#FEA05E" }}>{nr}</p>
+                <h3 className="font-semibold lowercase text-white text-xl mb-3">{titel}</h3>
+                <p className="leading-relaxed text-base" style={{ color: "#9CA3AF" }}>{tekst}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── SECTIE 4: DE STANDAARD ── */}
-      <section className="bg-white py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full overflow-hidden">
+      {/* ── SECTIE 5: WIJ ZEGGEN VAKER NEE DAN JA. ── */}
+      <section className="bg-moroww-blush py-28 md:py-36 px-6 md:px-16 lg:px-24 w-full overflow-hidden">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-16">
-          {/* Foto links */}
+          {/* Foto links — scherpe hoek, geen border-radius */}
           <motion.div
             {...fadeUp}
-            className="relative w-full md:w-1/2 shrink-0 h-[300px] md:h-[450px] rounded-3xl overflow-hidden order-first"
+            className="relative w-full md:w-1/2 shrink-0 h-[300px] md:h-[500px] overflow-hidden order-first"
+            style={{ borderRadius: 0 }}
           >
             <Image
               src="/images/over-interieur-2.jpg"
@@ -212,17 +217,17 @@ export function OverMorowwContent() {
               De standaard
             </p>
             <h2
-              className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-6"
-              style={{ fontSize: "clamp(2.25rem,4vw,3.5rem)" }}
+              className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-8"
+              style={{ fontSize: "clamp(2.5rem,5vw,4.5rem)" }}
             >
               wij zeggen vaker<br />nee dan ja.
             </h2>
-            <div className="text-moroww-black/60 leading-relaxed space-y-4 max-w-prose" style={{ fontSize: 17 }}>
-              <p>
-                Minimum 100m². Eigen parkeerplaats. Rustige omgeving.
-                Lichtinval die klopt. Sfeer die je voelt voor je de foto&apos;s ziet.
-              </p>
-              <p>
+            <p className="text-moroww-black/60 leading-relaxed" style={{ fontSize: 17 }}>
+              Minimum 100m². Eigen parkeerplaats. Rustige omgeving.
+              Lichtinval die klopt. Sfeer die je voelt voor je de foto&apos;s ziet.
+            </p>
+            <div className="mt-6 pt-6" style={{ borderTop: "1px solid rgba(192,141,110,0.3)" }}>
+              <p className="text-moroww-black/60 leading-relaxed" style={{ fontSize: 17 }}>
                 Elk pand wordt fysiek bezocht door ons team.
                 Geen uitzonderingen. Geen foto-akkoord.
                 Wie de standaard niet langer haalt, verlaat de collectie.
@@ -233,13 +238,14 @@ export function OverMorowwContent() {
         </div>
       </section>
 
-      {/* ── SECTIE 5: BRENT & NOAM ── */}
-      <section className="bg-moroww-blush py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full overflow-hidden">
+      {/* ── SECTIE 6: BRENT & NOAM. ── */}
+      <section className="bg-moroww-blush py-28 md:py-32 px-6 md:px-16 lg:px-24 w-full overflow-hidden">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-16">
-          {/* Foto links */}
+          {/* Foto links — geen border-radius */}
           <motion.div
             {...fadeUp}
-            className="relative w-full md:w-1/2 shrink-0 h-[300px] md:h-[550px] rounded-3xl overflow-hidden"
+            className="relative w-full md:w-1/2 shrink-0 h-[300px] md:h-[550px] overflow-hidden"
+            style={{ borderRadius: 0 }}
           >
             <Image
               src="/images/over-founders.jpg"
@@ -262,7 +268,7 @@ export function OverMorowwContent() {
             </p>
             <h2
               className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-6"
-              style={{ fontSize: "clamp(2rem,4vw,3.5rem)" }}
+              style={{ fontSize: "clamp(2.5rem,5vw,3.75rem)" }}
             >
               Brent & Noam.
             </h2>
@@ -275,7 +281,8 @@ export function OverMorowwContent() {
             </div>
             <Link
               href="/contact"
-              className="inline-flex items-center rounded-full border-2 border-moroww-black text-moroww-black font-semibold px-8 py-4 text-base hover:bg-moroww-black hover:text-white transition-colors duration-200 self-start"
+              className="inline-flex items-center rounded-full font-semibold px-8 py-4 text-base transition-colors duration-200 self-start"
+              style={{ background: "#1A1A1A", color: "#ffffff" }}
             >
               Stuur ons een bericht
             </Link>
@@ -283,7 +290,7 @@ export function OverMorowwContent() {
         </div>
       </section>
 
-      {/* ── SECTIE 6: MERKQUOTE ── */}
+      {/* ── SECTIE 7: MERKQUOTE ── */}
       <section className="bg-[#1A1A1A] py-32 px-6 md:px-16 lg:px-24 w-full">
         <motion.div {...fadeUp} className="max-w-4xl mx-auto text-center">
           <h2
