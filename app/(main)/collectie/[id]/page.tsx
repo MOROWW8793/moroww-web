@@ -114,37 +114,54 @@ export default function WoningDetailPage({ params }: Props) {
       </div>
 
       {/* ── 3. HOOGTEPUNTEN ── */}
-      <section className="bg-moroww-blush py-12 px-6 md:px-12 mt-10">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="font-bold text-moroww-black text-xl mb-6">Waarom deze woning?</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {woning.hoogtepunten.map((h) => (
-              <div key={h} className="flex items-start gap-3">
-                <div className="w-5 h-5 rounded-full bg-moroww-orange flex items-center justify-center shrink-0 mt-0.5">
-                  <Check size={11} className="text-white" strokeWidth={3} />
+      <section className="px-6 md:px-12 mt-10" style={{ borderTop: '1px solid #E8D5C4' }}>
+        <div className="max-w-6xl mx-auto py-16">
+          <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 24 }}>Waarom deze woning?</h2>
+          <div
+            className="rounded-2xl p-8"
+            style={{ background: '#FFFFFF', boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {woning.hoogtepunten.map((h) => (
+                <div key={h} className="flex items-start gap-3">
+                  <div
+                    className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
+                    style={{ background: '#FEA05E' }}
+                  >
+                    <Check size={11} className="text-white" strokeWidth={3} />
+                  </div>
+                  <span style={{ color: '#1A1A1A', fontWeight: 500, fontSize: 14, lineHeight: 1.6 }}>{h}</span>
                 </div>
-                <span className="text-moroww-black/75 text-sm leading-relaxed">{h}</span>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── 4. BESCHRIJVING ── */}
-      <section className="py-12 px-6 md:px-12">
+      <section className="px-6 md:px-12 pb-16">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-[2fr_1fr] gap-10">
           <div>
-            <h2 className="font-bold text-moroww-black text-xl mb-5">Over deze woning</h2>
-            <p className="font-semibold text-moroww-black leading-relaxed text-base mb-5">
-              {woning.introductie}
-            </p>
-            <p className="text-moroww-black/65 leading-relaxed text-base whitespace-pre-line">
-              {woning.volledigeBeschrijving}
-            </p>
+            <div
+              className="rounded-2xl p-8 mb-6"
+              style={{ background: '#FFFFFF', boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}
+            >
+              <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 20 }}>Over deze woning</h2>
+              <p style={{ fontSize: 18, fontWeight: 600, color: '#1A1A1A', lineHeight: 1.7, marginBottom: 24 }}>
+                {woning.introductie}
+              </p>
+              <p style={{ fontSize: 15, color: '#444444', lineHeight: 1.8 }}>
+                {woning.volledigeBeschrijving}
+              </p>
+            </div>
+
             {woning.buurt && (
-              <div className="mt-8">
-                <h2 className="font-bold text-moroww-black text-xl mb-5">De buurt</h2>
-                <p className="text-moroww-black/65 leading-relaxed text-base">
+              <div
+                className="rounded-2xl p-8"
+                style={{ background: '#FFFFFF', boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}
+              >
+                <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 16 }}>De buurt</h2>
+                <p style={{ fontSize: 15, color: '#444444', lineHeight: 1.8 }}>
                   {woning.buurt}
                 </p>
               </div>
@@ -153,41 +170,33 @@ export default function WoningDetailPage({ params }: Props) {
 
           {/* ── 5. PRAKTISCH ── */}
           <div>
-            <h2 className="font-bold text-moroww-black text-xl mb-5">Praktische info</h2>
+            <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 16 }}>Praktische info</h2>
             <div className="space-y-3">
-              <div className="bg-white rounded-2xl p-5 flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-moroww-blush flex items-center justify-center shrink-0">
-                  <LogIn size={16} className="text-moroww-orange" />
-                </div>
-                <div>
-                  <p className="text-xs text-[#C08D6E] uppercase tracking-widest font-medium mb-0.5">Inchecken</p>
-                  <p className="font-semibold text-moroww-black">Vanaf {woning.inCheckin}</p>
-                </div>
-              </div>
-              <div className="bg-white rounded-2xl p-5 flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-moroww-blush flex items-center justify-center shrink-0">
-                  <LogOut size={16} className="text-moroww-orange" />
-                </div>
-                <div>
-                  <p className="text-xs text-[#C08D6E] uppercase tracking-widest font-medium mb-0.5">Uitchecken</p>
-                  <p className="font-semibold text-moroww-black">Voor {woning.uitCheckin}</p>
-                </div>
-              </div>
-              <div className="bg-white rounded-2xl p-5 flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-moroww-blush flex items-center justify-center shrink-0">
-                  <Users size={16} className="text-moroww-orange" />
-                </div>
-                <div>
-                  <p className="text-xs text-[#C08D6E] uppercase tracking-widest font-medium mb-0.5">Max gasten</p>
-                  <p className="font-semibold text-moroww-black">{woning.maxGasten} personen</p>
-                </div>
-              </div>
-              {woning.tags.map((tag) => (
-                <div key={tag} className="bg-white rounded-2xl p-5 flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-moroww-blush flex items-center justify-center shrink-0">
-                    <Check size={16} className="text-moroww-orange" />
+              {[
+                { icon: <LogIn size={16} style={{ color: '#fff' }} />, label: 'Inchecken', value: `Vanaf ${woning.inCheckin}` },
+                { icon: <LogOut size={16} style={{ color: '#fff' }} />, label: 'Uitchecken', value: `Voor ${woning.uitCheckin}` },
+                { icon: <Users size={16} style={{ color: '#fff' }} />, label: 'Max gasten', value: `${woning.maxGasten} personen` },
+              ].map(({ icon, label, value }) => (
+                <div key={label} className="flex items-center gap-4 rounded-2xl p-5"
+                  style={{ background: '#FFFFFF', border: '1px solid #E8D5C4' }}>
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+                    style={{ background: '#FEA05E' }}>
+                    {icon}
                   </div>
-                  <p className="text-sm text-moroww-black/70">{tag}</p>
+                  <div>
+                    <p style={{ fontSize: 11, color: '#C08D6E', textTransform: 'uppercase', letterSpacing: 1.5, fontWeight: 600, marginBottom: 2 }}>{label}</p>
+                    <p style={{ fontSize: 16, color: '#1A1A1A', fontWeight: 600 }}>{value}</p>
+                  </div>
+                </div>
+              ))}
+              {woning.tags.map((tag) => (
+                <div key={tag} className="flex items-center gap-4 rounded-2xl p-5"
+                  style={{ background: '#FFFFFF', border: '1px solid #E8D5C4' }}>
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+                    style={{ background: '#FEA05E' }}>
+                    <Check size={16} style={{ color: '#fff' }} />
+                  </div>
+                  <p style={{ fontSize: 15, color: '#1A1A1A' }}>{tag}</p>
                 </div>
               ))}
             </div>
