@@ -129,6 +129,62 @@ export function OverMorowwContent() {
         </div>
       </section>
 
+      {/* ── SECTIE 3B: HET SYSTEEM ── */}
+      <section className="bg-moroww-blush py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full">
+        <div className="max-w-6xl mx-auto">
+          <motion.div {...fadeUp} className="mb-12">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#C08D6E] mb-4">
+              Het systeem
+            </p>
+            <h2
+              className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-4"
+              style={{ fontSize: "clamp(2rem,4vw,3.5rem)" }}
+            >
+              het systeem achter de standaard.
+            </h2>
+            <p className="text-moroww-black/60 leading-relaxed max-w-xl" style={{ fontSize: 18 }}>
+              moroww levert geen geluk. Het levert architectuur.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              {
+                nr: "01",
+                titel: "inspectieprotocol",
+                tekst: "Elke woning wordt fysiek bezocht door ons team voor opname in de collectie. Geen foto-akkoord. Geen uitzonderingen. Wie niet door de selectie komt, komt er niet in.",
+              },
+              {
+                nr: "02",
+                titel: "gastenpagina",
+                tekst: "Bij aankomst scannen gasten een QR-code. Ze vinden alles — check-in, huisregels, handleidingen, lokale tips — in hun eigen taal. Geen WhatsApp-keten. Geen zoeken.",
+              },
+              {
+                nr: "03",
+                titel: "sensory design",
+                tekst: "Geur, licht, textuur. Elke woning is sensorisch ingericht. Niet toevallig — ontworpen. Het gevoel dat je krijgt is geen geluk.",
+              },
+              {
+                nr: "04",
+                titel: "kwaliteitsopvolging",
+                tekst: "De standaard stopt niet bij opname. Woningen worden opgevolgd. Wie de standaard niet langer haalt, verlaat de collectie. Het label is meer waard dan elk contract.",
+              },
+            ].map(({ nr, titel, tekst }, i) => (
+              <motion.div
+                key={nr}
+                {...fadeUp}
+                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
+                className="bg-white rounded-2xl p-8"
+              >
+                <p className="text-sm font-semibold mb-3" style={{ color: "#C08D6E" }}>{nr}</p>
+                <h3 className="font-bold lowercase text-moroww-black text-xl mb-3">{titel}</h3>
+                <p className="text-moroww-black/60 leading-relaxed" style={{ fontSize: 15 }}>{tekst}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── SECTIE 4: DE STANDAARD ── */}
       <section className="bg-white py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full overflow-hidden">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-16">
