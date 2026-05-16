@@ -43,64 +43,101 @@ export default function WoningDetailPage({ params }: Props) {
         </div>
 
         {/* ── 2. HERO INFO + STICKY BOOKING ── */}
-        <div className="grid lg:grid-cols-[1fr_340px] gap-10 items-start mb-0">
+        <div className="grid lg:grid-cols-[1fr_340px] gap-6 items-start mb-0">
 
           {/* Links: naam, locatie, specs */}
-          <div>
+          <div
+            className="rounded-2xl p-8"
+            style={{ background: '#FFFFFF', boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}
+          >
+            {/* Badge */}
             <span
-              className="inline-block text-xs font-medium uppercase tracking-widest px-3 py-1 rounded-full mb-3"
-              style={{ background: badge.bg, color: badge.color }}
+              style={{
+                display: 'inline-block',
+                background: badge.bg,
+                color: badge.color,
+                fontSize: 11,
+                fontWeight: 600,
+                letterSpacing: 1.5,
+                textTransform: 'uppercase',
+                borderRadius: 100,
+                padding: '6px 14px',
+              }}
             >
               {woning.collectie}
             </span>
+
+            {/* Naam */}
             <h1
-              className="font-bold text-moroww-black leading-[1.05] tracking-[-0.02em] mb-2"
-              style={{ fontSize: "clamp(2rem,5vw,3.5rem)" }}
+              style={{
+                fontSize: 'clamp(32px,5vw,48px)',
+                fontWeight: 800,
+                color: '#1A1A1A',
+                lineHeight: 1.05,
+                letterSpacing: '-0.02em',
+                marginTop: 12,
+                marginBottom: 0,
+              }}
             >
               {woning.naam}
             </h1>
-            <p className="italic text-sm mb-4" style={{ color: "#FEA05E" }}>
+
+            {/* Slogan */}
+            <p style={{ fontStyle: 'italic', color: '#C08D6E', fontSize: 16, marginTop: 8 }}>
               {woning.slogan}
             </p>
-            <div className="flex items-center gap-2 text-moroww-black/50 text-sm mb-6">
+
+            {/* Locatie */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#666666', fontSize: 14, marginTop: 12 }}>
               <MapPin size={14} />
               {woning.locatie}
             </div>
-            <div className="flex flex-wrap gap-6">
-              <div className="flex items-center gap-2 text-moroww-black/70 text-sm">
-                <BedDouble size={16} className="text-moroww-orange" />
-                {woning.slaapkamers} slaapkamers
-              </div>
-              <div className="flex items-center gap-2 text-moroww-black/70 text-sm">
-                <Bath size={16} className="text-moroww-orange" />
-                {woning.badkamers} badkamers
-              </div>
-              <div className="flex items-center gap-2 text-moroww-black/70 text-sm">
-                <Users size={16} className="text-moroww-orange" />
-                Max {woning.maxGasten} gasten
-              </div>
-              {woning.oppervlakte && (
-                <span className="text-moroww-black/50 text-sm">{woning.oppervlakte}</span>
-              )}
+
+            {/* Specs */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 20 }}>
+              {[
+                `${woning.slaapkamers} slaapkamers`,
+                `${woning.badkamers} badkamers`,
+                `Max ${woning.maxGasten} gasten`,
+                ...(woning.oppervlakte ? [woning.oppervlakte] : []),
+              ].map((spec) => (
+                <span
+                  key={spec}
+                  style={{
+                    background: '#FAE4D6',
+                    borderRadius: 8,
+                    padding: '8px 16px',
+                    color: '#1A1A1A',
+                    fontWeight: 500,
+                    fontSize: 14,
+                  }}
+                >
+                  {spec}
+                </span>
+              ))}
             </div>
           </div>
 
           {/* Rechts: sticky booking */}
           <div className="lg:sticky lg:top-24">
-            <div className="rounded-2xl bg-white shadow-sm p-7">
+            <div
+              className="rounded-2xl p-7"
+              style={{ background: '#1A1A1A', boxShadow: '0 2px 16px rgba(0,0,0,0.12)' }}
+            >
               <div className="mb-5">
-                <span className="font-bold text-3xl text-moroww-black">€{woning.prijs}</span>
-                <span className="text-moroww-black/50 text-sm ml-1">/ nacht</span>
+                <span style={{ fontWeight: 800, fontSize: 32, color: '#ffffff' }}>€{woning.prijs}</span>
+                <span style={{ color: '#999999', fontSize: 14, marginLeft: 6 }}>/ nacht</span>
               </div>
               <a
                 href={woning.boekUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-center rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white font-semibold py-4 text-base transition-colors duration-200 mb-3"
+                className="block w-full text-center rounded-full font-semibold py-4 text-base transition-colors duration-200 mb-3"
+                style={{ background: '#FEA05E', color: '#ffffff' }}
               >
                 Boek direct
               </a>
-              <p className="text-xs text-moroww-black/40 text-center leading-relaxed">
+              <p style={{ color: '#666666', fontSize: 12, textAlign: 'center', lineHeight: 1.5 }}>
                 Je wordt doorgestuurd naar onze boekingspagina.
               </p>
             </div>
