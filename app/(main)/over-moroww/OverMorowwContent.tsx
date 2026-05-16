@@ -76,8 +76,9 @@ export function OverMorowwContent() {
             <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
               De markt
             </p>
-            <h2 className="text-[clamp(2.2rem,4.5vw,4rem)] font-bold leading-[1.1] text-[#1A1A1A]">
-              de markt groeit.<br />de standaard niet.
+            <h2 className="text-[clamp(1.9rem,3.8vw,3.5rem)] font-bold leading-[1.15] text-[#1A1A1A]">
+              <span className="font-light">de markt</span> groeit.<br />
+              <span className="font-light">de standaard</span> niet.
             </h2>
             <p className="mt-8 text-lg leading-relaxed text-[#1A1A1A]">
               Gasten boeken op basis van foto&apos;s. Ze krijgen een gok.
@@ -108,8 +109,10 @@ export function OverMorowwContent() {
             <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
               Wat wij zijn
             </p>
-            <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[1.1] text-[#1A1A1A]">
-              geen beheerder.<br />geen platform.<br />een label.
+            <h2 className="text-[clamp(1.9rem,3.8vw,3.5rem)] font-bold leading-[1.15] text-[#1A1A1A]">
+              geen beheerder.<br />
+              <span className="font-light">geen platform.</span><br />
+              een label.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-[#1A1A1A]/80 max-w-2xl">
               De eigenaar levert het pand. moroww levert de ervaring. Wij certificeren,
@@ -147,8 +150,9 @@ export function OverMorowwContent() {
           <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-5">
             Het systeem
           </p>
-          <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[1.1] text-white">
-            vier systemen.<br />één belofte.
+          <h2 className="text-[clamp(1.9rem,3.8vw,3.5rem)] font-bold leading-[1.15] text-white">
+            vier systemen.<br />
+            <span className="font-light text-[#9CA3AF]">één belofte.</span>
           </h2>
           <p className="mt-5 text-lg text-[#9CA3AF] max-w-lg leading-relaxed">
             moroww levert geen geluk. Het levert architectuur. Elk systeem bestaat
@@ -200,8 +204,9 @@ export function OverMorowwContent() {
             <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
               De standaard
             </p>
-            <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.1] text-[#1A1A1A]">
-              wij zeggen vaker nee dan ja.
+            <h2 className="text-[clamp(1.9rem,3.8vw,3.5rem)] font-bold leading-[1.15] text-[#1A1A1A]">
+              wij zeggen<br />
+              <span className="font-light">vaker nee</span> dan ja.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-[#1A1A1A]">
               Minimum 100m². Minimum 2 slaapkamers. Eigen parkeerplaats.
@@ -229,8 +234,8 @@ export function OverMorowwContent() {
             <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
               De oprichters
             </p>
-            <h2 className="text-[clamp(2rem,4vw,4rem)] font-bold leading-[1.1] text-[#1A1A1A]">
-              brent & noam.
+            <h2 className="text-[clamp(1.7rem,3.2vw,3rem)] font-bold leading-[1.15] text-[#1A1A1A]">
+              <span className="font-light">brent</span> & noam.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-[#1A1A1A]">
               Brent bouwt de systemen. Noam bouwt de relaties. Samen
@@ -267,8 +272,9 @@ export function OverMorowwContent() {
       {/* ── SECTIE 6 — SLUIT CTA (donker) ── */}
       <section className="w-full bg-[#1A1A1A] py-28 px-6 text-center">
         <motion.div {...fadeUp}>
-          <h2 className="text-[clamp(2rem,5vw,4rem)] font-bold leading-[1.1] text-white max-w-2xl mx-auto">
-            het label is open.<br />de standaard niet.
+          <h2 className="text-[clamp(1.9rem,3.8vw,3.5rem)] font-bold leading-[1.15] text-white max-w-2xl mx-auto">
+            <span className="font-light">het label is open.</span><br />
+            de standaard niet.
           </h2>
           <p className="mt-6 text-lg text-[#9CA3AF] max-w-xl mx-auto leading-relaxed">
             Bent u eigenaar van een woning die de standaard haalt. Of zoekt
