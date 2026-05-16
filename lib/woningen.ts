@@ -84,14 +84,16 @@ export const woningen: Woning[] = [
     beschrijving:
       "Een warme houten chalet in het hart van het grootste bos van Oost-Vlaanderen. Hoge plafonds, natuurlijk hout, een privétuin met vijver en stilte als standaard.",
     volledigeBeschrijving:
-      "Een warme houten chalet in het hart van het grootste bos van Oost-Vlaanderen. Hoge plafonds, natuurlijk hout door het hele huis, een privétuin met vijver en stilte als standaard. Wandel door eeuwenoude boswegen vanaf de voordeur, ontdek het Kabouter Wandelpad met de kinderen, of ontspan op het terras met een glas wijn. De open leefruimte draait om een lichte woonkamer met grote ramen die uitkijken op de tuin. Nestel je in de ruime leren hoeksalon met een plaid en een kaars, of kom samen aan de eettafel voor lange, ongehaaste maaltijden. Buiten nodigt een ruim privéterras met tuinmeubelen uit tot buiten eten, terwijl de sfeervol vijver en de volledig omheinde tuin kinderen de vrijheid geven om veilig te spelen.",
+      "Chalet Ann-Helena is een authentieke houten chalet met twee verdiepingen, waar natuurlijk hout, warm licht en het omliggende bos samen een onmiddellijk gevoel van rust creëren. De open leefruimte draait om een lichte woonkamer met grote ramen die uitkijken op de tuin. Nestel je in de ruime leren hoeksalon met een plaid en een kaars, of kom samen aan de eettafel voor lange, ongehaaste maaltijden. De volledig uitgeruste keuken heeft alles: oven, vaatwasser, Nespresso-machine, waterkoker, broodrooster en meer. Op de eerste verdieping wachten twee comfortabele slaapkamers. De masterbedroom met tweepersoonsbed en verse lakens, de tweede slaapkamer afgestemd op kinderen: stapelbed, extra eenpersoonsbed en reisbedje op aanvraag. De badkamer heeft een bad, douche en verwarmde handdoekenrek. Buiten nodigt een ruim privéterras uit tot buiten eten, terwijl de sfeervol vijver en de volledig omheinde tuin kinderen de vrijheid geven om veilig te spelen. Gratis parkeren voor 2 wagens op het terrein.",
+    buurt:
+      "Chalet Ann-Helena ligt in het hart van het Drongengoedbos in Ursel - een charmant dorp in de Meetjeslandse regio. Met 750 hectare is dit het grootste aaneengesloten bos van Oost-Vlaanderen: een landschap van eeuwenoude drevenstructuren, paarse heide, knuppelpaden en stille waterwegen. Meer dan 236 kilometer bewegwijzerde wandelpaden starten pal aan de voordeur. Kinderen zijn dol op het Kabouter Wandelpad en de natuurspeelplaatsen. De Maldegemse Veldhoek is een verborgen parel - heide en knuppelpaden die aanvoelen als een miniatuur Hoge Venen. In het dorp: Villa Maria voor een heerlijk diner, Bar Boudoir voor ontspannen koffie, Brasserie Het Jagershof aan de bosrand. Gent op 30 minuten, Brugge op 25 minuten. Opgelet: de chalet is bereikbaar via een onverhard bospad - rijd voorzichtig bij nat weer.",
     hoogtepunten: [
       "Hart van het Drongengoedbos",
-      "Privétuin met vijver",
+      "Privétuin met vijver - volledig omheind",
+      "Gezinsvriendelijk - stapelbed, reisbedje, speelgoed",
       "Gratis parkeren voor 2 wagens",
-      "Kindvriendelijk - stapelbed, reisbedje, speelgoed",
       "Terras en balkon met bosuitkijk",
-      "Tussen Gent (30 min) en Brugge (25 min)",
+      "Gent (30 min) en Brugge (25 min)",
     ],
     inCheckin: "17:00",
     uitCheckin: "10:00",
