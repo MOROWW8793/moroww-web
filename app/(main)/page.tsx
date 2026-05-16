@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Hero }       from "@/components/sections/Hero";
 import { TrustBar }   from "@/components/sections/TrustBar";
-import { RegioGrid }  from "@/components/sections/RegioGrid";
-import { HostTeaser } from "@/components/sections/HostTeaser";
+import { RegioGrid }        from "@/components/sections/RegioGrid";
+import { StandaardDetail } from "@/components/sections/StandaardDetail";
+import { HostTeaser }       from "@/components/sections/HostTeaser";
 import { Founders }   from "@/components/sections/Founders";
 import { FAQ }        from "@/components/sections/FAQ";
 import { FooterHero } from "@/components/sections/FooterHero";
@@ -33,6 +34,7 @@ export default function HomePage() {
       <Hero />
       <TrustBar />
       <RegioGrid />
+      <StandaardDetail />
       <HostTeaser />
       <Founders />
       <FAQ />
