@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
-import { Hero }       from "@/components/sections/Hero";
-import { TrustBar }   from "@/components/sections/TrustBar";
-import { RegioGrid }        from "@/components/sections/RegioGrid";
+import { Hero }            from "@/components/sections/Hero";
+import { WoningenGrid }    from "@/components/sections/WoningenGrid";
 import { StandaardDetail } from "@/components/sections/StandaardDetail";
-import { HostTeaser }       from "@/components/sections/HostTeaser";
-import { Founders }   from "@/components/sections/Founders";
-import { FAQ }        from "@/components/sections/FAQ";
-import { FooterHero } from "@/components/sections/FooterHero";
+import { HostTeaser }      from "@/components/sections/HostTeaser";
 
 export const metadata: Metadata = {
   title: "Gecureerde vakantiewoningen in België",
@@ -19,7 +15,7 @@ export const metadata: Metadata = {
     url: "https://www.moroww.com",
     images: [
       {
-        url: "/images/woningen/knokke/2026-AmelieBauwens-Moroww-V2-132.jpg",
+        url: "/images/woningen/knokke-new/2026-AmelieBauwens-Moroww-V2-132.jpg",
         width: 1200,
         height: 630,
         alt: "moroww vakantiewoningen",
@@ -32,13 +28,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <TrustBar />
-      <RegioGrid />
+      <WoningenGrid />
       <StandaardDetail />
       <HostTeaser />
-      <Founders />
-      <FAQ />
-      <FooterHero />
     </>
   );
 }
