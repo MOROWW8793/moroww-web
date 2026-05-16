@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { BedDouble, Bath, Users, MapPin, Check, LogIn, LogOut } from "lucide-react";
+import { Users, MapPin, Check, LogIn, LogOut } from "lucide-react";
 import { woningen, BADGE_STYLES } from "@/lib/woningen";
 import { WoningGalerij } from "./WoningGalerij";
 
