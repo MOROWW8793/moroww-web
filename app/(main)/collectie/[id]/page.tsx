@@ -141,6 +141,14 @@ export default function WoningDetailPage({ params }: Props) {
             <p className="text-moroww-black/65 leading-relaxed text-base whitespace-pre-line">
               {woning.volledigeBeschrijving}
             </p>
+            {woning.buurt && (
+              <div className="mt-8">
+                <h2 className="font-bold text-moroww-black text-xl mb-5">De buurt</h2>
+                <p className="text-moroww-black/65 leading-relaxed text-base">
+                  {woning.buurt}
+                </p>
+              </div>
+            )}
           </div>
 
           {/* ── 5. PRAKTISCH ── */}

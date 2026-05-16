@@ -13,6 +13,7 @@ export interface Woning {
   introductie: string;
   beschrijving: string;
   volledigeBeschrijving: string;
+  buurt?: string;
   hoogtepunten: string[];
   inCheckin: string;
   uitCheckin: string;
@@ -123,14 +124,16 @@ export const woningen: Woning[] = [
     beschrijving:
       "Zestien verdiepingen hoog, met de Noordzee voor je en de Golf van Oostende aan je zij. Ensuite badkamers, panoramisch balkon en privé ondergrondse parking.",
     volledigeBeschrijving:
-      "Zestien verdiepingen hoog, met de Noordzee voor je en de Golf van Oostende aan je zij. Een licht, modern appartement met ensuite badkamers in elke slaapkamer, een panoramisch balkon en privé ondergrondse parking - een van de zeldzaamste dingen die je in Oostende vindt. De open leefruimte baadt de hele dag in natuurlijk licht. Stap op het privébalkon en laat het uitzicht de rest doen: zonsopgang boven de golfbaan, zonsondergang boven de zee. Elke slaapkamer is een privéretraite met eigen ensuite badkamer. En dan is er nog de parking. Een privé ondergrondse plaats, inbegrepen - een echte zeldzaamheid in Oostende.",
+      "16e verdieping. De Noordzee voor je, de Golf van Oostende naast je, en de stad uitgespreid aan je voeten. De open leefruimte baadt de hele dag in natuurlijk licht, met een comfortabele salon, eethoek en een volledig uitgeruste keuken: vaatwasser, oven, koffiemachine en alles wat je verwacht. Stap op het privébalkon en laat het uitzicht de rest doen: zonsopgang boven de golfbaan, zonsondergang boven de zee. Elke slaapkamer is een privéretraite met eigen ensuite badkamer: inloopdouche of bad, kwaliteitsarmaturen en hotelwaardige voorzieningen. En dan is er nog de parking. Een privé ondergrondse plaats, inbegrepen - een echte zeldzaamheid in Oostende.",
+    buurt:
+      "Oostende is veel meer dan alleen strand: het is een levendige kuststad met musea, fijne restaurants, markten en boetieks. Dankzij de hoge ligging geniet je hier van unieke 360-graden zichten over zee, golf en stad. Of je nu houdt van cultuur, gastronomie of lange wandelingen langs de kust: alles ligt binnen handbereik. De Kusttram brengt je vlot naar alle badplaatsen en stopt voor de deur: van Knokke tot De Panne. Brugge bereik je in slechts 15 minuten met de trein.",
     hoogtepunten: [
       "16e verdieping - panoramisch zeezicht",
       "Ensuite badkamer in elke slaapkamer",
       "Privé ondergrondse parking inbegrepen",
-      "Golf van Oostende aan je zij",
+      "Panoramisch balkon",
+      "Rookvrij pand",
       "Kusttram voor de deur",
-      "Brugge op 15 min met de trein",
     ],
     inCheckin: "17:00",
     uitCheckin: "10:00",
