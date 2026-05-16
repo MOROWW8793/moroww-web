@@ -196,13 +196,15 @@ export const woningen: Woning[] = [
     beschrijving:
       "Stijlvolle vakantiewoning voor maximaal 10 gasten, midden in het groen in Beernem. Luxueuze badkamers, ruime tuin met overdekt terras, zwembad, vuurschaal en petanquebaan.",
     volledigeBeschrijving:
-      "Kom volledig tot rust in deze stijlvolle vakantiewoning voor maximaal 10 gasten, midden in het groen in Beernem. Luxueuze badkamers, een ruime tuin met overdekt terras, zwembad, vuurschaal, BBQ en petanquebaan. Binnen vind je vier gezellige slaapkamers met kwalitatieve boxspringbedden. De open leefruimte bestaat uit een lichtrijke zithoek, een grote eettafel en een volledig uitgeruste keuken. Buiten wacht je privé tuin - de absolute troef van deze woning. Ontspan in de hottub, steek de vuurschaal aan, neem een duik in het zwembad of speel een potje pétanque. Met een centrale ligging op 14 km van Brugge, 25 km van de kust en 35 km van Gent biedt deze woning de perfecte balans tussen rust en bereikbaarheid.",
+      "Binnen vind je vier gezellige slaapkamers met kwalitatieve boxspringbedden en een mezzanine met twee eenpersoonsbedden. Er zijn twee moderne badkamers: één met inloopdouche en één met ligbad, plus een apart gastentoilet. De open leefruimte bestaat uit een lichtrijke zithoek, een grote eettafel en een volledig uitgeruste keuken: vaatwasser, oven, koelkast met diepvries, microgolfoven, koffiemachine en wasmachine. Buiten wacht de absolute troef van deze woning. Ontspan in de hottub, steek de vuurschaal aan, neem een duik in het zwembad of speel een potje pétanque terwijl de kinderen zich uitleven op de trampoline of speeltuin. Het overdekte terras is de ideale plek om te genieten, ongeacht het weer. Het buitenzwembad is niet verwarmd - ideaal tijdens de warmere maanden of voor wie houdt van een frisse duik. De hottub, BBQ en vuurschaal zijn het hele jaar beschikbaar.",
+    buurt:
+      "Beernem ligt in een groene, rustige omgeving tussen Brugge en Gent - de ideale uitvalsbasis voor wie houdt van natuur, fietsen en wandelen. In de buurt vind je mooie bossen, landelijke wegen en charmante dorpjes. Brugge bereik je op 14 km, de kust op 25 km en Gent op 35 km. Tegelijk bereik je vlot culturele hotspots, restaurants en winkels in de omliggende steden. De woning is bereikbaar met de wagen en heeft private parkeergelegenheid voor 5 wagens op het terrein.",
     hoogtepunten: [
       "Zwembad, hottub en vuurschaal",
-      "Tuin met BBQ en petanquebaan",
-      "Tot 10 gasten",
-      "14 km van Brugge",
-      "Parkeren voor 5 wagens",
+      "Overdekt terras met BBQ en petanquebaan",
+      "Tot 10 gasten - ideaal voor groepen",
+      "14 km van Brugge, 25 km van de kust",
+      "Parkeren voor 5 wagens op het terrein",
       "4 slaapkamers met boxspringbedden",
     ],
     inCheckin: "15:00",
