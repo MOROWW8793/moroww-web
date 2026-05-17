@@ -23,8 +23,8 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 relative ${
-        scrolled ? "bg-white shadow-sm" : "bg-transparent"
+      className={`sticky top-0 z-50 shadow-sm transition-all duration-300 relative ${
+        scrolled ? "bg-white" : "bg-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 flex h-16 items-center justify-between">
