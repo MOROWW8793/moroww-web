@@ -10,6 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "https://www.moroww.com/collectie/cozy-relax-beernem", lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: "https://www.moroww.com/over-moroww", lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: "https://www.moroww.com/eigenaar-worden", lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: "https://www.moroww.com/partners", lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
+    { url: "https://www.moroww.com/partners", lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
   ];
 }

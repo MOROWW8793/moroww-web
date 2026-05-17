@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Users, MapPin, Check, LogIn, LogOut } from "lucide-react";
 import { woningen, BADGE_STYLES } from "@/lib/woningen";
 import { WoningGalerij } from "./WoningGalerij";
+import { VacationRentalJsonLd } from "@/components/JsonLd";
 
 interface Props { params: { id: string } }
 
@@ -12,9 +13,16 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props) {
   const woning = woningen.find((w) => w.id === params.id);
+  if (!woning) return { title: "Woning - moroww" };
   return {
-    title: woning ? `${woning.naam} - moroww` : "Woning - moroww",
-    description: woning?.beschrijving,
+    title: `${woning.naam} — vakantiewoning in ${woning.locatie}`,
+    description: woning.beschrijving,
+    alternates: { canonical: `https://www.moroww.com/collectie/${woning.id}` },
+    openGraph: {
+      title: `${woning.naam} | moroww`,
+      description: woning.beschrijving,
+      images: [{ url: woning.heroFoto, width: 1200, height: 800, alt: woning.naam }],
+    },
   };
 }
 
@@ -26,6 +34,15 @@ export default function WoningDetailPage({ params }: Props) {
 
   return (
     <div className="bg-moroww-blush min-h-screen">
+      <VacationRentalJsonLd
+        name={woning.naam}
+        description={woning.beschrijving}
+        image={woning.heroFoto}
+        pricePerNight={woning.prijs}
+        maxOccupancy={woning.maxGasten}
+        address={woning.locatie}
+        url={`https://www.moroww.com/collectie/${woning.id}`}
+      />
       <div className="mx-auto max-w-6xl px-6 md:px-12 pt-28 pb-0">
 
         {/* ── Breadcrumb ── */}

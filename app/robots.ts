@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/", "/admin/"],
+      disallow: ['/admin', '/onboarding', '/api/'],
     },
     sitemap: "https://www.moroww.com/sitemap.xml",
   };

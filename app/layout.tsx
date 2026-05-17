@@ -1,65 +1,75 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import { OrganizationJsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.moroww.com"),
+  metadataBase: new URL('https://www.moroww.com'),
   title: {
-    default: "moroww - Gecureerde vakantiewoningen in België",
-    template: "%s | moroww",
+    default: 'moroww — premium vakantiewoningen in België',
+    template: '%s | moroww',
   },
   description:
-    "moroww is een kwaliteitslabel voor premium vakantiewoningen in België. Gecureerde woningen aan de kust en in het Meetjesland. Geen platform - een standaard.",
+    'moroww is een gecureerd kwaliteitslabel voor premium vakantiewoningen aan de Belgische kust en in de Vlaamse Ardennen. Fysiek geïnspecteerd. Sensorisch ingericht. Zonder loterij.',
   keywords: [
-    "vakantiewoningen België",
-    "vakantiewoning kust",
-    "vakantiewoning Meetjesland",
-    "premium vakantieverblijf",
-    "holiday home Belgium",
-    "vakantie Knokke",
-    "vakantie Oostende",
-    "vakantie Ursel",
-    "vakantie Beernem",
-    "chalet Meetjesland",
+    'vakantiewoning België',
+    'premium vakantiewoning',
+    'vakantiewoning kust België',
+    'vakantiewoning Knokke',
+    'vakantiewoning Oostende',
+    'vakantiewoning Meetjesland',
+    'vakantiewoning Beernem',
+    'luxe vakantiewoning België',
+    'vakantiewoning huren België',
+    'moroww',
   ],
-  authors: [{ name: "moroww", url: "https://www.moroww.com" }],
-  creator: "moroww",
-  publisher: "moroww",
-  openGraph: {
-    type: "website",
-    locale: "nl_BE",
-    url: "https://www.moroww.com",
-    siteName: "moroww",
-    title: "moroww - Gecureerde vakantiewoningen in België",
-    description:
-      "Een kwaliteitslabel voor premium vakantiewoningen. Gecureerde woningen aan de kust en in het Meetjesland.",
-    images: [
-      {
-        url: "/images/woningen/knokke/2026-AmelieBauwens-Moroww-V2-132.jpg",
-        width: 1200,
-        height: 630,
-        alt: "moroww - Premium vakantiewoningen in België",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "moroww - Gecureerde vakantiewoningen in België",
-    description: "Een kwaliteitslabel voor premium vakantiewoningen in België.",
-    images: ["/images/woningen/knokke/2026-AmelieBauwens-Moroww-V2-132.jpg"],
-  },
+  authors: [{ name: 'moroww', url: 'https://www.moroww.com' }],
+  creator: 'moroww',
+  publisher: 'moroww',
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      'max-image-preview': 'large',
     },
   },
+  openGraph: {
+    type: 'website',
+    locale: 'nl_BE',
+    url: 'https://www.moroww.com',
+    siteName: 'moroww',
+    title: 'moroww — premium vakantiewoningen in België',
+    description:
+      'Een gecureerd kwaliteitslabel voor premium vakantiewoningen. Fysiek geïnspecteerd. Sensorisch ingericht.',
+    images: [
+      {
+        url: '/images/og-default.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'moroww — premium vakantiewoningen',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'moroww — premium vakantiewoningen in België',
+    description:
+      'Een gecureerd kwaliteitslabel voor premium vakantiewoningen. Fysiek geïnspecteerd. Sensorisch ingericht.',
+    images: ['/images/og-default.jpg'],
+  },
   alternates: {
-    canonical: "https://www.moroww.com",
+    canonical: 'https://www.moroww.com',
+    languages: {
+      'nl-BE': 'https://www.moroww.com',
+    },
+  },
+  other: {
+    'geo.region': 'BE-VWV',
+    'geo.placename': 'België',
+    'geo.position': '51.0500;3.7167',
+    ICBM: '51.0500, 3.7167',
   },
 };
 
@@ -72,31 +82,27 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="nl">
-      <body className="antialiased font-sans bg-moroww-blush text-moroww-black">
+      <head>
         <script
-          type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LodgingBusiness",
-              name: "moroww",
-              description:
-                "Een kwaliteitslabel voor premium vakantiewoningen in België.",
-              url: "https://www.moroww.com",
-              logo: "https://www.moroww.com/icon.png",
-              email: "info@moroww.com",
-              areaServed: "Belgium",
-              address: {
-                "@type": "PostalAddress",
-                addressCountry: "BE",
-              },
-              sameAs: [
-                "https://www.instagram.com/moroww.com_/",
-                "https://www.linkedin.com/company/moroww/",
-              ],
-            }),
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXX');`,
           }}
         />
+      </head>
+      <body className="antialiased font-sans bg-moroww-blush text-moroww-black">
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+        <OrganizationJsonLd />
         {children}
         <Analytics />
       </body>
