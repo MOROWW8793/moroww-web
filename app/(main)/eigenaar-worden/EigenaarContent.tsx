@@ -85,63 +85,51 @@ export function EigenaarContent() {
   return (
     <>
       {/* ── SECTIE 1: HERO ── */}
-      <section className="w-full min-h-screen relative overflow-hidden flex items-end pb-20 px-10 md:px-20 -mt-16">
-        <Image
-          src="/images/gradient-1.png"
-          alt=""
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-[#1A1A0A]/40" />
-
-        {/* Tekst links */}
+      <section className="grid grid-cols-1 md:grid-cols-2 min-h-screen -mt-16">
+        {/* Links — tekst */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="relative z-10 max-w-2xl"
+          className="flex items-end px-10 md:px-16 py-20 pt-32 bg-[#1A1A1A]"
         >
-          <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-5">
-            Voor eigenaars
-          </p>
-          <h1 className="text-[clamp(2.8rem,6vw,5.5rem)] font-bold leading-[1.05] text-white">
-            <span className="font-light">uw woning.</span><br />
-            ons systeem.<br />
-            <span className="font-light">samen het</span> label.
-          </h1>
-        </motion.div>
-
-        {/* Tekst rechts */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          className="absolute right-10 md:right-20 bottom-20 max-w-xs z-10"
-        >
-          <p className="text-base text-white/70 text-right leading-relaxed">
-            moroww installeert de technologie, bewaakt de standaard
-            en regelt de boeking. U beheert uw eigen woning.
-          </p>
-          <div className="mt-4 flex justify-end">
-            <span className="text-sm text-white/50 border border-white/20 rounded-full px-4 py-2">
-              10 plaatsen · nog 5 beschikbaar
-            </span>
+          <div className="max-w-sm">
+            <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-6">
+              Voor eigenaars
+            </p>
+            <h1 className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.05] text-white">
+              <span className="font-light">uw woning.</span><br />
+              ons systeem.<br />
+              <span className="font-light">samen het</span> label.
+            </h1>
+            <p className="mt-8 text-base leading-relaxed text-white/60 max-w-xs">
+              moroww installeert de technologie, bewaakt de
+              standaard en regelt de boeking. U beheert uw
+              eigen woning.
+            </p>
+            <div className="mt-8">
+              <span className="text-sm text-white/40 border border-white/15 rounded-full px-4 py-2">
+                10 plaatsen · nog 5 beschikbaar
+              </span>
+            </div>
           </div>
         </motion.div>
+
+        {/* Rechts — foto */}
+        <div className="relative overflow-hidden min-h-[60vh] md:min-h-full">
+          <Image
+            src="/images/woningen/knokke-new/2026-AmelieBauwens-Moroww-V2-115.jpg"
+            alt="moroww woning"
+            fill
+            className="object-cover"
+            priority
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        </div>
       </section>
 
       {/* ── SECTIE 2: WAT MOROWW INSTALLEERT ── */}
-      <section className="w-full py-28 relative overflow-hidden" style={{ backgroundColor: "#1C1005" }}>
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/gradient-1.png"
-            alt=""
-            fill
-            className="object-cover opacity-40 mix-blend-luminosity"
-          />
-        </div>
-
+      <section className="w-full bg-[#1A1A1A] py-28">
         <div className="relative z-10">
           <motion.div {...fadeUp} className="max-w-4xl mx-auto px-6 md:px-16 mb-20">
             <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-5">
@@ -152,7 +140,7 @@ export function EigenaarContent() {
               bewaakt. levert.<br />
               <span className="font-light">en beschermt.</span>
             </h2>
-            <p className="mt-5 text-lg text-[#C08D6E]/80 max-w-lg leading-relaxed">
+            <p className="mt-5 text-lg text-[#9CA3AF] max-w-lg leading-relaxed">
               moroww installeert de volledige tech-stack in uw woning.
               U heeft er geen beheer over. Dat is de bedoeling.
             </p>
@@ -163,7 +151,7 @@ export function EigenaarContent() {
               key={item.nr}
               {...fadeUp}
               transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.06 }}
-              className="w-full border-t border-[#C08D6E]/20"
+              className="w-full border-t border-white/10"
             >
               <div className="max-w-4xl mx-auto px-6 md:px-16 py-10 flex items-start gap-8 md:gap-20">
                 <span
@@ -174,68 +162,13 @@ export function EigenaarContent() {
                 </span>
                 <div className="flex-1 pt-1">
                   <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-2 md:hidden">{item.nr}</p>
-                  <h3 className="text-xl font-semibold text-[#FAE4D6] mb-2">{item.titel}</h3>
-                  <p className="text-base leading-relaxed text-[#C08D6E]/70">{item.tekst}</p>
+                  <h3 className="text-xl font-semibold text-white mb-2">{item.titel}</h3>
+                  <p className="text-base leading-relaxed text-[#9CA3AF]">{item.tekst}</p>
                 </div>
               </div>
             </motion.div>
           ))}
-          <div className="border-b border-[#C08D6E]/20" />
-        </div>
-      </section>
-
-      {/* ── SECTIE 3: HET FINANCIËLE PLAATJE ── */}
-      <section className="w-full py-28 px-6 bg-[#FAE4D6]">
-        <div className="max-w-3xl mx-auto">
-          <motion.div {...fadeUp}>
-            <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
-              Wat het kost
-            </p>
-            <h2 className="text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.1] text-[#1A1A1A]">
-              <span className="font-light">transparant.</span><br />
-              geen verrassingen.
-            </h2>
-            <p className="mt-6 text-lg max-w-xl leading-relaxed text-[#1A1A1A]/70">
-              moroww werkt met een eenvoudig model. Geen verborgen
-              kosten. Geen indexering. Wat u tekent, geldt.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
-            {[
-              {
-                label: "Eenmalig",
-                bedrag: "€ 1.500",
-                tekst: "Certificeringsaudit, interieuradvies, volledige tech-installatie en certificeringsbeslissing.",
-              },
-              {
-                label: "Per maand",
-                bedrag: "€ 125 – 205",
-                tekst: "Tech & monitoring (€ 90–150) en geurabonnement (€ 35–55). Inclusief onderhoud en vervanging.",
-              },
-              {
-                label: "Per boeking",
-                bedrag: "10 %",
-                tekst: "Op de nachtprijs, alle kanalen. Via book.moroww.com betaalt u geen platformkost — hogere nettomarge op elke directe boeking.",
-              },
-            ].map(({ label, bedrag, tekst }, i) => (
-              <motion.div
-                key={label}
-                {...fadeUp}
-                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
-                className="bg-white rounded-2xl p-8"
-              >
-                <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-3">{label}</p>
-                <p className="text-3xl font-bold text-[#1A1A1A]">{bedrag}</p>
-                <p className="mt-3 text-sm leading-relaxed text-[#1A1A1A]/70">{tekst}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <p className="mt-10 text-sm text-[#1A1A1A]/50 italic">
-            Tech-apparatuur blijft eigendom van moroww BV
-            en wordt bij einde contract verwijderd.
-          </p>
+          <div className="border-b border-white/10" />
         </div>
       </section>
 
@@ -321,12 +254,12 @@ export function EigenaarContent() {
       {/* ── SECTIE 6: BRENT & NOAM ── */}
       <section className="grid grid-cols-1 md:grid-cols-2 min-h-[60vh]">
         {/* Foto links */}
-        <div className="relative overflow-hidden min-h-[40vh] md:min-h-full">
+        <div className="relative overflow-hidden min-h-[50vh] md:min-h-full">
           <Image
-            src="/images/fp-founders.jpg"
+            src="/images/over-founders.jpg"
             alt="Brent en Noam"
             fill
-            className="object-cover object-top"
+            className="object-cover object-[center_20%]"
             sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>
