@@ -22,7 +22,7 @@ export default function PartnersPage() {
         style={{
           background: "#1A1A1A",
           minHeight: "60vh",
-          padding: "80px 64px",
+          padding: "104px 64px 80px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
