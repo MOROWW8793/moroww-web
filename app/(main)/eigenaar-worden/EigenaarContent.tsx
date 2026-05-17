@@ -91,7 +91,7 @@ export function EigenaarContent() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="flex items-end px-10 md:px-16 py-20 pt-32 bg-[#1A1A1A]"
+          className="flex items-center px-10 md:px-16 py-16 bg-[#1A1A1A]"
         >
           <div className="max-w-sm">
             <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-6">
