@@ -11,22 +11,73 @@ const fadeUp = {
   transition: { duration: 0.4, ease: "easeOut" as const },
 };
 
+const systeem = [
+  {
+    nr: "01",
+    titel: "smart lock",
+    tekst: "Sleutelloze aankomst via unieke code per boeking. Geen sleuteloverdracht. Geen afspraken. De gast komt binnen. U hoeft er niet bij te zijn.",
+  },
+  {
+    nr: "02",
+    titel: "geluidsmonitoring",
+    tekst: "Een decibelsensor bewaakt uw woning zonder in te breken op privacy. Overlast wordt gedetecteerd voor het een probleem wordt. Uw vergunning blijft veilig.",
+  },
+  {
+    nr: "03",
+    titel: "sfeerautomatisering",
+    tekst: "Licht, temperatuur en muziek staan klaar bij aankomst. De woning verwelkomt de gast. Zonder dat u er iets voor hoeft te doen.",
+  },
+  {
+    nr: "04",
+    titel: "geurverspreiding",
+    tekst: "Elke collectie heeft een eigen signatuurgeur. De cartridges zijn moroww-eigendom. Wij leveren, vervangen en onderhouden. U merkt er niets van.",
+  },
+  {
+    nr: "05",
+    titel: "incident-detectie",
+    tekst: "Waterlek, rookontwikkeling, klimaatafwijking — u wordt gewaarschuwd voor er schade is. Een systeem dat waakt terwijl u slaapt.",
+  },
+  {
+    nr: "06",
+    titel: "host-dashboard",
+    tekst: "Bezetting, boekingen, woningstatus en maandelijkse rapportage in real time. Altijd inzicht. Nooit administratieve last.",
+  },
+];
+
 const voordelen = [
   {
-    titel: "preferentiële voorwaarden",
-    body: "Founding Partners stappen in op voorwaarden die contractueel vergrendeld worden voor de volledige eerste contractcyclus. Wat je vandaag afspreekt, blijft gelden. Geen indexering. Geen verrassing.",
+    titel: "tariefvergrendeling",
+    tekst: "Uw commissie en abonnement worden contractueel vergrendeld voor de volledige eerste cyclus.",
   },
   {
     titel: "directe founder-toegang",
-    body: "In jaar 1 werk je rechtstreeks met Brent en Noam. Geen tussenpersonen, geen callcenters. Jouw woning krijgt de aandacht die een investering verdient.",
+    tekst: "U werkt rechtstreeks met Brent en Noam. Geen callcenter. Geen tussenpersoon.",
   },
   {
     titel: "prioriteit in de collectie",
-    body: "Founding Partner-woningen worden als eerste opgenomen in de collectie, als eerste gepromoot en als eerste gekoppeld aan onze gast-pipeline.",
+    tekst: "Uw woning wordt als eerste opgenomen, gepromoot en gekoppeld aan onze gast-pipeline.",
   },
   {
     titel: "een label dat groeit",
-    body: "Hoe sterker het moroww-label wordt, hoe meer jouw woning daarvan profiteert. Je groeit mee met een merk dat gebouwd is om te blijven.",
+    tekst: "Hoe sterker het moroww-label wordt, hoe meer uw woning daarvan profiteert.",
+  },
+];
+
+const stappen = [
+  {
+    nr: "01",
+    titel: "aanmelding & screening",
+    tekst: "U vult het formulier in. Wij nemen binnen 48u persoonlijk contact op. Elke woning wordt beoordeeld op locatie, oppervlakte en sfeer.",
+  },
+  {
+    nr: "02",
+    titel: "fysieke audit & installatie",
+    tekst: "Ons team bezoekt uw woning. We voeren de certificeringsaudit uit, geven interieuradvies en installeren de volledige tech-stack.",
+  },
+  {
+    nr: "03",
+    titel: "live in de collectie",
+    tekst: "Uw woning draagt het moroww-badge. We starten de distributie via alle kanalen én via book.moroww.com. U volgt alles op via het host-dashboard.",
   },
 ];
 
@@ -34,243 +85,299 @@ export function EigenaarContent() {
   return (
     <>
       {/* ── SECTIE 1: HERO ── */}
-      <section className="-mt-16 relative w-full min-h-screen overflow-hidden flex flex-col md:flex-row">
+      <section className="w-full min-h-screen relative overflow-hidden flex items-end pb-20 px-10 md:px-20 -mt-16">
         <Image
-          src="/images/gradient-hero.png"
+          src="/images/gradient-1.png"
           alt=""
           fill
           className="object-cover"
           priority
         />
-        {/* Overlay voor leesbaarheid */}
-        <div className="absolute inset-0 bg-black/25 z-[1]" />
+        <div className="absolute inset-0 bg-[#1A1A0A]/40" />
 
-        {/* Linkerkolom - label bovenaan, headline onderaan */}
+        {/* Tekst links */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" as const }}
-          className="relative z-10 w-full md:w-1/2 flex flex-col justify-between pt-32 pb-12 px-6 md:pt-36 md:pb-16 md:pl-16 md:pr-0"
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="relative z-10 max-w-2xl"
         >
-          <p className="text-[#C08D6E] uppercase text-xs tracking-widest font-medium">
-            Founding Partner programma
+          <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-5">
+            Voor eigenaars
           </p>
-          <h1
-            className="text-white font-bold lowercase leading-none tracking-[-0.03em]"
-            style={{ fontSize: "clamp(56px,8vw,120px)" }}
-          >
-            de eerste<br />tien tellen<br />het meest.
+          <h1 className="text-[clamp(2.8rem,6vw,5.5rem)] font-bold leading-[1.05] text-white">
+            <span className="font-light">uw woning.</span><br />
+            ons systeem.<br />
+            <span className="font-light">samen het</span> label.
           </h1>
         </motion.div>
 
-        {/* Rechterkolom - subline + counter onderaan */}
+        {/* Tekst rechts */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" as const }}
-          className="relative z-10 w-full md:w-1/2 flex flex-col justify-end pb-12 px-6 md:pb-16 md:pr-16 md:pl-0 md:items-end md:text-right"
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          className="absolute right-10 md:right-20 bottom-20 max-w-xs z-10"
         >
-          <p className="text-white/80 font-normal text-xl max-w-sm leading-relaxed mb-8">
-            De eerste tien eigenaars krijgen voorwaarden
-            die we daarna nooit meer aanbieden.
+          <p className="text-base text-white/70 text-right leading-relaxed">
+            moroww installeert de technologie, bewaakt de standaard
+            en regelt de boeking. U beheert uw eigen woning.
           </p>
-          <div className="border border-white/30 rounded-full px-6 py-3 inline-block">
-            <p className="text-white font-medium text-sm">
+          <div className="mt-4 flex justify-end">
+            <span className="text-sm text-white/50 border border-white/20 rounded-full px-4 py-2">
               10 plaatsen · nog 5 beschikbaar
-            </p>
+            </span>
           </div>
         </motion.div>
       </section>
 
-      {/* ── SECTIE 2: VERHAAL + FOTO ── */}
-      <section className="w-full flex flex-col md:flex-row items-stretch">
+      {/* ── SECTIE 2: WAT MOROWW INSTALLEERT ── */}
+      <section className="w-full py-28 relative overflow-hidden" style={{ backgroundColor: "#1C1005" }}>
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/gradient-1.png"
+            alt=""
+            fill
+            className="object-cover opacity-40 mix-blend-luminosity"
+          />
+        </div>
+
+        <div className="relative z-10">
+          <motion.div {...fadeUp} className="max-w-4xl mx-auto px-6 md:px-16 mb-20">
+            <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-5">
+              De tech-stack
+            </p>
+            <h2 className="text-[clamp(2.5rem,5.5vw,5rem)] font-bold leading-[1.1] text-white">
+              <span className="font-light">technologie die</span><br />
+              bewaakt. levert.<br />
+              <span className="font-light">en beschermt.</span>
+            </h2>
+            <p className="mt-5 text-lg text-[#C08D6E]/80 max-w-lg leading-relaxed">
+              moroww installeert de volledige tech-stack in uw woning.
+              U heeft er geen beheer over. Dat is de bedoeling.
+            </p>
+          </motion.div>
+
+          {systeem.map((item, i) => (
+            <motion.div
+              key={item.nr}
+              {...fadeUp}
+              transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.06 }}
+              className="w-full border-t border-[#C08D6E]/20"
+            >
+              <div className="max-w-4xl mx-auto px-6 md:px-16 py-10 flex items-start gap-8 md:gap-20">
+                <span
+                  className="font-bold leading-none text-[#FEA05E] select-none hidden md:block"
+                  style={{ fontSize: "clamp(3.5rem,8vw,6rem)", opacity: 0.15 }}
+                >
+                  {item.nr}
+                </span>
+                <div className="flex-1 pt-1">
+                  <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-2 md:hidden">{item.nr}</p>
+                  <h3 className="text-xl font-semibold text-[#FAE4D6] mb-2">{item.titel}</h3>
+                  <p className="text-base leading-relaxed text-[#C08D6E]/70">{item.tekst}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+          <div className="border-b border-[#C08D6E]/20" />
+        </div>
+      </section>
+
+      {/* ── SECTIE 3: HET FINANCIËLE PLAATJE ── */}
+      <section className="w-full py-28 px-6 bg-[#FAE4D6]">
+        <div className="max-w-3xl mx-auto">
+          <motion.div {...fadeUp}>
+            <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
+              Wat het kost
+            </p>
+            <h2 className="text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.1] text-[#1A1A1A]">
+              <span className="font-light">transparant.</span><br />
+              geen verrassingen.
+            </h2>
+            <p className="mt-6 text-lg max-w-xl leading-relaxed text-[#1A1A1A]/70">
+              moroww werkt met een eenvoudig model. Geen verborgen
+              kosten. Geen indexering. Wat u tekent, geldt.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
+            {[
+              {
+                label: "Eenmalig",
+                bedrag: "€ 1.500",
+                tekst: "Certificeringsaudit, interieuradvies, volledige tech-installatie en certificeringsbeslissing.",
+              },
+              {
+                label: "Per maand",
+                bedrag: "€ 125 – 205",
+                tekst: "Tech & monitoring (€ 90–150) en geurabonnement (€ 35–55). Inclusief onderhoud en vervanging.",
+              },
+              {
+                label: "Per boeking",
+                bedrag: "10 %",
+                tekst: "Op de nachtprijs, alle kanalen. Via book.moroww.com betaalt u geen platformkost — hogere nettomarge op elke directe boeking.",
+              },
+            ].map(({ label, bedrag, tekst }, i) => (
+              <motion.div
+                key={label}
+                {...fadeUp}
+                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
+                className="bg-white rounded-2xl p-8"
+              >
+                <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-3">{label}</p>
+                <p className="text-3xl font-bold text-[#1A1A1A]">{bedrag}</p>
+                <p className="mt-3 text-sm leading-relaxed text-[#1A1A1A]/70">{tekst}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <p className="mt-10 text-sm text-[#1A1A1A]/50 italic">
+            Tech-apparatuur blijft eigendom van moroww BV
+            en wordt bij einde contract verwijderd.
+          </p>
+        </div>
+      </section>
+
+      {/* ── SECTIE 4: FOUNDING PARTNER VOORDELEN ── */}
+      <section className="grid grid-cols-1 md:grid-cols-2 min-h-[80vh]">
+        {/* Tekst links */}
         <motion.div
           {...fadeUp}
-          className="w-full md:w-1/2 bg-white flex flex-col justify-center py-10 px-6 md:py-24 md:px-16 order-last md:order-first"
+          className="flex items-center px-10 md:px-20 py-20 bg-[#FAE4D6]"
         >
-          <p className="text-[#C08D6E] uppercase text-xs tracking-widest font-medium mb-4">
-            Waarom nu
-          </p>
-          <h2
-            className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-6"
-            style={{ fontSize: "clamp(2.25rem,3.5vw,3.25rem)" }}
-          >
-            een label in opbouw<br />heeft een andere<br />waarde dan<br />een label in bloei.
-          </h2>
-          <div className="text-gray-600 leading-relaxed space-y-4 max-w-sm" style={{ fontSize: 17 }}>
-            <p>
-              moroww staat aan het begin. We hebben de strategie,
-              het systeem, de standaard en de partners.
-              Wat we nu bouwen is de collectie.
+          <div className="max-w-sm">
+            <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
+              Founding Partner
             </p>
-            <p>
-              Als Founding Partner ben je niet zomaar een klant.
-              Je bent deel van de basis waarop moroww gebouwd wordt.
-              Je woning draagt het label vanaf dag één.
+            <h2 className="text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.1] text-[#1A1A1A]">
+              <span className="font-light">niet de korting.</span><br />
+              de positie.
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-[#1A1A1A]">
+              moroww staat aan het begin. De eerste eigenaars
+              bouwen mee aan het label. Dat heeft een andere
+              waarde dan instappen als het label al staat.
             </p>
+
+            <div className="mt-10 border-t border-[#C08D6E]/30">
+              {voordelen.map(({ titel, tekst }) => (
+                <div key={titel} className="flex items-start gap-4 py-5 border-b border-[#C08D6E]/30">
+                  <span className="text-[#FEA05E] mt-0.5 shrink-0">→</span>
+                  <div>
+                    <p className="text-sm font-semibold text-[#1A1A1A]">{titel}</p>
+                    <p className="text-sm text-[#1A1A1A]/60 mt-0.5 leading-relaxed">{tekst}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          <p
-            className="font-bold text-moroww-black mt-8"
-            style={{ fontSize: "clamp(20px,2vw,28px)" }}
-          >
-            Niet de korting. De positie.
-          </p>
         </motion.div>
-        <div className="relative w-full md:w-1/2 h-[280px] md:h-auto md:flex-1 overflow-hidden flex-shrink-0 order-first md:order-last">
-          <img
+
+        {/* Foto rechts */}
+        <div className="relative overflow-hidden min-h-[50vh] md:min-h-full">
+          <Image
             src="/images/fp-interieur-1.jpg"
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ objectPosition: "center top" }}
+            alt="moroww woning"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>
       </section>
 
-      {/* ── SECTIE A: FULLWIDTH FOTO MET OVERLAY ── */}
-      <section className="relative w-full h-[60vh] overflow-hidden">
-        <img
-          src="/images/fp-exterieur.jpg"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ objectPosition: "center center" }}
-        />
-        <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-          <motion.div {...fadeUp} className="text-center text-white px-8">
-            <h2
-              className="font-bold lowercase"
-              style={{ fontSize: "clamp(36px,5vw,72px)" }}
-            >
-              meer dan beheer.
-            </h2>
-            <p className="font-normal text-xl opacity-80 mt-4 max-w-xl mx-auto">
-              Technologie die bewaakt. Een protocol dat garandeert.
-              Een team dat bereikbaar is.
+      {/* ── SECTIE 5: HOE HET WERKT ── */}
+      <section className="w-full py-28 px-6 bg-[#FAE4D6]">
+        <div className="max-w-3xl mx-auto">
+          <motion.div {...fadeUp}>
+            <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
+              Het traject
             </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── SECTIE 4: 4 BLOKKEN ── */}
-      <section className="bg-moroww-blush py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full">
-        <div className="max-w-4xl mx-auto">
-          <motion.div {...fadeUp} className="mb-12">
-            <p className="text-xs font-normal uppercase tracking-widest text-[#C08D6E] mb-4">
-              Wat Founding Partners krijgen
-            </p>
-            <h2
-              className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em]"
-              style={{ fontSize: "clamp(2rem,4vw,3rem)" }}
-            >
-              meer dan beheer.
+            <h2 className="text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.1] text-[#1A1A1A]">
+              van aanmelding<br />
+              <span className="font-light">tot live.</span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {voordelen.map(({ titel, body }, i) => (
+          <div className="mt-14 border-t border-[#C08D6E]/30">
+            {stappen.map(({ nr, titel, tekst }, i) => (
               <motion.div
-                key={titel}
+                key={nr}
                 {...fadeUp}
-                transition={{ duration: 0.4, ease: "easeOut" as const, delay: i * 0.08 }}
-                className="bg-white rounded-2xl p-8 shadow-sm flex flex-col gap-3"
+                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
+                className="flex items-start gap-8 py-8 border-b border-[#C08D6E]/30"
               >
-                <h3 className="font-semibold text-moroww-black text-base lowercase">{titel}</h3>
-                <p className="text-sm text-moroww-black/55 leading-relaxed">{body}</p>
+                <p className="text-[#FEA05E] text-sm font-semibold tracking-widest shrink-0 min-w-[2rem]">{nr}</p>
+                <div>
+                  <h3 className="text-xl font-semibold text-[#1A1A1A] mb-2">{titel}</h3>
+                  <p className="text-base leading-relaxed text-[#1A1A1A]/70">{tekst}</p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── SECTIE B: FOTO LINKS + WIE WE ZOEKEN ── */}
-      <section className="w-full flex flex-col md:flex-row md:items-stretch">
-        <div className="relative w-full md:w-1/2 h-[280px] md:h-auto md:flex-1 overflow-hidden flex-shrink-0">
-          <img
-            src="/images/fp-interieur-2.jpg"
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover"
+      {/* ── SECTIE 6: BRENT & NOAM ── */}
+      <section className="grid grid-cols-1 md:grid-cols-2 min-h-[60vh]">
+        {/* Foto links */}
+        <div className="relative overflow-hidden min-h-[40vh] md:min-h-full">
+          <Image
+            src="/images/fp-founders.jpg"
+            alt="Brent en Noam"
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>
-        <motion.div
-          {...fadeUp}
-          className="w-full md:w-1/2 bg-white flex items-center px-6 py-10 md:px-16 md:py-16"
-        >
-          <div>
-            <p className="text-[#C08D6E] uppercase text-xs tracking-widest font-medium mb-4">
-              Wie we zoeken
-            </p>
-            <h2
-              className="font-bold lowercase text-moroww-black leading-tight mb-6"
-              style={{ fontSize: "clamp(32px,4vw,52px)" }}
-            >
-              niet elke woning.<br />de juiste woning.
-            </h2>
-            <p className="text-gray-600 text-lg leading-relaxed max-w-sm">
-              moroww inspecteert elk pand fysiek voor we een samenwerking
-              aangaan. Minimum 100m², eigen parkeerplaats, rustige omgeving,
-              lichtinval en sfeer die kloppen.<br /><br />
-              We zeggen vaker nee dan ja. Dat is precies waarom jouw pand
-              erbij willen horen, de moeite waard is.
-            </p>
-          </div>
-        </motion.div>
-      </section>
 
-      {/* ── SECTIE C: FOUNDERS STRIP ── */}
-      <section className="w-full flex flex-col md:flex-row md:items-stretch">
+        {/* Tekst rechts */}
         <motion.div
           {...fadeUp}
-          className="w-full md:w-1/2 bg-[#1A1A1A] flex items-center px-6 py-10 md:px-16 md:py-16 order-last md:order-first"
+          className="flex items-center px-10 md:px-16 py-20 bg-[#1A1A1A]"
         >
-          <div>
-            <p className="text-[#C08D6E] uppercase text-xs tracking-widest font-medium mb-4">
+          <div className="max-w-sm">
+            <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-5">
               Het team
             </p>
-            <h2
-              className="font-bold lowercase text-white leading-tight mb-6"
-              style={{ fontSize: "clamp(32px,4vw,52px)" }}
-            >
-              je werkt met<br />Brent en Noam.
+            <h2 className="text-[clamp(1.8rem,4vw,3.5rem)] font-bold leading-[1.1] text-white">
+              <span className="font-light">u werkt met</span><br />
+              brent en noam.
             </h2>
-            <p className="text-white/70 text-lg leading-relaxed max-w-sm">
-              Geen callcenter. Geen tussenpersoon. In jaar 1 heb je directe
-              toegang tot de oprichters. Jouw woning krijgt de aandacht
-              die een investering verdient.
+            <p className="mt-5 text-base leading-relaxed text-[#9CA3AF]">
+              Geen callcenter. Geen tussenpersoon. In jaar 1
+              heeft u directe toegang tot de oprichters.
+              Uw woning krijgt de aandacht die een
+              investering verdient.
+            </p>
+            <p className="mt-4 text-base text-[#9CA3AF]">
+              noam.landries@moroww.com
             </p>
           </div>
         </motion.div>
-        <div className="relative w-full md:w-1/2 h-[280px] md:h-auto md:flex-1 overflow-hidden flex-shrink-0 order-first md:order-last">
-          <img
-            src="/images/fp-founders.jpg"
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </div>
       </section>
 
       {/* ── SECTIE 7: FORMULIER ── */}
-      <section className="bg-moroww-blush py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full">
-        <motion.div {...fadeUp} className="max-w-xl mx-auto text-center">
-          <p className="text-xs font-normal uppercase tracking-widest text-[#C08D6E] mb-4">
-            Klaar om in te stappen?
-          </p>
-          <h2
-            className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-4"
-            style={{ fontSize: "clamp(2rem,3.5vw,3rem)" }}
-          >
-            meld je aan.
-          </h2>
-          <p className="text-moroww-black/60 leading-relaxed mb-10" style={{ fontSize: 17 }}>
-            We nemen binnen 48u persoonlijk contact op.
-            Elke woning wordt fysiek beoordeeld.
-          </p>
+      <section className="w-full py-28 px-6 bg-[#FAE4D6]">
+        <div className="max-w-2xl mx-auto">
+          <motion.div {...fadeUp}>
+            <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
+              Aanmelden
+            </p>
+            <h2 className="text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.1] text-[#1A1A1A]">
+              <span className="font-light">klaar om</span><br />
+              in te stappen.
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-[#1A1A1A]/70">
+              We nemen binnen 48u persoonlijk contact op.
+              Elke woning wordt fysiek beoordeeld.
+            </p>
+          </motion.div>
 
-          <LeadForm />
-
-          <p className="mt-6 text-xs text-moroww-black/40 leading-relaxed">
-            Slechts 10 Founding Partner-plaatsen.
-            Er zijn er nog <strong className="text-moroww-black/60">5</strong> beschikbaar.
-          </p>
-        </motion.div>
+          <div className="mt-12">
+            <LeadForm />
+          </div>
+        </div>
       </section>
     </>
   );
