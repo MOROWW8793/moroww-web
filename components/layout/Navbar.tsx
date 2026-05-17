@@ -9,7 +9,7 @@ const links = [
   { label: "De Collectie",     href: "/collectie" },
   { label: "Over moroww",      href: "/over-moroww" },
   { label: "Partners",         href: "/partners" },
-  { label: "Founding Partner", href: "/eigenaar-worden" },
+  { label: "Eigenaar worden", href: "/eigenaar-worden" },
 ];
 
 export function Navbar() {
