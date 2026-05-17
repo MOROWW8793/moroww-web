@@ -62,7 +62,7 @@ export default function PartnersPage() {
             <img
               src="/images/partners/moro-essentials-logo.png"
               alt="Moro Essentials"
-              style={{ maxHeight: 80, objectFit: "contain", marginBottom: 32, alignSelf: "flex-start" }}
+              style={{ maxHeight: 140, objectFit: "contain", marginBottom: 32, alignSelf: "flex-start" }}
             />
             <span style={{
               display: "inline-block",
