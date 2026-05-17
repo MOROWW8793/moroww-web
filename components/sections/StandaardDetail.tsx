@@ -27,12 +27,12 @@ const kaarten = [
   {
     icon: Gift,
     titel: "Welkomstpakket",
-    tekst: "Elke woning wordt klaargemaakt met geselecteerde producten. Van de badkamer tot het ontbijt.",
+    tekst: "geselecteerde badkamerproducten en verse linnens bij elke aankomst. de standaard is de standaard, elke keer.",
   },
   {
     icon: TrendingUp,
-    titel: "Direct booking",
-    tekst: "Gepersonaliseerde marketing per woning. Minder platform-afhankelijkheid, meer marge.",
+    titel: "linnen & verzorging",
+    tekst: "elk verblijf start met vers opgemaakt bed, geselecteerde badkamerproducten en een schone lei. geen compromis.",
   },
 ];
 
@@ -53,15 +53,15 @@ export function StandaardDetail() {
           className="mb-12"
         >
           <p style={{ color: "#C08D6E", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: 2, marginBottom: 16 }}>
-            Wat moroww meebrengt
+            de standaard
           </p>
           <h2
             style={{ color: "#ffffff", fontSize: "clamp(28px,4vw,40px)", fontWeight: 800, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 16 }}
           >
-            De standaard. In detail.
+            wat elke moroww-woning meebrengt.
           </h2>
           <p style={{ color: "#999999", fontSize: 16, lineHeight: 1.6 }}>
-            Elk verblijf is het resultaat van een systeem. Niet van toeval.
+            elk verblijf is het resultaat van een systeem. niet van toeval.
           </p>
         </motion.div>
 

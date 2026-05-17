@@ -39,15 +39,15 @@ export function HostTeaser() {
               jij opent de deur.<br />wij doen de rest.
             </h2>
             <p className="text-moroww-black/60 leading-relaxed mb-10" style={{ fontSize: 17 }}>
-              Geen telefoontjes, geen gedoe, geen verkeerde gasten.
-              Slimme technologie bewaakt. Ons protocol garandeert.
-              Jij houdt de controle.
+              geen telefoontjes, geen gedoe, geen administratieve last.
+              slimme technologie bewaakt. ons protocol garandeert.
+              jij houdt de controle.
             </p>
             <Link
               href="/eigenaar-worden"
               className="inline-flex items-center justify-center w-full md:w-auto rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white font-semibold px-8 py-4 text-base transition-colors duration-200"
             >
-              Word Founding Partner
+              eigenaar worden
             </Link>
           </div>
         </motion.div>

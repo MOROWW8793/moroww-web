@@ -109,7 +109,7 @@ export function EigenaarContent() {
             </p>
             <div className="mt-8">
               <span className="text-sm text-white/40 border border-white/15 rounded-full px-4 py-2">
-                10 plaatsen · nog 5 beschikbaar
+                founding partner plaatsen zijn beperkt
               </span>
             </div>
           </div>

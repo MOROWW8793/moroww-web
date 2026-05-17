@@ -33,7 +33,7 @@ export function LeadForm() {
 
   return (
     <form ref={formRef} action={action} className="rounded-2xl bg-white p-8 md:p-10 space-y-5 shadow-sm">
-      <h3 className="font-bold text-xl text-moroww-black mb-2">Aanmelden als Founding Partner</h3>
+      <h3 className="font-bold text-xl text-moroww-black mb-2">meld je woning aan</h3>
 
       <div className="grid gap-5 sm:grid-cols-2">
         <label className={labelClass}>
@@ -91,7 +91,7 @@ export function LeadForm() {
         type="submit"
         className="w-full rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white font-semibold py-4 transition-colors duration-200"
       >
-        Aanmelden als Founding Partner
+        meld je woning aan
       </button>
     </form>
   );

@@ -256,6 +256,12 @@ export function OverMorowwContent() {
             >
               stuur ons een bericht
             </Link>
+            <Link
+              href="/collectie"
+              className="inline-block mt-4 border border-[#1A1A1A]/30 text-[#1A1A1A] rounded-full px-8 py-4 text-sm font-medium hover:border-[#1A1A1A] transition-colors"
+            >
+              bekijk de collectie
+            </Link>
           </div>
         </motion.div>
         <div className="relative overflow-hidden min-h-[60vw] md:min-h-full">
@@ -277,8 +283,8 @@ export function OverMorowwContent() {
             de standaard niet.
           </h2>
           <p className="mt-6 text-lg text-[#9CA3AF] max-w-xl mx-auto leading-relaxed">
-            Bent u eigenaar van een woning die de standaard haalt. Of zoekt
-            u een verblijf zonder loterij.
+            Ben je eigenaar van een woning die de standaard haalt. Of zoek
+            je een verblijf zonder loterij.
           </p>
           <div className="mt-10 flex flex-wrap gap-4 justify-center">
             <Link
