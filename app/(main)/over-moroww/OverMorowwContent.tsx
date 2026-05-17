@@ -116,8 +116,10 @@ export function OverMorowwContent() {
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-[#1A1A1A]/80 max-w-2xl">
               De eigenaar levert het pand. moroww levert de ervaring. Wij certificeren,
-              installeren en bewaken de standaard — op elk pand in de collectie, zonder
-              uitzondering.
+              installeren en bewaken de standaard — op elk pand in{" "}
+              <Link href="/collectie" className="underline underline-offset-2 decoration-[#C08D6E]/50 hover:decoration-[#FEA05E] transition-colors">
+                de collectie
+              </Link>, zonder uitzondering.
             </p>
           </motion.div>
 
@@ -267,7 +269,7 @@ export function OverMorowwContent() {
         <div className="relative overflow-hidden min-h-[60vw] md:min-h-full">
           <Image
             src="/images/over-founders.jpg"
-            alt="Brent en Noam"
+            alt="Brent De Baets en Noam Landries — oprichters moroww"
             fill
             className="object-cover object-top"
             sizes="(max-width: 768px) 100vw, 50vw"

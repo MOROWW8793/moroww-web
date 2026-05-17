@@ -3,6 +3,7 @@ import { Hero }            from "@/components/sections/Hero";
 import { WoningenGrid }    from "@/components/sections/WoningenGrid";
 import { StandaardDetail } from "@/components/sections/StandaardDetail";
 import { HostTeaser }      from "@/components/sections/HostTeaser";
+import { FaqJsonLd }       from "@/components/FaqJsonLd";
 
 export const metadata: Metadata = {
   title: 'moroww — premium vakantiewoningen in België',
@@ -18,6 +19,7 @@ export default function HomePage() {
       <WoningenGrid />
       <StandaardDetail />
       <HostTeaser />
+      <FaqJsonLd />
     </>
   );
 }

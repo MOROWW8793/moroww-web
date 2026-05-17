@@ -11,16 +11,41 @@ export function generateStaticParams() {
   return woningen.map((w) => ({ id: w.id }));
 }
 
+const woningMeta: Record<string, { title: string; description: string; keywords: string[] }> = {
+  'nosso-knokke': {
+    title: 'Nosso Logies — vakantiewoning Knokke-Heist | moroww',
+    description: 'Luxe vakantiewoning in Heist-aan-Zee, Knokke. 110m², 2 slaapkamers, max 6 personen. Strand op 2 minuten. Fysiek gecertificeerd door moroww. Vanaf €370/nacht.',
+    keywords: ['vakantiewoning Knokke', 'vakantiewoning Heist-aan-Zee', 'vakantiewoning kust België', 'luxe vakantiewoning Knokke-Heist', 'privé vakantiewoning Knokke', 'Nosso Logies Knokke', 'moroww kust'],
+  },
+  'moroww-oostende': {
+    title: 'Vakantiewoning Oostende — zeezicht | moroww',
+    description: 'Vakantiewoning op de 16e verdieping in Oostende. Zeezicht, privé parking, 2 slaapkamers, max 4 personen. Gecertificeerd door moroww. Vanaf €210/nacht.',
+    keywords: ['vakantiewoning Oostende', 'vakantiewoning zeezicht Oostende', 'appartement Oostende huren', 'luxe vakantiewoning Oostende', 'moroww Oostende'],
+  },
+  'ann-helena-ursel': {
+    title: 'Chalet Ann-Helena — vakantiewoning Ursel Meetjesland | moroww',
+    description: 'Chalet met privétuin en vijver in Ursel, Meetjesland. 2 slaapkamers, max 5 personen. Bosrand, gezinsvriendelijk. Gecertificeerd door moroww. Vanaf €220/nacht.',
+    keywords: ['vakantiewoning Meetjesland', 'chalet Ursel', 'vakantiewoning Ursel', 'chalet huren Meetjesland', 'gezinsvakantie Meetjesland', 'moroww Meetjesland'],
+  },
+  'cozy-relax-beernem': {
+    title: 'The Cozy Relax Home — vakantiewoning Beernem met zwembad | moroww',
+    description: 'Ruime vakantiewoning in Beernem met zwembad, hottub en tuin met BBQ. 4 slaapkamers, max 10 personen. Ideaal voor groepen. Gecertificeerd door moroww. Vanaf €600/nacht.',
+    keywords: ['vakantiewoning Beernem', 'vakantiewoning met zwembad België', 'vakantiewoning groep België', 'vakantiewoning hottub België', 'groepsaccommodatie Meetjesland', 'moroww Beernem'],
+  },
+};
+
 export async function generateMetadata({ params }: Props) {
   const woning = woningen.find((w) => w.id === params.id);
   if (!woning) return { title: "Woning - moroww" };
+  const meta = woningMeta[woning.id];
   return {
-    title: `${woning.naam} — vakantiewoning in ${woning.locatie}`,
-    description: woning.beschrijving,
+    title: meta?.title ?? `${woning.naam} — vakantiewoning in ${woning.locatie}`,
+    description: meta?.description ?? woning.beschrijving,
+    keywords: meta?.keywords,
     alternates: { canonical: `https://www.moroww.com/collectie/${woning.id}` },
     openGraph: {
-      title: `${woning.naam} | moroww`,
-      description: woning.beschrijving,
+      title: meta?.title ?? `${woning.naam} | moroww`,
+      description: meta?.description ?? woning.beschrijving,
       images: [{ url: woning.heroFoto, width: 1200, height: 800, alt: woning.naam }],
     },
   };

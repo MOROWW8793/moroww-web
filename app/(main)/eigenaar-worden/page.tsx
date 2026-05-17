@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { EigenaarContent } from "./EigenaarContent";
+import { FaqJsonLd } from "@/components/FaqJsonLd";
 
 export const metadata: Metadata = {
   title: 'Eigenaar worden — meld uw woning aan bij moroww',
@@ -9,5 +10,10 @@ export const metadata: Metadata = {
 };
 
 export default function EigenaarWordenPage() {
-  return <EigenaarContent />;
+  return (
+    <>
+      <EigenaarContent />
+      <FaqJsonLd />
+    </>
+  );
 }
