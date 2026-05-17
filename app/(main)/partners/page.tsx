@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Partners - Korteketen. Geen compromis.",
@@ -15,155 +14,171 @@ export const metadata: Metadata = {
 
 export default function PartnersPage() {
   return (
-    <div className="bg-moroww-blush min-h-screen">
+    <div>
 
-      {/* ── 1. HERO ── */}
-      <section className="relative overflow-hidden px-6 md:px-16 lg:px-24 pt-32 pb-24">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: "radial-gradient(circle, rgba(26,26,26,0.06) 1px, transparent 1px)",
-            backgroundSize: "28px 28px",
-          }}
-        />
+      {/* ── 1. HERO — DONKER ── */}
+      <section
+        style={{
+          background: "#1A1A1A",
+          minHeight: "60vh",
+          padding: "80px 64px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-end",
+        }}
+      >
+        <p style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: 3, color: "#C08D6E", marginBottom: 24 }}>
+          Onze partners
+        </p>
+        <h1 style={{ fontSize: "clamp(40px,6vw,72px)", fontWeight: 800, lineHeight: 1.0, color: "#ffffff", marginBottom: 32 }}>
+          Korteketen.<br />Geen compromis.
+        </h1>
+        <p style={{ fontSize: 18, lineHeight: 1.7, color: "#999999", maxWidth: 560 }}>
+          moroww kiest bewust voor Belgische en Europese merken die onze
+          standaard delen. Niet omdat het moet - omdat het klopt.
+        </p>
+      </section>
 
-        <div className="relative max-w-4xl mx-auto">
-          <div className="flex items-center gap-3 mb-8">
-            <p className="text-xs font-medium uppercase tracking-widest text-[#C08D6E]">
-              Onze partners
+      {/* ── 2. MORO ESSENTIALS — WIT ── */}
+      <section style={{ background: "#FFFFFF", padding: "80px 64px" }}>
+        <div style={{ display: "flex", minHeight: 600, gap: 0, borderRadius: 16, overflow: "hidden" }}>
+          {/* Foto links (55%) */}
+          <div style={{ width: "55%", flexShrink: 0, overflow: "hidden", borderRadius: 12 }}>
+            <img
+              src="/images/partners/moro-essentials-sfeer.jpg"
+              alt="Moro Essentials sfeerbeeld"
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
+          </div>
+
+          {/* Content rechts (45%) */}
+          <div style={{
+            width: "45%",
+            paddingLeft: 64,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}>
+            <img
+              src="/images/partners/moro-essentials-logo.png"
+              alt="Moro Essentials"
+              style={{ maxHeight: 80, objectFit: "contain", marginBottom: 32, alignSelf: "flex-start" }}
+            />
+            <span style={{
+              display: "inline-block",
+              background: "#FAE4D6",
+              color: "#C08D6E",
+              fontSize: 11,
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: 1.5,
+              padding: "6px 14px",
+              borderRadius: 100,
+              marginBottom: 20,
+              alignSelf: "flex-start",
+            }}>
+              Belgisch merk
+            </span>
+            <p style={{ fontSize: 14, fontWeight: 600, color: "#FEA05E", marginBottom: 16 }}>
+              Badkamerproducten
             </p>
-            <div className="h-px flex-1 max-w-[60px] bg-moroww-orange opacity-50" />
-          </div>
-
-          <h1
-            className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-10"
-            style={{ fontSize: "clamp(2.5rem,5vw,4.5rem)" }}
-          >
-            korteketen. <span className="text-moroww-orange">-</span> geen compromis.
-          </h1>
-
-          <p className="text-moroww-black/60 leading-relaxed max-w-xl" style={{ fontSize: 18 }}>
-            moroww kiest bewust voor Belgische en Europese merken die onze standaard delen.
-            Niet omdat het moet - omdat het klopt. Elke fles, elk product, elk detail in onze
-            woningen komt van een merk dat wij met naam en gezicht kennen. Korte keten betekent:
-            wij weten wie het maakt, hoe het gemaakt wordt, en waarom het goed is.
-          </p>
-        </div>
-      </section>
-
-      {/* ── 2. PARTNER SPOTLIGHT - Moro Essentials ── */}
-      <section className="px-6 md:px-16 lg:px-24 pb-32 max-w-6xl mx-auto">
-        <div
-          className="bg-white rounded-3xl overflow-hidden"
-          style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.08)" }}
-        >
-          <div className="flex flex-col md:flex-row min-h-[480px]">
-            <div
-              className="relative w-full md:w-[55%] h-[280px] md:h-auto overflow-hidden"
-              style={{ borderRadius: "1.5rem 0 0 0" }}
+            <p style={{ fontSize: 16, lineHeight: 1.8, color: "#444444", marginBottom: 32 }}>
+              De badkamer is de eerste test. Gasten voelen het meteen:
+              goedkope zeep in een plastic flesje vertelt een verhaal -
+              en niet het goede. Daarom kozen we voor Moro Essentials,
+              een Belgisch merk dat huidverzorging herdenkt vanuit eerlijkheid.
+              Geen overbodige ingrediënten, geen generieke geuren, geen massamarkt.
+              Gewoon producten die werken, goed ruiken en kloppen met wie wij zijn.
+              In elke moroww-woning. Geen uitzondering.
+            </p>
+            <a
+              href="https://moro-essentials.com/nl/collections/all-products-new?tw_source=google&tw_adid=706041070227&tw_campaign=21468923487&tw_kwdid=kwd-138535284&gad_source=1&gad_campaignid=21468923487&gbraid=0AAAAA9Yqje7Xtvry2zO4cbJROuoZXN0FK&gclid=CjwKCAjw5NvPBhAoEiwA_2egftD5W_eeUIjpMgnjq3KAso8SoI32AwN2S9eVgDrkTyrZFLwZZTVnTRoC_4oQAvD_BwE"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-block",
+                background: "#FEA05E",
+                color: "#ffffff",
+                borderRadius: 100,
+                padding: "14px 28px",
+                fontWeight: 600,
+                fontSize: 15,
+                textDecoration: "none",
+                alignSelf: "flex-start",
+              }}
             >
-              <img
-                src="/images/partners/moro-essentials-sfeer.jpg"
-                alt="Moro Essentials sfeerbeeld"
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              />
-            </div>
-
-            <div className="w-full md:w-[45%] flex flex-col">
-              <div className="px-10 py-8 flex flex-col justify-center flex-1">
-                <img
-                  src="/images/partners/moro-essentials-logo.png"
-                  alt="Moro Essentials"
-                  style={{ width: "auto", height: "auto", maxHeight: "160px", objectFit: "contain" }}
-                  className="mb-5 self-start"
-                />
-                <span className="inline-block text-xs font-medium uppercase tracking-widest text-moroww-orange bg-moroww-blush px-3 py-1 rounded-full mb-5 self-start">
-                  Belgisch merk
-                </span>
-                <h2
-                  className="font-bold text-moroww-black leading-[1.05] tracking-[-0.02em] mb-1"
-                  style={{ fontSize: "clamp(1.5rem,2.5vw,2.25rem)" }}
-                >
-                  Moro Essentials
-                </h2>
-                <p className="text-moroww-orange text-sm font-medium mb-5">Badkamerproducten</p>
-                <p className="text-moroww-black/60 leading-relaxed mb-8" style={{ fontSize: 15 }}>
-                  De badkamer is de eerste test. Gasten voelen het meteen: goedkope zeep in een
-                  plastic flesje vertelt een verhaal - en niet het goede. Daarom kozen we voor
-                  Moro Essentials, een Belgisch merk dat huidverzorging herdenkt vanuit eerlijkheid.
-                  Geen overbodige ingrediënten, geen generieke geuren, geen massamarkt. Gewoon
-                  producten die werken, goed ruiken en kloppen met wie wij zijn. In elke
-                  moroww-woning. Geen uitzondering.
-                </p>
-                <a
-                  href="https://moro-essentials.com/nl/collections/all-products-new?tw_source=google&tw_adid=706041070227&tw_campaign=21468923487&tw_kwdid=kwd-138535284&gad_source=1&gad_campaignid=21468923487&gbraid=0AAAAA9Yqje7Xtvry2zO4cbJROuoZXN0FK&gclid=CjwKCAjw5NvPBhAoEiwA_2egftD5W_eeUIjpMgnjq3KAso8SoI32AwN2S9eVgDrkTyrZFLwZZTVnTRoC_4oQAvD_BwE"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white font-semibold px-7 py-3 text-sm transition-colors duration-200 self-start"
-                >
-                  Bekijk collectie
-                </a>
-              </div>
-            </div>
+              Bekijk collectie
+            </a>
           </div>
         </div>
       </section>
 
-      {/* ── 3. COMING SOON ── */}
-      <section className="px-6 md:px-16 lg:px-24 pb-32 max-w-6xl mx-auto">
-        <h2
-          className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-10"
-          style={{ fontSize: "clamp(1.75rem,3vw,2.5rem)" }}
-        >
-          meer partners. binnenkort.
+      {/* ── 3. COMING SOON — BLUSH ── */}
+      <section style={{ background: "#FAE4D6", padding: "80px 64px" }}>
+        <h2 style={{ fontSize: "clamp(24px,3vw,36px)", fontWeight: 800, color: "#1A1A1A", marginBottom: 48 }}>
+          Meer partners. Binnenkort.
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
           {[
             {
-              categorie: "Poetspartners",
+              titel: "Poetspartners",
               tekst: "Elke moroww-woning wordt professioneel klaargemaakt volgens een vast protocol. We werken uitsluitend met poetspartners die onze standaard kennen, onze checklist volgen en dezelfde zorg voor detail hebben als wij. Belgische bedrijven, korte communicatielijnen, geen verrassingen.",
             },
             {
-              categorie: "Lokale handelaars",
+              titel: "Lokale handelaars",
               tekst: "In elke regio waar moroww actief is, zoeken we contact met lokale bakkers, slagers, traiteurs en wijnhuizen. Gasten die willen weten waar ze terecht kunnen voor het beste van de streek, vinden dat via moroww. Geen gidsen, geen gesponsorde lijsten - enkel adressen waar we zelf voor instaan.",
             },
-          ].map(({ categorie, tekst }) => (
-            <div key={categorie} className="bg-white rounded-3xl overflow-hidden shadow-sm">
-              <div className="h-[180px] bg-moroww-blush/60 flex items-center justify-center">
-                <p className="text-moroww-black/20 tracking-widest uppercase text-xs">Binnenkort</p>
-              </div>
-              <div className="p-8">
-                <span className="inline-block text-xs font-medium uppercase tracking-widest text-moroww-black/30 bg-moroww-blush px-3 py-1 rounded-full mb-4">
-                  Binnenkort
-                </span>
-                <p className="font-semibold text-moroww-black text-base mb-2">{categorie}</p>
-                <p className="text-moroww-black/55 text-sm leading-relaxed">{tekst}</p>
-              </div>
+          ].map(({ titel, tekst }) => (
+            <div key={titel} style={{ background: "#ffffff", borderRadius: 16, padding: 40 }}>
+              <span style={{
+                display: "inline-block",
+                background: "#1A1A1A",
+                color: "#ffffff",
+                fontSize: 10,
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: 1,
+                padding: "4px 12px",
+                borderRadius: 100,
+                marginBottom: 20,
+              }}>
+                Binnenkort
+              </span>
+              <h3 style={{ fontSize: 24, fontWeight: 700, color: "#1A1A1A", marginBottom: 16 }}>
+                {titel}
+              </h3>
+              <p style={{ fontSize: 15, lineHeight: 1.7, color: "#666666" }}>
+                {tekst}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ── 4. CTA VOOR MERKEN ── */}
-      <section className="px-6 md:px-16 lg:px-24 pb-32 max-w-6xl mx-auto">
-        <div className="bg-moroww-orange rounded-3xl p-10 md:p-16 text-center">
-          <h2
-            className="font-bold lowercase text-white leading-[1.05] tracking-[-0.02em] mb-4"
-            style={{ fontSize: "clamp(1.75rem,3vw,2.5rem)" }}
-          >
-            jouw merk in onze woningen?
-          </h2>
-          <p className="text-white/80 leading-relaxed mb-8 max-w-xl mx-auto" style={{ fontSize: 17 }}>
-            We zoeken Belgische en Europese merken die kwaliteit en eerlijkheid centraal stellen.
-            Geen massamarkt. Geen compromis.
-          </p>
-          <Link
-            href="mailto:info@moroww.com"
-            className="inline-flex items-center rounded-full bg-white text-moroww-orange font-semibold px-8 py-4 text-base hover:bg-moroww-blush transition-colors duration-200"
-          >
-            Neem contact op
-          </Link>
-        </div>
+      {/* ── 4. PARTNER CTA — DONKER ── */}
+      <section style={{ background: "#1A1A1A", padding: "80px 64px", textAlign: "center" }}>
+        <h2 style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: "#ffffff", marginBottom: 20 }}>
+          Jouw merk in onze woningen?
+        </h2>
+        <p style={{ fontSize: 18, lineHeight: 1.7, color: "#999999", maxWidth: 480, margin: "0 auto 40px" }}>
+          We zoeken Belgische en Europese merken die kwaliteit en
+          eerlijkheid centraal stellen. Geen massamarkt. Geen compromis.
+        </p>
+        <a
+          href="mailto:info@moroww.com"
+          style={{
+            display: "inline-block",
+            background: "#FEA05E",
+            color: "#ffffff",
+            borderRadius: 100,
+            padding: "16px 36px",
+            fontWeight: 600,
+            fontSize: 16,
+            textDecoration: "none",
+          }}
+        >
+          Neem contact op
+        </a>
       </section>
 
     </div>
