@@ -15,27 +15,27 @@ const systeem = [
   {
     nr: "01",
     titel: "smart lock",
-    tekst: "Sleutelloze aankomst via unieke code per boeking. Geen sleuteloverdracht. Geen afspraken. De gast komt binnen. U hoeft er niet bij te zijn.",
+    tekst: "Sleutelloze aankomst via unieke code per boeking. Geen sleuteloverdracht. Geen afspraken. De gast komt binnen. Je hoeft er niet bij te zijn.",
   },
   {
     nr: "02",
     titel: "geluidsmonitoring",
-    tekst: "Een decibelsensor bewaakt uw woning zonder in te breken op privacy. Overlast wordt gedetecteerd voor het een probleem wordt. Uw vergunning blijft veilig.",
+    tekst: "Een decibelsensor bewaakt je woning zonder in te breken op privacy. Overlast wordt gedetecteerd voor het een probleem wordt. Je vergunning blijft veilig.",
   },
   {
     nr: "03",
     titel: "sfeerautomatisering",
-    tekst: "Licht, temperatuur en muziek staan klaar bij aankomst. De woning verwelkomt de gast. Zonder dat u er iets voor hoeft te doen.",
+    tekst: "Licht, temperatuur en muziek staan klaar bij aankomst. De woning verwelkomt de gast. Zonder dat je er iets voor hoeft te doen.",
   },
   {
     nr: "04",
     titel: "geurverspreiding",
-    tekst: "Elke collectie heeft een eigen signatuurgeur. De cartridges zijn moroww-eigendom. Wij leveren, vervangen en onderhouden. U merkt er niets van.",
+    tekst: "Elke collectie heeft een eigen signatuurgeur. De cartridges zijn moroww-eigendom. Wij leveren, vervangen en onderhouden. Je merkt er niets van.",
   },
   {
     nr: "05",
     titel: "incident-detectie",
-    tekst: "Waterlek, rookontwikkeling, klimaatafwijking — u wordt gewaarschuwd voor er schade is. Een systeem dat waakt terwijl u slaapt.",
+    tekst: "Waterlek, rookontwikkeling, klimaatafwijking — je wordt gewaarschuwd voor er schade is. Een systeem dat waakt terwijl je slaapt.",
   },
   {
     nr: "06",
@@ -47,19 +47,19 @@ const systeem = [
 const voordelen = [
   {
     titel: "tariefvergrendeling",
-    tekst: "Uw commissie en abonnement worden contractueel vergrendeld voor de volledige eerste cyclus.",
+    tekst: "Je commissie en abonnement worden contractueel vergrendeld voor de volledige eerste cyclus.",
   },
   {
     titel: "directe founder-toegang",
-    tekst: "U werkt rechtstreeks met Brent en Noam. Geen callcenter. Geen tussenpersoon.",
+    tekst: "Je werkt rechtstreeks met Brent en Noam. Geen callcenter. Geen tussenpersoon.",
   },
   {
     titel: "prioriteit in de collectie",
-    tekst: "Uw woning wordt als eerste opgenomen, gepromoot en gekoppeld aan onze gast-pipeline.",
+    tekst: "Je woning wordt als eerste opgenomen, gepromoot en gekoppeld aan onze gast-pipeline.",
   },
   {
     titel: "een label dat groeit",
-    tekst: "Hoe sterker het moroww-label wordt, hoe meer uw woning daarvan profiteert.",
+    tekst: "Hoe sterker het moroww-label wordt, hoe meer je woning daarvan profiteert.",
   },
 ];
 
@@ -67,17 +67,17 @@ const stappen = [
   {
     nr: "01",
     titel: "aanmelding & screening",
-    tekst: "U vult het formulier in. Wij nemen binnen 48u persoonlijk contact op. Elke woning wordt beoordeeld op locatie, oppervlakte en sfeer.",
+    tekst: "Je vult het formulier in. Wij nemen binnen 48u persoonlijk contact op. Elke woning wordt beoordeeld op locatie, oppervlakte en sfeer.",
   },
   {
     nr: "02",
     titel: "fysieke audit & installatie",
-    tekst: "Ons team bezoekt uw woning. We voeren de certificeringsaudit uit, geven interieuradvies en installeren de volledige tech-stack.",
+    tekst: "Ons team bezoekt je woning. We voeren de certificeringsaudit uit, geven interieuradvies en installeren de volledige tech-stack.",
   },
   {
     nr: "03",
     titel: "live in de collectie",
-    tekst: "Uw woning draagt het moroww-badge. We starten de distributie via alle kanalen én via book.moroww.com. U volgt alles op via het host-dashboard.",
+    tekst: "Je woning draagt het moroww-badge. We starten de distributie via alle kanalen én via book.moroww.com. Je volgt alles op via het host-dashboard.",
   },
 ];
 
@@ -98,13 +98,13 @@ export function EigenaarContent() {
               Voor eigenaars
             </p>
             <h1 className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.05] text-white">
-              <span className="font-light">uw woning.</span><br />
+              <span className="font-light">je woning.</span><br />
               ons systeem.<br />
               <span className="font-light">samen het</span> label.
             </h1>
             <p className="mt-8 text-base leading-relaxed text-white/60 max-w-xs">
               moroww installeert de technologie, bewaakt de
-              standaard en regelt de boeking. U beheert uw
+              standaard en regelt de boeking. Je beheert je
               eigen woning.
             </p>
             <div className="mt-8">
@@ -141,8 +141,8 @@ export function EigenaarContent() {
               <span className="font-light">en beschermt.</span>
             </h2>
             <p className="mt-5 text-lg text-[#9CA3AF] max-w-lg leading-relaxed">
-              moroww installeert de volledige tech-stack in uw woning.
-              U heeft er geen beheer over. Dat is de bedoeling.
+              moroww installeert de volledige tech-stack in je woning.
+              Je hebt er geen beheer over. Dat is de bedoeling.
             </p>
           </motion.div>
 
@@ -279,8 +279,8 @@ export function EigenaarContent() {
             </h2>
             <p className="mt-5 text-base leading-relaxed text-[#9CA3AF]">
               Geen callcenter. Geen tussenpersoon. In jaar 1
-              heeft u directe toegang tot de oprichters.
-              Uw woning krijgt de aandacht die een
+              heb je directe toegang tot de oprichters.
+              Je woning krijgt de aandacht die een
               investering verdient.
             </p>
             <p className="mt-4 text-base text-[#9CA3AF]">

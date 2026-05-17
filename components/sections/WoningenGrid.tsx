@@ -25,7 +25,7 @@ export function WoningenGrid() {
           </p>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             <h2 style={{ fontSize: "clamp(24px,4vw,36px)", fontWeight: 800, color: "#1A1A1A", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
-              Vier woningen. Twee collecties.<br className="hidden sm:block" /> Één standaard.
+              vier woningen. twee collecties.<br className="hidden sm:block" /> één standaard.
             </h2>
             {/* Filter tabs */}
             <div className="flex gap-2 shrink-0">

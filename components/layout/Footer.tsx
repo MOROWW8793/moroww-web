@@ -33,7 +33,7 @@ export function Footer() {
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
               <Link href="/collectie" className="hover:text-white transition-colors">De Collectie</Link>
               <Link href="/over-moroww" className="hover:text-white transition-colors">Over moroww</Link>
-              <Link href="/eigenaar-worden" className="hover:text-white transition-colors">Founding Partner</Link>
+              <Link href="/eigenaar-worden" className="hover:text-white transition-colors">Eigenaar worden</Link>
               <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
             </nav>
           </div>

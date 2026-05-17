@@ -170,7 +170,7 @@ export default function WoningDetailPage({ params }: Props) {
       {/* ── 3. HOOGTEPUNTEN ── */}
       <section className="px-6 md:px-12 mt-10" style={{ borderTop: '1px solid #E8D5C4' }}>
         <div className="max-w-6xl mx-auto py-16">
-          <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 24 }}>Waarom deze woning?</h2>
+          <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 24 }}>waarom deze woning?</h2>
           <div
             className="rounded-2xl p-8"
             style={{ background: '#FFFFFF', boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}
@@ -200,7 +200,7 @@ export default function WoningDetailPage({ params }: Props) {
               className="rounded-2xl p-8 mb-6"
               style={{ background: '#FFFFFF', boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}
             >
-              <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 20 }}>Over deze woning</h2>
+              <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 20 }}>over deze woning</h2>
               <p style={{ fontSize: 18, fontWeight: 600, color: '#1A1A1A', lineHeight: 1.7, marginBottom: 24 }}>
                 {woning.introductie}
               </p>
@@ -214,7 +214,7 @@ export default function WoningDetailPage({ params }: Props) {
                 className="rounded-2xl p-8"
                 style={{ background: '#FFFFFF', boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}
               >
-                <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 16 }}>De buurt</h2>
+                <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 16 }}>de buurt</h2>
                 <p style={{ fontSize: 15, color: '#444444', lineHeight: 1.8 }}>
                   {woning.buurt}
                 </p>
@@ -224,7 +224,7 @@ export default function WoningDetailPage({ params }: Props) {
 
           {/* ── 5. PRAKTISCH ── */}
           <div>
-            <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 16 }}>Praktische info</h2>
+            <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 16 }}>praktische info</h2>
             <div className="space-y-3">
               {[
                 { icon: <LogIn size={16} style={{ color: '#fff' }} />, label: 'Inchecken', value: `Vanaf ${woning.inCheckin}` },
