@@ -208,7 +208,7 @@ export function EigenaarContent() {
         </motion.div>
 
         {/* Foto rechts */}
-        <div className="relative overflow-hidden min-h-[50vh] md:min-h-full">
+        <div className="relative overflow-hidden min-h-[60vw] md:min-h-full">
           <Image
             src="/images/fp-interieur-1.jpg"
             alt="moroww woning"
@@ -254,7 +254,7 @@ export function EigenaarContent() {
       {/* ── SECTIE 6: BRENT & NOAM ── */}
       <section className="grid grid-cols-1 md:grid-cols-2 min-h-[60vh]">
         {/* Foto links */}
-        <div className="relative overflow-hidden min-h-[50vh] md:min-h-full">
+        <div className="relative overflow-hidden min-h-[60vw] md:min-h-full">
           <Image
             src="/images/over-founders.jpg"
             alt="Brent en Noam"

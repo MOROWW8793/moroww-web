@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Partners - Korteketen. Geen compromis.",
@@ -43,11 +44,13 @@ export default function PartnersPage() {
       <section style={{ background: "#FFFFFF", padding: "80px 64px" }}>
         <div style={{ display: "flex", minHeight: 600, gap: 0, borderRadius: 16, overflow: "hidden" }}>
           {/* Foto links (55%) */}
-          <div style={{ width: "55%", flexShrink: 0, overflow: "hidden", borderRadius: 12 }}>
-            <img
+          <div style={{ width: "55%", flexShrink: 0, overflow: "hidden", borderRadius: 12, position: "relative" }}>
+            <Image
               src="/images/partners/moro-essentials-sfeer.jpg"
               alt="Moro Essentials sfeerbeeld"
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              fill
+              className="object-cover"
+              sizes="55vw"
             />
           </div>
 
@@ -59,10 +62,12 @@ export default function PartnersPage() {
             flexDirection: "column",
             justifyContent: "center",
           }}>
-            <img
+            <Image
               src="/images/partners/moro-essentials-logo.png"
               alt="Moro Essentials"
-              style={{ maxHeight: 140, objectFit: "contain", marginBottom: 32, alignSelf: "flex-start" }}
+              width={280}
+              height={140}
+              style={{ maxHeight: 140, objectFit: "contain", marginBottom: 32, alignSelf: "flex-start", width: "auto" }}
             />
             <span style={{
               display: "inline-block",

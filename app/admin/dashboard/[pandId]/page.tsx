@@ -449,6 +449,7 @@ export default function PandEditor() {
             {qrUrl && (
               <div className="flex flex-col items-start gap-4">
                 <div className="rounded-2xl overflow-hidden bg-white p-4 inline-block">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={qrUrl} alt="QR Code" style={{ width: 200, height: 200 }} />
                 </div>
                 <button

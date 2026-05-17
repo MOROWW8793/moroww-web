@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Props {
@@ -28,10 +29,13 @@ export function WoningGalerij({ fotos, naam }: Props) {
           className="relative w-full md:w-[60%] h-48 md:h-full overflow-hidden rounded-2xl md:rounded-l-2xl md:rounded-r-none cursor-zoom-in"
           onClick={() => open(0)}
         >
-          <img
+          <Image
             src={main}
             alt={naam}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 60vw"
+            priority
           />
         </button>
 
@@ -46,10 +50,12 @@ export function WoningGalerij({ fotos, naam }: Props) {
                 }`}
                 onClick={() => open(i + 1)}
               >
-                <img
+                <Image
                   src={foto}
                   alt={`${naam} foto ${i + 2}`}
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  fill
+                  className="object-cover"
+                  sizes="20vw"
                 />
                 {/* "Alle foto's" overlay op de laatste */}
                 {i === 3 && fotos.length > 5 && (
@@ -72,14 +78,16 @@ export function WoningGalerij({ fotos, naam }: Props) {
             <button
               key={i}
               onClick={() => open(i)}
-              className={`shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-colors ${
+              className={`relative shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-colors ${
                 lightbox === i ? "border-moroww-orange" : "border-transparent"
               }`}
             >
-              <img
+              <Image
                 src={foto}
                 alt={`${naam} ${i + 1}`}
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                fill
+                className="object-cover"
+                sizes="64px"
               />
             </button>
           ))}
@@ -113,6 +121,7 @@ export function WoningGalerij({ fotos, naam }: Props) {
             className="max-w-5xl max-h-[85vh] mx-16"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={fotos[lightbox]}
               alt={`${naam} ${lightbox + 1}`}

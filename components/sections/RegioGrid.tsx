@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const collecties = [
@@ -53,18 +54,12 @@ export function RegioGrid() {
               className="relative block rounded-3xl overflow-hidden h-[240px] md:h-[380px] group"
             >
               {/* Foto met hover zoom */}
-              <img
+              <Image
                 src={c.foto}
                 alt={c.naam}
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  transition: "transform 0.4s ease",
-                }}
-                className="group-hover:scale-[1.03]"
+                fill
+                className="object-cover transition-transform duration-400 group-hover:scale-[1.03]"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
 
               {/* Gradient overlay */}

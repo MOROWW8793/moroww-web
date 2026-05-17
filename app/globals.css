@@ -60,3 +60,19 @@ body {
 img, video {
   max-width: 100%;
 }
+
+/* Focus styles voor toegankelijkheid */
+:focus-visible {
+  outline: 2px solid #FEA05E;
+  outline-offset: 2px;
+}
+
+/* Prevent iOS input zoom */
+input, select, textarea {
+  font-size: 16px;
+}
+
+/* Safari text rendering */
+body {
+  text-rendering: optimizeLegibility;
+}

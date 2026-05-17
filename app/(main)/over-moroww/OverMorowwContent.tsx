@@ -91,7 +91,7 @@ export function OverMorowwContent() {
             </p>
           </div>
         </motion.div>
-        <div className="relative overflow-hidden min-h-[50vh] md:min-h-full">
+        <div className="relative overflow-hidden min-h-[60vw] md:min-h-full">
           <Image
             src="/images/over-interieur-1.jpg"
             alt="moroww interieur"
@@ -204,7 +204,7 @@ export function OverMorowwContent() {
 
       {/* ── SECTIE 4 — DE STANDAARD (gespiegeld) ── */}
       <section className="grid grid-cols-1 md:grid-cols-2 min-h-[80vh]">
-        <div className="relative overflow-hidden min-h-[50vh] md:min-h-full order-last md:order-first">
+        <div className="relative overflow-hidden min-h-[60vw] md:min-h-full order-last md:order-first">
           <Image
             src="/images/over-interieur-2.jpg"
             alt="moroww standaard"
@@ -275,7 +275,7 @@ export function OverMorowwContent() {
             </Link>
           </div>
         </motion.div>
-        <div className="relative overflow-hidden min-h-[50vh] md:min-h-full">
+        <div className="relative overflow-hidden min-h-[60vw] md:min-h-full">
           <Image
             src="/images/over-founders.jpg"
             alt="Brent en Noam"
