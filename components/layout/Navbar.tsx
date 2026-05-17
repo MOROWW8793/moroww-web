@@ -56,7 +56,7 @@ export function Navbar() {
             </Link>
           ))}
           <a
-            href="https://book.moroww.com"
+            href="https://book.moroww.com/nl/properties?minOccupancy=1"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white text-sm font-semibold px-5 py-2 transition-colors"
@@ -88,7 +88,7 @@ export function Navbar() {
             </Link>
           ))}
           <a
-            href="https://book.moroww.com"
+            href="https://book.moroww.com/nl/properties?minOccupancy=1"
             target="_blank"
             rel="noopener noreferrer"
             className="block rounded-full bg-moroww-orange text-white text-sm font-semibold px-5 py-3 text-center"

@@ -90,7 +90,7 @@ export function RegioGrid() {
 
       <div className="text-center mt-12">
         <a
-          href="https://book.moroww.com"
+          href="https://book.moroww.com/nl/properties?minOccupancy=1"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-[#FEA05E] text-white font-medium rounded-full px-8 py-4 hover:bg-[#E8894A] transition-colors duration-200"

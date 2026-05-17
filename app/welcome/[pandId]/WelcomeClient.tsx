@@ -168,7 +168,7 @@ export function WelcomeClient({
     return page[`${field}_${lang}`] || page[`${field}_nl`] || ''
   }
 
-  const boekUrl = BOEK_URLS[pandId] ?? 'https://book.moroww.com'
+  const boekUrl = BOEK_URLS[pandId] ?? 'https://book.moroww.com/nl/properties?minOccupancy=1'
   const l = labels[lang] ?? labels.nl
 
   const tipsByCategorie = tips.reduce<Record<string, Tip[]>>((acc, tip) => {
