@@ -76,3 +76,12 @@ input, select, textarea {
 body {
   text-rendering: optimizeLegibility;
 }
+
+/* Scrollbar verbergen voor horizontale strips */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
