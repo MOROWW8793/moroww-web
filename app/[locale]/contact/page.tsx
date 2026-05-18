@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -7,7 +8,13 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.moroww.com/contact" },
 };
 
-export default function ContactPage() {
+export default async function ContactPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
+  setRequestLocale(locale)
   return (
     <div className="bg-moroww-blush min-h-screen flex items-center">
       <div className="mx-auto max-w-xl px-6 py-32 text-center">

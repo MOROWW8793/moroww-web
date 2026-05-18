@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import { EigenaarContent } from "./EigenaarContent";
 import { FaqJsonLd } from "@/components/FaqJsonLd";
 
@@ -9,7 +10,13 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.moroww.com/eigenaar-worden' },
 };
 
-export default function EigenaarWordenPage() {
+export default async function EigenaarWordenPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
+  setRequestLocale(locale)
   return (
     <>
       <EigenaarContent />

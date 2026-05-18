@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import { OverMorowwContent } from "./OverMorowwContent";
 
 export const metadata: Metadata = {
@@ -8,6 +9,12 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.moroww.com/over-moroww' },
 };
 
-export default function OverMorowwPage() {
+export default async function OverMorowwPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
+  setRequestLocale(locale)
   return <OverMorowwContent />;
 }

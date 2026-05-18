@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { setRequestLocale } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Partners - Korteketen. Geen compromis.",
@@ -13,7 +14,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PartnersPage() {
+export default async function PartnersPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
+  setRequestLocale(locale)
   return (
     <div className="overflow-x-hidden">
 
