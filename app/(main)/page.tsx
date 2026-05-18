@@ -3,6 +3,7 @@ import { Hero }            from "@/components/sections/Hero";
 import { WoningenGrid }    from "@/components/sections/WoningenGrid";
 import { StandaardDetail } from "@/components/sections/StandaardDetail";
 import { HostTeaser }      from "@/components/sections/HostTeaser";
+import { Reviews }         from "@/components/sections/Reviews";
 import { FaqJsonLd }       from "@/components/FaqJsonLd";
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export default function HomePage() {
     <>
       <Hero />
       <WoningenGrid />
+      <Reviews />
       <StandaardDetail />
       <HostTeaser />
       <FaqJsonLd />

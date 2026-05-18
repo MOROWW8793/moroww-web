@@ -11,6 +11,24 @@ export function generateStaticParams() {
   return woningen.map((w) => ({ id: w.id }));
 }
 
+const woningReviews: Record<string, { citaat: string; naam: string }[]> = {
+  'nosso-knokke': [
+    { citaat: 'Een heel fijne accommodatie.', naam: 'Lin' },
+  ],
+  'moroww-oostende': [
+    { citaat: 'Het appartement ligt op de 16e verdieping met een schitterend uitzicht, ongeacht het weer. Heel proper, mooi ingericht. Wat er echt uitsprong was de snelle en vriendelijke communicatie — we komen zeker terug.', naam: 'Liesbeth' },
+    { citaat: 'Een prachtig appartement in een rustig deel van Oostende. Fantastisch zeezicht. Communicatie verliep heel vlot. We komen zeker nog terug.', naam: 'Valérie' },
+  ],
+  'ann-helena-ursel': [
+    { citaat: 'We brachten een heel aangenaam weekend door in dit mooie, comfortabele chalet. De prachtige tuin biedt een heerlijk uitzicht en de omgeving is ideaal voor een ontspannende boswandeling. Absolute aanrader.', naam: 'Jan' },
+    { citaat: 'De rust van deze plek is ongeëvenaard. Het chalet heeft alles en meer. Kaarsen stonden ons op te wachten, het rook er heerlijk, het was verwarmd bij aankomst. We hebben ons helemaal thuis gevoeld.', naam: 'Sabrina' },
+  ],
+  'cozy-relax-beernem': [
+    { citaat: 'Verblijven in de hottub terwijl je naar de sterren kijkt met het kampvuur — perfect.', naam: 'Lucie' },
+    { citaat: 'Uitstekend verblijf met het gezin. De faciliteiten zijn top, veel te doen voor de kinderen. Jammer dat we niet langer konden blijven.', naam: 'Tom' },
+  ],
+};
+
 const woningMeta: Record<string, { title: string; description: string; keywords: string[] }> = {
   'nosso-knokke': {
     title: 'Nosso Logies — vakantiewoning Knokke-Heist | moroww',
@@ -283,7 +301,33 @@ export default function WoningDetailPage({ params }: Props) {
         </div>
       </section>
 
-      {/* ── 6. BOOKING CTA ── */}
+      {/* ── 6. REVIEWS ── */}
+      {woningReviews[woning.id]?.length > 0 && (
+        <section className="px-6 md:px-12 pb-16">
+          <div className="max-w-6xl mx-auto">
+            <div className="rounded-2xl p-8" style={{ background: '#FFFFFF', boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}>
+              <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-6">
+                wat gasten zeggen
+              </p>
+              <div className="space-y-8">
+                {woningReviews[woning.id].map(({ citaat, naam }) => (
+                  <blockquote key={naam} className="flex flex-col gap-3">
+                    <p className="text-base leading-relaxed text-[#1A1A1A] italic">
+                      &ldquo;{citaat}&rdquo;
+                    </p>
+                    <footer className="flex items-center gap-3">
+                      <span className="text-[#FEA05E] text-sm">★★★★★</span>
+                      <span className="text-sm font-medium text-[#1A1A1A]">{naam}</span>
+                    </footer>
+                  </blockquote>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── 7. BOOKING CTA ── */}
       <section className="px-6 md:px-12 pb-24">
         <div className="max-w-6xl mx-auto">
           <div className="bg-moroww-orange rounded-3xl p-10 md:p-16 text-center">
