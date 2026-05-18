@@ -5,24 +5,43 @@ export function OrganizationJsonLd() {
       dangerouslySetInnerHTML={{
         __html: JSON.stringify({
           '@context': 'https://schema.org',
-          '@type': 'Organization',
+          '@type': ['Organization', 'LocalBusiness'],
           name: 'moroww',
+          alternateName: ['morrow', 'moroww vakantiewoningen'],
           url: 'https://www.moroww.com',
           logo: 'https://www.moroww.com/images/moroww-logo.png',
+          image: 'https://www.moroww.com/images/og-default.jpg',
+          description: 'moroww is een gecertificeerd kwaliteitslabel voor premium vakantiewoningen in België. Elke woning wordt fysiek geïnspecteerd voor opname. Actief aan de kust (Knokke, Oostende) en in het Meetjesland (Ursel, Beernem).',
+          '@id': 'https://www.moroww.com',
           contactPoint: {
             '@type': 'ContactPoint',
             email: 'info@moroww.com',
             contactType: 'customer service',
             availableLanguage: ['Dutch', 'French', 'English'],
           },
+          address: {
+            '@type': 'PostalAddress',
+            addressCountry: 'BE',
+            addressRegion: 'Oost-Vlaanderen',
+          },
           sameAs: [
             'https://www.instagram.com/moroww.com_/',
             'https://www.linkedin.com/company/moroww/',
+            'https://book.moroww.com',
           ],
-          areaServed: {
-            '@type': 'Country',
-            name: 'Belgium',
-          },
+          areaServed: [
+            { '@type': 'City',    name: 'Knokke-Heist' },
+            { '@type': 'City',    name: 'Oostende' },
+            { '@type': 'Place',   name: 'Meetjesland' },
+            { '@type': 'Country', name: 'Belgium' },
+          ],
+          knowsAbout: [
+            'vakantiewoning verhuren',
+            'kwaliteitslabel vakantiewoningen',
+            'gecertificeerde vakantiewoningen',
+            'sensory design',
+            'smart lock vakantiewoning',
+          ],
         }),
       }}
     />

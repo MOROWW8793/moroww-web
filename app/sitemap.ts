@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "https://www.moroww.com/eigenaar-worden",                    lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: "https://www.moroww.com/partners",                           lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
     { url: "https://www.moroww.com/contact",                            lastModified: new Date(), changeFrequency: "yearly",  priority: 0.4 },
+    { url: "https://www.moroww.com/vergelijking",                       lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
 
     // ── English (/en prefix) ──
     { url: "https://www.moroww.com/en",                                 lastModified: new Date(), changeFrequency: "weekly",  priority: 0.9 },
@@ -25,5 +26,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "https://www.moroww.com/en/become-an-owner",                 lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: "https://www.moroww.com/en/partners",                        lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
     { url: "https://www.moroww.com/en/contact",                         lastModified: new Date(), changeFrequency: "yearly",  priority: 0.4 },
+    { url: "https://www.moroww.com/en/vergelijking",                    lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
   ];
 }
