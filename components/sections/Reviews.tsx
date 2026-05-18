@@ -1,4 +1,7 @@
-export function Reviews() {
+import { getTranslations } from 'next-intl/server'
+
+export async function Reviews() {
+  const t = await getTranslations('home')
   return (
     <section className="w-full bg-[#FAE4D6] py-28 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto">
@@ -7,17 +10,17 @@ export function Reviews() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-6">
           <div>
             <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-4">
-              wat gasten zeggen
+              {t('reviews_label')}
             </p>
             <h2 className="text-[clamp(1.8rem,4vw,3.2rem)] font-bold leading-[1.1] text-[#1A1A1A]">
-              <span className="font-light">geen beloften.</span>
-              <br />alleen ervaringen.
+              <span className="font-light">{t('reviews_title_light')}</span>
+              <br />{t('reviews_title_bold')}
             </h2>
           </div>
           <div className="flex items-center gap-2 text-sm text-[#1A1A1A]/50 shrink-0">
             <span className="text-[#FEA05E] text-base tracking-tight">★★★★★</span>
             <span className="font-semibold text-[#1A1A1A]">10 / 10</span>
-            <span>· alle verblijven</span>
+            <span>{t('all_stays')}</span>
           </div>
         </div>
 

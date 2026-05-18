@@ -4,15 +4,23 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { BedDouble, Bath, Users } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { woningen, BADGE_STYLES } from "@/lib/woningen";
 
 type Filter = "Alles" | "the shore" | "the fields";
 
 export function WoningenGrid() {
+  const t = useTranslations('home')
   const [filter, setFilter] = useState<Filter>("Alles");
 
   const gefilterd =
     filter === "Alles" ? woningen : woningen.filter((w) => w.collectie === filter);
+
+  const filterLabels: Record<Filter, string> = {
+    "Alles": t('filter_all'),
+    "the shore": t('filter_shore'),
+    "the fields": t('filter_fields'),
+  }
 
   return (
     <section style={{ background: "#FAE4D6" }} className="py-16 md:py-24 px-6 md:px-16 lg:px-24 w-full">
@@ -21,11 +29,11 @@ export function WoningenGrid() {
         {/* Header */}
         <div className="mb-10">
           <p style={{ color: "#C08D6E", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: 2, marginBottom: 14 }}>
-            Onze collectie
+            {t('collection_label')}
           </p>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             <h2 style={{ fontSize: "clamp(24px,4vw,36px)", fontWeight: 800, color: "#1A1A1A", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
-              vier woningen. twee collecties.<br className="hidden sm:block" /> één standaard.
+              {t('collection_title')}
             </h2>
             {/* Filter tabs */}
             <div className="flex gap-2 shrink-0">
@@ -45,7 +53,7 @@ export function WoningenGrid() {
                     color: filter === f ? "#ffffff" : "#1A1A1A",
                   }}
                 >
-                  {f}
+                  {filterLabels[f]}
                 </button>
               ))}
             </div>
@@ -127,15 +135,15 @@ export function WoningenGrid() {
                   <div style={{ display: "flex", gap: 12, fontSize: 13, color: "#666666", marginBottom: 16 }}>
                     <span className="flex items-center gap-1">
                       <BedDouble size={13} />
-                      {w.slaapkamers} slk.
+                      {w.slaapkamers} {t('bedrooms')}
                     </span>
                     <span className="flex items-center gap-1">
                       <Bath size={13} />
-                      {w.badkamers} badk.
+                      {w.badkamers} {t('bathrooms')}
                     </span>
                     <span className="flex items-center gap-1">
                       <Users size={13} />
-                      {w.maxGasten} gasten
+                      {w.maxGasten} {t('guests')}
                     </span>
                     {w.oppervlakte && (
                       <span style={{ color: "#999" }}>{w.oppervlakte}</span>
@@ -146,7 +154,7 @@ export function WoningenGrid() {
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid #F0E4D8", paddingTop: 16 }}>
                     <div>
                       <span style={{ fontWeight: 700, fontSize: 18, color: "#1A1A1A" }}>Vanaf €{w.prijs}</span>
-                      <span style={{ fontSize: 13, color: "#999999", marginLeft: 4 }}>/ nacht</span>
+                      <span style={{ fontSize: 13, color: "#999999", marginLeft: 4 }}>{t('per_night')}</span>
                     </div>
                     <Link
                       href={`/collectie/${w.id}`}
@@ -161,7 +169,7 @@ export function WoningenGrid() {
                         whiteSpace: "nowrap",
                       }}
                     >
-                      Bekijk &amp; boek
+                      {t('view_book')}
                     </Link>
                   </div>
                 </div>

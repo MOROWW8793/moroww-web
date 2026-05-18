@@ -10,6 +10,25 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
+  const isNl = locale === 'nl'
+  return {
+    alternates: {
+      canonical: isNl ? 'https://www.moroww.com' : 'https://www.moroww.com/en',
+      languages: {
+        nl: 'https://www.moroww.com',
+        en: 'https://www.moroww.com/en',
+        'x-default': 'https://www.moroww.com',
+      },
+    },
+  }
+}
+
 export default async function LocaleLayout({
   children,
   params,

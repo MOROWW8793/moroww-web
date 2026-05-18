@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { LeadForm } from "@/components/ui/LeadForm";
 
 const fadeUp = {
@@ -11,77 +12,31 @@ const fadeUp = {
   transition: { duration: 0.4, ease: "easeOut" as const },
 };
 
-const systeem = [
-  {
-    nr: "01",
-    titel: "smart lock",
-    tekst: "Sleutelloze aankomst via unieke code per boeking. Geen sleuteloverdracht. Geen afspraken. De gast komt binnen. Je hoeft er niet bij te zijn.",
-  },
-  {
-    nr: "02",
-    titel: "geluidsmonitoring",
-    tekst: "Een decibelsensor bewaakt je woning zonder in te breken op privacy. Overlast wordt gedetecteerd voor het een probleem wordt. Je vergunning blijft veilig.",
-  },
-  {
-    nr: "03",
-    titel: "sfeerautomatisering",
-    tekst: "Licht, temperatuur en muziek staan klaar bij aankomst. De woning verwelkomt de gast. Zonder dat je er iets voor hoeft te doen.",
-  },
-  {
-    nr: "04",
-    titel: "geurverspreiding",
-    tekst: "Elke collectie heeft een eigen signatuurgeur. De cartridges zijn moroww-eigendom. Wij leveren, vervangen en onderhouden. Je merkt er niets van.",
-  },
-  {
-    nr: "05",
-    titel: "incident-detectie",
-    tekst: "Waterlek, rookontwikkeling, klimaatafwijking — je wordt gewaarschuwd voor er schade is. Een systeem dat waakt terwijl je slaapt.",
-  },
-  {
-    nr: "06",
-    titel: "host-dashboard",
-    tekst: "Bezetting, boekingen, woningstatus en maandelijkse rapportage in real time. Altijd inzicht. Nooit administratieve last.",
-  },
-];
-
-const voordelen = [
-  {
-    titel: "tariefvergrendeling",
-    tekst: "Je commissie en abonnement worden contractueel vergrendeld voor de volledige eerste cyclus.",
-  },
-  {
-    titel: "directe founder-toegang",
-    tekst: "Je werkt rechtstreeks met Brent en Noam. Geen callcenter. Geen tussenpersoon.",
-  },
-  {
-    titel: "prioriteit in de collectie",
-    tekst: "Je woning wordt als eerste opgenomen, gepromoot en gekoppeld aan onze gast-pipeline.",
-  },
-  {
-    titel: "een label dat groeit",
-    tekst: "Hoe sterker het moroww-label wordt, hoe meer je woning daarvan profiteert.",
-  },
-];
-
-const stappen = [
-  {
-    nr: "01",
-    titel: "aanmelding & screening",
-    tekst: "Je vult het formulier in. Wij nemen binnen 48u persoonlijk contact op. Elke woning wordt beoordeeld op locatie, oppervlakte en sfeer.",
-  },
-  {
-    nr: "02",
-    titel: "fysieke audit & installatie",
-    tekst: "Ons team bezoekt je woning. We voeren de certificeringsaudit uit, geven interieuradvies en installeren de volledige tech-stack.",
-  },
-  {
-    nr: "03",
-    titel: "live in de collectie",
-    tekst: "Je woning draagt het moroww-badge. We starten de distributie via alle kanalen én via book.moroww.com. Je volgt alles op via het host-dashboard.",
-  },
-];
-
 export function EigenaarContent() {
+  const t = useTranslations('owner')
+
+  const systeem = [
+    { nr: "01", titel: t('sys_01_titel'), tekst: t('sys_01_tekst') },
+    { nr: "02", titel: t('sys_02_titel'), tekst: t('sys_02_tekst') },
+    { nr: "03", titel: t('sys_03_titel'), tekst: t('sys_03_tekst') },
+    { nr: "04", titel: t('sys_04_titel'), tekst: t('sys_04_tekst') },
+    { nr: "05", titel: t('sys_05_titel'), tekst: t('sys_05_tekst') },
+    { nr: "06", titel: t('sys_06_titel'), tekst: t('sys_06_tekst') },
+  ]
+
+  const voordelen = [
+    { titel: t('fp_01_titel'), tekst: t('fp_01_tekst') },
+    { titel: t('fp_02_titel'), tekst: t('fp_02_tekst') },
+    { titel: t('fp_03_titel'), tekst: t('fp_03_tekst') },
+    { titel: t('fp_04_titel'), tekst: t('fp_04_tekst') },
+  ]
+
+  const stappen = [
+    { nr: "01", titel: t('stap_01_titel'), tekst: t('stap_01_tekst') },
+    { nr: "02", titel: t('stap_02_titel'), tekst: t('stap_02_tekst') },
+    { nr: "03", titel: t('stap_03_titel'), tekst: t('stap_03_tekst') },
+  ]
+
   return (
     <>
       {/* ── SECTIE 1: HERO ── */}
@@ -95,21 +50,19 @@ export function EigenaarContent() {
         >
           <div className="max-w-sm">
             <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-6 pt-8 md:pt-0">
-              Voor eigenaars
+              {t('hero_label')}
             </p>
             <h1 className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.05] text-white">
-              <span className="font-light">je woning.</span><br />
-              ons systeem.<br />
-              <span className="font-light">samen het</span> label.
+              <span className="font-light">{t('hero_h1_light1')}</span><br />
+              {t('hero_h1_main')}<br />
+              <span className="font-light">{t('hero_h1_light2')}</span> {t('hero_h1_bold')}
             </h1>
             <p className="mt-8 text-base leading-relaxed text-white/60 max-w-xs">
-              moroww installeert de technologie, bewaakt de
-              standaard en regelt de boeking. Je beheert je
-              eigen woning.
+              {t('hero_body')}
             </p>
             <div className="mt-8">
               <span className="text-sm text-white/40 border border-white/15 rounded-full px-4 py-2">
-                plaatsen zijn beperkt
+                {t('hero_badge')}
               </span>
             </div>
           </div>
@@ -133,16 +86,15 @@ export function EigenaarContent() {
         <div className="relative z-10">
           <motion.div {...fadeUp} className="max-w-4xl mx-auto px-6 md:px-16 mb-20">
             <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-5">
-              De tech-stack
+              {t('tech_label')}
             </p>
             <h2 className="text-[clamp(2.5rem,5.5vw,5rem)] font-bold leading-[1.1] text-white">
-              <span className="font-light">technologie die</span><br />
-              bewaakt. levert.<br />
-              <span className="font-light">en beschermt.</span>
+              <span className="font-light">{t('tech_h2_light')}</span><br />
+              {t('tech_h2_main')}<br />
+              <span className="font-light">{t('tech_h2_light2')}</span>
             </h2>
             <p className="mt-5 text-lg text-[#9CA3AF] max-w-lg leading-relaxed">
-              moroww installeert de volledige tech-stack in je woning.
-              Je hebt er geen beheer over. Dat is de bedoeling.
+              {t('tech_body')}
             </p>
           </motion.div>
 
@@ -172,7 +124,7 @@ export function EigenaarContent() {
         </div>
       </section>
 
-      {/* ── SECTIE 4: FOUNDING PARTNER VOORDELEN ── */}
+      {/* ── SECTIE 4: VOORDELEN ── */}
       <section className="grid grid-cols-1 md:grid-cols-2 min-h-[80vh]">
         {/* Tekst links */}
         <motion.div
@@ -181,16 +133,14 @@ export function EigenaarContent() {
         >
           <div className="max-w-sm">
             <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
-              Voor eigenaars
+              {t('fp_label')}
             </p>
             <h2 className="text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.1] text-[#1A1A1A]">
-              <span className="font-light">niet de korting.</span><br />
-              de positie.
+              <span className="font-light">{t('fp_h2_light')}</span><br />
+              {t('fp_h2_bold')}
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-[#1A1A1A]">
-              moroww staat aan het begin. De eerste eigenaars
-              bouwen mee aan het label. Dat heeft een andere
-              waarde dan instappen als het label al staat.
+              {t('fp_body')}
             </p>
 
             <div className="mt-10 border-t border-[#C08D6E]/30">
@@ -224,11 +174,11 @@ export function EigenaarContent() {
         <div className="max-w-3xl mx-auto">
           <motion.div {...fadeUp}>
             <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
-              Het traject
+              {t('traject_label')}
             </p>
             <h2 className="text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.1] text-[#1A1A1A]">
-              van aanmelding<br />
-              <span className="font-light">tot live.</span>
+              {t('traject_h2_1')}<br />
+              <span className="font-light">{t('traject_h2_2')}</span>
             </h2>
           </motion.div>
 
@@ -271,20 +221,17 @@ export function EigenaarContent() {
         >
           <div className="max-w-sm">
             <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-5">
-              Het team
+              {t('team_label')}
             </p>
             <h2 className="text-[clamp(1.8rem,4vw,3.5rem)] font-bold leading-[1.1] text-white">
-              <span className="font-light">u werkt met</span><br />
-              brent en noam.
+              <span className="font-light">{t('team_h2_light')}</span><br />
+              {t('team_h2_bold')}
             </h2>
             <p className="mt-5 text-base leading-relaxed text-[#9CA3AF]">
-              Geen callcenter. Geen tussenpersoon. In jaar 1
-              heb je directe toegang tot de oprichters.
-              Je woning krijgt de aandacht die een
-              investering verdient.
+              {t('team_p1')}
             </p>
             <p className="mt-4 text-base text-[#9CA3AF]">
-              noam.landries@moroww.com
+              {t('team_email')}
             </p>
           </div>
         </motion.div>
@@ -295,15 +242,14 @@ export function EigenaarContent() {
         <div className="max-w-2xl mx-auto">
           <motion.div {...fadeUp}>
             <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
-              Aanmelden
+              {t('form_label')}
             </p>
             <h2 className="text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.1] text-[#1A1A1A]">
-              <span className="font-light">klaar om</span><br />
-              in te stappen.
+              <span className="font-light">{t('form_h2_light')}</span><br />
+              {t('form_h2_bold')}
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-[#1A1A1A]/70">
-              We nemen binnen 48u persoonlijk contact op.
-              Elke woning wordt fysiek beoordeeld.
+              {t('form_body')}
             </p>
           </motion.div>
 

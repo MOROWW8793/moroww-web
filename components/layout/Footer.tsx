@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getTranslations } from 'next-intl/server'
 
-export function Footer() {
+export async function Footer() {
+  const t = await getTranslations('footer')
   return (
     <footer className="bg-[#1A1A1A] text-white w-full">
       <div className="mx-auto max-w-6xl px-6 md:px-16 lg:px-24 py-12 md:py-16 lg:py-24">
@@ -16,7 +18,7 @@ export function Footer() {
               className="h-7 w-auto brightness-0 invert mb-4"
             />
             <p className="text-sm text-white/40 leading-relaxed mb-2">
-              No worries for the day of moroww.
+              {t('tagline')}
             </p>
             <p className="text-xs text-white/25">
               moroww BV · België · www.moroww.com
@@ -31,9 +33,9 @@ export function Footer() {
             <p className="text-sm font-semibold text-white mb-4">Sitemap</p>
             <nav className="flex flex-col gap-2 text-sm text-white/50">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
-              <Link href="/collectie" className="hover:text-white transition-colors">De Collectie</Link>
-              <Link href="/over-moroww" className="hover:text-white transition-colors">Over moroww</Link>
-              <Link href="/eigenaar-worden" className="hover:text-white transition-colors">Eigenaar worden</Link>
+              <Link href="/collectie" className="hover:text-white transition-colors">{t('collection')}</Link>
+              <Link href="/over-moroww" className="hover:text-white transition-colors">{t('about')}</Link>
+              <Link href="/eigenaar-worden" className="hover:text-white transition-colors">{t('owner')}</Link>
               <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
             </nav>
           </div>
@@ -54,7 +56,7 @@ export function Footer() {
 
         <div className="mt-12 md:mt-16 border-t border-white/10 pt-8">
           <p className="text-xs text-white/30">
-            © 2026 moroww BV. Alle rechten voorbehouden.
+            © 2026 moroww BV. {t('rights')}
           </p>
         </div>
       </div>

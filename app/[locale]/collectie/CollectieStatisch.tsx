@@ -4,11 +4,13 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { BedDouble, Bath, Users } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { woningen, BADGE_STYLES } from "@/lib/woningen";
 
 type Filter = "Alles" | "the shore" | "the fields";
 
 export function CollectieStatisch() {
+  const t = useTranslations('collectie')
   const [filter, setFilter] = useState<Filter>("Alles");
 
   const gefilterd =
@@ -29,7 +31,7 @@ export function CollectieStatisch() {
                   : "bg-white text-moroww-black/60 hover:text-moroww-black border border-moroww-border"
               }`}
             >
-              {f}
+              {f === "Alles" ? t('filter_all') : f}
             </button>
           ))}
         </div>
@@ -86,15 +88,15 @@ export function CollectieStatisch() {
                 <div className="flex gap-5 text-sm text-moroww-black/55 mb-5">
                   <span className="flex items-center gap-1.5">
                     <BedDouble size={14} />
-                    {w.slaapkamers} slk.
+                    {w.slaapkamers} {t('bedrooms')}
                   </span>
                   <span className="flex items-center gap-1.5">
                     <Bath size={14} />
-                    {w.badkamers} badk.
+                    {w.badkamers} {t('bathrooms')}
                   </span>
                   <span className="flex items-center gap-1.5">
                     <Users size={14} />
-                    {w.maxGasten} gasten
+                    {w.maxGasten} {t('guests')}
                   </span>
                   {w.oppervlakte && (
                     <span className="text-moroww-black/40">{w.oppervlakte}</span>
@@ -105,13 +107,13 @@ export function CollectieStatisch() {
                 <div className="flex items-center justify-between mt-auto pt-4 border-t border-moroww-border">
                   <div>
                     <span className="font-bold text-xl text-moroww-black">€{w.prijs}</span>
-                    <span className="text-sm text-moroww-black/45 ml-1">/ nacht</span>
+                    <span className="text-sm text-moroww-black/45 ml-1">{t('per_night')}</span>
                   </div>
                   <Link
                     href={`/collectie/${w.id}`}
                     className="rounded-full bg-moroww-black hover:bg-moroww-black/80 text-white font-semibold text-sm px-5 py-2.5 transition-colors duration-200"
                   >
-                    Bekijk woning
+                    {t('view')}
                   </Link>
                 </div>
               </div>
@@ -127,10 +129,10 @@ export function CollectieStatisch() {
             className="font-bold lowercase text-white leading-[1.05] tracking-[-0.02em] mb-4"
             style={{ fontSize: "clamp(1.5rem,3vw,2.25rem)" }}
           >
-            elke woning is persoonlijk geïnspecteerd.
+            {t('cta_title')}
           </h2>
           <p className="text-white/80 leading-relaxed max-w-xl mx-auto" style={{ fontSize: 16 }}>
-            Geen algoritme. Geen massa. Alleen woningen die onze standaard halen.
+            {t('cta_body')}
           </p>
         </div>
       </div>

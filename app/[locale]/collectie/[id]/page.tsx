@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Users, MapPin, Check, LogIn, LogOut } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import { woningen, BADGE_STYLES } from "@/lib/woningen";
 import { WoningGalerij } from "./WoningGalerij";
 import { VacationRentalJsonLd } from "@/components/JsonLd";
@@ -69,7 +70,8 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-export default function WoningDetailPage({ params }: Props) {
+export default async function WoningDetailPage({ params }: Props) {
+  const t = await getTranslations('property')
   const woning = woningen.find((w) => w.id === params.id);
   if (!woning) notFound();
 
@@ -91,7 +93,7 @@ export default function WoningDetailPage({ params }: Props) {
         {/* ── Breadcrumb ── */}
         <div className="flex items-center gap-2 text-sm text-moroww-black/40 mb-6">
           <Link href="/collectie" className="hover:text-moroww-black transition-colors">
-            De Collectie
+            {t('breadcrumb_collection')}
           </Link>
           <span>/</span>
           <span className="text-moroww-black/70">{woning.naam}</span>
@@ -156,9 +158,9 @@ export default function WoningDetailPage({ params }: Props) {
             {/* Specs */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 20 }}>
               {[
-                `${woning.slaapkamers} slaapkamers`,
-                `${woning.badkamers} badkamers`,
-                `Max ${woning.maxGasten} gasten`,
+                `${woning.slaapkamers} ${t('bedrooms')}`,
+                `${woning.badkamers} ${t('bathrooms')}`,
+                `Max ${woning.maxGasten} ${t('guests')}`,
                 ...(woning.oppervlakte ? [woning.oppervlakte] : []),
               ].map((spec) => (
                 <span
@@ -186,7 +188,7 @@ export default function WoningDetailPage({ params }: Props) {
             >
               <div className="mb-5">
                 <span style={{ fontWeight: 800, fontSize: 32, color: '#ffffff' }}>€{woning.prijs}</span>
-                <span style={{ color: '#999999', fontSize: 14, marginLeft: 6 }}>/ nacht</span>
+                <span style={{ color: '#999999', fontSize: 14, marginLeft: 6 }}>{t('per_night')}</span>
               </div>
               <a
                 href={woning.boekUrl}
@@ -195,15 +197,15 @@ export default function WoningDetailPage({ params }: Props) {
                 className="block w-full text-center rounded-full font-semibold py-4 text-base transition-colors duration-200 mb-3"
                 style={{ background: '#FEA05E', color: '#ffffff' }}
               >
-                Boek direct
+                {t('book_direct')}
               </a>
               <p style={{ color: '#666666', fontSize: 12, textAlign: 'center', lineHeight: 1.5 }}>
-                Je wordt doorgestuurd naar onze boekingspagina.
+                {t('redirect_note')}
               </p>
             </div>
             <div className="mt-4 text-center">
               <Link href="/collectie" className="text-xs text-moroww-black/40 hover:text-moroww-black transition-colors underline underline-offset-2">
-                ← Terug naar collectie
+                {t('back_to_collection')}
               </Link>
             </div>
           </div>
@@ -213,7 +215,7 @@ export default function WoningDetailPage({ params }: Props) {
       {/* ── 3. HOOGTEPUNTEN ── */}
       <section className="px-6 md:px-12 mt-10" style={{ borderTop: '1px solid #E8D5C4' }}>
         <div className="max-w-6xl mx-auto py-16">
-          <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 24 }}>waarom deze woning?</h2>
+          <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 24 }}>{t('highlights_title')}</h2>
           <div
             className="rounded-2xl p-8"
             style={{ background: '#FFFFFF', boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}
@@ -243,7 +245,7 @@ export default function WoningDetailPage({ params }: Props) {
               className="rounded-2xl p-8 mb-6"
               style={{ background: '#FFFFFF', boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}
             >
-              <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 20 }}>over deze woning</h2>
+              <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 20 }}>{t('about_title')}</h2>
               <p style={{ fontSize: 18, fontWeight: 600, color: '#1A1A1A', lineHeight: 1.7, marginBottom: 24 }}>
                 {woning.introductie}
               </p>
@@ -257,7 +259,7 @@ export default function WoningDetailPage({ params }: Props) {
                 className="rounded-2xl p-8"
                 style={{ background: '#FFFFFF', boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}
               >
-                <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 16 }}>de buurt</h2>
+                <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 16 }}>{t('neighbourhood_title')}</h2>
                 <p style={{ fontSize: 15, color: '#444444', lineHeight: 1.8 }}>
                   {woning.buurt}
                 </p>
@@ -267,12 +269,12 @@ export default function WoningDetailPage({ params }: Props) {
 
           {/* ── 5. PRAKTISCH ── */}
           <div>
-            <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 16 }}>praktische info</h2>
+            <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 16 }}>{t('practical_title')}</h2>
             <div className="space-y-3">
               {[
-                { icon: <LogIn size={16} style={{ color: '#fff' }} />, label: 'Inchecken', value: `Vanaf ${woning.inCheckin}` },
-                { icon: <LogOut size={16} style={{ color: '#fff' }} />, label: 'Uitchecken', value: `Voor ${woning.uitCheckin}` },
-                { icon: <Users size={16} style={{ color: '#fff' }} />, label: 'Max gasten', value: `${woning.maxGasten} personen` },
+                { icon: <LogIn size={16} style={{ color: '#fff' }} />, label: t('checkin_label'), value: `${t('from_label')} ${woning.inCheckin}` },
+                { icon: <LogOut size={16} style={{ color: '#fff' }} />, label: t('checkout_label'), value: `${t('before_label')} ${woning.uitCheckin}` },
+                { icon: <Users size={16} style={{ color: '#fff' }} />, label: t('max_guests_label'), value: `${woning.maxGasten} ${t('persons')}` },
               ].map(({ icon, label, value }) => (
                 <div key={label} className="flex items-center gap-4 rounded-2xl p-5"
                   style={{ background: '#FFFFFF', border: '1px solid #E8D5C4' }}>
@@ -307,7 +309,7 @@ export default function WoningDetailPage({ params }: Props) {
           <div className="max-w-6xl mx-auto">
             <div className="rounded-2xl p-8" style={{ background: '#FFFFFF', boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}>
               <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-6">
-                wat gasten zeggen
+                {t('reviews_label')}
               </p>
               <div className="space-y-8">
                 {woningReviews[woning.id].map(({ citaat, naam }) => (
@@ -335,10 +337,10 @@ export default function WoningDetailPage({ params }: Props) {
               className="font-bold lowercase text-white leading-[1.05] tracking-[-0.02em] mb-3"
               style={{ fontSize: "clamp(1.75rem,3vw,2.5rem)" }}
             >
-              klaar om te boeken?
+              {t('cta_title')}
             </h2>
             <p className="text-white/80 leading-relaxed mb-8 max-w-md mx-auto" style={{ fontSize: 17 }}>
-              Beschikbaarheid checken en direct reserveren.
+              {t('cta_body')}
             </p>
             <a
               href={woning.boekUrl}
@@ -346,12 +348,12 @@ export default function WoningDetailPage({ params }: Props) {
               rel="noopener noreferrer"
               className="inline-flex items-center rounded-full bg-white text-moroww-orange font-semibold px-10 py-4 text-base hover:bg-moroww-blush transition-colors duration-200 mb-4"
             >
-              Boek direct
+              {t('book_direct')}
             </a>
             <p className="text-white/60 text-sm">
-              Vragen?{" "}
+              {t('cta_questions')}{" "}
               <a href="mailto:info@moroww.com" className="underline underline-offset-2 hover:text-white transition-colors">
-                Neem contact op via info@moroww.com
+                {t('cta_contact')}
               </a>
             </p>
           </div>

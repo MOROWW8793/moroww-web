@@ -1,42 +1,21 @@
 "use client";
 
-import { Leaf, BadgeCheck, KeyRound, QrCode, Gift, TrendingUp } from "lucide-react";
+import { Leaf, BadgeCheck, KeyRound, QrCode, Gift, TrendingUp, type LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
-
-const kaarten = [
-  {
-    icon: Leaf,
-    titel: "Geur",
-    tekst: "Elke woning heeft een eigen sensorisch profiel. Bij aankomst ruikt het goed. Niet toevallig.",
-  },
-  {
-    icon: BadgeCheck,
-    titel: "moroww label",
-    tekst: "Alleen woningen die onze inspectie doorstaan dragen het label. Geen uitzonderingen.",
-  },
-  {
-    icon: KeyRound,
-    titel: "Slim slot",
-    tekst: "Geen sleuteloverdracht. Geen wachten. Gasten komen aan op hun tempo, via een persoonlijke code.",
-  },
-  {
-    icon: QrCode,
-    titel: "Gastenpagina",
-    tekst: "Een persoonlijke digitale gids per woning. Wifi, huisregels, lokale tips - alles op één plek via QR.",
-  },
-  {
-    icon: Gift,
-    titel: "Welkomstpakket",
-    tekst: "geselecteerde badkamerproducten en verse linnens bij elke aankomst. de standaard is de standaard, elke keer.",
-  },
-  {
-    icon: TrendingUp,
-    titel: "linnen & verzorging",
-    tekst: "elk verblijf start met vers opgemaakt bed, geselecteerde badkamerproducten en een schone lei. geen compromis.",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export function StandaardDetail() {
+  const t = useTranslations('standaard')
+
+  const kaarten: Array<{ icon: LucideIcon; titel: string; tekst: string }> = [
+    { icon: Leaf,       titel: t('card_geur_titel'),   tekst: t('card_geur_tekst') },
+    { icon: BadgeCheck, titel: t('card_label_titel'),  tekst: t('card_label_tekst') },
+    { icon: KeyRound,   titel: t('card_slot_titel'),   tekst: t('card_slot_tekst') },
+    { icon: QrCode,     titel: t('card_qr_titel'),     tekst: t('card_qr_tekst') },
+    { icon: Gift,       titel: t('card_pakket_titel'), tekst: t('card_pakket_tekst') },
+    { icon: TrendingUp, titel: t('card_linnen_titel'), tekst: t('card_linnen_tekst') },
+  ]
+
   return (
     <section
       style={{ background: "#1A1A1A" }}
@@ -53,15 +32,15 @@ export function StandaardDetail() {
           className="mb-12"
         >
           <p style={{ color: "#C08D6E", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: 2, marginBottom: 16 }}>
-            de standaard
+            {t('label')}
           </p>
           <h2
             style={{ color: "#ffffff", fontSize: "clamp(28px,4vw,40px)", fontWeight: 800, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 16 }}
           >
-            wat elke moroww-woning meebrengt.
+            {t('title')}
           </h2>
           <p style={{ color: "#999999", fontSize: 16, lineHeight: 1.6 }}>
-            elk verblijf is het resultaat van een systeem. niet van toeval.
+            {t('subtitle')}
           </p>
         </motion.div>
 

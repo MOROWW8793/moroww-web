@@ -3,8 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 export function HostTeaser() {
+  const t = useTranslations('home')
   return (
     <section className="bg-white w-full overflow-hidden">
       <div className="flex flex-col md:flex-row min-h-[500px] md:min-h-[600px]">
@@ -30,24 +32,22 @@ export function HostTeaser() {
         >
           <div className="w-full">
             <p className="text-xs font-normal uppercase tracking-widest text-[#C08D6E] mb-4">
-              Voor eigenaars
+              {t('host_label')}
             </p>
             <h2
               className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-6"
               style={{ fontSize: "clamp(28px,4vw,48px)" }}
             >
-              jij opent de deur.<br />wij doen de rest.
+              {t('host_title')}<br />{t('host_subtitle')}
             </h2>
             <p className="text-moroww-black/60 leading-relaxed mb-10" style={{ fontSize: 17 }}>
-              geen telefoontjes, geen gedoe, geen administratieve last.
-              slimme technologie bewaakt. ons protocol garandeert.
-              jij houdt de controle.
+              {t('host_body')}
             </p>
             <Link
               href="/eigenaar-worden"
               className="inline-flex items-center justify-center w-full md:w-auto rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white font-semibold px-8 py-4 text-base transition-colors duration-200"
             >
-              eigenaar worden
+              {t('host_cta')}
             </Link>
           </div>
         </motion.div>
