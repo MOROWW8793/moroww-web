@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export function Hero() {
   return (
-    <section className="relative -mt-16 w-full overflow-hidden mb-0" style={{ height: "calc(100dvh + 4rem)", marginBottom: 0 }}>
+    <section className="relative -mt-16 w-full overflow-hidden mb-0" style={{ height: "calc(100svh + 4rem)" }}>
       <Image
         src="/images/hero.jpg"
         alt="moroww vakantiewoning - premium verblijf in België"

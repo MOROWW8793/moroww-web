@@ -26,7 +26,7 @@ export function OverMorowwContent() {
     <main className="bg-[#FAE4D6]">
 
       {/* ── HERO ── */}
-      <section className="relative -mt-16 w-full overflow-hidden" style={{ height: "100dvh" }}>
+      <section className="relative -mt-16 w-full overflow-hidden mb-0" style={{ height: "calc(100svh + 4rem)" }}>
         <Image
           src="/images/over-hero.jpg"
           alt="moroww - over ons"
