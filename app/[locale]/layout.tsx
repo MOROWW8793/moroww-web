@@ -48,7 +48,7 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider messages={messages}>
       <Navbar />
-      <main>{children}</main>
+      <main className="bg-[#FAE4D6]">{children}</main>
       <Footer />
     </NextIntlClientProvider>
   )
