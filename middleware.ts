@@ -1,21 +1,26 @@
+import createIntlMiddleware from 'next-intl/middleware'
+import { routing } from './i18n/routing'
 import { NextRequest, NextResponse } from 'next/server'
 
-export function middleware(request: NextRequest) {
+const intlMiddleware = createIntlMiddleware(routing)
+
+export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
+  // Admin protection
   if (pathname.startsWith('/admin/')) {
-    if (pathname === '/admin' || pathname === '/admin/login') {
-      return NextResponse.next()
-    }
     const adminAuth = request.cookies.get('admin_auth')
     if (!adminAuth || adminAuth.value !== 'true') {
       return NextResponse.redirect(new URL('/admin', request.url))
     }
+    return NextResponse.next()
   }
 
-  return NextResponse.next()
+  return intlMiddleware(request)
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: [
+    '/((?!api|_next|admin|onboarding|welcome|.*\\..*).*)',
+  ],
 }

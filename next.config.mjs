@@ -1,3 +1,7 @@
+import createNextIntlPlugin from 'next-intl/plugin'
+
+const withNextIntl = createNextIntlPlugin('./i18n/request.ts')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   compress: true,
@@ -16,23 +20,11 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: "/about",
-        destination: "/over-moroww",
-        permanent: true,
-      },
-      {
-        source: "/nl",
-        destination: "/",
-        permanent: true,
-      },
-      {
-        source: "/nl/:path*",
-        destination: "/:path*",
-        permanent: true,
-      },
-    ];
+      { source: "/about", destination: "/over-moroww", permanent: true },
+      { source: "/nl", destination: "/", permanent: true },
+      { source: "/nl/:path*", destination: "/:path*", permanent: true },
+    ]
   },
-};
+}
 
-export default nextConfig;
+export default withNextIntl(nextConfig)

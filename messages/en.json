@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "collection": "The Collection",
+    "about": "About moroww",
+    "partners": "Partners",
+    "owner": "Become an owner",
+    "book": "Book a stay"
+  },
+  "home": {
+    "hero": "a new standard for short term rentals.",
+    "collection_label": "the collection",
+    "collection_title": "four homes. two collections. one standard.",
+    "view_book": "View & book",
+    "per_night": "/ night",
+    "guests": "guests",
+    "bedrooms": "bed.",
+    "bathrooms": "bath.",
+    "filter_all": "All",
+    "filter_shore": "the shore",
+    "filter_fields": "the fields",
+    "reviews_label": "what guests say",
+    "reviews_title_light": "no promises.",
+    "reviews_title_bold": "only experiences.",
+    "all_stays": "· all stays",
+    "host_label": "for owners",
+    "host_title": "you open the door.",
+    "host_subtitle": "we do the rest.",
+    "host_body": "no phone calls, no hassle, no admin. smart technology monitors. our protocol guarantees. you stay in control.",
+    "host_cta": "become an owner"
+  },
+  "footer": {
+    "tagline": "No worries for the day of moroww.",
+    "collection": "The Collection",
+    "about": "About moroww",
+    "partners": "Partners",
+    "owner": "Become an owner",
+    "rights": "All rights reserved."
+  },
+  "property": {
+    "per_night": "/ night",
+    "book_cta": "View & book",
+    "guests": "guests",
+    "bedrooms": "bedrooms",
+    "bathrooms": "bathrooms",
+    "checkin": "Check-in",
+    "checkout": "Check-out",
+    "reviews_label": "what guests say"
+  },
+  "not_found": {
+    "label": "page not found",
+    "title_light": "this page",
+    "title_bold": "does not exist.",
+    "body": "But our collection does. Perhaps you'll find what you were looking for there.",
+    "cta_collection": "view the collection",
+    "cta_home": "back to home"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "collection": "De Collectie",
+    "about": "Over moroww",
+    "partners": "Partners",
+    "owner": "Eigenaar worden",
+    "book": "Maak een boeking"
+  },
+  "home": {
+    "hero": "a new standard for short term rentals.",
+    "collection_label": "de collectie",
+    "collection_title": "vier woningen. twee collecties. één standaard.",
+    "view_book": "Bekijk & boek",
+    "per_night": "/ nacht",
+    "guests": "gasten",
+    "bedrooms": "slk.",
+    "bathrooms": "badk.",
+    "filter_all": "Alles",
+    "filter_shore": "the shore",
+    "filter_fields": "the fields",
+    "reviews_label": "wat gasten zeggen",
+    "reviews_title_light": "geen beloften.",
+    "reviews_title_bold": "alleen ervaringen.",
+    "all_stays": "· alle verblijven",
+    "host_label": "voor eigenaars",
+    "host_title": "je opent de deur.",
+    "host_subtitle": "wij doen de rest.",
+    "host_body": "geen telefoontjes, geen gedoe, geen administratieve last. slimme technologie bewaakt. ons protocol garandeert. jij houdt de controle.",
+    "host_cta": "eigenaar worden"
+  },
+  "footer": {
+    "tagline": "No worries for the day of moroww.",
+    "collection": "De Collectie",
+    "about": "Over moroww",
+    "partners": "Partners",
+    "owner": "Eigenaar worden",
+    "rights": "Alle rechten voorbehouden."
+  },
+  "property": {
+    "per_night": "/ nacht",
+    "book_cta": "Bekijk & boek",
+    "guests": "gasten",
+    "bedrooms": "slaapkamers",
+    "bathrooms": "badkamers",
+    "checkin": "Check-in",
+    "checkout": "Check-out",
+    "reviews_label": "wat gasten zeggen"
+  },
+  "not_found": {
+    "label": "pagina niet gevonden",
+    "title_light": "deze pagina",
+    "title_bold": "bestaat niet.",
+    "body": "Maar onze collectie wel. Misschien vind je daar wat je zocht.",
+    "cta_collection": "bekijk de collectie",
+    "cta_home": "terug naar home"
+  }
+}
