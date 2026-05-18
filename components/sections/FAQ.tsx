@@ -18,8 +18,8 @@ const faqs = [
     a: "Je ontvangt voor aankomst een unieke digitale code. Geen sleutelafspraak, geen wachten. De sfeer staat al klaar - van temperatuur tot verlichting.",
   },
   {
-    v: "Wat houdt het Founding Partner-programma in?",
-    a: "De eerste 10 hosts krijgen een preferentieel commissietarief dat vergrendeld blijft voor de volledige eerste contractcyclus. Je stapt in op de beste voorwaarden die moroww ooit aanbiedt.",
+    v: "Wat houdt het eigenaarsprogramma van moroww in?",
+    a: "De eerste eigenaars stappen in op voorwaarden die contractueel vergrendeld worden voor de volledige eerste cyclus. Je stapt in op de beste voorwaarden die moroww ooit aanbiedt.",
   },
   {
     v: "In welke regio's is moroww actief?",

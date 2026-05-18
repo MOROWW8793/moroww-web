@@ -293,7 +293,7 @@ export function OverMorowwContent() {
               href="/eigenaar-worden"
               className="bg-[#FEA05E] text-[#1A1A1A] rounded-full px-8 py-4 text-sm font-semibold hover:bg-[#e8904e] transition-colors"
             >
-              word founding partner
+              eigenaar worden
             </Link>
             <Link
               href="/collectie"

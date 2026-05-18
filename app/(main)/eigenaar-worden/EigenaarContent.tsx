@@ -109,7 +109,7 @@ export function EigenaarContent() {
             </p>
             <div className="mt-8">
               <span className="text-sm text-white/40 border border-white/15 rounded-full px-4 py-2">
-                founding partner plaatsen zijn beperkt
+                plaatsen zijn beperkt
               </span>
             </div>
           </div>
@@ -181,7 +181,7 @@ export function EigenaarContent() {
         >
           <div className="max-w-sm">
             <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
-              Founding Partner
+              Voor eigenaars
             </p>
             <h2 className="text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.1] text-[#1A1A1A]">
               <span className="font-light">niet de korting.</span><br />
