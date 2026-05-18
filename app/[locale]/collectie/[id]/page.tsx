@@ -27,7 +27,7 @@ const woningMeta: Record<string, { title: string; description: string; keywords:
     keywords: ['vakantiewoning Oostende', 'vakantiewoning zeezicht Oostende', 'appartement Oostende huren', 'luxe vakantiewoning Oostende', 'moroww Oostende'],
   },
   'ann-helena-ursel': {
-    title: 'Chalet Ann-Helena — vakantiewoning Ursel Meetjesland | moroww',
+    title: 'Chalet Anna-Helena — vakantiewoning Ursel Meetjesland | moroww',
     description: 'Chalet met privétuin en vijver in Ursel, Meetjesland. 2 slaapkamers, max 5 personen. Bosrand, gezinsvriendelijk. Gecertificeerd door moroww. Vanaf €220/nacht.',
     keywords: ['vakantiewoning Meetjesland', 'chalet Ursel', 'vakantiewoning Ursel', 'chalet huren Meetjesland', 'gezinsvakantie Meetjesland', 'moroww Meetjesland'],
   },

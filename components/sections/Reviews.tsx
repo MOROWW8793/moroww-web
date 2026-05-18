@@ -66,7 +66,7 @@ export async function Reviews() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-white">Sabrina</p>
-                <p className="text-xs text-[#C08D6E]">Chalet Ann-Helena, Ursel</p>
+                <p className="text-xs text-[#C08D6E]">Chalet Anna-Helena, Ursel</p>
               </div>
             </div>
           </div>
