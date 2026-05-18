@@ -94,7 +94,7 @@ export function EigenaarContent() {
           className="flex items-center px-10 md:px-16 py-16 bg-[#1A1A1A]"
         >
           <div className="max-w-sm">
-            <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-6">
+            <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-6 pt-8 md:pt-0">
               Voor eigenaars
             </p>
             <h1 className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.05] text-white">
