@@ -18,8 +18,8 @@ const woningMeta: Record<string, { title: string; description: string; keywords:
     keywords: ['vakantiewoning Knokke', 'vakantiewoning Heist-aan-Zee', 'vakantiewoning kust België', 'luxe vakantiewoning Knokke-Heist', 'privé vakantiewoning Knokke', 'Nosso Logies Knokke', 'moroww kust'],
   },
   'moroww-oostende': {
-    title: 'Vakantiewoning Oostende — zeezicht | moroww',
-    description: 'Vakantiewoning op de 16e verdieping in Oostende. Zeezicht, privé parking, 2 slaapkamers, max 4 personen. Gecertificeerd door moroww. Vanaf €210/nacht.',
+    title: 'The Sixteenth — vakantiewoning Oostende met zeezicht | moroww',
+    description: 'The Sixteenth — vakantiewoning op de 16e verdieping in Oostende. Panoramisch zeezicht, privé parking, 2 slaapkamers, max 4 personen. Gecertificeerd door moroww. Vanaf €210/nacht.',
     keywords: ['vakantiewoning Oostende', 'vakantiewoning zeezicht Oostende', 'appartement Oostende huren', 'luxe vakantiewoning Oostende', 'moroww Oostende'],
   },
   'ann-helena-ursel': {

@@ -203,7 +203,7 @@ export const woningen: Woning[] = [
   },
   {
     id: "moroww-oostende",
-    naam: "Oostende",
+    naam: "The Sixteenth",
     collectie: "the shore",
     locatie: "Oostende",
     prijs: 210,
