@@ -2,33 +2,18 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Users, MapPin, Check, LogIn, LogOut } from "lucide-react";
 import { getTranslations } from "next-intl/server";
-import { woningen, BADGE_STYLES } from "@/lib/woningen";
+import { woningen, BADGE_STYLES, lw, lwArr, type Locale } from "@/lib/woningen";
 import { WoningGalerij } from "./WoningGalerij";
 import { VacationRentalJsonLd } from "@/components/JsonLd";
 
-interface Props { params: { id: string } }
+interface Props { params: { locale: string; id: string } }
 
 export function generateStaticParams() {
-  return woningen.map((w) => ({ id: w.id }));
+  return woningen.flatMap((w) => [
+    { locale: 'nl', id: w.id },
+    { locale: 'en', id: w.id },
+  ]);
 }
-
-const woningReviews: Record<string, { citaat: string; naam: string }[]> = {
-  'nosso-knokke': [
-    { citaat: 'Een heel fijne accommodatie.', naam: 'Lin' },
-  ],
-  'moroww-oostende': [
-    { citaat: 'Het appartement ligt op de 16e verdieping met een schitterend uitzicht, ongeacht het weer. Heel proper, mooi ingericht. Wat er echt uitsprong was de snelle en vriendelijke communicatie — we komen zeker terug.', naam: 'Liesbeth' },
-    { citaat: 'Een prachtig appartement in een rustig deel van Oostende. Fantastisch zeezicht. Communicatie verliep heel vlot. We komen zeker nog terug.', naam: 'Valérie' },
-  ],
-  'ann-helena-ursel': [
-    { citaat: 'We brachten een heel aangenaam weekend door in dit mooie, comfortabele chalet. De prachtige tuin biedt een heerlijk uitzicht en de omgeving is ideaal voor een ontspannende boswandeling. Absolute aanrader.', naam: 'Jan' },
-    { citaat: 'De rust van deze plek is ongeëvenaard. Het chalet heeft alles en meer. Kaarsen stonden ons op te wachten, het rook er heerlijk, het was verwarmd bij aankomst. We hebben ons helemaal thuis gevoeld.', naam: 'Sabrina' },
-  ],
-  'cozy-relax-beernem': [
-    { citaat: 'Verblijven in de hottub terwijl je naar de sterren kijkt met het kampvuur — perfect.', naam: 'Lucie' },
-    { citaat: 'Uitstekend verblijf met het gezin. De faciliteiten zijn top, veel te doen voor de kinderen. Jammer dat we niet langer konden blijven.', naam: 'Tom' },
-  ],
-};
 
 const woningMeta: Record<string, { title: string; description: string; keywords: string[] }> = {
   'nosso-knokke': {
@@ -54,17 +39,19 @@ const woningMeta: Record<string, { title: string; description: string; keywords:
 };
 
 export async function generateMetadata({ params }: Props) {
+  const locale = params.locale as Locale
   const woning = woningen.find((w) => w.id === params.id);
   if (!woning) return { title: "Woning - moroww" };
   const meta = woningMeta[woning.id];
+  const desc = meta?.description ?? lw(woning.beschrijving, locale)
   return {
     title: meta?.title ?? `${woning.naam} — vakantiewoning in ${woning.locatie}`,
-    description: meta?.description ?? woning.beschrijving,
+    description: desc,
     keywords: meta?.keywords,
     alternates: { canonical: `https://www.moroww.com/collectie/${woning.id}` },
     openGraph: {
       title: meta?.title ?? `${woning.naam} | moroww`,
-      description: meta?.description ?? woning.beschrijving,
+      description: desc,
       images: [{ url: woning.heroFoto, width: 1200, height: 800, alt: woning.naam }],
     },
   };
@@ -72,6 +59,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function WoningDetailPage({ params }: Props) {
   const t = await getTranslations('property')
+  const locale = params.locale as Locale
   const woning = woningen.find((w) => w.id === params.id);
   if (!woning) notFound();
 
@@ -81,7 +69,7 @@ export default async function WoningDetailPage({ params }: Props) {
     <div className="bg-moroww-blush min-h-screen">
       <VacationRentalJsonLd
         name={woning.naam}
-        description={woning.beschrijving}
+        description={lw(woning.beschrijving, locale)}
         image={woning.heroFoto}
         pricePerNight={woning.prijs}
         maxOccupancy={woning.maxGasten}
@@ -146,7 +134,7 @@ export default async function WoningDetailPage({ params }: Props) {
 
             {/* Slogan */}
             <p style={{ fontStyle: 'italic', color: '#C08D6E', fontSize: 16, marginTop: 8 }}>
-              {woning.slogan}
+              {lw(woning.slogan, locale)}
             </p>
 
             {/* Locatie */}
@@ -221,7 +209,7 @@ export default async function WoningDetailPage({ params }: Props) {
             style={{ background: '#FFFFFF', boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {woning.hoogtepunten.map((h) => (
+              {lwArr(woning.hoogtepunten, locale).map((h) => (
                 <div key={h} className="flex items-start gap-3">
                   <div
                     className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
@@ -247,10 +235,10 @@ export default async function WoningDetailPage({ params }: Props) {
             >
               <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 20 }}>{t('about_title')}</h2>
               <p style={{ fontSize: 18, fontWeight: 600, color: '#1A1A1A', lineHeight: 1.7, marginBottom: 24 }}>
-                {woning.introductie}
+                {lw(woning.introductie, locale)}
               </p>
               <p style={{ fontSize: 15, color: '#444444', lineHeight: 1.8 }}>
-                {woning.volledigeBeschrijving}
+                {lw(woning.volledigeBeschrijving, locale)}
               </p>
             </div>
 
@@ -261,7 +249,7 @@ export default async function WoningDetailPage({ params }: Props) {
               >
                 <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1A1A1A', marginBottom: 16 }}>{t('neighbourhood_title')}</h2>
                 <p style={{ fontSize: 15, color: '#444444', lineHeight: 1.8 }}>
-                  {woning.buurt}
+                  {lw(woning.buurt!, locale)}
                 </p>
               </div>
             )}
@@ -288,7 +276,7 @@ export default async function WoningDetailPage({ params }: Props) {
                   </div>
                 </div>
               ))}
-              {woning.tags.map((tag) => (
+              {lwArr(woning.tags, locale).map((tag) => (
                 <div key={tag} className="flex items-center gap-4 rounded-2xl p-5"
                   style={{ background: '#FFFFFF', border: '1px solid #E8D5C4' }}>
                   <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
@@ -304,7 +292,7 @@ export default async function WoningDetailPage({ params }: Props) {
       </section>
 
       {/* ── 6. REVIEWS ── */}
-      {woningReviews[woning.id]?.length > 0 && (
+      {(woning.reviews?.length ?? 0) > 0 && (
         <section className="px-6 md:px-12 pb-16">
           <div className="max-w-6xl mx-auto">
             <div className="rounded-2xl p-8" style={{ background: '#FFFFFF', boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}>
@@ -312,10 +300,10 @@ export default async function WoningDetailPage({ params }: Props) {
                 {t('reviews_label')}
               </p>
               <div className="space-y-8">
-                {woningReviews[woning.id].map(({ citaat, naam }) => (
+                {woning.reviews!.map(({ citaat, naam }) => (
                   <blockquote key={naam} className="flex flex-col gap-3">
                     <p className="text-base leading-relaxed text-[#1A1A1A] italic">
-                      &ldquo;{citaat}&rdquo;
+                      &ldquo;{lw(citaat, locale)}&rdquo;
                     </p>
                     <footer className="flex items-center gap-3">
                       <span className="text-[#FEA05E] text-sm">★★★★★</span>

@@ -5,12 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { BedDouble, Bath, Users } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { woningen, BADGE_STYLES } from "@/lib/woningen";
+import { useLocale } from "next-intl";
+import { woningen, BADGE_STYLES, lwArr, type Locale } from "@/lib/woningen";
 
 type Filter = "Alles" | "the shore" | "the fields";
 
 export function WoningenGrid() {
   const t = useTranslations('home')
+  const locale = useLocale() as Locale
   const [filter, setFilter] = useState<Filter>("Alles");
 
   const gefilterd =
@@ -115,7 +117,7 @@ export function WoningenGrid() {
 
                   {/* Tags */}
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 12 }}>
-                    {w.tags.map((tag) => (
+                    {lwArr(w.tags, locale).map((tag) => (
                       <span
                         key={tag}
                         style={{
@@ -153,7 +155,7 @@ export function WoningenGrid() {
                   {/* Prijs + CTA */}
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid #F0E4D8", paddingTop: 16 }}>
                     <div>
-                      <span style={{ fontWeight: 700, fontSize: 18, color: "#1A1A1A" }}>Vanaf €{w.prijs}</span>
+                      <span style={{ fontWeight: 700, fontSize: 18, color: "#1A1A1A" }}>{t('from')} €{w.prijs}</span>
                       <span style={{ fontSize: 13, color: "#999999", marginLeft: 4 }}>{t('per_night')}</span>
                     </div>
                     <Link

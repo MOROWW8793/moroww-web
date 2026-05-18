@@ -4,13 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { BedDouble, Bath, Users } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { woningen, BADGE_STYLES } from "@/lib/woningen";
+import { useTranslations, useLocale } from "next-intl";
+import { woningen, BADGE_STYLES, lwArr, type Locale } from "@/lib/woningen";
 
 type Filter = "Alles" | "the shore" | "the fields";
 
 export function CollectieStatisch() {
   const t = useTranslations('collectie')
+  const locale = useLocale() as Locale
   const [filter, setFilter] = useState<Filter>("Alles");
 
   const gefilterd =
@@ -74,7 +75,7 @@ export function CollectieStatisch() {
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {w.tags.map((tag) => (
+                  {lwArr(w.tags, locale).map((tag) => (
                     <span
                       key={tag}
                       className="text-xs font-medium text-moroww-black/60 bg-moroww-blush px-3 py-1 rounded-full"
