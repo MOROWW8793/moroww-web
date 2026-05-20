@@ -97,7 +97,7 @@ export default function ProspectsPage() {
         if (res.status === 401) { window.location.href = '/admin'; return }
         const json = await res.json()
         if (!res.ok) throw new Error(json.error ?? 'Laad-fout')
-        setProspects(json.data ?? [])
+        setProspects(json.prospects ?? [])
       } catch (e) {
         setError(e instanceof Error ? e.message : 'Onbekende fout')
       } finally {
