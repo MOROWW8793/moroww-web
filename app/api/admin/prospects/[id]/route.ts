@@ -1,70 +1,79 @@
-import { createClient } from '@supabase/supabase-js'
-import { NextRequest, NextResponse } from 'next/server'
+// app/api/admin/prospects/[id]/route.ts
+//
+// Server-side PATCH endpoint voor het updaten van een single prospect.
+// Whitelist van toegestane velden voorkomt dat de client onbedoeld
+// gevoelige velden (score, owner_email, source_url, ...) kan overschrijven.
 
-function adminClient() {
-  return createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_KEY!
-  )
-}
+import { NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
+import { createClient } from '@supabase/supabase-js';
 
-function isAuthed(request: NextRequest) {
-  return request.cookies.get('admin_auth')?.value === 'true'
-}
-
-// Fields that the admin UI is allowed to update.
-// Scraper-owned fields (score, is_passing_filters, source_url, …) are excluded.
-const ALLOWED_FIELDS = new Set([
+// Enkel deze velden mogen via de admin UI worden geüpdatet.
+// Score-velden en bron-data worden door scraper_for_supabase.py beheerd.
+const ALLOWED_FIELDS = [
   'status',
   'notes',
   'owner_name',
   'owner_phone',
   'follow_up_date',
   'last_contacted_at',
-])
+];
 
 export async function PATCH(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  if (!isAuthed(request)) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  // Auth check
+  const cookieStore = cookies();
+  if (!cookieStore.get('admin_auth')) {
+    return NextResponse.json({ error: 'unauthorized' }, { status: 401 });
   }
 
-  const { id } = params
-  if (!id) {
-    return NextResponse.json({ error: 'Missing id' }, { status: 400 })
+  // Parse body
+  let body: Record<string, unknown>;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: 'invalid json' }, { status: 400 });
   }
 
-  const body = await request.json() as Record<string, unknown>
-
-  // Strip any fields not on the whitelist
-  const updates: Record<string, unknown> = {}
-  for (const [key, value] of Object.entries(body)) {
-    if (ALLOWED_FIELDS.has(key)) {
-      updates[key] = value
-    }
+  // Whitelist filtering
+  const updates: Record<string, unknown> = {};
+  for (const key of ALLOWED_FIELDS) {
+    if (key in body) updates[key] = body[key];
   }
 
   if (Object.keys(updates).length === 0) {
-    return NextResponse.json({ error: 'No allowed fields in request' }, { status: 400 })
+    return NextResponse.json({ error: 'no valid fields to update' }, { status: 400 });
   }
 
-  // Auto-set last_contacted_at when status transitions to contacted
+  // Auto-set last_contacted_at when status flips to 'contacted'
   if (updates.status === 'contacted' && !updates.last_contacted_at) {
-    updates.last_contacted_at = new Date().toISOString()
+    updates.last_contacted_at = new Date().toISOString();
   }
 
-  const { data, error } = await adminClient()
+  // Service role client
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_KEY!,
+    {
+      auth: {
+        persistSession: false,
+      },
+    }
+  );
+
+  const { data, error } = await supabase
     .from('prospects')
     .update(updates)
-    .eq('id', id)
+    .eq('id', params.id)
     .select()
-    .single()
+    .single();
 
   if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 })
+    console.error('Prospects update error:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-  return NextResponse.json({ data })
+  return NextResponse.json({ prospect: data });
 }

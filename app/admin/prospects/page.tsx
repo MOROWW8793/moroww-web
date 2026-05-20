@@ -128,9 +128,9 @@ export default function ProspectsPage() {
       body: JSON.stringify(fields),
     })
     if (!res.ok) { console.error(await res.json()); return }
-    const { data } = await res.json() as { data: Prospect }
-    setProspects((prev) => prev.map((p) => (p.id === id ? data : p)))
-    if (selected?.id === id) setSelected(data)
+    const { prospect } = await res.json() as { prospect: Prospect }
+    setProspects((prev) => prev.map((p) => (p.id === id ? prospect : p)))
+    if (selected?.id === id) setSelected(prospect)
   }
 
   async function updateStatus(id: string, status: string) {
