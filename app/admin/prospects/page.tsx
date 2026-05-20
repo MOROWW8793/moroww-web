@@ -1,3 +1,12 @@
+// app/admin/prospects/page.tsx
+//
+// moroww OS - Prospects sourcing dashboard
+//
+// Versie 2: gebruikt server-side API routes (/api/admin/prospects)
+// in plaats van directe Supabase client.
+// Reden: SUPABASE_SERVICE_KEY blijft server-side, RLS blijft strict
+// op authenticated, anon key wordt nergens met DB-toegang gebruikt.
+
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
@@ -38,16 +47,16 @@ type Prospect = {
 };
 
 const STATUS_OPTIONS = [
-  { value: 'new',               label: 'Nieuw' },
-  { value: 'shortlisted',       label: 'Shortlist' },
-  { value: 'research',          label: 'Research' },
-  { value: 'contacted',         label: 'Gecontacteerd' },
+  { value: 'new', label: 'Nieuw' },
+  { value: 'shortlisted', label: 'Shortlist' },
+  { value: 'research', label: 'Research' },
+  { value: 'contacted', label: 'Gecontacteerd' },
   { value: 'meeting_scheduled', label: 'Afspraak gepland' },
-  { value: 'in_audit',          label: 'In audit' },
-  { value: 'in_collection',     label: 'In collectie' },
-  { value: 'rejected_by_us',    label: 'Afgewezen door ons' },
-  { value: 'rejected_by_them',  label: 'Geen reactie / geweigerd' },
-  { value: 'follow_up_later',   label: 'Later opvolgen' },
+  { value: 'in_audit', label: 'In audit' },
+  { value: 'in_collection', label: 'In collectie' },
+  { value: 'rejected_by_us', label: 'Afgewezen door ons' },
+  { value: 'rejected_by_them', label: 'Geen reactie / geweigerd' },
+  { value: 'follow_up_later', label: 'Later opvolgen' },
 ];
 
 const PROVINCES = ['Alle', 'West-Vlaanderen', 'Namen', 'Luik', 'Luxemburg'];
@@ -71,70 +80,95 @@ function relativeTime(iso: string | null): string {
   return `${Math.floor(days / 30)} maanden geleden`;
 }
 
+// API helpers - alle DB-toegang via server-side routes
+async function fetchProspects(): Promise<Prospect[]> {
+  const res = await fetch('/api/admin/prospects', { cache: 'no-store' });
+  if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
+  const json = await res.json();
+  return json.prospects || [];
+}
+
+async function updateProspect(id: string, patch: Partial<Prospect>): Promise<Prospect> {
+  const res = await fetch(`/api/admin/prospects/${id}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(patch),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.error || `Update failed: ${res.status}`);
+  }
+  const json = await res.json();
+  return json.prospect;
+}
+
 // ─── COMPONENT ─────────────────────────────────────────────────────────────
 
 export default function ProspectsPage() {
   const [prospects, setProspects] = useState<Prospect[]>([]);
-  const [loading, setLoading]     = useState(true);
-  const [error, setError]         = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const [statusFilter,   setStatusFilter]   = useState<string[]>(['new', 'shortlisted']);
+  const [statusFilter, setStatusFilter] = useState<string[]>(['new', 'shortlisted']);
   const [provinceFilter, setProvinceFilter] = useState<string>('Alle');
-  const [minScore,       setMinScore]       = useState<number>(0);
-  const [showRejected,   setShowRejected]   = useState(false);
-  const [search,         setSearch]         = useState('');
+  const [minScore, setMinScore] = useState<number>(0);
+  const [showRejected, setShowRejected] = useState(false);
+  const [search, setSearch] = useState('');
 
   const [selected, setSelected] = useState<Prospect | null>(null);
 
-  // ── Data loading ──────────────────────────────────────────────────────────
-
+  // Initial load
   useEffect(() => {
     (async () => {
-      setLoading(true)
-      setError(null)
+      setLoading(true);
       try {
-        const res = await fetch('/api/admin/prospects')
-        if (res.status === 401) { window.location.href = '/admin'; return }
-        const json = await res.json()
-        if (!res.ok) throw new Error(json.error ?? 'Laad-fout')
-        setProspects(json.prospects ?? [])
+        const data = await fetchProspects();
+        setProspects(data);
+        setError(null);
       } catch (e) {
-        setError(e instanceof Error ? e.message : 'Onbekende fout')
+        setError(e instanceof Error ? e.message : 'fout bij laden');
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    })()
-  }, [])
+    })();
+  }, []);
 
-  // ── Filtering ─────────────────────────────────────────────────────────────
-
+  // Filtering
   const filtered = useMemo(() => {
     return prospects.filter((p) => {
-      if (!showRejected && !p.is_passing_filters) return false
-      if (statusFilter.length && !statusFilter.includes(p.status)) return false
-      if (provinceFilter !== 'Alle' && p.province !== provinceFilter) return false
-      if (p.score < minScore) return false
-      if (search && !p.name.toLowerCase().includes(search.toLowerCase())) return false
-      return true
-    })
-  }, [prospects, statusFilter, provinceFilter, minScore, showRejected, search])
+      if (!showRejected && !p.is_passing_filters) return false;
+      if (statusFilter.length && !statusFilter.includes(p.status)) return false;
+      if (provinceFilter !== 'Alle' && p.province !== provinceFilter) return false;
+      if (p.score < minScore) return false;
+      if (search && !p.name.toLowerCase().includes(search.toLowerCase())) return false;
+      return true;
+    });
+  }, [prospects, statusFilter, provinceFilter, minScore, showRejected, search]);
 
-  // ── Mutations (via API, not Supabase client) ──────────────────────────────
-
-  async function patchProspect(id: string, fields: Partial<Prospect>) {
-    const res = await fetch(`/api/admin/prospects/${id}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(fields),
-    })
-    if (!res.ok) { console.error(await res.json()); return }
-    const { prospect } = await res.json() as { prospect: Prospect }
-    setProspects((prev) => prev.map((p) => (p.id === id ? prospect : p)))
-    if (selected?.id === id) setSelected(prospect)
+  // Update status (inline)
+  async function updateStatus(id: string, status: string) {
+    try {
+      const updated = await updateProspect(id, { status });
+      setProspects((prev) => prev.map((p) => (p.id === id ? updated : p)));
+      if (selected?.id === id) setSelected(updated);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
-  async function updateStatus(id: string, status: string) {
-    await patchProspect(id, { status })
+  // Update notes / owner info (from detail panel)
+  async function updateField<K extends keyof Prospect>(
+    id: string,
+    field: K,
+    value: Prospect[K]
+  ) {
+    try {
+      const updated = await updateProspect(id, { [field]: value } as Partial<Prospect>);
+      setProspects((prev) => prev.map((p) => (p.id === id ? updated : p)));
+      if (selected?.id === id) setSelected(updated);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   // ─── RENDER ──────────────────────────────────────────────────────────────
@@ -142,7 +176,6 @@ export default function ProspectsPage() {
   return (
     <div className="min-h-screen bg-[#FAE4D6]/30 p-6 font-['Overused_Grotesk',sans-serif]">
       <div className="max-w-[1600px] mx-auto">
-
         {/* Header */}
         <div className="mb-6 flex items-baseline justify-between">
           <h1 className="text-2xl font-light tracking-tight text-[#1A1A1A]">
@@ -152,6 +185,12 @@ export default function ProspectsPage() {
             {filtered.length} van {prospects.length} panden
           </div>
         </div>
+
+        {error && (
+          <div className="mb-4 rounded bg-red-50 px-4 py-2 text-sm text-red-800">
+            Fout: {error}
+          </div>
+        )}
 
         {/* Filters */}
         <div className="mb-4 flex flex-wrap items-center gap-3 rounded-lg bg-white p-4 shadow-sm">
@@ -167,7 +206,9 @@ export default function ProspectsPage() {
             onChange={(e) => setProvinceFilter(e.target.value)}
             className="rounded border border-[#1A1A1A]/20 px-3 py-1.5 text-sm"
           >
-            {PROVINCES.map((p) => <option key={p}>{p}</option>)}
+            {PROVINCES.map((p) => (
+              <option key={p}>{p}</option>
+            ))}
           </select>
           <div className="flex items-center gap-2 text-sm">
             <span className="text-[#1A1A1A]/60">Score ≥</span>
@@ -213,13 +254,9 @@ export default function ProspectsPage() {
 
         {/* Table */}
         <div className="overflow-hidden rounded-lg bg-white shadow-sm">
-          {loading && (
+          {loading ? (
             <div className="p-8 text-center text-[#1A1A1A]/60">laden...</div>
-          )}
-          {error && (
-            <div className="p-8 text-center text-red-500 text-sm">{error}</div>
-          )}
-          {!loading && !error && (
+          ) : (
             <table className="w-full text-sm">
               <thead className="bg-[#1A1A1A] text-white">
                 <tr>
@@ -235,13 +272,6 @@ export default function ProspectsPage() {
                 </tr>
               </thead>
               <tbody>
-                {filtered.length === 0 && (
-                  <tr>
-                    <td colSpan={9} className="px-4 py-10 text-center text-sm text-[#1A1A1A]/50">
-                      Geen prospects gevonden met deze filters.
-                    </td>
-                  </tr>
-                )}
                 {filtered.map((p) => (
                   <tr
                     key={p.id}
@@ -255,7 +285,9 @@ export default function ProspectsPage() {
                     </td>
                     <td className="px-3 py-2 font-medium">{p.name}</td>
                     <td className="px-3 py-2 text-[#1A1A1A]/70">{p.province}</td>
-                    <td className="px-3 py-2 text-[#1A1A1A]/70">{p.guests}/{p.bedrooms}</td>
+                    <td className="px-3 py-2 text-[#1A1A1A]/70">
+                      {p.guests}/{p.bedrooms}
+                    </td>
                     <td className="px-3 py-2 text-[#1A1A1A]/70">
                       {p.price_from ? `€${p.price_from}` : '-'}
                     </td>
@@ -271,7 +303,9 @@ export default function ProspectsPage() {
                         >
                           {p.owner_email}
                         </a>
-                      ) : '-'}
+                      ) : (
+                        '-'
+                      )}
                     </td>
                     <td className="px-3 py-2" onClick={(e) => e.stopPropagation()}>
                       <select
@@ -280,7 +314,9 @@ export default function ProspectsPage() {
                         className="rounded border border-[#1A1A1A]/20 px-2 py-0.5 text-xs"
                       >
                         {STATUS_OPTIONS.map((opt) => (
-                          <option key={opt.value} value={opt.value}>{opt.label}</option>
+                          <option key={opt.value} value={opt.value}>
+                            {opt.label}
+                          </option>
                         ))}
                       </select>
                     </td>
@@ -340,7 +376,9 @@ export default function ProspectsPage() {
                   </h3>
                   <div className="flex flex-wrap gap-1">
                     {selected.sensory_signals.map((s) => (
-                      <span key={s} className="rounded-full bg-[#FAE4D6] px-2 py-0.5 text-xs">{s}</span>
+                      <span key={s} className="rounded-full bg-[#FAE4D6] px-2 py-0.5 text-xs">
+                        {s}
+                      </span>
                     ))}
                   </div>
                 </section>
@@ -364,11 +402,11 @@ export default function ProspectsPage() {
                   Contact
                 </h3>
                 <div className="space-y-2 text-sm">
-                  <a href={selected.source_url} target="_blank" rel="noopener noreferrer" className="block text-blue-600 underline">
+                  <a href={selected.source_url} target="_blank" rel="noopener" className="block text-blue-600 underline">
                     Club Belgium listing →
                   </a>
                   {selected.owner_website && (
-                    <a href={selected.owner_website} target="_blank" rel="noopener noreferrer" className="block text-blue-600 underline">
+                    <a href={selected.owner_website} target="_blank" rel="noopener" className="block text-blue-600 underline">
                       Eigen website →
                     </a>
                   )}
@@ -381,14 +419,14 @@ export default function ProspectsPage() {
                     type="text"
                     placeholder="Eigenaarsnaam (vul handmatig in)"
                     defaultValue={selected.owner_name || ''}
-                    onBlur={(e) => patchProspect(selected.id, { owner_name: e.target.value || null })}
+                    onBlur={(e) => updateField(selected.id, 'owner_name', e.target.value)}
                     className="w-full rounded border border-[#1A1A1A]/20 px-3 py-1.5 text-sm"
                   />
                   <input
                     type="text"
                     placeholder="Telefoon"
                     defaultValue={selected.owner_phone || ''}
-                    onBlur={(e) => patchProspect(selected.id, { owner_phone: e.target.value || null })}
+                    onBlur={(e) => updateField(selected.id, 'owner_phone', e.target.value)}
                     className="w-full rounded border border-[#1A1A1A]/20 px-3 py-1.5 text-sm"
                   />
                 </div>
@@ -412,7 +450,7 @@ export default function ProspectsPage() {
                   <input
                     type="date"
                     defaultValue={selected.follow_up_date || ''}
-                    onBlur={(e) => patchProspect(selected.id, { follow_up_date: e.target.value || null })}
+                    onBlur={(e) => updateField(selected.id, 'follow_up_date', e.target.value)}
                     className="mb-2 w-full rounded border border-[#1A1A1A]/20 px-3 py-1.5 text-sm"
                   />
                 )}
@@ -420,7 +458,7 @@ export default function ProspectsPage() {
                 <textarea
                   placeholder="Notities (Noam / Brent)..."
                   defaultValue={selected.notes || ''}
-                  onBlur={(e) => patchProspect(selected.id, { notes: e.target.value || null })}
+                  onBlur={(e) => updateField(selected.id, 'notes', e.target.value)}
                   rows={4}
                   className="w-full rounded border border-[#1A1A1A]/20 px-3 py-2 text-sm"
                 />
