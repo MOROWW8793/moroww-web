@@ -57,7 +57,7 @@ export function OverMorowwContent() {
       <section className="grid grid-cols-1 md:grid-cols-2 min-h-[85vh]">
         <motion.div
           {...fadeUp}
-          className="flex items-center px-10 md:px-20 py-20 bg-[#FAE4D6]"
+          className="flex items-center px-6 py-12 md:px-20 md:py-20 bg-[#FAE4D6]"
         >
           <div className="max-w-sm">
             <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
@@ -90,7 +90,7 @@ export function OverMorowwContent() {
       </section>
 
       {/* ── SECTIE 2 — WAT MOROWW IS ── */}
-      <section className="w-full py-28 px-6 bg-[#FAE4D6]">
+      <section className="w-full py-16 md:py-28 px-6 bg-[#FAE4D6]">
         <div className="max-w-3xl mx-auto">
           <motion.div {...fadeUp}>
             <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
@@ -131,7 +131,7 @@ export function OverMorowwContent() {
       </section>
 
       {/* ── SECTIE 3 — DE BELOFTE ── */}
-      <section className="w-full py-28 bg-[#EDD5C0]">
+      <section className="w-full py-16 md:py-28 bg-[#EDD5C0]">
         <motion.div
           {...fadeUp}
           className="max-w-4xl mx-auto px-6 md:px-16 mb-20"
@@ -158,7 +158,7 @@ export function OverMorowwContent() {
             <div className="max-w-4xl mx-auto px-6 md:px-16 py-12 flex items-start gap-8 md:gap-20">
               <span
                 className="font-bold leading-none text-[#C08D6E] select-none hidden md:block"
-                style={{ fontSize: "clamp(4rem,9vw,7rem)", opacity: 0.20 }}
+                style={{ fontSize: "clamp(2.5rem,9vw,7rem)", opacity: 0.20 }}
               >
                 {item.nr}
               </span>
@@ -186,7 +186,7 @@ export function OverMorowwContent() {
         </div>
         <motion.div
           {...fadeUp}
-          className="flex items-center px-10 md:px-20 py-20 bg-[#FAE4D6] order-first md:order-last"
+          className="flex items-center px-6 py-12 md:px-20 md:py-20 bg-[#FAE4D6] order-first md:order-last"
         >
           <div className="max-w-sm">
             <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
@@ -211,7 +211,7 @@ export function OverMorowwContent() {
       <section className="grid grid-cols-1 md:grid-cols-2 min-h-[75vh]">
         <motion.div
           {...fadeUp}
-          className="flex items-center px-10 md:px-20 py-20 bg-[#FAE4D6]"
+          className="flex items-center px-6 py-12 md:px-20 md:py-20 bg-[#FAE4D6]"
         >
           <div className="max-w-sm">
             <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
@@ -257,7 +257,7 @@ export function OverMorowwContent() {
       </section>
 
       {/* ── SECTIE 6 — SLUIT CTA ── */}
-      <section className="w-full bg-[#1A1A1A] py-28 px-6 text-center">
+      <section className="w-full bg-[#1A1A1A] py-16 md:py-28 px-6 text-center">
         <motion.div {...fadeUp}>
           <h2 className="text-[clamp(1.9rem,3.8vw,3.5rem)] font-bold leading-[1.15] text-white max-w-2xl mx-auto">
             <span className="font-light">{t('cta_h2_light')}</span><br />

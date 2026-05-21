@@ -46,7 +46,7 @@ export default async function PartnersPage({
 
       {/* ── 2. MORO ESSENTIALS — WIT ── */}
       <section className="bg-white px-6 py-12 md:px-16 md:py-20">
-        <div className="flex flex-col md:flex-row rounded-2xl overflow-hidden" style={{ minHeight: 500 }}>
+        <div className="flex flex-col md:flex-row rounded-2xl overflow-hidden md:min-h-[500px]">
           {/* Foto (55% op desktop, volledig op mobiel) */}
           <div className="relative w-full md:w-[55%] shrink-0 overflow-hidden min-h-[300px] md:min-h-full">
             <Image

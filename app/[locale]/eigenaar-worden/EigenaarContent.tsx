@@ -67,7 +67,7 @@ export function EigenaarContent() {
             <p className="text-[#FEA05E] text-sm font-medium tracking-[0.2em] uppercase mb-6 md:mb-8">
               {t('hero_label')}
             </p>
-            <h1 className="text-white text-[clamp(2.5rem,7vw,6rem)] leading-[1.05] mb-8 md:mb-10">
+            <h1 className="text-white text-[clamp(2rem,7vw,6rem)] leading-[1.05] mb-8 md:mb-10">
               <span className="font-light">{t('hero_h1_light1')} </span>
               <span className="font-bold">{t('hero_h1_main')} </span>
               <span className="font-light">{t('hero_h1_light2')} </span>
@@ -84,13 +84,13 @@ export function EigenaarContent() {
       </section>
 
       {/* ── SECTIE 2: WAT MOROWW INSTALLEERT ── */}
-      <section className="w-full bg-[#1A1A1A] py-28 mt-0">
+      <section className="w-full bg-[#1A1A1A] py-16 md:py-28 mt-0">
         <div className="relative z-10">
           <motion.div {...fadeUp} className="max-w-4xl mx-auto px-6 md:px-16 mb-20">
             <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-5">
               {t('tech_label')}
             </p>
-            <h2 className="text-[clamp(2.5rem,5.5vw,5rem)] font-bold leading-[1.1] text-white">
+            <h2 className="text-[clamp(1.75rem,5.5vw,5rem)] font-bold leading-[1.1] text-white">
               <span className="font-light">{t('tech_h2_light')}</span><br />
               {t('tech_h2_main')}<br />
               <span className="font-light">{t('tech_h2_light2')}</span>
@@ -110,7 +110,7 @@ export function EigenaarContent() {
               <div className="max-w-4xl mx-auto px-6 md:px-16 py-10 flex items-start gap-8 md:gap-20">
                 <span
                   className="font-bold leading-none text-[#FEA05E] select-none hidden md:block"
-                  style={{ fontSize: "clamp(3.5rem,8vw,6rem)", opacity: 0.15 }}
+                  style={{ fontSize: "clamp(2rem,8vw,6rem)", opacity: 0.15 }}
                 >
                   {item.nr}
                 </span>
@@ -131,7 +131,7 @@ export function EigenaarContent() {
         {/* Tekst links */}
         <motion.div
           {...fadeUp}
-          className="flex items-center px-10 md:px-20 py-20 bg-[#FAE4D6]"
+          className="flex items-center px-6 py-12 md:px-20 md:py-20 bg-[#FAE4D6]"
         >
           <div className="max-w-sm">
             <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
@@ -172,7 +172,7 @@ export function EigenaarContent() {
       </section>
 
       {/* ── SECTIE 5: HOE HET WERKT ── */}
-      <section className="w-full py-28 px-6 bg-[#FAE4D6]">
+      <section className="w-full py-16 md:py-28 px-6 bg-[#FAE4D6]">
         <div className="max-w-3xl mx-auto">
           <motion.div {...fadeUp}>
             <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
@@ -219,7 +219,7 @@ export function EigenaarContent() {
         {/* Tekst rechts */}
         <motion.div
           {...fadeUp}
-          className="flex items-center px-10 md:px-16 py-20 bg-[#1A1A1A]"
+          className="flex items-center px-6 py-12 md:px-16 md:py-20 bg-[#1A1A1A]"
         >
           <div className="max-w-sm">
             <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-5">
@@ -240,7 +240,7 @@ export function EigenaarContent() {
       </section>
 
       {/* ── SECTIE 7: FORMULIER ── */}
-      <section className="w-full py-28 px-6 bg-[#FAE4D6]">
+      <section className="w-full py-16 md:py-28 px-6 bg-[#FAE4D6]">
         <div className="max-w-2xl mx-auto">
           <motion.div {...fadeUp}>
             <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
