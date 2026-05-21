@@ -40,45 +40,47 @@ export function EigenaarContent() {
   return (
     <>
       {/* ── SECTIE 1: HERO ── */}
-      <section className="grid grid-cols-1 md:grid-cols-2 min-h-screen -mt-16">
-        {/* Links — tekst */}
+      <section className="relative w-full h-[100svh] overflow-hidden -mt-16">
+        {/* Achtergrondfoto vult volledige viewport */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/woningen/knokke-new/2026-AmelieBauwens-Moroww-V2-115.jpg"
+            alt="moroww woning detail"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+        </div>
+
+        {/* Donkere gradient onderaan voor tekst-leesbaarheid */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
+
+        {/* Content onderaan gepositioneerd */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="flex items-center px-10 md:px-16 py-16 bg-[#1A1A1A]"
+          className="relative z-10 h-full flex flex-col justify-end px-6 md:px-16 lg:px-24 pb-16 md:pb-20 lg:pb-24"
         >
-          <div className="max-w-sm">
-            <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-6 pt-8 md:pt-0">
+          <div className="max-w-3xl">
+            <p className="text-[#FEA05E] text-sm font-medium tracking-[0.2em] uppercase mb-6 md:mb-8">
               {t('hero_label')}
             </p>
-            <h1 className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.05] text-white">
-              <span className="font-light">{t('hero_h1_light1')}</span><br />
-              {t('hero_h1_main')}<br />
-              <span className="font-light">{t('hero_h1_light2')}</span> {t('hero_h1_bold')}
+            <h1 className="text-white text-[clamp(2.5rem,7vw,6rem)] leading-[1.05] mb-8 md:mb-10">
+              <span className="font-light">{t('hero_h1_light1')} </span>
+              <span className="font-bold">{t('hero_h1_main')} </span>
+              <span className="font-light">{t('hero_h1_light2')} </span>
+              <span className="font-bold">{t('hero_h1_bold')}</span>
             </h1>
-            <p className="mt-8 text-base leading-relaxed text-white/60 max-w-xs">
+            <p className="text-white/85 text-base md:text-lg leading-relaxed max-w-xl mb-8 md:mb-10">
               {t('hero_body')}
             </p>
-            <div className="mt-8">
-              <span className="text-sm text-white/40 border border-white/15 rounded-full px-4 py-2">
-                {t('hero_badge')}
-              </span>
+            <div className="inline-block border border-white/40 rounded-full px-6 py-3 text-white/80 text-sm">
+              {t('hero_badge')}
             </div>
           </div>
         </motion.div>
-
-        {/* Rechts — foto */}
-        <div className="relative overflow-hidden min-h-[60vh] md:min-h-full">
-          <Image
-            src="/images/woningen/knokke-new/2026-AmelieBauwens-Moroww-V2-115.jpg"
-            alt="moroww woning"
-            fill
-            className="object-cover"
-            priority
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-        </div>
       </section>
 
       {/* ── SECTIE 2: WAT MOROWW INSTALLEERT ── */}
