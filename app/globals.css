@@ -45,7 +45,10 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* navbar height */
   background-color: #FAE4D6;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -60,6 +63,24 @@ body {
 
 img, video {
   max-width: 100%;
+  height: auto;
+}
+
+/* Touch manipulation — removes 300ms tap delay on mobile */
+button, a, [role="button"] {
+  touch-action: manipulation;
+}
+
+/* Safe area padding for sticky bottom elements (iPhone notch) */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Webkit backdrop-filter prefix for Safari */
+.backdrop-blur-md,
+.backdrop-blur-sm,
+.backdrop-blur-lg {
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 
 /* Focus styles voor toegankelijkheid */
