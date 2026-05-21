@@ -38,9 +38,9 @@ export function EigenaarContent() {
   ]
 
   return (
-    <>
+    <div className="bg-[#1A1A1A]">
       {/* ── SECTIE 1: HERO ── */}
-      <section className="relative w-full h-[100svh] overflow-hidden -mt-16">
+      <section className="relative w-full h-[100svh] min-h-[100svh] overflow-hidden mb-0">
         {/* Achtergrondfoto vult volledige viewport */}
         <div className="absolute inset-0">
           <Image
@@ -84,7 +84,7 @@ export function EigenaarContent() {
       </section>
 
       {/* ── SECTIE 2: WAT MOROWW INSTALLEERT ── */}
-      <section className="w-full bg-[#1A1A1A] py-28">
+      <section className="w-full bg-[#1A1A1A] py-28 mt-0">
         <div className="relative z-10">
           <motion.div {...fadeUp} className="max-w-4xl mx-auto px-6 md:px-16 mb-20">
             <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-5">
@@ -260,6 +260,6 @@ export function EigenaarContent() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
