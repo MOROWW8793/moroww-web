@@ -69,6 +69,20 @@ img, video {
   height: auto;
 }
 
+/* Hero viewport height — dvh adapts to iOS Safari URL bar appearing/disappearing.
+   svh (static small) is the fallback for browsers that don't support dvh. */
+.h-hero {
+  height: 100svh;
+  height: 100dvh;  /* overrides if supported */
+  min-height: 100svh;
+  min-height: 100dvh;
+}
+/* Used on heroes with -mt-16 (4rem) offset compensation */
+.h-hero-calc {
+  height: calc(100svh + 4rem);
+  height: calc(100dvh + 4rem);
+}
+
 /* Touch manipulation — removes 300ms tap delay on mobile */
 button, a, [role="button"] {
   touch-action: manipulation;

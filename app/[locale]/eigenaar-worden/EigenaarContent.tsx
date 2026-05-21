@@ -40,7 +40,7 @@ export function EigenaarContent() {
   return (
     <div className="bg-[#1A1A1A]">
       {/* ── SECTIE 1: HERO ── */}
-      <section className="relative w-full h-[100svh] min-h-[100svh] overflow-hidden mb-0">
+      <section className="h-hero relative w-full overflow-hidden mb-0">
         {/* Achtergrondfoto vult volledige viewport */}
         <div className="absolute inset-0">
           <Image
