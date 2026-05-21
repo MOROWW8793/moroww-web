@@ -3,7 +3,7 @@ import { getTranslations } from 'next-intl/server'
 export async function Reviews() {
   const t = await getTranslations('home')
   return (
-    <section className="w-full bg-[#FAE4D6] py-28 px-6 overflow-hidden">
+    <section className="w-full bg-[#FAE4D6] py-16 md:py-28 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}

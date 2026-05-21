@@ -38,7 +38,7 @@ export function WoningenGrid() {
               {t('collection_title')}
             </h2>
             {/* Filter tabs */}
-            <div className="flex gap-2 shrink-0">
+            <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-1 -mb-1 flex-nowrap shrink-0 max-w-full">
               {(["Alles", "the shore", "the fields"] as Filter[]).map((f) => (
                 <button
                   key={f}
@@ -53,6 +53,9 @@ export function WoningenGrid() {
                     transition: "all 0.15s",
                     background: filter === f ? "#1A1A1A" : "transparent",
                     color: filter === f ? "#ffffff" : "#1A1A1A",
+                    whiteSpace: "nowrap",
+                    flexShrink: 0,
+                    minHeight: 44,
                   }}
                 >
                   {filterLabels[f]}

@@ -46,7 +46,10 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px; /* navbar height */
-  background-color: #FAE4D6;
+  /* Dark background = footer colour. iOS rubber-band overscroll at the
+     bottom of the page shows html background — matching the footer prevents
+     the cream flash that looks like whitespace. */
+  background-color: #1A1A1A;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
 }
