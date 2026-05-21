@@ -19,6 +19,11 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const links: { label: string; href: any }[] = [
     { label: t('collection'), href: '/collectie' },
