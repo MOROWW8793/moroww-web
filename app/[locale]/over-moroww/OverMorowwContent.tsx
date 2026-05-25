@@ -231,6 +231,15 @@ export function OverMorowwContent() {
                 {t('founders_p3')}
               </p>
             </div>
+            <p className="text-sm text-[#1A1A1A]/60 mt-4">
+              Eigenaar van een vakantiewoning?{' '}
+              <Link
+                href="/eigenaar-worden"
+                className="underline underline-offset-2 decoration-[#C08D6E]/50 hover:decoration-[#FEA05E]"
+              >
+                ontdek hoe moroww werkt voor eigenaars
+              </Link>
+            </p>
             <Link
               href="/contact"
               className="inline-block mt-8 bg-[#1A1A1A] text-white rounded-full px-8 py-4 text-sm font-medium hover:bg-[#333] transition-colors"

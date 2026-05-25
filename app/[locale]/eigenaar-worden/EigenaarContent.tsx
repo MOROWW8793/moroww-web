@@ -39,6 +39,9 @@ export function EigenaarContent() {
 
   return (
     <div className="bg-[#1A1A1A]">
+      <h1 className="sr-only">
+        Vakantiewoning verhuren in België via moroww — gecertificeerd kwaliteitslabel met smart lock, audit en directe boeking
+      </h1>
       {/* ── SECTIE 1: HERO ── */}
       <section className="h-hero relative w-full overflow-hidden mb-0">
         {/* Achtergrondfoto vult volledige viewport */}
@@ -67,12 +70,12 @@ export function EigenaarContent() {
             <p className="text-[#FEA05E] text-sm font-medium tracking-[0.2em] uppercase mb-6 md:mb-8">
               {t('hero_label')}
             </p>
-            <h1 className="text-white text-[clamp(2rem,7vw,6rem)] leading-[1.05] mb-8 md:mb-10">
+            <h2 className="text-white text-[clamp(2rem,7vw,6rem)] leading-[1.05] mb-8 md:mb-10">
               <span className="font-light">{t('hero_h1_light1')} </span>
               <span className="font-bold">{t('hero_h1_main')} </span>
               <span className="font-light">{t('hero_h1_light2')} </span>
               <span className="font-bold">{t('hero_h1_bold')}</span>
-            </h1>
+            </h2>
             <p className="text-white/85 text-base md:text-lg leading-relaxed max-w-xl mb-8 md:mb-10">
               {t('hero_body')}
             </p>
