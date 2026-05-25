@@ -36,7 +36,7 @@ export function EigenaarFaqJsonLd() {
               name: 'Wat zijn de kosten om mijn vakantiewoning bij moroww aan te melden?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'De aanmelding is gratis. Na de selectieprocedure volgt een eenmalige certificeringsaudit inclusief tech-installatie. moroww rekent vervolgens een commissie van 10% op gerealiseerde boekingen (nachtprijs excl. schoonmaakfee) en een maandelijks tech-abonnement voor het onderhoud van de geïnstalleerde systemen.',
+                text: 'De aanmelding is gratis. Na de selectieprocedure volgt een fysieke audit en installatie van de tech-stack. De exacte voorwaarden worden besproken tijdens een persoonlijk gesprek. Neem contact op via moroww.com/eigenaar-worden.',
               },
             },
             {
