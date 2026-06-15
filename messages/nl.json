@@ -20,6 +20,7 @@
     "filter_all": "Alles",
     "filter_shore": "the shore",
     "filter_fields": "the fields",
+    "coming_soon": "binnenkort te boeken",
     "reviews_label": "wat gasten zeggen",
     "reviews_title_light": "geen beloften.",
     "reviews_title_bold": "alleen ervaringen.",
@@ -51,6 +52,7 @@
     "per_night": "/ nacht",
     "view": "Bekijk woning",
     "view_book": "Bekijk & boek",
+    "coming_soon": "binnenkort te boeken",
     "cta_title": "elke woning is persoonlijk geïnspecteerd.",
     "cta_body": "Geen algoritme. Geen massa. Alleen woningen die onze standaard halen."
   },
@@ -80,7 +82,9 @@
     "cta_title": "klaar om te boeken?",
     "cta_body": "Beschikbaarheid checken en direct reserveren.",
     "cta_questions": "Vragen?",
-    "cta_contact": "Neem contact op via info@moroww.com"
+    "cta_contact": "Neem contact op via info@moroww.com",
+    "coming_soon": "binnenkort te boeken",
+    "coming_soon_body": "deze woning is binnenkort beschikbaar via moroww."
   },
   "not_found": {
     "label": "pagina niet gevonden",

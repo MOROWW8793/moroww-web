@@ -36,6 +36,11 @@ const woningMeta: Record<string, { title: string; description: string; keywords:
     description: 'Ruime vakantiewoning in Beernem met zwembad, hottub en tuin met BBQ. 4 slaapkamers, max 10 personen. Ideaal voor groepen. Gecertificeerd door moroww. Vanaf €600/nacht.',
     keywords: ['vakantiewoning Beernem', 'vakantiewoning met zwembad België', 'vakantiewoning groep België', 'vakantiewoning hottub België', 'groepsaccommodatie Meetjesland', 'moroww Beernem'],
   },
+  'sophora': {
+    title: 'Sophora — binnenkort te boeken via moroww',
+    description: 'Sophora is binnenkort beschikbaar in de moroww-collectie. Gecertificeerd, uitgerust en klaar voor een verblijf zonder loterij.',
+    keywords: ['moroww collectie', 'vakantiewoning binnenkort', 'moroww sophora'],
+  },
 };
 
 export async function generateMetadata({ params }: Props) {
@@ -174,22 +179,35 @@ export default async function WoningDetailPage({ params }: Props) {
               className="rounded-2xl p-7"
               style={{ background: '#1A1A1A', boxShadow: '0 2px 16px rgba(0,0,0,0.12)' }}
             >
-              <div className="mb-5">
-                <span style={{ fontWeight: 800, fontSize: 32, color: '#ffffff' }}>€{woning.prijs}</span>
-                <span style={{ color: '#999999', fontSize: 14, marginLeft: 6 }}>{t('per_night')}</span>
-              </div>
-              <a
-                href={woning.boekUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-center rounded-full font-semibold py-4 text-base transition-colors duration-200 mb-3"
-                style={{ background: '#FEA05E', color: '#ffffff' }}
-              >
-                {t('book_direct')}
-              </a>
-              <p style={{ color: '#666666', fontSize: 12, textAlign: 'center', lineHeight: 1.5 }}>
-                {t('redirect_note')}
-              </p>
+              {woning.comingSoon ? (
+                <>
+                  <p style={{ color: '#C08D6E', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: 2, marginBottom: 12 }}>
+                    {t('coming_soon')}
+                  </p>
+                  <p style={{ color: '#9CA3AF', fontSize: 15, lineHeight: 1.6 }}>
+                    {t('coming_soon_body')}
+                  </p>
+                </>
+              ) : (
+                <>
+                  <div className="mb-5">
+                    <span style={{ fontWeight: 800, fontSize: 32, color: '#ffffff' }}>€{woning.prijs}</span>
+                    <span style={{ color: '#999999', fontSize: 14, marginLeft: 6 }}>{t('per_night')}</span>
+                  </div>
+                  <a
+                    href={woning.boekUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-center rounded-full font-semibold py-4 text-base transition-colors duration-200 mb-3"
+                    style={{ background: '#FEA05E', color: '#ffffff' }}
+                  >
+                    {t('book_direct')}
+                  </a>
+                  <p style={{ color: '#666666', fontSize: 12, textAlign: 'center', lineHeight: 1.5 }}>
+                    {t('redirect_note')}
+                  </p>
+                </>
+              )}
             </div>
             <div className="mt-4 text-center">
               <Link href="/collectie" className="text-xs text-moroww-black/40 hover:text-moroww-black transition-colors underline underline-offset-2">
@@ -318,35 +336,37 @@ export default async function WoningDetailPage({ params }: Props) {
       )}
 
       {/* ── 7. BOOKING CTA ── */}
-      <section className="px-6 md:px-12 pb-24">
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-moroww-orange rounded-3xl p-10 md:p-16 text-center">
-            <h2
-              className="font-bold lowercase text-white leading-[1.05] tracking-[-0.02em] mb-3"
-              style={{ fontSize: "clamp(1.75rem,3vw,2.5rem)" }}
-            >
-              {t('cta_title')}
-            </h2>
-            <p className="text-white/80 leading-relaxed mb-8 max-w-md mx-auto" style={{ fontSize: 17 }}>
-              {t('cta_body')}
-            </p>
-            <a
-              href={woning.boekUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center rounded-full bg-white text-moroww-orange font-semibold px-10 py-4 text-base hover:bg-moroww-blush transition-colors duration-200 mb-4"
-            >
-              {t('book_direct')}
-            </a>
-            <p className="text-white/60 text-sm">
-              {t('cta_questions')}{" "}
-              <a href="mailto:info@moroww.com" className="underline underline-offset-2 hover:text-white transition-colors">
-                {t('cta_contact')}
+      {!woning.comingSoon && (
+        <section className="px-6 md:px-12 pb-24">
+          <div className="max-w-6xl mx-auto">
+            <div className="bg-moroww-orange rounded-3xl p-10 md:p-16 text-center">
+              <h2
+                className="font-bold lowercase text-white leading-[1.05] tracking-[-0.02em] mb-3"
+                style={{ fontSize: "clamp(1.75rem,3vw,2.5rem)" }}
+              >
+                {t('cta_title')}
+              </h2>
+              <p className="text-white/80 leading-relaxed mb-8 max-w-md mx-auto" style={{ fontSize: 17 }}>
+                {t('cta_body')}
+              </p>
+              <a
+                href={woning.boekUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center rounded-full bg-white text-moroww-orange font-semibold px-10 py-4 text-base hover:bg-moroww-blush transition-colors duration-200 mb-4"
+              >
+                {t('book_direct')}
               </a>
-            </p>
+              <p className="text-white/60 text-sm">
+                {t('cta_questions')}{" "}
+                <a href="mailto:info@moroww.com" className="underline underline-offset-2 hover:text-white transition-colors">
+                  {t('cta_contact')}
+                </a>
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </div>
   );
 }

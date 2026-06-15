@@ -103,16 +103,24 @@ export function CollectieStatisch() {
 
                 {/* Prijs + CTA */}
                 <div className="flex items-center justify-between mt-auto pt-4 border-t border-moroww-border">
-                  <div>
-                    <span className="font-bold text-xl text-moroww-black">€{w.prijs}</span>
-                    <span className="text-sm text-moroww-black/45 ml-1">{t('per_night')}</span>
-                  </div>
-                  <Link
-                    href={`/collectie/${w.id}`}
-                    className="rounded-full bg-[#FEA05E] hover:bg-[#e8904e] text-white font-semibold text-sm px-5 py-2.5 transition-colors duration-200"
-                  >
-                    {t('view_book')}
-                  </Link>
+                  {w.comingSoon ? (
+                    <span className="text-xs font-semibold text-[#C08D6E] lowercase tracking-wide">
+                      {t('coming_soon')}
+                    </span>
+                  ) : (
+                    <>
+                      <div>
+                        <span className="font-bold text-xl text-moroww-black">€{w.prijs}</span>
+                        <span className="text-sm text-moroww-black/45 ml-1">{t('per_night')}</span>
+                      </div>
+                      <Link
+                        href={`/collectie/${w.id}`}
+                        className="rounded-full bg-[#FEA05E] hover:bg-[#e8904e] text-white font-semibold text-sm px-5 py-2.5 transition-colors duration-200"
+                      >
+                        {t('view_book')}
+                      </Link>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

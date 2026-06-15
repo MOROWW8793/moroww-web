@@ -33,6 +33,7 @@ export interface Woning {
   heroFoto: string
   fotos: string[]
   boekUrl: string
+  comingSoon?: boolean
 }
 
 export const woningen: Woning[] = [
@@ -462,6 +463,46 @@ export const woningen: Woning[] = [
       '/images/woningen/beernem-new/WhatsApp Image 2025-11-02 at 14.18.19 (9).jpeg',
     ],
     boekUrl: 'https://book.moroww.com/nl/properties/690781db69d1700012bf6dd3?minOccupancy=1',
+  },
+
+  {
+    id: 'sophora',
+    naam: 'Sophora',
+    collectie: 'the fields',
+    locatie: 'België',
+    prijs: 0,
+    slaapkamers: 3,
+    badkamers: 2,
+    maxGasten: 8,
+    oppervlakte: null,
+    tags: [
+      { nl: 'Landelijk', en: 'Rural' },
+      { nl: 'Privétuin', en: 'Private garden' },
+      { nl: 'Rustige omgeving', en: 'Quiet surroundings' },
+    ],
+    slogan: {
+      nl: 'Binnenkort te boeken via moroww.',
+      en: 'Coming soon to moroww.',
+    },
+    introductie: {
+      nl: 'Binnenkort beschikbaar in de moroww-collectie.',
+      en: 'Coming soon to the moroww collection.',
+    },
+    beschrijving: {
+      nl: 'Binnenkort te boeken via moroww.',
+      en: 'Coming soon to moroww.',
+    },
+    volledigeBeschrijving: {
+      nl: '',
+      en: '',
+    },
+    hoogtepunten: [],
+    inCheckin: '15:00',
+    uitCheckin: '10:00',
+    heroFoto: '/images/woningen/sophora/hero.jpg',
+    fotos: ['/images/woningen/sophora/hero.jpg'],
+    boekUrl: '',
+    comingSoon: true,
   },
 ]
 

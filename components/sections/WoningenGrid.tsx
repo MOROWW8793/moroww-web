@@ -154,25 +154,33 @@ export function WoningenGrid() {
 
                   {/* Prijs + CTA */}
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid #F0E4D8", paddingTop: 16 }}>
-                    <div>
-                      <span style={{ fontWeight: 700, fontSize: 18, color: "#1A1A1A" }}>{t('from')} €{w.prijs}</span>
-                      <span style={{ fontSize: 13, color: "#999999", marginLeft: 4 }}>{t('per_night')}</span>
-                    </div>
-                    <Link
-                      href={`/collectie/${w.id}`}
-                      style={{
-                        background: "#FEA05E",
-                        color: "#ffffff",
-                        borderRadius: 100,
-                        padding: "10px 20px",
-                        fontSize: 14,
-                        fontWeight: 600,
-                        textDecoration: "none",
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      {t('view_book')}
-                    </Link>
+                    {w.comingSoon ? (
+                      <span style={{ fontSize: 12, color: "#C08D6E", fontWeight: 600, textTransform: "lowercase", letterSpacing: "0.04em" }}>
+                        {t('coming_soon')}
+                      </span>
+                    ) : (
+                      <>
+                        <div>
+                          <span style={{ fontWeight: 700, fontSize: 18, color: "#1A1A1A" }}>{t('from')} €{w.prijs}</span>
+                          <span style={{ fontSize: 13, color: "#999999", marginLeft: 4 }}>{t('per_night')}</span>
+                        </div>
+                        <Link
+                          href={`/collectie/${w.id}`}
+                          style={{
+                            background: "#FEA05E",
+                            color: "#ffffff",
+                            borderRadius: 100,
+                            padding: "10px 20px",
+                            fontSize: 14,
+                            fontWeight: 600,
+                            textDecoration: "none",
+                            whiteSpace: "nowrap",
+                          }}
+                        >
+                          {t('view_book')}
+                        </Link>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
