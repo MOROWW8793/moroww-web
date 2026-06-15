@@ -131,10 +131,10 @@ export function OverMorowwContent() {
       </section>
 
       {/* ── SECTIE 3 — DE BELOFTE ── */}
-      <section className="w-full py-16 md:py-28 bg-[#EDD5C0]">
+      <section className="w-full py-12 md:py-20 bg-[#EDD5C0]">
         <motion.div
           {...fadeUp}
-          className="max-w-4xl mx-auto px-6 md:px-16 mb-20"
+          className="max-w-4xl mx-auto px-6 md:px-16 mb-12"
         >
           <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
             {t('promise_label')}
@@ -148,29 +148,28 @@ export function OverMorowwContent() {
           </p>
         </motion.div>
 
-        {systeem.map((item, i) => (
-          <motion.div
-            key={item.nr}
-            {...fadeUp}
-            transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.07 }}
-            className="w-full border-t border-[#C08D6E]/25"
-          >
-            <div className="max-w-4xl mx-auto px-6 md:px-16 py-12 flex items-start gap-8 md:gap-20">
-              <span
-                className="font-bold leading-none text-[#C08D6E] select-none hidden md:block"
-                style={{ fontSize: "clamp(2.5rem,9vw,7rem)", opacity: 0.20 }}
+        <div className="max-w-4xl mx-auto px-6 md:px-16">
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            {systeem.map((item, i) => (
+              <motion.div
+                key={item.nr}
+                {...fadeUp}
+                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.07 }}
+                className={`border-t border-[#C08D6E]/25 py-8 ${i % 2 === 1 ? "md:pl-10 md:border-l md:border-[#C08D6E]/25" : "md:pr-10"}`}
               >
-                {item.nr}
-              </span>
-              <div className="flex-1 pt-2">
-                <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-3 md:hidden">{item.nr}</p>
-                <h3 className="text-xl md:text-2xl font-semibold text-[#1A1A1A] mb-3">{item.titel}</h3>
-                <p className="text-base font-normal leading-relaxed text-[#1A1A1A]/65">{item.tekst}</p>
-              </div>
-            </div>
-          </motion.div>
-        ))}
-        <div className="border-b border-[#C08D6E]/25" />
+                <span
+                  className="block font-bold leading-none text-[#C08D6E] select-none"
+                  style={{ fontSize: "2.5rem", opacity: 0.20 }}
+                >
+                  {item.nr}
+                </span>
+                <h3 className="text-base font-semibold text-[#1A1A1A] mt-2 mb-1.5">{item.titel}</h3>
+                <p className="text-sm font-normal leading-relaxed text-[#1A1A1A]/65">{item.tekst}</p>
+              </motion.div>
+            ))}
+          </div>
+          <div className="border-b border-[#C08D6E]/25" />
+        </div>
       </section>
 
       {/* ── SECTIE 4 — DE STANDAARD ── */}
