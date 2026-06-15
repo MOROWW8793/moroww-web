@@ -260,8 +260,10 @@ function NLPrivacy() {
 
       <Section title="9. Cookies">
         <P>
-          Onze website gebruikt cookies om te werken en, mits uw toestemming, om het gebruik te
-          meten. U beheert uw voorkeuren via de instellingen op de website.
+          Onze website gebruikt enkel functionele cookies die nodig zijn om te werken, zoals het
+          onthouden van uw taalkeuze. Voor het meten van het gebruik zetten we een
+          privacyvriendelijke, cookieloze analysetool in, die geen persoonsgegevens of unieke
+          identificatoren opslaat. Daarom is er geen toestemmingsvenster nodig.
         </P>
       </Section>
 
@@ -334,19 +336,259 @@ function ENPrivacy() {
         Version 1.0 — Last updated: 15 June 2026
       </p>
 
-      <div className="rounded-xl border border-moroww-orange/30 bg-moroww-orange/5 px-5 py-4 mb-8">
-        <p className="text-sm text-moroww-black/70">
-          The English version of this privacy policy is coming soon.{" "}
-          <a href="/privacy" className="underline underline-offset-2 hover:text-moroww-orange transition-colors">
-            Read the Dutch version
-          </a>{" "}
-          in the meantime, or contact us at{" "}
+      <P>
+        moroww values the protection of your personal data. In this policy we explain which data we
+        process, why we do so, with whom we share it, and what rights you have. We write it the way
+        we do everything at moroww: clearly and without detours.
+      </P>
+      <P>
+        This policy applies to everyone whose data we process: guests staying in a property from the
+        collection, owners and hosts who work with us, prospective hosts we approach, and visitors to
+        our website.
+      </P>
+
+      <Divider />
+
+      <Section title="1. Who is responsible">
+        <P>The controller responsible for your personal data is:</P>
+        <P>
+          moroww BV (private limited company)<br />
+          Neerstraat 10, 8793 Sint-Eloois-Vijve (Waregem), Belgium<br />
+          Company number / VAT: BE1030.667.956<br />
+          Email:{" "}
           <a href="mailto:info@moroww.com" className="underline underline-offset-2 hover:text-moroww-orange transition-colors">
             info@moroww.com
-          </a>{" "}
-          with any questions.
-        </p>
-      </div>
+          </a>
+        </P>
+        <P>
+          For any questions about this policy or your data, you can reach us at{" "}
+          <a href="mailto:info@moroww.com" className="underline underline-offset-2 hover:text-moroww-orange transition-colors">
+            info@moroww.com
+          </a>
+          .
+        </P>
+      </Section>
+
+      <Divider />
+
+      <Section title="2. What data we process">
+        <P>The data we process depends on your relationship with moroww.</P>
+
+        <p className="font-semibold text-moroww-black mb-2">From guests</p>
+        <Ul>
+          <Li><B>Identity and contact data:</B> name, email address, phone number, language.</Li>
+          <Li><B>Booking data:</B> the property, stay dates, number of guests, price and payment status.</Li>
+          <Li><B>Communications:</B> messages you exchange with us or via the guest page.</Li>
+          <Li><B>Access data:</B> the temporary access code for the smart lock during your stay.</Li>
+          <Li><B>Sound levels:</B> decibel values measured by the noise monitor in the property (see section 3).</Li>
+        </Ul>
+        <P>
+          Payment data is generally processed by the booking channel or payment service through which
+          you book, not directly by moroww.
+        </P>
+
+        <p className="font-semibold text-moroww-black mb-2 mt-4">From owners and hosts</p>
+        <Ul>
+          <Li><B>Identity and contact data:</B> name, email address, phone number.</Li>
+          <Li>Data about the property and the cooperation.</Li>
+          <Li><B>Financial data:</B> payouts, statements, commission and invoicing details.</Li>
+          <Li><B>Account data:</B> your login credentials for the host portal and the moment you accepted the terms.</Li>
+        </Ul>
+
+        <p className="font-semibold text-moroww-black mb-2 mt-4">From prospective hosts</p>
+        <Ul>
+          <Li>
+            Publicly available data about the property and the contact details of the owner or
+            manager, which we use to assess the property and possibly approach you.
+          </Li>
+        </Ul>
+
+        <p className="font-semibold text-moroww-black mb-2 mt-4">From website visitors</p>
+        <Ul>
+          <Li>Technical data and cookies (see section 9), and the data you enter in a contact form.</Li>
+        </Ul>
+      </Section>
+
+      <Divider />
+
+      <Section title="3. The noise monitor and smart devices">
+        <P>
+          The properties in the collection contain smart devices that are part of the tech stack. Two
+          of them process data, and we want to be fully transparent about this.
+        </P>
+        <P>
+          <B>The noise monitor</B> records decibel values only. No conversations, voices or other
+          sound information are recorded or stored. The data are used solely for quality monitoring
+          and neighbourhood protection, so that nuisance can be detected in time without infringing
+          the privacy of the guest.
+        </P>
+        <P>
+          <B>The smart lock</B> enables keyless access. During your stay a temporary access code is
+          created that expires afterwards. The codes are managed by moroww and are not visible to the
+          owner of the property.
+        </P>
+      </Section>
+
+      <Divider />
+
+      <Section title="4. Why we use your data and on what basis">
+        <P>
+          We process your data only for the purposes listed below, each time on the basis of a valid
+          legal ground under the GDPR.
+        </P>
+        <Ul>
+          <Li>
+            <B>Enabling the booking and the stay</B> (reservation, communication, access to the
+            property). Basis: performance of the contract.
+          </Li>
+          <Li>
+            <B>Managing the cooperation with owners</B> (statements, payouts, portal). Basis:
+            performance of the contract.
+          </Li>
+          <Li>
+            <B>Monitoring quality and tranquillity</B> (noise monitoring, neighbourhood protection,
+            security of the property). Basis: legitimate interest of moroww and of the owner in
+            protecting the property and its surroundings.
+          </Li>
+          <Li>
+            <B>Assessing and approaching prospective hosts.</B> Basis: legitimate interest in
+            building the collection. You may object to this (see section 10).
+          </Li>
+          <Li>
+            <B>Complying with legal obligations</B> (accounting, VAT, statutory retention periods).
+            Basis: legal obligation.
+          </Li>
+          <Li>
+            <B>Informing you and, if you wish, sending marketing.</B> Basis: consent, which you may
+            withdraw at any time.
+          </Li>
+        </Ul>
+      </Section>
+
+      <Divider />
+
+      <Section title="5. With whom we share data">
+        <P>
+          moroww does not sell your data. We share it only with parties that help us deliver the
+          service, and only to the extent necessary. Our main processors and recipients are:
+        </P>
+        <Ul>
+          <Li><B>Guesty</B> — booking management and synchronisation with booking channels.</Li>
+          <Li><B>PriceLabs</B> — dynamic pricing.</Li>
+          <Li><B>Nuki</B> — management of the smart locks.</Li>
+          <Li><B>Resend</B> — sending transactional emails.</Li>
+          <Li><B>Supabase and Vercel</B> — hosting and storage of our systems.</Li>
+          <Li><B>Anthropic</B> — automatic translation of messages so we can assist you in your own language.</Li>
+          <Li>
+            <B>Beehive Facility Services</B> — certified cleaning partner, who receives the necessary
+            booking and contact data to schedule cleaning.
+          </Li>
+          <Li>
+            <B>Booking channels</B> (such as Airbnb and Booking.com), which act as independent
+            controllers for the data they collect themselves.
+          </Li>
+          <Li>Our accountant and, where legally required, the competent authorities.</Li>
+        </Ul>
+        <P>We conclude a data processing agreement with each processor that processes data on our behalf.</P>
+      </Section>
+
+      <Divider />
+
+      <Section title="6. Transfer outside the European Economic Area">
+        <P>
+          Some of our processors are established outside the EEA, including in the United States.
+          When your data is transferred there, this is done with appropriate safeguards such as the
+          standard contractual clauses of the European Commission, so that your data enjoys an
+          equivalent level of protection.
+        </P>
+      </Section>
+
+      <Divider />
+
+      <Section title="7. How long we retain your data">
+        <P>We do not retain your data longer than necessary for the purposes above.</P>
+        <Ul>
+          <Li>Booking and guest data: for the duration of the cooperation and a reasonable period thereafter.</Li>
+          <Li>Accounting and tax data: for the statutory retention period of seven years.</Li>
+          <Li>Decibel values from the noise monitor: no longer than necessary for quality monitoring and neighbourhood protection.</Li>
+          <Li>Smart lock access codes: for the duration of the stay and a short period thereafter.</Li>
+          <Li>Host account data: for as long as the account is active.</Li>
+          <Li>Prospective host data: until you object or until it is no longer relevant.</Li>
+        </Ul>
+      </Section>
+
+      <Divider />
+
+      <Section title="8. How we secure your data">
+        <P>
+          We take appropriate technical and organisational measures to protect your data against
+          loss, misuse and unauthorised access. Access to data is restricted to those who need it.
+        </P>
+      </Section>
+
+      <Divider />
+
+      <Section title="9. Cookies">
+        <P>
+          Our website uses only functional cookies that are necessary to operate, such as remembering
+          your language choice. To measure usage we use a privacy-friendly, cookieless analytics
+          tool that stores no personal data or unique identifiers. No consent banner is therefore
+          required.
+        </P>
+      </Section>
+
+      <Divider />
+
+      <Section title="10. Your rights">
+        <P>Under the GDPR you have the right to:</P>
+        <Ul>
+          <Li>request access to the data we process about you;</Li>
+          <Li>have inaccurate data corrected;</Li>
+          <Li>have your data erased;</Li>
+          <Li>have processing restricted;</Li>
+          <Li>receive your data in a portable format;</Li>
+          <Li>object to processing based on legitimate interest;</Li>
+          <Li>withdraw consent given at any time.</Li>
+        </Ul>
+        <P>
+          You exercise these rights via{" "}
+          <a href="mailto:info@moroww.com" className="underline underline-offset-2 hover:text-moroww-orange transition-colors">
+            info@moroww.com
+          </a>
+          . If you disagree with how we handle your data, you may also lodge a complaint with the
+          Data Protection Authority (Drukpersstraat 35, 1000 Brussels,{" "}
+          <a
+            href="https://www.gegevensbeschermingsautoriteit.be"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-moroww-orange transition-colors"
+          >
+            www.gegevensbeschermingsautoriteit.be
+          </a>
+          ).
+        </P>
+      </Section>
+
+      <Divider />
+
+      <Section title="11. Changes to this policy">
+        <P>
+          We may update this policy from time to time. The most recent version is always available
+          on this page, with the date of the last update at the top.
+        </P>
+      </Section>
+
+      <Divider />
+
+      <Section title="12. Contact">
+        <P>
+          Questions about this policy or your data? Feel free to write to us at{" "}
+          <a href="mailto:info@moroww.com" className="underline underline-offset-2 hover:text-moroww-orange transition-colors">
+            info@moroww.com
+          </a>
+          .
+        </P>
+      </Section>
     </>
   );
 }
