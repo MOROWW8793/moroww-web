@@ -200,7 +200,7 @@ export function OverMorowwContent() {
         <div className="relative overflow-hidden min-h-[60vw] md:min-h-full">
           <Image
             src="/images/over-founders.jpg"
-            alt="Brent De Baets en Noam Landries — oprichters moroww"
+            alt="Brent en Noam — oprichters moroww"
             fill
             className="object-cover object-top"
             sizes="(max-width: 768px) 100vw, 50vw"
