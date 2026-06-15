@@ -112,9 +112,9 @@ export function CollectieStatisch() {
                   </div>
                   <Link
                     href={`/collectie/${w.id}`}
-                    className="rounded-full bg-moroww-black hover:bg-moroww-black/80 text-white font-semibold text-sm px-5 py-2.5 transition-colors duration-200"
+                    className="rounded-full bg-[#FEA05E] hover:bg-[#e8904e] text-white font-semibold text-sm px-5 py-2.5 transition-colors duration-200"
                   >
-                    {t('view')}
+                    {t('view_book')}
                   </Link>
                 </div>
               </div>

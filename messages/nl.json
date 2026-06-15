@@ -4,6 +4,7 @@
     "about": "Over moroww",
     "partners": "Partners",
     "owner": "Eigenaar worden",
+    "for_owners": "voor eigenaars",
     "book": "Maak een boeking"
   },
   "home": {
@@ -35,6 +36,8 @@
     "about": "Over moroww",
     "partners": "Partners",
     "owner": "Eigenaar worden",
+    "for_owners": "voor eigenaars",
+    "privacy": "Privacy",
     "rights": "Alle rechten voorbehouden."
   },
   "collectie": {
@@ -47,6 +50,7 @@
     "guests": "gasten",
     "per_night": "/ nacht",
     "view": "Bekijk woning",
+    "view_book": "Bekijk & boek",
     "cta_title": "elke woning is persoonlijk geïnspecteerd.",
     "cta_body": "Geen algoritme. Geen massa. Alleen woningen die onze standaard halen."
   },

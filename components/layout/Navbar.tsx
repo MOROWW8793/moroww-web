@@ -25,12 +25,12 @@ export function Navbar() {
   }, [open])
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const links: { label: string; href: any }[] = [
+  const guestLinks: { label: string; href: any }[] = [
     { label: t('collection'), href: '/collectie' },
     { label: t('about'),      href: '/over-moroww' },
-    { label: t('partners'),   href: '/partners' },
-    { label: t('owner'),      href: '/eigenaar-worden' },
   ]
+
+  const bookUrl = `https://book.moroww.com/${locale}/properties?minOccupancy=1`
 
   function toggleLocale() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -60,7 +60,8 @@ export function Navbar() {
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
+          {/* Guest links */}
+          {guestLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
@@ -73,6 +74,19 @@ export function Navbar() {
               {l.label}
             </Link>
           ))}
+
+          {/* Secondary host entry — quiet */}
+          <Link
+            href="/eigenaar-worden"
+            className={`text-xs font-medium transition-colors duration-300 ${
+              scrolled
+                ? 'text-[#1A1A1A]/40 hover:text-[#1A1A1A]/70'
+                : 'text-white/40 hover:text-white/70'
+            }`}
+          >
+            {t('for_owners')}
+          </Link>
+
           {/* Taalwisselaar */}
           <button
             onClick={toggleLocale}
@@ -84,8 +98,10 @@ export function Navbar() {
           >
             {locale === 'nl' ? 'EN' : 'NL'}
           </button>
+
+          {/* Book CTA */}
           <a
-            href="https://book.moroww.com/nl/properties?minOccupancy=1"
+            href={bookUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#FEA05E] text-white rounded-full px-5 py-2.5 text-sm font-semibold hover:bg-[#e8904e] transition-colors"
@@ -114,7 +130,7 @@ export function Navbar() {
         {/* Mobiel menu */}
         {open && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-[#FAE4D6] px-6 py-8 z-50 flex flex-col gap-2 shadow-lg">
-            {links.map((l) => (
+            {guestLinks.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
@@ -124,6 +140,14 @@ export function Navbar() {
                 {l.label}
               </Link>
             ))}
+            {/* Secondary host entry — quiet */}
+            <Link
+              href="/eigenaar-worden"
+              className="text-sm font-medium text-[#1A1A1A]/40 py-2 min-h-[44px] flex items-center border-t border-[#F0E4D8] mt-2 pt-4"
+              onClick={() => setOpen(false)}
+            >
+              {t('for_owners')}
+            </Link>
             <button
               onClick={() => { toggleLocale(); setOpen(false) }}
               className="text-base font-medium text-[#1A1A1A]/60 py-3 min-h-[44px] flex items-center text-left"
@@ -131,7 +155,7 @@ export function Navbar() {
               {locale === 'nl' ? 'English' : 'Nederlands'}
             </button>
             <a
-              href="https://book.moroww.com/nl/properties?minOccupancy=1"
+              href={bookUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-2 bg-[#FEA05E] text-white rounded-full px-6 py-3 text-base font-semibold text-center min-h-[44px] flex items-center justify-center"

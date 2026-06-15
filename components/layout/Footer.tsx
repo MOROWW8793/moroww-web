@@ -35,8 +35,10 @@ export async function Footer() {
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
               <Link href="/collectie" className="hover:text-white transition-colors">{t('collection')}</Link>
               <Link href="/over-moroww" className="hover:text-white transition-colors">{t('about')}</Link>
-              <Link href="/eigenaar-worden" className="hover:text-white transition-colors">{t('owner')}</Link>
+              <Link href="/eigenaar-worden" className="hover:text-white transition-colors">{t('for_owners')}</Link>
+              <Link href="/partners" className="hover:text-white transition-colors">{t('partners')}</Link>
               <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
+              <Link href="/privacy" className="hover:text-white transition-colors">{t('privacy')}</Link>
             </nav>
           </div>
 

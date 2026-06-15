@@ -4,6 +4,7 @@
     "about": "About moroww",
     "partners": "Partners",
     "owner": "Become an owner",
+    "for_owners": "for owners",
     "book": "Book a stay"
   },
   "home": {
@@ -35,6 +36,8 @@
     "about": "About moroww",
     "partners": "Partners",
     "owner": "Become an owner",
+    "for_owners": "for owners",
+    "privacy": "Privacy",
     "rights": "All rights reserved."
   },
   "collectie": {
@@ -47,6 +50,7 @@
     "guests": "guests",
     "per_night": "/ night",
     "view": "View home",
+    "view_book": "View & book",
     "cta_title": "every home has been personally inspected.",
     "cta_body": "No algorithm. No mass market. Only homes that meet our standard."
   },
