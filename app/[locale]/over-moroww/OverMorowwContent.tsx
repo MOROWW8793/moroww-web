@@ -53,42 +53,6 @@ export function OverMorowwContent() {
         </div>
       </section>
 
-      {/* ── SECTIE 1 — DE MARKT ── */}
-      <section className="grid grid-cols-1 md:grid-cols-2 min-h-[85vh]">
-        <motion.div
-          {...fadeUp}
-          className="flex items-center px-6 py-12 md:px-20 md:py-20 bg-[#FAE4D6]"
-        >
-          <div className="max-w-sm">
-            <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
-              {t('market_label')}
-            </p>
-            <h2 className="text-[clamp(1.9rem,3.8vw,3.5rem)] font-bold leading-[1.15] text-[#1A1A1A]">
-              <span className="font-light">{t('market_h2_light')}</span> {t('market_h2_bold')}<br />
-              <span className="font-light">{t('market_h2b_light')}</span> {t('market_h2b_bold')}
-            </h2>
-            <p className="mt-8 text-lg leading-relaxed text-[#1A1A1A]">
-              {t('market_p1')}
-            </p>
-            <p className="mt-4 text-lg leading-relaxed text-[#1A1A1A]">
-              {t('market_p2')}
-            </p>
-            <p className="mt-4 text-lg font-medium text-[#1A1A1A]">
-              {t('market_p3')}
-            </p>
-          </div>
-        </motion.div>
-        <div className="relative overflow-hidden min-h-[60vw] md:min-h-full">
-          <Image
-            src="/images/over-interieur-1.jpg"
-            alt="moroww interieur"
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-        </div>
-      </section>
-
       {/* ── SECTIE 2 — WAT MOROWW IS ── */}
       <section className="w-full py-16 md:py-28 px-6 bg-[#FAE4D6]">
         <div className="max-w-3xl mx-auto">
@@ -110,23 +74,6 @@ export function OverMorowwContent() {
             </p>
           </motion.div>
 
-          <div className="mt-14 max-w-2xl border-t border-[#C08D6E]/30">
-            {([
-              { symbool: "✗", tekst: t('check_1') },
-              { symbool: "✗", tekst: t('check_2') },
-              { symbool: "✓", tekst: t('check_3') },
-            ] as const).map(({ symbool, tekst }, i) => (
-              <motion.div
-                key={tekst}
-                {...fadeUp}
-                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.06 }}
-                className="flex items-center gap-6 py-5 border-b border-[#C08D6E]/30"
-              >
-                <span className="text-xl font-bold text-[#FEA05E] min-w-[1.5rem]">{symbool}</span>
-                <span className="text-base font-medium text-[#1A1A1A]">{tekst}</span>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -228,12 +175,12 @@ export function OverMorowwContent() {
               </p>
             </div>
             <p className="text-sm text-[#1A1A1A]/60 mt-4">
-              Eigenaar van een vakantiewoning?{' '}
+              {t('founders_owner_prompt')}{' '}
               <Link
                 href="/eigenaar-worden"
                 className="underline underline-offset-2 decoration-[#C08D6E]/50 hover:decoration-[#FEA05E]"
               >
-                ontdek hoe moroww werkt voor eigenaars
+                {t('founders_owner_cta')}
               </Link>
             </p>
             <Link
