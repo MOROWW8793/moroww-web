@@ -70,14 +70,19 @@ export function WoningenGrid() {
           {gefilterd.map((w) => {
             const badge = BADGE_STYLES[w.collectie];
             return (
-              <div
+              <Link
                 key={w.id}
+                href={`/collectie/${w.id}`}
+                aria-label={`bekijk ${w.naam}`}
                 style={{
+                  display: "block",
                   background: "#ffffff",
                   borderRadius: 16,
                   boxShadow: "0 2px 20px rgba(0,0,0,0.07)",
                   overflow: "hidden",
                   transition: "transform 0.2s ease",
+                  textDecoration: "none",
+                  cursor: "pointer",
                 }}
                 onMouseEnter={e => (e.currentTarget.style.transform = "translateY(-4px)")}
                 onMouseLeave={e => (e.currentTarget.style.transform = "translateY(0)")}
@@ -155,25 +160,16 @@ export function WoningenGrid() {
                   {/* Prijs + CTA */}
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid #F0E4D8", paddingTop: 16 }}>
                     {w.comingSoon ? (
-                      <>
-                        <span style={{ fontSize: 12, color: "#C08D6E", fontWeight: 600, textTransform: "lowercase", letterSpacing: "0.04em" }}>
-                          {t('coming_soon')}
-                        </span>
-                        <Link
-                          href={`/collectie/${w.id}`}
-                          style={{ fontSize: 13, color: "#1A1A1A", opacity: 0.45, textDecoration: "none", fontWeight: 500 }}
-                        >
-                          {t('view')} →
-                        </Link>
-                      </>
+                      <span style={{ fontSize: 12, color: "#C08D6E", fontWeight: 600, textTransform: "lowercase", letterSpacing: "0.04em" }}>
+                        {t('coming_soon')}
+                      </span>
                     ) : (
                       <>
                         <div>
                           <span style={{ fontWeight: 700, fontSize: 18, color: "#1A1A1A" }}>{t('from')} €{w.prijs}</span>
                           <span style={{ fontSize: 13, color: "#999999", marginLeft: 4 }}>{t('per_night')}</span>
                         </div>
-                        <Link
-                          href={`/collectie/${w.id}`}
+                        <span
                           style={{
                             background: "#FEA05E",
                             color: "#ffffff",
@@ -181,17 +177,16 @@ export function WoningenGrid() {
                             padding: "10px 20px",
                             fontSize: 14,
                             fontWeight: 600,
-                            textDecoration: "none",
                             whiteSpace: "nowrap",
                           }}
                         >
                           {t('view_book')}
-                        </Link>
+                        </span>
                       </>
                     )}
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

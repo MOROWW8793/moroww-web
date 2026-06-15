@@ -42,9 +42,11 @@ export function CollectieStatisch() {
       <div className="px-6 md:px-16 lg:px-24 pb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {gefilterd.map((w) => (
-            <div
+            <Link
               key={w.id}
-              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col"
+              href={`/collectie/${w.id}`}
+              aria-label={`bekijk ${w.naam}`}
+              className="group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col cursor-pointer"
             >
               {/* Hero foto */}
               <div className="relative aspect-[4/3] overflow-hidden">
@@ -104,34 +106,23 @@ export function CollectieStatisch() {
                 {/* Prijs + CTA */}
                 <div className="flex items-center justify-between mt-auto pt-4 border-t border-moroww-border">
                   {w.comingSoon ? (
-                    <>
-                      <span className="text-xs font-semibold text-[#C08D6E] lowercase tracking-wide">
-                        {t('coming_soon')}
-                      </span>
-                      <Link
-                        href={`/collectie/${w.id}`}
-                        className="text-sm font-medium text-moroww-black/45 hover:text-moroww-black transition-colors"
-                      >
-                        {t('view')} →
-                      </Link>
-                    </>
+                    <span className="text-xs font-semibold text-[#C08D6E] lowercase tracking-wide">
+                      {t('coming_soon')}
+                    </span>
                   ) : (
                     <>
                       <div>
                         <span className="font-bold text-xl text-moroww-black">€{w.prijs}</span>
                         <span className="text-sm text-moroww-black/45 ml-1">{t('per_night')}</span>
                       </div>
-                      <Link
-                        href={`/collectie/${w.id}`}
-                        className="rounded-full bg-[#FEA05E] hover:bg-[#e8904e] text-white font-semibold text-sm px-5 py-2.5 transition-colors duration-200"
-                      >
+                      <span className="rounded-full bg-[#FEA05E] group-hover:bg-[#e8904e] text-white font-semibold text-sm px-5 py-2.5 transition-colors duration-200">
                         {t('view_book')}
-                      </Link>
+                      </span>
                     </>
                   )}
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
