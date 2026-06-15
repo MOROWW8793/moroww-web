@@ -104,9 +104,17 @@ export function CollectieStatisch() {
                 {/* Prijs + CTA */}
                 <div className="flex items-center justify-between mt-auto pt-4 border-t border-moroww-border">
                   {w.comingSoon ? (
-                    <span className="text-xs font-semibold text-[#C08D6E] lowercase tracking-wide">
-                      {t('coming_soon')}
-                    </span>
+                    <>
+                      <span className="text-xs font-semibold text-[#C08D6E] lowercase tracking-wide">
+                        {t('coming_soon')}
+                      </span>
+                      <Link
+                        href={`/collectie/${w.id}`}
+                        className="text-sm font-medium text-moroww-black/45 hover:text-moroww-black transition-colors"
+                      >
+                        {t('view')} →
+                      </Link>
+                    </>
                   ) : (
                     <>
                       <div>
