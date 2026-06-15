@@ -8,7 +8,7 @@
     "book": "Maak een boeking"
   },
   "home": {
-    "hero": "a new standard for short term rentals.",
+    "hero": "een nieuwe standaard voor verblijven.",
     "from": "Vanaf",
     "collection_label": "de collectie",
     "collection_title": "vier woningen. twee collecties. één standaard.",
@@ -31,7 +31,7 @@
     "host_cta": "eigenaar worden"
   },
   "footer": {
-    "tagline": "No worries for the day of moroww.",
+    "tagline": "niets aan het toeval overgelaten.",
     "collection": "De Collectie",
     "about": "Over moroww",
     "partners": "Partners",
@@ -94,15 +94,15 @@
     "label": "de standaard",
     "title": "wat elke moroww-woning meebrengt.",
     "subtitle": "elk verblijf is het resultaat van een systeem. niet van toeval.",
-    "card_geur_titel": "Geur",
-    "card_geur_tekst": "Elke woning heeft een eigen sensorisch profiel. Bij aankomst ruikt het goed. Niet toevallig.",
+    "card_geur_titel": "geur",
+    "card_geur_tekst": "elke woning heeft een eigen sensorisch profiel. bij aankomst ruikt het goed. niet toevallig.",
     "card_label_titel": "moroww label",
-    "card_label_tekst": "Alleen woningen die onze inspectie doorstaan dragen het label. Geen uitzonderingen.",
-    "card_slot_titel": "Slim slot",
-    "card_slot_tekst": "Geen sleuteloverdracht. Geen wachten. Gasten komen aan op hun tempo, via een persoonlijke code.",
-    "card_qr_titel": "Gastenpagina",
-    "card_qr_tekst": "Een persoonlijke digitale gids per woning. Wifi, huisregels, lokale tips — alles op één plek via QR.",
-    "card_pakket_titel": "Welkomstpakket",
+    "card_label_tekst": "alleen woningen die onze inspectie doorstaan dragen het label. geen uitzonderingen.",
+    "card_slot_titel": "slim slot",
+    "card_slot_tekst": "geen sleuteloverdracht. geen wachten. gasten komen aan op hun tempo, via een persoonlijke code.",
+    "card_qr_titel": "gastenpagina",
+    "card_qr_tekst": "een persoonlijke digitale gids per woning. wifi, huisregels, lokale tips — alles op één plek via qr.",
+    "card_pakket_titel": "welkomstpakket",
     "card_pakket_tekst": "geselecteerde badkamerproducten en verse linnens bij elke aankomst. de standaard is de standaard, elke keer.",
     "card_linnen_titel": "linnen & verzorging",
     "card_linnen_tekst": "elk verblijf start met vers opgemaakt bed, geselecteerde badkamerproducten en een schone lei. geen compromis."

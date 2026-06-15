@@ -6,7 +6,8 @@ import { useLocale, useTranslations } from "next-intl";
 
 export function Hero() {
   const locale = useLocale();
-  const t = useTranslations('nav');
+  const tNav = useTranslations('nav');
+  const tHome = useTranslations('home');
   const bookUrl = `https://book.moroww.com/${locale}/properties?minOccupancy=1`;
 
   return (
@@ -24,17 +25,16 @@ export function Hero() {
       {/* Overlay - stronger on mobile */}
       <div className="absolute inset-0 bg-black/50 md:bg-black/38" />
 
-      <div className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-8 gap-8">
+      {/* Content block — bottom-left */}
+      <div className="absolute inset-0 flex flex-col justify-end px-8 md:px-16 lg:px-24 pb-16 md:pb-24">
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-white font-bold lowercase leading-[1.15] md:leading-[1.1] tracking-[-0.02em] text-center w-full"
-          style={{ fontSize: "clamp(32px,5vw,72px)" }}
+          className="text-white font-bold lowercase leading-[1.12] tracking-[-0.02em] max-w-2xl"
+          style={{ fontSize: "clamp(32px,5vw,64px)" }}
         >
-          a new standard for
-          <span className="inline-block w-6 md:w-40 lg:w-48" />
-          <span className="font-normal">short term rentals.</span>
+          {tHome('hero')}
         </motion.h1>
 
         <motion.a
@@ -44,9 +44,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
-          className="bg-[#FEA05E] text-white rounded-full px-8 py-4 text-base font-semibold hover:bg-[#e8904e] transition-colors"
+          className="mt-6 self-start bg-[#FEA05E] text-white rounded-full px-8 py-4 text-base font-semibold hover:bg-[#e8904e] transition-colors"
         >
-          {t('book')}
+          {tNav('book')}
         </motion.a>
       </div>
     </section>

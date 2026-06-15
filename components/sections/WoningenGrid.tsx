@@ -150,9 +150,6 @@ export function WoningenGrid() {
                       <Users size={13} />
                       {w.maxGasten} {t('guests')}
                     </span>
-                    {w.oppervlakte && (
-                      <span style={{ color: "#999" }}>{w.oppervlakte}</span>
-                    )}
                   </div>
 
                   {/* Prijs + CTA */}

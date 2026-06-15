@@ -99,9 +99,6 @@ export function CollectieStatisch() {
                     <Users size={14} />
                     {w.maxGasten} {t('guests')}
                   </span>
-                  {w.oppervlakte && (
-                    <span className="text-moroww-black/40">{w.oppervlakte}</span>
-                  )}
                 </div>
 
                 {/* Prijs + CTA */}

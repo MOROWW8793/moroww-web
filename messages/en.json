@@ -8,7 +8,7 @@
     "book": "Book a stay"
   },
   "home": {
-    "hero": "a new standard for short term rentals.",
+    "hero": "a new standard for every stay.",
     "from": "From",
     "collection_label": "the collection",
     "collection_title": "four homes. two collections. one standard.",
@@ -31,7 +31,7 @@
     "host_cta": "become an owner"
   },
   "footer": {
-    "tagline": "No worries for the day of moroww.",
+    "tagline": "nothing left to chance.",
     "collection": "The Collection",
     "about": "About moroww",
     "partners": "Partners",
@@ -94,15 +94,15 @@
     "label": "the standard",
     "title": "what every moroww home includes.",
     "subtitle": "every stay is the result of a system. not chance.",
-    "card_geur_titel": "Scent",
-    "card_geur_tekst": "Every home has its own sensory profile. It smells right on arrival. Not by chance.",
+    "card_geur_titel": "scent",
+    "card_geur_tekst": "every home has its own sensory profile. it smells right on arrival. not by chance.",
     "card_label_titel": "moroww label",
-    "card_label_tekst": "Only homes that pass our inspection carry the label. No exceptions.",
-    "card_slot_titel": "Smart lock",
-    "card_slot_tekst": "No key handover. No waiting. Guests arrive at their own pace, via a personal code.",
-    "card_qr_titel": "Guest page",
-    "card_qr_tekst": "A personal digital guide per home. Wifi, house rules, local tips — all in one place via QR.",
-    "card_pakket_titel": "Welcome package",
+    "card_label_tekst": "only homes that pass our inspection carry the label. no exceptions.",
+    "card_slot_titel": "smart lock",
+    "card_slot_tekst": "no key handover. no waiting. guests arrive at their own pace, via a personal code.",
+    "card_qr_titel": "guest page",
+    "card_qr_tekst": "a personal digital guide per home. wifi, house rules, local tips — all in one place via qr.",
+    "card_pakket_titel": "welcome package",
     "card_pakket_tekst": "selected bathroom products and fresh linen at every arrival. the standard is the standard, every time.",
     "card_linnen_titel": "linen & care",
     "card_linnen_tekst": "every stay starts with a freshly made bed, selected bathroom products and a clean slate. no compromise."
