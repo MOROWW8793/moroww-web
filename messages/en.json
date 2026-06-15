@@ -25,9 +25,9 @@
     "reviews_title_bold": "only experiences.",
     "all_stays": "· all stays",
     "host_label": "for owners",
-    "host_title": "you open the door.",
-    "host_subtitle": "we do the rest.",
-    "host_body": "no phone calls, no hassle, no admin. smart technology monitors. our protocol guarantees. you stay in control.",
+    "host_title": "you stay in control.",
+    "host_subtitle": "",
+    "host_body": "moroww installs the system, safeguards the standard and handles the bookings. you decide, you remain the owner in every sense. we are your label, not your manager.",
     "host_cta": "become an owner"
   },
   "footer": {
@@ -102,10 +102,8 @@
     "card_slot_tekst": "no key handover. no waiting. guests arrive at their own pace, via a personal code.",
     "card_qr_titel": "guest page",
     "card_qr_tekst": "a personal digital guide per home. wifi, house rules, local tips — all in one place via qr.",
-    "card_pakket_titel": "welcome package",
-    "card_pakket_tekst": "selected bathroom products and fresh linen at every arrival. the standard is the standard, every time.",
-    "card_linnen_titel": "linen & care",
-    "card_linnen_tekst": "every stay starts with a freshly made bed, selected bathroom products and a clean slate. no compromise."
+    "card_aankomst_titel": "arrival",
+    "card_aankomst_tekst": "a freshly made bed, selected care products and a clean slate on every arrival. the basics, flawless every time."
   },
   "about": {
     "market_label": "The market",

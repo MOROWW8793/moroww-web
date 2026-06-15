@@ -1,6 +1,6 @@
 "use client";
 
-import { Leaf, BadgeCheck, KeyRound, QrCode, Gift, TrendingUp, type LucideIcon } from "lucide-react";
+import { Leaf, BadgeCheck, KeyRound, QrCode, Gift, type LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
@@ -8,12 +8,11 @@ export function StandaardDetail() {
   const t = useTranslations('standaard')
 
   const kaarten: Array<{ icon: LucideIcon; titel: string; tekst: string }> = [
-    { icon: Leaf,       titel: t('card_geur_titel'),   tekst: t('card_geur_tekst') },
-    { icon: BadgeCheck, titel: t('card_label_titel'),  tekst: t('card_label_tekst') },
-    { icon: KeyRound,   titel: t('card_slot_titel'),   tekst: t('card_slot_tekst') },
-    { icon: QrCode,     titel: t('card_qr_titel'),     tekst: t('card_qr_tekst') },
-    { icon: Gift,       titel: t('card_pakket_titel'), tekst: t('card_pakket_tekst') },
-    { icon: TrendingUp, titel: t('card_linnen_titel'), tekst: t('card_linnen_tekst') },
+    { icon: Leaf,       titel: t('card_geur_titel'),     tekst: t('card_geur_tekst') },
+    { icon: BadgeCheck, titel: t('card_label_titel'),    tekst: t('card_label_tekst') },
+    { icon: KeyRound,   titel: t('card_slot_titel'),     tekst: t('card_slot_tekst') },
+    { icon: QrCode,     titel: t('card_qr_titel'),       tekst: t('card_qr_tekst') },
+    { icon: Gift,       titel: t('card_aankomst_titel'), tekst: t('card_aankomst_tekst') },
   ]
 
   return (

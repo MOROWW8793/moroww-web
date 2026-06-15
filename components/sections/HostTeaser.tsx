@@ -38,7 +38,8 @@ export function HostTeaser() {
               className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-6"
               style={{ fontSize: "clamp(28px,4vw,48px)" }}
             >
-              {t('host_title')}<br />{t('host_subtitle')}
+              {t('host_title')}
+              {t('host_subtitle') ? <><br />{t('host_subtitle')}</> : null}
             </h2>
             <p className="text-moroww-black/60 leading-relaxed mb-10" style={{ fontSize: 17 }}>
               {t('host_body')}
