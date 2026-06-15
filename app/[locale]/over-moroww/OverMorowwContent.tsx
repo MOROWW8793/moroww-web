@@ -45,10 +45,10 @@ export function OverMorowwContent() {
             className="text-white font-bold lowercase leading-[1.1] tracking-[-0.02em] text-center w-full"
             style={{ fontSize: "clamp(32px,5vw,80px)" }}
           >
-            a new standard.
+            {t('hero_h1_bold')}
             <span className="hidden sm:inline-block sm:w-24" />
             <br className="sm:hidden" />
-            <span className="font-light whitespace-nowrap">for good.</span>
+            <span className="font-light whitespace-nowrap">{t('hero_h1_light')}</span>
           </motion.h1>
         </div>
       </section>
@@ -217,13 +217,10 @@ export function OverMorowwContent() {
               {t('founders_label')}
             </p>
             <h2 className="text-[clamp(1.7rem,3.2vw,3rem)] font-bold leading-[1.15] text-[#1A1A1A]">
-              <span className="font-light">{t('founders_h2_light')}</span> {t('founders_h2_bold')}
+              {t('founders_h2_bold')}
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-[#1A1A1A]">
               {t('founders_p1')}
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-[#1A1A1A]/70">
-              {t('founders_p2')}
             </p>
             <div className="border-t border-[#C08D6E]/30 mt-6 pt-6">
               <p className="text-base font-medium text-[#1A1A1A]">
