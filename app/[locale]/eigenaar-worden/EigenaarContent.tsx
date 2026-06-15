@@ -87,9 +87,9 @@ export function EigenaarContent() {
       </section>
 
       {/* ── SECTIE 2: WAT MOROWW INSTALLEERT ── */}
-      <section className="w-full bg-[#1A1A1A] py-16 md:py-28 mt-0">
+      <section className="w-full bg-[#1A1A1A] py-12 md:py-20 mt-0">
         <div className="relative z-10">
-          <motion.div {...fadeUp} className="max-w-4xl mx-auto px-6 md:px-16 mb-20">
+          <motion.div {...fadeUp} className="max-w-4xl mx-auto px-6 md:px-16 mb-12">
             <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-5">
               {t('tech_label')}
             </p>
@@ -103,29 +103,28 @@ export function EigenaarContent() {
             </p>
           </motion.div>
 
-          {systeem.map((item, i) => (
-            <motion.div
-              key={item.nr}
-              {...fadeUp}
-              transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.06 }}
-              className="w-full border-t border-white/10"
-            >
-              <div className="max-w-4xl mx-auto px-6 md:px-16 py-10 flex items-start gap-8 md:gap-20">
-                <span
-                  className="font-bold leading-none text-[#FEA05E] select-none hidden md:block"
-                  style={{ fontSize: "clamp(2rem,8vw,6rem)", opacity: 0.15 }}
+          <div className="max-w-4xl mx-auto px-6 md:px-16">
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              {systeem.map((item, i) => (
+                <motion.div
+                  key={item.nr}
+                  {...fadeUp}
+                  transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.06 }}
+                  className={`border-t border-white/10 py-8 ${i % 2 === 1 ? "md:pl-10 md:border-l md:border-white/10" : "md:pr-10"}`}
                 >
-                  {item.nr}
-                </span>
-                <div className="flex-1 pt-1">
-                  <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-2 md:hidden">{item.nr}</p>
-                  <h3 className="text-xl font-semibold text-white mb-2">{item.titel}</h3>
-                  <p className="text-base leading-relaxed text-[#9CA3AF]">{item.tekst}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-          <div className="border-b border-white/10" />
+                  <span
+                    className="block font-bold leading-none text-[#FEA05E] select-none"
+                    style={{ fontSize: "2.5rem", opacity: 0.18 }}
+                  >
+                    {item.nr}
+                  </span>
+                  <h3 className="text-base font-semibold text-white mt-2 mb-1.5">{item.titel}</h3>
+                  <p className="text-sm leading-relaxed text-[#9CA3AF]">{item.tekst}</p>
+                </motion.div>
+              ))}
+            </div>
+            <div className="border-b border-white/10" />
+          </div>
         </div>
       </section>
 
@@ -175,8 +174,8 @@ export function EigenaarContent() {
       </section>
 
       {/* ── SECTIE 5: HOE HET WERKT ── */}
-      <section className="w-full py-16 md:py-28 px-6 bg-[#FAE4D6]">
-        <div className="max-w-3xl mx-auto">
+      <section className="w-full py-12 md:py-20 px-6 md:px-16 lg:px-24 bg-[#FAE4D6]">
+        <div className="max-w-xl">
           <motion.div {...fadeUp}>
             <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
               {t('traject_label')}
@@ -187,18 +186,18 @@ export function EigenaarContent() {
             </h2>
           </motion.div>
 
-          <div className="mt-14 border-t border-[#C08D6E]/30">
+          <div className="mt-10 border-t border-[#C08D6E]/30">
             {stappen.map(({ nr, titel, tekst }, i) => (
               <motion.div
                 key={nr}
                 {...fadeUp}
                 transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
-                className="flex items-start gap-8 py-8 border-b border-[#C08D6E]/30"
+                className="flex items-start gap-5 py-6 border-b border-[#C08D6E]/30"
               >
-                <p className="text-[#FEA05E] text-sm font-semibold tracking-widest shrink-0 min-w-[2rem]">{nr}</p>
+                <p className="text-[#FEA05E] text-sm font-semibold tracking-widest shrink-0 pt-0.5">{nr}</p>
                 <div>
-                  <h3 className="text-xl font-semibold text-[#1A1A1A] mb-2">{titel}</h3>
-                  <p className="text-base leading-relaxed text-[#1A1A1A]/70">{tekst}</p>
+                  <h3 className="text-base font-semibold text-[#1A1A1A] mb-1.5">{titel}</h3>
+                  <p className="text-sm leading-relaxed text-[#1A1A1A]/70">{tekst}</p>
                 </div>
               </motion.div>
             ))}
