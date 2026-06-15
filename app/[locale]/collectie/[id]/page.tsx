@@ -37,9 +37,9 @@ const woningMeta: Record<string, { title: string; description: string; keywords:
     keywords: ['vakantiewoning Beernem', 'vakantiewoning met zwembad België', 'vakantiewoning groep België', 'vakantiewoning hottub België', 'groepsaccommodatie Meetjesland', 'moroww Beernem'],
   },
   'sophora': {
-    title: 'Sophora — binnenkort te boeken via moroww',
-    description: 'Sophora is binnenkort beschikbaar in de moroww-collectie. Gecertificeerd, uitgerust en klaar voor een verblijf zonder loterij.',
-    keywords: ['moroww collectie', 'vakantiewoning binnenkort', 'moroww sophora'],
+    title: 'Sophora — vakantiewoning Elst, Vlaamse Ardennen | moroww',
+    description: 'Een familiehuis in het hart van Elst, gedragen door drie zussen. 9 slaapkamers elk met eigen badkamer, zwembad, sauna en tuin. Max 18 personen. Binnenkort te boeken via moroww.',
+    keywords: ['vakantiewoning Vlaamse Ardennen', 'vakantiewoning Elst', 'groepsaccommodatie Vlaamse Ardennen', 'vakantiewoning 18 personen België', 'moroww the fields', 'Sophora Elst'],
   },
 };
 
