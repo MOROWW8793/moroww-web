@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Phone, Wifi, LogIn, LogOut, Copy, Check, MapPin, Globe, ChevronDown, Key, Car } from 'lucide-react'
 
@@ -203,6 +203,12 @@ export function WelcomeClient({
 }) {
   const [lang, setLang] = useState<Lang>('nl')
   const [openCategories, setOpenCategories] = useState<Set<string>>(new Set())
+
+  useEffect(() => {
+    const bl = navigator.language.slice(0, 2).toLowerCase()
+    if (bl === 'fr') setLang('fr')
+    else if (bl === 'en') setLang('en')
+  }, [])
 
   function t(field: string) {
     return page[`${field}_${lang}`] || page[`${field}_nl`] || ''
