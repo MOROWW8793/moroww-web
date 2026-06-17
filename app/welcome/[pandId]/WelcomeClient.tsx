@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { Phone, Wifi, LogIn, LogOut, Copy, Check, MapPin, Globe, ChevronDown, Key } from 'lucide-react'
+import { Phone, Wifi, LogIn, LogOut, Copy, Check, MapPin, Globe, ChevronDown, Key, Car } from 'lucide-react'
 
 type Lang = 'nl' | 'fr' | 'en'
 
@@ -36,6 +36,7 @@ const labels = {
     slot:         'Toegang & slot',
     huisregels:   'Huisregels',
     handleiding:  'Handleiding',
+    parkeren:     'Parkeren',
     tips:         'Lokale tips',
     cta_titel:    'Wil je terugkomen?',
     cta_sub:      'Boek je volgende verblijf rechtstreeks via moroww.',
@@ -51,6 +52,7 @@ const labels = {
     slot:         'Accès & clés',
     huisregels:   'Règles de la maison',
     handleiding:  'Guide pratique',
+    parkeren:     'Parking',
     tips:         'Bons plans locaux',
     cta_titel:    'Vous souhaitez revenir?',
     cta_sub:      'Réservez votre prochain séjour directement via moroww.',
@@ -66,6 +68,7 @@ const labels = {
     slot:         'Access & keys',
     huisregels:   'House rules',
     handleiding:  'House guide',
+    parkeren:     'Parking',
     tips:         'Local tips',
     cta_titel:    'Want to come back?',
     cta_sub:      'Book your next stay directly through moroww.',
@@ -193,7 +196,7 @@ export function WelcomeClient({
 
   const hasNuNodig = t('slot_instructies') || page.wifi_naam || page.wifi_wachtwoord
   const hasGoed    = page.checkin_tijd || page.checkout_tijd || page.noodcontact_tel
-                     || t('huisregels') || t('handleiding')
+                     || t('huisregels') || t('handleiding') || t('parkeren')
 
   // icon circle reused across zones
   const iconCircle = (icon: React.ReactNode) => (
@@ -360,6 +363,19 @@ export function WelcomeClient({
                     >
                       Bellen
                     </a>
+                  </div>
+                </Card>
+              )}
+
+              {/* Parkeren */}
+              {t('parkeren') && (
+                <Card>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                    {iconCircle(<Car size={15} className="text-moroww-orange" />)}
+                    <div style={{ flex: 1 }}>
+                      <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 1.5, color: 'rgba(26,26,26,0.4)', fontWeight: 600, marginBottom: 6 }}>{l.parkeren}</p>
+                      <FormattedText text={t('parkeren')} />
+                    </div>
                   </div>
                 </Card>
               )}
