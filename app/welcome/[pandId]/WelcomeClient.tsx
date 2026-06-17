@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { Phone, Wifi, LogIn, LogOut, Copy, Check, MapPin, Globe } from 'lucide-react'
+import { Phone, Wifi, LogIn, LogOut, Copy, Check, MapPin, Globe, ChevronDown, Key } from 'lucide-react'
 
 type Lang = 'nl' | 'fr' | 'en'
 
@@ -27,12 +27,13 @@ const BOEK_URLS: Record<string, string> = {
 
 const labels = {
   nl: {
-    praktisch:    'Praktische info',
+    nu_nodig:     'Nu nodig',
+    goed_te_weten:'Goed om te weten',
     checkin:      'Check-in',
     checkout:     'Checkout',
     wifi:         'Wifi',
     noodcontact:  'Noodcontact',
-    slot:         'Slotinstructies',
+    slot:         'Toegang & slot',
     huisregels:   'Huisregels',
     handleiding:  'Handleiding',
     tips:         'Lokale tips',
@@ -41,11 +42,12 @@ const labels = {
     cta_knop:     'Boek direct',
   },
   fr: {
-    praktisch:    'Informations pratiques',
+    nu_nodig:     'À l\'arrivée',
+    goed_te_weten:'À savoir',
     checkin:      'Check-in',
     checkout:     'Check-out',
     wifi:         'Wifi',
-    noodcontact:  "Contact d'urgence",
+    noodcontact:  'Contact d\'urgence',
     slot:         'Accès & clés',
     huisregels:   'Règles de la maison',
     handleiding:  'Guide pratique',
@@ -55,7 +57,8 @@ const labels = {
     cta_knop:     'Réserver',
   },
   en: {
-    praktisch:    'Practical info',
+    nu_nodig:     'On arrival',
+    goed_te_weten:'Good to know',
     checkin:      'Check-in',
     checkout:     'Check-out',
     wifi:         'Wifi',
@@ -70,7 +73,7 @@ const labels = {
   },
 }
 
-// ── Helpers ─────────────────────────────────────────────────────────────────
+// ── Helpers ──────────────────────────────────────────────────────────────────
 
 function CopyButton({ text }: { text: string }) {
   const [copied, setCopied] = useState(false)
@@ -86,30 +89,41 @@ function CopyButton({ text }: { text: string }) {
   )
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Card({ children, accent }: { children: React.ReactNode; accent?: boolean }) {
   return (
-    <section style={{ marginTop: 48 }}>
-      <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 16, color: '#1A1A1A', letterSpacing: '-0.01em' }}>
-        {title}
-      </h2>
-      {children}
-    </section>
-  )
-}
-
-function Card({ children }: { children: React.ReactNode }) {
-  return (
-    <div style={{ background: '#fff', borderRadius: 16, padding: 20, boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
+    <div style={{
+      background: '#fff',
+      borderRadius: 16,
+      padding: 20,
+      boxShadow: accent ? '0 4px 20px rgba(254,160,94,0.12)' : '0 2px 12px rgba(0,0,0,0.06)',
+      border: accent ? '1px solid rgba(254,160,94,0.18)' : 'none',
+    }}>
       {children}
     </div>
   )
 }
 
+function ZoneLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <p style={{
+      fontSize: 10, fontWeight: 700, textTransform: 'uppercase',
+      letterSpacing: 2.5, color: '#C08D6E', marginBottom: 14,
+    }}>
+      {children}
+    </p>
+  )
+}
+
+function SectionTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 16, color: '#1A1A1A', letterSpacing: '-0.01em' }}>
+      {children}
+    </h2>
+  )
+}
+
 function FormattedText({ text }: { text: string }) {
   if (!text) return null
-
-  // Splits op patronen zoals "WOORD - " of "WOORD & WOORD - "
-  // Werkt voor NL (VERWARMING), FR (CHAUFFAGE), EN (HEATING)
   const sectionRegex = /(?=\b[A-ZÀÂÇÉÈÊËÎÏÔÙÛÜŸÆŒ][A-ZÀÂÇÉÈÊËÎÏÔÙÛÜŸÆŒ\s&]+\s+-\s)/
   const lines = text.split(sectionRegex).filter(Boolean)
 
@@ -118,33 +132,24 @@ function FormattedText({ text }: { text: string }) {
     return (
       <div className="space-y-2">
         {sentences.map((sentence, i) => (
-          <p key={i} className="text-moroww-black/70 text-sm leading-relaxed">
-            {sentence}
-          </p>
+          <p key={i} className="text-moroww-black/70 text-sm leading-relaxed">{sentence}</p>
         ))}
       </div>
     )
   }
-
   return (
     <div className="space-y-4">
       {lines.filter(Boolean).map((section, i) => {
         const dashIndex = section.indexOf(' - ')
         if (dashIndex === -1) return (
-          <p key={i} className="text-moroww-black/70 text-sm leading-relaxed">
-            {section}
-          </p>
+          <p key={i} className="text-moroww-black/70 text-sm leading-relaxed">{section}</p>
         )
         const title = section.slice(0, dashIndex).trim()
         const content = section.slice(dashIndex + 3).trim()
         return (
           <div key={i}>
-            <p className="font-semibold text-moroww-black text-sm mb-1">
-              {title}
-            </p>
-            <p className="text-moroww-black/70 text-sm leading-relaxed">
-              {content}
-            </p>
+            <p className="font-semibold text-moroww-black text-sm mb-1">{title}</p>
+            <p className="text-moroww-black/70 text-sm leading-relaxed">{content}</p>
           </div>
         )
       })}
@@ -152,7 +157,7 @@ function FormattedText({ text }: { text: string }) {
   )
 }
 
-// ── Main component ───────────────────────────────────────────────────────────
+// ── Main component ────────────────────────────────────────────────────────────
 
 export function WelcomeClient({
   page, tips, pandNaam, pandId,
@@ -163,9 +168,18 @@ export function WelcomeClient({
   pandId: string
 }) {
   const [lang, setLang] = useState<Lang>('nl')
+  const [openCategories, setOpenCategories] = useState<Set<string>>(new Set())
 
   function t(field: string) {
     return page[`${field}_${lang}`] || page[`${field}_nl`] || ''
+  }
+
+  function toggleCategorie(cat: string) {
+    setOpenCategories(prev => {
+      const next = new Set(prev)
+      if (next.has(cat)) { next.delete(cat) } else { next.add(cat) }
+      return next
+    })
   }
 
   const boekUrl = BOEK_URLS[pandId] ?? 'https://book.moroww.com/nl/properties?minOccupancy=1'
@@ -177,224 +191,292 @@ export function WelcomeClient({
     return acc
   }, {})
 
+  const hasNuNodig = t('slot_instructies') || page.wifi_naam || page.wifi_wachtwoord
+  const hasGoed    = page.checkin_tijd || page.checkout_tijd || page.noodcontact_tel
+                     || t('huisregels') || t('handleiding')
+
+  // icon circle reused across zones
+  const iconCircle = (icon: React.ReactNode) => (
+    <div style={{ width: 36, height: 36, borderRadius: '50%', background: '#FAE4D6', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+      {icon}
+    </div>
+  )
+
   return (
-    <div
-      style={{
-        backgroundImage: 'url(/images/gradient-1.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        minHeight: '100vh',
-      }}
-    >
+    <div style={{ backgroundImage: 'url(/images/gradient-1.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '100vh' }}>
       <div style={{ maxWidth: 560, margin: '0 auto', padding: '40px 20px 80px' }}>
 
         {/* ── Header ── */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 40 }}>
           <Image src="/images/logo.png" alt="moroww" width={90} height={24} className="h-6 w-auto" />
           <div style={{ display: 'flex', gap: 4 }}>
-            {(['nl', 'fr', 'en'] as Lang[]).map(l => (
+            {(['nl', 'fr', 'en'] as Lang[]).map(lg => (
               <button
-                key={l}
-                onClick={() => setLang(l)}
+                key={lg}
+                onClick={() => setLang(lg)}
                 style={{
                   fontSize: 12, fontWeight: 600, padding: '6px 12px',
                   borderRadius: 100, border: 'none', cursor: 'pointer',
-                  background: lang === l ? '#1A1A1A' : 'transparent',
-                  color: lang === l ? '#fff' : 'rgba(26,26,26,0.45)',
+                  background: lang === lg ? '#1A1A1A' : 'transparent',
+                  color: lang === lg ? '#fff' : 'rgba(26,26,26,0.45)',
                   transition: 'all 0.15s',
                 }}
               >
-                {LANG_LABELS[l]}
+                {LANG_LABELS[lg]}
               </button>
             ))}
           </div>
         </div>
 
         {/* ── Welkom hero ── */}
-        <div style={{ marginBottom: 8 }}>
+        <div>
           <p style={{ fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: 2, color: '#C08D6E', marginBottom: 10 }}>
             moroww
           </p>
-          <h1 style={{ fontSize: 'clamp(28px,6vw,40px)', fontWeight: 800, color: '#1A1A1A', lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: 20 }}>
+          <h1 style={{ fontSize: 'clamp(28px,6vw,40px)', fontWeight: 800, color: '#1A1A1A', lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: 28 }}>
             Welkom in {pandNaam}.
           </h1>
-          {t('welkomstbericht') && (
-            <Card>
-              <p style={{ color: 'rgba(26,26,26,0.65)', fontSize: 16, lineHeight: 1.7 }}>
-                {t('welkomstbericht')}
-              </p>
-            </Card>
+
+          {/* Certified badge */}
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, background: '#FAF7F5', borderRadius: 14, padding: '10px 16px 10px 10px', marginBottom: 32 }}>
+            <div style={{ background: '#fff', borderRadius: 10, padding: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <Image
+                src="/images/Moroww_Certified_01_RGB.png"
+                alt="moroww certified"
+                width={80}
+                height={80}
+                style={{ width: 80, height: 80, objectFit: 'contain', display: 'block' }}
+              />
+            </div>
+            <p style={{ fontSize: 13, color: '#C08D6E', lineHeight: 1.4, maxWidth: 220 }}>
+              Dit verblijf is persoonlijk gekeurd door moroww.
+            </p>
+          </div>
+
+          {/* Welkomsttekst */}
+          {t('welkom') && (
+            <p style={{ color: 'rgba(26,26,26,0.65)', fontSize: 16, lineHeight: 1.75, marginBottom: 0 }}>
+              {t('welkom')}
+            </p>
           )}
         </div>
 
-        {/* ── Praktische info ── */}
-        <Section title={l.praktisch}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        {/* ══════════════════════════════════════════
+            Zone 1 — NU NODIG
+        ══════════════════════════════════════════ */}
+        {hasNuNodig && (
+          <section style={{ marginTop: 56 }}>
+            <ZoneLabel>{l.nu_nodig}</ZoneLabel>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
 
-            {/* Check-in / checkout */}
-            {(page.checkin_tijd || page.checkout_tijd) && (
-              <Card>
-                <div style={{ display: 'flex', gap: 32 }}>
-                  {page.checkin_tijd && (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                      <div style={{ width: 36, height: 36, borderRadius: '50%', background: '#FAE4D6', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                        <LogIn size={15} className="text-moroww-orange" />
+              {/* Slotinstructies — hoogste prioriteit */}
+              {t('slot_instructies') && (
+                <Card accent>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, marginBottom: 12 }}>
+                    {iconCircle(<Key size={15} className="text-moroww-orange" />)}
+                    <p style={{ fontWeight: 700, color: '#1A1A1A', fontSize: 15, paddingTop: 8 }}>
+                      {l.slot}
+                    </p>
+                  </div>
+                  <FormattedText text={t('slot_instructies')} />
+                </Card>
+              )}
+
+              {/* Wifi */}
+              {(page.wifi_naam || page.wifi_wachtwoord) && (
+                <Card>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                    {iconCircle(<Wifi size={15} className="text-moroww-orange" />)}
+                    <div style={{ flex: 1 }}>
+                      <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 1.5, color: 'rgba(26,26,26,0.4)', fontWeight: 600, marginBottom: 6 }}>{l.wifi}</p>
+                      <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <span style={{ fontWeight: 600, color: '#1A1A1A', fontSize: 15 }}>{page.wifi_naam}</span>
+                        <CopyButton text={page.wifi_naam} />
                       </div>
-                      <div>
-                        <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 1.5, color: 'rgba(26,26,26,0.4)', fontWeight: 600, marginBottom: 2 }}>{l.checkin}</p>
-                        <p style={{ fontWeight: 700, color: '#1A1A1A', fontSize: 15 }}>Vanaf {page.checkin_tijd}</p>
+                      <div style={{ display: 'flex', alignItems: 'center', marginTop: 4 }}>
+                        <span style={{ color: 'rgba(26,26,26,0.6)', fontSize: 14 }}>{page.wifi_wachtwoord}</span>
+                        <CopyButton text={page.wifi_wachtwoord} />
                       </div>
                     </div>
-                  )}
-                  {page.checkout_tijd && (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                      <div style={{ width: 36, height: 36, borderRadius: '50%', background: '#FAE4D6', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                        <LogOut size={15} className="text-moroww-orange" />
-                      </div>
-                      <div>
-                        <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 1.5, color: 'rgba(26,26,26,0.4)', fontWeight: 600, marginBottom: 2 }}>{l.checkout}</p>
-                        <p style={{ fontWeight: 700, color: '#1A1A1A', fontSize: 15 }}>Voor {page.checkout_tijd}</p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </Card>
-            )}
-
-            {/* Wifi */}
-            {(page.wifi_naam || page.wifi_wachtwoord) && (
-              <Card>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                  <div style={{ width: 36, height: 36, borderRadius: '50%', background: '#FAE4D6', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <Wifi size={15} className="text-moroww-orange" />
                   </div>
-                  <div style={{ flex: 1 }}>
-                    <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 1.5, color: 'rgba(26,26,26,0.4)', fontWeight: 600, marginBottom: 6 }}>{l.wifi}</p>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                      <span style={{ fontWeight: 600, color: '#1A1A1A', fontSize: 15 }}>{page.wifi_naam}</span>
-                      <CopyButton text={page.wifi_naam} />
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', marginTop: 4 }}>
-                      <span style={{ color: 'rgba(26,26,26,0.6)', fontSize: 14 }}>{page.wifi_wachtwoord}</span>
-                      <CopyButton text={page.wifi_wachtwoord} />
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            )}
-
-            {/* Noodcontact */}
-            {page.noodcontact_telefoon && (
-              <Card>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <div style={{ width: 36, height: 36, borderRadius: '50%', background: '#FAE4D6', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <Phone size={15} className="text-moroww-orange" />
-                  </div>
-                  <div style={{ flex: 1 }}>
-                    <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 1.5, color: 'rgba(26,26,26,0.4)', fontWeight: 600, marginBottom: 2 }}>{l.noodcontact}</p>
-                    <p style={{ fontWeight: 700, color: '#1A1A1A', fontSize: 15 }}>{page.noodcontact_naam}</p>
-                  </div>
-                  <a
-                    href={`tel:${page.noodcontact_telefoon}`}
-                    style={{ background: '#FEA05E', color: '#fff', borderRadius: 100, padding: '10px 20px', fontWeight: 700, fontSize: 14, textDecoration: 'none', flexShrink: 0 }}
-                  >
-                    Bellen
-                  </a>
-                </div>
-              </Card>
-            )}
-          </div>
-        </Section>
-
-        {/* ── Slot instructies ── */}
-        {t('slot_instructies') && (
-          <Section title={l.slot}>
-            <Card>
-              <FormattedText text={t('slot_instructies')} />
-            </Card>
-          </Section>
-        )}
-
-        {/* ── Huisregels ── */}
-        {t('huisregels') && (
-          <Section title={l.huisregels}>
-            <Card>
-              <FormattedText text={t('huisregels')} />
-            </Card>
-          </Section>
-        )}
-
-        {/* ── Handleiding ── */}
-        {t('handleiding') && (
-          <Section title={l.handleiding}>
-            <Card>
-              <FormattedText text={t('handleiding')} />
-            </Card>
-          </Section>
-        )}
-
-        {/* ── Lokale tips ── */}
-        {tips.length > 0 && (
-          <Section title={l.tips}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-              {Object.entries(tipsByCategorie).map(([categorie, catTips]) => (
-                <div key={categorie}>
-                  <p style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 2, color: '#C08D6E', marginBottom: 10 }}>
-                    {categorie}
-                  </p>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                    {catTips.map(tip => {
-                      const desc = (tip as Record<string, string>)[`beschrijving_${lang}`] || tip.beschrijving_nl
-                      return (
-                        <Card key={tip.id}>
-                          <p style={{ fontWeight: 700, color: '#1A1A1A', fontSize: 15, marginBottom: 4 }}>{tip.naam}</p>
-                          {desc && <p style={{ color: 'rgba(26,26,26,0.6)', fontSize: 14, lineHeight: 1.6, marginBottom: 8 }}>{desc}</p>}
-                          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-                            {tip.adres && (
-                              <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, color: 'rgba(26,26,26,0.4)' }}>
-                                <MapPin size={11} />
-                                {tip.adres}
-                              </span>
-                            )}
-                            {tip.website && (
-                              <a href={tip.website} target="_blank" rel="noopener noreferrer"
-                                style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, color: '#FEA05E', textDecoration: 'none' }}>
-                                <Globe size={11} />
-                                Website
-                              </a>
-                            )}
-                          </div>
-                        </Card>
-                      )
-                    })}
-                  </div>
-                </div>
-              ))}
+                </Card>
+              )}
             </div>
-          </Section>
+          </section>
         )}
 
-        {/* UPSELL SECTIE - activeren wanneer klaar
-        <section style={{ padding: '40px 24px', background: '#FAE4D6', borderRadius: 16, marginTop: 48 }}>
-          <p style={{ fontSize: 12, textTransform: 'uppercase', letterSpacing: 2, color: '#C08D6E', marginBottom: 8 }}>
-            moroww marketplace
-          </p>
-          <h2 style={{ fontSize: 24, fontWeight: 700, marginBottom: 16 }}>
-            De sfeer van je verblijf, mee naar huis.
-          </h2>
-          <p style={{ color: '#555', marginBottom: 24 }}>
-            De producten die je in deze woning gebruikt, zijn beschikbaar via de moroww marketplace.
-          </p>
-          <a href="https://www.moroww.com/marketplace"
-            style={{ background: '#FEA05E', color: 'white', padding: '12px 24px', borderRadius: 100, textDecoration: 'none', fontWeight: 600 }}>
-            Ontdek de collectie
-          </a>
-        </section>
-        */}
+        {/* ══════════════════════════════════════════
+            Zone 2 — GOED OM TE WETEN
+        ══════════════════════════════════════════ */}
+        {hasGoed && (
+          <section style={{ marginTop: 72 }}>
+            {/* Subtiele scheiding */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+              <div style={{ flex: 1, height: 1, background: 'rgba(26,26,26,0.08)' }} />
+              <ZoneLabel>{l.goed_te_weten}</ZoneLabel>
+              <div style={{ flex: 1, height: 1, background: 'rgba(26,26,26,0.08)' }} />
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+
+              {/* Check-in / checkout */}
+              {(page.checkin_tijd || page.checkout_tijd) && (
+                <Card>
+                  <div style={{ display: 'flex', gap: 32 }}>
+                    {page.checkin_tijd && (
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                        {iconCircle(<LogIn size={15} className="text-moroww-orange" />)}
+                        <div>
+                          <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 1.5, color: 'rgba(26,26,26,0.4)', fontWeight: 600, marginBottom: 2 }}>{l.checkin}</p>
+                          <p style={{ fontWeight: 700, color: '#1A1A1A', fontSize: 15 }}>Vanaf {page.checkin_tijd}</p>
+                        </div>
+                      </div>
+                    )}
+                    {page.checkout_tijd && (
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                        {iconCircle(<LogOut size={15} className="text-moroww-orange" />)}
+                        <div>
+                          <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 1.5, color: 'rgba(26,26,26,0.4)', fontWeight: 600, marginBottom: 2 }}>{l.checkout}</p>
+                          <p style={{ fontWeight: 700, color: '#1A1A1A', fontSize: 15 }}>Voor {page.checkout_tijd}</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </Card>
+              )}
+
+              {/* Noodcontact */}
+              {page.noodcontact_tel && (
+                <Card>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                    {iconCircle(<Phone size={15} className="text-moroww-orange" />)}
+                    <div style={{ flex: 1 }}>
+                      <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 1.5, color: 'rgba(26,26,26,0.4)', fontWeight: 600, marginBottom: 2 }}>{l.noodcontact}</p>
+                      <p style={{ fontWeight: 700, color: '#1A1A1A', fontSize: 15 }}>{page.noodcontact_naam}</p>
+                    </div>
+                    <a
+                      href={`tel:${page.noodcontact_tel}`}
+                      style={{ background: '#FEA05E', color: '#fff', borderRadius: 100, padding: '10px 20px', fontWeight: 700, fontSize: 14, textDecoration: 'none', flexShrink: 0 }}
+                    >
+                      Bellen
+                    </a>
+                  </div>
+                </Card>
+              )}
+            </div>
+
+            {/* Huisregels */}
+            {t('huisregels') && (
+              <div style={{ marginTop: 40 }}>
+                <SectionTitle>{l.huisregels}</SectionTitle>
+                <Card>
+                  <FormattedText text={t('huisregels')} />
+                </Card>
+              </div>
+            )}
+
+            {/* Handleiding */}
+            {t('handleiding') && (
+              <div style={{ marginTop: 40 }}>
+                <SectionTitle>{l.handleiding}</SectionTitle>
+                <Card>
+                  <FormattedText text={t('handleiding')} />
+                </Card>
+              </div>
+            )}
+          </section>
+        )}
+
+        {/* ══════════════════════════════════════════
+            Lokale tips — inklapbaar per categorie
+        ══════════════════════════════════════════ */}
+        {tips.length > 0 && (
+          <section style={{ marginTop: 72 }}>
+            <SectionTitle>{l.tips}</SectionTitle>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {Object.entries(tipsByCategorie).map(([categorie, catTips]) => {
+                const isOpen = openCategories.has(categorie)
+                return (
+                  <div
+                    key={categorie}
+                    style={{ background: '#fff', borderRadius: 16, overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}
+                  >
+                    {/* Accordion trigger */}
+                    <button
+                      onClick={() => toggleCategorie(categorie)}
+                      style={{
+                        width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                        padding: '16px 20px', background: 'none', border: 'none', cursor: 'pointer',
+                        textAlign: 'left',
+                      }}
+                    >
+                      <span style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 2, color: '#C08D6E' }}>
+                        {categorie}
+                        <span style={{ marginLeft: 8, color: 'rgba(26,26,26,0.3)', fontWeight: 600 }}>
+                          {catTips.length}
+                        </span>
+                      </span>
+                      <ChevronDown
+                        size={16}
+                        style={{
+                          color: 'rgba(26,26,26,0.35)',
+                          transition: 'transform 260ms ease',
+                          transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                          flexShrink: 0,
+                        }}
+                      />
+                    </button>
+
+                    {/* Accordion content — grid-template-rows animatie */}
+                    <div style={{ display: 'grid', gridTemplateRows: isOpen ? '1fr' : '0fr', transition: 'grid-template-rows 280ms ease' }}>
+                      <div style={{ overflow: 'hidden' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 1, borderTop: '1px solid rgba(26,26,26,0.06)' }}>
+                          {catTips.map((tip, i) => {
+                            const desc = (tip as Record<string, string>)[`beschrijving_${lang}`] || tip.beschrijving_nl
+                            return (
+                              <div
+                                key={tip.id}
+                                style={{
+                                  padding: '16px 20px',
+                                  borderTop: i > 0 ? '1px solid rgba(26,26,26,0.06)' : 'none',
+                                }}
+                              >
+                                <p style={{ fontWeight: 700, color: '#1A1A1A', fontSize: 15, marginBottom: desc ? 4 : 0 }}>{tip.naam}</p>
+                                {desc && <p style={{ color: 'rgba(26,26,26,0.6)', fontSize: 14, lineHeight: 1.6, marginBottom: 8 }}>{desc}</p>}
+                                <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+                                  {tip.adres && (
+                                    <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, color: 'rgba(26,26,26,0.4)' }}>
+                                      <MapPin size={11} />
+                                      {tip.adres}
+                                    </span>
+                                  )}
+                                  {tip.website && (
+                                    <a
+                                      href={tip.website}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, color: '#FEA05E', textDecoration: 'none' }}
+                                    >
+                                      <Globe size={11} />
+                                      Website
+                                    </a>
+                                  )}
+                                </div>
+                              </div>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </section>
+        )}
 
         {/* ── CTA ── */}
-        <section style={{ marginTop: 48, background: '#1A1A1A', borderRadius: 24, padding: '40px 28px', textAlign: 'center' }}>
+        <section style={{ marginTop: 72, background: '#1A1A1A', borderRadius: 24, padding: '40px 28px', textAlign: 'center' }}>
           <h2 style={{ fontSize: 26, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em', marginBottom: 12 }}>
             {l.cta_titel}
           </h2>
