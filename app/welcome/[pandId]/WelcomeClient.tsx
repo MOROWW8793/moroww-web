@@ -125,34 +125,65 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   )
 }
 
+function renderLines(text: string, keyBase: string) {
+  const lines = text.split('\n').filter(l => l.trim())
+  const nodes: React.ReactNode[] = []
+  let i = 0
+
+  while (i < lines.length) {
+    if (lines[i].startsWith('- ')) {
+      const bulletLines: string[] = []
+      const start = i
+      while (i < lines.length && lines[i].startsWith('- ')) {
+        bulletLines.push(lines[i].slice(2).trim())
+        i++
+      }
+      nodes.push(
+        <ul key={`${keyBase}-ul${start}`} style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {bulletLines.map((item, j) => (
+            <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+              <span style={{ color: '#C08D6E', flexShrink: 0, lineHeight: 1.6, userSelect: 'none' }} aria-hidden="true">–</span>
+              <span className="text-moroww-black/70 text-sm leading-relaxed">{item}</span>
+            </li>
+          ))}
+        </ul>
+      )
+    } else {
+      nodes.push(
+        <p key={`${keyBase}-p${i}`} className="text-moroww-black/70 text-sm leading-relaxed">{lines[i]}</p>
+      )
+      i++
+    }
+  }
+
+  return nodes
+}
+
 function FormattedText({ text }: { text: string }) {
   if (!text) return null
   const sectionRegex = /(?=\b[A-ZÀÂÇÉÈÊËÎÏÔÙÛÜŸÆŒ][A-ZÀÂÇÉÈÊËÎÏÔÙÛÜŸÆŒ\s&]+\s+-\s)/
-  const lines = text.split(sectionRegex).filter(Boolean)
+  const sections = text.split(sectionRegex).filter(Boolean)
 
-  if (lines.length <= 1) {
-    const sentences = text.split('\n').filter(Boolean)
+  if (sections.length <= 1) {
     return (
       <div className="space-y-2">
-        {sentences.map((sentence, i) => (
-          <p key={i} className="text-moroww-black/70 text-sm leading-relaxed">{sentence}</p>
-        ))}
+        {renderLines(text, 'root')}
       </div>
     )
   }
   return (
     <div className="space-y-4">
-      {lines.filter(Boolean).map((section, i) => {
+      {sections.map((section, i) => {
         const dashIndex = section.indexOf(' - ')
         if (dashIndex === -1) return (
-          <p key={i} className="text-moroww-black/70 text-sm leading-relaxed">{section}</p>
+          <div key={i} className="space-y-2">{renderLines(section, `s${i}`)}</div>
         )
         const title = section.slice(0, dashIndex).trim()
         const content = section.slice(dashIndex + 3).trim()
         return (
           <div key={i}>
             <p className="font-semibold text-moroww-black text-sm mb-1">{title}</p>
-            <p className="text-moroww-black/70 text-sm leading-relaxed">{content}</p>
+            <div className="space-y-2">{renderLines(content, `s${i}`)}</div>
           </div>
         )
       })}
