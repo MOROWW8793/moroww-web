@@ -45,7 +45,9 @@
     "contact": "contact",
     "privacy": "privacy",
     "address_line": "moroww bv · België · www.moroww.com",
-    "vat_line": "BTW BE1030.667.956"
+    "vat_line": "BTW BE1030.667.956",
+    "copyright": "© 2026 moroww bv. alle rechten voorbehouden.",
+    "calendar_link": "een gesprek inplannen"
   },
   "collectie": {
     "label": "Gecureerde selectie",

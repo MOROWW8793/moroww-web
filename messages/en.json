@@ -45,7 +45,9 @@
     "contact": "contact",
     "privacy": "privacy",
     "address_line": "moroww bv · Belgium · www.moroww.com",
-    "vat_line": "VAT BE1030.667.956"
+    "vat_line": "VAT BE1030.667.956",
+    "copyright": "© 2026 moroww bv. all rights reserved.",
+    "calendar_link": "book a call"
   },
   "collectie": {
     "label": "Curated selection",
