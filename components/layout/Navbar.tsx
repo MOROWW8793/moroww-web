@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { useLocale, useTranslations } from 'next-intl'
 import { Link, usePathname, useRouter } from '@/i18n/navigation'
+import { mainNavItems } from '@/lib/navigation'
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -23,12 +24,6 @@ export function Navbar() {
     document.body.style.overflow = open ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [open])
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const guestLinks: { label: string; href: any }[] = [
-    { label: t('collection'), href: '/collectie' },
-    { label: t('about'),      href: '/over-moroww' },
-  ]
 
   const bookUrl = `https://book.moroww.com/${locale}/properties?minOccupancy=1`
 
@@ -60,32 +55,19 @@ export function Navbar() {
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
-          {/* Guest links */}
-          {guestLinks.map((l) => (
+          {mainNavItems.map((item) => (
             <Link
-              key={l.href}
-              href={l.href}
+              key={item.href}
+              href={item.href}
               className={`text-sm font-medium transition-colors duration-300 ${
                 scrolled
                   ? 'text-[#1A1A1A] hover:text-[#FEA05E]'
                   : 'text-white/90 hover:text-white'
               }`}
             >
-              {l.label}
+              {t(item.labelKey)}
             </Link>
           ))}
-
-          {/* Secondary host entry — quiet */}
-          <Link
-            href="/eigenaar-worden"
-            className={`text-xs font-medium transition-colors duration-300 ${
-              scrolled
-                ? 'text-[#1A1A1A]/40 hover:text-[#1A1A1A]/70'
-                : 'text-white/40 hover:text-white/70'
-            }`}
-          >
-            {t('for_owners')}
-          </Link>
 
           {/* Taalwisselaar */}
           <button
@@ -130,27 +112,19 @@ export function Navbar() {
         {/* Mobiel menu */}
         {open && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-[#FAE4D6] px-6 py-8 z-50 flex flex-col gap-2 shadow-lg">
-            {guestLinks.map((l) => (
+            {mainNavItems.map((item) => (
               <Link
-                key={l.href}
-                href={l.href}
+                key={item.href}
+                href={item.href}
                 className="text-lg font-medium text-[#1A1A1A] py-3 min-h-[44px] flex items-center"
                 onClick={() => setOpen(false)}
               >
-                {l.label}
+                {t(item.labelKey)}
               </Link>
             ))}
-            {/* Secondary host entry — quiet */}
-            <Link
-              href="/eigenaar-worden"
-              className="text-sm font-medium text-[#1A1A1A]/40 py-2 min-h-[44px] flex items-center border-t border-[#F0E4D8] mt-2 pt-4"
-              onClick={() => setOpen(false)}
-            >
-              {t('for_owners')}
-            </Link>
             <button
               onClick={() => { toggleLocale(); setOpen(false) }}
-              className="text-base font-medium text-[#1A1A1A]/60 py-3 min-h-[44px] flex items-center text-left"
+              className="text-base font-medium text-[#1A1A1A]/60 py-3 min-h-[44px] flex items-center text-left border-t border-[#F0E4D8] mt-2 pt-4"
             >
               {locale === 'nl' ? 'English' : 'Nederlands'}
             </button>

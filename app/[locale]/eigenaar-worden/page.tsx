@@ -37,7 +37,6 @@ export const metadata: Metadata = {
     'vakantiewoning verhuren zonder platform',
     'directe boeking vakantiewoning België',
     'moroww eigenaar worden',
-    'moroww founding partner',
   ],
   alternates: {
     canonical: 'https://www.moroww.com/eigenaar-worden',

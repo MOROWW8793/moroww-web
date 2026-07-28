@@ -18,6 +18,10 @@ export const routing = defineRouting({
       nl: '/over-moroww',
       en: '/about',
     },
+    '/de-standaard': {
+      nl: '/de-standaard',
+      en: '/the-standard',
+    },
     '/eigenaar-worden': {
       nl: '/eigenaar-worden',
       en: '/become-an-owner',

@@ -2,6 +2,7 @@
   "nav": {
     "collection": "the collection",
     "about": "about moroww",
+    "standard": "the standard",
     "partners": "partners",
     "owner": "become an owner",
     "for_owners": "for owners",
@@ -34,13 +35,17 @@
   },
   "footer": {
     "tagline": "nothing left to chance.",
+    "home": "home",
     "collection": "the collection",
     "about": "about moroww",
+    "standard": "the standard",
     "partners": "partners",
     "owner": "become an owner",
     "for_owners": "for owners",
+    "contact": "contact",
     "privacy": "privacy",
-    "rights": "all rights reserved."
+    "address_line": "moroww bv · Belgium · www.moroww.com",
+    "vat_line": "VAT BE1030.667.956"
   },
   "collectie": {
     "label": "Curated selection",
@@ -111,8 +116,8 @@
     "card_aankomst_tekst": "a freshly made bed, selected care products and a clean slate on every arrival. the basics, flawless every time."
   },
   "about": {
-    "hero_h1_bold": "a new standard.",
-    "hero_h1_light": "for good.",
+    "hero_h1_bold": "about moroww.",
+    "hero_h1_light": "",
     "market_label": "the market",
     "market_h2_light": "the market",
     "market_h2_bold": "is growing.",

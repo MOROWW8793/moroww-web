@@ -2,6 +2,7 @@
   "nav": {
     "collection": "de collectie",
     "about": "over moroww",
+    "standard": "de standaard",
     "partners": "partners",
     "owner": "eigenaar worden",
     "for_owners": "voor eigenaars",
@@ -34,13 +35,17 @@
   },
   "footer": {
     "tagline": "niets aan het toeval overgelaten.",
+    "home": "home",
     "collection": "de collectie",
     "about": "over moroww",
+    "standard": "de standaard",
     "partners": "partners",
     "owner": "eigenaar worden",
     "for_owners": "voor eigenaars",
+    "contact": "contact",
     "privacy": "privacy",
-    "rights": "alle rechten voorbehouden."
+    "address_line": "moroww bv · België · www.moroww.com",
+    "vat_line": "BTW BE1030.667.956"
   },
   "collectie": {
     "label": "Gecureerde selectie",
@@ -111,8 +116,8 @@
     "card_aankomst_tekst": "vers opgemaakt bed, geselecteerde verzorgingsproducten en een schone lei bij elke aankomst. de basis, elke keer onberispelijk."
   },
   "about": {
-    "hero_h1_bold": "een nieuwe standaard.",
-    "hero_h1_light": "voor goed.",
+    "hero_h1_bold": "over moroww.",
+    "hero_h1_light": "",
     "market_label": "de markt",
     "market_h2_light": "de markt",
     "market_h2_bold": "groeit.",
