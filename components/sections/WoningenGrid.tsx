@@ -164,7 +164,7 @@ export function WoningenGrid() {
                   </div>
 
                   {/* Prijs + CTA */}
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid #F0E4D8", paddingTop: 16 }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid rgba(192,141,110,0.15)", paddingTop: 16 }}>
                     {w.comingSoon ? (
                       <span style={{ fontSize: 12, color: "#C08D6E", fontWeight: 600, textTransform: "lowercase", letterSpacing: "0.04em" }}>
                         {t('coming_soon')}

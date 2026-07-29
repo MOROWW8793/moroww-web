@@ -28,7 +28,7 @@ export function CollectieClient({ listings }: { listings: GuestyListing[] }) {
             className={`rounded-full px-5 py-2 text-sm font-medium transition-colors duration-150 ${
               filter === r
                 ? "bg-moroww-black text-white"
-                : "bg-white text-moroww-black/60 hover:text-moroww-black border border-moroww-border"
+                : "bg-white text-moroww-black/60 hover:text-moroww-black border border-moroww-brown/15"
             }`}
           >
             {r}

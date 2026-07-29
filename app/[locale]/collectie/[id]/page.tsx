@@ -192,7 +192,7 @@ export default async function WoningDetailPage({ params }: Props) {
                   <p style={{ color: '#C08D6E', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: 2, marginBottom: 12 }}>
                     {t('coming_soon')}
                   </p>
-                  <p style={{ color: '#9CA3AF', fontSize: 15, lineHeight: 1.6 }}>
+                  <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 15, lineHeight: 1.6 }}>
                     {t('coming_soon_body')}
                   </p>
                 </>

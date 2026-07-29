@@ -6,7 +6,7 @@ import { Check, ChevronRight, ChevronLeft } from 'lucide-react'
 // ── Styles ─────────────────────────────────────────────────────────────────
 
 const inputCls =
-  'w-full rounded-xl border border-moroww-border bg-white px-4 py-3 text-sm text-moroww-black placeholder-moroww-black/30 focus:outline-none focus:ring-2 focus:ring-moroww-orange/40'
+  'w-full rounded-xl border border-moroww-brown/15 bg-white px-4 py-3 text-sm text-moroww-black placeholder-moroww-black/30 focus:outline-none focus:ring-2 focus:ring-moroww-orange/40'
 
 const labelCls = 'block text-xs font-medium uppercase tracking-widest text-moroww-black/50 mb-1.5'
 
@@ -66,7 +66,7 @@ function RadioGroup({
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-xs font-semibold uppercase tracking-widest text-[#C08D6E] pt-2 pb-1 border-b border-moroww-border">
+    <p className="text-xs font-semibold uppercase tracking-widest text-[#C08D6E] pt-2 pb-1 border-b border-moroww-brown/15">
       {children}
     </p>
   )
@@ -82,11 +82,11 @@ function StepIndicator({ current, total }: { current: number; total: number }) {
         {Array.from({ length: total }).map((_, i) => (
           <div key={i} className="flex flex-1 items-center">
             <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-semibold transition-colors
-              ${i < current ? 'bg-moroww-orange text-white' : i === current ? 'bg-moroww-orange text-white' : 'bg-white border-2 border-moroww-border text-moroww-black/30'}`}>
+              ${i < current ? 'bg-moroww-orange text-white' : i === current ? 'bg-moroww-orange text-white' : 'bg-white border-2 border-moroww-brown/15 text-moroww-black/30'}`}>
               {i < current ? <Check size={14} strokeWidth={3} /> : i + 1}
             </div>
             {i < total - 1 && (
-              <div className={`flex-1 h-0.5 mx-2 transition-colors ${i < current ? 'bg-moroww-orange' : 'bg-moroww-border'}`} />
+              <div className={`flex-1 h-0.5 mx-2 transition-colors ${i < current ? 'bg-moroww-orange' : 'bg-moroww-brown/15'}`} />
             )}
           </div>
         ))}
@@ -399,7 +399,7 @@ function Stap5({ data, setFiles }: {
         Goede foto&apos;s zorgen voor meer boekingen.
       </p>
       <Field label={`Foto's van je pand (optioneel, max 10)`}>
-        <div className="rounded-xl border-2 border-dashed border-moroww-border bg-white px-4 py-8 text-center">
+        <div className="rounded-xl border-2 border-dashed border-moroww-brown/15 bg-white px-4 py-8 text-center">
           <input
             type="file"
             name="fotos"
@@ -547,7 +547,7 @@ export default function OnboardingPage() {
             style={{ fontSize: 'clamp(2rem,5vw,3rem)', color: '#1A1A1A', fontWeight: 800 }}>
             goed dat je er bent. laten we starten.
           </h1>
-          <p className="leading-relaxed max-w-sm mx-auto" style={{ fontSize: 16, color: '#3A3A3A' }}>
+          <p className="leading-relaxed max-w-sm mx-auto" style={{ fontSize: 16, color: 'rgba(26,26,26,0.75)' }}>
             Je bent geselecteerd als moroww eigenaar. Dit formulier helpt ons jouw pand correct op te
             zetten. Vul alles zo volledig mogelijk in - hoe meer detail, hoe sneller we kunnen starten.
           </p>
@@ -575,7 +575,7 @@ export default function OnboardingPage() {
               <button
                 type="button"
                 onClick={() => setStep(s => s - 1)}
-                className="flex items-center gap-2 rounded-full border-2 border-moroww-border text-moroww-black/60 hover:text-moroww-black font-semibold px-6 py-3 text-sm transition-colors"
+                className="flex items-center gap-2 rounded-full border-2 border-moroww-brown/15 text-moroww-black/60 hover:text-moroww-black font-semibold px-6 py-3 text-sm transition-colors"
               >
                 <ChevronLeft size={16} />
                 Vorige
@@ -593,7 +593,7 @@ export default function OnboardingPage() {
                   setError(null)
                   setStep(s => s + 1)
                 }}
-                className="flex flex-1 items-center justify-center gap-2 rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white font-semibold px-6 py-3 text-sm transition-colors"
+                className="flex flex-1 items-center justify-center gap-2 rounded-full bg-moroww-orange hover:bg-moroww-orange/85 text-white font-semibold px-6 py-3 text-sm transition-colors"
               >
                 Volgende
                 <ChevronRight size={16} />
@@ -603,7 +603,7 @@ export default function OnboardingPage() {
                 type="button"
                 onClick={handleSubmit}
                 disabled={submitting}
-                className="flex flex-1 items-center justify-center gap-2 rounded-full bg-moroww-orange hover:bg-moroww-orange-dark disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 text-sm transition-colors"
+                className="flex flex-1 items-center justify-center gap-2 rounded-full bg-moroww-orange hover:bg-moroww-orange/85 disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 text-sm transition-colors"
               >
                 {submitting ? 'Versturen...' : 'Onboarding opstarten'}
               </button>

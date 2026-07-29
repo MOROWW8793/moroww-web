@@ -40,7 +40,7 @@ export async function Reviews() {
               </p>
             </div>
             <div className="flex items-center gap-4 pt-6 border-t border-[#FAE4D6]">
-              <div className="w-10 h-10 rounded-full bg-[#EDD5C0] flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-full bg-moroww-brown/15 flex items-center justify-center shrink-0">
                 <span className="text-sm font-semibold text-[#C08D6E]">S</span>
               </div>
               <div>
@@ -83,7 +83,7 @@ export async function Reviews() {
               </p>
             </div>
             <div className="flex items-center gap-4 pt-6 border-t border-[#FAE4D6]">
-              <div className="w-10 h-10 rounded-full bg-[#EDD5C0] flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-full bg-moroww-brown/15 flex items-center justify-center shrink-0">
                 <span className="text-sm font-semibold text-[#C08D6E]">L</span>
               </div>
               <div>

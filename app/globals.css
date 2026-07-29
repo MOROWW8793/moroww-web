@@ -7,6 +7,11 @@
 }
 
 :root {
+  /* Zwart-keuze: #1A1A1A (huidig, zachtere zwart) of #000000 (huisstijl-strict).
+     Robin beslist. Wijziging = één regel; alle tekst via var(--color-text) of
+     Tailwind class 'text-moroww-text'. */
+  --color-text: #1A1A1A;
+
   --text-display: clamp(36px, 8vw, 120px);
   --text-h1: clamp(32px, 6vw, 80px);
   --text-h2: clamp(24px, 4vw, 56px);
@@ -56,7 +61,7 @@ html {
 
 body {
   background-color: #FAE4D6;
-  color: #1A1A1A;
+  color: var(--color-text);
   font-family: "OverusedGrotesk", "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

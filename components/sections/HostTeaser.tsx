@@ -45,7 +45,7 @@ export function HostTeaser() {
             </p>
             <Link
               href="/eigenaar-worden"
-              className="inline-flex items-center justify-center w-full md:w-auto rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white font-semibold px-8 py-4 text-base transition-colors duration-200"
+              className="inline-flex items-center justify-center w-full md:w-auto rounded-full bg-moroww-orange hover:bg-moroww-orange/85 text-white font-semibold px-8 py-4 text-base transition-colors duration-200"
             >
               {t('host_cta')}
             </Link>

@@ -97,7 +97,7 @@ export function Navbar() {
             href={bookUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#FEA05E] text-white rounded-full px-5 py-2.5 text-sm font-semibold hover:bg-[#e8904e] transition-colors"
+            className="bg-[#FEA05E] text-white rounded-full px-5 py-2.5 text-sm font-semibold hover:bg-moroww-orange/85 transition-colors"
           >
             {t('book')}
           </a>
@@ -136,7 +136,7 @@ export function Navbar() {
             {!isNlOnly && (
               <button
                 onClick={() => { toggleLocale(); setOpen(false) }}
-                className="text-base font-medium text-[#1A1A1A]/60 py-3 min-h-[44px] flex items-center text-left border-t border-[#F0E4D8] mt-2 pt-4"
+                className="text-base font-medium text-[#1A1A1A]/60 py-3 min-h-[44px] flex items-center text-left border-t border-moroww-brown/15 mt-2 pt-4"
               >
                 {locale === 'nl' ? 'English' : 'Nederlands'}
               </button>

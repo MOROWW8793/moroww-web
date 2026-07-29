@@ -8,7 +8,7 @@ import { CheckCircle } from "lucide-react";
 
 const initial: LeadFormState = { success: false };
 
-const inputClass = "rounded-xl border border-moroww-border bg-moroww-blush/30 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-moroww-orange";
+const inputClass = "rounded-xl border border-moroww-brown/15 bg-moroww-blush/30 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-moroww-orange";
 const labelClass = "flex flex-col gap-1.5";
 const spanClass  = "text-xs font-semibold text-moroww-black/50 uppercase tracking-wide";
 
@@ -89,7 +89,7 @@ export function LeadForm() {
 
       <button
         type="submit"
-        className="w-full rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white font-semibold py-4 transition-colors duration-200"
+        className="w-full rounded-full bg-moroww-orange hover:bg-moroww-orange/85 text-white font-semibold py-4 transition-colors duration-200"
       >
         meld je woning aan
       </button>

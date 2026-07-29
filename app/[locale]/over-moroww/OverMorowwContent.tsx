@@ -113,7 +113,7 @@ export function OverMorowwContent() {
       </section>
 
       {/* ── SECTIE 3 — DE BELOFTE ── */}
-      <section className="w-full py-12 md:py-20 bg-[#EDD5C0]">
+      <section className="w-full py-12 md:py-20 bg-moroww-brown/15">
         <motion.div
           {...fadeUp}
           className="max-w-4xl mx-auto px-6 md:px-16 mb-12"
@@ -260,13 +260,13 @@ export function OverMorowwContent() {
             <span className="font-light">{t('cta_h2_light')}</span><br />
             {t('cta_h2_bold')}
           </h2>
-          <p className="mt-6 text-lg text-[#9CA3AF] max-w-xl mx-auto leading-relaxed">
+          <p className="mt-6 text-lg text-white/60 max-w-xl mx-auto leading-relaxed">
             {t('cta_body')}
           </p>
           <div className="mt-10 flex flex-wrap gap-4 justify-center">
             <Link
               href="/eigenaar-worden"
-              className="bg-[#FEA05E] text-[#1A1A1A] rounded-full px-8 py-4 text-sm font-semibold hover:bg-[#e8904e] transition-colors"
+              className="bg-[#FEA05E] text-[#1A1A1A] rounded-full px-8 py-4 text-sm font-semibold hover:bg-moroww-orange/85 transition-colors"
             >
               {t('cta_owner')}
             </Link>

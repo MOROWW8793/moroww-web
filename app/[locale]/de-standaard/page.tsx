@@ -122,7 +122,7 @@ export default async function DeStandaardPage({
       </section>
 
       {/* ── HET BEZOEK ── */}
-      <section className="w-full py-20 md:py-28 px-6 bg-[#EDD5C0]">
+      <section className="w-full py-20 md:py-28 px-6 bg-moroww-brown/15">
         <div className="max-w-3xl mx-auto">
           <h2
             className="font-bold text-[#1A1A1A] leading-tight mb-10"
@@ -198,7 +198,7 @@ export default async function DeStandaardPage({
       </section>
 
       {/* ── VOOR DE GAST ── */}
-      <section className="w-full py-16 md:py-24 px-6 bg-[#EDD5C0]">
+      <section className="w-full py-16 md:py-24 px-6 bg-moroww-brown/15">
         <div className="max-w-3xl mx-auto text-center">
           <h2
             className="font-bold text-[#1A1A1A] leading-tight mb-6"
@@ -226,7 +226,7 @@ export default async function DeStandaardPage({
           </p>
           <Link
             href="/eigenaar-worden"
-            className="inline-block bg-[#FEA05E] text-[#1A1A1A] rounded-full px-10 py-4 font-semibold hover:bg-[#e8904e] transition-colors"
+            className="inline-block bg-[#FEA05E] text-[#1A1A1A] rounded-full px-10 py-4 font-semibold hover:bg-moroww-orange/85 transition-colors"
           >
             {t('owner_cta')}
           </Link>

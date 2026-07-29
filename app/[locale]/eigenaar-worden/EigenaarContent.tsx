@@ -98,7 +98,7 @@ export function EigenaarContent() {
               {t('tech_h2_main')}<br />
               <span className="font-light">{t('tech_h2_light2')}</span>
             </h2>
-            <p className="mt-5 text-lg text-[#9CA3AF] max-w-lg leading-relaxed">
+            <p className="mt-5 text-lg text-white/60 max-w-lg leading-relaxed">
               {t('tech_body')}
             </p>
           </motion.div>
@@ -119,7 +119,7 @@ export function EigenaarContent() {
                     {item.nr}
                   </span>
                   <h3 className="text-base font-semibold text-white mt-2 mb-1.5">{item.titel}</h3>
-                  <p className="text-sm leading-relaxed text-[#9CA3AF]">{item.tekst}</p>
+                  <p className="text-sm leading-relaxed text-white/60">{item.tekst}</p>
                 </motion.div>
               ))}
             </div>
@@ -231,10 +231,10 @@ export function EigenaarContent() {
               <span className="font-light">{t('team_h2_light')}</span><br />
               {t('team_h2_bold')}
             </h2>
-            <p className="mt-5 text-base leading-relaxed text-[#9CA3AF]">
+            <p className="mt-5 text-base leading-relaxed text-white/60">
               {t('team_p1')}
             </p>
-            <p className="mt-4 text-base text-[#9CA3AF]">
+            <p className="mt-4 text-base text-white/60">
               {t('team_email')}
             </p>
           </div>

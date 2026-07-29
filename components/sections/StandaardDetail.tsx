@@ -52,7 +52,7 @@ export function StandaardDetail() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.06 }}
-              className={`group rounded-2xl p-7 flex flex-col gap-4 bg-[#2A2A2A] border border-[#3A3A3A] hover:border-[#FEA05E] transition-colors duration-200 lg:col-span-2${i === 3 ? " lg:col-start-2" : ""}`}
+              className={`group rounded-2xl p-7 flex flex-col gap-4 bg-white/[0.04] border border-white/10 hover:border-moroww-orange transition-colors duration-200 lg:col-span-2${i === 3 ? " lg:col-start-2" : ""}`}
             >
               <div
                 style={{ width: 44, height: 44, borderRadius: 12, background: "rgba(254,160,94,0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}

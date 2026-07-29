@@ -57,7 +57,7 @@ export default async function ContactPage({
             href="https://calendar.app.google/BH8wYeA9AGf6KrUz7"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center w-full max-w-xs rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white font-semibold px-8 py-4 text-base transition-colors duration-200"
+            className="inline-flex items-center justify-center w-full max-w-xs rounded-full bg-moroww-orange hover:bg-moroww-orange/85 text-white font-semibold px-8 py-4 text-base transition-colors duration-200"
           >
             {t('cta_calendar')}
           </a>
