@@ -113,6 +113,7 @@ export function WoningGalerij({ fotos, naam }: Props) {
                 fill
                 className="object-cover"
                 sizes="96px"
+                quality={65}
               />
             </button>
           ))}

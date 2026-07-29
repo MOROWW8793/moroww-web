@@ -10,6 +10,9 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Toegestane quality-waarden. 65 gebruiken we op kleine thumbs waar
+    // het verschil met 75 onmerkbaar is; 75 blijft de default voor hero's.
+    qualities: [65, 75],
     minimumCacheTTL: 60 * 60 * 24 * 30,
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
