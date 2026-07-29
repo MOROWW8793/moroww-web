@@ -2,7 +2,12 @@ import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { SCREENINGS_TOTAL, SCREENINGS_ACCEPTED } from '@/lib/screenings'
+import { TOTAL_STAYS_REVIEWED } from '@/lib/reviews'
 import { SystemenGrid } from '@/components/sections/SystemenGrid'
+import { Statrij } from '@/components/sections/Statrij'
+
+// Categoriekleuren voor de vier poorten (huisstijl: orange, coast, ardennes, brown).
+const GATE_COLORS = ['#FEA05E', '#EEBC9D', '#CBD085', '#C08D6E'] as const
 
 export async function generateMetadata({
   params,
@@ -73,49 +78,50 @@ export default async function DeStandaardPage({
         </div>
       </section>
 
-      {/* ── HET CIJFER ── */}
-      <section className="w-full py-16 md:py-24 px-6 bg-[#1A1A1A]">
-        <div className="max-w-3xl mx-auto text-center">
-          <p
-            className="font-bold text-white leading-[1.1] tracking-[-0.02em]"
-            style={{ fontSize: 'clamp(2rem, 6vw, 4.5rem)' }}
-          >
-            <span className="text-[#FEA05E]">{SCREENINGS_TOTAL}</span>{' '}{t('number_line_bekeken')}{' '}
-            <span className="text-[#FEA05E]">{SCREENINGS_ACCEPTED}</span>{' '}{t('number_line_opgenomen')}
-          </p>
-        </div>
-      </section>
+      {/* ── STATRIJ — 350 · 7 · 129 · 10/10 ── */}
+      <Statrij items={[
+        { cijfer: String(SCREENINGS_TOTAL),    label: t('stat_screened_label') },
+        { cijfer: String(SCREENINGS_ACCEPTED), label: t('stat_accepted_label') },
+        { cijfer: String(TOTAL_STAYS_REVIEWED), label: t('stat_stays_label') },
+        { cijfer: '10/10',                     label: t('stat_rating_label') },
+      ]} />
 
-      {/* ── DE VIER POORTEN ── */}
+      {/* ── DE VIER POORTEN — vier gelijke kaarten met kleurbalk ── */}
       <section className="w-full py-20 md:py-28 px-6">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-4">
             {t('gates_title')}
           </p>
-          <p className="text-[#1A1A1A]/75 leading-relaxed mb-16 max-w-2xl" style={{ fontSize: 18 }}>
+          <p className="text-[#1A1A1A]/75 leading-relaxed mb-14 max-w-2xl" style={{ fontSize: 18 }}>
             {t('gates_intro')}
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-14">
-            {gates.map((g) => (
-              <div key={g.num}>
-                <div className="flex items-baseline gap-4 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {gates.map((g, i) => (
+              <div key={g.num} className="relative bg-white rounded-2xl overflow-hidden shadow-sm flex flex-col">
+                {/* Kleurbalk bovenaan — categoriekleur per poort */}
+                <div className="h-2" style={{ background: GATE_COLORS[i] }} />
+                <div className="relative p-7 flex-1 flex flex-col">
+                  {/* Cijfer als grafisch element in blush — geen tekst-hiërarchie, puur visueel */}
                   <span
-                    className="font-bold text-[#C08D6E] select-none"
-                    style={{ fontSize: 28, opacity: 0.35 }}
+                    className="absolute right-4 top-2 font-bold select-none pointer-events-none leading-none"
+                    style={{ fontSize: 110, color: 'rgba(192,141,110,0.15)' }}
+                    aria-hidden="true"
                   >
                     {g.num}
                   </span>
-                  <h2
-                    className="font-bold text-[#1A1A1A] leading-tight"
-                    style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)' }}
-                  >
-                    {g.title}
-                  </h2>
+                  <div className="relative flex-1 flex flex-col">
+                    <h3
+                      className="font-bold text-[#1A1A1A] leading-tight mb-4"
+                      style={{ fontSize: 'clamp(1.125rem, 1.6vw, 1.375rem)' }}
+                    >
+                      {g.title}
+                    </h3>
+                    <p className="text-[#1A1A1A]/70 leading-relaxed" style={{ fontSize: 14 }}>
+                      {g.body}
+                    </p>
+                  </div>
                 </div>
-                <p className="text-[#1A1A1A]/70 leading-relaxed" style={{ fontSize: 16 }}>
-                  {g.body}
-                </p>
               </div>
             ))}
           </div>

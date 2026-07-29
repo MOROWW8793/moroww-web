@@ -237,7 +237,11 @@
     "owner_title": "denk je dat jouw huis de standaard haalt?",
     "owner_body": "Meld het aan. We nemen binnen 48 uur persoonlijk contact op, en we komen zelf kijken.",
     "owner_cta": "meld je woning aan",
-    "read_full_standard": "lees de volledige standaard"
+    "read_full_standard": "lees de volledige standaard",
+    "stat_screened_label": "woningen bekeken",
+    "stat_accepted_label": "opgenomen",
+    "stat_stays_label": "verblijven",
+    "stat_rating_label": "beoordeling"
   },
   "about": {
     "hero_h1_bold": "over moroww.",

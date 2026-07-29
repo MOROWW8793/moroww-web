@@ -237,7 +237,11 @@
     "owner_title": "do you think your house meets the standard?",
     "owner_body": "Put it forward. We get in touch personally within 48 hours, and we come and see it ourselves.",
     "owner_cta": "submit your property",
-    "read_full_standard": "read the full standard"
+    "read_full_standard": "read the full standard",
+    "stat_screened_label": "properties screened",
+    "stat_accepted_label": "accepted",
+    "stat_stays_label": "stays",
+    "stat_rating_label": "rating"
   },
   "about": {
     "hero_h1_bold": "about moroww.",

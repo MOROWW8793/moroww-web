@@ -4,6 +4,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { LeadForm } from "@/components/ui/LeadForm";
+import { Statrij } from "@/components/sections/Statrij";
+import { SCREENINGS_TOTAL, SCREENINGS_ACCEPTED } from "@/lib/screenings";
+import { TOTAL_STAYS_REVIEWED } from "@/lib/reviews";
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -85,6 +88,14 @@ export function EigenaarContent() {
           </div>
         </motion.div>
       </section>
+
+      {/* ── STATRIJ — het bewijs in vier cijfers ── */}
+      <Statrij items={[
+        { cijfer: String(SCREENINGS_TOTAL),     label: 'woningen bekeken' },
+        { cijfer: String(SCREENINGS_ACCEPTED),  label: 'opgenomen' },
+        { cijfer: String(TOTAL_STAYS_REVIEWED), label: 'verblijven' },
+        { cijfer: '10/10',                      label: 'beoordeling' },
+      ]} />
 
       {/* ── SECTIE 2: WAT MOROWW INSTALLEERT ── */}
       <section className="w-full bg-[#1A1A1A] py-12 md:py-20 mt-0">
