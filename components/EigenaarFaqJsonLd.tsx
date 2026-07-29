@@ -12,7 +12,7 @@ export function EigenaarFaqJsonLd() {
               name: 'Hoe kan ik mijn vakantiewoning verhuren via moroww?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Meld je woning aan via het formulier op moroww.com/eigenaar-worden. We nemen binnen 48u persoonlijk contact op. Elke woning wordt beoordeeld op locatie, oppervlakte (minimum 100m²), eigen parking en sfeer. Bij goedkeuring volgt een fysieke audit en installatie van de volledige tech-stack.',
+                text: 'Meld je woning aan via het formulier op moroww.com/eigenaar-worden. We nemen binnen 48u persoonlijk contact op. Elke woning wordt beoordeeld op de vier poorten: minimum 100 m² met twee slaapkamers, karakter in natuurlijke materialen, een rustige ligging, en een fysiek bezoek. Bij goedkeuring volgt de installatie van de volledige tech-stack.',
               },
             },
             {
@@ -44,7 +44,7 @@ export function EigenaarFaqJsonLd() {
               name: 'Kan ik mijn vakantiewoning aan de Belgische kust verhuren via moroww?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Ja. moroww is actief in België en de collectie breidt gestaag uit. Woningen moeten minimum 100m² hebben, eigen parking en in een rustige omgeving liggen.',
+                text: 'Ja. moroww is actief in België en de collectie breidt gestaag uit. Woningen moeten minimum 100 m² zijn met twee slaapkamers, karakter in natuurlijke materialen, en in een rustige omgeving liggen.',
               },
             },
             {
@@ -60,7 +60,7 @@ export function EigenaarFaqJsonLd() {
               name: 'Welke woningen komen in aanmerking voor het moroww-label?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Minimum 100m², minimum 2 slaapkamers, eigen parkeerplaats, rustige of natuurlijke omgeving (kust, landelijk, bosrand). Geen drukke stadscentra. Elke woning wordt fysiek bezocht door ons team voor de certificeringsbeslissing.',
+                text: 'Minimum 100 m² met minstens twee slaapkamers, karakter in natuurlijke materialen (minstens één authentiek architecturaal element, zicht op groen of water vanuit de leefruimte), rustige of natuurlijke omgeving (kust, landelijk, bosrand — geen drukke stadscentra). Elke woning wordt fysiek bezocht door ons team voor de certificeringsbeslissing.',
               },
             },
             {

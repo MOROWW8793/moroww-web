@@ -1,9 +1,32 @@
 import type { Metadata } from 'next'
-import { setRequestLocale } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { Link } from '@/i18n/navigation'
+import { SCREENINGS_TOTAL, SCREENINGS_ACCEPTED } from '@/lib/screenings'
 
-export const metadata: Metadata = {
-  title: 'de standaard — moroww',
-  robots: { index: false, follow: false },
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'destandaard' })
+  const isNl = locale === 'nl'
+  const canonical = isNl
+    ? 'https://www.moroww.com/de-standaard'
+    : 'https://www.moroww.com/en/the-standard'
+  return {
+    title: t('meta_title'),
+    description: t('meta_description'),
+    alternates: {
+      canonical,
+      languages: {
+        'nl-BE': 'https://www.moroww.com/de-standaard',
+        'nl': 'https://www.moroww.com/de-standaard',
+        'en': 'https://www.moroww.com/en/the-standard',
+        'x-default': 'https://www.moroww.com/de-standaard',
+      },
+    },
+  }
 }
 
 export default async function DeStandaardPage({
@@ -13,17 +36,203 @@ export default async function DeStandaardPage({
 }) {
   const { locale } = await params
   setRequestLocale(locale)
+  const t = await getTranslations('destandaard')
+
+  const gates = [
+    { num: t('gate01_num'), title: t('gate01_title'), body: t('gate01_body') },
+    { num: t('gate02_num'), title: t('gate02_title'), body: t('gate02_body') },
+    { num: t('gate03_num'), title: t('gate03_title'), body: t('gate03_body') },
+    { num: t('gate04_num'), title: t('gate04_title'), body: t('gate04_body') },
+  ]
+
+  const additions = [
+    { title: t('add_lock_title'),       body: t('add_lock_body') },
+    { title: t('add_ambient_title'),    body: t('add_ambient_body') },
+    { title: t('add_scent_title'),      body: t('add_scent_body') },
+    { title: t('add_limit_title'),      body: t('add_limit_body') },
+    { title: t('add_invisible_title'),  body: t('add_invisible_body') },
+    { title: t('add_ordinary_title'),   body: t('add_ordinary_body') },
+  ]
+
   return (
-    <main className="min-h-screen bg-white pt-32 pb-24">
-      <div className="mx-auto max-w-3xl px-6">
-        <h1 className="text-4xl md:text-5xl lowercase font-serif mb-8">
-          de standaard
-        </h1>
-        <p className="text-lg text-[#6B6B6B] leading-relaxed">
-          [TODO: WP4 — vier poorten, 350 bekeken · 7 opgenomen, fysieke audit,
-          jaarlijkse heraudit, uitsluitingsclausule]
-        </p>
-      </div>
+    <main className="bg-[#FAE4D6]">
+
+      {/* ── HERO ── */}
+      <section className="w-full pt-32 pb-16 md:pt-40 md:pb-20 px-6">
+        <div className="max-w-3xl mx-auto">
+          <h1
+            className="font-bold text-[#1A1A1A] leading-[1.05] tracking-[-0.02em] mb-8"
+            style={{ fontSize: 'clamp(2.25rem, 6vw, 5rem)' }}
+          >
+            {t('hero_h1')}
+          </h1>
+          <p className="text-[#1A1A1A]/70 leading-relaxed" style={{ fontSize: 20 }}>
+            {t('hero_intro')}
+          </p>
+        </div>
+      </section>
+
+      {/* ── HET CIJFER ── */}
+      <section className="w-full py-16 md:py-24 px-6 bg-[#1A1A1A]">
+        <div className="max-w-3xl mx-auto text-center">
+          <p
+            className="font-bold text-white leading-[1.1] tracking-[-0.02em]"
+            style={{ fontSize: 'clamp(2rem, 6vw, 4.5rem)' }}
+          >
+            <span className="text-[#FEA05E]">{SCREENINGS_TOTAL}</span>{' '}{t('number_line_bekeken')}{' '}
+            <span className="text-[#FEA05E]">{SCREENINGS_ACCEPTED}</span>{' '}{t('number_line_opgenomen')}
+          </p>
+        </div>
+      </section>
+
+      {/* ── DE VIER POORTEN ── */}
+      <section className="w-full py-20 md:py-28 px-6">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-4">
+            {t('gates_title')}
+          </p>
+          <p className="text-[#1A1A1A]/75 leading-relaxed mb-16 max-w-2xl" style={{ fontSize: 18 }}>
+            {t('gates_intro')}
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-14">
+            {gates.map((g) => (
+              <div key={g.num}>
+                <div className="flex items-baseline gap-4 mb-4">
+                  <span
+                    className="font-bold text-[#C08D6E] select-none"
+                    style={{ fontSize: 28, opacity: 0.35 }}
+                  >
+                    {g.num}
+                  </span>
+                  <h2
+                    className="font-bold text-[#1A1A1A] leading-tight"
+                    style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)' }}
+                  >
+                    {g.title}
+                  </h2>
+                </div>
+                <p className="text-[#1A1A1A]/70 leading-relaxed" style={{ fontSize: 16 }}>
+                  {g.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── HET BEZOEK ── */}
+      <section className="w-full py-20 md:py-28 px-6 bg-[#EDD5C0]">
+        <div className="max-w-3xl mx-auto">
+          <h2
+            className="font-bold text-[#1A1A1A] leading-tight mb-10"
+            style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
+          >
+            {t('visit_title')}
+          </h2>
+          <div className="space-y-6 text-[#1A1A1A]/85 leading-relaxed" style={{ fontSize: 17 }}>
+            <p>{t('visit_p1')}</p>
+            <p>{t('visit_p2')}</p>
+            <p>{t('visit_p3')}</p>
+            <p>{t('visit_p4')}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── WAT WIJ TOEVOEGEN — belofte, geen filter ── */}
+      <section className="w-full py-20 md:py-28 px-6 bg-[#1A1A1A]">
+        <div className="max-w-4xl mx-auto">
+          <h2
+            className="font-bold text-white leading-tight mb-8"
+            style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
+          >
+            {t('add_title')}
+          </h2>
+          <div className="space-y-4 text-white/75 leading-relaxed mb-16 max-w-2xl" style={{ fontSize: 17 }}>
+            <p>{t('add_intro1')}</p>
+            <p>{t('add_intro2')}</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+            {additions.map((a) => (
+              <div key={a.title} className="border-t border-white/15 pt-6">
+                <h3 className="text-white font-semibold mb-2" style={{ fontSize: 18 }}>
+                  {a.title}
+                </h3>
+                <p className="text-white/60 leading-relaxed" style={{ fontSize: 15 }}>
+                  {a.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-white/80 italic mt-16 max-w-2xl leading-relaxed" style={{ fontSize: 17 }}>
+            {t('add_closing')}
+          </p>
+
+          <Link
+            href="/moroww-os"
+            className="inline-block mt-8 text-[#FEA05E] hover:text-white transition-colors underline underline-offset-4"
+          >
+            {t('add_link')} →
+          </Link>
+        </div>
+      </section>
+
+      {/* ── DE HERAUDIT ── */}
+      <section className="w-full py-20 md:py-28 px-6 bg-[#FAE4D6]">
+        <div className="max-w-3xl mx-auto">
+          <h2
+            className="font-bold text-[#1A1A1A] leading-tight mb-10"
+            style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
+          >
+            {t('reaudit_title')}
+          </h2>
+          <div className="space-y-6 text-[#1A1A1A]/85 leading-relaxed" style={{ fontSize: 17 }}>
+            <p>{t('reaudit_p1')}</p>
+            <p>{t('reaudit_p2')}</p>
+            <p>{t('reaudit_p3')}</p>
+            <p className="font-semibold text-[#1A1A1A]">{t('reaudit_p4')}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── VOOR DE GAST ── */}
+      <section className="w-full py-16 md:py-24 px-6 bg-[#EDD5C0]">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2
+            className="font-bold text-[#1A1A1A] leading-tight mb-6"
+            style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
+          >
+            {t('guest_title')}
+          </h2>
+          <p className="text-[#1A1A1A]/75 leading-relaxed max-w-2xl mx-auto" style={{ fontSize: 18 }}>
+            {t('guest_body')}
+          </p>
+        </div>
+      </section>
+
+      {/* ── VOOR DE EIGENAAR — CTA ── */}
+      <section className="w-full py-20 md:py-28 px-6 bg-[#1A1A1A]">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2
+            className="font-bold text-white leading-tight mb-6"
+            style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
+          >
+            {t('owner_title')}
+          </h2>
+          <p className="text-white/70 leading-relaxed mb-10" style={{ fontSize: 17 }}>
+            {t('owner_body')}
+          </p>
+          <Link
+            href="/eigenaar-worden"
+            className="inline-block bg-[#FEA05E] text-[#1A1A1A] rounded-full px-10 py-4 font-semibold hover:bg-[#e8904e] transition-colors"
+          >
+            {t('owner_cta')}
+          </Link>
+        </div>
+      </section>
+
     </main>
   )
 }

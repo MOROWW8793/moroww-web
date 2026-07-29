@@ -47,7 +47,6 @@ export const metadata: Metadata = {
     'vakantiewoning direct boeken België',
     'privé vakantiewoning Belgium',
     'vakantiewoning 100m² België',
-    'vakantiewoning met eigen parking België',
     // Intentie — hosts
     'vakantiewoning verhuren kust België',
     'vakantiewoning beheer label',

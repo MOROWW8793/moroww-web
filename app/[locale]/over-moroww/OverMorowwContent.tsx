@@ -14,6 +14,7 @@ const fadeUp = {
 
 export function OverMorowwContent() {
   const t = useTranslations('about')
+  const tStandaard = useTranslations('destandaard')
 
   const systeem = [
     { nr: "01", titel: t('systeem_01_titel'), tekst: t('systeem_01_tekst') },
@@ -153,7 +154,7 @@ export function OverMorowwContent() {
         </div>
       </section>
 
-      {/* ── SECTIE 4 — DE STANDAARD ── */}
+      {/* ── SECTIE 4 — DE STANDAARD (kort, met link naar /de-standaard voor de volledige uitleg) ── */}
       <section className="grid grid-cols-1 md:grid-cols-2 min-h-[80vh]">
         <div className="relative overflow-hidden min-h-[60vw] md:min-h-full order-last md:order-first">
           <Image
@@ -175,14 +176,30 @@ export function OverMorowwContent() {
             <h2 className="text-[clamp(1.9rem,3.8vw,3.5rem)] font-bold leading-[1.15] text-[#1A1A1A]">
               {t('standaard_h2')}
             </h2>
-            <p className="mt-6 text-lg leading-relaxed text-[#1A1A1A]">
-              {t('standaard_p1')}
-            </p>
-            <div className="border-t border-[#C08D6E]/30 mt-8 pt-8">
-              <p className="text-base leading-relaxed text-[#1A1A1A]/70">
-                {t('standaard_p2')}
-              </p>
-            </div>
+            <ul className="mt-8 space-y-3 text-lg text-[#1A1A1A]">
+              <li className="flex items-baseline gap-3">
+                <span className="text-[#C08D6E]/60 font-semibold text-sm select-none">01</span>
+                <span>{tStandaard('gate01_title')}</span>
+              </li>
+              <li className="flex items-baseline gap-3">
+                <span className="text-[#C08D6E]/60 font-semibold text-sm select-none">02</span>
+                <span>{tStandaard('gate02_title')}</span>
+              </li>
+              <li className="flex items-baseline gap-3">
+                <span className="text-[#C08D6E]/60 font-semibold text-sm select-none">03</span>
+                <span>{tStandaard('gate03_title')}</span>
+              </li>
+              <li className="flex items-baseline gap-3">
+                <span className="text-[#C08D6E]/60 font-semibold text-sm select-none">04</span>
+                <span>{tStandaard('gate04_title')}</span>
+              </li>
+            </ul>
+            <Link
+              href="/de-standaard"
+              className="inline-block mt-8 text-sm underline underline-offset-4 decoration-[#C08D6E]/50 hover:decoration-[#FEA05E] text-[#1A1A1A]"
+            >
+              {tStandaard('read_full_standard')} →
+            </Link>
           </div>
         </motion.div>
       </section>
