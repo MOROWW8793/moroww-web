@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { useLocale, useTranslations } from 'next-intl'
 import { Link, usePathname, useRouter } from '@/i18n/navigation'
-import { mainNavItems, nlOnlyRoutes } from '@/lib/navigation'
+import { mainNavItems, nlOnlyRoutes, lightHeroRoutes } from '@/lib/navigation'
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -31,6 +31,11 @@ export function Navbar() {
   // een niet-bestaande EN-URL leiden (die redirect naar NL) en dat oogt stuk.
   const isNlOnly = nlOnlyRoutes.some((r) => pathname === r || pathname.startsWith(`${r}/`))
 
+  // Op pagina's zonder donkere foto-hero: menu meteen in 'scrolled' state
+  // (blush, donkere tekst) — anders is witte tekst onleesbaar op de lichte hero.
+  const isLightHero = lightHeroRoutes.some((r) => pathname === r || pathname.startsWith(`${r}/`))
+  const effectiveScrolled = scrolled || isLightHero
+
   function toggleLocale() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     router.replace(pathname as any, { locale: locale === 'nl' ? 'en' : 'nl' })
@@ -39,7 +44,7 @@ export function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
-        scrolled ? 'bg-[#FAE4D6] shadow-sm' : 'bg-transparent'
+        effectiveScrolled ? 'bg-[#FAE4D6] shadow-sm' : 'bg-transparent'
       }`}
     >
       <nav className="flex items-center justify-between px-6 md:px-10 h-16 relative">
@@ -52,7 +57,7 @@ export function Navbar() {
             width={120}
             height={32}
             className={`h-8 w-auto object-contain transition-all duration-300 ${
-              scrolled ? '' : 'brightness-0 invert'
+              effectiveScrolled ? '' : 'brightness-0 invert'
             }`}
           />
         </Link>
@@ -64,7 +69,7 @@ export function Navbar() {
               key={item.href}
               href={item.href}
               className={`text-sm font-medium transition-colors duration-300 ${
-                scrolled
+                effectiveScrolled
                   ? 'text-[#1A1A1A] hover:text-[#FEA05E]'
                   : 'text-white/90 hover:text-white'
               }`}
@@ -78,7 +83,7 @@ export function Navbar() {
             <button
               onClick={toggleLocale}
               className={`text-sm font-medium transition-colors duration-300 px-2 py-1 ${
-                scrolled
+                effectiveScrolled
                   ? 'text-[#1A1A1A]/60 hover:text-[#1A1A1A]'
                   : 'text-white/60 hover:text-white'
               }`}
@@ -105,13 +110,13 @@ export function Navbar() {
           aria-label="Menu openen"
         >
           <span className={`block w-6 h-0.5 transition-all duration-200 ${
-            scrolled ? 'bg-[#1A1A1A]' : 'bg-white'
+            effectiveScrolled ? 'bg-[#1A1A1A]' : 'bg-white'
           } ${open ? 'rotate-45 translate-y-2' : ''}`} />
           <span className={`block w-6 h-0.5 transition-all duration-200 ${
-            scrolled ? 'bg-[#1A1A1A]' : 'bg-white'
+            effectiveScrolled ? 'bg-[#1A1A1A]' : 'bg-white'
           } ${open ? 'opacity-0' : ''}`} />
           <span className={`block w-6 h-0.5 transition-all duration-200 ${
-            scrolled ? 'bg-[#1A1A1A]' : 'bg-white'
+            effectiveScrolled ? 'bg-[#1A1A1A]' : 'bg-white'
           } ${open ? '-rotate-45 -translate-y-2' : ''}`} />
         </button>
 

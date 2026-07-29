@@ -13,11 +13,10 @@ export function HostTeaser() {
         {/* Foto - boven op mobiel, rechts op desktop */}
         <div className="relative h-[300px] md:h-auto md:w-1/2 min-h-[300px] md:min-h-full order-first md:order-last">
           <Image
-            src="/images/host-teaser.jpg"
-            alt="moroww eigenaar - vakantiewoning beheer"
+            src="/images/woningen/lammersdamhoeve/lammersdamhoeve-03-leefruimte-2.jpg"
+            alt="moroww woning - leefruimte De Lammersdamhoeve"
             fill
             className="object-cover"
-            style={{ objectPosition: "center 70%" }}
             sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>

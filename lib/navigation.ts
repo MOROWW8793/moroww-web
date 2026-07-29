@@ -3,6 +3,7 @@ export type NavHref =
   | '/collectie'
   | '/over-moroww'
   | '/de-standaard'
+  | '/moroww-os'
   | '/eigenaar-worden'
   | '/partners'
   | '/contact'
@@ -49,4 +50,12 @@ export const nlOnlyRoutes: NavHref[] = [
   '/eigenaar-worden',
   '/vergelijking',
   '/privacy',
+]
+
+// Pagina's zonder donkere foto-hero. De Navbar start op deze routes meteen
+// in 'scrolled' state (blush-achtergrond, donkere tekst) — anders zou witte
+// menutekst op een lichte pagina-achtergrond onleesbaar zijn.
+export const lightHeroRoutes: NavHref[] = [
+  '/de-standaard',
+  '/moroww-os',
 ]

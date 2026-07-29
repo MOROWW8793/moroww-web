@@ -488,9 +488,9 @@ export const woningen: Woning[] = [
     maxGasten: 18,
     oppervlakte: null,
     tags: [
-      { nl: 'een familiehuis met verhaal', en: 'a family home with a story' },
-      { nl: 'zwembad, sauna & tuin',       en: 'pool, sauna & garden' },
-      { nl: 'the fields, Vlaamse Ardennen', en: 'the fields, Vlaamse Ardennen' },
+      { nl: 'Zwembad & sauna',              en: 'Pool & sauna' },
+      { nl: '9 kamers, eigen badkamer',     en: '9 rooms, en-suite' },
+      { nl: 'Familiehuis met verhaal',      en: 'Family home with a story' },
     ],
     slogan: {
       nl: 'een familiehuis met verhaal, gedragen door drie zussen.',
@@ -595,10 +595,9 @@ export const woningen: Woning[] = [
     oppervlakte: '220m²',
     vergunningsnummer: '387650',
     tags: [
-      { nl: 'the fields',            en: 'the fields' },
-      { nl: 'natuur',                en: 'nature' },
-      { nl: 'gezinnen',              en: 'families' },
-      { nl: 'huisdieren welkom',     en: 'pets welcome' },
+      { nl: 'Aan de bosrand',              en: 'On the edge of the forest' },
+      { nl: 'Omheinde tuin',               en: 'Fully enclosed garden' },
+      { nl: 'Honden welkom, geen toeslag', en: 'Dogs welcome, no surcharge' },
     ],
     slogan: {
       nl: 'waar het veld ophoudt en het bos begint.',
