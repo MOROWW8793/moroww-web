@@ -87,20 +87,26 @@ export function CollectieStatisch() {
                   ))}
                 </div>
 
-                {/* Specs */}
+                {/* Specs — verberg elk item dat ontbreekt of 0 is */}
                 <div className="flex gap-5 text-sm text-moroww-black/55 mb-5">
-                  <span className="flex items-center gap-1.5">
-                    <BedDouble size={14} />
-                    {w.slaapkamers} {t('bedrooms')}
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Bath size={14} />
-                    {w.badkamers} {t('bathrooms')}
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Users size={14} />
-                    {w.maxGasten} {t('guests')}
-                  </span>
+                  {w.slaapkamers ? (
+                    <span className="flex items-center gap-1.5">
+                      <BedDouble size={14} />
+                      {w.slaapkamers} {t('bedrooms')}
+                    </span>
+                  ) : null}
+                  {w.badkamers ? (
+                    <span className="flex items-center gap-1.5">
+                      <Bath size={14} />
+                      {w.badkamers} {t('bathrooms')}
+                    </span>
+                  ) : null}
+                  {w.maxGasten ? (
+                    <span className="flex items-center gap-1.5">
+                      <Users size={14} />
+                      {w.maxGasten} {t('guests')}
+                    </span>
+                  ) : null}
                 </div>
 
                 {/* Prijs + CTA */}
@@ -111,10 +117,12 @@ export function CollectieStatisch() {
                     </span>
                   ) : (
                     <>
-                      <div>
-                        <span className="font-bold text-xl text-moroww-black">€{w.prijs}</span>
-                        <span className="text-sm text-moroww-black/45 ml-1">{t('per_night')}</span>
-                      </div>
+                      {w.prijs ? (
+                        <div>
+                          <span className="font-bold text-xl text-moroww-black">{t('from')} €{w.prijs}</span>
+                          <span className="text-sm text-moroww-black/45 ml-1">{t('per_night')}</span>
+                        </div>
+                      ) : <div />}
                       <span className="rounded-full bg-[#FEA05E] group-hover:bg-[#e8904e] text-white font-semibold text-sm px-5 py-2.5 transition-colors duration-200">
                         {t('view_book')}
                       </span>

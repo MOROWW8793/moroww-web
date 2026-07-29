@@ -38,7 +38,7 @@ const woningMeta: Record<string, { title: string; description: string; keywords:
   },
   'sophora': {
     title: 'Sophora — vakantiewoning Elst, Vlaamse Ardennen | moroww',
-    description: 'Een familiehuis in het hart van Elst, gedragen door drie zussen. 9 slaapkamers elk met eigen badkamer, zwembad, sauna en tuin. Max 18 personen. Gecertificeerd door moroww.',
+    description: 'Een familiehuis in het hart van Elst, gedragen door drie zussen. 9 slaapkamers elk met eigen badkamer, zwembad, sauna en tuin. Max 18 personen. Gecertificeerd door moroww. Vanaf €800/nacht.',
     keywords: ['vakantiewoning Vlaamse Ardennen', 'vakantiewoning Elst', 'groepsaccommodatie Vlaamse Ardennen', 'vakantiewoning 18 personen België', 'moroww the fields', 'Sophora Elst'],
   },
   'lammersdamhoeve': {
@@ -86,6 +86,8 @@ export default async function WoningDetailPage({ params }: Props) {
         address={woning.locatie}
         url={`https://www.moroww.com/collectie/${woning.id}`}
       />
+      {/* pricePerNight en maxOccupancy zijn optioneel; VacationRentalJsonLd
+          spread ze alleen in het schema als ze gezet zijn. Zie components/JsonLd.tsx. */}
       <div className="mx-auto max-w-6xl px-6 md:px-12 pt-28 pb-0">
 
         {/* ── Breadcrumb ── */}
@@ -153,14 +155,14 @@ export default async function WoningDetailPage({ params }: Props) {
               {woning.locatie}
             </div>
 
-            {/* Specs */}
+            {/* Specs — verberg elk item dat ontbreekt of 0 is */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 20 }}>
               {[
-                `${woning.slaapkamers} ${t('bedrooms')}`,
-                `${woning.badkamers} ${t('bathrooms')}`,
-                `Max ${woning.maxGasten} ${t('guests')}`,
-                ...(woning.oppervlakte ? [woning.oppervlakte] : []),
-              ].map((spec) => (
+                woning.slaapkamers ? `${woning.slaapkamers} ${t('bedrooms')}` : null,
+                woning.badkamers ? `${woning.badkamers} ${t('bathrooms')}` : null,
+                woning.maxGasten ? `Max ${woning.maxGasten} ${t('guests')}` : null,
+                woning.oppervlakte || null,
+              ].filter((s): s is string => Boolean(s)).map((spec) => (
                 <span
                   key={spec}
                   style={{
@@ -195,10 +197,13 @@ export default async function WoningDetailPage({ params }: Props) {
                 </>
               ) : (
                 <>
-                  <div className="mb-5">
-                    <span style={{ fontWeight: 800, fontSize: 32, color: '#ffffff' }}>€{woning.prijs}</span>
-                    <span style={{ color: '#999999', fontSize: 14, marginLeft: 6 }}>{t('per_night')}</span>
-                  </div>
+                  {woning.prijs ? (
+                    <div className="mb-5">
+                      <span style={{ color: '#C08D6E', fontSize: 14, marginRight: 6 }}>{t('from_label')}</span>
+                      <span style={{ fontWeight: 800, fontSize: 32, color: '#ffffff' }}>€{woning.prijs}</span>
+                      <span style={{ color: '#999999', fontSize: 14, marginLeft: 6 }}>{t('per_night')}</span>
+                    </div>
+                  ) : null}
                   <a
                     href={woning.boekUrl}
                     target="_blank"
@@ -310,7 +315,7 @@ export default async function WoningDetailPage({ params }: Props) {
               {[
                 { icon: <LogIn size={16} style={{ color: '#fff' }} />, label: t('checkin_label'), value: `${t('from_label')} ${woning.inCheckin}` },
                 { icon: <LogOut size={16} style={{ color: '#fff' }} />, label: t('checkout_label'), value: `${t('before_label')} ${woning.uitCheckin}` },
-                { icon: <Users size={16} style={{ color: '#fff' }} />, label: t('max_guests_label'), value: `${woning.maxGasten} ${t('persons')}` },
+                ...(woning.maxGasten ? [{ icon: <Users size={16} style={{ color: '#fff' }} />, label: t('max_guests_label'), value: `${woning.maxGasten} ${t('persons')}` }] : []),
               ].map(({ icon, label, value }) => (
                 <div key={label} className="flex items-center gap-4 rounded-2xl p-5"
                   style={{ background: '#FFFFFF', border: '1px solid #E8D5C4' }}>

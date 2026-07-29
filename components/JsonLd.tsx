@@ -57,8 +57,8 @@ export function VacationRentalJsonLd({
   name: string
   description: string
   image: string
-  pricePerNight: number
-  maxOccupancy: number
+  pricePerNight?: number
+  maxOccupancy?: number
   address: string
   url: string
 }) {
@@ -73,8 +73,8 @@ export function VacationRentalJsonLd({
           description,
           image: `https://www.moroww.com${image}`,
           url,
-          priceRange: `€${pricePerNight}`,
-          maximumAttendeeCapacity: maxOccupancy,
+          ...(pricePerNight ? { priceRange: `€${pricePerNight}` } : {}),
+          ...(maxOccupancy ? { maximumAttendeeCapacity: maxOccupancy } : {}),
           address: {
             '@type': 'PostalAddress',
             addressLocality: address,

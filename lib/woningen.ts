@@ -15,11 +15,13 @@ export interface Woning {
   naam: string
   collectie: 'the shore' | 'the fields'
   locatie: string
-  prijs: number
-  slaapkamers: number
-  badkamers: number
-  maxGasten: number
-  oppervlakte: string | null
+  // Optioneel: als niet gezet of 0, rendert de UI het veld helemaal niet
+  // in plaats van "€0" of "0 slaapkamers" te tonen.
+  prijs?: number
+  slaapkamers?: number
+  badkamers?: number
+  maxGasten?: number
+  oppervlakte?: string | null
   tags: BilingualText[]
   slogan: BilingualText
   introductie: BilingualText
@@ -472,7 +474,7 @@ export const woningen: Woning[] = [
     naam: 'Sophora',
     collectie: 'the fields',
     locatie: 'Elst (Brakel), Vlaamse Ardennen',
-    prijs: 0,
+    prijs: 800,
     slaapkamers: 9,
     badkamers: 9,
     maxGasten: 18,

@@ -141,20 +141,26 @@ export function WoningenGrid() {
                     ))}
                   </div>
 
-                  {/* Specs */}
+                  {/* Specs — verberg elk item dat ontbreekt of 0 is */}
                   <div style={{ display: "flex", gap: 12, fontSize: 13, color: "#666666", marginBottom: 16 }}>
-                    <span className="flex items-center gap-1">
-                      <BedDouble size={13} />
-                      {w.slaapkamers} {t('bedrooms')}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Bath size={13} />
-                      {w.badkamers} {t('bathrooms')}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Users size={13} />
-                      {w.maxGasten} {t('guests')}
-                    </span>
+                    {w.slaapkamers ? (
+                      <span className="flex items-center gap-1">
+                        <BedDouble size={13} />
+                        {w.slaapkamers} {t('bedrooms')}
+                      </span>
+                    ) : null}
+                    {w.badkamers ? (
+                      <span className="flex items-center gap-1">
+                        <Bath size={13} />
+                        {w.badkamers} {t('bathrooms')}
+                      </span>
+                    ) : null}
+                    {w.maxGasten ? (
+                      <span className="flex items-center gap-1">
+                        <Users size={13} />
+                        {w.maxGasten} {t('guests')}
+                      </span>
+                    ) : null}
                   </div>
 
                   {/* Prijs + CTA */}
@@ -165,10 +171,12 @@ export function WoningenGrid() {
                       </span>
                     ) : (
                       <>
-                        <div>
-                          <span style={{ fontWeight: 700, fontSize: 18, color: "#1A1A1A" }}>{t('from')} €{w.prijs}</span>
-                          <span style={{ fontSize: 13, color: "#999999", marginLeft: 4 }}>{t('per_night')}</span>
-                        </div>
+                        {w.prijs ? (
+                          <div>
+                            <span style={{ fontWeight: 700, fontSize: 18, color: "#1A1A1A" }}>{t('from')} €{w.prijs}</span>
+                            <span style={{ fontSize: 13, color: "#999999", marginLeft: 4 }}>{t('per_night')}</span>
+                          </div>
+                        ) : <div />}
                         <span
                           style={{
                             background: "#FEA05E",
