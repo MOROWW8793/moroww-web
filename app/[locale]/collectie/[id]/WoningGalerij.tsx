@@ -56,20 +56,31 @@ export function WoningGalerij({ fotos, naam }: Props) {
         {/* Desktop: 3-col × 3-row grid, hero span 2×2, 5 tegels rechts en onder */}
         <div className="hidden md:grid grid-cols-3 grid-rows-3 gap-2 h-[560px]">
           {/* Hero */}
-          <button
-            className="relative col-span-2 row-span-2 overflow-hidden rounded-2xl cursor-zoom-in group"
-            onClick={() => open(0)}
-            aria-label={`bekijk ${naam} — foto 1`}
-          >
+          <div className="relative col-span-2 row-span-2 rounded-2xl overflow-hidden">
+            <button
+              className="relative w-full h-full cursor-zoom-in group block"
+              onClick={() => open(0)}
+              aria-label={`bekijk ${naam} — foto 1`}
+            >
+              <Image
+                src={fotos[0]}
+                alt={naam}
+                fill
+                className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                sizes="(max-width: 768px) 100vw, 66vw"
+                priority
+              />
+            </button>
+            {/* Certified-embleem — één keer per pand, alleen op de hero. Niet op kaarten in het overzicht. */}
             <Image
-              src={fotos[0]}
-              alt={naam}
-              fill
-              className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
-              sizes="(max-width: 768px) 100vw, 66vw"
-              priority
+              src="/images/Moroww_Certified_01_RGB.png"
+              alt="moroww certified"
+              width={120}
+              height={120}
+              className="absolute bottom-6 right-6 pointer-events-none select-none w-24 h-24 lg:w-28 lg:h-28"
+              sizes="112px"
             />
-          </button>
+          </div>
 
           {/* 5 tegels */}
           {rightTiles.map((foto, i) => (
@@ -105,7 +116,15 @@ export function WoningGalerij({ fotos, naam }: Props) {
             sizes="100vw"
             priority
           />
-          <div className="absolute bottom-3 right-3 bg-black/50 text-white text-xs rounded-full px-3 py-1">
+          <Image
+            src="/images/Moroww_Certified_01_RGB.png"
+            alt="moroww certified"
+            width={80}
+            height={80}
+            className="absolute bottom-4 right-4 pointer-events-none select-none w-16 h-16"
+            sizes="64px"
+          />
+          <div className="absolute bottom-3 left-3 bg-black/50 text-white text-xs rounded-full px-3 py-1">
             1 / {fotos.length}
           </div>
         </div>
