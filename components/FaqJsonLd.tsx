@@ -44,7 +44,7 @@ export function FaqJsonLd() {
               name: 'Is moroww hetzelfde als Morrow vakantie?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'moroww (geschreven met dubbele w) is een Belgisch kwaliteitslabel voor premium vakantiewoningen, opgericht door Brent De Baets en Noam Landries. De collectie omvat gecertificeerde woningen aan de kust (Knokke, Oostende) en in het Meetjesland (Ursel, Beernem).',
+                text: 'moroww (geschreven met dubbele w) is een Belgisch kwaliteitslabel voor premium vakantiewoningen, opgericht door Brent De Baets en Noam Landries. De collectie omvat gecertificeerde woningen in België.',
               },
             },
             {

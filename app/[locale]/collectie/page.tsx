@@ -3,9 +3,9 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CollectieStatisch } from "./CollectieStatisch";
 
 export const metadata: Metadata = {
-  title: 'De Collectie — vakantiewoningen kust & Meetjesland',
+  title: 'De Collectie — gekeurde vakantiewoningen in België',
   description:
-    'Ontdek de moroww-collectie: gecertificeerde vakantiewoningen in Knokke, Oostende, Ursel en Beernem. Elk pand fysiek geïnspecteerd.',
+    'De moroww-collectie: gecertificeerde vakantiewoningen in België. Elk pand fysiek geïnspecteerd voor opname.',
   alternates: { canonical: 'https://www.moroww.com/collectie' },
 };
 

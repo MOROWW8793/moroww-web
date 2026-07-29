@@ -44,7 +44,7 @@ export function EigenaarFaqJsonLd() {
               name: 'Kan ik mijn vakantiewoning aan de Belgische kust verhuren via moroww?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Ja. moroww is actief aan de Belgische kust (Knokke-Heist, Oostende) en in het Meetjesland (Ursel, Beernem). De collectie breidt gestaag uit. Woningen moeten minimum 100m² hebben, eigen parking en in een rustige omgeving liggen.',
+                text: 'Ja. moroww is actief in België en de collectie breidt gestaag uit. Woningen moeten minimum 100m² hebben, eigen parking en in een rustige omgeving liggen.',
               },
             },
             {

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: '%s | moroww',
   },
   description:
-    'moroww (ook bekend als morrow) is een gecertificeerd kwaliteitslabel voor premium vakantiewoningen aan de Belgische kust en in het Meetjesland. Elke woning fysiek geïnspecteerd. Sensorisch ingericht. Zonder loterij.',
+    'moroww (ook bekend als morrow) is een gecertificeerd kwaliteitslabel voor premium vakantiewoningen in België. Elke woning fysiek geïnspecteerd. Sensorisch ingericht. Zonder loterij.',
   keywords: [
     // Brand
     'moroww',
@@ -40,10 +40,9 @@ export const metadata: Metadata = {
     // Locatie
     'vakantiewoning Knokke',
     'vakantiewoning Oostende',
-    'vakantiewoning Meetjesland',
     'vakantiewoning Beernem',
     'vakantiewoning Ursel',
-    'premium vakantiewoning kust België',
+    'vakantiewoning Wingene',
     'luxe vakantiewoning Knokke-Heist',
     'vakantiewoning Heist-aan-Zee',
     // Intentie — gasten
