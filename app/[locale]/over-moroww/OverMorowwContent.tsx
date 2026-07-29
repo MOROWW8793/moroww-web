@@ -53,37 +53,36 @@ export function OverMorowwContent() {
         </div>
       </section>
 
-      {/* ── ONS VERHAAL ── */}
-      <section className="w-full py-16 md:py-28 px-6 bg-[#FAE4D6]">
+      {/* ── ONS VERHAAL — draagt het zonder beeld ── */}
+      <section className="w-full py-20 md:py-32 px-6 bg-[#FAE4D6]">
         <div className="max-w-3xl mx-auto">
           <motion.div {...fadeUp}>
-            <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-8">
+            <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-10">
               {t('story_label')}
             </p>
 
-            {/* Advertentiefoto placeholder — [TODO] blokt productie tot Noam foto aanlevert */}
-            <div
-              className="w-full aspect-[16/10] rounded-2xl mb-4 flex items-center justify-center text-center px-6"
-              style={{ background: '#EDD5C0', border: '2px dashed #C08D6E' }}
+            <p
+              className="font-bold text-[#1A1A1A] leading-[1.15] tracking-[-0.02em] mb-10"
+              style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
             >
-              <p className="text-[#C08D6E] text-sm md:text-base italic">
-                {t('story_photo_placeholder')}
-              </p>
-            </div>
-            <p className="text-xs text-[#1A1A1A]/50 italic mb-12">
-              {t('story_photo_caption')}
+              {t('story_p1')}
             </p>
 
-            <div className="space-y-6 text-[#1A1A1A]/85 leading-relaxed" style={{ fontSize: 17 }}>
-              <p className="font-semibold text-[#1A1A1A]" style={{ fontSize: 20 }}>{t('story_p1')}</p>
+            <div className="space-y-6 text-[#1A1A1A]/85 leading-relaxed" style={{ fontSize: 18 }}>
               <p>{t('story_p2')}</p>
               <p>{t('story_p3')}</p>
               <p>{t('story_p4')}</p>
               <p>{t('story_p5')}</p>
               <p>{t('story_p6')}</p>
               <p>{t('story_p7')}</p>
-              <p className="font-semibold text-[#1A1A1A]" style={{ fontSize: 20 }}>{t('story_p8')}</p>
             </div>
+
+            <p
+              className="font-bold text-[#1A1A1A] leading-[1.15] tracking-[-0.02em] mt-10"
+              style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
+            >
+              {t('story_p8')}
+            </p>
           </motion.div>
         </div>
       </section>
