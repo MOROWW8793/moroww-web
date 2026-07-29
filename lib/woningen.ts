@@ -38,6 +38,10 @@ export interface Woning {
   comingSoon?: boolean
   vergunningsnummer?: string
   waaromOpgenomen?: BilingualText
+  // Alleen expliciet documenteerde voorzieningen. Ontbreekt een amenity in
+  // deze lijst, dan komt ze ook niet in de VacationRentalJsonLd — we willen
+  // geen voorzieningen bij Google claimen die het pand niet heeft.
+  amenities?: string[]
 }
 
 export const woningen: Woning[] = [
@@ -125,6 +129,7 @@ export const woningen: Woning[] = [
       '/images/woningen/knokke-new/2026-AmelieBauwens-Moroww-V2-2 kopie.jpg',
     ],
     boekUrl: 'https://book.moroww.com/nl/properties/698c63ff3d9a2d0013fefd72?minOccupancy=1',
+    amenities: ['Smart lock', 'Wifi'],
   },
 
   {
@@ -269,6 +274,7 @@ export const woningen: Woning[] = [
       '/images/woningen/ursel-new/Bogaertstraat 17 Ursel.jpg',
     ],
     boekUrl: 'https://book.moroww.com/nl/properties/696b49bf47f69b0013026516?minOccupancy=1',
+    amenities: ['Smart lock', 'Wifi', 'Eigen parking'],
   },
 
   {
@@ -367,6 +373,7 @@ export const woningen: Woning[] = [
       '/images/woningen/oostende-new/7e555070-bb8f-11f0-a651-4d0627bd5d38 kopie.jpg',
     ],
     boekUrl: 'https://book.moroww.com/nl/properties/695140859e91eb0014db3eb1?minOccupancy=1',
+    amenities: ['Smart lock', 'Wifi', 'Eigen parking'],
   },
 
   {
@@ -467,6 +474,7 @@ export const woningen: Woning[] = [
       '/images/woningen/beernem-new/WhatsApp Image 2025-11-02 at 14.18.19 (9).jpeg',
     ],
     boekUrl: 'https://book.moroww.com/nl/properties/690781db69d1700012bf6dd3?minOccupancy=1',
+    amenities: ['Smart lock', 'Wifi', 'Eigen parking'],
   },
 
   {
@@ -573,6 +581,7 @@ export const woningen: Woning[] = [
     ],
     boekUrl: 'https://book.moroww.com/nl/properties/6a14520e75302900153585ce?minOccupancy=1',
     comingSoon: false,
+    amenities: ['Smart lock', 'Wifi'],
   },
   {
     id: 'lammersdamhoeve',
@@ -644,6 +653,7 @@ export const woningen: Woning[] = [
       '/images/woningen/lammersdamhoeve/lammersdamhoeve-16-omgeving-knooppunt.jpg',
     ],
     boekUrl: 'https://book.moroww.com/nl/properties/6a3a3e76ebec11002bd6c298?minOccupancy=1',
+    amenities: ['Smart lock', 'Wifi', 'Eigen parking'],
   },
 ]
 

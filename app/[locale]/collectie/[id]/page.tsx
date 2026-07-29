@@ -85,8 +85,9 @@ export default async function WoningDetailPage({ params }: Props) {
         maxOccupancy={woning.maxGasten}
         address={woning.locatie}
         url={`https://www.moroww.com/collectie/${woning.id}`}
+        amenities={woning.amenities}
       />
-      {/* pricePerNight en maxOccupancy zijn optioneel; VacationRentalJsonLd
+      {/* pricePerNight, maxOccupancy en amenities zijn optioneel; VacationRentalJsonLd
           spread ze alleen in het schema als ze gezet zijn. Zie components/JsonLd.tsx. */}
       <div className="mx-auto max-w-6xl px-6 md:px-12 pt-28 pb-0">
 

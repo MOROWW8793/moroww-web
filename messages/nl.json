@@ -26,7 +26,7 @@
     "reviews_label": "wat gasten zeggen",
     "reviews_title_light": "geen beloften.",
     "reviews_title_bold": "alleen ervaringen.",
-    "all_stays": "· alle verblijven",
+    "all_stays": "· over {count} verblijven",
     "host_label": "voor eigenaars",
     "host_title": "de controle blijft van jou.",
     "host_subtitle": "",

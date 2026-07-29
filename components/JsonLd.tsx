@@ -53,6 +53,7 @@ export function VacationRentalJsonLd({
   maxOccupancy,
   address,
   url,
+  amenities,
 }: {
   name: string
   description: string
@@ -61,7 +62,13 @@ export function VacationRentalJsonLd({
   maxOccupancy?: number
   address: string
   url: string
+  amenities?: string[]
 }) {
+  const amenityFeatures = (amenities ?? []).map((n) => ({
+    '@type': 'LocationFeatureSpecification' as const,
+    name: n,
+    value: true,
+  }))
   return (
     <script
       type="application/ld+json"
@@ -80,11 +87,7 @@ export function VacationRentalJsonLd({
             addressLocality: address,
             addressCountry: 'BE',
           },
-          amenityFeature: [
-            { '@type': 'LocationFeatureSpecification', name: 'Smart lock', value: true },
-            { '@type': 'LocationFeatureSpecification', name: 'Eigen parking', value: true },
-            { '@type': 'LocationFeatureSpecification', name: 'Wifi', value: true },
-          ],
+          ...(amenityFeatures.length > 0 ? { amenityFeature: amenityFeatures } : {}),
         }),
       }}
     />

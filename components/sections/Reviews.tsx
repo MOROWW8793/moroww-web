@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server'
+import { TOTAL_STAYS_REVIEWED } from '@/lib/reviews'
 
 export async function Reviews() {
   const t = await getTranslations('home')
@@ -20,7 +21,7 @@ export async function Reviews() {
           <div className="flex items-center gap-2 text-sm text-[#1A1A1A]/50 shrink-0">
             <span className="text-[#FEA05E] text-base tracking-tight">★★★★★</span>
             <span className="font-semibold text-[#1A1A1A]">10 / 10</span>
-            <span>{t('all_stays')}</span>
+            <span>{t('all_stays', { count: TOTAL_STAYS_REVIEWED })}</span>
           </div>
         </div>
 

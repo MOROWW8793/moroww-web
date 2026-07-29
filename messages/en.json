@@ -26,7 +26,7 @@
     "reviews_label": "what guests say",
     "reviews_title_light": "no promises.",
     "reviews_title_bold": "only experiences.",
-    "all_stays": "· all stays",
+    "all_stays": "· over {count} stays",
     "host_label": "for owners",
     "host_title": "you stay in control.",
     "host_subtitle": "",
