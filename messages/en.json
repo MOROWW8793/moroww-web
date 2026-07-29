@@ -239,21 +239,6 @@
     "owner_cta": "submit your property",
     "read_full_standard": "read the full standard"
   },
-  "standaard": {
-    "label": "the standard",
-    "title": "what every moroww home includes.",
-    "subtitle": "every stay is the result of a system. not chance.",
-    "card_geur_titel": "scent",
-    "card_geur_tekst": "every home has its own sensory profile. it smells right on arrival. not by chance.",
-    "card_label_titel": "moroww label",
-    "card_label_tekst": "only homes that pass our inspection carry the label. no exceptions.",
-    "card_slot_titel": "smart lock",
-    "card_slot_tekst": "no key handover. no waiting. guests arrive at their own pace, via a personal code.",
-    "card_qr_titel": "guest page",
-    "card_qr_tekst": "a personal digital guide per home. wifi, house rules, local tips - all in one place via qr.",
-    "card_aankomst_titel": "arrival",
-    "card_aankomst_tekst": "a freshly made bed, selected care products and a clean slate on every arrival. the basics, flawless every time."
-  },
   "about": {
     "hero_h1_bold": "about moroww.",
     "hero_h1_light": "",

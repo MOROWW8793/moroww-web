@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { SCREENINGS_TOTAL, SCREENINGS_ACCEPTED } from '@/lib/screenings'
+import { SystemenGrid } from '@/components/sections/SystemenGrid'
 
 export async function generateMetadata({
   params,
@@ -153,18 +154,7 @@ export default async function DeStandaardPage({
             <p>{t('add_intro2')}</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-            {additions.map((a) => (
-              <div key={a.title} className="border-t border-white/15 pt-6">
-                <h3 className="text-white font-semibold mb-2" style={{ fontSize: 18 }}>
-                  {a.title}
-                </h3>
-                <p className="text-white/60 leading-relaxed" style={{ fontSize: 15 }}>
-                  {a.body}
-                </p>
-              </div>
-            ))}
-          </div>
+          <SystemenGrid items={additions} />
 
           <p className="text-white/80 italic mt-16 max-w-2xl leading-relaxed" style={{ fontSize: 17 }}>
             {t('add_closing')}

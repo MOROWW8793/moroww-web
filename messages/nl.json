@@ -239,21 +239,6 @@
     "owner_cta": "meld je woning aan",
     "read_full_standard": "lees de volledige standaard"
   },
-  "standaard": {
-    "label": "de standaard",
-    "title": "wat elke moroww-woning meebrengt.",
-    "subtitle": "elk verblijf is het resultaat van een systeem. niet van toeval.",
-    "card_geur_titel": "geur",
-    "card_geur_tekst": "elke woning heeft een eigen sensorisch profiel. bij aankomst ruikt het goed. niet toevallig.",
-    "card_label_titel": "moroww label",
-    "card_label_tekst": "alleen woningen die onze inspectie doorstaan dragen het label. geen uitzonderingen.",
-    "card_slot_titel": "slim slot",
-    "card_slot_tekst": "geen sleuteloverdracht. geen wachten. gasten komen aan op hun tempo, via een persoonlijke code.",
-    "card_qr_titel": "gastenpagina",
-    "card_qr_tekst": "een persoonlijke digitale gids per woning. wifi, huisregels, lokale tips - alles op één plek via qr.",
-    "card_aankomst_titel": "aankomst",
-    "card_aankomst_tekst": "vers opgemaakt bed, geselecteerde verzorgingsproducten en een schone lei bij elke aankomst. de basis, elke keer onberispelijk."
-  },
   "about": {
     "hero_h1_bold": "over moroww.",
     "hero_h1_light": "",
