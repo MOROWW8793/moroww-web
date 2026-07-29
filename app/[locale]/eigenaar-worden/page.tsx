@@ -5,7 +5,7 @@ import { FaqJsonLd } from "@/components/FaqJsonLd";
 import { EigenaarFaqJsonLd } from "@/components/EigenaarFaqJsonLd";
 
 export const metadata: Metadata = {
-  title: 'Vakantiewoning verhuren in België met kwaliteitslabel | moroww',
+  title: 'Vakantiewoning verhuren in België met kwaliteitslabel',
   description:
     'Verhuur je vakantiewoning aan de Belgische kust of in het Meetjesland via moroww. Geen beheerder. Jij beheert je eigen woning — wij installeren de technologie, bewaken de standaard en regelen de directe boekingen. Certified. Controlled. Yours.',
   keywords: [
