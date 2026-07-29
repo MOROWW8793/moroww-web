@@ -43,7 +43,7 @@ export default async function CollectiePage({
             className="text-xs font-medium uppercase tracking-widest px-4 py-2 rounded-full"
             style={{ background: "#CBD085", color: "#1A1A1A" }}
           >
-            the fields - Meetjesland
+            the fields
           </span>
         </div>
       </div>

@@ -93,7 +93,8 @@
     "cta_contact": "Neem contact op via info@moroww.com",
     "coming_soon": "binnenkort te boeken",
     "coming_soon_body": "deze woning is binnenkort beschikbaar via moroww.",
-    "vergunning_label": "vergunningsnummer"
+    "vergunning_label": "vergunningsnummer",
+    "waarom_label": "de standaard"
   },
   "not_found": {
     "label": "pagina niet gevonden",

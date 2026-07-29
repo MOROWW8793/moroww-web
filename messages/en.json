@@ -93,7 +93,8 @@
     "cta_contact": "Get in touch at info@moroww.com",
     "coming_soon": "coming soon",
     "coming_soon_body": "this home will be available soon via moroww.",
-    "vergunning_label": "licence number"
+    "vergunning_label": "licence number",
+    "waarom_label": "the standard"
   },
   "not_found": {
     "label": "page not found",

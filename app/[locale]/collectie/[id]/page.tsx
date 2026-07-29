@@ -42,9 +42,9 @@ const woningMeta: Record<string, { title: string; description: string; keywords:
     keywords: ['vakantiewoning Vlaamse Ardennen', 'vakantiewoning Elst', 'groepsaccommodatie Vlaamse Ardennen', 'vakantiewoning 18 personen België', 'moroww the fields', 'Sophora Elst'],
   },
   'lammersdamhoeve': {
-    title: 'De Lammersdamhoeve — vakantiewoning aan De Gulke Putten | moroww',
-    description: 'Hoeve aan de rand van natuurgebied De Gulke Putten. 220m², 4 slaapkamers, 2 badkamers, max 8 personen. Volledig omheinde tuin, huisdieren welkom zonder toeslag. Gecertificeerd door moroww. Vanaf €330/nacht.',
-    keywords: ['vakantiewoning De Gulke Putten', 'hoeve huren West-Vlaanderen', 'vakantiewoning met omheinde tuin', 'vakantiewoning honden welkom België', 'vakantiewoning Bulskampveld', 'moroww the fields', 'De Lammersdamhoeve'],
+    title: 'De Lammersdamhoeve — vakantiewoning Wingene, Brugse Ommeland | moroww',
+    description: 'Hoeve in Wingene, aan de rand van natuurgebied De Gulke Putten. 220m², 4 slaapkamers, 2 badkamers, max 8 personen. Volledig omheinde tuin, huisdieren welkom zonder toeslag. Gecertificeerd door moroww. Vanaf €330/nacht.',
+    keywords: ['vakantiewoning Wingene', 'vakantiewoning Brugse Ommeland', 'hoeve huren West-Vlaanderen', 'vakantiewoning De Gulke Putten', 'vakantiewoning met omheinde tuin', 'vakantiewoning honden welkom België', 'vakantiewoning Bulskampveld', 'moroww the fields', 'De Lammersdamhoeve'],
   },
 };
 
@@ -247,6 +247,31 @@ export default async function WoningDetailPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* ── waaromOpgenomen — stem van het label ── */}
+      {woning.waaromOpgenomen && (() => {
+        const raw = lw(woning.waaromOpgenomen, locale)
+        const [head, ...rest] = raw.split('\n\n')
+        return (
+          <section className="px-6 md:px-12 pb-16">
+            <div className="max-w-6xl mx-auto">
+              <div className="rounded-2xl p-8 md:p-12" style={{ background: '#1A1A1A' }}>
+                <p style={{ fontSize: 11, color: '#FEA05E', fontWeight: 600, letterSpacing: 2, textTransform: 'uppercase', marginBottom: 16 }}>
+                  {t('waarom_label')}
+                </p>
+                <h2 style={{ fontSize: 'clamp(24px, 3vw, 36px)', color: '#ffffff', fontWeight: 700, lineHeight: 1.2, marginBottom: 24 }}>
+                  {head}
+                </h2>
+                {rest.map((p, i) => (
+                  <p key={i} style={{ color: 'rgba(255,255,255,0.75)', fontSize: 16, lineHeight: 1.8, marginBottom: 16 }}>
+                    {p}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </section>
+        )
+      })()}
 
       {/* ── 4. BESCHRIJVING ── */}
       <section className="px-6 md:px-12 pb-16">

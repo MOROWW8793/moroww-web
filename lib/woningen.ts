@@ -35,6 +35,7 @@ export interface Woning {
   boekUrl: string
   comingSoon?: boolean
   vergunningsnummer?: string
+  waaromOpgenomen?: BilingualText
 }
 
 export const woningen: Woning[] = [
@@ -568,14 +569,14 @@ export const woningen: Woning[] = [
       '/images/woningen/sophora/sophora-54.jpg',
       '/images/woningen/sophora/sophora-55.jpg',
     ],
-    boekUrl: '[TODO: Guesty listing-id Sophora — vervangen door https://book.moroww.com/nl/properties/{id}?minOccupancy=1]',
+    boekUrl: 'https://book.moroww.com/nl/properties/6a14520e75302900153585ce?minOccupancy=1',
     comingSoon: false,
   },
   {
     id: 'lammersdamhoeve',
     naam: 'De Lammersdamhoeve',
     collectie: 'the fields',
-    locatie: '[TODO: gemeente + regio verifiëren — De Gulke Putten ligt in West-Vlaanderen, niet Meetjesland]',
+    locatie: 'Wingene, Brugse Ommeland',
     prijs: 330,
     slaapkamers: 4,
     badkamers: 2,
@@ -601,8 +602,8 @@ export const woningen: Woning[] = [
       en: 'Behind an old façade, this farmhouse has been carefully rebuilt. A light living space that opens into the kitchen, four bedrooms spread across the house, two bathrooms. The garden is fully enclosed, safe for children and dogs. Walking and cycling routes start at the front door.',
     },
     volledigeBeschrijving: {
-      nl: 'Achter de oude gevel is de hoeve helemaal opnieuw opgebouwd. De leefruimte is licht en loopt over in de keuken: plek om samen te komen, en plek om je terug te trekken zonder het huis te verlaten. De vier slaapkamers liggen verspreid over het huis, met twee badkamers.\n\nEén ding zeggen we liever voor je boekt dan erna. Twee van de slaapkamers liggen in elkaars verlengde: de kamer met het tweepersoonsbed bereik je via de kamer met de twee eenpersoonsbedden. Voor een gezin of voor vrienden die samen reizen werkt dat prima. Voor twee koppels is het goed om te weten.\n\nDe bedden zijn opgemaakt voor je aankomt en het bed- en badlinnen is inbegrepen. Je laat jezelf binnen met je eigen code. Er komt niemand langs, tenzij je erom vraagt — dan is er iemand bereikbaar en dichtbij.\n\nHet volledige huis en de tuin zijn van jou. De tuin is helemaal omheind, veilig voor kinderen en voor honden, met een terras voor trage ochtenden en lange avonden. De parking ligt op het domein: je komt aan en blijft waar je bent.\n\nHuisdieren zijn welkom, zonder toeslag. Stilte tussen tien uur \'s avonds en negen uur \'s ochtends. Dit is een huis om te vertragen, geen uitvalsbasis voor grote gezelschappen en geen feestlocatie.',
-      en: 'Behind the old façade, the farmhouse has been rebuilt from the ground up. The living space is light and flows into the kitchen: room to come together, and room to withdraw without leaving the house. The four bedrooms are spread across the house, with two bathrooms.\n\nOne thing we would rather tell you before you book than after. Two of the bedrooms run into one another: the room with the double bed is reached through the room with the two single beds. For a family or for friends travelling together this works fine. For two couples it is worth knowing.\n\nBeds are made up before you arrive and all bed and bath linen is included. You let yourself in with your own code. Nobody comes by unless you ask — and then someone is reachable and close.\n\nThe whole house and garden are yours. The garden is fully enclosed, safe for children and for dogs, with a terrace for slow mornings and long evenings. Parking is on the property: you arrive and you stay put.\n\nPets are welcome at no extra charge. Quiet hours from ten at night until nine in the morning. This is a house for slowing down — not a base for large groups, and not an event venue.',
+      nl: 'Achter de oude gevel is de hoeve helemaal opnieuw opgebouwd. De leefruimte is licht en loopt over in de keuken: plek om samen te komen, en plek om je terug te trekken zonder het huis te verlaten. De vier slaapkamers liggen verspreid over het huis, met twee badkamers. Er zijn twee aparte zitruimtes, wat bij acht gasten het verschil maakt tussen samen zijn en op elkaar zitten.\n\nEén ding zeggen we liever voor je boekt dan erna. Twee van de slaapkamers liggen in elkaars verlengde: de kamer met het tweepersoonsbed bereik je via de kamer met de twee eenpersoonsbedden. Voor een gezin of voor vrienden die samen reizen werkt dat prima. Voor twee koppels is het goed om te weten.\n\nDe bedden zijn opgemaakt voor je aankomt en het bed- en badlinnen is inbegrepen. Je laat jezelf binnen met je eigen code. Er komt niemand langs, tenzij je erom vraagt — dan is er iemand bereikbaar en dichtbij.\n\nHet volledige huis en de tuin zijn van jou. De tuin is helemaal omheind, veilig voor kinderen en voor honden, met een terras voor trage ochtenden en lange avonden. De parking ligt op het domein: je komt aan en blijft waar je bent.\n\nHuisdieren zijn welkom, zonder toeslag. Stilte tussen tien uur \'s avonds en negen uur \'s ochtends. Dit is een huis om te vertragen, geen uitvalsbasis voor grote gezelschappen en geen feestlocatie.',
+      en: 'Behind the old façade, the farmhouse has been rebuilt from the ground up. The living space is light and flows into the kitchen: room to come together, and room to withdraw without leaving the house. The four bedrooms are spread across the house, with two bathrooms. There are two separate sitting areas, which with eight guests is the difference between being together and being on top of one another.\n\nOne thing we would rather tell you before you book than after. Two of the bedrooms run into one another: the room with the double bed is reached through the room with the two single beds. For a family or for friends travelling together this works fine. For two couples it is worth knowing.\n\nBeds are made up before you arrive and all bed and bath linen is included. You let yourself in with your own code. Nobody comes by unless you ask — and then someone is reachable and close.\n\nThe whole house and garden are yours. The garden is fully enclosed, safe for children and for dogs, with a terrace for slow mornings and long evenings. Parking is on the property: you arrive and you stay put.\n\nPets are welcome at no extra charge. Quiet hours from ten at night until nine in the morning. This is a house for slowing down — not a base for large groups, and not an event venue.',
     },
     buurt: {
       nl: 'Het huis staat waar de landbouwgrond overgaat in bos, aan de rand van natuurgebied De Gulke Putten. Wandel- en fietsroutes vertrekken vanaf de voordeur, door de Vagevuurbossen en het Bulskampveld.\n\nHet is hier stil op de manier waarop alleen het platteland stil is. Het soort stilte waarin je je schouders voelt zakken.\n\nBrugge en Gent liggen allebei op een halfuur met de auto, voor de dagen dat je de stad opzoekt. De luchthaven Oostende-Brugge op veertig minuten. Met de auto ben je er het snelst, en verken je ook de streek.',
@@ -615,13 +616,32 @@ export const woningen: Woning[] = [
       { nl: 'Terras op de ochtendzon',           en: 'Terrace facing the morning sun' },
       { nl: 'Eigen parking op het domein',       en: 'Private parking on the property' },
     ],
+    waaromOpgenomen: {
+      nl: 'waarom dit huis de standaard haalde\n\nOm het uitzicht. Niet vanaf het terras, maar vanuit de woning zelf. De dakramen op de bovenverdieping staan zo laag dat je vanuit bed over de velden kijkt tot aan de bosrand. Dat is zeldzaam, en het is niet na te bouwen.\n\nOm wat er bewaard is gebleven. De volledige dakstructuur ligt open: donkere balken, eiken vloeren, deuren met smeedijzer. Achter een gerenoveerde gevel zit een huis dat zijn karakter niet heeft ingeruild voor gemak.\n\nEn om de honden. Ze mogen mee, zonder toeslag en zonder gedoe, in een tuin die volledig omheind is. Dat klinkt klein tot je één keer met een hond een vakantiewoning hebt gezocht.',
+      en: 'why this house met the standard\n\nFor the view. Not from the terrace, but from inside the house. The roof windows upstairs sit so low that you look out across the fields to the treeline from your bed. That is rare, and it cannot be built in later.\n\nFor what has been kept. The whole roof structure is exposed: dark beams, oak floors, doors with wrought iron. Behind a renovated façade is a house that did not trade its character for convenience.\n\nAnd for the dogs. They come along, no surcharge and no fuss, into a garden that is fully enclosed. That sounds like a small thing until you have looked for a holiday home with a dog.',
+    },
     inCheckin: '15:00',
     uitCheckin: '10:00',
-    heroFoto: '/images/gradient-hero.png',
+    heroFoto: '/images/woningen/lammersdamhoeve/lammersdamhoeve-01-leefruimte.jpg',
     fotos: [
-      '/images/gradient-hero.png',
+      '/images/woningen/lammersdamhoeve/lammersdamhoeve-01-leefruimte.jpg',
+      '/images/woningen/lammersdamhoeve/lammersdamhoeve-02-zicht-veld.jpg',
+      '/images/woningen/lammersdamhoeve/lammersdamhoeve-03-leefruimte-2.jpg',
+      '/images/woningen/lammersdamhoeve/lammersdamhoeve-04-eettafel.jpg',
+      '/images/woningen/lammersdamhoeve/lammersdamhoeve-05-zithoek.jpg',
+      '/images/woningen/lammersdamhoeve/lammersdamhoeve-06-overloop-zolder.jpg',
+      '/images/woningen/lammersdamhoeve/lammersdamhoeve-07-slaapkamer.jpg',
+      '/images/woningen/lammersdamhoeve/lammersdamhoeve-08-slaapkamer-doorloop.jpg',
+      '/images/woningen/lammersdamhoeve/lammersdamhoeve-09-badkamer.jpg',
+      '/images/woningen/lammersdamhoeve/lammersdamhoeve-10-badkamer-zolder.jpg',
+      '/images/woningen/lammersdamhoeve/lammersdamhoeve-11-overloop.jpg',
+      '/images/woningen/lammersdamhoeve/lammersdamhoeve-12-trap.jpg',
+      '/images/woningen/lammersdamhoeve/lammersdamhoeve-13-terras.jpg',
+      '/images/woningen/lammersdamhoeve/lammersdamhoeve-14-gevel.jpg',
+      '/images/woningen/lammersdamhoeve/lammersdamhoeve-15-omgeving-veld.jpg',
+      '/images/woningen/lammersdamhoeve/lammersdamhoeve-16-omgeving-knooppunt.jpg',
     ],
-    boekUrl: '[TODO: Guesty listing-id Lammersdamhoeve — vervangen door https://book.moroww.com/nl/properties/{id}?minOccupancy=1]',
+    boekUrl: 'https://book.moroww.com/nl/properties/6a3a3e76ebec11002bd6c298?minOccupancy=1',
   },
 ]
 
