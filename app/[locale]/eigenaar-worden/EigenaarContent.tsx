@@ -205,13 +205,13 @@ export function EigenaarContent() {
         </div>
       </section>
 
-      {/* ── SECTIE 6: BRENT & NOAM ── */}
+      {/* ── SECTIE 6: DE OPRICHTER ── */}
       <section className="grid grid-cols-1 md:grid-cols-2 min-h-[60vh]">
         {/* Foto links */}
         <div className="relative overflow-hidden min-h-[60vw] md:min-h-full">
           <Image
-            src="/images/over-founders.jpg"
-            alt="Brent en Noam"
+            src="/images/noam.jpg"
+            alt="Noam Landries, oprichter van moroww"
             fill
             className="object-cover object-[center_20%]"
             sizes="(max-width: 768px) 100vw, 50vw"
