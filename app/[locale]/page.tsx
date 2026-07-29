@@ -3,6 +3,7 @@ import { setRequestLocale } from "next-intl/server";
 import { Hero }            from "@/components/sections/Hero";
 import { WoningenGrid }    from "@/components/sections/WoningenGrid";
 import { StandaardDetail } from "@/components/sections/StandaardDetail";
+import { MorowwOsHome }    from "@/components/sections/MorowwOsHome";
 import { HostTeaser }      from "@/components/sections/HostTeaser";
 import { Reviews }         from "@/components/sections/Reviews";
 import { FaqJsonLd }       from "@/components/FaqJsonLd";
@@ -27,6 +28,7 @@ export default async function HomePage({
       <WoningenGrid />
       <Reviews />
       <StandaardDetail />
+      <MorowwOsHome />
       <HostTeaser />
       <FaqJsonLd />
     </>
