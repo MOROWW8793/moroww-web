@@ -4,7 +4,7 @@ import { Users, MapPin, Check, LogIn, LogOut } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { woningen, BADGE_STYLES, lw, lwArr, type Locale } from "@/lib/woningen";
 import { WoningGalerij } from "./WoningGalerij";
-import { VacationRentalJsonLd } from "@/components/JsonLd";
+import { VacationRentalJsonLd, BreadcrumbListJsonLd } from "@/components/JsonLd";
 
 interface Props { params: { locale: string; id: string } }
 
@@ -74,9 +74,19 @@ export default async function WoningDetailPage({ params }: Props) {
   if (!woning) notFound();
 
   const badge = BADGE_STYLES[woning.collectie];
+  const isNl = locale === 'nl'
+  const baseUrl = 'https://www.moroww.com'
+  const collectieUrl = isNl ? `${baseUrl}/collectie` : `${baseUrl}/en/collection`
+  const pandUrl = isNl ? `${baseUrl}/collectie/${woning.id}` : `${baseUrl}/en/collection/${woning.id}`
+  const breadcrumbs = [
+    { name: isNl ? 'Home' : 'Home', url: isNl ? baseUrl : `${baseUrl}/en` },
+    { name: isNl ? 'De Collectie' : 'The Collection', url: collectieUrl },
+    { name: woning.naam, url: pandUrl },
+  ]
 
   return (
     <div className="bg-moroww-blush min-h-screen">
+      <BreadcrumbListJsonLd items={breadcrumbs} />
       <VacationRentalJsonLd
         name={woning.naam}
         description={lw(woning.beschrijving, locale)}

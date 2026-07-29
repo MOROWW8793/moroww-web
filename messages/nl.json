@@ -135,6 +135,30 @@
     "cta_collection": "bekijk de collectie",
     "cta_home": "terug naar home"
   },
+  "theshore": {
+    "meta_title": "the shore — vakantiewoningen aan de Belgische kust | moroww",
+    "meta_description": "Twee moroww-woningen aan de Belgische kust: Nosso Logies in Heist-aan-Zee en The Sixteenth in Oostende. Beide gecertificeerd.",
+    "hero_label": "the shore",
+    "hero_h1": "waar het licht van het water komt.",
+    "hero_intro": "Twee woningen aan de Belgische kust, allebei op loopafstand van het strand en allebei ver genoeg van de drukte om er 's ochtends niets van te horen. De kust is geen seizoen. In februari is ze leger, stiller en scherper dan in juli, en dat is precies wanneer een huis het meest doet.",
+    "streek_p1": "Wat de kust met een verblijf doet, heeft weinig met het strand te maken. Het is het licht: laag, wit en veranderlijk, en het verandert elk uur van de dag hoe een woonkamer aanvoelt. Daarom kijken we bij een kustwoning eerst naar de ramen en pas daarna naar de afstand tot het water.",
+    "streek_p2": "De twee woningen in the shore liggen in Heist-aan-Zee en in Oostende. De eerste in een rustige straat achter de dijk, met een eigen koer. De tweede op de zestiende verdieping, met de zee aan de horizon en de stad onder je.",
+    "streek_p3": "Dat is een uitzondering op onze eigen regel, en we zeggen het liever zelf. De standaard vraagt een rustige ligging en geen drukke stadskern. Een appartement op zestien hoog in Oostende haalt die poort omdat de hoogte doet wat afstand elders doet: boven de zesde verdieping hoor je de stad niet meer. Wie zich daar niet in vindt, boekt beter in the fields.",
+    "streek_p4": "Het tussenseizoen is aan de kust ondergewaardeerd. Van januari tot maart is het er stil, het licht is op zijn mooist, en de restaurants die het hele jaar open zijn, zijn de goede.",
+    "cta_link": "lees de volledige standaard"
+  },
+  "thefields": {
+    "meta_title": "the fields — vakantiewoningen op het Vlaamse platteland | moroww",
+    "meta_description": "Vier moroww-woningen op het Vlaamse platteland: Meetjesland, Bulskampveld, Brugse Ommeland en Vlaamse Ardennen. Elk gecertificeerd.",
+    "hero_label": "the fields",
+    "hero_h1": "waar het veld ophoudt en het bos begint.",
+    "hero_intro": "Vier woningen op het Vlaamse platteland: in het Meetjesland, in het Bulskampveld, in het Brugse Ommeland en in de Vlaamse Ardennen. Wat ze delen is niet de streek maar de stilte — het soort stilte waarin je je schouders voelt zakken.",
+    "streek_p1": "Het platteland tussen Gent, Brugge en de Schelde is geen toeristische bestemming, en dat is precies waarom het werkt. Er is geen boulevard, geen seizoen en geen file. Er zijn velden die overgaan in bos, wandel- en fietsknooppunten die aan de voordeur beginnen, en dorpen waar de bakker om zeven uur opengaat.",
+    "streek_p2": "De vier woningen liggen verspreid. Chalet Anna-Helena in Ursel, aan de bosrand van het Meetjesland. The Cozy Relax Home in Beernem, met zwembad en hottub, tegen het Bulskampveld. De Lammersdamhoeve in Wingene, waar het Brugse Ommeland begint. En Sophora in Elst bij Brakel, in de heuvels van de Vlaamse Ardennen.",
+    "streek_p3": "Vier streken, één soort huis: ruim genoeg om met meer mensen te zijn zonder op elkaar te zitten, en stil genoeg om te merken dat je oren zich aanpassen. Alle vier hebben ze zicht op groen vanuit de leefruimte. Dat is geen toeval maar een van de vier poorten.",
+    "streek_p4": "Wie het tussenseizoen kent, boekt hier in november en in februari. Dan is het buiten kaal en binnen warm, en dat is de reden dat deze huizen bestaan.",
+    "cta_link": "lees de volledige standaard"
+  },
   "morowwos": {
     "meta_title": "moroww-os — het systeem dat het huis bestuurt | moroww",
     "meta_description": "moroww-os bestuurt het slot, het licht, de temperatuur, de muziek, de geur, de geluidsgrens en de lekdetectie. Eén systeem, per moroww-woning.",

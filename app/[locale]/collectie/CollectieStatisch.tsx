@@ -1,47 +1,45 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { BedDouble, Bath, Users } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 import { woningen, BADGE_STYLES, lwArr, type Locale } from "@/lib/woningen";
 
-type Filter = "Alles" | "the shore" | "the fields";
-
+// Filter-tabs zijn Link-elementen naar de collectiepagina's. /collectie
+// zelf toont altijd alle panden; klikken op 'the shore' of 'the fields'
+// gaat naar de dedicated collectiepagina met streektekst.
 export function CollectieStatisch() {
   const t = useTranslations('collectie')
   const locale = useLocale() as Locale
-  const [filter, setFilter] = useState<Filter>("Alles");
-
-  const gefilterd =
-    filter === "Alles" ? woningen : woningen.filter((w) => w.collectie === filter);
 
   return (
     <div>
-      {/* ── Filter tabs ── */}
+      {/* ── Filter tabs (nu links naar collectiepagina's) ── */}
       <div className="px-6 md:px-16 lg:px-24 py-8">
         <div className="flex flex-wrap gap-2">
-          {(["Alles", "the shore", "the fields"] as Filter[]).map((f) => (
-            <button
-              key={f}
-              onClick={() => setFilter(f)}
-              className={`rounded-full px-5 py-2 text-sm font-medium transition-colors duration-150 ${
-                filter === f
-                  ? "bg-moroww-black text-white"
-                  : "bg-white text-moroww-black/60 hover:text-moroww-black border border-moroww-brown/15"
-              }`}
-            >
-              {f === "Alles" ? t('filter_all') : f}
-            </button>
-          ))}
+          <span className="rounded-full px-5 py-2 text-sm font-medium bg-moroww-black text-white">
+            {t('filter_all')}
+          </span>
+          <Link
+            href="/the-shore"
+            className="rounded-full px-5 py-2 text-sm font-medium bg-white text-moroww-black/60 hover:text-moroww-black border border-moroww-brown/15 transition-colors duration-150"
+          >
+            the shore →
+          </Link>
+          <Link
+            href="/the-fields"
+            className="rounded-full px-5 py-2 text-sm font-medium bg-white text-moroww-black/60 hover:text-moroww-black border border-moroww-brown/15 transition-colors duration-150"
+          >
+            the fields →
+          </Link>
         </div>
       </div>
 
       {/* ── Woning kaarten ── */}
       <div className="px-6 md:px-16 lg:px-24 pb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {gefilterd.map((w) => (
+          {woningen.map((w) => (
             <Link
               key={w.id}
               href={`/collectie/${w.id}`}

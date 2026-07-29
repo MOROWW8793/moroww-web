@@ -4,6 +4,8 @@ export type NavHref =
   | '/over-moroww'
   | '/de-standaard'
   | '/moroww-os'
+  | '/the-shore'
+  | '/the-fields'
   | '/eigenaar-worden'
   | '/partners'
   | '/contact'

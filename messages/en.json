@@ -135,6 +135,30 @@
     "cta_collection": "view the collection",
     "cta_home": "back to home"
   },
+  "theshore": {
+    "meta_title": "the shore — holiday homes on the Belgian coast | moroww",
+    "meta_description": "Two moroww homes on the Belgian coast: Nosso Logies in Heist-aan-Zee and The Sixteenth in Ostend. Both certified.",
+    "hero_label": "the shore",
+    "hero_h1": "where the light comes off the water.",
+    "hero_intro": "Two houses on the Belgian coast, both within walking distance of the beach and both far enough from the crowds that you hear none of it in the morning. The coast is not a season. In February it is emptier, quieter and sharper than in July, and that is exactly when a house does the most.",
+    "streek_p1": "What the coast does to a stay has little to do with the beach. It is the light: low, white and changeable, and it alters how a living room feels from one hour to the next. That is why, in a coastal house, we look at the windows before we look at the distance to the water.",
+    "streek_p2": "The two houses in the shore are in Heist-aan-Zee and in Ostend. The first on a quiet street behind the dyke, with its own courtyard. The second on the sixteenth floor, with the sea on the horizon and the city below you.",
+    "streek_p3": "That is an exception to our own rule, and we would rather say so ourselves. The standard asks for a quiet setting and no busy city centre. A flat sixteen floors up in Ostend passes that gate because the height does what distance does elsewhere: above the sixth floor you no longer hear the city. Anyone who is not convinced by that is better off booking in the fields.",
+    "streek_p4": "The shoulder season is underrated on the coast. From January to March it is quiet, the light is at its best, and the restaurants that stay open all year are the good ones.",
+    "cta_link": "read the full standard"
+  },
+  "thefields": {
+    "meta_title": "the fields — holiday homes in the Flemish countryside | moroww",
+    "meta_description": "Four moroww homes in the Flemish countryside: Meetjesland, Bulskampveld, Bruges hinterland and the Flemish Ardennes. Each certified.",
+    "hero_label": "the fields",
+    "hero_h1": "where the fields end and the forest begins.",
+    "hero_intro": "Four houses in the Flemish countryside: in the Meetjesland, the Bulskampveld, the Bruges hinterland and the Flemish Ardennes. What they share is not the region but the quiet — the kind of quiet in which you feel your shoulders drop.",
+    "streek_p1": "The countryside between Ghent, Bruges and the Scheldt is not a tourist destination, and that is precisely why it works. There is no promenade, no season and no traffic. There are fields that turn into woodland, walking and cycling routes that begin at the front door, and villages where the baker opens at seven.",
+    "streek_p2": "The four houses are spread out. Chalet Anna-Helena in Ursel, on the edge of the woods in the Meetjesland. The Cozy Relax Home in Beernem, with a pool and hot tub, against the Bulskampveld. De Lammersdamhoeve in Wingene, where the Bruges hinterland begins. And Sophora in Elst near Brakel, in the hills of the Flemish Ardennes.",
+    "streek_p3": "Four regions, one kind of house: large enough to be together without being on top of one another, and quiet enough that you notice your ears adjusting. All four have a view of green from the living space. That is not chance but one of the four gates.",
+    "streek_p4": "Those who know the shoulder season book here in November and in February. Outside it is bare and inside it is warm, and that is the reason these houses exist.",
+    "cta_link": "read the full standard"
+  },
   "morowwos": {
     "meta_title": "moroww-os — the system that runs the house | moroww",
     "meta_description": "moroww-os runs the lock, the light, the temperature, the music, the scent, the noise limit and leak detection. One system, per moroww home.",

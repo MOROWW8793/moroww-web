@@ -45,6 +45,34 @@ export function OrganizationJsonLd() {
   )
 }
 
+/**
+ * BreadcrumbList JSON-LD voor pandpagina's. Toont Home > Collectie > Naam.
+ * Gebruikt de canonical URL (dus zonder locale-prefix voor NL, met /en voor EN).
+ */
+export function BreadcrumbListJsonLd({
+  items,
+}: {
+  items: Array<{ name: string; url: string }>
+}) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: items.map((item, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            name: item.name,
+            item: item.url,
+          })),
+        }),
+      }}
+    />
+  )
+}
+
 export function VacationRentalJsonLd({
   name,
   description,

@@ -22,6 +22,15 @@ export const routing = defineRouting({
       nl: '/de-standaard',
       en: '/the-standard',
     },
+    // Collectiepagina's — namen zijn al Engels, dus zelfde pad in beide talen
+    '/the-shore': {
+      nl: '/the-shore',
+      en: '/the-shore',
+    },
+    '/the-fields': {
+      nl: '/the-fields',
+      en: '/the-fields',
+    },
     '/moroww-os': {
       nl: '/moroww-os',
       en: '/moroww-os',
