@@ -133,7 +133,7 @@ export const woningen: Woning[] = [
   },
 
   {
-    id: 'ann-helena-ursel',
+    id: 'anna-helena-ursel',
     naam: 'Chalet Anna-Helena',
     collectie: 'the fields',
     locatie: 'Ursel, Meetjesland',

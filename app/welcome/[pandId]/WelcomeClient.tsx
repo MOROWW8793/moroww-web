@@ -20,7 +20,7 @@ const LANG_LABELS: Record<Lang, string> = { nl: 'NL', fr: 'FR', en: 'EN' }
 
 const BOEK_URLS: Record<string, string> = {
   'nosso-knokke':       'https://book.moroww.com/nl/properties/698c63ff3d9a2d0013fefd72?minOccupancy=1',
-  'ann-helena-ursel':   'https://book.moroww.com/nl/properties/696b49bf47f69b0013026516?minOccupancy=1',
+  'anna-helena-ursel':  'https://book.moroww.com/nl/properties/696b49bf47f69b0013026516?minOccupancy=1',
   'moroww-oostende':    'https://book.moroww.com/nl/properties/695140859e91eb0014db3eb1?minOccupancy=1',
   'cozy-relax-beernem': 'https://book.moroww.com/nl/properties/690781db69d1700012bf6dd3?minOccupancy=1',
 }

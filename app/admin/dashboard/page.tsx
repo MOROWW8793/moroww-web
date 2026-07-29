@@ -7,7 +7,7 @@ import QRCode from 'qrcode'
 
 const PANDEN = [
   { id: 'nosso-knokke',       naam: 'Nosso Logies' },
-  { id: 'ann-helena-ursel',   naam: 'Chalet Anna-Helena' },
+  { id: 'anna-helena-ursel',  naam: 'Chalet Anna-Helena' },
   { id: 'moroww-oostende',    naam: 'The Sixteenth' },
   { id: 'cozy-relax-beernem', naam: 'The Cozy Relax Home' },
 ]

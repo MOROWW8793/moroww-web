@@ -28,6 +28,10 @@ const nextConfig = {
       { source: "/en/eigenaar-worden", destination: "/eigenaar-worden", permanent: true },
       { source: "/en/vergelijking", destination: "/vergelijking", permanent: true },
       { source: "/en/privacy", destination: "/privacy", permanent: true },
+      // Slug-fix Anna-Helena: oude URL bewaart permanent 301 → nieuwe URL.
+      { source: "/collectie/ann-helena-ursel", destination: "/collectie/anna-helena-ursel", permanent: true },
+      { source: "/en/collection/ann-helena-ursel", destination: "/en/collection/anna-helena-ursel", permanent: true },
+      { source: "/welcome/ann-helena-ursel", destination: "/welcome/anna-helena-ursel", permanent: true },
     ]
   },
 }
