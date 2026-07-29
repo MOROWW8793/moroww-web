@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
+import { OrchestrationLoop } from '@/components/sections/OrchestrationLoop'
 
 export async function generateMetadata({
   params,
@@ -84,7 +85,11 @@ export default async function MorowwOsPage({
             {t('loop_intro')}
           </p>
 
-          <ol className="space-y-0">
+          {/* Desktop: cirkel-visualisatie via CSS-keyframes */}
+          <OrchestrationLoop />
+
+          {/* Mobiel: bestaande genummerde lijst — 940px cirkel past niet op telefoon */}
+          <ol className="md:hidden space-y-0">
             {loop.map((step, i) => (
               <li
                 key={step.n}

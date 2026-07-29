@@ -129,3 +129,68 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* ── Orchestration loop (components/sections/OrchestrationLoop.tsx) ──
+   Cirkel met 7 nodes; een pulserende tick loopt in var(--dur) rond de ring
+   en 'verlicht' elke node bij passage. Alles via CSS-keyframes en SVG. */
+.orchestration-loop { color: #fff; }
+.ol-stage { position: relative; width: 940px; height: 940px; margin: 26px auto 0; }
+.ol-ring { position: absolute; inset: 0; overflow: visible; }
+.ol-glow {
+  position: absolute; left: 50%; top: 50%; width: 600px; height: 600px;
+  margin: -300px 0 0 -300px; border-radius: 50%;
+  background: conic-gradient(from 0deg, rgba(254,160,94,0) 0deg, rgba(254,160,94,.26) 55deg, rgba(250,228,214,.13) 130deg, rgba(254,160,94,0) 230deg);
+  filter: blur(30px); animation: ol-spin var(--dur) linear infinite;
+}
+@keyframes ol-spin { to { transform: rotate(360deg); } }
+
+.ol-hub {
+  position: absolute; left: 50%; top: 50%; width: 300px; height: 300px;
+  margin: -150px 0 0 -150px; border-radius: 50%; overflow: hidden;
+  background: #1A1A1A;
+  box-shadow: 0 0 0 1px rgba(254,160,94,.30), 0 0 0 18px rgba(26,26,26,.94), 0 30px 70px rgba(0,0,0,.55);
+}
+.ol-hub-veil { position: absolute; inset: 0; background: radial-gradient(circle at 50% 45%, rgba(26,26,26,.28), rgba(26,26,26,.88)); }
+.ol-hub-txt { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 42px; }
+.ol-hub-k { font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: #FEA05E; font-weight: 600; }
+.ol-hub-b { font-size: 23px; font-weight: 600; line-height: 1.18; margin-top: 10px; color: #fff; }
+.ol-hub-live { margin-top: 14px; display: inline-flex; align-items: center; gap: 7px; font-size: 11px; color: rgba(255,255,255,.72); }
+.ol-hub-live i { width: 6px; height: 6px; border-radius: 50%; background: #CBD085; animation: ol-pulse 2.6s ease-in-out infinite; }
+@keyframes ol-pulse { 0%,100% { opacity: .35; transform: scale(.85); } 50% { opacity: 1; transform: scale(1.15); } }
+
+.ol-node { position: absolute; width: 216px; margin-left: -108px; text-align: center; }
+.ol-blob {
+  width: 54px; height: 54px; margin: 0 auto 13px; position: relative;
+  background: rgba(254,160,94,.07); border: 1px solid rgba(254,160,94,.28);
+  border-radius: 58% 42% 46% 54% / 52% 48% 52% 48%;
+  display: flex; align-items: center; justify-content: center;
+  animation: ol-lite var(--dur) linear infinite;
+}
+.ol-blob svg {
+  width: 23px; height: 23px; stroke: rgba(254,160,94,.62); fill: none;
+  stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+  animation: ol-lite-icon var(--dur) linear infinite;
+}
+@keyframes ol-lite {
+  0% { background: rgba(254,160,94,.30); border-color: rgba(254,160,94,1); box-shadow: 0 0 34px rgba(254,160,94,.42); }
+  6% { background: rgba(254,160,94,.30); border-color: rgba(254,160,94,1); box-shadow: 0 0 34px rgba(254,160,94,.42); }
+  18%,100% { background: rgba(254,160,94,.07); border-color: rgba(254,160,94,.28); box-shadow: 0 0 0 rgba(254,160,94,0); }
+}
+@keyframes ol-lite-icon { 0%,6% { stroke: #FEA05E; } 18%,100% { stroke: rgba(254,160,94,.62); } }
+
+.ol-n { font-size: 10px; letter-spacing: .18em; color: rgba(254,160,94,.55); font-weight: 600; display: block; margin-bottom: 5px; animation: ol-lite-n var(--dur) linear infinite; }
+@keyframes ol-lite-n { 0%,6% { color: #FEA05E; } 18%,100% { color: rgba(254,160,94,.55); } }
+.ol-t { font-size: 15px; font-weight: 600; line-height: 1.28; color: rgba(255,255,255,.72); animation: ol-lite-t var(--dur) linear infinite; }
+@keyframes ol-lite-t { 0%,6% { color: #fff; } 18%,100% { color: rgba(255,255,255,.72); } }
+.ol-w { font-size: 11.5px; color: #8F8880; margin-top: 5px; }
+.ol-tick { animation: ol-lite-tick var(--dur) linear infinite; }
+@keyframes ol-lite-tick { 0%,6% { fill: #FEA05E; r: 6; } 18%,100% { fill: #5A4A3E; r: 4; } }
+
+/* Reduced motion — statische ring met alle nodes verlicht. */
+@media (prefers-reduced-motion: reduce) {
+  .ol-glow, .ol-blob, .ol-blob svg, .ol-n, .ol-t, .ol-tick, .ol-hub-live i { animation: none; }
+  .ol-blob { background: rgba(254,160,94,.14); border-color: rgba(254,160,94,.5); }
+  .ol-blob svg { stroke: #FEA05E; }
+  .ol-n { color: #FEA05E; } .ol-t { color: #fff; }
+  .ol-tick { fill: #FEA05E; r: 6; }
+}
