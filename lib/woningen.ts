@@ -1,6 +1,12 @@
 export type Locale = 'nl' | 'en'
 export type BilingualText = { nl: string; en: string }
 
+// Curatie-grens: gecureerde selectie, geen export. De huisstijl zegt
+// letterlijk 'witruimte is je beste vriend, less is more'. Meer dan
+// MAX_PHOTOS_PER_PAND in de fotos-array wordt runtime afgekapt met een
+// console-warning; update de source om die warning te verhelpen.
+export const MAX_PHOTOS_PER_PAND = 30
+
 export function lw(field: BilingualText | string, locale: Locale): string {
   if (typeof field === 'string') return field
   return field[locale] ?? field.nl
@@ -44,7 +50,7 @@ export interface Woning {
   amenities?: string[]
 }
 
-export const woningen: Woning[] = [
+const _woningenRaw: Woning[] = [
   {
     id: 'nosso-knokke',
     naam: 'Nosso Logies',
@@ -225,53 +231,6 @@ export const woningen: Woning[] = [
       '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-28.jpg',
       '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-29.jpg',
       '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-30.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-31.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-32.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-33.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-34.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-35.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-36.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-37.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-38.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-39.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-40.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-41.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-42.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-43.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-44.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-45.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-46.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-47.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-48.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-49.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-50.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-51.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-52.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-53.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-54.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-55.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-56.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-57.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-58.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-59.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-60.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-61.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-62.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-63.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-65.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-66.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-67.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-68.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-69.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-70.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-71.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-72.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-73.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-74.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-75.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-76.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-77.jpg',
-      '/images/woningen/ursel-new/Bogaertstraat 17 Ursel.jpg',
     ],
     boekUrl: 'https://book.moroww.com/nl/properties/696b49bf47f69b0013026516?minOccupancy=1',
     amenities: ['Smart lock', 'Wifi', 'Eigen parking'],
@@ -370,7 +329,6 @@ export const woningen: Woning[] = [
       '/images/woningen/oostende-new/7d7c1ad0-bb8f-11f0-bfcf-d3b5274c33c6 kopie.jpg',
       '/images/woningen/oostende-new/7dcb6240-bb8f-11f0-9ad0-9bcd69b0f19a kopie.jpg',
       '/images/woningen/oostende-new/7e137780-bb8f-11f0-8c99-0f32b66097ed kopie.jpg',
-      '/images/woningen/oostende-new/7e555070-bb8f-11f0-a651-4d0627bd5d38 kopie.jpg',
     ],
     boekUrl: 'https://book.moroww.com/nl/properties/695140859e91eb0014db3eb1?minOccupancy=1',
     amenities: ['Smart lock', 'Wifi', 'Eigen parking'],
@@ -469,9 +427,6 @@ export const woningen: Woning[] = [
       '/images/woningen/beernem-new/WhatsApp Image 2025-11-02 at 14.18.19 (4).jpeg',
       '/images/woningen/beernem-new/WhatsApp Image 2025-11-02 at 14.18.19 (5).jpeg',
       '/images/woningen/beernem-new/WhatsApp Image 2025-11-02 at 14.18.19 (6).jpeg',
-      '/images/woningen/beernem-new/WhatsApp Image 2025-11-02 at 14.18.19 (7).jpeg',
-      '/images/woningen/beernem-new/WhatsApp Image 2025-11-02 at 14.18.19 (8).jpeg',
-      '/images/woningen/beernem-new/WhatsApp Image 2025-11-02 at 14.18.19 (9).jpeg',
     ],
     boekUrl: 'https://book.moroww.com/nl/properties/690781db69d1700012bf6dd3?minOccupancy=1',
     amenities: ['Smart lock', 'Wifi', 'Eigen parking'],
@@ -553,31 +508,6 @@ export const woningen: Woning[] = [
       '/images/woningen/sophora/sophora-28.jpg',
       '/images/woningen/sophora/sophora-29.jpg',
       '/images/woningen/sophora/sophora-30.jpg',
-      '/images/woningen/sophora/sophora-31.jpg',
-      '/images/woningen/sophora/sophora-32.jpg',
-      '/images/woningen/sophora/sophora-33.jpg',
-      '/images/woningen/sophora/sophora-34.jpg',
-      '/images/woningen/sophora/sophora-35.jpg',
-      '/images/woningen/sophora/sophora-36.jpg',
-      '/images/woningen/sophora/sophora-37.jpg',
-      '/images/woningen/sophora/sophora-38.jpg',
-      '/images/woningen/sophora/sophora-39.jpg',
-      '/images/woningen/sophora/sophora-40.jpg',
-      '/images/woningen/sophora/sophora-41.jpg',
-      '/images/woningen/sophora/sophora-42.jpg',
-      '/images/woningen/sophora/sophora-43.jpg',
-      '/images/woningen/sophora/sophora-44.jpg',
-      '/images/woningen/sophora/sophora-45.jpg',
-      '/images/woningen/sophora/sophora-46.jpg',
-      '/images/woningen/sophora/sophora-47.jpg',
-      '/images/woningen/sophora/sophora-48.jpg',
-      '/images/woningen/sophora/sophora-49.jpg',
-      '/images/woningen/sophora/sophora-50.jpg',
-      '/images/woningen/sophora/sophora-51.jpg',
-      '/images/woningen/sophora/sophora-52.jpg',
-      '/images/woningen/sophora/sophora-53.jpg',
-      '/images/woningen/sophora/sophora-54.jpg',
-      '/images/woningen/sophora/sophora-55.jpg',
     ],
     boekUrl: 'https://book.moroww.com/nl/properties/6a14520e75302900153585ce?minOccupancy=1',
     comingSoon: false,
@@ -655,6 +585,19 @@ export const woningen: Woning[] = [
     amenities: ['Smart lock', 'Wifi', 'Eigen parking'],
   },
 ]
+
+// Runtime-validatie: kap fotos-array af naar MAX_PHOTOS_PER_PAND met een
+// warning. Voorkomt dat 31+ foto's er ongemerkt in glippen bij een volgend pand.
+export const woningen: Woning[] = _woningenRaw.map((w) => {
+  if (w.fotos.length > MAX_PHOTOS_PER_PAND) {
+    console.warn(
+      `[woningen] "${w.id}": ${w.fotos.length} fotos ingesteld, afgekapt naar ${MAX_PHOTOS_PER_PAND}. ` +
+      `Update de source om deze warning te verhelpen.`
+    )
+    return { ...w, fotos: w.fotos.slice(0, MAX_PHOTOS_PER_PAND) }
+  }
+  return w
+})
 
 export const BADGE_STYLES: Record<Woning['collectie'], { bg: string; color: string }> = {
   'the shore': { bg: '#EEBC9D', color: '#1A1A1A' },
