@@ -12,7 +12,7 @@
     "hero": "een nieuwe standaard voor verblijven.",
     "from": "Vanaf",
     "collection_label": "de collectie",
-    "collection_title": "vier woningen. twee collecties. één standaard.",
+    "collection_title": "zes woningen. twee collecties. één standaard.",
     "view_book": "Bekijk & boek",
     "per_night": "/ nacht",
     "guests": "gasten",
@@ -52,7 +52,7 @@
   "collectie": {
     "label": "Gecureerde selectie",
     "title": "de collectie",
-    "subtitle": "Vier woningen. Twee collecties. Één standaard.",
+    "subtitle": "Zes woningen. Twee collecties. Één standaard.",
     "filter_all": "Alles",
     "bedrooms": "slk.",
     "bathrooms": "badk.",
@@ -92,7 +92,8 @@
     "cta_questions": "Vragen?",
     "cta_contact": "Neem contact op via info@moroww.com",
     "coming_soon": "binnenkort te boeken",
-    "coming_soon_body": "deze woning is binnenkort beschikbaar via moroww."
+    "coming_soon_body": "deze woning is binnenkort beschikbaar via moroww.",
+    "vergunning_label": "vergunningsnummer"
   },
   "not_found": {
     "label": "pagina niet gevonden",

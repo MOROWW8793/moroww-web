@@ -12,7 +12,7 @@
     "hero": "a new standard for every stay.",
     "from": "From",
     "collection_label": "the collection",
-    "collection_title": "four homes. two collections. one standard.",
+    "collection_title": "six homes. two collections. one standard.",
     "view_book": "View & book",
     "per_night": "/ night",
     "guests": "guests",
@@ -52,7 +52,7 @@
   "collectie": {
     "label": "Curated selection",
     "title": "the collection",
-    "subtitle": "Four homes. Two collections. One standard.",
+    "subtitle": "Six homes. Two collections. One standard.",
     "filter_all": "All",
     "bedrooms": "bed.",
     "bathrooms": "bath.",
@@ -92,7 +92,8 @@
     "cta_questions": "Questions?",
     "cta_contact": "Get in touch at info@moroww.com",
     "coming_soon": "coming soon",
-    "coming_soon_body": "this home will be available soon via moroww."
+    "coming_soon_body": "this home will be available soon via moroww.",
+    "vergunning_label": "licence number"
   },
   "not_found": {
     "label": "page not found",

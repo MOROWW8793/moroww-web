@@ -34,6 +34,7 @@ export interface Woning {
   fotos: string[]
   boekUrl: string
   comingSoon?: boolean
+  vergunningsnummer?: string
 }
 
 export const woningen: Woning[] = [
@@ -567,8 +568,60 @@ export const woningen: Woning[] = [
       '/images/woningen/sophora/sophora-54.jpg',
       '/images/woningen/sophora/sophora-55.jpg',
     ],
-    boekUrl: '',
-    comingSoon: true,
+    boekUrl: '[TODO: Guesty listing-id Sophora — vervangen door https://book.moroww.com/nl/properties/{id}?minOccupancy=1]',
+    comingSoon: false,
+  },
+  {
+    id: 'lammersdamhoeve',
+    naam: 'De Lammersdamhoeve',
+    collectie: 'the fields',
+    locatie: '[TODO: gemeente + regio verifiëren — De Gulke Putten ligt in West-Vlaanderen, niet Meetjesland]',
+    prijs: 330,
+    slaapkamers: 4,
+    badkamers: 2,
+    maxGasten: 8,
+    oppervlakte: '220m²',
+    vergunningsnummer: '387650',
+    tags: [
+      { nl: 'the fields',            en: 'the fields' },
+      { nl: 'natuur',                en: 'nature' },
+      { nl: 'gezinnen',              en: 'families' },
+      { nl: 'huisdieren welkom',     en: 'pets welcome' },
+    ],
+    slogan: {
+      nl: 'waar het veld ophoudt en het bos begint.',
+      en: 'where the fields end and the forest begins.',
+    },
+    introductie: {
+      nl: 'Een hoeve aan de rand van natuurgebied De Gulke Putten, waar de open velden overgaan in bos. Vier slaapkamers, een volledig omheinde tuin, en een terras dat de ochtendzon vangt. Buiten is er het bos en het geluid ervan. Binnen ligt alles klaar.',
+      en: 'A farmhouse on the edge of the De Gulke Putten nature reserve, where open fields give way to woodland. Four bedrooms, a fully enclosed garden, and a terrace that catches the morning sun. Outside there is the forest and the sound of it. Inside, everything is ready.',
+    },
+    beschrijving: {
+      nl: 'Achter een oude gevel is deze hoeve met zorg opnieuw opgebouwd. Een lichte leefruimte die overloopt in de keuken, vier slaapkamers verspreid over het huis, twee badkamers. De tuin is volledig omheind, veilig voor kinderen en honden. Wandel- en fietsroutes vertrekken aan de voordeur.',
+      en: 'Behind an old façade, this farmhouse has been carefully rebuilt. A light living space that opens into the kitchen, four bedrooms spread across the house, two bathrooms. The garden is fully enclosed, safe for children and dogs. Walking and cycling routes start at the front door.',
+    },
+    volledigeBeschrijving: {
+      nl: 'Achter de oude gevel is de hoeve helemaal opnieuw opgebouwd. De leefruimte is licht en loopt over in de keuken: plek om samen te komen, en plek om je terug te trekken zonder het huis te verlaten. De vier slaapkamers liggen verspreid over het huis, met twee badkamers.\n\nEén ding zeggen we liever voor je boekt dan erna. Twee van de slaapkamers liggen in elkaars verlengde: de kamer met het tweepersoonsbed bereik je via de kamer met de twee eenpersoonsbedden. Voor een gezin of voor vrienden die samen reizen werkt dat prima. Voor twee koppels is het goed om te weten.\n\nDe bedden zijn opgemaakt voor je aankomt en het bed- en badlinnen is inbegrepen. Je laat jezelf binnen met je eigen code. Er komt niemand langs, tenzij je erom vraagt — dan is er iemand bereikbaar en dichtbij.\n\nHet volledige huis en de tuin zijn van jou. De tuin is helemaal omheind, veilig voor kinderen en voor honden, met een terras voor trage ochtenden en lange avonden. De parking ligt op het domein: je komt aan en blijft waar je bent.\n\nHuisdieren zijn welkom, zonder toeslag. Stilte tussen tien uur \'s avonds en negen uur \'s ochtends. Dit is een huis om te vertragen, geen uitvalsbasis voor grote gezelschappen en geen feestlocatie.',
+      en: 'Behind the old façade, the farmhouse has been rebuilt from the ground up. The living space is light and flows into the kitchen: room to come together, and room to withdraw without leaving the house. The four bedrooms are spread across the house, with two bathrooms.\n\nOne thing we would rather tell you before you book than after. Two of the bedrooms run into one another: the room with the double bed is reached through the room with the two single beds. For a family or for friends travelling together this works fine. For two couples it is worth knowing.\n\nBeds are made up before you arrive and all bed and bath linen is included. You let yourself in with your own code. Nobody comes by unless you ask — and then someone is reachable and close.\n\nThe whole house and garden are yours. The garden is fully enclosed, safe for children and for dogs, with a terrace for slow mornings and long evenings. Parking is on the property: you arrive and you stay put.\n\nPets are welcome at no extra charge. Quiet hours from ten at night until nine in the morning. This is a house for slowing down — not a base for large groups, and not an event venue.',
+    },
+    buurt: {
+      nl: 'Het huis staat waar de landbouwgrond overgaat in bos, aan de rand van natuurgebied De Gulke Putten. Wandel- en fietsroutes vertrekken vanaf de voordeur, door de Vagevuurbossen en het Bulskampveld.\n\nHet is hier stil op de manier waarop alleen het platteland stil is. Het soort stilte waarin je je schouders voelt zakken.\n\nBrugge en Gent liggen allebei op een halfuur met de auto, voor de dagen dat je de stad opzoekt. De luchthaven Oostende-Brugge op veertig minuten. Met de auto ben je er het snelst, en verken je ook de streek.',
+      en: 'The house sits where farmland turns into forest, on the edge of the De Gulke Putten nature reserve. Walking and cycling routes start at the front door, through the Vagevuurbossen and the Bulskampveld.\n\nIt is quiet here in the way only the countryside is quiet. The kind of quiet in which you feel your shoulders drop.\n\nBruges and Ghent are both about half an hour by car, for the days you want a city. Ostend-Bruges airport is forty minutes. A car is the easiest way to reach the house and to explore the region.',
+    },
+    hoogtepunten: [
+      { nl: 'Aan de rand van het bos',           en: 'On the edge of the forest' },
+      { nl: 'Volledig omheinde tuin',            en: 'Fully enclosed garden' },
+      { nl: 'Honden welkom, zonder toeslag',     en: 'Dogs welcome, no surcharge' },
+      { nl: 'Terras op de ochtendzon',           en: 'Terrace facing the morning sun' },
+      { nl: 'Eigen parking op het domein',       en: 'Private parking on the property' },
+    ],
+    inCheckin: '15:00',
+    uitCheckin: '10:00',
+    heroFoto: '/images/gradient-hero.png',
+    fotos: [
+      '/images/gradient-hero.png',
+    ],
+    boekUrl: '[TODO: Guesty listing-id Lammersdamhoeve — vervangen door https://book.moroww.com/nl/properties/{id}?minOccupancy=1]',
   },
 ]
 

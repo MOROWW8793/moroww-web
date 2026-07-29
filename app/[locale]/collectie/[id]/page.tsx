@@ -38,8 +38,13 @@ const woningMeta: Record<string, { title: string; description: string; keywords:
   },
   'sophora': {
     title: 'Sophora — vakantiewoning Elst, Vlaamse Ardennen | moroww',
-    description: 'Een familiehuis in het hart van Elst, gedragen door drie zussen. 9 slaapkamers elk met eigen badkamer, zwembad, sauna en tuin. Max 18 personen. Binnenkort te boeken via moroww.',
+    description: 'Een familiehuis in het hart van Elst, gedragen door drie zussen. 9 slaapkamers elk met eigen badkamer, zwembad, sauna en tuin. Max 18 personen. Gecertificeerd door moroww.',
     keywords: ['vakantiewoning Vlaamse Ardennen', 'vakantiewoning Elst', 'groepsaccommodatie Vlaamse Ardennen', 'vakantiewoning 18 personen België', 'moroww the fields', 'Sophora Elst'],
+  },
+  'lammersdamhoeve': {
+    title: 'De Lammersdamhoeve — vakantiewoning aan De Gulke Putten | moroww',
+    description: 'Hoeve aan de rand van natuurgebied De Gulke Putten. 220m², 4 slaapkamers, 2 badkamers, max 8 personen. Volledig omheinde tuin, huisdieren welkom zonder toeslag. Gecertificeerd door moroww. Vanaf €330/nacht.',
+    keywords: ['vakantiewoning De Gulke Putten', 'hoeve huren West-Vlaanderen', 'vakantiewoning met omheinde tuin', 'vakantiewoning honden welkom België', 'vakantiewoning Bulskampveld', 'moroww the fields', 'De Lammersdamhoeve'],
   },
 };
 
@@ -304,6 +309,19 @@ export default async function WoningDetailPage({ params }: Props) {
                   <p style={{ fontSize: 15, color: '#1A1A1A' }}>{tag}</p>
                 </div>
               ))}
+              {woning.vergunningsnummer && (
+                <div className="flex items-center gap-4 rounded-2xl p-5"
+                  style={{ background: '#FFFFFF', border: '1px solid #E8D5C4' }}>
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+                    style={{ background: '#FEA05E' }}>
+                    <Check size={16} style={{ color: '#fff' }} />
+                  </div>
+                  <div>
+                    <p style={{ fontSize: 11, color: '#C08D6E', textTransform: 'uppercase', letterSpacing: 1.5, fontWeight: 600, marginBottom: 2 }}>{t('vergunning_label')}</p>
+                    <p style={{ fontSize: 16, color: '#1A1A1A', fontWeight: 600 }}>{woning.vergunningsnummer}</p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
