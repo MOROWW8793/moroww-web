@@ -1,7 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next";
-import { OrganizationJsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.moroww.com'),
@@ -96,6 +94,9 @@ export const metadata: Metadata = {
     canonical: 'https://www.moroww.com',
     languages: {
       'nl-BE': 'https://www.moroww.com',
+      'nl': 'https://www.moroww.com',
+      'en': 'https://www.moroww.com/en',
+      'x-default': 'https://www.moroww.com',
     },
   },
   other: {
@@ -113,15 +114,9 @@ export const viewport: Viewport = {
   themeColor: "#FAE4D6",
 };
 
+// De <html> en <body> zitten in app/[locale]/layout.tsx zodat het lang-attribuut
+// dynamisch per locale kan (nl-BE voor NL, en voor EN). Root-layout blijft nodig
+// voor de globale metadata en css-import.
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="nl">
-      {/* GTM wordt toegevoegd zodra het account aangemaakt is */}
-      <body className="antialiased font-sans bg-moroww-blush text-moroww-black">
-        <OrganizationJsonLd />
-        {children}
-        <Analytics />
-      </body>
-    </html>
-  );
+  return children as React.ReactElement;
 }

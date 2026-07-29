@@ -18,6 +18,11 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: 'https://www.moroww.com/vergelijking',
+    languages: {
+      'nl-BE': 'https://www.moroww.com/vergelijking',
+      'nl': 'https://www.moroww.com/vergelijking',
+      'x-default': 'https://www.moroww.com/vergelijking',
+    },
   },
 }
 

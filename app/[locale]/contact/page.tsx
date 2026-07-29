@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Neem contact op met moroww. Vragen over boekingen, eigenaarschap of samenwerking.",
-  alternates: { canonical: "https://www.moroww.com/contact" },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'contact' });
+  return {
+    title: t('meta_title'),
+    description: t('meta_description'),
+    alternates: { canonical: "https://www.moroww.com/contact" },
+  };
+}
 
 export default async function ContactPage({
   params,
@@ -15,15 +22,18 @@ export default async function ContactPage({
 }) {
   const { locale } = await params
   setRequestLocale(locale)
+  const t = await getTranslations('contact')
   return (
     <div className="bg-moroww-blush min-h-screen flex items-center">
       <div className="mx-auto max-w-xl px-6 py-32 text-center">
-        <p className="text-xs font-semibold uppercase tracking-widest text-moroww-orange mb-4">Contact</p>
+        <p className="text-xs font-semibold uppercase tracking-widest text-moroww-orange mb-4">
+          {t('label')}
+        </p>
         <h1 className="font-bold text-moroww-black text-4xl md:text-5xl mb-6 leading-tight">
-          Liever een echt gesprek?
+          {t('h1')}
         </h1>
         <p className="text-moroww-black/60 text-lg mb-10 leading-relaxed">
-          Wij ook.
+          {t('subtitle')}
         </p>
 
         <div className="flex flex-col gap-4 items-center">
@@ -49,12 +59,12 @@ export default async function ContactPage({
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center w-full max-w-xs rounded-full bg-moroww-orange hover:bg-moroww-orange-dark text-white font-semibold px-8 py-4 text-base transition-colors duration-200"
           >
-            Plan een gesprek in
+            {t('cta_calendar')}
           </a>
         </div>
 
         <p className="mt-10 text-sm text-moroww-black/40">
-          We beantwoorden elke vraag. Geen chatbot, geen wachtrij.
+          {t('footnote')}
         </p>
       </div>
     </div>

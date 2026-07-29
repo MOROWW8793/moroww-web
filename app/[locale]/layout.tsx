@@ -1,9 +1,11 @@
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
+import { Analytics } from '@vercel/analytics/next'
 import { routing } from '@/i18n/routing'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
+import { OrganizationJsonLd } from '@/components/JsonLd'
 import type { ReactNode } from 'react'
 
 export function generateStaticParams() {
@@ -21,8 +23,9 @@ export async function generateMetadata({
     alternates: {
       canonical: isNl ? 'https://www.moroww.com' : 'https://www.moroww.com/en',
       languages: {
-        nl: 'https://www.moroww.com',
-        en: 'https://www.moroww.com/en',
+        'nl-BE': 'https://www.moroww.com',
+        'nl': 'https://www.moroww.com',
+        'en': 'https://www.moroww.com/en',
         'x-default': 'https://www.moroww.com',
       },
     },
@@ -45,11 +48,19 @@ export default async function LocaleLayout({
   setRequestLocale(locale)
   const messages = await getMessages()
 
+  const htmlLang = locale === 'nl' ? 'nl-BE' : 'en'
+
   return (
-    <NextIntlClientProvider messages={messages}>
-      <Navbar />
-      <main className="bg-[#FAE4D6]">{children}</main>
-      <Footer />
-    </NextIntlClientProvider>
+    <html lang={htmlLang}>
+      <body className="antialiased font-sans bg-moroww-blush text-moroww-black">
+        <OrganizationJsonLd />
+        <NextIntlClientProvider messages={messages}>
+          <Navbar />
+          <main className="bg-[#FAE4D6]">{children}</main>
+          <Footer />
+        </NextIntlClientProvider>
+        <Analytics />
+      </body>
+    </html>
   )
 }

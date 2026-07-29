@@ -22,9 +22,11 @@ export const routing = defineRouting({
       nl: '/de-standaard',
       en: '/the-standard',
     },
+    // NL-only pagina's: 'en'-pad is dezelfde string, next.config.mjs
+    // redirect /en/... naar de NL-URL. Taalwissel-knop verborgen via nlOnlyRoutes.
     '/eigenaar-worden': {
       nl: '/eigenaar-worden',
-      en: '/become-an-owner',
+      en: '/eigenaar-worden',
     },
     '/partners': {
       nl: '/partners',
@@ -37,6 +39,10 @@ export const routing = defineRouting({
     '/privacy': {
       nl: '/privacy',
       en: '/privacy',
+    },
+    '/vergelijking': {
+      nl: '/vergelijking',
+      en: '/vergelijking',
     },
   },
 })

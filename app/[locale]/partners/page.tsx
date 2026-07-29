@@ -1,18 +1,25 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Partners - Korteketen. Geen compromis.",
-  description:
-    "moroww werkt uitsluitend samen met Belgische en Europese merken die onze standaard delen. Waaronder Moro Essentials voor badkamerproducten.",
-  alternates: { canonical: "https://www.moroww.com/partners" },
-  openGraph: {
-    title: "Partners | moroww",
-    description: "Belgische en Europese merken die onze standaard delen.",
-    url: "https://www.moroww.com/partners",
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'partners' });
+  return {
+    title: t('meta_title'),
+    description: t('meta_description'),
+    alternates: { canonical: "https://www.moroww.com/partners" },
+    openGraph: {
+      title: t('meta_title'),
+      description: t('meta_description'),
+      url: "https://www.moroww.com/partners",
+    },
+  };
+}
 
 export default async function PartnersPage({
   params,
@@ -21,44 +28,48 @@ export default async function PartnersPage({
 }) {
   const { locale } = await params
   setRequestLocale(locale)
+  const t = await getTranslations('partners')
+
+  const komendePartners = [
+    { titel: t('cleaners_title'), tekst: t('cleaners_body') },
+    { titel: t('locals_title'),   tekst: t('locals_body') },
+  ]
+
   return (
     <div className="overflow-x-hidden">
 
-      {/* ── 1. HERO — DONKER ── */}
+      {/* ── 1. HERO ── */}
       <section
         className="flex flex-col justify-end px-6 md:px-16 pt-28 pb-16 md:pt-32 md:pb-20"
         style={{ background: "#1A1A1A", minHeight: "60vh" }}
       >
         <p style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: 3, color: "#C08D6E", marginBottom: 24 }}>
-          Onze partners
+          {t('label')}
         </p>
         <h1
           className="break-words"
           style={{ fontSize: "clamp(36px,6vw,72px)", fontWeight: 800, lineHeight: 1.0, color: "#ffffff", marginBottom: 32 }}
         >
-          Korteketen.<br />Geen compromis.
+          {t('h1_line1')}<br />{t('h1_line2')}
         </h1>
         <p className="break-words" style={{ fontSize: 18, lineHeight: 1.7, color: "#999999", maxWidth: 560 }}>
-          moroww kiest bewust voor Belgische en Europese merken die onze
-          standaard delen. Niet omdat het moet - omdat het klopt.
+          {t('hero_body')}
         </p>
       </section>
 
-      {/* ── 2. MORO ESSENTIALS — WIT ── */}
+      {/* ── 2. MORO ESSENTIALS ── */}
       <section className="bg-white px-6 py-12 md:px-16 md:py-20">
         <div className="flex flex-col md:flex-row rounded-2xl overflow-hidden md:min-h-[500px]">
-          {/* Foto (55% op desktop, volledig op mobiel) */}
           <div className="relative w-full md:w-[55%] shrink-0 overflow-hidden min-h-[300px] md:min-h-full">
             <Image
               src="/images/partners/moro-essentials-sfeer.jpg"
-              alt="Moro Essentials sfeerbeeld"
+              alt="Moro Essentials"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 55vw"
             />
           </div>
 
-          {/* Content (45% op desktop) */}
           <div className="w-full md:w-[45%] flex flex-col justify-center px-6 py-10 md:px-16 md:py-12 min-w-0">
             <Image
               src="/images/partners/moro-essentials-logo.png"
@@ -82,22 +93,16 @@ export default async function PartnersPage({
                 borderRadius: 100,
               }}
             >
-              Belgisch merk
+              {t('moro_badge')}
             </span>
             <p className="mb-4" style={{ fontSize: 14, fontWeight: 600, color: "#FEA05E" }}>
-              Badkamerproducten
+              {t('moro_category')}
             </p>
             <p className="break-words mb-8" style={{ fontSize: 16, lineHeight: 1.8, color: "#444444" }}>
-              De badkamer is de eerste test. Gasten voelen het meteen:
-              goedkope zeep in een plastic flesje vertelt een verhaal -
-              en niet het goede. Daarom kozen we voor Moro Essentials,
-              een Belgisch merk dat huidverzorging herdenkt vanuit eerlijkheid.
-              Geen overbodige ingrediënten, geen generieke geuren, geen massamarkt.
-              Gewoon producten die werken, goed ruiken en kloppen met wie wij zijn.
-              In elke moroww-woning. Geen uitzondering.
+              {t('moro_body')}
             </p>
             <a
-              href="https://moro-essentials.com/nl/collections/all-products-new?tw_source=google&tw_adid=706041070227&tw_campaign=21468923487&tw_kwdid=kwd-138535284&gad_source=1&gad_campaignid=21468923487&gbraid=0AAAAA9Yqje7Xtvry2zO4cbJROuoZXN0FK&gclid=CjwKCAjw5NvPBhAoEiwA_2egftD5W_eeUIjpMgnjq3KAso8SoI32AwN2S9eVgDrkTyrZFLwZZTVnTRoC_4oQAvD_BwE"
+              href="https://moro-essentials.com/nl/collections/all-products-new"
               target="_blank"
               rel="noopener noreferrer"
               className="self-start"
@@ -112,31 +117,22 @@ export default async function PartnersPage({
                 textDecoration: "none",
               }}
             >
-              Bekijk collectie
+              {t('moro_cta')}
             </a>
           </div>
         </div>
       </section>
 
-      {/* ── 3. COMING SOON — BLUSH ── */}
+      {/* ── 3. COMING SOON ── */}
       <section className="px-6 py-16 md:px-16 md:py-20" style={{ background: "#FAE4D6" }}>
         <h2
           className="break-words mb-10 md:mb-12"
           style={{ fontSize: "clamp(24px,3vw,36px)", fontWeight: 800, color: "#1A1A1A" }}
         >
-          Meer partners. Binnenkort.
+          {t('coming_soon_title')}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {[
-            {
-              titel: "Poetspartners",
-              tekst: "Elke moroww-woning wordt professioneel klaargemaakt volgens een vast protocol. We werken uitsluitend met poetspartners die onze standaard kennen, onze checklist volgen en dezelfde zorg voor detail hebben als wij. Belgische bedrijven, korte communicatielijnen, geen verrassingen.",
-            },
-            {
-              titel: "Lokale handelaars",
-              tekst: "In elke regio waar moroww actief is, zoeken we contact met lokale bakkers, slagers, traiteurs en wijnhuizen. Gasten die willen weten waar ze terecht kunnen voor het beste van de streek, vinden dat via moroww. Geen gidsen, geen gesponsorde lijsten - enkel adressen waar we zelf voor instaan.",
-            },
-          ].map(({ titel, tekst }) => (
+          {komendePartners.map(({ titel, tekst }) => (
             <div key={titel} className="rounded-2xl p-8 md:p-10 min-w-0" style={{ background: "#ffffff" }}>
               <span
                 className="inline-block mb-5"
@@ -151,7 +147,7 @@ export default async function PartnersPage({
                   borderRadius: 100,
                 }}
               >
-                Binnenkort
+                {t('coming_badge')}
               </span>
               <h3 className="break-words mb-4" style={{ fontSize: 24, fontWeight: 700, color: "#1A1A1A" }}>
                 {titel}
@@ -164,17 +160,16 @@ export default async function PartnersPage({
         </div>
       </section>
 
-      {/* ── 4. PARTNER CTA — DONKER ── */}
+      {/* ── 4. PARTNER CTA ── */}
       <section className="px-6 py-16 md:px-16 md:py-20 text-center" style={{ background: "#1A1A1A" }}>
         <h2
           className="break-words mx-auto mb-5"
           style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: "#ffffff", maxWidth: 560 }}
         >
-          Jouw merk in onze woningen?
+          {t('cta_title')}
         </h2>
         <p className="break-words mx-auto mb-10" style={{ fontSize: 18, lineHeight: 1.7, color: "#999999", maxWidth: 480 }}>
-          We zoeken Belgische en Europese merken die kwaliteit en
-          eerlijkheid centraal stellen. Geen massamarkt. Geen compromis.
+          {t('cta_body')}
         </p>
         <a
           href="mailto:info@moroww.com"
@@ -189,7 +184,7 @@ export default async function PartnersPage({
             textDecoration: "none",
           }}
         >
-          Neem contact op
+          {t('cta_button')}
         </a>
       </section>
 

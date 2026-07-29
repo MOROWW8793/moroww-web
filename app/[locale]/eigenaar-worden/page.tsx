@@ -41,8 +41,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.moroww.com/eigenaar-worden',
     languages: {
+      'nl-BE': 'https://www.moroww.com/eigenaar-worden',
       'nl': 'https://www.moroww.com/eigenaar-worden',
-      'en': 'https://www.moroww.com/en/become-an-owner',
+      'x-default': 'https://www.moroww.com/eigenaar-worden',
     },
   },
   openGraph: {

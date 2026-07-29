@@ -7,6 +7,7 @@ export type NavHref =
   | '/partners'
   | '/contact'
   | '/privacy'
+  | '/vergelijking'
 
 export type NavLabelKey =
   | 'home'
@@ -41,4 +42,12 @@ export const footerNavItems: NavItem[] = [
   { labelKey: 'partners',   href: '/partners' },
   { labelKey: 'contact',    href: '/contact' },
   { labelKey: 'privacy',    href: '/privacy' },
+]
+
+// NL-only pagina's: taalwissel-knop is verborgen op deze pagina's, want
+// een taalwissel die naar een 404 of home leidt suggereert dat er iets stuk is.
+export const nlOnlyRoutes: NavHref[] = [
+  '/eigenaar-worden',
+  '/vergelijking',
+  '/privacy',
 ]

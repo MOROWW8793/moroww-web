@@ -97,6 +97,36 @@
     "vergunning_label": "licence number",
     "waarom_label": "the standard"
   },
+  "contact": {
+    "meta_title": "Contact",
+    "meta_description": "Get in touch with moroww. Questions about bookings, ownership or partnerships.",
+    "label": "contact",
+    "h1": "Rather a real conversation?",
+    "subtitle": "So do we.",
+    "cta_calendar": "Book a call",
+    "footnote": "We answer every question. No chatbot, no queue."
+  },
+  "partners": {
+    "meta_title": "Partners — Short supply chain. No compromise.",
+    "meta_description": "moroww only works with Belgian and European brands that share our standard. Including Moro Essentials for bathroom products.",
+    "label": "Our partners",
+    "h1_line1": "Short supply chain.",
+    "h1_line2": "No compromise.",
+    "hero_body": "moroww deliberately chooses Belgian and European brands that share our standard. Not because we have to — because it fits.",
+    "moro_badge": "Belgian brand",
+    "moro_category": "Bathroom products",
+    "moro_body": "The bathroom is the first test. Guests feel it immediately: cheap soap in a plastic bottle tells a story — and not a good one. That is why we chose Moro Essentials, a Belgian brand that rethinks skincare from honesty. No unnecessary ingredients, no generic scents, no mass market. Just products that work, smell good and match who we are. In every moroww home. No exception.",
+    "moro_cta": "View collection",
+    "coming_soon_title": "More partners. Soon.",
+    "coming_badge": "Coming soon",
+    "cleaners_title": "Cleaning partners",
+    "cleaners_body": "Every moroww home is professionally prepared according to a fixed protocol. We only work with cleaning partners who know our standard, follow our checklist and share the same attention to detail. Belgian companies, short communication lines, no surprises.",
+    "locals_title": "Local traders",
+    "locals_body": "In every region where moroww is active, we seek contact with local bakers, butchers, caterers and wineries. Guests who want to know where to find the best of the region find it through moroww. No guides, no sponsored lists — only addresses we stand behind ourselves.",
+    "cta_title": "Your brand in our homes?",
+    "cta_body": "We are looking for Belgian and European brands that put quality and honesty first. No mass market. No compromise.",
+    "cta_button": "Get in touch"
+  },
   "not_found": {
     "label": "page not found",
     "title_light": "this page",

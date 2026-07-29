@@ -97,6 +97,36 @@
     "vergunning_label": "vergunningsnummer",
     "waarom_label": "de standaard"
   },
+  "contact": {
+    "meta_title": "Contact",
+    "meta_description": "Neem contact op met moroww. Vragen over boekingen, eigenaarschap of samenwerking.",
+    "label": "contact",
+    "h1": "Liever een echt gesprek?",
+    "subtitle": "Wij ook.",
+    "cta_calendar": "Plan een gesprek in",
+    "footnote": "We beantwoorden elke vraag. Geen chatbot, geen wachtrij."
+  },
+  "partners": {
+    "meta_title": "Partners — Korteketen. Geen compromis.",
+    "meta_description": "moroww werkt uitsluitend samen met Belgische en Europese merken die onze standaard delen. Waaronder Moro Essentials voor badkamerproducten.",
+    "label": "Onze partners",
+    "h1_line1": "Korteketen.",
+    "h1_line2": "Geen compromis.",
+    "hero_body": "moroww kiest bewust voor Belgische en Europese merken die onze standaard delen. Niet omdat het moet — omdat het klopt.",
+    "moro_badge": "Belgisch merk",
+    "moro_category": "Badkamerproducten",
+    "moro_body": "De badkamer is de eerste test. Gasten voelen het meteen: goedkope zeep in een plastic flesje vertelt een verhaal — en niet het goede. Daarom kozen we voor Moro Essentials, een Belgisch merk dat huidverzorging herdenkt vanuit eerlijkheid. Geen overbodige ingrediënten, geen generieke geuren, geen massamarkt. Gewoon producten die werken, goed ruiken en kloppen met wie wij zijn. In elke moroww-woning. Geen uitzondering.",
+    "moro_cta": "Bekijk collectie",
+    "coming_soon_title": "Meer partners. Binnenkort.",
+    "coming_badge": "Binnenkort",
+    "cleaners_title": "Poetspartners",
+    "cleaners_body": "Elke moroww-woning wordt professioneel klaargemaakt volgens een vast protocol. We werken uitsluitend met poetspartners die onze standaard kennen, onze checklist volgen en dezelfde zorg voor detail hebben als wij. Belgische bedrijven, korte communicatielijnen, geen verrassingen.",
+    "locals_title": "Lokale handelaars",
+    "locals_body": "In elke regio waar moroww actief is, zoeken we contact met lokale bakkers, slagers, traiteurs en wijnhuizen. Gasten die willen weten waar ze terecht kunnen voor het beste van de streek, vinden dat via moroww. Geen gidsen, geen gesponsorde lijsten — enkel adressen waar we zelf voor instaan.",
+    "cta_title": "Jouw merk in onze woningen?",
+    "cta_body": "We zoeken Belgische en Europese merken die kwaliteit en eerlijkheid centraal stellen. Geen massamarkt. Geen compromis.",
+    "cta_button": "Neem contact op"
+  },
   "not_found": {
     "label": "pagina niet gevonden",
     "title_light": "deze pagina",

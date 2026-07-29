@@ -16,8 +16,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "https://www.moroww.com/partners",                           lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
     { url: "https://www.moroww.com/contact",                            lastModified: new Date(), changeFrequency: "yearly",  priority: 0.4 },
     { url: "https://www.moroww.com/vergelijking",                       lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: "https://www.moroww.com/privacy",                            lastModified: new Date(), changeFrequency: "yearly",  priority: 0.3 },
 
-    // ── English (/en prefix) ──
+    // ── English (/en prefix) — alleen gastgerichte pagina's; NL-only routes staan hier niet. ──
     { url: "https://www.moroww.com/en",                                 lastModified: new Date(), changeFrequency: "weekly",  priority: 0.9 },
     { url: "https://www.moroww.com/en/collection",                      lastModified: new Date(), changeFrequency: "weekly",  priority: 0.8 },
     { url: "https://www.moroww.com/en/collection/nosso-knokke",         lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
@@ -27,9 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "https://www.moroww.com/en/collection/sophora",              lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: "https://www.moroww.com/en/collection/lammersdamhoeve",      lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: "https://www.moroww.com/en/about",                           lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: "https://www.moroww.com/en/become-an-owner",                 lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: "https://www.moroww.com/en/partners",                        lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
     { url: "https://www.moroww.com/en/contact",                         lastModified: new Date(), changeFrequency: "yearly",  priority: 0.4 },
-    { url: "https://www.moroww.com/en/vergelijking",                    lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
   ];
 }

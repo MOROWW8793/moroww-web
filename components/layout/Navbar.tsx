@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { useLocale, useTranslations } from 'next-intl'
 import { Link, usePathname, useRouter } from '@/i18n/navigation'
-import { mainNavItems } from '@/lib/navigation'
+import { mainNavItems, nlOnlyRoutes } from '@/lib/navigation'
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -26,6 +26,10 @@ export function Navbar() {
   }, [open])
 
   const bookUrl = `https://book.moroww.com/${locale}/properties?minOccupancy=1`
+
+  // Taalwissel-knop verbergen op NL-only pagina's; anders zou een klik naar
+  // een niet-bestaande EN-URL leiden (die redirect naar NL) en dat oogt stuk.
+  const isNlOnly = nlOnlyRoutes.some((r) => pathname === r || pathname.startsWith(`${r}/`))
 
   function toggleLocale() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -69,17 +73,19 @@ export function Navbar() {
             </Link>
           ))}
 
-          {/* Taalwisselaar */}
-          <button
-            onClick={toggleLocale}
-            className={`text-sm font-medium transition-colors duration-300 px-2 py-1 ${
-              scrolled
-                ? 'text-[#1A1A1A]/60 hover:text-[#1A1A1A]'
-                : 'text-white/60 hover:text-white'
-            }`}
-          >
-            {locale === 'nl' ? 'EN' : 'NL'}
-          </button>
+          {/* Taalwisselaar — verborgen op NL-only pagina's */}
+          {!isNlOnly && (
+            <button
+              onClick={toggleLocale}
+              className={`text-sm font-medium transition-colors duration-300 px-2 py-1 ${
+                scrolled
+                  ? 'text-[#1A1A1A]/60 hover:text-[#1A1A1A]'
+                  : 'text-white/60 hover:text-white'
+              }`}
+            >
+              {locale === 'nl' ? 'EN' : 'NL'}
+            </button>
+          )}
 
           {/* Book CTA */}
           <a
@@ -122,12 +128,14 @@ export function Navbar() {
                 {t(item.labelKey)}
               </Link>
             ))}
-            <button
-              onClick={() => { toggleLocale(); setOpen(false) }}
-              className="text-base font-medium text-[#1A1A1A]/60 py-3 min-h-[44px] flex items-center text-left border-t border-[#F0E4D8] mt-2 pt-4"
-            >
-              {locale === 'nl' ? 'English' : 'Nederlands'}
-            </button>
+            {!isNlOnly && (
+              <button
+                onClick={() => { toggleLocale(); setOpen(false) }}
+                className="text-base font-medium text-[#1A1A1A]/60 py-3 min-h-[44px] flex items-center text-left border-t border-[#F0E4D8] mt-2 pt-4"
+              >
+                {locale === 'nl' ? 'English' : 'Nederlands'}
+              </button>
+            )}
             <a
               href={bookUrl}
               target="_blank"
