@@ -23,10 +23,18 @@ export async function generateMetadata({
 
 // Herbruikbaar 2-koloms blok voor één partner. side='left' toont het beeld
 // links, side='right' rechts — pagina wisselt om zodat het niet als een lijst leest.
+//
+// imageFit='cover' (default) is voor eigen fotografie die vrij gebeucht mag
+// worden. imageFit='contain' is voor merkbeelden van derden waarin tekst of
+// logo in de compositie zit — die worden nooit bijgesneden. Geef dan de
+// natuurlijke verhouding van het bronbestand mee via imageAspect ("1200/630"),
+// zodat het kader letterboxt in plaats van te croppen.
 function PartnerBlock({
   side,
   image,
   imageAlt,
+  imageFit = 'cover',
+  imageAspect,
   logo,
   naam,
   badge,
@@ -39,6 +47,8 @@ function PartnerBlock({
   side: 'left' | 'right'
   image: string
   imageAlt: string
+  imageFit?: 'cover' | 'contain'
+  imageAspect?: string
   // Optioneel logo bovenaan het tekstblok. Als er geen logo is, verschijnt de
   // partnernaam typografisch als h3 op dezelfde plek.
   logo?: { src: string; alt: string; width: number; height: number }
@@ -52,7 +62,24 @@ function PartnerBlock({
   cta: string
   ctaHref: string
 }) {
-  const imageBlock = (
+  const imageBlock = imageFit === 'contain' ? (
+    // Kolom vult volle hoogte van de rij (zelfde bg-vlak boven/onder het beeld).
+    // Binnen die kolom staat een aspect-ratio-doos waarin het beeld letterboxt.
+    <div
+      className="relative w-full md:w-[55%] shrink-0 overflow-hidden flex items-center justify-center"
+      style={{ background: "#F5F1EC" }}
+    >
+      <div className="relative w-full" style={{ aspectRatio: imageAspect ?? '16 / 9' }}>
+        <Image
+          src={image}
+          alt={imageAlt}
+          fill
+          className="object-contain"
+          sizes="(max-width: 768px) 100vw, 55vw"
+        />
+      </div>
+    </div>
+  ) : (
     <div className="relative w-full md:w-[55%] shrink-0 overflow-hidden min-h-[300px] md:min-h-full">
       <Image
         src={image}
@@ -143,8 +170,13 @@ function PartnerBlock({
     </div>
   )
 
+  // Bij imageFit='contain' laten we het beeldkader mee-stretchen met de
+  // tekstkolom en ligt het beeld gecentreerd in zijn eigen aspect-ratio-doos —
+  // zo blijft de bg-kleur boven/onder het beeld het volledige vlak vullen en
+  // wordt er niets bijgesneden.
+  const rowMinHeight = imageFit === 'contain' ? '' : 'md:min-h-[500px]'
   return (
-    <div className="flex flex-col md:flex-row rounded-2xl overflow-hidden md:min-h-[500px]">
+    <div className={`flex flex-col md:flex-row rounded-2xl overflow-hidden ${rowMinHeight}`}>
       {side === 'left' ? <>{imageBlock}{textBlock}</> : <>{textBlock}{imageBlock}</>}
     </div>
   )
@@ -309,26 +341,10 @@ export default async function PartnersPage({
         />
       </section>
 
-      {/* ── 3. NUKI — foto rechts, Pro Partner-embleem klein als keurmerk in tekst ── */}
+      {/* ── 3. AMELIE BAUWENS — foto rechts ── */}
       <section className="bg-white px-6 py-12 md:px-16 md:py-20 pt-0 md:pt-0">
         <PartnerBlock
           side="right"
-          image="/images/partners/nuki-smart-lock.jpg"
-          imageAlt={t('nuki_image_alt')}
-          naam="Nuki"
-          badge={t('nuki_badge')}
-          category={t('nuki_category')}
-          paragraphs={[t('nuki_body_p1'), t('nuki_body_p2'), t('nuki_body_p3')]}
-          certification={{ src: "/images/partners/nuki-pro-partner-badge.png", alt: t('nuki_pro_partner_alt'), width: 220, height: 34 }}
-          cta={t('nuki_cta')}
-          ctaHref="https://nuki.io/nl-nl/"
-        />
-      </section>
-
-      {/* ── 4. AMELIE BAUWENS — foto links ── */}
-      <section className="bg-white px-6 py-12 md:px-16 md:py-20 pt-0 md:pt-0">
-        <PartnerBlock
-          side="left"
           image="/images/partners/amelie-bauwens.jpg"
           imageAlt="Amelie Bauwens fotografie"
           naam="Amelie Bauwens"
@@ -340,10 +356,10 @@ export default async function PartnersPage({
         />
       </section>
 
-      {/* ── 5. OPRUIMINGEN CB — transparant logo op blush, rechts ── */}
+      {/* ── 4. OPRUIMINGEN CB — transparant logo op blush, links ── */}
       <section className="bg-white px-6 py-12 md:px-16 md:py-20 pt-0 md:pt-0">
         <PartnerBlockEmblem
-          side="right"
+          side="left"
           emblem={{ src: "/images/partners/opruimingen-cb.png", alt: t('opruimingen_logo_alt') }}
           naam="Opruimingen CB"
           badge={t('opruimingen_badge')}
@@ -351,6 +367,24 @@ export default async function PartnersPage({
           paragraphs={[t('opruimingen_body_p1'), t('opruimingen_body_p2'), t('opruimingen_body_p3')]}
           cta={t('opruimingen_cta')}
           ctaHref="https://www.opruimingencb.be/"
+        />
+      </section>
+
+      {/* ── 5. NUKI — beeld rechts, contain (merkbeeld met logo/tekst — nooit croppen) ── */}
+      <section className="bg-white px-6 py-12 md:px-16 md:py-20 pt-0 md:pt-0">
+        <PartnerBlock
+          side="right"
+          image="/images/partners/nuki-smart-lock.jpg"
+          imageAlt={t('nuki_image_alt')}
+          imageFit="contain"
+          imageAspect="1200 / 630"
+          naam="Nuki"
+          badge={t('nuki_badge')}
+          category={t('nuki_category')}
+          paragraphs={[t('nuki_body_p1'), t('nuki_body_p2'), t('nuki_body_p3')]}
+          certification={{ src: "/images/partners/nuki-pro-partner-badge.png", alt: t('nuki_pro_partner_alt'), width: 220, height: 34 }}
+          cta={t('nuki_cta')}
+          ctaHref="https://nuki.io/nl-nl/"
         />
       </section>
 
