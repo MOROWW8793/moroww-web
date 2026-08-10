@@ -32,6 +32,7 @@ function PartnerBlock({
   badge,
   category,
   paragraphs,
+  certification,
   cta,
   ctaHref,
 }: {
@@ -45,6 +46,9 @@ function PartnerBlock({
   badge: string
   category: string
   paragraphs: string[]
+  // Optioneel keurmerk (certificering) klein afgebeeld onder de paragrafen —
+  // geen sierlogo, dus bewust kleiner dan het hoofdlogo.
+  certification?: { src: string; alt: string; width: number; height: number }
   cta: string
   ctaHref: string
 }) {
@@ -108,6 +112,16 @@ function PartnerBlock({
           {p}
         </p>
       ))}
+      {certification ? (
+        <Image
+          src={certification.src}
+          alt={certification.alt}
+          width={certification.width}
+          height={certification.height}
+          className="self-start mt-6"
+          style={{ maxHeight: 56, objectFit: "contain", width: "auto" }}
+        />
+      ) : null}
       <a
         href={ctaHref}
         target="_blank"
@@ -136,10 +150,9 @@ function PartnerBlock({
   )
 }
 
-// Blok voor partners waar het beeld het keurmerk-embleem zelf is (Nuki Pro
-// Partner) of waar er nog geen beeld/logo geleverd is (Opruimingen CB). Het
-// embleem staat op een blush-achtergrond, groot maar niet claimend, met de
-// tekst ernaast — 'geef het dezelfde behandeling als een keurmerk'.
+// Blok voor partners waar het beeld een transparant logo of embleem is dat
+// tot zijn recht komt op een blush-vlak (niet op oranje). Groot maar niet
+// claimend, met de tekst ernaast.
 function PartnerBlockEmblem({
   side,
   emblem,
@@ -169,10 +182,10 @@ function PartnerBlockEmblem({
         <Image
           src={emblem.src}
           alt={emblem.alt}
-          width={360}
+          width={480}
           height={360}
           className="w-auto h-auto"
-          style={{ maxHeight: 260, maxWidth: '100%', objectFit: "contain" }}
+          style={{ maxHeight: 320, maxWidth: '100%', objectFit: "contain" }}
         />
       ) : (
         <span
@@ -296,15 +309,17 @@ export default async function PartnersPage({
         />
       </section>
 
-      {/* ── 3. NUKI — embleem rechts, keurmerk-behandeling ── */}
+      {/* ── 3. NUKI — foto rechts, Pro Partner-embleem klein als keurmerk in tekst ── */}
       <section className="bg-white px-6 py-12 md:px-16 md:py-20 pt-0 md:pt-0">
-        <PartnerBlockEmblem
+        <PartnerBlock
           side="right"
-          emblem={{ src: "/images/partners/nuki-pro-partner-badge.png", alt: t('nuki_pro_partner_alt') }}
+          image="/images/partners/nuki-smart-lock.jpg"
+          imageAlt={t('nuki_image_alt')}
           naam="Nuki"
           badge={t('nuki_badge')}
           category={t('nuki_category')}
           paragraphs={[t('nuki_body_p1'), t('nuki_body_p2'), t('nuki_body_p3')]}
+          certification={{ src: "/images/partners/nuki-pro-partner-badge.png", alt: t('nuki_pro_partner_alt'), width: 220, height: 34 }}
           cta={t('nuki_cta')}
           ctaHref="https://nuki.io/nl-nl/"
         />
@@ -325,10 +340,11 @@ export default async function PartnersPage({
         />
       </section>
 
-      {/* ── 5. OPRUIMINGEN CB — nog geen logo, blush-vak met naam links ── */}
+      {/* ── 5. OPRUIMINGEN CB — transparant logo op blush, rechts ── */}
       <section className="bg-white px-6 py-12 md:px-16 md:py-20 pt-0 md:pt-0">
         <PartnerBlockEmblem
-          side="left"
+          side="right"
+          emblem={{ src: "/images/partners/opruimingen-cb.png", alt: t('opruimingen_logo_alt') }}
           naam="Opruimingen CB"
           badge={t('opruimingen_badge')}
           category={t('opruimingen_category')}
