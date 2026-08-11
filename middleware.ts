@@ -21,6 +21,10 @@ export default function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!api|_next|admin|onboarding|welcome|.*\\..*).*)',
+    // 'welkom' (met k) is uitgesloten omdat /welkom/<token> via rewrites naar
+    // moroww-os wordt geproxyd; next-intl mag die token niet aanraken (anders
+    // wordt hij tot /nl/welkom/<token> verminkt). 'welcome' (met c) blijft
+    // apart bestaan als de bestaande pandpagina.
+    '/((?!api|_next|admin|onboarding|welcome|welkom|.*\\..*).*)',
   ],
 }

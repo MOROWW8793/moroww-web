@@ -37,6 +37,17 @@ const nextConfig = {
       { source: "/welcome/ann-helena-ursel", destination: "/welcome/anna-helena-ursel", permanent: true },
     ]
   },
+  // /welkom/<token> is een verblijfsgebonden gastpagina die op host.moroww.com
+  // (moroww-os) leeft. We proxyen zodat de gast moroww.com in de adresbalk ziet
+  // en de token binnen dit domein blijft — geen redirect.
+  async rewrites() {
+    return [
+      {
+        source: "/welkom/:token",
+        destination: "https://host.moroww.com/welkom/:token",
+      },
+    ]
+  },
 }
 
 export default withNextIntl(nextConfig)
