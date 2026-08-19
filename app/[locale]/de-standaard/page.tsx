@@ -5,6 +5,9 @@ import { SCREENINGS_TOTAL, SCREENINGS_ACCEPTED } from '@/lib/screenings'
 import { TOTAL_STAYS_REVIEWED } from '@/lib/reviews'
 import { SystemenGrid } from '@/components/sections/SystemenGrid'
 import { Statrij } from '@/components/sections/Statrij'
+import { woningen, lw, type Locale } from '@/lib/woningen'
+import { AuditLijn } from '@/components/AuditLijn'
+import { formatAuditMaand } from '@/components/PandKaart'
 
 // Categoriekleuren voor de vier poorten (huisstijl: orange, coast, ardennes, brown).
 const GATE_COLORS = ['#FEA05E', '#EEBC9D', '#CBD085', '#C08D6E'] as const
@@ -193,6 +196,12 @@ export default async function DeStandaardPage({
         </div>
       </section>
 
+      {/* ── WAT GASTEN OPMERKEN — twee citaten in het labelregister.
+             Geen kaders, geen kaarten, geen sterren, geen cijferscore.
+             AuditLijn verschijnt zodra elke review een datum heeft; een
+             auditlijn met alleen "gast" erin zou decoratief zijn. */}
+      <ReviewsSectie locale={locale as Locale} />
+
       {/* ── VOOR DE GAST ── */}
       <section className="w-full py-16 md:py-24 px-6 bg-moroww-brown/15">
         <div className="max-w-3xl mx-auto text-center">
@@ -230,5 +239,48 @@ export default async function DeStandaardPage({
       </section>
 
     </main>
+  )
+}
+
+// Twee curatie-citaten uit de pand-data — Sabrina (Chalet Anna-Helena) en
+// Stephen (The Sixteenth). Selectie hier centraal; passt de user de lijst
+// aan, dan is dat één plek.
+const REVIEW_KEUZE: Array<{ pandId: string; naam: string }> = [
+  { pandId: 'anna-helena-ursel', naam: 'Sabrina' },
+  { pandId: 'moroww-oostende',   naam: 'Stephen'  },
+]
+
+function ReviewsSectie({ locale }: { locale: Locale }) {
+  const geselecteerd = REVIEW_KEUZE.flatMap(({ pandId, naam }) => {
+    const w = woningen.find((w) => w.id === pandId)
+    const r = w?.reviews?.find((r) => r.naam === naam)
+    return r ? [r] : []
+  })
+  if (geselecteerd.length === 0) return null
+
+  return (
+    <section className="w-full py-20 md:py-28 px-6 bg-moroww-brown/15">
+      <div className="max-w-6xl mx-auto">
+        <p className="text-audit uppercase text-moroww-label mb-mw-6">wat gasten opmerken</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-mw-8">
+          {geselecteerd.map((r) => {
+            const maand = formatAuditMaand(r.datum)
+            return (
+              <div key={r.naam}>
+                {maand && (
+                  <div className="mb-mw-4">
+                    <AuditLijn density="quiet" items={['gast', maand]} />
+                  </div>
+                )}
+                <p className="text-body-lg italic text-moroww-dark">
+                  &ldquo;{lw(r.citaat, locale)}&rdquo;
+                </p>
+                <p className="mt-mw-3 text-audit uppercase text-moroww-ink-2">{r.naam}</p>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </section>
   )
 }

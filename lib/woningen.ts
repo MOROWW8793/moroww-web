@@ -38,7 +38,13 @@ export interface Woning {
   volledigeBeschrijving: BilingualText
   buurt?: BilingualText
   hoogtepunten: BilingualText[]
-  reviews?: Array<{ citaat: BilingualText; naam: string }>
+  reviews?: Array<{
+    citaat: BilingualText
+    naam: string
+    /** ISO 'YYYY-MM' of 'YYYY-MM-DD'. Zonder datum toont de UI geen
+     *  auditlijn — een auditlijn zonder echte metadata is decoratief. */
+    datum?: string
+  }>
   inCheckin: string
   uitCheckin: string
   heroFoto: string
@@ -308,6 +314,13 @@ const _woningenRaw: Woning[] = [
           en: 'A beautiful apartment in a quiet part of Ostend. Fantastic sea view. Communication was very smooth. We\'ll certainly return.',
         },
         naam: 'Valérie',
+      },
+      {
+        citaat: {
+          nl: 'Een uiterst proper appartement, smaakvol en modern ingericht met alle oog op comfort. Prachtig uitzicht — niks op aan te merken. Zou zeker opnieuw huren.',
+          en: 'An immaculately clean apartment, tastefully and modernly furnished with every attention to comfort. Beautiful view — nothing to fault. Would definitely rent again.',
+        },
+        naam: 'Stephen',
       },
     ],
     inCheckin: '17:00',
