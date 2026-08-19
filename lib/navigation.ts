@@ -62,6 +62,7 @@ export const nlOnlyRoutes: NavHref[] = [
 // zitten (`/kennis` staat niet in de nav zelf). Matching is exact óf via
 // startsWith '<prefix>/', dus '/kennis' vangt ook '/kennis/wat-kost-…'.
 export const lightHeroRoutes: string[] = [
+  '/',
   '/de-standaard',
   '/moroww-os',
   '/kennis',

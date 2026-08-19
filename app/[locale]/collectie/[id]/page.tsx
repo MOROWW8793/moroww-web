@@ -4,6 +4,7 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { woningen, lw, lwArr, type Locale } from "@/lib/woningen";
 import { WoningGalerij } from "./WoningGalerij";
+import { InlineFoto } from "./InlineFoto";
 import { VacationRentalJsonLd, BreadcrumbListJsonLd } from "@/components/JsonLd";
 import { Register } from "@/components/Register";
 import { AuditLijn } from "@/components/AuditLijn";
@@ -77,16 +78,6 @@ function Hr() {
   return <hr className="mt-mw-8 mb-mw-6 border-0 border-t border-moroww-rule" aria-hidden />
 }
 
-// Volle-breedte-foto binnen de linkerkolom. Geen rounded corners, geen schaduw.
-function InlineFoto({ src, alt }: { src: string; alt: string }) {
-  return (
-    <div className="mt-mw-6 relative w-full aspect-[3/2] overflow-hidden">
-      {/* eslint-disable-next-line jsx-a11y/alt-text */}
-      <Image src={src} alt={alt} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 60vw" />
-    </div>
-  )
-}
-
 // Boekingspaneel. Enige plek op het gastenregister waar een kader mag staan.
 // Bouwspec: wit vlak, 1px rand in --moroww-rule, radius 4px, padding space-5.
 async function BoekingsPaneel({
@@ -126,10 +117,9 @@ async function BoekingsPaneel({
         href={woning.boekUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-mw-4 flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-semibold bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85 transition-colors w-full"
+        className="mt-mw-4 inline-flex items-center rounded-full px-mw-4 py-3 font-semibold bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85 transition-colors"
       >
-        <span>{t('book_direct')}</span>
-        <span aria-hidden>→</span>
+        {t('book_direct')}
       </a>
       <p className="mt-mw-3 text-audit uppercase text-moroww-ink-2 text-center">
         {t('redirect_note')}
