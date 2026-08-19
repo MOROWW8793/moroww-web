@@ -43,6 +43,11 @@ export interface Woning {
   uitCheckin: string
   heroFoto: string
   fotos: string[]
+  /** Foto tussen de secties op de pandpagina. `undefined` = default
+   *  (val terug op fotos[2] resp. fotos[3]). `null` = expliciet geen foto.
+   *  Een string overschrijft met een specifiek pad. */
+  fotoNaBeschrijving?: string | null
+  fotoNaBuurt?: string | null
   boekUrl: string
   comingSoon?: boolean
   vergunningsnummer?: string
@@ -139,6 +144,10 @@ const _woningenRaw: Woning[] = [
       '/images/woningen/knokke-new/2026-AmelieBauwens-Moroww-V2-2 kopie.jpg',
     ],
     boekUrl: 'https://book.moroww.com/nl/properties/698c63ff3d9a2d0013fefd72?minOccupancy=1',
+    // Architectuurdetail met het schaduwvlak — override op de default fotos[2].
+    fotoNaBeschrijving: '/images/woningen/knokke-new/Nosso_Logies_36.jpg',
+    // Onder "de buurt" bewust geen foto tot er iets passends is.
+    fotoNaBuurt: null,
     amenities: ['Smart lock', 'Wifi'],
   },
 

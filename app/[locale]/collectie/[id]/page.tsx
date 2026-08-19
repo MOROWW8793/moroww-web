@@ -164,8 +164,15 @@ export default async function WoningDetailPage({ params }: Props) {
 
   // Foto's die tussen de secties komen. Fotos[0,1] zitten in de hero-galerij.
   // Rest zit in de lightbox; wij hangen er twee expliciet op tussen de tekst.
-  const fotoNaBeschrijving = woning.fotos[2]
-  const fotoNaBuurt = woning.fotos[3]
+  //
+  // Per-pand override via `fotoNaBeschrijving` / `fotoNaBuurt`:
+  //   undefined → default (fotos[2] resp. fotos[3])
+  //   null      → expliciet geen foto onder die sectie
+  //   string    → dat specifieke pad gebruiken
+  const fotoNaBeschrijving =
+    woning.fotoNaBeschrijving === undefined ? woning.fotos[2] : woning.fotoNaBeschrijving
+  const fotoNaBuurt =
+    woning.fotoNaBuurt === undefined ? woning.fotos[3] : woning.fotoNaBuurt
 
   const paneel = await BoekingsPaneel({ woning, locale })
 
