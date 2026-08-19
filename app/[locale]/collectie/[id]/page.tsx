@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { woningen, lw, lwArr, type Locale } from "@/lib/woningen";
 import { WoningGalerij } from "./WoningGalerij";
@@ -70,10 +71,71 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-// Hairline in --moroww-rule tussen secties. Bouwspec sectie 4: structuur
-// komt van hairlines en witruimte, niet van kaders.
+// Sectiescheiding tussen inhoudsblokken. Bouwspec: hairlines in --moroww-rule,
+// geen kaders. Blijft zoals in 3c.
 function Hr() {
   return <hr className="mt-mw-8 mb-mw-6 border-0 border-t border-moroww-rule" aria-hidden />
+}
+
+// Volle-breedte-foto binnen de linkerkolom. Geen rounded corners, geen schaduw.
+function InlineFoto({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="mt-mw-6 relative w-full aspect-[3/2] overflow-hidden">
+      {/* eslint-disable-next-line jsx-a11y/alt-text */}
+      <Image src={src} alt={alt} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 60vw" />
+    </div>
+  )
+}
+
+// Boekingspaneel. Enige plek op het gastenregister waar een kader mag staan.
+// Bouwspec: wit vlak, 1px rand in --moroww-rule, radius 4px, padding space-5.
+async function BoekingsPaneel({
+  woning,
+  locale,
+}: {
+  woning: (typeof woningen)[number]
+  locale: Locale
+}) {
+  const t = await getTranslations({ locale, namespace: 'property' })
+
+  if (woning.comingSoon) {
+    return (
+      <div
+        className="bg-white border border-moroww-rule p-mw-5"
+        style={{ borderRadius: 4 }}
+      >
+        <p className="text-audit uppercase text-moroww-label mb-mw-3">{t('coming_soon')}</p>
+        <p className="text-body text-moroww-dark">{t('coming_soon_body')}</p>
+      </div>
+    )
+  }
+
+  return (
+    <div
+      className="bg-white border border-moroww-rule p-mw-5"
+      style={{ borderRadius: 4 }}
+    >
+      {woning.prijs ? (
+        <p className="text-h3 text-moroww-dark">
+          <span className="text-body text-moroww-ink-2">{t('from_label')} </span>
+          <span className="font-semibold">€{woning.prijs}</span>
+          <span className="text-body text-moroww-ink-2"> {t('per_night')}</span>
+        </p>
+      ) : null}
+      <a
+        href={woning.boekUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-mw-4 flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-semibold bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85 transition-colors w-full"
+      >
+        <span>{t('book_direct')}</span>
+        <span aria-hidden>→</span>
+      </a>
+      <p className="mt-mw-3 text-audit uppercase text-moroww-ink-2 text-center">
+        {t('redirect_note')}
+      </p>
+    </div>
+  )
 }
 
 export default async function WoningDetailPage({ params }: Props) {
@@ -100,6 +162,13 @@ export default async function WoningDetailPage({ params }: Props) {
     auditMaand ? `geauditeerd ${auditMaand}` : '',
   ].filter((s) => s.trim() !== '')
 
+  // Foto's die tussen de secties komen. Fotos[0,1] zitten in de hero-galerij.
+  // Rest zit in de lightbox; wij hangen er twee expliciet op tussen de tekst.
+  const fotoNaBeschrijving = woning.fotos[2]
+  const fotoNaBuurt = woning.fotos[3]
+
+  const paneel = await BoekingsPaneel({ woning, locale })
+
   return (
     <Register kant="gast">
       <BreadcrumbListJsonLd items={breadcrumbs} />
@@ -114,193 +183,174 @@ export default async function WoningDetailPage({ params }: Props) {
         amenities={woning.amenities}
       />
 
-      <div className="mx-auto max-w-6xl px-6 md:px-12 pt-28">
-        {/* Breadcrumb — geen kader, alleen tekst */}
-        <nav className="mb-mw-6 text-audit uppercase text-moroww-ink-2">
-          <Link href="/collectie" className="hover:text-moroww-dark transition-colors">
-            {t('breadcrumb_collection')}
-          </Link>
-          <span className="mx-2">·</span>
-          <span>{woning.naam}</span>
-        </nav>
+      {/* Container voor beeld én grid — één set marges, zodat het beeld
+          exact even breed is als de inhoudskolom eronder. */}
+      <div className="mx-auto max-w-7xl px-6 md:px-12 pt-24 pb-mw-10">
 
-        {/* Galerij vult breed */}
-        <div className="mb-mw-8">
+        {/* Hero-galerij */}
+        <div className="mb-mw-6">
           <WoningGalerij fotos={woning.fotos} naam={woning.naam} />
         </div>
-      </div>
 
-      <div className="mx-auto max-w-3xl px-6 md:px-12 pb-mw-10">
-        {/* Kop */}
-        <h1
-          className="font-bold text-moroww-dark leading-[1.05] tracking-[-0.02em]"
-          style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
-        >
-          {woning.naam}
-        </h1>
-        <p className="mt-mw-3 text-body italic text-moroww-ink-2">
-          {lw(woning.slogan, locale)}
-        </p>
-        <p className="mt-mw-3 text-body text-moroww-dark">{woning.locatie}</p>
+        {/* Twee kolommen vanaf lg. Onder lg: stacken (breadcrumb → kop → tagline
+            → boeking → auditlijn → inhoud). */}
+        <div className="lg:grid lg:grid-cols-12 lg:gap-x-mw-6">
 
-        {auditItems.length > 0 && (
-          <div className="mt-mw-5">
-            <AuditLijn density="quiet" items={auditItems} />
+          {/* LINKS · content — kolom 1 tot 7 */}
+          <div className="lg:col-span-7">
+            {/* Breadcrumb */}
+            <nav className="text-audit uppercase text-moroww-ink-2">
+              <Link href="/collectie" className="hover:text-moroww-dark transition-colors">
+                {t('breadcrumb_collection')}
+              </Link>
+              <span className="mx-2">·</span>
+              <span>{woning.naam}</span>
+            </nav>
+
+            {/* Titel */}
+            <h1
+              className="mt-mw-4 font-bold text-moroww-dark leading-[1.05] tracking-[-0.02em]"
+              style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
+            >
+              {woning.naam}
+            </h1>
+
+            {/* Tagline */}
+            <p className="mt-mw-3 text-body-lg italic text-moroww-ink-2 max-w-[62ch]">
+              {lw(woning.slogan, locale)}
+            </p>
+            <p className="mt-mw-2 text-body text-moroww-dark">{woning.locatie}</p>
+
+            {/* Boekingspaneel op mobiel — inline na de tagline, geen sticky */}
+            <div className="lg:hidden mt-mw-5">{paneel}</div>
+
+            {auditItems.length > 0 && (
+              <div className="mt-mw-5 max-w-[62ch]">
+                <AuditLijn density="quiet" items={auditItems} />
+              </div>
+            )}
+
+            {/* Waarom deze woning — hoogtepunten, met certified-embleem naast de kop */}
+            {woning.hoogtepunten.length > 0 && (
+              <>
+                <Hr />
+                <div className="flex items-center gap-mw-4">
+                  <Image
+                    src="/images/Moroww_Certified_01_RGB.png"
+                    alt="moroww certified"
+                    width={64}
+                    height={64}
+                    className="w-14 h-14 shrink-0"
+                  />
+                  <h2 className="text-h2 text-moroww-dark">{t('highlights_title')}</h2>
+                </div>
+                <div className="mt-mw-4 grid grid-cols-1 sm:grid-cols-2 gap-x-mw-4 gap-y-mw-3 max-w-[62ch]">
+                  {lwArr(woning.hoogtepunten, locale).map((h) => (
+                    <p key={h} className="text-body text-moroww-dark">{h}</p>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {/* Waarom moroww deze woning opnam */}
+            {woning.waaromOpgenomen && (() => {
+              const raw = lw(woning.waaromOpgenomen, locale)
+              const alineas = raw.split('\n\n')
+              return (
+                <>
+                  <Hr />
+                  <h2 className="text-h2 text-moroww-dark">{t('waarom_label')}</h2>
+                  <div className="max-w-[62ch]">
+                    {alineas.map((p, i) => (
+                      <p key={i} className="mt-mw-3 text-body text-moroww-dark">{p}</p>
+                    ))}
+                  </div>
+                </>
+              )
+            })()}
+
+            {/* Over deze woning */}
+            <Hr />
+            <h2 className="text-h2 text-moroww-dark">{t('about_title')}</h2>
+            <div className="max-w-[62ch]">
+              <p className="mt-mw-4 text-body text-moroww-dark">
+                {lw(woning.introductie, locale)}
+              </p>
+              <p className="mt-mw-3 text-body text-moroww-dark">
+                {lw(woning.volledigeBeschrijving, locale)}
+              </p>
+            </div>
+            {fotoNaBeschrijving && (
+              <InlineFoto src={fotoNaBeschrijving} alt={`${woning.naam} — sfeerbeeld`} />
+            )}
+
+            {/* Buurt */}
+            {woning.buurt && (
+              <>
+                <Hr />
+                <h2 className="text-h2 text-moroww-dark">{t('neighbourhood_title')}</h2>
+                <p className="mt-mw-4 text-body text-moroww-dark max-w-[62ch]">
+                  {lw(woning.buurt, locale)}
+                </p>
+                {fotoNaBuurt && (
+                  <InlineFoto src={fotoNaBuurt} alt={`${woning.naam} — omgeving`} />
+                )}
+              </>
+            )}
+
+            {/* Praktisch */}
+            <Hr />
+            <h2 className="text-h2 text-moroww-dark">{t('practical_title')}</h2>
+            <dl className="mt-mw-4 divide-y divide-moroww-rule border-t border-b border-moroww-rule max-w-[62ch]">
+              <PraktischRij label={t('checkin_label')} value={`${t('from_label')} ${woning.inCheckin}`} />
+              <PraktischRij label={t('checkout_label')} value={`${t('before_label')} ${woning.uitCheckin}`} />
+              {woning.maxGasten ? (
+                <PraktischRij label={t('max_guests_label')} value={`${woning.maxGasten} ${t('persons')}`} />
+              ) : null}
+              {woning.oppervlakte ? (
+                <PraktischRij label="oppervlakte" value={woning.oppervlakte} />
+              ) : null}
+              {woning.vergunningsnummer && (
+                <PraktischRij label={t('vergunning_label')} value={woning.vergunningsnummer} />
+              )}
+            </dl>
+
+            {/* Kenmerken — geen labelparen. Gescheiden door " · ". */}
+            {woning.tags.length > 0 && (
+              <>
+                <hr className="mt-mw-6 mb-mw-4 border-0 border-t border-moroww-rule max-w-[62ch]" aria-hidden />
+                <p className="text-audit uppercase text-moroww-ink-2 max-w-[62ch]">
+                  {lwArr(woning.tags, locale).join(' · ')}
+                </p>
+              </>
+            )}
+
+            {/* Reviews */}
+            {(woning.reviews?.length ?? 0) > 0 && (
+              <>
+                <Hr />
+                <h2 className="text-h2 text-moroww-dark">{t('reviews_label')}</h2>
+                <div className="mt-mw-4 space-y-mw-5 max-w-[62ch]">
+                  {woning.reviews!.map(({ citaat, naam }) => (
+                    <blockquote key={naam}>
+                      <p className="text-body italic text-moroww-dark">
+                        &ldquo;{lw(citaat, locale)}&rdquo;
+                      </p>
+                      <footer className="mt-mw-2 text-audit uppercase text-moroww-ink-2">
+                        {naam}
+                      </footer>
+                    </blockquote>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
-        )}
 
-        {/* Prijs + Boek direct — geen zwart vlak, hairline erboven */}
-        {!woning.comingSoon && woning.prijs ? (
-          <>
-            <Hr />
-            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-mw-4">
-              <p className="text-h3 text-moroww-dark">
-                {t('from_label')} <span className="font-semibold">€{woning.prijs}</span>{' '}
-                <span className="text-body text-moroww-ink-2">{t('per_night')}</span>
-              </p>
-              <a
-                href={woning.boekUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 font-semibold bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85 transition-colors self-start"
-              >
-                <span>{t('book_direct')}</span>
-                <span aria-hidden>→</span>
-              </a>
-            </div>
-          </>
-        ) : woning.comingSoon ? (
-          <>
-            <Hr />
-            <p className="text-audit uppercase text-moroww-label">{t('coming_soon')}</p>
-            <p className="mt-mw-3 text-body text-moroww-dark">{t('coming_soon_body')}</p>
-          </>
-        ) : null}
-
-        {/* Waarom deze woning — hoogtepunten in twee kolommen, geen vinkjes */}
-        {woning.hoogtepunten.length > 0 && (
-          <>
-            <Hr />
-            <h2 className="text-h2 text-moroww-dark">{t('highlights_title')}</h2>
-            <div className="mt-mw-4 grid grid-cols-1 sm:grid-cols-2 gap-x-mw-4 gap-y-mw-3">
-              {lwArr(woning.hoogtepunten, locale).map((h) => (
-                <p key={h} className="text-body text-moroww-dark">{h}</p>
-              ))}
-            </div>
-          </>
-        )}
-
-        {/* Waarom moroww deze woning opnam — één gewicht, lopende tekst */}
-        {woning.waaromOpgenomen && (() => {
-          const raw = lw(woning.waaromOpgenomen, locale)
-          const alineas = raw.split('\n\n')
-          return (
-            <>
-              <Hr />
-              <h2 className="text-h2 text-moroww-dark">{t('waarom_label')}</h2>
-              {alineas.map((p, i) => (
-                <p key={i} className="mt-mw-3 text-body text-moroww-dark">{p}</p>
-              ))}
-            </>
-          )
-        })()}
-
-        {/* Over deze woning — lopende tekst, één gewicht */}
-        <Hr />
-        <h2 className="text-h2 text-moroww-dark">{t('about_title')}</h2>
-        <p className="mt-mw-4 text-body text-moroww-dark">
-          {lw(woning.introductie, locale)}
-        </p>
-        <p className="mt-mw-3 text-body text-moroww-dark">
-          {lw(woning.volledigeBeschrijving, locale)}
-        </p>
-
-        {/* Buurt */}
-        {woning.buurt && (
-          <>
-            <Hr />
-            <h2 className="text-h2 text-moroww-dark">{t('neighbourhood_title')}</h2>
-            <p className="mt-mw-4 text-body text-moroww-dark">
-              {lw(woning.buurt, locale)}
-            </p>
-          </>
-        )}
-
-        {/* Praktisch — definitielijst met hairlines tussen rijen */}
-        <Hr />
-        <h2 className="text-h2 text-moroww-dark">{t('practical_title')}</h2>
-        <dl className="mt-mw-4 divide-y divide-moroww-rule border-t border-b border-moroww-rule">
-          <PraktischRij label={t('checkin_label')} value={`${t('from_label')} ${woning.inCheckin}`} />
-          <PraktischRij label={t('checkout_label')} value={`${t('before_label')} ${woning.uitCheckin}`} />
-          {woning.maxGasten ? (
-            <PraktischRij label={t('max_guests_label')} value={`${woning.maxGasten} ${t('persons')}`} />
-          ) : null}
-          {woning.oppervlakte ? (
-            <PraktischRij label="oppervlakte" value={woning.oppervlakte} />
-          ) : null}
-          {woning.vergunningsnummer && (
-            <PraktischRij label={t('vergunning_label')} value={woning.vergunningsnummer} />
-          )}
-        </dl>
-
-        {/* Kenmerken — geen labelparen, geen lijst. Gescheiden door " · "
-            in audit-typografie op de kleur ink-2. Aparte hairline erboven. */}
-        {woning.tags.length > 0 && (
-          <>
-            <hr className="mt-mw-6 mb-mw-4 border-0 border-t border-moroww-rule" aria-hidden />
-            <p className="text-audit uppercase text-moroww-ink-2">
-              {lwArr(woning.tags, locale).join(' · ')}
-            </p>
-          </>
-        )}
-
-        {/* Reviews */}
-        {(woning.reviews?.length ?? 0) > 0 && (
-          <>
-            <Hr />
-            <h2 className="text-h2 text-moroww-dark">{t('reviews_label')}</h2>
-            <div className="mt-mw-4 space-y-mw-5">
-              {woning.reviews!.map(({ citaat, naam }) => (
-                <blockquote key={naam}>
-                  <p className="text-body italic text-moroww-dark">
-                    &ldquo;{lw(citaat, locale)}&rdquo;
-                  </p>
-                  <footer className="mt-mw-2 text-audit uppercase text-moroww-ink-2">
-                    {naam}
-                  </footer>
-                </blockquote>
-              ))}
-            </div>
-          </>
-        )}
-
-        {/* Boek onderaan — hairline + prijs + knop, geen kader */}
-        {!woning.comingSoon && woning.prijs ? (
-          <>
-            <Hr />
-            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-mw-4">
-              <p className="text-h3 text-moroww-dark">
-                {t('from_label')} <span className="font-semibold">€{woning.prijs}</span>{' '}
-                <span className="text-body text-moroww-ink-2">{t('per_night')}</span>
-              </p>
-              <a
-                href={woning.boekUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 font-semibold bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85 transition-colors self-start"
-              >
-                <span>{t('book_direct')}</span>
-                <span aria-hidden>→</span>
-              </a>
-            </div>
-            <p className="mt-mw-3 text-audit uppercase text-moroww-ink-2">
-              {t('cta_questions')}{' '}
-              <a href="mailto:info@moroww.com" className="underline underline-offset-2 hover:text-moroww-dark">
-                {t('cta_contact')}
-              </a>
-            </p>
-          </>
-        ) : null}
+          {/* RECHTS · boekingspaneel — kolom 9 tot 12, sticky vanaf lg */}
+          <aside className="hidden lg:block lg:col-span-4 lg:col-start-9">
+            <div className="sticky top-24">{paneel}</div>
+          </aside>
+        </div>
       </div>
     </Register>
   );

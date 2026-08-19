@@ -9,8 +9,10 @@ interface Props {
   naam: string;
 }
 
-// Hero + 5 tegels zichtbaar. De rest zit achter 'bekijk alle X foto's'
-// in een full-screen modal die pas laadt bij openen.
+// Twee foto's naast elkaar, 50/50, 8px gutter, hoogte 62vh op ≥lg,
+// gestapeld op smaller schermen. Geen afgeronde hoeken, geen schaduw.
+// Rechtsonder in de tweede foto: rechthoek-knop 2px radius die de lightbox
+// opent op index 0. De lightbox houdt alle foto's beschikbaar.
 export function WoningGalerij({ fotos, naam }: Props) {
   const [lightbox, setLightbox] = useState<number | null>(null);
   const touchStartX = useRef<number>(0);
@@ -21,7 +23,6 @@ export function WoningGalerij({ fotos, naam }: Props) {
   const prev = () => setLightbox((i) => (i! > 0 ? i! - 1 : fotos.length - 1));
   const next = () => setLightbox((i) => (i! < fotos.length - 1 ? i! + 1 : 0));
 
-  // Sluit lightbox met Escape; pijltjes navigeren tussen foto's.
   useEffect(() => {
     if (lightbox === null) return;
     const onKey = (e: KeyboardEvent) => {
@@ -45,104 +46,53 @@ export function WoningGalerij({ fotos, naam }: Props) {
     }
   };
 
-  // Grid rechts: 5 tegels (index 1..5). Als er minder foto's zijn, minder tegels.
-  const rightTiles = fotos.slice(1, 6);
-  const restCount = Math.max(0, fotos.length - 6);
+  const heeftTweede = fotos.length > 1;
 
   return (
     <>
-      {/* ── Galerij (hero + 5 tegels) ── */}
-      <div className="relative">
-        {/* Desktop: 3-col × 3-row grid, hero span 2×2, 5 tegels rechts en onder */}
-        <div className="hidden md:grid grid-cols-3 grid-rows-3 gap-2 h-[560px]">
-          {/* Hero */}
-          <div className="relative col-span-2 row-span-2 rounded-2xl overflow-hidden">
-            <button
-              className="relative w-full h-full cursor-zoom-in group block"
-              onClick={() => open(0)}
-              aria-label={`bekijk ${naam} — foto 1`}
-            >
-              <Image
-                src={fotos[0]}
-                alt={naam}
-                fill
-                className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                sizes="(max-width: 768px) 100vw, 66vw"
-                priority
-              />
-            </button>
-            {/* Certified-embleem — één keer per pand, alleen op de hero. Niet op kaarten in het overzicht. */}
-            <Image
-              src="/images/Moroww_Certified_01_RGB.png"
-              alt="moroww certified"
-              width={120}
-              height={120}
-              className="absolute bottom-6 right-6 pointer-events-none select-none w-24 h-24 lg:w-28 lg:h-28"
-              sizes="112px"
-            />
-          </div>
-
-          {/* 5 tegels */}
-          {rightTiles.map((foto, i) => (
-            <button
-              key={i}
-              className="relative overflow-hidden rounded-2xl cursor-zoom-in group"
-              onClick={() => open(i + 1)}
-              aria-label={`bekijk ${naam} — foto ${i + 2}`}
-            >
-              <Image
-                src={foto}
-                alt={`${naam} foto ${i + 2}`}
-                fill
-                className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                sizes="(max-width: 768px) 50vw, 22vw"
-              />
-            </button>
-          ))}
-        </div>
-
-        {/* Mobiel: alleen hero (swipeable) */}
-        <div
-          className="md:hidden relative w-full h-64 overflow-hidden rounded-2xl cursor-zoom-in"
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
+      {/* Twee foto's naast elkaar (of één op smal scherm). 8px gutter. */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 h-[50vh] md:h-[62vh]">
+        <button
+          className="relative w-full h-full cursor-zoom-in overflow-hidden"
           onClick={() => open(0)}
+          aria-label={`bekijk ${naam} — foto 1`}
         >
           <Image
             src={fotos[0]}
             alt={naam}
             fill
             className="object-cover"
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, 50vw"
             priority
           />
-          <Image
-            src="/images/Moroww_Certified_01_RGB.png"
-            alt="moroww certified"
-            width={80}
-            height={80}
-            className="absolute bottom-4 right-4 pointer-events-none select-none w-16 h-16"
-            sizes="64px"
-          />
-          <div className="absolute bottom-3 left-3 bg-black/50 text-white text-xs rounded-full px-3 py-1">
-            1 / {fotos.length}
-          </div>
-        </div>
+        </button>
 
-        {/* 'bekijk alle X foto's' knop — rechtsonder op desktop, onder hero op mobiel */}
-        {fotos.length > 1 && (
-          <button
-            onClick={() => open(0)}
-            className="absolute bottom-4 right-4 md:bottom-6 md:right-6 bg-white text-moroww-black text-sm font-semibold px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-shadow"
-          >
-            {restCount > 0
-              ? `bekijk alle ${fotos.length} foto's`
-              : `bekijk galerij`}
-          </button>
+        {heeftTweede && (
+          <div className="relative w-full h-full">
+            <button
+              className="relative w-full h-full cursor-zoom-in overflow-hidden block"
+              onClick={() => open(1)}
+              aria-label={`bekijk ${naam} — foto 2`}
+            >
+              <Image
+                src={fotos[1]}
+                alt={`${naam} foto 2`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </button>
+            <button
+              onClick={() => open(0)}
+              className="absolute bottom-4 right-4 bg-white text-moroww-dark text-audit uppercase font-semibold px-4 py-2 rounded-[2px] hover:bg-moroww-blush transition-colors"
+            >
+              bekijk alle {fotos.length} foto&apos;s
+            </button>
+          </div>
         )}
       </div>
 
-      {/* ── Lightbox (rendert pas bij openen — foto's laden lazy) ── */}
+      {/* Lightbox */}
       {lightbox !== null && (
         <div
           className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
@@ -176,7 +126,7 @@ export function WoningGalerij({ fotos, naam }: Props) {
               alt={`${naam} ${lightbox + 1}`}
               style={{ maxWidth: "100%", maxHeight: "85vh", objectFit: "contain" }}
             />
-            <p className="text-white/60 text-center text-sm mt-3">
+            <p className="text-white/60 text-center text-audit uppercase mt-3">
               {lightbox + 1} / {fotos.length}
             </p>
           </div>
