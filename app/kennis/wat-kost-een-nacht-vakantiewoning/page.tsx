@@ -136,7 +136,7 @@ export default function WatKostEenNachtPage() {
         <p>
           Wat volgt is geen rekenblad maar een lijst van waar het misloopt. De bedragen
           verschillen te sterk per woning en per streek om er hier getallen op te plakken.
-          De rekenmodule doet dat wel, op basis van jouw postcode en jouw oppervlakte.
+          Reken zelf per post, op basis van je oppervlakte, je bezetting en je postcode.
         </p>
         <p>
           <strong>Btw op het logies.</strong> Twaalf procent, geen drempel, en de meeste
@@ -220,9 +220,9 @@ export default function WatKostEenNachtPage() {
         </table>
 
         <p>
-          Dat staat hier om twee redenen. Omdat het in de rekenmodule zit en je moet
-          kunnen nagaan waarmee die rekent. En omdat je het liever nu leest dan in maand
-          drie.
+          Dat staat hier om twee redenen. Omdat je het liever nu leest dan in maand
+          drie. En omdat een label dat over de kosten van andere partijen schrijft,
+          niet kan zwijgen over de eigen.
         </p>
         <p>
           Het collectielidmaatschap is geen abonnement op een dienst. Het is het
