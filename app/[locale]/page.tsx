@@ -1,9 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { existsSync } from "node:fs";
+import path from "node:path";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { FaqJsonLd } from "@/components/FaqJsonLd";
 import { Deur } from "@/components/Deur";
 import { AuditLijn } from "@/components/AuditLijn";
+
+// Server-side check: als het bestand in /public niet bestaat, geef undefined
+// terug zodat de Deur alleen de placeholder-tegel toont. Zo staat er nooit
+// een broken <img> in de DOM met de alt-tekst bovenaan.
+function beeldOfNull(publicPad: string): string | undefined {
+  const abs = path.join(process.cwd(), "public", publicPad.replace(/^\//, ""));
+  return existsSync(abs) ? publicPad : undefined;
+}
 
 export const metadata: Metadata = {
   title: 'moroww — premium vakantiewoningen in België',
@@ -28,11 +38,11 @@ export default async function HomePage({
       <FaqJsonLd />
 
       {/* HERO — bouwspec sectie 2. Blush achtergrond, één regel display,
-          geen beeld, geen video, geen knop. Hoogte net genoeg dat de deuren
-          net over de vouw hangen. */}
+          geen beeld, geen video, geen knop. Hoogte krap gehouden zodat de
+          deuren op 1440×900 volledig zichtbaar zijn onder de vouw. */}
       <section
-        className="w-full flex items-center px-6 md:px-12"
-        style={{ minHeight: '38vh' }}
+        className="w-full flex items-center px-6 md:px-12 pt-mw-8"
+        style={{ minHeight: '22vh' }}
       >
         <div className="mx-auto max-w-7xl w-full">
           <h1 className="text-display text-moroww-dark">
@@ -49,14 +59,14 @@ export default async function HomePage({
             naam="the shore"
             tagline="waar het licht verandert"
             href="/the-shore"
-            beeld="/images/home/shore-door.jpg"
+            beeld={beeldOfNull('/images/home/shore-door.jpg')}
             beeldAlt="de Belgische kust"
           />
           <Deur
             naam="the fields"
             tagline="waar het stil blijft"
             href="/the-fields"
-            beeld="/images/home/fields-door.jpg"
+            beeld={beeldOfNull('/images/home/fields-door.jpg')}
             beeldAlt="het binnenland in winter"
           />
         </div>

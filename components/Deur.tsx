@@ -1,13 +1,13 @@
 // Eén van de twee deuren op de homepage. Bouwspec sectie 3.
 //
-// Beeld 4:5, geen afgeronde hoeken, geen schaduw. Verloop van onderaf.
-// Onderaan links: 3px kleurstreep, collectienaam in audit-caps, tagline in H2.
+// Hoogte: aspect 4:5 op mobiel, gecapt op 72vh op lg — op grote schermen
+// snijdt het beeld bij in plaats van de pagina op te rekken.
+// Beeld optional: als het bestand ontbreekt, rendert er GEEN <img> — alleen
+// de effen collectiekleur met de tekst er normaal overheen in --moroww-dark
+// in plaats van wit. Zo staat er nooit een broken-image-icoon of een
+// blootgestelde alt-tekst op de pagina.
 // Hover: beeld scale 1.03 over 700ms. Reduced motion: geen scale.
-// Focus: 2px oranje ring, offset 4px.
-//
-// Placeholder: de container krijgt de collectiekleur als achtergrond. Als
-// het beeld ontbreekt, blijft de gekleurde tegel zichtbaar met de tekst
-// erover. Geen onError nodig — Next Image geeft een leeg vlak boven de bg.
+// Focus: 2px --moroww-orange, offset 4px.
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -16,39 +16,53 @@ interface Props {
   naam: 'the shore' | 'the fields'
   tagline: string
   href: string
-  beeld: string
+  /** Absoluut pad in /public. Ontbreekt of undefined → placeholder-tegel. */
+  beeld?: string
   beeldAlt: string
 }
 
 export function Deur({ naam, tagline, href, beeld, beeldAlt }: Props) {
   const isShore = naam === 'the shore'
-  const kleur = isShore ? 'var(--moroww-shore)' : 'var(--moroww-fields)'
+  const bgKleur = isShore ? 'var(--moroww-shore)' : 'var(--moroww-fields)'
   const kleurClass = isShore ? 'bg-moroww-shore' : 'bg-moroww-fields'
+
+  const heeftBeeld = Boolean(beeld)
+
+  // Met beeld: witte tekst op donker verloop. Zonder beeld: donkere tekst op
+  // de gekleurde tegel — de collectiekleur zou een streep in eigen kleur
+  // opslokken, dus daar wordt de streep ook donker.
+  const tekstKleur = heeftBeeld ? 'text-white' : 'text-moroww-dark'
+  const streepClass = heeftBeeld ? kleurClass : 'bg-moroww-dark'
 
   return (
     <Link
       href={href}
-      className="group relative block w-full aspect-[4/5] overflow-hidden outline-none focus-visible:outline-2 focus-visible:outline-moroww-orange focus-visible:outline-offset-4"
-      style={{ backgroundColor: kleur }}
+      className="group relative block w-full aspect-[4/5] lg:max-h-[72vh] overflow-hidden outline-none focus-visible:outline-2 focus-visible:outline-moroww-orange focus-visible:outline-offset-4"
+      style={{ backgroundColor: bgKleur }}
       aria-label={`${naam} — ${tagline}`}
     >
-      <Image
-        src={beeld}
-        alt={beeldAlt}
-        fill
-        className="object-cover transition-transform duration-[700ms] ease-out group-hover:scale-[1.03] motion-reduce:group-hover:scale-100"
-        sizes="(max-width: 1024px) 100vw, 50vw"
-        priority
-      />
-      <div
-        className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none"
-        style={{ background: 'linear-gradient(to top, rgba(26,26,26,0.55), rgba(26,26,26,0))' }}
-        aria-hidden
-      />
+      {heeftBeeld && (
+        <>
+          <Image
+            src={beeld as string}
+            alt={beeldAlt}
+            fill
+            className="object-cover transition-transform duration-[700ms] ease-out group-hover:scale-[1.03] motion-reduce:group-hover:scale-100"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            priority
+          />
+          <div
+            className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none"
+            style={{ background: 'linear-gradient(to top, rgba(26,26,26,0.55), rgba(26,26,26,0))' }}
+            aria-hidden
+          />
+        </>
+      )}
+
       <div className="absolute inset-x-0 bottom-0 p-mw-5">
-        <div className={`h-[3px] w-10 ${kleurClass}`} aria-hidden />
-        <p className="mt-mw-3 text-audit uppercase text-white">{naam}</p>
-        <h2 className="mt-mw-2 text-h2 text-white">{tagline}</h2>
+        <div className={`h-[3px] w-10 ${streepClass}`} aria-hidden />
+        <p className={`mt-mw-3 text-audit uppercase ${tekstKleur}`}>{naam}</p>
+        <h2 className={`mt-mw-2 text-h2 ${tekstKleur}`}>{tagline}</h2>
       </div>
     </Link>
   )
