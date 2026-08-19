@@ -25,6 +25,8 @@ export const config = {
     // moroww-os wordt geproxyd; next-intl mag die token niet aanraken (anders
     // wordt hij tot /nl/welkom/<token> verminkt). 'welcome' (met c) blijft
     // apart bestaan als de bestaande pandpagina.
-    '/((?!api|_next|admin|onboarding|welcome|welkom|.*\\..*).*)',
+    // 'kennis' is NL-only en heeft een eigen layout — geen next-intl-routing
+    // erop, anders krijgen /kennis/... URLs een /nl-prefix die niemand zoekt.
+    '/((?!api|_next|admin|onboarding|welcome|welkom|kennis|.*\\..*).*)',
   ],
 }

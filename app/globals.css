@@ -194,3 +194,45 @@ body {
   .ol-n { color: #FEA05E; } .ol-t { color: #fff; }
   .ol-tick { fill: #FEA05E; r: 6; }
 }
+
+/* ── Kennisbank body-typografie ──
+   De artikelen in /kennis staan in gewone HTML met deze klassenlaag eromheen.
+   Prose van Tailwind niet installeren voor een handvol pagina's; dat werd
+   later toch weer overschreven. Alleen wat we hier gebruiken. */
+.prose-kennis { color: #1A1A1A; font-size: 17px; line-height: 1.7; }
+.prose-kennis h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; line-height: 1.2;
+  margin: 3rem 0 1.25rem; color: #1A1A1A; letter-spacing: -0.01em;
+}
+.prose-kennis h3 {
+  font-size: 1.25rem; font-weight: 700; line-height: 1.3;
+  margin: 2rem 0 0.75rem; color: #1A1A1A;
+}
+.prose-kennis h4 {
+  font-size: 1.0625rem; font-weight: 600; line-height: 1.35;
+  margin: 1.5rem 0 0.5rem; color: #1A1A1A;
+}
+.prose-kennis p { margin: 1rem 0; }
+.prose-kennis strong { font-weight: 600; color: #1A1A1A; }
+.prose-kennis ol { list-style: decimal; padding-left: 1.5rem; margin: 1rem 0; }
+.prose-kennis ul { list-style: disc; padding-left: 1.5rem; margin: 1rem 0; }
+.prose-kennis li { margin: 0.4rem 0; }
+.prose-kennis a { color: #1A1A1A; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(192,141,110,0.5); }
+.prose-kennis a:hover { text-decoration-color: #1A1A1A; }
+.prose-kennis blockquote {
+  margin: 1.5rem 0; padding: 0.75rem 1.25rem; border-left: 3px solid #C08D6E;
+  color: rgba(26,26,26,0.7); font-style: italic;
+}
+.prose-kennis table {
+  width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 15px;
+  background: #fff; border-radius: 12px; overflow: hidden;
+}
+.prose-kennis th, .prose-kennis td {
+  padding: 0.75rem 1rem; text-align: left; vertical-align: top;
+  border-bottom: 1px solid rgba(192,141,110,0.15);
+}
+.prose-kennis th {
+  background: rgba(192,141,110,0.08); font-weight: 600; color: #1A1A1A;
+  font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em;
+}
+.prose-kennis tr:last-child td { border-bottom: none; }

@@ -1,0 +1,129 @@
+// De vijf CTA-blokken uit de kennisbank-blueprint.
+//
+// Kop en tekst liggen vast; alleen de openingszin (`intro`) varieert per
+// pagina en per sectie. Zo hoort een CTA nooit als losse knoppen in de body
+// geschreven te worden — dat maakt van de kennisbank een verkooppagina.
+
+import Link from 'next/link'
+
+type CtaKind = 'poortentoets' | 'rekenmodule' | 'vraag' | 'gesprek'
+
+interface Props {
+  kind: CtaKind
+  intro?: string
+}
+
+const CONFIG: Record<CtaKind, { title: string; body: string; label: string; href: string; external?: boolean }> = {
+  poortentoets: {
+    title:  'Haalt jouw woning de standaard?',
+    body:   'moroww neemt woningen op na een fysieke inspectie. De toets geeft je in twee minuten hetzelfde oordeel dat wij ter plaatse vellen, op de punten die je zelf kan nagaan.',
+    label:  'Doe de poortentoets',
+    href:   '/eigenaar-worden#poortentoets',
+  },
+  rekenmodule: {
+    title:  'Wat levert jouw woning op?',
+    body:   'Reken het door met echte cijfers uit de collectie, en met alle kosten erin. Ook die van ons.',
+    label:  'Bereken je opbrengst',
+    href:   '/kennis/rendement-vakantiewoning-berekenen',
+  },
+  vraag: {
+    title:  'Niet zeker over jouw situatie?',
+    body:   'Stuur je vraag naar info@moroww.com. We antwoorden binnen twee werkdagen, ook als je woning niet in aanmerking komt voor de collectie.',
+    label:  'Stel je vraag',
+    href:   'mailto:info@moroww.com',
+    external: true,
+  },
+  gesprek: {
+    title:  'Liever meteen iemand spreken?',
+    body:   'Kies zelf een moment voor een digitaal gesprek van twintig minuten.',
+    label:  'Kies een moment',
+    href:   'https://calendar.app.google/BH8wYeA9AGf6KrUz7',
+    external: true,
+  },
+}
+
+export function Cta({ kind, intro }: Props) {
+  const c = CONFIG[kind]
+  const isPrimary = kind === 'poortentoets'
+
+  return (
+    <aside
+      className={`my-12 rounded-2xl p-8 md:p-10 ${
+        isPrimary ? 'bg-[#1A1A1A] text-white' : 'bg-white/70 border border-moroww-brown/20 text-[#1A1A1A]'
+      }`}
+    >
+      <h3
+        className={`font-bold leading-tight mb-3 ${isPrimary ? 'text-white' : 'text-[#1A1A1A]'}`}
+        style={{ fontSize: 'clamp(1.25rem, 2vw, 1.5rem)' }}
+      >
+        {c.title}
+      </h3>
+      <p
+        className={`leading-relaxed mb-6 ${isPrimary ? 'text-white/75' : 'text-[#1A1A1A]/75'}`}
+        style={{ fontSize: 17 }}
+      >
+        {intro ? `${intro} ` : ''}
+        {c.body}
+      </p>
+      {c.external ? (
+        <a
+          href={c.href}
+          target={c.href.startsWith('mailto:') ? undefined : '_blank'}
+          rel={c.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+          className={`inline-block rounded-full px-8 py-3.5 font-semibold transition-colors ${
+            isPrimary
+              ? 'bg-[#FEA05E] text-[#1A1A1A] hover:bg-moroww-orange/85'
+              : 'bg-[#1A1A1A] text-white hover:bg-[#1A1A1A]/85'
+          }`}
+        >
+          {c.label} →
+        </a>
+      ) : (
+        <Link
+          href={c.href}
+          className={`inline-block rounded-full px-8 py-3.5 font-semibold transition-colors ${
+            isPrimary
+              ? 'bg-[#FEA05E] text-[#1A1A1A] hover:bg-moroww-orange/85'
+              : 'bg-[#1A1A1A] text-white hover:bg-[#1A1A1A]/85'
+          }`}
+        >
+          {c.label} →
+        </Link>
+      )}
+    </aside>
+  )
+}
+
+interface VerderLezenItem {
+  href: string
+  title: string
+  eyebrow?: string
+}
+
+// CTA-E · verder lezen. Vier tegels: drie gerelateerde pagina's plus altijd
+// de poortentoets als vierde, per blueprint.
+export function VerderLezen({ items }: { items: VerderLezenItem[] }) {
+  const withPoort: VerderLezenItem[] = [
+    ...items.slice(0, 3),
+    { href: '/eigenaar-worden#poortentoets', title: 'Doe de poortentoets', eyebrow: 'in twee minuten' },
+  ]
+  return (
+    <section className="my-16 border-t border-moroww-brown/20 pt-12">
+      <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-6">verder lezen</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {withPoort.map((it) => (
+          <Link
+            key={it.href}
+            href={it.href}
+            className="block bg-white rounded-2xl p-6 hover:shadow-md transition-shadow"
+          >
+            {it.eyebrow && (
+              <p className="text-[11px] uppercase tracking-widest text-[#C08D6E] mb-2">{it.eyebrow}</p>
+            )}
+            <p className="text-[#1A1A1A] font-semibold leading-snug">{it.title} →</p>
+          </Link>
+        ))}
+      </div>
+    </section>
+  )
+}
