@@ -28,6 +28,9 @@ export interface Woning {
   badkamers?: number
   maxGasten?: number
   oppervlakte?: string | null
+  /** Datum van de laatste audit (ISO 'YYYY-MM-DD' of 'YYYY-MM').
+   *  Optional: als leeg, toont de PandKaart geen auditdatum. */
+  geauditeerdOp?: string
   tags: BilingualText[]
   slogan: BilingualText
   introductie: BilingualText

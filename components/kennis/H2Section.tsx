@@ -1,15 +1,14 @@
-// H2-scheiding voor het artikelsjabloon. Bouwspec sectie 4.
+// Sectiescheiding voor het artikelsjabloon.
 //
-// Boven elke H2 staat een auditlijn (density 'structural': lijn boven én
-// onder) met de sectietitel als enige item. De H2 zelf blijft zichtbaar en
-// leesbaar; de auditlijn is de sectiescheiding en het gedragen label.
-
-import { AuditLijn } from '@/components/AuditLijn'
+// Enkele hairline in --moroww-rule, zonder tekst, gevolgd door de zichtbare
+// H2. Ritme: space-8 boven de hairline, space-6 eronder. De auditlijn is
+// hier bewust niet gebruikt — een sectietitel is geen metadata en zou de
+// tekst verdubbelen.
 
 export function H2Section({ titel }: { titel: string }) {
   return (
-    <section className="h2-section mt-14 mb-4">
-      <AuditLijn density="structural" items={[titel]} />
+    <section className="h2-section mt-mw-8">
+      <hr className="border-0 border-t border-moroww-rule mb-mw-6" aria-hidden />
       <h2>{titel}</h2>
     </section>
   )

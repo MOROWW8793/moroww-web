@@ -1,17 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { BedDouble, Bath, Users } from "lucide-react";
-import { useTranslations, useLocale } from "next-intl";
-import { woningen, BADGE_STYLES, lwArr, type Locale } from "@/lib/woningen";
+import { useTranslations } from "next-intl";
+import { woningen } from "@/lib/woningen";
+import { PandKaart, formatAuditMaand } from "@/components/PandKaart";
 
 // Filter-tabs zijn Link-elementen naar de collectiepagina's. /collectie
 // zelf toont altijd alle panden; klikken op 'the shore' of 'the fields'
 // gaat naar de dedicated collectiepagina met streektekst.
 export function CollectieStatisch() {
   const t = useTranslations('collectie')
-  const locale = useLocale() as Locale
 
   return (
     <div>
@@ -39,97 +37,26 @@ export function CollectieStatisch() {
       {/* ── Woning kaarten ── */}
       <div className="px-6 md:px-16 lg:px-24 pb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {woningen.map((w) => (
-            <Link
-              key={w.id}
-              href={`/collectie/${w.id}`}
-              aria-label={`bekijk ${w.naam}`}
-              className="group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col cursor-pointer"
-            >
-              {/* Hero foto */}
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <Image
-                  src={w.heroFoto}
-                  alt={w.naam}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                {/* Collectie badge */}
-                <span
-                  className="absolute top-4 left-4 text-xs font-medium uppercase tracking-widest px-3 py-1 rounded-full"
-                  style={{ background: BADGE_STYLES[w.collectie].bg, color: BADGE_STYLES[w.collectie].color }}
-                >
-                  {w.collectie}
-                </span>
-              </div>
-
-              {/* Content */}
-              <div className="p-6 flex flex-col flex-1">
-                <div className="mb-3">
-                  <h2 className="font-bold text-moroww-black text-xl leading-tight">
-                    {w.naam}
-                  </h2>
-                  <p className="text-moroww-black/50 text-sm mt-1">{w.locatie}</p>
-                </div>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {lwArr(w.tags, locale).map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs font-medium text-moroww-black/60 bg-moroww-blush px-3 py-1 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Specs — verberg elk item dat ontbreekt of 0 is */}
-                <div className="flex gap-5 text-sm text-moroww-black/55 mb-5">
-                  {w.slaapkamers ? (
-                    <span className="flex items-center gap-1.5">
-                      <BedDouble size={14} />
-                      {w.slaapkamers} {t('bedrooms')}
-                    </span>
-                  ) : null}
-                  {w.badkamers ? (
-                    <span className="flex items-center gap-1.5">
-                      <Bath size={14} />
-                      {w.badkamers} {t('bathrooms')}
-                    </span>
-                  ) : null}
-                  {w.maxGasten ? (
-                    <span className="flex items-center gap-1.5">
-                      <Users size={14} />
-                      {w.maxGasten} {t('guests')}
-                    </span>
-                  ) : null}
-                </div>
-
-                {/* Prijs + CTA */}
-                <div className="flex items-center justify-between mt-auto pt-4 border-t border-moroww-brown/15">
-                  {w.comingSoon ? (
-                    <span className="text-xs font-semibold text-moroww-label lowercase tracking-wide">
-                      {t('coming_soon')}
-                    </span>
-                  ) : (
-                    <>
-                      {w.prijs ? (
-                        <div>
-                          <span className="font-bold text-xl text-moroww-black">{t('from')} €{w.prijs}</span>
-                          <span className="text-sm text-moroww-black/45 ml-1">{t('per_night')}</span>
-                        </div>
-                      ) : <div />}
-                      <span className="rounded-full bg-moroww-orange group-hover:bg-moroww-orange/85 text-white font-semibold text-sm px-5 py-2.5 transition-colors duration-200">
-                        {t('view_book')}
-                      </span>
-                    </>
-                  )}
-                </div>
-              </div>
-            </Link>
-          ))}
+          {woningen.map((w) => {
+            const maand = formatAuditMaand(w.geauditeerdOp)
+            const auditItems = [
+              w.collectie,
+              w.oppervlakte ?? '',
+              w.slaapkamers ? `${w.slaapkamers} ${t('bedrooms')}` : '',
+              maand ? `geauditeerd ${maand}` : '',
+            ]
+            return (
+              <PandKaart
+                key={w.id}
+                href={`/collectie/${w.id}`}
+                beeld={w.heroFoto}
+                beeldAlt={w.naam}
+                titel={w.naam}
+                plaats={w.locatie}
+                auditItems={auditItems}
+              />
+            )
+          })}
         </div>
       </div>
 
