@@ -83,13 +83,18 @@ export default function KennisHubPage() {
       <section className="w-full pb-24 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5">
           {KAARTEN.map((k) => (
+            // group + hover: alleen de titel verschuift 2px, verder niets.
+            // no-underline op elk kind — de link-decoratie mag niet doorlekken.
             <Link
               key={k.href}
               href={k.href}
-              className="block bg-white rounded-2xl p-8 hover:shadow-md transition-shadow"
+              className="group block bg-white rounded-2xl p-8 no-underline [&_*]:no-underline"
             >
               <p className="text-[11px] uppercase tracking-widest text-moroww-label mb-3">{k.eyebrow}</p>
-              <h2 className="font-bold text-moroww-dark leading-tight mb-4" style={{ fontSize: 22 }}>
+              <h2
+                className="font-bold text-moroww-dark leading-tight mb-4 transition-transform duration-300 group-hover:translate-x-[2px]"
+                style={{ fontSize: 22 }}
+              >
                 {k.titel}
               </h2>
               <p className="text-moroww-dark/75 leading-relaxed" style={{ fontSize: 16 }}>

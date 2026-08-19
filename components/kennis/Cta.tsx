@@ -56,7 +56,7 @@ const VARIANTS: Record<CtaKind, Variant> = {
   gesprek: {
     actie:    'gesprek',
     title:    'Liever meteen iemand spreken?',
-    body:     'Kies zelf een moment voor een digitaal gesprek van twintig minuten.',
+    body:     'Kies zelf een moment voor een digitaal gesprek van dertig minuten.',
     label:    'Kies een moment',
     href:     'https://calendar.app.google/BH8wYeA9AGf6KrUz7',
     external: true,

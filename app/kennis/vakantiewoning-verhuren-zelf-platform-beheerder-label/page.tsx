@@ -132,7 +132,7 @@ export default function VierModellenPage() {
             {
               vraag: 'Doen jullie ook het onderhoud en de schoonmaak zelf?',
               antwoord:
-                'De standaard is de onze en de checklist is de onze. De uitvoering regel je zelf of via een partner die aan die standaard voldoet.',
+                'De standaard is de onze en de checklist is de onze. De uitvoering regel je zelf of via onze vaste partner die aan die standaard voldoet.',
             },
           ]}
         />

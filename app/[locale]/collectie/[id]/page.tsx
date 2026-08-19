@@ -238,13 +238,21 @@ export default async function WoningDetailPage({ params }: Props) {
           {woning.oppervlakte ? (
             <PraktischRij label="oppervlakte" value={woning.oppervlakte} />
           ) : null}
-          {lwArr(woning.tags, locale).map((tag) => (
-            <PraktischRij key={tag} label="" value={tag} />
-          ))}
           {woning.vergunningsnummer && (
             <PraktischRij label={t('vergunning_label')} value={woning.vergunningsnummer} />
           )}
         </dl>
+
+        {/* Kenmerken — geen labelparen, geen lijst. Gescheiden door " · "
+            in audit-typografie op de kleur ink-2. Aparte hairline erboven. */}
+        {woning.tags.length > 0 && (
+          <>
+            <hr className="mt-mw-6 mb-mw-4 border-0 border-t border-moroww-rule" aria-hidden />
+            <p className="text-audit uppercase text-moroww-ink-2">
+              {lwArr(woning.tags, locale).join(' · ')}
+            </p>
+          </>
+        )}
 
         {/* Reviews */}
         {(woning.reviews?.length ?? 0) > 0 && (
