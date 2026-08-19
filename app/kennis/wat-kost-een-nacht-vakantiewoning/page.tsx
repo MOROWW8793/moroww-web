@@ -278,9 +278,9 @@ export default function WatKostEenNachtPage() {
               eyebrow: 'regels en vergunningen',
             },
             {
-              href: '/kennis/rendement-vakantiewoning-berekenen',
-              title: 'Rendement berekenen',
-              eyebrow: 'opbrengst en rendement',
+              href: '/kennis/tweedeverblijfsbelasting-of-logiesbelasting',
+              title: 'Tweedeverblijf of logies?',
+              eyebrow: 'regels en vergunningen',
             },
             {
               href: '/kennis/vakantiewoning-verhuren-zelf-platform-beheerder-label',

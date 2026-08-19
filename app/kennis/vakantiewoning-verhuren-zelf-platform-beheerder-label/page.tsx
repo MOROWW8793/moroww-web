@@ -147,14 +147,14 @@ export default function VierModellenPage() {
               eyebrow: 'opbrengst en rendement',
             },
             {
-              href: '/kennis/waarom-vakantiewoningen-afvallen',
-              title: 'Waarom woningen afvallen',
-              eyebrow: 'wat het label anders doet',
+              href: '/kennis/verblijfsbelasting-vakantiewoning',
+              title: 'Verblijfsbelasting per gemeente',
+              eyebrow: 'regels en vergunningen',
             },
             {
-              href: '/kennis/rendement-vakantiewoning-berekenen',
-              title: 'Rendement berekenen',
-              eyebrow: 'opbrengst en rendement',
+              href: '/kennis/brandveiligheidsattest-vakantiewoning-vlaanderen',
+              title: 'Brandveiligheidsattest',
+              eyebrow: 'regels en vergunningen',
             },
           ]}
         />
