@@ -64,6 +64,7 @@ const _woningenRaw: Woning[] = [
     badkamers: 2,
     maxGasten: 6,
     oppervlakte: '110m²',
+    geauditeerdOp: '2026-02',
     tags: [
       { nl: 'Strand op 2 min',  en: '2 min to beach' },
       { nl: 'Privé koer',       en: 'Private courtyard' },
@@ -151,6 +152,7 @@ const _woningenRaw: Woning[] = [
     badkamers: 1,
     maxGasten: 5,
     oppervlakte: null,
+    geauditeerdOp: '2026-04',
     tags: [
       { nl: 'Bosrand',                  en: 'Forest edge' },
       { nl: 'Privétuin met vijver',      en: 'Private garden' },
@@ -249,6 +251,7 @@ const _woningenRaw: Woning[] = [
     badkamers: 2,
     maxGasten: 4,
     oppervlakte: null,
+    geauditeerdOp: '2026-03',
     tags: [
       { nl: '16e verdieping',   en: '16th floor' },
       { nl: 'Zeezicht',         en: 'Sea view' },
@@ -347,6 +350,7 @@ const _woningenRaw: Woning[] = [
     badkamers: 2,
     maxGasten: 10,
     oppervlakte: null,
+    geauditeerdOp: '2026-05',
     tags: [
       { nl: 'Zwembad',          en: 'Private pool' },
       { nl: 'Hottub',           en: 'Hot tub' },
@@ -445,6 +449,7 @@ const _woningenRaw: Woning[] = [
     badkamers: 9,
     maxGasten: 18,
     oppervlakte: null,
+    geauditeerdOp: '2026-05',
     tags: [
       { nl: 'Zwembad & sauna',              en: 'Pool & sauna' },
       { nl: '9 kamers, eigen badkamer',     en: '9 rooms, en-suite' },
@@ -526,6 +531,7 @@ const _woningenRaw: Woning[] = [
     badkamers: 2,
     maxGasten: 8,
     oppervlakte: '220m²',
+    geauditeerdOp: '2026-07',
     vergunningsnummer: '387650',
     tags: [
       { nl: 'Aan de bosrand',              en: 'On the edge of the forest' },

@@ -3,9 +3,14 @@
 // Kop en tekst liggen vast; alleen de openingszin (`intro`) varieert per
 // pagina en per sectie. Zo hoort een CTA nooit als losse knoppen in de body
 // geschreven te worden — dat maakt van de kennisbank een verkooppagina.
+//
+// Bouwspec sectie 4: geen kader, geen rand, geen achtergrondvlak.
+// AuditLijn quiet met het type actie erboven, kop in type-h3, één alinea
+// in type-body, knop in oranje. Ruimte: space-8 boven, space-6 onder.
 
 import Link from 'next/link'
 import type { ReactNode } from 'react'
+import { AuditLijn } from '@/components/AuditLijn'
 
 type CtaKind = 'poortentoets' | 'rekenmodule' | 'vraag' | 'gesprek'
 
@@ -15,6 +20,7 @@ interface Props {
 }
 
 interface Variant {
+  actie: string        // draagt de auditlijn — type actie in kleine kapitalen
   title: string
   body: string
   label: string
@@ -22,11 +28,9 @@ interface Variant {
   external: boolean
 }
 
-// Bewust expliciet — vroegere lookup via CONFIG[kind].label brak silently
-// wanneer één veld leeg raakte en gaf een pill zonder tekst. Nu is elk
-// veld type-verplicht en direct zichtbaar in de source.
 const VARIANTS: Record<CtaKind, Variant> = {
   poortentoets: {
+    actie:    'poortentoets',
     title:    'Haalt jouw woning de standaard?',
     body:     'moroww neemt woningen op na een fysieke inspectie. De toets geeft je in twee minuten hetzelfde oordeel dat wij ter plaatse vellen, op de punten die je zelf kan nagaan.',
     label:    'Doe de poortentoets',
@@ -34,6 +38,7 @@ const VARIANTS: Record<CtaKind, Variant> = {
     external: false,
   },
   rekenmodule: {
+    actie:    'rekenmodule',
     title:    'Wat levert jouw woning op?',
     body:     'Reken het door met echte cijfers uit de collectie, en met alle kosten erin. Ook die van ons.',
     label:    'Bereken je opbrengst',
@@ -41,6 +46,7 @@ const VARIANTS: Record<CtaKind, Variant> = {
     external: false,
   },
   vraag: {
+    actie:    'vraag het aan moroww',
     title:    'Niet zeker over jouw situatie?',
     body:     'Stuur je vraag naar info@moroww.com. We antwoorden binnen twee werkdagen, ook als je woning niet in aanmerking komt voor de collectie.',
     label:    'Stel je vraag',
@@ -48,6 +54,7 @@ const VARIANTS: Record<CtaKind, Variant> = {
     external: true,
   },
   gesprek: {
+    actie:    'gesprek',
     title:    'Liever meteen iemand spreken?',
     body:     'Kies zelf een moment voor een digitaal gesprek van twintig minuten.',
     label:    'Kies een moment',
@@ -59,19 +66,13 @@ const VARIANTS: Record<CtaKind, Variant> = {
 function Knop({
   href,
   external,
-  isPrimary,
   children,
 }: {
   href: string
   external: boolean
-  isPrimary: boolean
   children: ReactNode
 }) {
-  const cls = `inline-flex items-center gap-2 rounded-full px-8 py-3.5 font-semibold transition-colors ${
-    isPrimary
-      ? 'bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85'
-      : 'bg-moroww-dark text-white hover:bg-moroww-dark/85'
-  }`
+  const cls = 'inline-flex items-center gap-2 rounded-full px-8 py-3.5 font-semibold bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85 transition-colors'
   if (external) {
     const isMail = href.startsWith('mailto:')
     return (
@@ -94,34 +95,22 @@ function Knop({
 
 export function Cta({ kind, intro }: Props) {
   const v = VARIANTS[kind]
-  const isPrimary = kind === 'poortentoets'
 
   return (
-    <aside
-      className={`my-12 rounded-2xl p-8 md:p-10 ${
-        isPrimary
-          ? 'bg-moroww-dark text-white'
-          : 'bg-white/70 border border-moroww-brown/20 text-moroww-dark'
-      }`}
-    >
-      <h3
-        className={`font-bold leading-tight mb-3 ${isPrimary ? 'text-white' : 'text-moroww-dark'}`}
-        style={{ fontSize: 'clamp(1.25rem, 2vw, 1.5rem)' }}
-      >
-        {v.title}
-      </h3>
-      <p
-        className={`leading-relaxed mb-6 ${isPrimary ? 'text-white/75' : 'text-moroww-dark/75'}`}
-        style={{ fontSize: 17 }}
-      >
+    <section className="mt-mw-8 mb-mw-6">
+      <AuditLijn density="quiet" items={[v.actie]} />
+      <h3 className="mt-mw-4 text-h3 text-moroww-dark">{v.title}</h3>
+      <p className="mt-mw-3 text-body text-moroww-dark">
         {intro ? `${intro} ` : ''}
         {v.body}
       </p>
-      <Knop href={v.href} external={v.external} isPrimary={isPrimary}>
-        <span>{v.label}</span>
-        <span aria-hidden>→</span>
-      </Knop>
-    </aside>
+      <div className="mt-mw-5">
+        <Knop href={v.href} external={v.external}>
+          <span>{v.label}</span>
+          <span aria-hidden>→</span>
+        </Knop>
+      </div>
+    </section>
   )
 }
 
