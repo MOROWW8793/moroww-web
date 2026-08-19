@@ -103,14 +103,8 @@ export default async function VerblijfsbelastingHubPage() {
         )}
 
         <p>
-          <strong>Staat jouw gemeente er niet bij?</strong> Wij vullen deze tabel aan
-          naarmate we reglementen opvragen. Vraag je gemeente op via{' '}
-          <a href="mailto:info@moroww.com">info@moroww.com</a> en we zoeken het uit. Je
-          krijgt het antwoord, en de gemeente komt in de tabel.
-        </p>
-        <p>
-          Dat laatste is geen beleefdheidsformule maar de motor onder deze pagina: elke
-          vraag die binnenkomt, vult de tabel verder.
+          Staat jouw gemeente er nog niet bij? Vraag ze op via{' '}
+          <a href="mailto:info@moroww.com">info@moroww.com</a> en we zoeken het uit.
         </p>
 
         <Cta

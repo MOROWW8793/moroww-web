@@ -1,8 +1,10 @@
 import type { MetadataRoute } from 'next'
 import { woningen } from '@/lib/woningen'
 import { alleGemeenten } from '@/lib/kennis/verblijfsbelasting'
+import { supabase } from '@/lib/supabase'
 
 const BASE = 'https://www.moroww.com'
+const GEMEENTE_URL_RE = /\/kennis\/verblijfsbelasting-vakantiewoning\/([^/]+)$/
 
 // NL-only kennispagina's onder /kennis. Één bron van waarheid.
 const KENNIS_ROUTES: Array<{ path: string; priority: number }> = [
@@ -122,6 +124,39 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.7,
     })
+  }
+
+  // Build-time assert: elke gemeenteroute in de sitemap moet ook in
+  // verblijfsbelasting_publiek staan. De view is onze source of truth voor
+  // wat publiek zichtbaar mag zijn; als iemand ooit de sitemap-generator
+  // wijzigt naar een andere bron (bijv. de rauwe tabel), vangt deze check
+  // dat op — en `next build` faalt in plaats van dat een niet-vrijgegeven
+  // gemeente in de sitemap belandt.
+  //
+  // We doen een aparte round trip naar de view. Zo bewijst de assert iets:
+  // als sitemap en assert uit dezelfde helper zouden lezen, is de check
+  // tautologisch.
+  //
+  // Zonder Supabase-credentials in de env valt de sitemap-loop hierboven al
+  // stil terug op geen gemeenteroutes; dan hoeft er ook niets gecheckt te
+  // worden. We loggen dat wel, want in productie hoort de query te slagen.
+  const { data: publiek, error: publiekErr } = await supabase
+    .from('verblijfsbelasting_publiek')
+    .select('gemeente_slug')
+  if (publiekErr) {
+    console.warn(
+      `[sitemap] kon verblijfsbelasting_publiek niet lezen voor consistency-check: ${publiekErr.message}`,
+    )
+  } else {
+    const publiekeSlugs = new Set((publiek ?? []).map((r) => r.gemeente_slug as string))
+    for (const entry of entries) {
+      const m = entry.url.match(GEMEENTE_URL_RE)
+      if (m && !publiekeSlugs.has(m[1])) {
+        throw new Error(
+          `[sitemap] gemeente '${m[1]}' zit in de sitemap maar niet in verblijfsbelasting_publiek. De sitemap mag alleen publieke gemeenten bevatten.`,
+        )
+      }
+    }
   }
 
   return entries

@@ -133,14 +133,14 @@ export default function VerschilPage() {
               eyebrow: 'tabel per gemeente',
             },
             {
-              href: '/kennis/verblijfsbelasting-vakantiewoning/knokke-heist',
-              title: 'Knokke-Heist',
-              eyebrow: 'gemeente uitgewerkt',
-            },
-            {
               href: '/kennis/verblijfsbelasting-vakantiewoning/oostende',
               title: 'Oostende',
               eyebrow: 'gemeente uitgewerkt',
+            },
+            {
+              href: '/kennis/brandveiligheidsattest-vakantiewoning-vlaanderen',
+              title: 'Brandveiligheidsattest',
+              eyebrow: 'regels en vergunningen',
             },
           ]}
         />

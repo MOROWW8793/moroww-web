@@ -1,10 +1,19 @@
-// Datalaag voor de verblijfsbelasting-tabel per gemeente.
+// Datalaag voor de verblijfsbelasting per gemeente.
 //
 // De tabel leeft in Supabase omdat ze gemeente-per-gemeente aangevuld wordt
 // naarmate wij reglementen opvragen. De andere kennispagina's staan statisch
 // in de repo — dit is de enige die schaalt met rijen.
+//
+// De app leest niét uit de rauwe tabel maar uit de view `verblijfsbelasting_publiek`.
+// Die view filtert op `gepubliceerd = true AND status = 'bevestigd'` en is
+// onze enige source of truth voor wat publiek zichtbaar mag zijn. Zo staat er
+// geen filterlogica in de app die per ongeluk kan wijken; een gemeente krijgt
+// een pagina zodra we ze in de databank vrijgeven, niet eerder.
 
 import { supabase } from '@/lib/supabase'
+
+/** De publieke view. Wijziging op één plaats propageert naar hub, detail en sitemap. */
+const PUBLIEKE_BRON = 'verblijfsbelasting_publiek'
 
 export type Heffingsvorm =
   | 'per_persoon_per_nacht'
@@ -41,7 +50,7 @@ export const HEFFINGSVORM_LABEL: Record<Heffingsvorm, string> = {
 
 export async function alleGemeenten(): Promise<VerblijfsbelastingRow[]> {
   const { data, error } = await supabase
-    .from('verblijfsbelasting')
+    .from(PUBLIEKE_BRON)
     .select('*')
     .order('gemeente_naam', { ascending: true })
   if (error) {
@@ -53,7 +62,7 @@ export async function alleGemeenten(): Promise<VerblijfsbelastingRow[]> {
 
 export async function gemeenteBySlug(slug: string): Promise<VerblijfsbelastingRow | null> {
   const { data, error } = await supabase
-    .from('verblijfsbelasting')
+    .from(PUBLIEKE_BRON)
     .select('*')
     .eq('gemeente_slug', slug)
     .maybeSingle()

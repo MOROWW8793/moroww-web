@@ -18,6 +18,11 @@ interface Props {
 }
 
 export const revalidate = 3600
+// Gemeenten die niet in verblijfsbelasting_publiek zitten mogen geen pagina
+// hebben, ook geen dynamisch gerenderde. `dynamicParams = false` zorgt dat
+// Next 404 teruggeeft voor elke slug die niet in `generateStaticParams` staat,
+// in plaats van hem alsnog on-demand te bouwen met lege velden.
+export const dynamicParams = false
 
 export async function generateStaticParams() {
   const gemeenten = await alleGemeenten()
@@ -48,10 +53,12 @@ export default async function GemeenteDetailPage({ params }: Props) {
   const extra = GEMEENTE_CONTENT[slug]
   const URL_ABS = `https://www.moroww.com/kennis/verblijfsbelasting-vakantiewoning/${slug}`
 
-  const generiekAntwoord = `In ${gemeente.gemeente_naam} wordt de verblijfsbelasting voor vakantiewoningen in 2026 geheven ${HEFFINGSVORM_LABEL[gemeente.heffingsvorm]}. ${
+  // De view geeft alleen bevestigde rijen terug, dus we hoeven geen "nog op te
+  // vragen"-fallback te vertonen.
+  const generiekAntwoord = `In ${gemeente.gemeente_naam} wordt de verblijfsbelasting voor vakantiewoningen in 2026 geheven ${HEFFINGSVORM_LABEL[gemeente.heffingsvorm]}.${
     gemeente.tarief_bedrag != null
-      ? `Het tarief bedraagt € ${gemeente.tarief_bedrag}${gemeente.tarief_eenheid ? ` ${gemeente.tarief_eenheid}` : ''}.`
-      : 'Het exacte tarief hebben we opgevraagd bij de dienst belastingen en volgt zodra we het schriftelijk bevestigd krijgen.'
+      ? ` Het tarief bedraagt € ${gemeente.tarief_bedrag}${gemeente.tarief_eenheid ? ` ${gemeente.tarief_eenheid}` : ''}.`
+      : ''
   }${
     gemeente.aangifte_frequentie
       ? ` De aangifte gebeurt ${gemeente.aangifte_frequentie}.`
@@ -128,19 +135,6 @@ export default async function GemeenteDetailPage({ params }: Props) {
               </tbody>
             </table>
 
-            {gemeente.heffingsvorm === 'onbekend' && (
-              <>
-                <h2>Wat we op deze pagina uitbouwen</h2>
-                <p>
-                  Deze pagina is een placeholder tot we het tarief officieel schriftelijk
-                  ontvangen van de dienst belastingen van {gemeente.gemeente_naam}. We
-                  vullen ze bij zodra dat gebeurt. Als je zelf een aanslagbiljet in huis
-                  hebt, is dat de snelste route:{' '}
-                  <a href="mailto:info@moroww.com">stuur het door</a> en we werken hier
-                  hetzelfde bedrag in.
-                </p>
-              </>
-            )}
           </>
         )}
 
