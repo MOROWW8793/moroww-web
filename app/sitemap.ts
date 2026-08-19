@@ -7,6 +7,11 @@ const BASE = 'https://www.moroww.com'
 const GEMEENTE_URL_RE = /\/kennis\/verblijfsbelasting-vakantiewoning\/([^/]+)$/
 
 // NL-only kennispagina's onder /kennis. Één bron van waarheid.
+//
+// /rendement-vakantiewoning-berekenen en /waarom-vakantiewoningen-afvallen
+// zijn bewust weggelaten: de eerste heeft nog geen echte module, de tweede
+// mist de redenen-per-categorie. Beide pagina's staan op noindex en horen
+// hier terug zodra de content klaar is.
 const KENNIS_ROUTES: Array<{ path: string; priority: number }> = [
   { path: '/kennis',                                                  priority: 0.85 },
   { path: '/kennis/wat-kost-een-nacht-vakantiewoning',                priority: 0.85 },
@@ -14,8 +19,6 @@ const KENNIS_ROUTES: Array<{ path: string; priority: number }> = [
   { path: '/kennis/verblijfsbelasting-vakantiewoning',                priority: 0.85 },
   { path: '/kennis/tweedeverblijfsbelasting-of-logiesbelasting',      priority: 0.8  },
   { path: '/kennis/vakantiewoning-verhuren-zelf-platform-beheerder-label', priority: 0.8 },
-  { path: '/kennis/rendement-vakantiewoning-berekenen',               priority: 0.85 },
-  { path: '/kennis/waarom-vakantiewoningen-afvallen',                 priority: 0.75 },
 ]
 
 // Routes die in beide talen bestaan. Voor NL: pad direct; voor EN: 'en'-alias.

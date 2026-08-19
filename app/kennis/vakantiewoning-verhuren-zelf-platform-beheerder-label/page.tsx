@@ -136,7 +136,7 @@ export default function VierModellenPage() {
           ]}
         />
 
-        <Cta kind="rekenmodule" />
+        <Cta kind="poortentoets" />
         <Cta kind="gesprek" />
 
         <VerderLezen

@@ -194,7 +194,7 @@ export default function WatKostEenNachtPage() {
           effectief geboekt wordt, niet met wat je vraagt.
         </p>
 
-        <Cta kind="rekenmodule" />
+        <Cta kind="poortentoets" />
 
         <h2>Wat moroww kost, zwart op wit</h2>
         <p>

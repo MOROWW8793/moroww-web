@@ -10,12 +10,18 @@ const URL = 'https://www.moroww.com/kennis/waarom-vakantiewoningen-afvallen'
 
 const percentageAccepted = ((SCREENINGS_ACCEPTED / SCREENINGS_TOTAL) * 100).toFixed(1)
 
-export const metadata = kennisMetadata({
-  titel: `${SCREENINGS_TOTAL} vakantiewoningen bekeken, ${SCREENINGS_ACCEPTED} opgenomen · moroww`,
-  beschrijving:
-    'moroww bezoekt elke woning fysiek. De meeste halen de standaard niet. Dit zijn de aantallen; de gerangschikte redenen volgen zodra de screeningstabel per reden gepubliceerd wordt.',
-  pad: '/kennis/waarom-vakantiewoningen-afvallen',
-})
+// Nog niet publiek: de redenen-per-categorie ontbreken. Zodra de screeningstabel
+// per reden gepubliceerd wordt (op moroww-os) hoort deze pagina met echte data
+// terug te komen. Tot dan geen indexering en niet in de sitemap of op de hub.
+export const metadata = {
+  ...kennisMetadata({
+    titel: `${SCREENINGS_TOTAL} vakantiewoningen bekeken, ${SCREENINGS_ACCEPTED} opgenomen · moroww`,
+    beschrijving:
+      'moroww bezoekt elke woning fysiek. De meeste halen de standaard niet. Dit zijn de aantallen; de gerangschikte redenen volgen zodra de screeningstabel per reden gepubliceerd wordt.',
+    pad: '/kennis/waarom-vakantiewoningen-afvallen',
+  }),
+  robots: { index: false, follow: false },
+}
 
 export default function AfvalRedenenPage() {
   return (

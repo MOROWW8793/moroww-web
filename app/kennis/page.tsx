@@ -19,6 +19,9 @@ interface Kaart {
   intro: string
 }
 
+// /rendement-vakantiewoning-berekenen en /waarom-vakantiewoningen-afvallen
+// staan bewust niet in de hub — hun content is nog niet klaar. Zie de
+// robots-metadata op die pagina's zelf en de comment in app/sitemap.ts.
 const KAARTEN: Kaart[] = [
   {
     href: '/kennis/wat-kost-een-nacht-vakantiewoning',
@@ -26,13 +29,6 @@ const KAARTEN: Kaart[] = [
     titel: 'Wat kost één nacht in je vakantiewoning je echt?',
     intro:
       'Van bruto naar netto, post per post. Btw ging op 1 maart 2026 van 6 naar 12 procent en er is geen drempel van € 25.000 meer. Wie het niet doorrekent, geeft de facto zes procent van zijn logiesomzet weg.',
-  },
-  {
-    href: '/kennis/rendement-vakantiewoning-berekenen',
-    eyebrow: 'opbrengst en rendement',
-    titel: 'Rendement vakantiewoning berekenen (2026)',
-    intro:
-      'Een rekenmodule die alle kosten meerekent, ook de onze. Zeven velden, geen e-mailadres, geen belofte. Ze geeft een vork, geen getal.',
   },
   {
     href: '/kennis/verblijfsbelasting-vakantiewoning',
@@ -61,13 +57,6 @@ const KAARTEN: Kaart[] = [
     titel: 'Zelf verhuren, platform, beheerder of label?',
     intro:
       'Vier manieren, met hun echte kosten en tijdsbesteding. Inclusief de vier situaties waarin je beter iets anders kiest dan moroww.',
-  },
-  {
-    href: '/kennis/waarom-vakantiewoningen-afvallen',
-    eyebrow: 'wat het label anders doet',
-    titel: 'Waarom vakantiewoningen afvallen',
-    intro:
-      'De cijfers achter het label. moroww bekijkt elke woning fysiek; de overgrote meerderheid haalt de standaard niet. Waarom dat zo is, welke redenen het vaakst terugkomen, en wat wel op te lossen valt.',
   },
 ]
 

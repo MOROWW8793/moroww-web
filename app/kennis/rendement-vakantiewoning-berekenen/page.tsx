@@ -8,12 +8,19 @@ import { SCREENINGS_TOTAL, SCREENINGS_ACCEPTED } from '@/lib/screenings'
 
 const URL = 'https://www.moroww.com/kennis/rendement-vakantiewoning-berekenen'
 
-export const metadata = kennisMetadata({
-  titel: 'Rendement vakantiewoning berekenen (2026) · rekenmodule',
-  beschrijving:
-    'Bereken wat je vakantiewoning netto opbrengt, inclusief btw aan 12 procent, schoonmaak, linnen, verblijfsbelasting en commissie. Zonder e-mailadres.',
-  pad: '/kennis/rendement-vakantiewoning-berekenen',
-})
+// Nog niet publiek: de rekenmodule zelf is nog een placeholder. Pagina blijft
+// bereikbaar op de URL zodat we intern kunnen testen, maar wordt niet
+// geïndexeerd en zit ook niet in de sitemap of op de hub. Weer aan zetten
+// zodra de module af is.
+export const metadata = {
+  ...kennisMetadata({
+    titel: 'Rendement vakantiewoning berekenen (2026) · rekenmodule',
+    beschrijving:
+      'Bereken wat je vakantiewoning netto opbrengt, inclusief btw aan 12 procent, schoonmaak, linnen, verblijfsbelasting en commissie. Zonder e-mailadres.',
+    pad: '/kennis/rendement-vakantiewoning-berekenen',
+  }),
+  robots: { index: false, follow: false },
+}
 
 export default function RendementPage() {
   return (

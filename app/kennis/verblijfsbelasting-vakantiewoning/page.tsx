@@ -154,7 +154,7 @@ export default async function VerblijfsbelastingHubPage() {
         </p>
         <p>Onze rekenmodule neemt hem wel mee.</p>
 
-        <Cta kind="rekenmodule" />
+        <Cta kind="poortentoets" />
 
         <h2>Mag je de belasting doorrekenen aan je gasten?</h2>
         <p>

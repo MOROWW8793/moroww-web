@@ -143,7 +143,7 @@ export default async function GemeenteDetailPage({ params }: Props) {
           intro={`Zit je met een concrete situatie in ${gemeente.gemeente_naam}?`}
         />
 
-        <Cta kind="rekenmodule" />
+        <Cta kind="poortentoets" />
 
         <VerderLezen
           items={[
