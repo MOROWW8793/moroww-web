@@ -2,8 +2,9 @@ import { kennisMetadata, KENNIS_GEPUBLICEERD } from '@/lib/kennis/meta'
 import { ArticleLayout } from '@/components/kennis/ArticleLayout'
 import { Cta, VerderLezen } from '@/components/kennis/Cta'
 import { Faq } from '@/components/kennis/Faq'
-import { Actualiteitsblok } from '@/components/kennis/Actualiteitsblok'
 import { ArticleJsonLd } from '@/components/kennis/JsonLd'
+import { Register } from '@/components/Register'
+import { AuditLijn } from '@/components/AuditLijn'
 
 const URL = 'https://www.moroww.com/kennis/wat-kost-een-nacht-vakantiewoning'
 
@@ -16,7 +17,7 @@ export const metadata = kennisMetadata({
 
 export default function WatKostEenNachtPage() {
   return (
-    <>
+    <Register kant="eigenaar">
       <ArticleJsonLd
         titel="Wat kost één nacht in je vakantiewoning je echt?"
         beschrijving="Kostenstructuur van een vakantiewoning in België in 2026. Btw, schoonmaak, linnen, energie, verblijfsbelasting en commissies uitgesplitst."
@@ -290,11 +291,18 @@ export default function WatKostEenNachtPage() {
           ]}
         />
 
-        <Actualiteitsblok
-          nagekekenOp="19 augustus 2026"
-          bron="KB 14 februari 2026 (BS 23 februari 2026), FAQ FOD Financiën over het verschaffen van gemeubeld logies"
-        />
+        <div className="mt-16">
+          <AuditLijn
+            density="structural"
+            items={[
+              'NAGEKEKEN 19.08.2026',
+              'BRON KB 14.02.2026',
+              'BRON FOD FINANCIËN',
+              'KWARTAALCYCLUS',
+            ]}
+          />
+        </div>
       </ArticleLayout>
-    </>
+    </Register>
   )
 }

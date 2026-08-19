@@ -61,18 +61,18 @@ export default async function DeStandaardPage({
   ]
 
   return (
-    <main className="bg-[#FAE4D6]">
+    <main className="bg-moroww-blush">
 
       {/* ── HERO ── */}
       <section className="w-full pt-32 pb-16 md:pt-40 md:pb-20 px-6">
         <div className="max-w-3xl mx-auto">
           <h1
-            className="font-bold text-[#1A1A1A] leading-[1.05] tracking-[-0.02em] mb-8"
+            className="font-bold text-moroww-dark leading-[1.05] tracking-[-0.02em] mb-8"
             style={{ fontSize: 'clamp(2.25rem, 6vw, 5rem)' }}
           >
             {t('hero_h1')}
           </h1>
-          <p className="text-[#1A1A1A]/70 leading-relaxed" style={{ fontSize: 20 }}>
+          <p className="text-moroww-dark/70 leading-relaxed" style={{ fontSize: 20 }}>
             {t('hero_intro')}
           </p>
         </div>
@@ -89,10 +89,10 @@ export default async function DeStandaardPage({
       {/* ── DE VIER POORTEN — vier gelijke kaarten met kleurbalk ── */}
       <section className="w-full py-20 md:py-28 px-6">
         <div className="max-w-6xl mx-auto">
-          <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-4">
+          <p className="text-xs uppercase tracking-widest text-moroww-label mb-4">
             {t('gates_title')}
           </p>
-          <p className="text-[#1A1A1A]/75 leading-relaxed mb-14 max-w-2xl" style={{ fontSize: 18 }}>
+          <p className="text-moroww-dark/75 leading-relaxed mb-14 max-w-2xl" style={{ fontSize: 18 }}>
             {t('gates_intro')}
           </p>
 
@@ -112,12 +112,12 @@ export default async function DeStandaardPage({
                   </span>
                   <div className="relative flex-1 flex flex-col">
                     <h3
-                      className="font-bold text-[#1A1A1A] leading-tight mb-4"
+                      className="font-bold text-moroww-dark leading-tight mb-4"
                       style={{ fontSize: 'clamp(1.125rem, 1.6vw, 1.375rem)' }}
                     >
                       {g.title}
                     </h3>
-                    <p className="text-[#1A1A1A]/70 leading-relaxed" style={{ fontSize: 14 }}>
+                    <p className="text-moroww-dark/70 leading-relaxed" style={{ fontSize: 14 }}>
                       {g.body}
                     </p>
                   </div>
@@ -132,12 +132,12 @@ export default async function DeStandaardPage({
       <section className="w-full py-20 md:py-28 px-6 bg-moroww-brown/15">
         <div className="max-w-3xl mx-auto">
           <h2
-            className="font-bold text-[#1A1A1A] leading-tight mb-10"
+            className="font-bold text-moroww-dark leading-tight mb-10"
             style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
           >
             {t('visit_title')}
           </h2>
-          <div className="space-y-6 text-[#1A1A1A]/85 leading-relaxed" style={{ fontSize: 17 }}>
+          <div className="space-y-6 text-moroww-dark/85 leading-relaxed" style={{ fontSize: 17 }}>
             <p>{t('visit_p1')}</p>
             <p>{t('visit_p2')}</p>
             <p>{t('visit_p3')}</p>
@@ -147,7 +147,7 @@ export default async function DeStandaardPage({
       </section>
 
       {/* ── WAT WIJ TOEVOEGEN — belofte, geen filter ── */}
-      <section className="w-full py-20 md:py-28 px-6 bg-[#1A1A1A]">
+      <section className="w-full py-20 md:py-28 px-6 bg-moroww-dark">
         <div className="max-w-4xl mx-auto">
           <h2
             className="font-bold text-white leading-tight mb-8"
@@ -168,7 +168,7 @@ export default async function DeStandaardPage({
 
           <Link
             href="/moroww-os"
-            className="inline-block mt-8 text-[#FEA05E] hover:text-white transition-colors underline underline-offset-4"
+            className="inline-block mt-8 text-moroww-orange hover:text-white transition-colors underline underline-offset-4"
           >
             {t('add_link')} →
           </Link>
@@ -176,19 +176,19 @@ export default async function DeStandaardPage({
       </section>
 
       {/* ── DE HERAUDIT ── */}
-      <section className="w-full py-20 md:py-28 px-6 bg-[#FAE4D6]">
+      <section className="w-full py-20 md:py-28 px-6 bg-moroww-blush">
         <div className="max-w-3xl mx-auto">
           <h2
-            className="font-bold text-[#1A1A1A] leading-tight mb-10"
+            className="font-bold text-moroww-dark leading-tight mb-10"
             style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
           >
             {t('reaudit_title')}
           </h2>
-          <div className="space-y-6 text-[#1A1A1A]/85 leading-relaxed" style={{ fontSize: 17 }}>
+          <div className="space-y-6 text-moroww-dark/85 leading-relaxed" style={{ fontSize: 17 }}>
             <p>{t('reaudit_p1')}</p>
             <p>{t('reaudit_p2')}</p>
             <p>{t('reaudit_p3')}</p>
-            <p className="font-semibold text-[#1A1A1A]">{t('reaudit_p4')}</p>
+            <p className="font-semibold text-moroww-dark">{t('reaudit_p4')}</p>
           </div>
         </div>
       </section>
@@ -197,19 +197,19 @@ export default async function DeStandaardPage({
       <section className="w-full py-16 md:py-24 px-6 bg-moroww-brown/15">
         <div className="max-w-3xl mx-auto text-center">
           <h2
-            className="font-bold text-[#1A1A1A] leading-tight mb-6"
+            className="font-bold text-moroww-dark leading-tight mb-6"
             style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
           >
             {t('guest_title')}
           </h2>
-          <p className="text-[#1A1A1A]/75 leading-relaxed max-w-2xl mx-auto" style={{ fontSize: 18 }}>
+          <p className="text-moroww-dark/75 leading-relaxed max-w-2xl mx-auto" style={{ fontSize: 18 }}>
             {t('guest_body')}
           </p>
         </div>
       </section>
 
       {/* ── VOOR DE EIGENAAR — CTA ── */}
-      <section className="w-full py-20 md:py-28 px-6 bg-[#1A1A1A]">
+      <section className="w-full py-20 md:py-28 px-6 bg-moroww-dark">
         <div className="max-w-2xl mx-auto text-center">
           <h2
             className="font-bold text-white leading-tight mb-6"
@@ -222,7 +222,7 @@ export default async function DeStandaardPage({
           </p>
           <Link
             href="/eigenaar-worden"
-            className="inline-block bg-[#FEA05E] text-[#1A1A1A] rounded-full px-10 py-4 font-semibold hover:bg-moroww-orange/85 transition-colors"
+            className="inline-block bg-moroww-orange text-moroww-dark rounded-full px-10 py-4 font-semibold hover:bg-moroww-orange/85 transition-colors"
           >
             {t('owner_cta')}
           </Link>

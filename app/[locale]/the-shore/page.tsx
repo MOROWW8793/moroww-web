@@ -40,7 +40,7 @@ export default async function TheShorePage({
   const shorePanden = woningen.filter((w) => w.collectie === 'the shore')
 
   return (
-    <main className="bg-[#FAE4D6]">
+    <main className="bg-moroww-blush">
 
       {/* Hero */}
       <section className="w-full pt-32 pb-16 md:pt-40 md:pb-20 px-6">

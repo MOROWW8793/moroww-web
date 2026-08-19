@@ -27,22 +27,22 @@ export function ArticleLayout({ eyebrow, titel, korteAntwoord, terug, children }
           {terug ? (
             <Link
               href={terug.href}
-              className="inline-block text-xs uppercase tracking-widest text-[#C08D6E] mb-6 hover:text-[#1A1A1A] transition-colors"
+              className="inline-block text-xs uppercase tracking-widest text-moroww-label mb-6 hover:text-moroww-dark transition-colors"
             >
               ← {terug.label}
             </Link>
           ) : (
-            <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-6">{eyebrow}</p>
+            <p className="text-xs uppercase tracking-widest text-moroww-label mb-6">{eyebrow}</p>
           )}
           <h1
-            className="font-bold text-[#1A1A1A] leading-[1.05] tracking-[-0.02em] mb-10"
+            className="font-bold text-moroww-dark leading-[1.05] tracking-[-0.02em] mb-10"
             style={{ fontSize: 'clamp(2rem, 5vw, 3.75rem)' }}
           >
             {titel}
           </h1>
           <div className="bg-white rounded-2xl p-6 md:p-8 border border-moroww-brown/15">
-            <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-3">Het korte antwoord</p>
-            <p className="text-[#1A1A1A] leading-relaxed" style={{ fontSize: 18 }}>
+            <p className="text-xs uppercase tracking-widest text-moroww-label mb-3">Het korte antwoord</p>
+            <p className="text-moroww-dark leading-relaxed" style={{ fontSize: 18 }}>
               {korteAntwoord}
             </p>
           </div>

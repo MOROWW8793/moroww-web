@@ -44,7 +44,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
-          className="mt-6 self-start bg-[#FEA05E] text-white rounded-full px-8 py-4 text-base font-semibold hover:bg-moroww-orange/85 transition-colors"
+          className="mt-6 self-start bg-moroww-orange text-white rounded-full px-8 py-4 text-base font-semibold hover:bg-moroww-orange/85 transition-colors"
         >
           {tNav('book')}
         </motion.a>

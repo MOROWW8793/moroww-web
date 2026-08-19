@@ -110,7 +110,7 @@ export function CollectieStatisch() {
                 {/* Prijs + CTA */}
                 <div className="flex items-center justify-between mt-auto pt-4 border-t border-moroww-brown/15">
                   {w.comingSoon ? (
-                    <span className="text-xs font-semibold text-[#C08D6E] lowercase tracking-wide">
+                    <span className="text-xs font-semibold text-moroww-label lowercase tracking-wide">
                       {t('coming_soon')}
                     </span>
                   ) : (
@@ -121,7 +121,7 @@ export function CollectieStatisch() {
                           <span className="text-sm text-moroww-black/45 ml-1">{t('per_night')}</span>
                         </div>
                       ) : <div />}
-                      <span className="rounded-full bg-[#FEA05E] group-hover:bg-moroww-orange/85 text-white font-semibold text-sm px-5 py-2.5 transition-colors duration-200">
+                      <span className="rounded-full bg-moroww-orange group-hover:bg-moroww-orange/85 text-white font-semibold text-sm px-5 py-2.5 transition-colors duration-200">
                         {t('view_book')}
                       </span>
                     </>

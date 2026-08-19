@@ -175,7 +175,7 @@ export default function PandEditor() {
           <button
             onClick={save}
             disabled={saving}
-            className="rounded-full bg-white text-[#1A1A1A] font-semibold text-sm px-6 py-2.5 hover:bg-white/90 disabled:opacity-50 transition-colors"
+            className="rounded-full bg-white text-moroww-dark font-semibold text-sm px-6 py-2.5 hover:bg-white/90 disabled:opacity-50 transition-colors"
           >
             {saving ? 'Opslaan...' : 'Opslaan'}
           </button>
@@ -356,7 +356,7 @@ export default function PandEditor() {
                   <div key={tip.id} className="rounded-xl p-4 flex items-start justify-between gap-4" style={{ background: '#242424' }}>
                     <div className="min-w-0">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-xs font-medium text-[#C08D6E] uppercase tracking-widest">{tip.categorie}</span>
+                        <span className="text-xs font-medium text-moroww-label uppercase tracking-widest">{tip.categorie}</span>
                       </div>
                       <p className="font-medium text-sm">{tip.naam}</p>
                       {tip.beschrijving_nl && (
@@ -428,7 +428,7 @@ export default function PandEditor() {
               <button
                 onClick={addTip}
                 disabled={!newTip.naam}
-                className="rounded-full bg-white text-[#1A1A1A] font-semibold text-sm px-6 py-2.5 hover:bg-white/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                className="rounded-full bg-white text-moroww-dark font-semibold text-sm px-6 py-2.5 hover:bg-white/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               >
                 Tip toevoegen
               </button>
@@ -454,7 +454,7 @@ export default function PandEditor() {
                 </div>
                 <button
                   onClick={downloadQR}
-                  className="rounded-full bg-white text-[#1A1A1A] font-semibold text-sm px-6 py-2.5 hover:bg-white/90 transition-colors"
+                  className="rounded-full bg-white text-moroww-dark font-semibold text-sm px-6 py-2.5 hover:bg-white/90 transition-colors"
                 >
                   Download als PNG
                 </button>

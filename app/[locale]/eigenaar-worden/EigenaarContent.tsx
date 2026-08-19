@@ -41,7 +41,7 @@ export function EigenaarContent() {
   ]
 
   return (
-    <div className="bg-[#1A1A1A]">
+    <div className="bg-moroww-dark">
       <h1 className="sr-only">
         Vakantiewoning verhuren in België via moroww — gecertificeerd kwaliteitslabel met smart lock, audit en directe boeking
       </h1>
@@ -70,7 +70,7 @@ export function EigenaarContent() {
           className="relative z-10 h-full flex flex-col justify-end px-6 md:px-16 lg:px-24 pb-16 md:pb-20 lg:pb-24"
         >
           <div className="max-w-3xl">
-            <p className="text-[#FEA05E] text-sm font-medium tracking-[0.2em] uppercase mb-6 md:mb-8">
+            <p className="text-moroww-orange text-sm font-medium tracking-[0.2em] uppercase mb-6 md:mb-8">
               {t('hero_label')}
             </p>
             <h2 className="text-white text-[clamp(2rem,7vw,6rem)] leading-[1.05] mb-8 md:mb-10">
@@ -98,10 +98,10 @@ export function EigenaarContent() {
       ]} />
 
       {/* ── SECTIE 2: WAT MOROWW INSTALLEERT ── */}
-      <section className="w-full bg-[#1A1A1A] py-12 md:py-20 mt-0">
+      <section className="w-full bg-moroww-dark py-12 md:py-20 mt-0">
         <div className="relative z-10">
           <motion.div {...fadeUp} className="max-w-4xl mx-auto px-6 md:px-16 mb-12">
-            <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-5">
+            <p className="text-xs uppercase tracking-widest text-moroww-orange mb-5">
               {t('tech_label')}
             </p>
             <h2 className="text-[clamp(1.75rem,5.5vw,5rem)] font-bold leading-[1.1] text-white">
@@ -124,7 +124,7 @@ export function EigenaarContent() {
                   className={`border-t border-white/10 py-8 ${i % 2 === 1 ? "md:pl-10 md:border-l md:border-white/10" : "md:pr-10"}`}
                 >
                   <span
-                    className="block font-bold leading-none text-[#FEA05E] select-none"
+                    className="block font-bold leading-none text-moroww-orange select-none"
                     style={{ fontSize: "2.5rem", opacity: 0.18 }}
                   >
                     {item.nr}
@@ -144,27 +144,27 @@ export function EigenaarContent() {
         {/* Tekst links */}
         <motion.div
           {...fadeUp}
-          className="flex items-center px-6 py-12 md:px-20 md:py-20 bg-[#FAE4D6]"
+          className="flex items-center px-6 py-12 md:px-20 md:py-20 bg-moroww-blush"
         >
           <div className="max-w-sm">
-            <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
+            <p className="text-xs uppercase tracking-widest text-moroww-label mb-5">
               {t('fp_label')}
             </p>
-            <h2 className="text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.1] text-[#1A1A1A]">
+            <h2 className="text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.1] text-moroww-dark">
               <span className="font-light">{t('fp_h2_light')}</span><br />
               {t('fp_h2_bold')}
             </h2>
-            <p className="mt-6 text-lg leading-relaxed text-[#1A1A1A]">
+            <p className="mt-6 text-lg leading-relaxed text-moroww-dark">
               {t('fp_body')}
             </p>
 
-            <div className="mt-10 border-t border-[#C08D6E]/30">
+            <div className="mt-10 border-t border-moroww-label/30">
               {voordelen.map(({ titel, tekst }) => (
-                <div key={titel} className="flex items-start gap-4 py-5 border-b border-[#C08D6E]/30">
-                  <span className="text-[#FEA05E] mt-0.5 shrink-0">→</span>
+                <div key={titel} className="flex items-start gap-4 py-5 border-b border-moroww-label/30">
+                  <span className="text-moroww-orange mt-0.5 shrink-0">→</span>
                   <div>
-                    <p className="text-sm font-semibold text-[#1A1A1A]">{titel}</p>
-                    <p className="text-sm text-[#1A1A1A]/60 mt-0.5 leading-relaxed">{tekst}</p>
+                    <p className="text-sm font-semibold text-moroww-dark">{titel}</p>
+                    <p className="text-sm text-moroww-dark/60 mt-0.5 leading-relaxed">{tekst}</p>
                   </div>
                 </div>
               ))}
@@ -185,30 +185,30 @@ export function EigenaarContent() {
       </section>
 
       {/* ── SECTIE 5: HOE HET WERKT ── */}
-      <section className="w-full py-12 md:py-20 px-6 md:px-16 lg:px-24 bg-[#FAE4D6]">
+      <section className="w-full py-12 md:py-20 px-6 md:px-16 lg:px-24 bg-moroww-blush">
         <div className="max-w-xl">
           <motion.div {...fadeUp}>
-            <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
+            <p className="text-xs uppercase tracking-widest text-moroww-label mb-5">
               {t('traject_label')}
             </p>
-            <h2 className="text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.1] text-[#1A1A1A]">
+            <h2 className="text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.1] text-moroww-dark">
               {t('traject_h2_1')}<br />
               <span className="font-light">{t('traject_h2_2')}</span>
             </h2>
           </motion.div>
 
-          <div className="mt-10 border-t border-[#C08D6E]/30">
+          <div className="mt-10 border-t border-moroww-label/30">
             {stappen.map(({ nr, titel, tekst }, i) => (
               <motion.div
                 key={nr}
                 {...fadeUp}
                 transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
-                className="flex items-start gap-5 py-6 border-b border-[#C08D6E]/30"
+                className="flex items-start gap-5 py-6 border-b border-moroww-label/30"
               >
-                <p className="text-[#FEA05E] text-sm font-semibold tracking-widest shrink-0 pt-0.5">{nr}</p>
+                <p className="text-moroww-orange text-sm font-semibold tracking-widest shrink-0 pt-0.5">{nr}</p>
                 <div>
-                  <h3 className="text-base font-semibold text-[#1A1A1A] mb-1.5">{titel}</h3>
-                  <p className="text-sm leading-relaxed text-[#1A1A1A]/70">{tekst}</p>
+                  <h3 className="text-base font-semibold text-moroww-dark mb-1.5">{titel}</h3>
+                  <p className="text-sm leading-relaxed text-moroww-dark/70">{tekst}</p>
                 </div>
               </motion.div>
             ))}
@@ -232,10 +232,10 @@ export function EigenaarContent() {
         {/* Tekst rechts */}
         <motion.div
           {...fadeUp}
-          className="flex items-center px-6 py-12 md:px-16 md:py-20 bg-[#1A1A1A]"
+          className="flex items-center px-6 py-12 md:px-16 md:py-20 bg-moroww-dark"
         >
           <div className="max-w-sm">
-            <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-5">
+            <p className="text-xs uppercase tracking-widest text-moroww-orange mb-5">
               {t('team_label')}
             </p>
             <h2 className="text-[clamp(1.8rem,4vw,3.5rem)] font-bold leading-[1.1] text-white">
@@ -253,17 +253,17 @@ export function EigenaarContent() {
       </section>
 
       {/* ── SECTIE 7: FORMULIER ── */}
-      <section className="w-full py-16 md:py-28 px-6 bg-[#FAE4D6]">
+      <section className="w-full py-16 md:py-28 px-6 bg-moroww-blush">
         <div className="max-w-2xl mx-auto">
           <motion.div {...fadeUp}>
-            <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-5">
+            <p className="text-xs uppercase tracking-widest text-moroww-label mb-5">
               {t('form_label')}
             </p>
-            <h2 className="text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.1] text-[#1A1A1A]">
+            <h2 className="text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.1] text-moroww-dark">
               <span className="font-light">{t('form_h2_light')}</span><br />
               {t('form_h2_bold')}
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-[#1A1A1A]/70">
+            <p className="mt-4 text-lg leading-relaxed text-moroww-dark/70">
               {t('form_body')}
             </p>
           </motion.div>

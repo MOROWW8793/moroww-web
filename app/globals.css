@@ -12,11 +12,34 @@
      Tailwind class 'text-moroww-text'. */
   --color-text: #1A1A1A;
 
-  --text-display: clamp(36px, 8vw, 120px);
-  --text-h1: clamp(32px, 6vw, 80px);
-  --text-h2: clamp(24px, 4vw, 56px);
-  --text-h3: clamp(20px, 3vw, 36px);
-  --text-body: clamp(15px, 2vw, 18px);
+  /* ── Bouwspec sectie 2.1 — kleur ──────────────────────────────────────── */
+  --moroww-dark:   #1A1A1A;
+  --moroww-blush:  #FAE4D6;
+  --moroww-orange: #FEA05E;
+  --moroww-label:  #C08D6E;
+  --moroww-shore:  #829B9B;
+  --moroww-fields: #CBD085;
+  --moroww-paper:  #FBFAF8;
+  --moroww-ink-2:  #6B6863;
+  --moroww-rule:   #E3DED7;
+
+  /* ── Bouwspec sectie 2.2 — typografie ─────────────────────────────────── */
+  --type-display:  clamp(3.5rem, 9vw, 8rem);
+  --type-h2:       clamp(1.75rem, 3vw, 2.75rem);
+  --type-h3:       1.25rem;
+  --type-body:     1.0625rem;
+  --type-body-lg:  1.25rem;
+  --type-audit:    0.6875rem;
+
+  /* ── Bouwspec sectie 2.3 — ritme ──────────────────────────────────────── */
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1.25rem;
+  --space-5:  2rem;
+  --space-6:  3rem;
+  --space-8:  5rem;
+  --space-10: 8rem;
+  --space-12: 12rem;
 }
 
 @font-face {

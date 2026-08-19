@@ -49,17 +49,17 @@ export function Cta({ kind, intro }: Props) {
   return (
     <aside
       className={`my-12 rounded-2xl p-8 md:p-10 ${
-        isPrimary ? 'bg-[#1A1A1A] text-white' : 'bg-white/70 border border-moroww-brown/20 text-[#1A1A1A]'
+        isPrimary ? 'bg-moroww-dark text-white' : 'bg-white/70 border border-moroww-brown/20 text-moroww-dark'
       }`}
     >
       <h3
-        className={`font-bold leading-tight mb-3 ${isPrimary ? 'text-white' : 'text-[#1A1A1A]'}`}
+        className={`font-bold leading-tight mb-3 ${isPrimary ? 'text-white' : 'text-moroww-dark'}`}
         style={{ fontSize: 'clamp(1.25rem, 2vw, 1.5rem)' }}
       >
         {c.title}
       </h3>
       <p
-        className={`leading-relaxed mb-6 ${isPrimary ? 'text-white/75' : 'text-[#1A1A1A]/75'}`}
+        className={`leading-relaxed mb-6 ${isPrimary ? 'text-white/75' : 'text-moroww-dark/75'}`}
         style={{ fontSize: 17 }}
       >
         {intro ? `${intro} ` : ''}
@@ -72,8 +72,8 @@ export function Cta({ kind, intro }: Props) {
           rel={c.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
           className={`inline-block rounded-full px-8 py-3.5 font-semibold transition-colors ${
             isPrimary
-              ? 'bg-[#FEA05E] text-[#1A1A1A] hover:bg-moroww-orange/85'
-              : 'bg-[#1A1A1A] text-white hover:bg-[#1A1A1A]/85'
+              ? 'bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85'
+              : 'bg-moroww-dark text-white hover:bg-moroww-dark/85'
           }`}
         >
           {c.label} →
@@ -83,8 +83,8 @@ export function Cta({ kind, intro }: Props) {
           href={c.href}
           className={`inline-block rounded-full px-8 py-3.5 font-semibold transition-colors ${
             isPrimary
-              ? 'bg-[#FEA05E] text-[#1A1A1A] hover:bg-moroww-orange/85'
-              : 'bg-[#1A1A1A] text-white hover:bg-[#1A1A1A]/85'
+              ? 'bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85'
+              : 'bg-moroww-dark text-white hover:bg-moroww-dark/85'
           }`}
         >
           {c.label} →
@@ -109,7 +109,7 @@ export function VerderLezen({ items }: { items: VerderLezenItem[] }) {
   ]
   return (
     <section className="my-16 border-t border-moroww-brown/20 pt-12">
-      <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-6">verder lezen</p>
+      <p className="text-xs uppercase tracking-widest text-moroww-label mb-6">verder lezen</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {withPoort.map((it) => (
           <Link
@@ -118,9 +118,9 @@ export function VerderLezen({ items }: { items: VerderLezenItem[] }) {
             className="block bg-white rounded-2xl p-6 hover:shadow-md transition-shadow"
           >
             {it.eyebrow && (
-              <p className="text-[11px] uppercase tracking-widest text-[#C08D6E] mb-2">{it.eyebrow}</p>
+              <p className="text-[11px] uppercase tracking-widest text-moroww-label mb-2">{it.eyebrow}</p>
             )}
-            <p className="text-[#1A1A1A] font-semibold leading-snug">{it.title} →</p>
+            <p className="text-moroww-dark font-semibold leading-snug">{it.title} →</p>
           </Link>
         ))}
       </div>

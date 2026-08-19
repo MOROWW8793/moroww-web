@@ -56,7 +56,7 @@ export default async function LocaleLayout({
         <OrganizationJsonLd />
         <NextIntlClientProvider messages={messages}>
           <Navbar />
-          <main className="bg-[#FAE4D6]">{children}</main>
+          <main className="bg-moroww-blush">{children}</main>
           <Footer />
         </NextIntlClientProvider>
         <Analytics />

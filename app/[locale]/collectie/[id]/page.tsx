@@ -376,18 +376,18 @@ export default async function WoningDetailPage({ params }: Props) {
         <section className="px-6 md:px-12 pb-16">
           <div className="max-w-6xl mx-auto">
             <div className="rounded-2xl p-8" style={{ background: '#FFFFFF', boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}>
-              <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-6">
+              <p className="text-xs uppercase tracking-widest text-moroww-label mb-6">
                 {t('reviews_label')}
               </p>
               <div className="space-y-8">
                 {woning.reviews!.map(({ citaat, naam }) => (
                   <blockquote key={naam} className="flex flex-col gap-3">
-                    <p className="text-base leading-relaxed text-[#1A1A1A] italic">
+                    <p className="text-base leading-relaxed text-moroww-dark italic">
                       &ldquo;{lw(citaat, locale)}&rdquo;
                     </p>
                     <footer className="flex items-center gap-3">
-                      <span className="text-[#FEA05E] text-sm">★★★★★</span>
-                      <span className="text-sm font-medium text-[#1A1A1A]">{naam}</span>
+                      <span className="text-moroww-orange text-sm">★★★★★</span>
+                      <span className="text-sm font-medium text-moroww-dark">{naam}</span>
                     </footer>
                   </blockquote>
                 ))}

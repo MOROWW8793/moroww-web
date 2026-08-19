@@ -26,7 +26,7 @@ export default async function KennisLayout({ children }: { children: ReactNode }
         <OrganizationJsonLd />
         <NextIntlClientProvider messages={messages} locale="nl">
           <Navbar />
-          <main className="bg-[#FAE4D6]">{children}</main>
+          <main className="bg-moroww-blush">{children}</main>
           <Footer />
         </NextIntlClientProvider>
         <Analytics />

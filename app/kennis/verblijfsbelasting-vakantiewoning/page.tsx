@@ -90,7 +90,7 @@ export default async function VerblijfsbelastingHubPage() {
                       >
                         {r.gemeente_naam}
                       </Link>
-                      <div className="text-xs text-[#1A1A1A]/60">{r.provincie}</div>
+                      <div className="text-xs text-moroww-dark/60">{r.provincie}</div>
                     </td>
                     <td>{HEFFINGSVORM_LABEL[r.heffingsvorm]}</td>
                     <td>{tariefKort(r)}</td>

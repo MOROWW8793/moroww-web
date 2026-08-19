@@ -26,7 +26,7 @@ export function Faq({ titel = 'Veelgestelde vragen', items }: Props) {
   return (
     <section className="mt-14">
       <h2
-        className="font-bold text-[#1A1A1A] leading-tight mb-8"
+        className="font-bold text-moroww-dark leading-tight mb-8"
         style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
       >
         {titel}
@@ -34,8 +34,8 @@ export function Faq({ titel = 'Veelgestelde vragen', items }: Props) {
       <div className="space-y-6">
         {items.map((it) => (
           <div key={it.vraag}>
-            <p className="font-semibold text-[#1A1A1A] mb-2">{it.vraag}</p>
-            <p className="text-[#1A1A1A]/80 leading-relaxed">{it.antwoord}</p>
+            <p className="font-semibold text-moroww-dark mb-2">{it.vraag}</p>
+            <p className="text-moroww-dark/80 leading-relaxed">{it.antwoord}</p>
           </div>
         ))}
       </div>

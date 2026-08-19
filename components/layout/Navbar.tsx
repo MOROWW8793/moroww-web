@@ -44,7 +44,7 @@ export function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
-        effectiveScrolled ? 'bg-[#FAE4D6] shadow-sm' : 'bg-transparent'
+        effectiveScrolled ? 'bg-moroww-blush shadow-sm' : 'bg-transparent'
       }`}
     >
       <nav className="flex items-center justify-between px-6 md:px-10 h-16 relative">
@@ -70,7 +70,7 @@ export function Navbar() {
               href={item.href}
               className={`text-sm font-medium transition-colors duration-300 ${
                 effectiveScrolled
-                  ? 'text-[#1A1A1A] hover:text-[#FEA05E]'
+                  ? 'text-moroww-dark hover:text-moroww-orange'
                   : 'text-white/90 hover:text-white'
               }`}
             >
@@ -84,7 +84,7 @@ export function Navbar() {
               onClick={toggleLocale}
               className={`text-sm font-medium transition-colors duration-300 px-2 py-1 ${
                 effectiveScrolled
-                  ? 'text-[#1A1A1A]/60 hover:text-[#1A1A1A]'
+                  ? 'text-moroww-dark/60 hover:text-moroww-dark'
                   : 'text-white/60 hover:text-white'
               }`}
             >
@@ -97,7 +97,7 @@ export function Navbar() {
             href={bookUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#FEA05E] text-white rounded-full px-5 py-2.5 text-sm font-semibold hover:bg-moroww-orange/85 transition-colors"
+            className="bg-moroww-orange text-white rounded-full px-5 py-2.5 text-sm font-semibold hover:bg-moroww-orange/85 transition-colors"
           >
             {t('book')}
           </a>
@@ -110,24 +110,24 @@ export function Navbar() {
           aria-label="Menu openen"
         >
           <span className={`block w-6 h-0.5 transition-all duration-200 ${
-            effectiveScrolled ? 'bg-[#1A1A1A]' : 'bg-white'
+            effectiveScrolled ? 'bg-moroww-dark' : 'bg-white'
           } ${open ? 'rotate-45 translate-y-2' : ''}`} />
           <span className={`block w-6 h-0.5 transition-all duration-200 ${
-            effectiveScrolled ? 'bg-[#1A1A1A]' : 'bg-white'
+            effectiveScrolled ? 'bg-moroww-dark' : 'bg-white'
           } ${open ? 'opacity-0' : ''}`} />
           <span className={`block w-6 h-0.5 transition-all duration-200 ${
-            effectiveScrolled ? 'bg-[#1A1A1A]' : 'bg-white'
+            effectiveScrolled ? 'bg-moroww-dark' : 'bg-white'
           } ${open ? '-rotate-45 -translate-y-2' : ''}`} />
         </button>
 
         {/* Mobiel menu */}
         {open && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-[#FAE4D6] px-6 py-8 z-50 flex flex-col gap-2 shadow-lg">
+          <div className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-moroww-blush px-6 py-8 z-50 flex flex-col gap-2 shadow-lg">
             {mainNavItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-lg font-medium text-[#1A1A1A] py-3 min-h-[44px] flex items-center"
+                className="text-lg font-medium text-moroww-dark py-3 min-h-[44px] flex items-center"
                 onClick={() => setOpen(false)}
               >
                 {t(item.labelKey)}
@@ -136,7 +136,7 @@ export function Navbar() {
             {!isNlOnly && (
               <button
                 onClick={() => { toggleLocale(); setOpen(false) }}
-                className="text-base font-medium text-[#1A1A1A]/60 py-3 min-h-[44px] flex items-center text-left border-t border-moroww-brown/15 mt-2 pt-4"
+                className="text-base font-medium text-moroww-dark/60 py-3 min-h-[44px] flex items-center text-left border-t border-moroww-brown/15 mt-2 pt-4"
               >
                 {locale === 'nl' ? 'English' : 'Nederlands'}
               </button>
@@ -145,7 +145,7 @@ export function Navbar() {
               href={bookUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 bg-[#FEA05E] text-white rounded-full px-6 py-3 text-base font-semibold text-center min-h-[44px] flex items-center justify-center"
+              className="mt-2 bg-moroww-orange text-white rounded-full px-6 py-3 text-base font-semibold text-center min-h-[44px] flex items-center justify-center"
               onClick={() => setOpen(false)}
             >
               {t('book')}

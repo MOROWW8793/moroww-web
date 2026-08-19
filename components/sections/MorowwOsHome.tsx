@@ -21,9 +21,9 @@ export async function MorowwOsHome() {
   ]
 
   return (
-    <section className="w-full py-20 md:py-28 px-6 bg-[#1A1A1A]">
+    <section className="w-full py-20 md:py-28 px-6 bg-moroww-dark">
       <div className="max-w-6xl mx-auto">
-        <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-6">
+        <p className="text-xs uppercase tracking-widest text-moroww-orange mb-6">
           {t('home_label')}
         </p>
         <h2
@@ -41,7 +41,7 @@ export async function MorowwOsHome() {
         <div className="mt-14">
           <Link
             href="/moroww-os"
-            className="inline-block text-[#FEA05E] hover:text-white transition-colors underline underline-offset-4 font-medium"
+            className="inline-block text-moroww-orange hover:text-white transition-colors underline underline-offset-4 font-medium"
           >
             {t('home_link')} →
           </Link>

@@ -108,7 +108,7 @@ export default function AdminDashboard() {
                       <div className="flex gap-2 mt-auto">
                         <button
                           onClick={() => router.push(`/admin/dashboard/${pand.id}`)}
-                          className="flex-1 rounded-full bg-white text-[#1A1A1A] font-semibold text-sm py-2 hover:bg-white/90 transition-colors"
+                          className="flex-1 rounded-full bg-white text-moroww-dark font-semibold text-sm py-2 hover:bg-white/90 transition-colors"
                         >
                           Bewerken
                         </button>

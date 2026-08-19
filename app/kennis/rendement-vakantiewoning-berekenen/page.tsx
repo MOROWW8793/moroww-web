@@ -48,13 +48,13 @@ export default function RendementPage() {
           id="module"
           className="my-10 rounded-2xl border border-moroww-brown/25 bg-white p-8 md:p-10"
         >
-          <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-3">
+          <p className="text-xs uppercase tracking-widest text-moroww-label mb-3">
             module
           </p>
-          <h2 className="mt-0 mb-3 font-bold text-[#1A1A1A]" style={{ fontSize: 22 }}>
+          <h2 className="mt-0 mb-3 font-bold text-moroww-dark" style={{ fontSize: 22 }}>
             De rekenmodule komt hier
           </h2>
-          <p className="text-[#1A1A1A]/75 leading-relaxed">
+          <p className="text-moroww-dark/75 leading-relaxed">
             We bouwen ze op de streek-ADR-cijfers uit ons eigen boekingssysteem. Zeven
             velden, geen formulier, resultaat op het scherm. Wil je een seintje wanneer ze
             live gaat? Stuur een mail naar{' '}

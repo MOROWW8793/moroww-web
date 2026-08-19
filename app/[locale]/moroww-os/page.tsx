@@ -49,18 +49,18 @@ export default async function MorowwOsPage({
   ]
 
   return (
-    <main className="bg-[#FAE4D6]">
+    <main className="bg-moroww-blush">
 
       {/* ── HERO ── */}
       <section className="w-full pt-32 pb-16 md:pt-40 md:pb-20 px-6">
         <div className="max-w-3xl mx-auto">
           <h1
-            className="font-bold text-[#1A1A1A] leading-[1.05] tracking-[-0.02em] mb-8"
+            className="font-bold text-moroww-dark leading-[1.05] tracking-[-0.02em] mb-8"
             style={{ fontSize: 'clamp(2.25rem, 6vw, 5rem)' }}
           >
             {t('hero_h1')}
           </h1>
-          <p className="text-[#1A1A1A]/70 leading-relaxed" style={{ fontSize: 20 }}>
+          <p className="text-moroww-dark/70 leading-relaxed" style={{ fontSize: 20 }}>
             {t('hero_intro')}
           </p>
         </div>
@@ -68,17 +68,17 @@ export default async function MorowwOsPage({
 
       {/* ── BODY — brief-kopij letterlijk ── */}
       <section className="w-full py-16 md:py-24 px-6 bg-[#EDD5C0]">
-        <div className="max-w-3xl mx-auto space-y-6 text-[#1A1A1A]/85 leading-relaxed" style={{ fontSize: 18 }}>
+        <div className="max-w-3xl mx-auto space-y-6 text-moroww-dark/85 leading-relaxed" style={{ fontSize: 18 }}>
           <p>{t('body_p1')}</p>
           <p>{t('body_p2')}</p>
-          <p className="font-semibold text-[#1A1A1A]">{t('body_p3')}</p>
+          <p className="font-semibold text-moroww-dark">{t('body_p3')}</p>
         </div>
       </section>
 
       {/* ── DE ORCHESTRATION LOOP — statisch 7-stappen schema ── */}
-      <section className="w-full py-20 md:py-28 px-6 bg-[#1A1A1A]">
+      <section className="w-full py-20 md:py-28 px-6 bg-moroww-dark">
         <div className="max-w-4xl mx-auto">
-          <p className="text-xs uppercase tracking-widest text-[#FEA05E] mb-4">
+          <p className="text-xs uppercase tracking-widest text-moroww-orange mb-4">
             {t('loop_label')}
           </p>
           <p className="text-white/70 leading-relaxed mb-14 max-w-2xl" style={{ fontSize: 18 }}>
@@ -96,7 +96,7 @@ export default async function MorowwOsPage({
                 className={`flex items-baseline gap-6 py-5 ${i < loop.length - 1 ? 'border-b border-white/10' : ''}`}
               >
                 <span
-                  className="font-bold text-[#FEA05E] select-none shrink-0"
+                  className="font-bold text-moroww-orange select-none shrink-0"
                   style={{ fontSize: 15, letterSpacing: 2, opacity: 0.6 }}
                 >
                   {step.n}
@@ -114,20 +114,20 @@ export default async function MorowwOsPage({
       </section>
 
       {/* ── EIGENAAR-CTA — 'voor de eigenaar' kopij uit brief deel 3 ── */}
-      <section className="w-full py-20 md:py-28 px-6 bg-[#FAE4D6]">
+      <section className="w-full py-20 md:py-28 px-6 bg-moroww-blush">
         <div className="max-w-2xl mx-auto text-center">
           <h2
-            className="font-bold text-[#1A1A1A] leading-tight mb-6"
+            className="font-bold text-moroww-dark leading-tight mb-6"
             style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
           >
             {t('cta_title')}
           </h2>
-          <p className="text-[#1A1A1A]/75 leading-relaxed mb-10" style={{ fontSize: 17 }}>
+          <p className="text-moroww-dark/75 leading-relaxed mb-10" style={{ fontSize: 17 }}>
             {t('cta_body')}
           </p>
           <Link
             href="/eigenaar-worden"
-            className="inline-block bg-[#1A1A1A] text-white rounded-full px-10 py-4 font-semibold hover:bg-[#333] transition-colors"
+            className="inline-block bg-moroww-dark text-white rounded-full px-10 py-4 font-semibold hover:bg-[#333] transition-colors"
           >
             {t('cta_button')}
           </Link>

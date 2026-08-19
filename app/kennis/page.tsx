@@ -65,14 +65,14 @@ export default function KennisHubPage() {
     <>
       <section className="w-full pt-32 pb-12 md:pt-40 md:pb-16 px-6">
         <div className="max-w-3xl mx-auto">
-          <p className="text-xs uppercase tracking-widest text-[#C08D6E] mb-6">kennisbank</p>
+          <p className="text-xs uppercase tracking-widest text-moroww-label mb-6">kennisbank</p>
           <h1
-            className="font-bold text-[#1A1A1A] leading-[1.05] tracking-[-0.02em] mb-8"
+            className="font-bold text-moroww-dark leading-[1.05] tracking-[-0.02em] mb-8"
             style={{ fontSize: 'clamp(2.25rem, 6vw, 4.5rem)' }}
           >
             Alles wat we onderweg leerden over vakantieverhuur in België.
           </h1>
-          <p className="text-[#1A1A1A]/70 leading-relaxed" style={{ fontSize: 20 }}>
+          <p className="text-moroww-dark/70 leading-relaxed" style={{ fontSize: 20 }}>
             Zes onderwerpen die op geen andere plek helder naast elkaar staan. Voor eigenaars,
             geschreven met eigen data en met een bron per bewering. Elke pagina wordt elk
             kwartaal nagekeken; de datum van de laatste controle staat onderaan.
@@ -88,14 +88,14 @@ export default function KennisHubPage() {
               href={k.href}
               className="block bg-white rounded-2xl p-8 hover:shadow-md transition-shadow"
             >
-              <p className="text-[11px] uppercase tracking-widest text-[#C08D6E] mb-3">{k.eyebrow}</p>
-              <h2 className="font-bold text-[#1A1A1A] leading-tight mb-4" style={{ fontSize: 22 }}>
+              <p className="text-[11px] uppercase tracking-widest text-moroww-label mb-3">{k.eyebrow}</p>
+              <h2 className="font-bold text-moroww-dark leading-tight mb-4" style={{ fontSize: 22 }}>
                 {k.titel}
               </h2>
-              <p className="text-[#1A1A1A]/75 leading-relaxed" style={{ fontSize: 16 }}>
+              <p className="text-moroww-dark/75 leading-relaxed" style={{ fontSize: 16 }}>
                 {k.intro}
               </p>
-              <p className="mt-5 text-[#FEA05E] font-semibold">Lees verder →</p>
+              <p className="mt-5 text-moroww-orange font-semibold">Lees verder →</p>
             </Link>
           ))}
         </div>

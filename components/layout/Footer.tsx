@@ -11,7 +11,7 @@ const CONTACT_EMAIL = 'info@moroww.com'
 export async function Footer() {
   const t = await getTranslations('footer')
   return (
-    <footer className="bg-[#1A1A1A] text-white w-full">
+    <footer className="bg-moroww-dark text-white w-full">
       <div className="mx-auto max-w-6xl px-6 md:px-16 lg:px-24 py-12 md:py-16 lg:py-24">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
           {/* Links: tagline + bedrijfsregels + copyright */}

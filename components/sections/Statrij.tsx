@@ -10,7 +10,7 @@ export function Statrij({
   items: Array<{ cijfer: string; label: string }>
 }) {
   return (
-    <section className="w-full bg-[#1A1A1A] py-14 md:py-16 px-6">
+    <section className="w-full bg-moroww-dark py-14 md:py-16 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/15">
           {items.map((item) => (
