@@ -1,4 +1,5 @@
 // Uitgeschreven detail-content per gemeente.
+import { H2Section } from '@/components/kennis/H2Section'
 //
 // Alleen gemeenten waarvan we méér dan tarief en link publiceren, staan hier.
 // De rest krijgt een generiek sjabloon in de page-component. Wanneer je een
@@ -28,7 +29,7 @@ export const GEMEENTE_CONTENT: Record<string, GemeenteExtra> = {
       'Stad Oostende heft een verblijfsbelasting van € 825 per kamer of verblijfseenheid per jaar voor logies die permanent op de toeristische markt worden aangeboden. Voor occasionele vakantieverhuur, beperkt tot maximaal 120 dagen per jaar, bedraagt de belasting € 275 per jaar. Het bedrag is betaalbaar per kwartaal. Sinds 1 juli 2025 geldt de belasting voor alle logiesverstrekkers, niet enkel hotels.',
     body: (
       <>
-        <h2>De tarieven</h2>
+        <H2Section titel="De tarieven" />
         <table>
           <tbody>
             <tr><th>Permanent op de toeristische markt</th><td>€ 825 per kamer of verblijfseenheid per jaar</td></tr>
@@ -40,7 +41,7 @@ export const GEMEENTE_CONTENT: Record<string, GemeenteExtra> = {
           </tbody>
         </table>
 
-        <h2>Wat er veranderde op 1 juli 2025</h2>
+        <H2Section titel="Wat er veranderde op 1 juli 2025" />
         <p>
           Tot dan gold de verblijfsbelasting in Oostende vooral voor hotels. Sinds 1 juli
           2025 is het toepassingsgebied uitgebreid naar alle aanbieders van toeristische
@@ -61,7 +62,7 @@ export const GEMEENTE_CONTENT: Record<string, GemeenteExtra> = {
           die de zone bepaalt, is een risico op je businessmodel.
         </p>
 
-        <h2>Vrijstellingen</h2>
+        <H2Section titel="Vrijstellingen" />
         <p>
           Erkende jeugdherbergen, jeugdverblijfscentra en verblijven binnen het kader van
           Toerisme voor Allen vallen niet onder deze belasting. Logies die tijdelijk en
@@ -70,7 +71,7 @@ export const GEMEENTE_CONTENT: Record<string, GemeenteExtra> = {
         </p>
         <p>Let op de volgorde in die laatste zin. Vooraf melden, niet achteraf rechtzetten.</p>
 
-        <h2>Wat je in Oostende nog meer moet regelen</h2>
+        <H2Section titel="Wat je in Oostende nog meer moet regelen" />
         <p>De verblijfsbelasting is één van vier zaken:</p>
         <ol>
           <li>Aanmelden bij Toerisme Vlaanderen, verplicht, gratis, via het uitbatersportaal</li>
@@ -96,7 +97,7 @@ export const GEMEENTE_CONTENT: Record<string, GemeenteExtra> = {
       'Knokke-Heist belast vakantiewoningen via het reglement op het verstrekken van toeristische logies, niet via de belasting op tweede verblijven. Het tarief wordt berekend per slaapplaats per jaar: € 250 voor vakantiewoningen, € 125 per hotelkamer en € 500 voor logies die niet aangemeld of erkend zijn in het basisregister. De gemeenteraad keurde op 27 november 2025 een nieuw reglement goed; controleer de tarieven voor 2026 in dat uittreksel.',
     body: (
       <>
-        <h2>Hoe de berekening werkt</h2>
+        <H2Section titel="Hoe de berekening werkt" />
         <p>
           De maximumcapaciteit van je logies, dus het aantal slaapplaatsen, wordt
           vermenigvuldigd met het tarief van je categorie.
@@ -119,7 +120,7 @@ export const GEMEENTE_CONTENT: Record<string, GemeenteExtra> = {
           kust.
         </p>
 
-        <h2>Logiesbelasting of tweedeverblijfstaks?</h2>
+        <H2Section titel="Logiesbelasting of tweedeverblijfstaks?" />
         <p>
           Dit is waar het in Knokke-Heist misloopt bij eigenaars. Woningen die als
           vakantiewoning verhuurd worden, vallen onder het belastingreglement op de
@@ -138,7 +139,7 @@ export const GEMEENTE_CONTENT: Record<string, GemeenteExtra> = {
           sommige eigenaars aan de kust hun verhuur bewust beperkt houden.
         </p>
 
-        <h2>De lopende procedures</h2>
+        <H2Section titel="De lopende procedures" />
         <p>
           Rond de tweedeverblijfstaks in Knokke-Heist loopt al jaren een juridisch
           geschil. De kern: vaste inwoners van Knokke-Heist betalen geen aanvullende

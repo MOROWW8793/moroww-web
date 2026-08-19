@@ -25,12 +25,12 @@ const config: Config = {
         "moroww-paper":     "#FBFAF8",   // eigenaarsoppervlak, koeler dan blush
         "moroww-ink-2":     "#6B6863",   // secundaire tekst, bijschriften
         "moroww-rule":      "#E3DED7",   // neutrale scheidingslijn
+        "moroww-coast":     "#EEBC9D",   // illustratief accent — nooit tekst, nooit actie
 
         // ── Legacy — te migreren naar spec-tokens ───────────────────────────
         "moroww-white":     "#FFFFFF",
         "moroww-black":     "#1A1A1A",
         "moroww-brown":     "#C08D6E",
-        "moroww-coast":     "#EEBC9D",
         "moroww-ardennes":  "#CBD085",
         "moroww-blue-gray": "#829B9B",
         "moroww-text":      "var(--color-text)",

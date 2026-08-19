@@ -31,22 +31,9 @@ export default async function CollectiePage({
           >
             {t('title')}
           </h1>
-          <p className="text-moroww-black/55 text-lg mb-8">
+          <p className="text-moroww-black/55 text-lg">
             {t('subtitle')}
           </p>
-          <div className="flex flex-wrap gap-3 justify-center">
-            <span
-              className="text-xs font-medium uppercase tracking-widest px-4 py-2 rounded-full"
-              style={{ background: "#EEBC9D", color: "#1A1A1A" }}
-            >
-              the shore - Kust
-            </span>
-            <span
-              className="text-xs font-medium uppercase tracking-widest px-4 py-2 rounded-full bg-moroww-fields text-moroww-dark"
-            >
-              the fields
-            </span>
-          </div>
         </div>
         <CollectieStatisch />
       </div>

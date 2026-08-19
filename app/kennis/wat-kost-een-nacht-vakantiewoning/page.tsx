@@ -1,5 +1,6 @@
 import { kennisMetadata, KENNIS_GEPUBLICEERD } from '@/lib/kennis/meta'
 import { ArticleLayout } from '@/components/kennis/ArticleLayout'
+import { H2Section } from '@/components/kennis/H2Section'
 import { Cta, VerderLezen } from '@/components/kennis/Cta'
 import { Faq } from '@/components/kennis/Faq'
 import { ArticleJsonLd } from '@/components/kennis/JsonLd'
@@ -32,7 +33,7 @@ export default function WatKostEenNachtPage() {
         titel="Wat kost één nacht in je vakantiewoning je echt?"
         korteAntwoord="Van de nachtprijs van een vakantiewoning blijft na btw, schoonmaak, linnen, energie, verblijfsbelasting, commissies en onderhoud beduidend minder over dan de meeste eigenaars inschatten. De grootste wijziging van dit jaar is de btw op gemeubeld logies, die op 1 maart 2026 steeg van 6 naar 12 procent. Voor die btw bestaat geen drempel: wie eronder valt, is belastingplichtig vanaf de eerste euro."
       >
-        <h2>De btw is het eerste wat mensen fout hebben</h2>
+        <H2Section titel="De btw is het eerste wat mensen fout hebben" />
         <p>
           Dit is de belangrijkste fiscale wijziging van 2026 voor vakantieverhuur, en in
           gesprekken met eigenaars merken we dat een groot deel ze nog niet kent of denkt
@@ -133,7 +134,7 @@ export default function WatKostEenNachtPage() {
           intro="Of je onder de btw-plicht valt, hangt af van welke diensten je precies aanbiedt en hoe ze aangerekend worden."
         />
 
-        <h2>Van bruto naar netto, post per post</h2>
+        <H2Section titel="Van bruto naar netto, post per post" />
         <p>
           Wat volgt is geen rekenblad maar een lijst van waar het misloopt. De bedragen
           verschillen te sterk per woning en per streek om er hier getallen op te plakken.
@@ -197,7 +198,7 @@ export default function WatKostEenNachtPage() {
 
         <Cta kind="poortentoets" />
 
-        <h2>Wat moroww kost, zwart op wit</h2>
+        <H2Section titel="Wat moroww kost, zwart op wit" />
         <p>
           moroww is een Belgisch kwaliteitslabel voor vakantiewoningen aan de kust en op
           het platteland. Dit is wat het label kost:

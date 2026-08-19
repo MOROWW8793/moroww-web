@@ -1,5 +1,6 @@
 import { kennisMetadata, KENNIS_GEPUBLICEERD } from '@/lib/kennis/meta'
 import { ArticleLayout } from '@/components/kennis/ArticleLayout'
+import { H2Section } from '@/components/kennis/H2Section'
 import { Cta, VerderLezen } from '@/components/kennis/Cta'
 import { Actualiteitsblok } from '@/components/kennis/Actualiteitsblok'
 import { ArticleJsonLd } from '@/components/kennis/JsonLd'
@@ -30,7 +31,7 @@ export default function VerschilPage() {
         titel="Tweedeverblijfsbelasting of logiesbelasting?"
         korteAntwoord="De belasting op tweede verblijven treft eigenaars van een woning waar niemand gedomicilieerd is. De belasting op toeristische logies treft wie tegen betaling toeristen laat overnachten. Het zijn twee aparte gemeentelijke belastingen. In sommige gemeenten sluiten ze elkaar uit zodra je verhuurt, in andere zijn ze allebei verschuldigd. Alleen het reglement van je eigen gemeente geeft uitsluitsel."
       >
-        <h2>Waar het verschil zit</h2>
+        <H2Section titel="Waar het verschil zit" />
         <table>
           <thead>
             <tr>
@@ -63,7 +64,7 @@ export default function VerschilPage() {
           </tbody>
         </table>
 
-        <h2>De twee regimes in de praktijk</h2>
+        <H2Section titel="De twee regimes in de praktijk" />
         <p>
           <strong>Gemeenten waar ze elkaar uitsluiten.</strong> In Knokke-Heist vallen
           woningen die als vakantiewoning verhuurd worden onder het logiesreglement en
@@ -85,7 +86,7 @@ export default function VerschilPage() {
           intro="Zit je in het juiste dossier bij je gemeente? Stuur je aanslagbiljet of je gemeente door en we zoeken uit welk regime bij jou geldt."
         />
 
-        <h2>Waarom dit meer dan administratie is</h2>
+        <H2Section titel="Waarom dit meer dan administratie is" />
         <p>Twee gevolgen die eigenaars pas laat ontdekken.</p>
         <p>
           <strong>Het bedrag verschilt sterk.</strong> Aan de kust liggen de
@@ -101,7 +102,7 @@ export default function VerschilPage() {
           verhuurt maar enkel als tweede verblijf gekend is, valt daarbij op.
         </p>
 
-        <h2>En de lopende procedures?</h2>
+        <H2Section titel="En de lopende procedures?" />
         <p>
           Rond de tweedeverblijfstaks in Knokke-Heist, Koksijde en De Panne lopen
           procedures, onder meer bij de Raad van State. De kern van het geschil is dat de

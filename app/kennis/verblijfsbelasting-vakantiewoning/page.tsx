@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { kennisMetadata, KENNIS_GEPUBLICEERD } from '@/lib/kennis/meta'
 import { ArticleLayout } from '@/components/kennis/ArticleLayout'
+import { H2Section } from '@/components/kennis/H2Section'
 import { Cta, VerderLezen } from '@/components/kennis/Cta'
 import { Faq } from '@/components/kennis/Faq'
 import { Actualiteitsblok } from '@/components/kennis/Actualiteitsblok'
@@ -61,7 +62,7 @@ export default async function VerblijfsbelastingHubPage() {
         titel="Verblijfsbelasting voor een vakantiewoning, per gemeente"
         korteAntwoord="De verblijfsbelasting op een vakantiewoning is een gemeentelijke belasting en verschilt sterk per gemeente. Er bestaan twee systemen: een bedrag per persoon per overnachting, of een vast bedrag per jaar per slaapplaats of per verblijfseenheid. Aan de kust geldt meestal het tweede systeem, met bedragen tot enkele honderden euro's per eenheid of per bed per jaar."
       >
-        <h2>De tarieven per gemeente</h2>
+        <H2Section titel="De tarieven per gemeente" />
 
         {rijen.length === 0 ? (
           <p>
@@ -112,7 +113,7 @@ export default async function VerblijfsbelastingHubPage() {
           intro="Staat jouw gemeente nog niet in de tabel, of klopt het bedrag op je aanslagbiljet niet met wat hier staat?"
         />
 
-        <h2>Waarom de bedragen zo ver uit elkaar liggen</h2>
+        <H2Section titel="Waarom de bedragen zo ver uit elkaar liggen" />
         <p>
           Verblijfsbelasting is geen Vlaamse maar een gemeentelijke belasting. Elke
           gemeenteraad stemt een eigen reglement, doorgaans voor een periode van zes jaar
@@ -156,7 +157,7 @@ export default async function VerblijfsbelastingHubPage() {
 
         <Cta kind="poortentoets" />
 
-        <h2>Mag je de belasting doorrekenen aan je gasten?</h2>
+        <H2Section titel="Mag je de belasting doorrekenen aan je gasten?" />
         <p>
           Doorgaans wel, en sommige gemeenten zeggen er expliciet iets over. Oostende laat
           toe dat je maximaal € 4,72 exclusief btw per kamer of verblijfseenheid per nacht
@@ -167,7 +168,7 @@ export default async function VerblijfsbelastingHubPage() {
         </p>
         <p>Controleer altijd de tekst van je eigen reglement voor je iets aan een gast aanrekent.</p>
 
-        <h2>Wat als je niet aangeeft</h2>
+        <H2Section titel="Wat als je niet aangeeft" />
         <p>
           De aangifteplicht ligt bij de uitbater. Verhuur je via een makelaar of kantoor,
           dan ontvangt die het aanslagbiljet, maar de verantwoordelijkheid blijft

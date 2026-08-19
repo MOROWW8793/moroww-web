@@ -1,11 +1,12 @@
 // Gedeelde artikelchroom voor de kennispagina's.
 //
-// Alle pagina's in `/kennis` hebben dezelfde opbouw: eyebrow met breadcrumb,
-// hero met H1 en één sub-alinea, dan het korte antwoord in een kader dat als
-// eerste door antwoordmachines wordt gelezen, en tot slot de body.
+// Opbouw: eyebrow met breadcrumb, hero met H1, dan het korte antwoord —
+// geen kader, geen achtergrond, één auditlijn boven het label — en tot
+// slot de body.
 
 import Link from 'next/link'
 import type { ReactNode } from 'react'
+import { AuditLijn } from '@/components/AuditLijn'
 
 interface Props {
   /** Cluster of paginatype boven de H1, in caps. */
@@ -40,12 +41,10 @@ export function ArticleLayout({ eyebrow, titel, korteAntwoord, terug, children }
           >
             {titel}
           </h1>
-          <div className="bg-white rounded-2xl p-6 md:p-8 border border-moroww-brown/15">
-            <p className="text-xs uppercase tracking-widest text-moroww-label mb-3">Het korte antwoord</p>
-            <p className="text-moroww-dark leading-relaxed" style={{ fontSize: 18 }}>
-              {korteAntwoord}
-            </p>
-          </div>
+          <AuditLijn density="quiet" items={['het korte antwoord']} />
+          <p className="mt-6 text-body-lg text-moroww-dark">
+            {korteAntwoord}
+          </p>
         </div>
       </section>
 

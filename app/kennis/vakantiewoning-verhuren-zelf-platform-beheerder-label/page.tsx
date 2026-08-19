@@ -1,5 +1,6 @@
 import { kennisMetadata, KENNIS_GEPUBLICEERD } from '@/lib/kennis/meta'
 import { ArticleLayout } from '@/components/kennis/ArticleLayout'
+import { H2Section } from '@/components/kennis/H2Section'
 import { Cta, VerderLezen } from '@/components/kennis/Cta'
 import { Faq } from '@/components/kennis/Faq'
 import { Actualiteitsblok } from '@/components/kennis/Actualiteitsblok'
@@ -32,7 +33,7 @@ export default function VierModellenPage() {
         titel="Zelf verhuren, via een platform, een beheerder, of een label?"
         korteAntwoord="Er zijn vier manieren om een vakantiewoning te verhuren: volledig zelf, via boekingsplatformen met eigen beheer, via een beheerder die alles overneemt, of via een label dat een standaard oplegt en het systeem levert. Ze verschillen in kost, in tijdsbesteding en vooral in wie de kwaliteit bewaakt."
       >
-        <h2>De vier modellen naast elkaar</h2>
+        <H2Section titel="De vier modellen naast elkaar" />
         <div className="overflow-x-auto">
           <table>
             <thead>
@@ -61,7 +62,7 @@ export default function VierModellenPage() {
           lijst staat en dezelfde gast bereikt.
         </p>
 
-        <h2>Wat het label anders doet</h2>
+        <H2Section titel="Wat het label anders doet" />
         <p>
           moroww is een kwaliteitslabel voor vakantiewoningen, geen beheerder en geen
           platform. De eigenaar levert de muren. Het label legt de belevingslaag erover:
@@ -82,7 +83,7 @@ export default function VierModellenPage() {
 
         <Cta kind="poortentoets" />
 
-        <h2>Wanneer moroww níet de juiste keuze is</h2>
+        <H2Section titel="Wanneer moroww níet de juiste keuze is" />
         <p>Vier situaties waarin je beter iets anders kiest, en we zeggen dat liever nu dan in maand zes.</p>
 
         <p>

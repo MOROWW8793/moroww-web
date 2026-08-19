@@ -3,6 +3,8 @@
 // Antwoordmachines lezen het schema, mensen lezen de visuele lijst. Ze horen
 // altijd hetzelfde te tonen — daarom render ik beide vanuit dezelfde array.
 
+import { AuditLijn } from '@/components/AuditLijn'
+
 interface FaqItem {
   vraag: string
   antwoord: string
@@ -25,12 +27,10 @@ export function Faq({ titel = 'Veelgestelde vragen', items }: Props) {
   }
   return (
     <section className="mt-14">
-      <h2
-        className="font-bold text-moroww-dark leading-tight mb-8"
-        style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
-      >
-        {titel}
-      </h2>
+      <div className="h2-section mb-6">
+        <AuditLijn density="structural" items={[titel]} />
+        <h2>{titel}</h2>
+      </div>
       <div className="space-y-6">
         {items.map((it) => (
           <div key={it.vraag}>

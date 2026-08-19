@@ -164,7 +164,7 @@ export default async function WoningDetailPage({ params }: Props) {
             </p>
 
             {/* Locatie */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#666666', fontSize: 14, marginTop: 12 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--moroww-ink-2)', fontSize: 14, marginTop: 12 }}>
               <MapPin size={14} />
               {woning.locatie}
             </div>
@@ -215,7 +215,7 @@ export default async function WoningDetailPage({ params }: Props) {
                     <div className="mb-5">
                       <span style={{ color: '#C08D6E', fontSize: 14, marginRight: 6 }}>{t('from_label')}</span>
                       <span style={{ fontWeight: 800, fontSize: 32, color: '#ffffff' }}>€{woning.prijs}</span>
-                      <span style={{ color: '#999999', fontSize: 14, marginLeft: 6 }}>{t('per_night')}</span>
+                      <span style={{ color: 'var(--moroww-ink-2)', fontSize: 14, marginLeft: 6 }}>{t('per_night')}</span>
                     </div>
                   ) : null}
                   <a
@@ -227,7 +227,7 @@ export default async function WoningDetailPage({ params }: Props) {
                   >
                     {t('book_direct')}
                   </a>
-                  <p style={{ color: '#666666', fontSize: 12, textAlign: 'center', lineHeight: 1.5 }}>
+                  <p style={{ color: 'var(--moroww-ink-2)', fontSize: 12, textAlign: 'center', lineHeight: 1.5 }}>
                     {t('redirect_note')}
                   </p>
                 </>

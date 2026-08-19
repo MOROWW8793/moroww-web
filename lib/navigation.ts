@@ -55,9 +55,15 @@ export const nlOnlyRoutes: NavHref[] = [
 ]
 
 // Pagina's zonder donkere foto-hero. De Navbar start op deze routes meteen
-// in 'scrolled' state (blush-achtergrond, donkere tekst) — anders zou witte
+// in 'scrolled' state (blush of paper, donkere tekst) — anders zou witte
 // menutekst op een lichte pagina-achtergrond onleesbaar zijn.
-export const lightHeroRoutes: NavHref[] = [
+//
+// Type is bewust string zodat we prefixen mogen bevatten die niet in NavHref
+// zitten (`/kennis` staat niet in de nav zelf). Matching is exact óf via
+// startsWith '<prefix>/', dus '/kennis' vangt ook '/kennis/wat-kost-…'.
+export const lightHeroRoutes: string[] = [
   '/de-standaard',
   '/moroww-os',
+  '/kennis',
+  '/collectie',
 ]

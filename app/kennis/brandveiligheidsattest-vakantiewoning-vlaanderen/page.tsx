@@ -1,5 +1,6 @@
 import { kennisMetadata, KENNIS_GEPUBLICEERD } from '@/lib/kennis/meta'
 import { ArticleLayout } from '@/components/kennis/ArticleLayout'
+import { H2Section } from '@/components/kennis/H2Section'
 import { Cta, VerderLezen } from '@/components/kennis/Cta'
 import { Faq } from '@/components/kennis/Faq'
 import { Actualiteitsblok } from '@/components/kennis/Actualiteitsblok'
@@ -43,7 +44,7 @@ export default function BrandattestPage() {
         titel="Brandveiligheidsattest voor een vakantiewoning in Vlaanderen"
         korteAntwoord="Elke vakantiewoning in Vlaanderen moet beschikken over een positief brandveiligheidsattest. Er zijn vier types: A, Abis, B en C. Attest A is het positieve attest en is acht jaar geldig. Bij attest C mag je niet uitbaten. Een vakantiewoning telt altijd als één verhuureenheid en heeft een eigen, individueel attest nodig, ook als er meerdere vakantiewoningen in hetzelfde gebouw zitten."
       >
-        <h2>De vier attesten</h2>
+        <H2Section titel="De vier attesten" />
         <table>
           <thead>
             <tr>
@@ -88,7 +89,7 @@ export default function BrandattestPage() {
         </p>
         <p>Een divanbed, een stapelbed, een onroerend opklapbed of een bedkast telt mee als slaapplaats.</p>
 
-        <h2>Welke normen gelden voor jouw woning?</h2>
+        <H2Section titel="Welke normen gelden voor jouw woning?" />
         <p>
           De normen hangen af van het aantal verhuureenheden en het aantal slaapplaatsen.
           Voor een vakantiewoning, die altijd één verhuureenheid is, komt het neer op het
@@ -140,7 +141,7 @@ export default function BrandattestPage() {
           intro="De telling van slaapplaatsen luistert nauw, en of je woning deel uitmaakt van een groter bouwgeheel bepaalt onder welke bijlage je valt."
         />
 
-        <h2>Stappenplan</h2>
+        <H2Section titel="Stappenplan" />
         <ol>
           <li><strong>Bepaal je bijlage</strong> aan de hand van de tabel hierboven.</li>
           <li><strong>Dien de aanvraag in</strong> bij de juiste instantie. Heeft je gemeente of hulpverleningszone een e-loket, gebruik dat. Anders het modelformulier van Toerisme Vlaanderen, gericht aan de burgemeester.</li>
@@ -162,7 +163,7 @@ export default function BrandattestPage() {
           brandweerverslag erbij.
         </p>
 
-        <h2>Vier dingen die eigenaars over het hoofd zien</h2>
+        <H2Section titel="Vier dingen die eigenaars over het hoofd zien" />
         <p>
           <strong>Je attest A kan vervallen zonder dat er acht jaar voorbij zijn.</strong>{' '}
           Het vervalt van rechtswege bij onder meer: uitbreiding van het aantal
@@ -191,7 +192,7 @@ export default function BrandattestPage() {
           moeten beschikbaar zijn in het Nederlands, Frans, Duits en Engels.
         </p>
 
-        <h2>Wat moroww hiermee doet</h2>
+        <H2Section titel="Wat moroww hiermee doet" />
         <p>
           Een geldig positief attest is bij ons een voorwaarde voor opname, geen
           aandachtspunt. Geen attest betekent geen collectie, ook als de woning verder

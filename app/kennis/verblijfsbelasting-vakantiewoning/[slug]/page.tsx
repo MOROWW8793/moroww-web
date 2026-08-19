@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { kennisMetadata, KENNIS_GEPUBLICEERD } from '@/lib/kennis/meta'
 import { ArticleLayout } from '@/components/kennis/ArticleLayout'
+import { H2Section } from '@/components/kennis/H2Section'
 import { Cta, VerderLezen } from '@/components/kennis/Cta'
 import { Actualiteitsblok } from '@/components/kennis/Actualiteitsblok'
 import { ArticleJsonLd } from '@/components/kennis/JsonLd'
@@ -88,7 +89,7 @@ export default async function GemeenteDetailPage({ params }: Props) {
           extra.body
         ) : (
           <>
-            <h2>Wat er over deze belasting bekend is</h2>
+            <H2Section titel="Wat er over deze belasting bekend is" />
             <table>
               <tbody>
                 <tr><th>Systeem</th><td>{HEFFINGSVORM_LABEL[gemeente.heffingsvorm]}</td></tr>
