@@ -107,9 +107,10 @@ export default async function DeStandaardPage({
             <p>{t('visit_p4')}</p>
           </div>
         </GridSectie>
-        <div className={BEELD_WRAPPER}>
-          <InlineFoto src="/images/standaard/V2-56.jpg" alt="hand onder een regendouche" />
-        </div>
+
+        {/* "wat er gebeurt voor opname" krijgt bewust geen beeld — het
+            bestand met de beoogde hand-onder-regendouche is uit de
+            publicatie gehaald. */}
 
         {/* Zes tech-items zijn uitgesplitst naar individuele secties.
             add_limit en add_invisible zijn per user's spec uit de publicatie
