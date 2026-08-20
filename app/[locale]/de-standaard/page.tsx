@@ -34,9 +34,15 @@ export async function generateMetadata({
   }
 }
 
-// Elke sectie zit in <GridSectie titel="…"> — vanaf lg staat de titel
-// sticky in kolom 1-3, de inhoud in kolom 4-10, hairline over kolom 1-10.
-// Onder lg vervalt het raster en stapelt de sectie zoals vroeger.
+// Elke sectie krijgt één beeld direct onder de inhoud (space-6 eronder),
+// behalve "het slot" en de afsluiter. Beelden liggen in
+// /public/images/standaard/. Ontbrekende bestanden verbergen zichzelf via
+// InlineFoto's onError.
+//
+// Wijziging t.o.v. vorige structuur: de zes tech-items uit "de standaard
+// stopt niet bij de keuring" zijn uitgesplitst naar individuele secties.
+// Per user's spec zijn add_limit ("de grens") en add_invisible ("het
+// onzichtbare") uit de publicatie gehaald.
 
 export default async function DeStandaardPage({
   params,
@@ -54,41 +60,29 @@ export default async function DeStandaardPage({
     { title: t('gate04_title'), body: t('gate04_body') },
   ]
 
-  const additions = [
-    { title: t('add_lock_title'),       body: t('add_lock_body') },
-    { title: t('add_ambient_title'),    body: t('add_ambient_body') },
-    { title: t('add_scent_title'),      body: t('add_scent_body') },
-    { title: t('add_limit_title'),      body: t('add_limit_body') },
-    { title: t('add_invisible_title'),  body: t('add_invisible_body') },
-    { title: t('add_ordinary_title'),   body: t('add_ordinary_body') },
-  ]
-
   return (
     <Register kant="eigenaar">
 
       {/* ── HERO ── */}
       <section className="w-full pt-28 pb-mw-6 px-6 md:px-12">
         <div className="mx-auto max-w-6xl">
-          <div className="lg:grid lg:grid-cols-12 lg:gap-mw-5">
-            <div className="lg:col-span-10 lg:col-start-1">
-              <h1
-                className="font-bold text-moroww-dark leading-[1.05] tracking-[-0.02em] max-w-[16ch]"
-                style={{ fontSize: 'clamp(2.25rem, 6vw, 5rem)' }}
-              >
-                {t('hero_h1')}
-              </h1>
-              <p className="mt-mw-5 text-body-lg text-moroww-dark max-w-[62ch]">
-                {t('hero_intro')}
-              </p>
-            </div>
+          <h1
+            className="font-bold text-moroww-dark leading-[1.05] tracking-[-0.02em] max-w-[16ch]"
+            style={{ fontSize: 'clamp(2.25rem, 6vw, 5rem)' }}
+          >
+            {t('hero_h1')}
+          </h1>
+          <p className="mt-mw-5 text-body-lg text-moroww-dark max-w-[62ch]">
+            {t('hero_intro')}
+          </p>
+          <div className="mt-mw-6 max-w-[62ch]">
+            <InlineFoto src="/images/standaard/V2-210.jpg" alt="glas op travertijn, licht dat over het oppervlak strijkt" />
           </div>
         </div>
       </section>
 
-      {/*  A1 · CIJFERBLOK — tijdelijk uit tot de screenings-view live cijfers
-          serveert (WP12). */}
-
       <div className="mx-auto max-w-6xl px-6 md:px-12">
+
         <GridSectie titel="de vier poorten" geenHairline>
           <h2 className="text-h2 text-moroww-dark">{t('gates_title')}</h2>
           <p className="mt-mw-4 text-body-lg text-moroww-dark">
@@ -103,17 +97,12 @@ export default async function DeStandaardPage({
               </div>
             ))}
           </div>
+          <div className="mt-mw-6">
+            <InlineFoto src="/images/standaard/V2-127.jpg" alt="travertijnrand met textuur, laag zonlicht" />
+          </div>
         </GridSectie>
 
-        {/* Foto na "de vier poorten" — vollebreedte binnen de outer 6xl */}
-        <div className="mt-mw-6">
-          <InlineFoto
-            src="/images/woningen/knokke-new/2026-AmelieBauwens-Moroww-V2-53.jpg"
-            alt="detail van de inrichting — moroww standaard"
-          />
-        </div>
-
-        <GridSectie titel="het bezoek">
+        <GridSectie titel="wat er gebeurt voor opname">
           <h2 className="text-h2 text-moroww-dark">{t('visit_title')}</h2>
           <div className="mt-mw-4 space-y-mw-3 text-body text-moroww-dark">
             <p>{t('visit_p1')}</p>
@@ -121,39 +110,41 @@ export default async function DeStandaardPage({
             <p>{t('visit_p3')}</p>
             <p>{t('visit_p4')}</p>
           </div>
+          <div className="mt-mw-6">
+            <InlineFoto src="/images/standaard/V2-56.jpg" alt="hand onder een regendouche" />
+          </div>
         </GridSectie>
 
-        {/* Zes tech-items in een twee-koloms grid binnen de sectie. `breed`
-            zorgt dat de 2-koloms opbouw genoeg ruimte heeft — behouden per
-            user's spec. */}
-        <GridSectie titel="de standaard stopt niet bij de keuring" breed>
-          <h2 className="text-h2 text-moroww-dark">{t('add_title')}</h2>
-          <div className="mt-mw-4 space-y-mw-3 text-body text-moroww-dark">
-            <p>{t('add_intro1')}</p>
-            <p>{t('add_intro2')}</p>
+        {/* De zes tech-items uit "de standaard stopt niet bij de keuring"
+            zijn uitgesplitst naar individuele secties. add_limit en
+            add_invisible zijn per user's spec uit de publicatie gehaald. */}
+        <GridSectie titel="het slot">
+          <h3 className="text-h3 text-moroww-dark">{t('add_lock_title')}</h3>
+          <p className="mt-mw-3 text-body text-moroww-dark">{t('add_lock_body')}</p>
+        </GridSectie>
+
+        <GridSectie titel="licht, warmte en geluid">
+          <h3 className="text-h3 text-moroww-dark">{t('add_ambient_title')}</h3>
+          <p className="mt-mw-3 text-body text-moroww-dark">{t('add_ambient_body')}</p>
+          <div className="mt-mw-6">
+            <InlineFoto src="/images/standaard/V2-63.jpg" alt="kunstwerk aan de muur, speaker in de hoek" />
           </div>
-          <div className="mt-mw-6 grid grid-cols-1 sm:grid-cols-2 border-t border-moroww-rule">
-            {additions.map((a, i) => (
-              <div
-                key={a.title}
-                className={`border-b border-moroww-rule py-mw-5 ${i % 2 === 1 ? 'sm:pl-mw-5 sm:border-l' : 'sm:pr-mw-5'}`}
-              >
-                <h3 className="text-h3 text-moroww-dark">{a.title}</h3>
-                <p className="mt-mw-3 text-body text-moroww-dark">{a.body}</p>
-              </div>
-            ))}
+        </GridSectie>
+
+        <GridSectie titel="de geur">
+          <h3 className="text-h3 text-moroww-dark">{t('add_scent_title')}</h3>
+          <p className="mt-mw-3 text-body text-moroww-dark">{t('add_scent_body')}</p>
+          <div className="mt-mw-6">
+            <InlineFoto src="/images/standaard/V2-36.jpg" alt="man wast zijn handen aan de wastafel, lachend" />
           </div>
-          <p className="mt-mw-6 text-body italic text-moroww-dark">
-            {t('add_closing')}
-          </p>
-          <p className="mt-mw-4">
-            <Link
-              href="/moroww-os"
-              className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
-            >
-              {t('add_link')} →
-            </Link>
-          </p>
+        </GridSectie>
+
+        <GridSectie titel="het gewone">
+          <h3 className="text-h3 text-moroww-dark">{t('add_ordinary_title')}</h3>
+          <p className="mt-mw-3 text-body text-moroww-dark">{t('add_ordinary_body')}</p>
+          <div className="mt-mw-6">
+            <InlineFoto src="/images/standaard/19.jpg" alt="linnen wordt opengeslagen, opgemaakt bed" />
+          </div>
         </GridSectie>
 
         <GridSectie titel="elk jaar opnieuw">
@@ -164,19 +155,14 @@ export default async function DeStandaardPage({
             <p>{t('reaudit_p3')}</p>
             <p className="font-semibold text-moroww-dark">{t('reaudit_p4')}</p>
           </div>
+          <div className="mt-mw-6">
+            <InlineFoto src="/images/standaard/V2-12.jpg" alt="handdoeken worden op het bed gelegd" />
+          </div>
         </GridSectie>
-
-        {/* Foto na "elk jaar opnieuw" */}
-        <div className="mt-mw-6">
-          <InlineFoto
-            src="/images/woningen/knokke-new/2026-AmelieBauwens-Moroww-V2-127.jpg"
-            alt="materiaal en afwerking — moroww standaard"
-          />
-        </div>
 
         <ReviewsSectie locale={locale as Locale} />
 
-        {/* Afsluiter · voor eigenaars */}
+        {/* Afsluiter · voor eigenaars — geen beeld */}
         <GridSectie titel="voor eigenaars">
           <h2 className="text-h2 text-moroww-dark">{t('owner_title')}</h2>
           <p className="mt-mw-4 text-body text-moroww-dark">
@@ -230,6 +216,9 @@ function ReviewsSectie({ locale }: { locale: Locale }) {
             </div>
           )
         })}
+      </div>
+      <div className="mt-mw-6">
+        <InlineFoto src="/images/standaard/V2-40.jpg" alt="bed met tijdschrift en handdoek om het hoofd gedraaid" />
       </div>
     </GridSectie>
   )
