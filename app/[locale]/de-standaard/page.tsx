@@ -34,15 +34,11 @@ export async function generateMetadata({
   }
 }
 
-// Elke sectie krijgt één beeld direct onder de inhoud (space-6 eronder),
-// behalve "het slot" en de afsluiter. Beelden liggen in
-// /public/images/standaard/. Ontbrekende bestanden verbergen zichzelf via
-// InlineFoto's onError.
-//
-// Wijziging t.o.v. vorige structuur: de zes tech-items uit "de standaard
-// stopt niet bij de keuring" zijn uitgesplitst naar individuele secties.
-// Per user's spec zijn add_limit ("de grens") en add_invisible ("het
-// onzichtbare") uit de publicatie gehaald.
+// Beeld-wrapper: op <lg gelijk aan de tekstkolom (62ch), vanaf lg 80 %
+// van de outer container — van de linkerrand van de tekst tot 80 % van de
+// paginabreedte. InlineFoto zelf blijft 3:2 met object-cover; via deze
+// wrapper krijgt elk beeld dezelfde verhouding en dezelfde ritme.
+const BEELD_WRAPPER = 'max-w-[62ch] lg:w-4/5 lg:max-w-none'
 
 export default async function DeStandaardPage({
   params,
@@ -75,8 +71,8 @@ export default async function DeStandaardPage({
           <p className="mt-mw-5 text-body-lg text-moroww-dark max-w-[62ch]">
             {t('hero_intro')}
           </p>
-          <div className="mt-mw-6 max-w-[62ch]">
-            <InlineFoto src="/images/standaard/V2-210.jpg" alt="glas op travertijn, licht dat over het oppervlak strijkt" />
+          <div className={BEELD_WRAPPER}>
+            <InlineFoto src="/images/standaard/V2-127.jpg" alt="travertijnrand met textuur, laag zonlicht" />
           </div>
         </div>
       </section>
@@ -97,10 +93,10 @@ export default async function DeStandaardPage({
               </div>
             ))}
           </div>
-          <div className="mt-mw-6">
-            <InlineFoto src="/images/standaard/V2-127.jpg" alt="travertijnrand met textuur, laag zonlicht" />
-          </div>
         </GridSectie>
+        <div className={BEELD_WRAPPER}>
+          <InlineFoto src="/images/standaard/V2-210.jpg" alt="glas water op tafel, laag zonlicht" />
+        </div>
 
         <GridSectie titel="wat er gebeurt voor opname">
           <h2 className="text-h2 text-moroww-dark">{t('visit_title')}</h2>
@@ -110,14 +106,14 @@ export default async function DeStandaardPage({
             <p>{t('visit_p3')}</p>
             <p>{t('visit_p4')}</p>
           </div>
-          <div className="mt-mw-6">
-            <InlineFoto src="/images/standaard/V2-56.jpg" alt="hand onder een regendouche" />
-          </div>
         </GridSectie>
+        <div className={BEELD_WRAPPER}>
+          <InlineFoto src="/images/standaard/V2-56.jpg" alt="hand onder een regendouche" />
+        </div>
 
-        {/* De zes tech-items uit "de standaard stopt niet bij de keuring"
-            zijn uitgesplitst naar individuele secties. add_limit en
-            add_invisible zijn per user's spec uit de publicatie gehaald. */}
+        {/* Zes tech-items zijn uitgesplitst naar individuele secties.
+            add_limit en add_invisible zijn per user's spec uit de publicatie
+            gehaald. Het slot krijgt geen beeld. */}
         <GridSectie titel="het slot">
           <h3 className="text-h3 text-moroww-dark">{t('add_lock_title')}</h3>
           <p className="mt-mw-3 text-body text-moroww-dark">{t('add_lock_body')}</p>
@@ -126,26 +122,26 @@ export default async function DeStandaardPage({
         <GridSectie titel="licht, warmte en geluid">
           <h3 className="text-h3 text-moroww-dark">{t('add_ambient_title')}</h3>
           <p className="mt-mw-3 text-body text-moroww-dark">{t('add_ambient_body')}</p>
-          <div className="mt-mw-6">
-            <InlineFoto src="/images/standaard/V2-63.jpg" alt="kunstwerk aan de muur, speaker in de hoek" />
-          </div>
         </GridSectie>
+        <div className={BEELD_WRAPPER}>
+          <InlineFoto src="/images/standaard/V2-63.jpg" alt="kunstwerk aan de muur, speaker in de hoek" />
+        </div>
 
         <GridSectie titel="de geur">
           <h3 className="text-h3 text-moroww-dark">{t('add_scent_title')}</h3>
           <p className="mt-mw-3 text-body text-moroww-dark">{t('add_scent_body')}</p>
-          <div className="mt-mw-6">
-            <InlineFoto src="/images/standaard/V2-36.jpg" alt="man wast zijn handen aan de wastafel, lachend" />
-          </div>
         </GridSectie>
+        <div className={BEELD_WRAPPER}>
+          <InlineFoto src="/images/standaard/V2-36.jpg" alt="man wast zijn handen aan de wastafel, lachend" />
+        </div>
 
         <GridSectie titel="het gewone">
           <h3 className="text-h3 text-moroww-dark">{t('add_ordinary_title')}</h3>
           <p className="mt-mw-3 text-body text-moroww-dark">{t('add_ordinary_body')}</p>
-          <div className="mt-mw-6">
-            <InlineFoto src="/images/standaard/V2-19.jpg" alt="linnen wordt opengeslagen, opgemaakt bed" />
-          </div>
         </GridSectie>
+        <div className={BEELD_WRAPPER}>
+          <InlineFoto src="/images/standaard/V2-19.jpg" alt="linnen wordt opengeslagen, opgemaakt bed" />
+        </div>
 
         <GridSectie titel="elk jaar opnieuw">
           <h2 className="text-h2 text-moroww-dark">{t('reaudit_title')}</h2>
@@ -155,12 +151,15 @@ export default async function DeStandaardPage({
             <p>{t('reaudit_p3')}</p>
             <p className="font-semibold text-moroww-dark">{t('reaudit_p4')}</p>
           </div>
-          <div className="mt-mw-6">
-            <InlineFoto src="/images/standaard/V2-12.jpg" alt="handdoeken worden op het bed gelegd" />
-          </div>
         </GridSectie>
+        <div className={BEELD_WRAPPER}>
+          <InlineFoto src="/images/standaard/V2-12.jpg" alt="handdoeken worden op het bed gelegd" />
+        </div>
 
         <ReviewsSectie locale={locale as Locale} />
+        <div className={BEELD_WRAPPER}>
+          <InlineFoto src="/images/standaard/V2-40.jpg" alt="bed met tijdschrift en handdoek om het hoofd gedraaid" />
+        </div>
 
         {/* Afsluiter · voor eigenaars — geen beeld */}
         <GridSectie titel="voor eigenaars">
@@ -216,9 +215,6 @@ function ReviewsSectie({ locale }: { locale: Locale }) {
             </div>
           )
         })}
-      </div>
-      <div className="mt-mw-6">
-        <InlineFoto src="/images/standaard/V2-40.jpg" alt="bed met tijdschrift en handdoek om het hoofd gedraaid" />
       </div>
     </GridSectie>
   )
