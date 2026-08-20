@@ -645,36 +645,86 @@ const _woningenRaw: Woning[] = [
   // Velden die je moet aanleveren voor publicatie zijn met TBD gemarkeerd.
   // Zolang status='wacht_op_beeld' staat, worden deze niet gerenderd.
   {
-    id: 'shore-wacht-1',
-    naam: 'TBD',
+    id: 'penthouse-v8b',
+    naam: 'Penthouse V8B',
     collectie: 'the shore',
-    locatie: 'TBD',
+    locatie: 'Oostende',
+    slaapkamers: 3,
+    badkamers: 2,
+    maxGasten: 6,
+    oppervlakte: '150m²',
+    geauditeerdOp: '2026-08',
     tags: [],
-    slogan: { nl: '', en: '' },
-    introductie: { nl: '', en: '' },
+    slogan: {
+      nl: 'Waar de zee de hele dag in de kamer staat.',
+      // TODO: EN-vertaling volgt; voorlopig gelijk aan NL zodat de build niet breekt.
+      en: 'Waar de zee de hele dag in de kamer staat.',
+    },
+    introductie: {
+      nl: 'Honderdvijftig vierkante meter op hoogte, met een terras dat over de kust kijkt. Drie slaapkamers, twee badkamers, ruimte voor zes.',
+      // TODO: EN-vertaling volgt.
+      en: 'Honderdvijftig vierkante meter op hoogte, met een terras dat over de kust kijkt. Drie slaapkamers, twee badkamers, ruimte voor zes.',
+    },
+    // TODO: aparte beschrijving (voor kaart-alt en meta) volgt.
     beschrijving: { nl: '', en: '' },
-    volledigeBeschrijving: { nl: '', en: '' },
-    hoogtepunten: [],
-    inCheckin: '',
-    uitCheckin: '',
+    volledigeBeschrijving: {
+      nl: 'Dit is een appartement waar het licht het werk doet. De ramen lopen door tot op het terras en de zee blijft de hele dag aanwezig, ook als je binnen zit. In februari is dat anders dan in juli, en allebei de moeite.\n\nDe keuken is volledig uitgerust en de leefruimte loopt naadloos over in het terras. Dat terras is groot genoeg om er te eten, niet alleen om er te staan.\n\nDe ligging is bewust net buiten het centrum. De kusttram stopt vlakbij en het strand ligt op wandelafstand, maar wat je \'s ochtends hoort is de zee en niet de stad.',
+      // TODO: EN-vertaling volgt.
+      en: 'Dit is een appartement waar het licht het werk doet. De ramen lopen door tot op het terras en de zee blijft de hele dag aanwezig, ook als je binnen zit. In februari is dat anders dan in juli, en allebei de moeite.\n\nDe keuken is volledig uitgerust en de leefruimte loopt naadloos over in het terras. Dat terras is groot genoeg om er te eten, niet alleen om er te staan.\n\nDe ligging is bewust net buiten het centrum. De kusttram stopt vlakbij en het strand ligt op wandelafstand, maar wat je \'s ochtends hoort is de zee en niet de stad.',
+    },
+    hoogtepunten: [
+      { nl: '150 m² met zeezicht',                en: '150 m² met zeezicht' },
+      { nl: 'Terras over de volledige breedte',   en: 'Terras over de volledige breedte' },
+      { nl: 'Drie slaapkamers, twee badkamers',   en: 'Drie slaapkamers, twee badkamers' },
+      { nl: 'Kusttram voor de deur',              en: 'Kusttram voor de deur' },
+      { nl: 'Strand op wandelafstand',            en: 'Strand op wandelafstand' },
+      { nl: 'Lift en parkeergelegenheid',         en: 'Lift en parkeergelegenheid' },
+    ],
+    inCheckin: '15:00',
+    uitCheckin: '10:00',
     heroFoto: '',
     fotos: [],
     boekUrl: '',
     status: 'wacht_op_beeld',
   },
   {
-    id: 'shore-wacht-2',
-    naam: 'TBD',
+    id: 'house-1783-11',
+    naam: 'House 1783-11',
     collectie: 'the shore',
-    locatie: 'TBD',
+    locatie: 'Heist-aan-Zee, Knokke',
+    slaapkamers: 3,
+    badkamers: 2,
+    maxGasten: 6,
+    oppervlakte: '105m²',
+    geauditeerdOp: '2026-08',
     tags: [],
-    slogan: { nl: '', en: '' },
-    introductie: { nl: '', en: '' },
+    slogan: {
+      nl: 'Twee terrassen, en het strand achter de hoek.',
+      // TODO: EN-vertaling volgt.
+      en: 'Twee terrassen, en het strand achter de hoek.',
+    },
+    introductie: {
+      nl: 'Honderdvijf vierkante meter op de eerste verdieping, met twee terrassen. Drie slaapkamers, twee badkamers, ruimte voor zes.',
+      // TODO: EN-vertaling volgt.
+      en: 'Honderdvijf vierkante meter op de eerste verdieping, met twee terrassen. Drie slaapkamers, twee badkamers, ruimte voor zes.',
+    },
+    // TODO: aparte beschrijving (voor kaart-alt en meta) volgt.
     beschrijving: { nl: '', en: '' },
-    volledigeBeschrijving: { nl: '', en: '' },
-    hoogtepunten: [],
-    inCheckin: '',
-    uitCheckin: '',
+    volledigeBeschrijving: {
+      nl: 'Compact en licht. Drie slaapkamers op deze oppervlakte betekent dat de leefruimte de ruimte krijgt en de kamers precies groot genoeg zijn. Wie met zes komt en veel binnenruimte verwacht, kijkt beter naar een van de andere woningen aan de kust.\n\nWat dit appartement anders maakt dan wat eronder ligt, zijn de materialen. Waar Nosso Logies donker en warm is, is dit lichter en strakker afgewerkt. Twee panden in hetzelfde gebouw, twee verschillende huizen.\n\nDe twee terrassen zijn het echte verschil met de meeste appartementen aan de kust. Je hebt altijd één in de zon en één uit de wind.',
+      // TODO: EN-vertaling volgt.
+      en: 'Compact en licht. Drie slaapkamers op deze oppervlakte betekent dat de leefruimte de ruimte krijgt en de kamers precies groot genoeg zijn. Wie met zes komt en veel binnenruimte verwacht, kijkt beter naar een van de andere woningen aan de kust.\n\nWat dit appartement anders maakt dan wat eronder ligt, zijn de materialen. Waar Nosso Logies donker en warm is, is dit lichter en strakker afgewerkt. Twee panden in hetzelfde gebouw, twee verschillende huizen.\n\nDe twee terrassen zijn het echte verschil met de meeste appartementen aan de kust. Je hebt altijd één in de zon en één uit de wind.',
+    },
+    hoogtepunten: [
+      { nl: 'Twee terrassen, verschillende oriëntatie', en: 'Twee terrassen, verschillende oriëntatie' },
+      { nl: 'Drie slaapkamers, twee badkamers',         en: 'Drie slaapkamers, twee badkamers' },
+      { nl: 'Lichte, strakke afwerking',                en: 'Lichte, strakke afwerking' },
+      { nl: 'Eerste verdieping',                        en: 'Eerste verdieping' },
+      { nl: 'Strand op twee minuten',                   en: 'Strand op twee minuten' },
+      { nl: 'In hetzelfde gebouw als Nosso Logies',     en: 'In hetzelfde gebouw als Nosso Logies' },
+    ],
+    inCheckin: '15:00',
+    uitCheckin: '10:00',
     heroFoto: '',
     fotos: [],
     boekUrl: '',
