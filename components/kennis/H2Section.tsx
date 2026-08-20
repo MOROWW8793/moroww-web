@@ -1,15 +1,19 @@
-// Sectiescheiding voor het artikelsjabloon.
+// H2 met sidebar-label in het prose-kennis-raster.
 //
-// Enkele hairline in --moroww-rule, zonder tekst, gevolgd door de zichtbare
-// H2. Ritme: space-8 boven de hairline, space-6 eronder. De auditlijn is
-// hier bewust niet gebruikt — een sectietitel is geen metadata en zou de
-// tekst verdubbelen.
+// Rendert drie siblings binnen .prose-kennis:
+//   .sectie-label      kleine kapitalen, sticky in kolom 1-3
+//   .sectie-hairline   1px in --moroww-rule, kolom 1-10
+//   h2                 hoofdkop in kolom 4-10
+//
+// De styling zit in globals.css .prose-kennis > * selectoren. Onder lg
+// vervalt het raster en stapelen de siblings zoals normaal.
 
 export function H2Section({ titel }: { titel: string }) {
   return (
-    <section className="h2-section mt-mw-8">
-      <hr className="border-0 border-t border-moroww-rule mb-mw-6" aria-hidden />
+    <>
+      <p className="sectie-label">{titel}</p>
+      <hr className="sectie-hairline" aria-hidden />
       <h2>{titel}</h2>
-    </section>
+    </>
   )
 }

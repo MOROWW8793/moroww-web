@@ -56,7 +56,7 @@ export function ArticleLayout({ eyebrow, titel, korteAntwoord, terug, children }
 
       <article className="w-full pb-16 px-6 md:px-12">
         <div className="mx-auto max-w-6xl">
-          <div className="register-column prose-kennis">
+          <div className="prose-kennis">
             {children}
           </div>
         </div>

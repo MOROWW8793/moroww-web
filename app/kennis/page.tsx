@@ -8,7 +8,7 @@ import { Actualiteitsblok } from '@/components/kennis/Actualiteitsblok'
 export const metadata = kennisMetadata({
   titel: 'Kennisbank vakantieverhuur België · moroww',
   beschrijving:
-    'Zes pagina\'s over rendement, btw, verblijfsbelasting per gemeente, brandveiligheidsattest en de vier manieren om een vakantiewoning te verhuren. Nagekeken tegen de bron.',
+    'Onderwerpen over rendement, btw, verblijfsbelasting per gemeente, brandveiligheidsattest en de vier manieren om een vakantiewoning te verhuren. Nagekeken tegen de bron.',
   pad: '/kennis',
 })
 
@@ -17,6 +17,41 @@ interface Kaart {
   eyebrow: string
   titel: string
   intro: string
+}
+
+// Getallen 1-20 in gewone hoofdletterstijl. Boven 20 valt de zin terug op
+// het cijfer. Zo blijft de intro ook natuurlijk lezen als het cluster
+// verder groeit.
+const NL_WOORD: Record<number, string> = {
+  1: 'Eén', 2: 'Twee', 3: 'Drie', 4: 'Vier', 5: 'Vijf',
+  6: 'Zes', 7: 'Zeven', 8: 'Acht', 9: 'Negen', 10: 'Tien',
+  11: 'Elf', 12: 'Twaalf', 13: 'Dertien', 14: 'Veertien', 15: 'Vijftien',
+  16: 'Zestien', 17: 'Zeventien', 18: 'Achttien', 19: 'Negentien', 20: 'Twintig',
+}
+
+// Introzin op de hub. Als de telling faalt (count ≤ 0) toont de zin geen
+// getal en start ze met "Onderwerpen …" — geen placeholder, geen "0
+// onderwerpen".
+function HubIntro({ count }: { count: number }) {
+  if (count <= 0) {
+    return (
+      <>
+        Onderwerpen die op geen andere plek helder naast elkaar staan. Voor
+        eigenaars, geschreven met eigen data en met een bron per bewering. Elke
+        pagina wordt elk kwartaal nagekeken. De datum van de laatste controle
+        staat onderaan.
+      </>
+    )
+  }
+  const woord = NL_WOORD[count] ?? String(count)
+  return (
+    <>
+      {woord} onderwerpen die op geen andere plek helder naast elkaar staan.
+      Voor eigenaars, geschreven met eigen data en met een bron per bewering.
+      Elke pagina wordt elk kwartaal nagekeken. De datum van de laatste
+      controle staat onderaan.
+    </>
+  )
 }
 
 // /rendement-vakantiewoning-berekenen en /waarom-vakantiewoningen-afvallen
@@ -108,9 +143,7 @@ export default function KennisHubPage() {
             Alles wat we onderweg leerden over vakantieverhuur in België.
           </h1>
           <p className="text-moroww-dark/70 leading-relaxed" style={{ fontSize: 20 }}>
-            Zes onderwerpen die op geen andere plek helder naast elkaar staan. Voor eigenaars,
-            geschreven met eigen data en met een bron per bewering. Elke pagina wordt elk
-            kwartaal nagekeken; de datum van de laatste controle staat onderaan.
+            <HubIntro count={KAARTEN.length} />
           </p>
         </div>
       </section>

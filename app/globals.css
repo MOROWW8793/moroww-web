@@ -251,14 +251,71 @@ body {
 }
 
 .prose-kennis { color: #1A1A1A; font-size: 17px; line-height: 1.7; }
+
+/* Vanaf lg (1024px) wordt prose-kennis een 12-koloms raster:
+     kolom 1-3   sticky sectietitel (.sectie-label)
+     kolom 4-10  inhoud (h2, tekst, tabellen, cta, ...)
+     kolom 11-12 leeg als marge
+     hairline    kolom 1-10 (.sectie-hairline)
+   Elementen erven van cols 4/11 tenzij ze een aparte class krijgen. Zo
+   blijft de linkerkant nooit leeg en is de hairline nooit langer dan de
+   inhoud. Onder lg vervalt het raster: siblings stapelen zoals normaal. */
+@media (min-width: 1024px) {
+  .prose-kennis {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 2rem;
+    align-items: start;
+  }
+  .prose-kennis > * { grid-column: 4 / 11; }
+  .prose-kennis > p,
+  .prose-kennis > ol,
+  .prose-kennis > ul,
+  .prose-kennis > blockquote { max-width: 62ch; }
+
+  .prose-kennis > .sectie-label {
+    grid-column: 1 / 4;
+    position: sticky;
+    top: 5rem;
+    align-self: start;
+    font-size: 0.6875rem;
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--moroww-ink-2);
+    margin: 3rem 0 0;
+  }
+  .prose-kennis > .sectie-hairline {
+    grid-column: 1 / 11;
+    border: 0;
+    border-top: 1px solid var(--moroww-rule);
+    margin: 3rem 0 1.5rem;
+  }
+}
+
+/* Onder lg: sectie-label als losse regel boven de hairline. */
+.sectie-label {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--moroww-ink-2);
+  margin: 2rem 0 0.5rem;
+}
+.sectie-hairline {
+  border: 0;
+  border-top: 1px solid var(--moroww-rule);
+  margin: 1rem 0 1.5rem;
+}
+
 .prose-kennis h2 {
   font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; line-height: 1.2;
   margin: 3rem 0 1.25rem; color: #1A1A1A; letter-spacing: -0.01em;
 }
-/* H2Section overschrijft de auto-margin op H2: de wrapper geeft space-8
-   boven de hairline en space-6 tussen hairline en h2. De h2 zelf krijgt
-   dan geen top-margin meer. */
-.prose-kennis .h2-section h2 { margin: 0 0 0.75rem; }
+/* H2 direct achter een sectie-hairline krijgt geen extra top-margin. */
+.prose-kennis .sectie-hairline + h2 { margin-top: 0; }
 .prose-kennis h3 {
   font-size: 1.25rem; font-weight: 700; line-height: 1.3;
   margin: 2rem 0 0.75rem; color: #1A1A1A;
