@@ -211,12 +211,12 @@ export default async function DeStandaardPage({
   )
 }
 
-// Twee curatie-citaten uit de pand-data — Sabrina (Chalet Anna-Helena) en
-// Stephen (The Sixteenth). Ontkaderd, met een hairline ertussen. AuditLijn
-// verschijnt per citaat zodra r.datum gezet is.
+// Twee curatie-citaten uit de pand-data — Ragna en Alexander, beide over
+// Nosso Logies (08.2026). Ontkaderd, met een hairline ertussen. AuditLijn
+// verschijnt per citaat via r.datum.
 const REVIEW_KEUZE: Array<{ pandId: string; naam: string }> = [
-  { pandId: 'anna-helena-ursel', naam: 'Sabrina' },
-  { pandId: 'moroww-oostende',   naam: 'Stephen'  },
+  { pandId: 'nosso-knokke', naam: 'Ragna'     },
+  { pandId: 'nosso-knokke', naam: 'Alexander' },
 ]
 
 function ReviewsSectie({ locale }: { locale: Locale }) {
