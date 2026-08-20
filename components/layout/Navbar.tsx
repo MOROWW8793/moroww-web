@@ -15,6 +15,9 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
+  // Wanneer de gebruiker klikt: paneel blijft open tot een tweede klik of
+  // escape. Hover-open sluit met 200ms vertraging; pinned-open niet.
+  const [pinnedOpen, setPinnedOpen] = useState(false)
   const [mobileEigenaarOpen, setMobileEigenaarOpen] = useState(false)
   const locale = useLocale()
   const t = useTranslations('nav')
@@ -22,6 +25,7 @@ export function Navbar() {
   const pathname = usePathname()
 
   const dropdownWrapper = useRef<HTMLDivElement>(null)
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -34,27 +38,63 @@ export function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [open])
 
-  // Escape sluit dropdown en mobiel menu.
+  // Escape sluit dropdown en mobiel menu, en heft de pinned-state op.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape') return
-      if (dropdownOpen) setDropdownOpen(false)
+      if (dropdownOpen || pinnedOpen) {
+        setDropdownOpen(false)
+        setPinnedOpen(false)
+      }
       if (open) setOpen(false)
     }
     document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
-  }, [dropdownOpen, open])
+  }, [dropdownOpen, pinnedOpen, open])
 
-  // Klik buiten de dropdown sluit hem — anders blijft hij open na tab-navigatie.
+  // Klik buiten de dropdown sluit hem, ook wanneer hij pinned is.
   useEffect(() => {
-    if (!dropdownOpen) return
+    if (!dropdownOpen && !pinnedOpen) return
     const onClick = (e: MouseEvent) => {
       if (!dropdownWrapper.current) return
-      if (!dropdownWrapper.current.contains(e.target as Node)) setDropdownOpen(false)
+      if (!dropdownWrapper.current.contains(e.target as Node)) {
+        setDropdownOpen(false)
+        setPinnedOpen(false)
+      }
     }
     document.addEventListener('mousedown', onClick)
     return () => document.removeEventListener('mousedown', onClick)
-  }, [dropdownOpen])
+  }, [dropdownOpen, pinnedOpen])
+
+  useEffect(() => {
+    return () => {
+      if (closeTimer.current) clearTimeout(closeTimer.current)
+    }
+  }, [])
+
+  function openViaHover() {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current)
+      closeTimer.current = null
+    }
+    setDropdownOpen(true)
+  }
+  function closeViaHover() {
+    if (pinnedOpen) return
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    closeTimer.current = setTimeout(() => setDropdownOpen(false), 200)
+  }
+  function toggleClick() {
+    if (pinnedOpen) {
+      // Tweede klik → sluiten.
+      setPinnedOpen(false)
+      setDropdownOpen(false)
+    } else {
+      // Eerste klik → openen en pinnen.
+      setPinnedOpen(true)
+      setDropdownOpen(true)
+    }
+  }
 
   const bookUrl = `https://book.moroww.com/${locale}/properties?minOccupancy=1`
 
@@ -109,13 +149,13 @@ export function Navbar() {
           <div
             ref={dropdownWrapper}
             className="relative"
-            onMouseEnter={() => setDropdownOpen(true)}
-            onMouseLeave={() => setDropdownOpen(false)}
+            onMouseEnter={openViaHover}
+            onMouseLeave={closeViaHover}
           >
             <button
               type="button"
-              onClick={() => setDropdownOpen((v) => !v)}
-              onFocus={() => setDropdownOpen(true)}
+              onClick={toggleClick}
+              onFocus={openViaHover}
               aria-expanded={dropdownOpen}
               aria-haspopup="menu"
               className={`text-sm font-medium transition-colors duration-300 inline-flex items-center gap-1.5 ${
@@ -129,39 +169,47 @@ export function Navbar() {
             </button>
 
             {dropdownOpen && (
-              <div
-                role="menu"
-                className="absolute right-0 top-full mt-3 w-[22rem] bg-moroww-paper border border-moroww-rule p-mw-4"
-                style={{ borderRadius: 2 }}
-              >
-                <ul className="flex flex-col">
-                  {eigenaarDropdown.map((item) => (
-                    <li key={item.href}>
-                      <Link
-                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                        href={item.href as any}
-                        role="menuitem"
-                        className="block py-mw-3 px-mw-3 hover:bg-moroww-rule/40 transition-colors"
-                        onClick={() => setDropdownOpen(false)}
-                      >
-                        <p className="text-moroww-dark font-semibold text-sm">{item.titel}</p>
-                        <p className="text-audit uppercase text-moroww-ink-2 mt-1">
-                          {item.toelichting}
-                        </p>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-                <hr className="my-mw-3 border-0 border-t border-moroww-rule" aria-hidden />
-                <Link
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  href={'/kennis' as any}
-                  role="menuitem"
-                  className="block py-mw-3 px-mw-3 text-audit uppercase text-moroww-dark hover:bg-moroww-rule/40 transition-colors"
-                  onClick={() => setDropdownOpen(false)}
+              // Padding-top ipv margin-top: het paneel begint visueel 12px
+              // onder de trigger, maar de hit-area sluit aan op de trigger.
+              // Daardoor sluit het paneel niet als de muis er schuin naartoe
+              // beweegt.
+              <div className="absolute right-0 top-full pt-3">
+                <div
+                  role="menu"
+                  className="w-[22rem] bg-moroww-paper border border-moroww-rule p-mw-4"
+                  style={{ borderRadius: 2 }}
+                  onMouseEnter={openViaHover}
+                  onMouseLeave={closeViaHover}
                 >
-                  alle kennispagina&apos;s →
-                </Link>
+                  <ul className="flex flex-col">
+                    {eigenaarDropdown.map((item) => (
+                      <li key={item.href}>
+                        <Link
+                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                          href={item.href as any}
+                          role="menuitem"
+                          className="block py-mw-3 px-mw-3 hover:bg-moroww-rule/40 transition-colors"
+                          onClick={() => { setDropdownOpen(false); setPinnedOpen(false) }}
+                        >
+                          <p className="text-moroww-dark font-semibold text-sm">{item.titel}</p>
+                          <p className="text-audit uppercase text-moroww-ink-2 mt-1">
+                            {item.toelichting}
+                          </p>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <hr className="my-mw-3 border-0 border-t border-moroww-rule" aria-hidden />
+                  <Link
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    href={'/kennis' as any}
+                    role="menuitem"
+                    className="block py-mw-3 px-mw-3 text-audit uppercase text-moroww-dark hover:bg-moroww-rule/40 transition-colors"
+                    onClick={() => { setDropdownOpen(false); setPinnedOpen(false) }}
+                  >
+                    alle kennispagina&apos;s →
+                  </Link>
+                </div>
               </div>
             )}
           </div>

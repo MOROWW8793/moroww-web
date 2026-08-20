@@ -235,6 +235,21 @@ body {
 .text-display { padding-top: 0.08em; overflow: visible; }
 .text-display > * { overflow: visible; }
 
+/* Body-tekst schaalt op ≥1280px van 1.0625rem naar 1.125rem. Zo blijft de
+   pagina op grote monitors leesbaar zonder de regellengte te verlengen. */
+@media (min-width: 1280px) {
+  .text-body { font-size: 1.125rem; }
+}
+
+/* Kolom voor het eigenaarsregister. Onder 1440px: links uitgelijnd binnen
+   de outer container. Vanaf 1440px: gecentreerd, met max-breedte 68ch —
+   anders wordt de rechterhelft van het scherm te leeg. Ook de hairlines
+   die binnen deze wrapper zitten krijgen zo dezelfde breedte als de tekst. */
+.register-column { max-width: 68ch; }
+@media (min-width: 1440px) {
+  .register-column { margin-left: auto; margin-right: auto; }
+}
+
 .prose-kennis { color: #1A1A1A; font-size: 17px; line-height: 1.7; }
 .prose-kennis h2 {
   font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; line-height: 1.2;

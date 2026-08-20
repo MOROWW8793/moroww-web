@@ -4,7 +4,7 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { woningen, lw, lwArr, type Locale } from "@/lib/woningen";
 import { WoningGalerij } from "./WoningGalerij";
-import { InlineFoto } from "./InlineFoto";
+import { InlineFoto } from "@/components/InlineFoto";
 import { VacationRentalJsonLd, BreadcrumbListJsonLd } from "@/components/JsonLd";
 import { Register } from "@/components/Register";
 import { AuditLijn } from "@/components/AuditLijn";
