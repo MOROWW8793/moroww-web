@@ -143,7 +143,7 @@ export default async function DeStandaardPage({
           <h3 className="text-h3 text-moroww-dark">{t('add_ordinary_title')}</h3>
           <p className="mt-mw-3 text-body text-moroww-dark">{t('add_ordinary_body')}</p>
           <div className="mt-mw-6">
-            <InlineFoto src="/images/standaard/19.jpg" alt="linnen wordt opengeslagen, opgemaakt bed" />
+            <InlineFoto src="/images/standaard/V2-19.jpg" alt="linnen wordt opengeslagen, opgemaakt bed" />
           </div>
         </GridSectie>
 
