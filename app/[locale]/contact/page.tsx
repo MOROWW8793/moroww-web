@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { siteMetadata } from "@/lib/seo/siteMetadata";
 
 export async function generateMetadata({
   params,
@@ -8,11 +9,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'contact' });
-  return {
-    title: t('meta_title'),
-    description: t('meta_description'),
-    alternates: { canonical: "https://www.moroww.com/contact" },
-  };
+  const isNl = locale === 'nl';
+  return siteMetadata({
+    titel: t('meta_title'),
+    beschrijving: t('meta_description'),
+    pad: isNl ? '/contact' : '/en/contact',
+    locale: isNl ? 'nl' : 'en',
+    hreflang: { nl: '/contact', en: '/en/contact' },
+  });
 }
 
 export default async function ContactPage({

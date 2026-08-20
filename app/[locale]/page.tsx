@@ -6,6 +6,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { FaqJsonLd } from "@/components/FaqJsonLd";
 import { Deur } from "@/components/Deur";
 import { AuditLijn } from "@/components/AuditLijn";
+import { siteMetadata } from "@/lib/seo/siteMetadata";
 
 // Server-side check: als het bestand in /public niet bestaat, geef undefined
 // terug zodat de Deur alleen de placeholder-tegel toont. Zo staat er nooit
@@ -15,12 +16,22 @@ function beeldOfNull(publicPad: string): string | undefined {
   return existsSync(abs) ? publicPad : undefined;
 }
 
-export const metadata: Metadata = {
-  title: 'moroww — premium vakantiewoningen in België',
-  description:
-    'Twee collecties, één standaard. Elke woning fysiek geïnspecteerd voor ze in de collectie komt.',
-  alternates: { canonical: 'https://www.moroww.com' },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const isNl = locale === 'nl'
+  return siteMetadata({
+    titel: 'moroww — premium vakantiewoningen in België',
+    beschrijving:
+      'Twee collecties, één standaard. Elke woning fysiek geïnspecteerd voor ze in de collectie komt.',
+    pad: isNl ? '/' : '/en',
+    locale: isNl ? 'nl' : 'en',
+    hreflang: { nl: '/', en: '/en' },
+  })
+}
 
 export default async function HomePage({
   params,

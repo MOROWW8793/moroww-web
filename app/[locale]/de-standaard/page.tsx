@@ -7,6 +7,7 @@ import { GridSectie } from '@/components/GridSectie'
 import { AuditLijn } from '@/components/AuditLijn'
 import { InlineFoto } from '@/components/InlineFoto'
 import { formatAuditMaand } from '@/components/PandKaart'
+import { siteMetadata } from '@/lib/seo/siteMetadata'
 
 export async function generateMetadata({
   params,
@@ -16,22 +17,13 @@ export async function generateMetadata({
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'destandaard' })
   const isNl = locale === 'nl'
-  const canonical = isNl
-    ? 'https://www.moroww.com/de-standaard'
-    : 'https://www.moroww.com/en/the-standard'
-  return {
-    title: t('meta_title'),
-    description: t('meta_description'),
-    alternates: {
-      canonical,
-      languages: {
-        'nl-BE': 'https://www.moroww.com/de-standaard',
-        'nl': 'https://www.moroww.com/de-standaard',
-        'en': 'https://www.moroww.com/en/the-standard',
-        'x-default': 'https://www.moroww.com/de-standaard',
-      },
-    },
-  }
+  return siteMetadata({
+    titel: t('meta_title'),
+    beschrijving: t('meta_description'),
+    pad: isNl ? '/de-standaard' : '/en/the-standard',
+    locale: isNl ? 'nl' : 'en',
+    hreflang: { nl: '/de-standaard', en: '/en/the-standard' },
+  })
 }
 
 // Beeld-wrapper: op <lg gelijk aan de tekstkolom (62ch), vanaf lg 80 %

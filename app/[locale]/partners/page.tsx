@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { siteMetadata } from "@/lib/seo/siteMetadata";
 
 export async function generateMetadata({
   params,
@@ -9,16 +10,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'partners' });
-  return {
-    title: t('meta_title'),
-    description: t('meta_description'),
-    alternates: { canonical: "https://www.moroww.com/partners" },
-    openGraph: {
-      title: t('meta_title'),
-      description: t('meta_description'),
-      url: "https://www.moroww.com/partners",
-    },
-  };
+  const isNl = locale === 'nl';
+  return siteMetadata({
+    titel: t('meta_title'),
+    beschrijving: t('meta_description'),
+    pad: isNl ? '/partners' : '/en/partners',
+    locale: isNl ? 'nl' : 'en',
+    hreflang: { nl: '/partners', en: '/en/partners' },
+  });
 }
 
 // Herbruikbaar 2-koloms blok voor één partner. side='left' toont het beeld

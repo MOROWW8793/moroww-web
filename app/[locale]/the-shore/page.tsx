@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation'
 import { liveWoningen, wachtOpBeeldCount, type Locale } from '@/lib/woningen'
 import { WoningKaarten } from '@/components/sections/WoningKaarten'
 import { AuditLijn } from '@/components/AuditLijn'
+import { siteMetadata } from '@/lib/seo/siteMetadata'
 
 export async function generateMetadata({
   params,
@@ -13,21 +14,13 @@ export async function generateMetadata({
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'theshore' })
   const isNl = locale === 'nl'
-  return {
-    title: t('meta_title'),
-    description: t('meta_description'),
-    alternates: {
-      canonical: isNl
-        ? 'https://www.moroww.com/the-shore'
-        : 'https://www.moroww.com/en/the-shore',
-      languages: {
-        'nl-BE': 'https://www.moroww.com/the-shore',
-        'nl': 'https://www.moroww.com/the-shore',
-        'en': 'https://www.moroww.com/en/the-shore',
-        'x-default': 'https://www.moroww.com/the-shore',
-      },
-    },
-  }
+  return siteMetadata({
+    titel: t('meta_title'),
+    beschrijving: t('meta_description'),
+    pad: isNl ? '/the-shore' : '/en/the-shore',
+    locale: isNl ? 'nl' : 'en',
+    hreflang: { nl: '/the-shore', en: '/en/the-shore' },
+  })
 }
 
 export default async function TheShorePage({

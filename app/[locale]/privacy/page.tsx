@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
+import { siteMetadata } from "@/lib/seo/siteMetadata";
 
 export async function generateMetadata({
   params,
@@ -7,18 +8,14 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   await params;
-  return {
-    title: "Privacybeleid",
-    description: "Het privacybeleid van moroww — hoe wij omgaan met uw persoonsgegevens.",
-    alternates: {
-      canonical: "https://www.moroww.com/privacy",
-      languages: {
-        "nl-BE": "https://www.moroww.com/privacy",
-        "nl": "https://www.moroww.com/privacy",
-        "x-default": "https://www.moroww.com/privacy",
-      },
-    },
-  };
+  // NL-only pagina — geen hreflang naar EN.
+  return siteMetadata({
+    titel: 'Privacybeleid',
+    beschrijving:
+      'Het privacybeleid van moroww — hoe wij omgaan met uw persoonsgegevens.',
+    pad: '/privacy',
+    locale: 'nl',
+  });
 }
 
 function Divider() {

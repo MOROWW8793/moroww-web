@@ -9,6 +9,7 @@ import { VacationRentalJsonLd, BreadcrumbListJsonLd } from "@/components/JsonLd"
 import { Register } from "@/components/Register";
 import { AuditLijn } from "@/components/AuditLijn";
 import { formatAuditMaand } from "@/components/PandKaart";
+import { siteMetadata } from "@/lib/seo/siteMetadata";
 
 interface Props { params: { locale: string; id: string } }
 
@@ -21,36 +22,34 @@ export function generateStaticParams() {
   ]);
 }
 
-const woningMeta: Record<string, { title: string; description: string; keywords: string[] }> = {
+// Per pand overrulen we titel en meta-beschrijving (kortere, marketing-
+// gerichte varianten dan de long-form op de pagina). keywords staan hier
+// bewust NIET meer — Google negeert de tag sinds 2009 en de lijst met
+// competitor-alternatieven was zichtbaar in de broncode.
+const woningMeta: Record<string, { title: string; description: string }> = {
   'nosso-knokke': {
     title: 'Nosso Logies — vakantiewoning Knokke-Heist',
     description: 'Luxe vakantiewoning in Heist-aan-Zee, Knokke. 110m², 2 slaapkamers, max 6 personen. Strand op 2 minuten. Fysiek gecertificeerd door moroww. Vanaf €370/nacht.',
-    keywords: ['vakantiewoning Knokke', 'vakantiewoning Heist-aan-Zee', 'vakantiewoning kust België', 'luxe vakantiewoning Knokke-Heist', 'privé vakantiewoning Knokke', 'Nosso Logies Knokke', 'moroww kust'],
   },
   'moroww-oostende': {
     title: 'The Sixteenth — vakantiewoning Oostende met zeezicht',
     description: 'The Sixteenth — vakantiewoning op de 16e verdieping in Oostende. Panoramisch zeezicht, privé parking, 2 slaapkamers, max 4 personen. Gecertificeerd door moroww. Vanaf €210/nacht.',
-    keywords: ['vakantiewoning Oostende', 'vakantiewoning zeezicht Oostende', 'appartement Oostende huren', 'luxe vakantiewoning Oostende', 'moroww Oostende'],
   },
   'anna-helena-ursel': {
     title: 'Chalet Anna-Helena — vakantiewoning Ursel Meetjesland',
     description: 'Chalet met privétuin en vijver in Ursel, Meetjesland. 2 slaapkamers, max 5 personen. Bosrand, gezinsvriendelijk. Gecertificeerd door moroww. Vanaf €220/nacht.',
-    keywords: ['vakantiewoning Meetjesland', 'chalet Ursel', 'vakantiewoning Ursel', 'chalet huren Meetjesland', 'gezinsvakantie Meetjesland', 'moroww Meetjesland'],
   },
   'cozy-relax-beernem': {
     title: 'The Cozy Relax Home — vakantiewoning Beernem met zwembad',
     description: 'Ruime vakantiewoning in Beernem met zwembad, hottub en tuin met BBQ. 4 slaapkamers, max 10 personen. Ideaal voor groepen. Gecertificeerd door moroww. Vanaf €600/nacht.',
-    keywords: ['vakantiewoning Beernem', 'vakantiewoning met zwembad België', 'vakantiewoning groep België', 'vakantiewoning hottub België', 'groepsaccommodatie Meetjesland', 'moroww Beernem'],
   },
   'sophora': {
     title: 'Sophora — vakantiewoning Elst, Vlaamse Ardennen',
     description: 'Een familiehuis in het hart van Elst, gedragen door drie zussen. 9 slaapkamers elk met eigen badkamer, zwembad, sauna en tuin. Max 18 personen. Gecertificeerd door moroww. Vanaf €800/nacht.',
-    keywords: ['vakantiewoning Vlaamse Ardennen', 'vakantiewoning Elst', 'groepsaccommodatie Vlaamse Ardennen', 'vakantiewoning 18 personen België', 'moroww the fields', 'Sophora Elst'],
   },
   'lammersdamhoeve': {
     title: 'De Lammersdamhoeve — vakantiewoning Wingene, Brugse Ommeland',
     description: 'Hoeve in Wingene, aan de rand van natuurgebied De Gulke Putten. 220m², 4 slaapkamers, 2 badkamers, max 8 personen. Volledig omheinde tuin, huisdieren welkom zonder toeslag. Gecertificeerd door moroww. Vanaf €330/nacht.',
-    keywords: ['vakantiewoning Wingene', 'vakantiewoning Brugse Ommeland', 'hoeve huren West-Vlaanderen', 'vakantiewoning De Gulke Putten', 'vakantiewoning met omheinde tuin', 'vakantiewoning honden welkom België', 'vakantiewoning Bulskampveld', 'moroww the fields', 'De Lammersdamhoeve'],
   },
 };
 
@@ -61,17 +60,21 @@ export async function generateMetadata({ params }: Props) {
   const meta = woningMeta[woning.id];
   const desc = meta?.description ?? lw(woning.beschrijving, locale)
   const pageTitle = meta?.title ?? `${woning.naam} — vakantiewoning in ${woning.locatie}`
-  return {
-    title: pageTitle,
-    description: desc,
-    keywords: meta?.keywords,
-    alternates: { canonical: `https://www.moroww.com/collectie/${woning.id}` },
-    openGraph: {
-      title: `${pageTitle} | moroww`,
-      description: desc,
-      images: [{ url: woning.heroFoto, width: 1200, height: 800, alt: woning.naam }],
+  const isNl = locale === 'nl'
+  return siteMetadata({
+    titel: pageTitle,
+    beschrijving: desc,
+    pad: isNl ? `/collectie/${woning.id}` : `/en/collection/${woning.id}`,
+    locale: isNl ? 'nl' : 'en',
+    // heroFoto is een absoluut of relatief pad in /public. Als het pand
+    // status='wacht_op_beeld' had zou heroFoto leeg zijn, maar wachtende
+    // panden komen niet in generateStaticParams dus die case gebeurt niet.
+    ogBeeld: woning.heroFoto,
+    hreflang: {
+      nl: `/collectie/${woning.id}`,
+      en: `/en/collection/${woning.id}`,
     },
-  };
+  });
 }
 
 // Sectiescheiding tussen inhoudsblokken. Bouwspec: hairlines in --moroww-rule,

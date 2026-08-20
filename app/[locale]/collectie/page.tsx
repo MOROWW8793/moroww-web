@@ -2,13 +2,24 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CollectieStatisch } from "./CollectieStatisch";
 import { Register } from "@/components/Register";
+import { siteMetadata } from "@/lib/seo/siteMetadata";
 
-export const metadata: Metadata = {
-  title: 'De Collectie — gekeurde vakantiewoningen in België',
-  description:
-    'De moroww-collectie: gecertificeerde vakantiewoningen in België. Elk pand fysiek geïnspecteerd voor opname.',
-  alternates: { canonical: 'https://www.moroww.com/collectie' },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const isNl = locale === 'nl'
+  return siteMetadata({
+    titel: 'De Collectie — gekeurde vakantiewoningen in België',
+    beschrijving:
+      'De moroww-collectie: gecertificeerde vakantiewoningen in België. Elk pand fysiek geïnspecteerd voor opname.',
+    pad: isNl ? '/collectie' : '/en/collection',
+    locale: isNl ? 'nl' : 'en',
+    hreflang: { nl: '/collectie', en: '/en/collection' },
+  })
+}
 
 export default async function CollectiePage({
   params,

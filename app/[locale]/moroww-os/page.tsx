@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { OrchestrationLoop } from '@/components/sections/OrchestrationLoop'
+import { siteMetadata } from '@/lib/seo/siteMetadata'
 
 export async function generateMetadata({
   params,
@@ -11,22 +12,13 @@ export async function generateMetadata({
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'morowwos' })
   const isNl = locale === 'nl'
-  const canonical = isNl
-    ? 'https://www.moroww.com/moroww-os'
-    : 'https://www.moroww.com/en/moroww-os'
-  return {
-    title: t('meta_title'),
-    description: t('meta_description'),
-    alternates: {
-      canonical,
-      languages: {
-        'nl-BE': 'https://www.moroww.com/moroww-os',
-        'nl': 'https://www.moroww.com/moroww-os',
-        'en': 'https://www.moroww.com/en/moroww-os',
-        'x-default': 'https://www.moroww.com/moroww-os',
-      },
-    },
-  }
+  return siteMetadata({
+    titel: t('meta_title'),
+    beschrijving: t('meta_description'),
+    pad: isNl ? '/moroww-os' : '/en/moroww-os',
+    locale: isNl ? 'nl' : 'en',
+    hreflang: { nl: '/moroww-os', en: '/en/moroww-os' },
+  })
 }
 
 export default async function MorowwOsPage({

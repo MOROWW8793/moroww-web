@@ -1,30 +1,16 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { setRequestLocale } from 'next-intl/server'
+import { siteMetadata } from '@/lib/seo/siteMetadata'
 
-export const metadata: Metadata = {
-  title: 'moroww vs Xepa, Casapilot en Belvilla — wat is het verschil?',
-  description:
+// NL-only pagina — geen hreflang naar EN.
+export const metadata: Metadata = siteMetadata({
+  titel: 'moroww vs Xepa, Casapilot en Belvilla — wat is het verschil?',
+  beschrijving:
     'moroww is een gecertificeerd kwaliteitslabel voor vakantiewoningen in België. Ontdek hoe moroww verschilt van Xepa, Casapilot, Belvilla en andere spelers op de Belgische markt.',
-  keywords: [
-    'moroww vs Xepa',
-    'moroww vs Casapilot',
-    'moroww vs Belvilla',
-    'alternatief Xepa België',
-    'alternatief Casapilot',
-    'alternatief Belvilla hosts',
-    'kwaliteitslabel vakantiewoning België',
-    'gecertificeerde vakantiewoning',
-  ],
-  alternates: {
-    canonical: 'https://www.moroww.com/vergelijking',
-    languages: {
-      'nl-BE': 'https://www.moroww.com/vergelijking',
-      'nl': 'https://www.moroww.com/vergelijking',
-      'x-default': 'https://www.moroww.com/vergelijking',
-    },
-  },
-}
+  pad: '/vergelijking',
+  locale: 'nl',
+})
 
 const kenmerken = [
   ['Fysieke kwaliteitsaudit',             '✓', '✗', 'deels', '✗'],

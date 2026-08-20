@@ -1,6 +1,18 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+// Root-metadata: alleen platform-brede defaults. og/twitter/canonical/keywords
+// worden bewust NIET hier gezet — die zijn per-pagina uniek en Next.js vervangt
+// deze objecten wholesale bij een child-override, dus een generieke openGraph
+// hier zou stille misleiding zijn op elke pagina die er een deelt.
+//
+// - `keywords`: weggehaald. Google negeert de tag sinds 2009 en de lijst met
+//   concurrenten-alternatieven was zichtbaar in de broncode.
+// - `openGraph`/`twitter`: verhuizen naar per-pagina via lib/seo/siteMetadata.ts
+//   en lib/kennis/meta.ts.
+// - `alternates`: idem, per-pagina.
+// - `other` (geo/ICBM): weggehaald. Geen ranking-signaal en op kennispagina's
+//   die over Oostende of Knokke gaan wees dit blok naar coördinaten in Gent.
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.moroww.com'),
   title: {
@@ -9,50 +21,6 @@ export const metadata: Metadata = {
   },
   description:
     'moroww (ook bekend als morrow) is een gecertificeerd kwaliteitslabel voor premium vakantiewoningen in België. Elke woning fysiek geïnspecteerd. Sensorisch ingericht. Zonder loterij.',
-  keywords: [
-    // Brand
-    'moroww',
-    'moroww vakantiewoningen',
-    'morrow vakantie',
-    'morrow belgium',
-    'morrow vakantiewoning',
-    // Categorie-keywords die moroww bezit
-    'gecertificeerd kwaliteitslabel vakantiewoning',
-    'gecertificeerde vakantiewoning België',
-    'kwaliteitslabel vakantiewoning',
-    'premium vakantiewoning label België',
-    'gecureerde vakantiewoningen België',
-    // Competitor-adjacent — gasten
-    'alternatief Belvilla',
-    'alternatief Casapilot',
-    'betere vakantiewoning dan Airbnb',
-    'vakantiewoning zonder Airbnb loterij',
-    'gegarandeerde kwaliteit vakantiewoning',
-    'luxe vakantiewoning kwaliteitsgarantie',
-    // Competitor-adjacent — hosts
-    'alternatief Xepa',
-    'vakantiewoning verhuren zonder beheerder',
-    'vakantiewoning verhuren met kwaliteitslabel',
-    'eigen vakantiewoning verhuren systeem',
-    'vakantiewoning verhuren Belvilla alternatief',
-    // Locatie
-    'vakantiewoning Knokke',
-    'vakantiewoning Oostende',
-    'vakantiewoning Beernem',
-    'vakantiewoning Ursel',
-    'vakantiewoning Wingene',
-    'luxe vakantiewoning Knokke-Heist',
-    'vakantiewoning Heist-aan-Zee',
-    // Intentie — gasten
-    'vakantiewoning direct boeken België',
-    'privé vakantiewoning Belgium',
-    'vakantiewoning 100m² België',
-    // Intentie — hosts
-    'vakantiewoning verhuren kust België',
-    'vakantiewoning beheer label',
-    'vakantiewoning certificering België',
-    'smart lock vakantiewoning België',
-  ],
   authors: [{ name: 'moroww', url: 'https://www.moroww.com' }],
   creator: 'moroww',
   publisher: 'moroww',
@@ -64,45 +32,6 @@ export const metadata: Metadata = {
       follow: true,
       'max-image-preview': 'large',
     },
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'nl_BE',
-    url: 'https://www.moroww.com',
-    siteName: 'moroww',
-    title: 'moroww — premium vakantiewoningen in België',
-    description:
-      'Een gecureerd kwaliteitslabel voor premium vakantiewoningen. Fysiek geïnspecteerd. Sensorisch ingericht.',
-    images: [
-      {
-        url: '/images/og-default.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'moroww — premium vakantiewoningen',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'moroww — premium vakantiewoningen in België',
-    description:
-      'Een gecureerd kwaliteitslabel voor premium vakantiewoningen. Fysiek geïnspecteerd. Sensorisch ingericht.',
-    images: ['/images/og-default.jpg'],
-  },
-  alternates: {
-    canonical: 'https://www.moroww.com',
-    languages: {
-      'nl-BE': 'https://www.moroww.com',
-      'nl': 'https://www.moroww.com',
-      'en': 'https://www.moroww.com/en',
-      'x-default': 'https://www.moroww.com',
-    },
-  },
-  other: {
-    'geo.region': 'BE-VWV',
-    'geo.placename': 'België',
-    'geo.position': '51.0500;3.7167',
-    ICBM: '51.0500, 3.7167',
   },
 };
 
