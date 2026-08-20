@@ -1,36 +1,30 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import { Register } from "@/components/Register";
+import { AuditLijn } from "@/components/AuditLijn";
 
-const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.4, ease: "easeOut" as const },
-};
+// Herschreven naar het eigenaarsregister — bouwspec stap 5B en stap 6.
+// Paper-achtergrond, hairlines, geen witte kaarten, geen genummerde tegels.
+//
+// Wat weg is:
+//   · "vier beloften. één verblijf." — overlappende inhoud met de vier
+//     poorten op /de-standaard, plus zichzelf-tegensprekende belofte over
+//     QR-code vs code-op-slot.
+//   · Poortenlijst met "lees de volledige standaard" — één tekstlink volstaat.
+//   · Afsluiter "het label is open. de standaard niet." met twee doelgroep-
+//     knoppen — dat is de deurensplitsing die de homepage al doet.
 
-export function OverMorowwContent() {
-  const t = useTranslations('about')
-  const tStandaard = useTranslations('destandaard')
-
-  const systeem = [
-    { nr: "01", titel: t('systeem_01_titel'), tekst: t('systeem_01_tekst') },
-    { nr: "02", titel: t('systeem_02_titel'), tekst: t('systeem_02_tekst') },
-    { nr: "03", titel: t('systeem_03_titel'), tekst: t('systeem_03_tekst') },
-    { nr: "04", titel: t('systeem_04_titel'), tekst: t('systeem_04_tekst') },
-  ]
+export async function OverMorowwContent({ locale }: { locale: string }) {
+  const t = await getTranslations({ locale, namespace: 'about' })
 
   return (
-    <main className="bg-moroww-blush">
-
-      {/* ── HERO ── */}
-      <section className="h-hero-calc relative -mt-16 w-full overflow-hidden mb-0">
+    <Register kant="eigenaar">
+      {/* ── HERO — beeld blijft ── */}
+      <section className="h-hero-calc relative -mt-16 w-full overflow-hidden">
         <Image
           src="/images/over-hero.jpg"
-          alt="moroww - over ons"
+          alt="moroww — over ons"
           fill
           priority
           className="object-cover"
@@ -39,10 +33,7 @@ export function OverMorowwContent() {
         />
         <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.45)" }} />
         <div className="absolute inset-0 flex items-center justify-center px-8">
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+          <h1
             className="text-white font-bold lowercase leading-[1.1] tracking-[-0.02em] text-center w-full"
             style={{ fontSize: "clamp(32px,5vw,80px)" }}
           >
@@ -50,236 +41,162 @@ export function OverMorowwContent() {
             <span className="hidden sm:inline-block sm:w-24" />
             <br className="sm:hidden" />
             <span className="font-light whitespace-nowrap">{t('hero_h1_light')}</span>
-          </motion.h1>
+          </h1>
         </div>
       </section>
 
-      {/* ── ONS VERHAAL — draagt het zonder beeld ── */}
-      <section className="w-full py-20 md:py-32 px-6 bg-moroww-blush">
-        <div className="max-w-3xl mx-auto">
-          <motion.div {...fadeUp}>
-            <p className="text-xs uppercase tracking-widest text-moroww-label mb-10">
-              {t('story_label')}
-            </p>
+      {/* ── HET VERHAAL — Edinburgh + probleem-blok ─────────────────────
+             Vier alinea's over het probleem (story_p5–p8) staan hier als
+             blok apart met meer ruimte eromheen. De laatste drie regels
+             (p6, p7, p8) zijn h2 — dat is het moment waar de pagina naartoe
+             werkt en dat mag er ook naar uitzien. */}
+      <section className="w-full py-mw-10 px-6 md:px-12">
+        <div className="mx-auto max-w-6xl">
+          <AuditLijn density="quiet" items={['ons verhaal']} />
 
-            <p
-              className="font-bold text-moroww-dark leading-[1.15] tracking-[-0.02em] mb-10"
-              style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
-            >
-              {t('story_p1')}
-            </p>
-
-            <div className="space-y-6 text-moroww-dark/85 leading-relaxed" style={{ fontSize: 18 }}>
-              <p>{t('story_p2')}</p>
-              <p>{t('story_p3')}</p>
-              <p>{t('story_p4')}</p>
-              <p>{t('story_p5')}</p>
-              <p>{t('story_p6')}</p>
-              <p>{t('story_p7')}</p>
-            </div>
-
-            <p
-              className="font-bold text-moroww-dark leading-[1.15] tracking-[-0.02em] mt-10"
-              style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
-            >
-              {t('story_p8')}
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── SECTIE 2 — WAT MOROWW IS ── */}
-      <section className="w-full py-16 md:py-28 px-6 bg-moroww-blush">
-        <div className="max-w-3xl mx-auto">
-          <motion.div {...fadeUp}>
-            <p className="text-xs uppercase tracking-widest text-moroww-label mb-5">
-              {t('what_label')}
-            </p>
-            <h2 className="text-[clamp(1.9rem,3.8vw,3.5rem)] font-bold leading-[1.15] text-moroww-dark">
-              {t('what_h2_1')}<br />
-              <span className="font-light">{t('what_h2_2')}</span><br />
-              {t('what_h2_3')}
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-moroww-dark/80 max-w-2xl">
-              {t('what_body_before')}
-              <Link href="/collectie" className="underline underline-offset-2 decoration-moroww-label/50 hover:decoration-moroww-orange transition-colors">
-                {t('what_collection_link')}
-              </Link>
-              {t('what_body_after')}
-            </p>
-          </motion.div>
-
-        </div>
-      </section>
-
-      {/* ── SECTIE 3 — DE BELOFTE ── */}
-      <section className="w-full py-12 md:py-20 bg-moroww-brown/15">
-        <motion.div
-          {...fadeUp}
-          className="max-w-4xl mx-auto px-6 md:px-16 mb-12"
-        >
-          <p className="text-xs uppercase tracking-widest text-moroww-label mb-5">
-            {t('promise_label')}
+          <p
+            className="mt-mw-4 font-bold text-moroww-dark leading-[1.15] tracking-[-0.02em] max-w-[16ch]"
+            style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
+          >
+            {t('story_p1')}
           </p>
-          <h2 className="text-[clamp(1.9rem,3.8vw,3.5rem)] font-bold leading-[1.15] text-moroww-dark">
-            <span className="font-light">{t('promise_h2_light')}</span><br />
-            {t('promise_h2_bold')}
-          </h2>
-          <p className="mt-5 text-lg font-normal text-moroww-dark/60 max-w-lg leading-relaxed">
-            {t('promise_intro')}
-          </p>
-        </motion.div>
 
-        <div className="max-w-4xl mx-auto px-6 md:px-16">
-          <div className="grid grid-cols-1 md:grid-cols-2">
-            {systeem.map((item, i) => (
-              <motion.div
-                key={item.nr}
-                {...fadeUp}
-                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.07 }}
-                className={`border-t border-moroww-label/25 py-8 ${i % 2 === 1 ? "md:pl-10 md:border-l md:border-moroww-label/25" : "md:pr-10"}`}
-              >
-                <span
-                  className="block font-bold leading-none text-moroww-label select-none"
-                  style={{ fontSize: "2.5rem", opacity: 0.20 }}
-                >
-                  {item.nr}
-                </span>
-                <h3 className="text-base font-semibold text-moroww-dark mt-2 mb-1.5">{item.titel}</h3>
-                <p className="text-sm font-normal leading-relaxed text-moroww-dark/65">{item.tekst}</p>
-              </motion.div>
-            ))}
+          <div className="mt-mw-6 max-w-[62ch] space-y-mw-4 text-body-lg text-moroww-dark">
+            <p>{t('story_p2')}</p>
+            <p>{t('story_p3')}</p>
+            <p>{t('story_p4')}</p>
           </div>
-          <div className="border-b border-moroww-label/25" />
+
+          {/* Probleem-blok: extra ruimte eromheen, hairlines als kader */}
+          <div className="mt-mw-10 max-w-[62ch]">
+            <hr className="mb-mw-8 border-0 border-t border-moroww-rule" aria-hidden />
+
+            <p className="text-body-lg text-moroww-dark">
+              {t('story_p5')}
+            </p>
+
+            <h2 className="mt-mw-8 text-h2 text-moroww-dark">
+              {t('story_p6')}
+            </h2>
+
+            <h2 className="mt-mw-6 text-h2 text-moroww-dark">
+              {t('story_p7')}
+            </h2>
+
+            <h2 className="mt-mw-6 text-h2 text-moroww-dark">
+              {t('story_p8')}
+            </h2>
+
+            <hr className="mt-mw-8 border-0 border-t border-moroww-rule" aria-hidden />
+          </div>
         </div>
       </section>
 
-      {/* ── SECTIE 4 — DE STANDAARD (kort, met link naar /de-standaard voor de volledige uitleg) ── */}
-      <section className="grid grid-cols-1 md:grid-cols-2 min-h-[80vh]">
-        <div className="relative overflow-hidden min-h-[60vw] md:min-h-full order-last md:order-first">
-          <Image
-            src="/images/over-interieur-2.jpg"
-            alt="moroww standaard"
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
+      {/* ── WAT WIJ ZIJN ── */}
+      <section className="w-full py-mw-8 px-6 md:px-12">
+        <div className="mx-auto max-w-6xl">
+          <AuditLijn density="quiet" items={['wat wij zijn']} />
+          <h2
+            className="mt-mw-4 font-bold text-moroww-dark leading-[1.15] max-w-[68ch]"
+            style={{ fontSize: 'clamp(1.9rem, 3.8vw, 3.5rem)' }}
+          >
+            {t('what_h2_1')} <span className="font-light">{t('what_h2_2')}</span> {t('what_h2_3')}
+          </h2>
+          <p className="mt-mw-5 max-w-[62ch] text-body-lg text-moroww-dark">
+            {t('what_body_before')}
+            <Link
+              href="/collectie"
+              className="underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+            >
+              {t('what_collection_link')}
+            </Link>
+            {t('what_body_after')}
+          </p>
         </div>
-        <motion.div
-          {...fadeUp}
-          className="flex items-center px-6 py-12 md:px-20 md:py-20 bg-moroww-blush order-first md:order-last"
-        >
-          <div className="max-w-sm">
-            <p className="text-xs uppercase tracking-widest text-moroww-label mb-5">
-              {t('standaard_label')}
+      </section>
+
+      {/* ── WIE ER GAAT KIJKEN — vervangt de oprichters-paragraaf ── */}
+      <section className="w-full py-mw-8 px-6 md:px-12">
+        <div className="mx-auto max-w-6xl">
+          <AuditLijn density="quiet" items={['wie er gaat kijken']} />
+          <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[68ch]">
+            wie er gaat kijken
+          </h2>
+          <div className="mt-mw-5 max-w-[62ch] space-y-mw-4 text-body-lg text-moroww-dark">
+            <p>
+              Elk huis in deze collectie is bezocht door Noam. Niet door een
+              fotograaf, niet door een partner, niet op basis van een video.
             </p>
-            <h2 className="text-[clamp(1.9rem,3.8vw,3.5rem)] font-bold leading-[1.15] text-moroww-dark">
-              {t('standaard_h2')}
-            </h2>
-            <ul className="mt-8 space-y-3 text-lg text-moroww-dark">
-              <li className="flex items-baseline gap-3">
-                <span className="text-moroww-label/60 font-semibold text-sm select-none">01</span>
-                <span>{tStandaard('gate01_title')}</span>
-              </li>
-              <li className="flex items-baseline gap-3">
-                <span className="text-moroww-label/60 font-semibold text-sm select-none">02</span>
-                <span>{tStandaard('gate02_title')}</span>
-              </li>
-              <li className="flex items-baseline gap-3">
-                <span className="text-moroww-label/60 font-semibold text-sm select-none">03</span>
-                <span>{tStandaard('gate03_title')}</span>
-              </li>
-              <li className="flex items-baseline gap-3">
-                <span className="text-moroww-label/60 font-semibold text-sm select-none">04</span>
-                <span>{tStandaard('gate04_title')}</span>
-              </li>
-            </ul>
+            <p>
+              Hij bouwt moroww voltijds, onder marktloon. Wie nee zegt tegen een
+              huis dat geld opbrengt, moet daar zelf iets bij verliezen. Anders
+              is het geen standaard, dan is het een voorkeur.
+            </p>
+          </div>
+
+          <div className="mt-mw-8 relative w-full aspect-[16/9] overflow-hidden max-w-[68ch]">
+            <Image
+              src="/images/noam.jpg"
+              alt="Noam Landries, oprichter van moroww"
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 1024px) 100vw, 60vw"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ── PARTNERS — nieuw op deze pagina ── */}
+      <section className="w-full py-mw-8 px-6 md:px-12">
+        <div className="mx-auto max-w-6xl">
+          <AuditLijn density="quiet" items={['met wie we werken']} />
+          <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[68ch]">
+            met wie we werken
+          </h2>
+          <p className="mt-mw-4 max-w-[62ch] text-body text-moroww-dark">
+            Een standaard bestaat niet zonder mensen die hem uitvoeren. Deze
+            partners leveren wat wij niet zelf maken, en ze zijn geselecteerd
+            op hetzelfde criterium als de woningen.
+          </p>
+
+          <p className="mt-mw-6 text-audit uppercase text-moroww-ink-2 max-w-[68ch]">
+            Moro Essentials · badkamerproducten
+            {' · '}Amelie Bauwens · fotografie
+            {' · '}Opruimingen CB · schoonmaak
+            {' · '}Nuki · slimme sloten
+          </p>
+
+          <p className="mt-mw-5">
+            <Link
+              href="/partners"
+              className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+            >
+              alle partners →
+            </Link>
+          </p>
+        </div>
+      </section>
+
+      {/* ── AFSLUITER — één link, geen knoppen ── */}
+      <section className="w-full pt-mw-8 pb-mw-10 px-6 md:px-12">
+        <div className="mx-auto max-w-6xl">
+          <hr className="mb-mw-6 border-0 border-t border-moroww-rule" aria-hidden />
+          <AuditLijn density="quiet" items={['verder']} />
+          <h3 className="mt-mw-4 text-h3 text-moroww-dark">hoe we keuren</h3>
+          <p className="mt-mw-3 max-w-[62ch] text-body text-moroww-dark">
+            De vier poorten, het keuringsverslag en wat er gebeurt als een huis
+            niet meer voldoet.
+          </p>
+          <p className="mt-mw-5">
             <Link
               href="/de-standaard"
-              className="inline-block mt-8 text-sm underline underline-offset-4 decoration-moroww-label/50 hover:decoration-moroww-orange text-moroww-dark"
+              className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
             >
-              {tStandaard('read_full_standard')} →
+              lees de standaard →
             </Link>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* ── SECTIE 5 — DE OPRICHTER ── */}
-      <section className="grid grid-cols-1 md:grid-cols-2 min-h-[75vh]">
-        <motion.div
-          {...fadeUp}
-          className="flex items-center px-6 py-12 md:px-20 md:py-20 bg-moroww-blush"
-        >
-          <div className="max-w-sm">
-            <p className="text-xs uppercase tracking-widest text-moroww-label mb-5">
-              {t('oprichter_label')}
-            </p>
-            <div className="space-y-5 text-moroww-dark/85 leading-relaxed" style={{ fontSize: 17 }}>
-              <p>{t('oprichter_p1')}</p>
-              <p>{t('oprichter_p2')}</p>
-              <p className="font-semibold text-moroww-dark">{t('oprichter_p3')}</p>
-            </div>
-            <p className="text-sm text-moroww-dark/60 mt-8">
-              {t('founders_owner_prompt')}{' '}
-              <Link
-                href="/eigenaar-worden"
-                className="underline underline-offset-2 decoration-moroww-label/50 hover:decoration-moroww-orange"
-              >
-                {t('founders_owner_cta')}
-              </Link>
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block mt-8 bg-moroww-dark text-white rounded-full px-8 py-4 text-sm font-medium hover:bg-[#333] transition-colors"
-            >
-              {t('founders_cta_contact')}
-            </Link>
-            <Link
-              href="/collectie"
-              className="inline-block mt-4 border border-moroww-dark/30 text-moroww-dark rounded-full px-8 py-4 text-sm font-medium hover:border-moroww-dark transition-colors"
-            >
-              {t('founders_cta_collection')}
-            </Link>
-          </div>
-        </motion.div>
-        <div className="relative overflow-hidden min-h-[60vw] md:min-h-full">
-          <Image
-            src="/images/noam.jpg"
-            alt="Noam Landries, oprichter van moroww"
-            fill
-            className="object-cover object-top"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
+          </p>
         </div>
       </section>
-
-      {/* ── SECTIE 6 — SLUIT CTA ── */}
-      <section className="w-full bg-moroww-dark py-16 md:py-28 px-6 text-center">
-        <motion.div {...fadeUp}>
-          <h2 className="text-[clamp(1.9rem,3.8vw,3.5rem)] font-bold leading-[1.15] text-white max-w-2xl mx-auto">
-            <span className="font-light">{t('cta_h2_light')}</span><br />
-            {t('cta_h2_bold')}
-          </h2>
-          <p className="mt-6 text-lg text-white/60 max-w-xl mx-auto leading-relaxed">
-            {t('cta_body')}
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4 justify-center">
-            <Link
-              href="/eigenaar-worden"
-              className="bg-moroww-orange text-moroww-dark rounded-full px-8 py-4 text-sm font-semibold hover:bg-moroww-orange/85 transition-colors"
-            >
-              {t('cta_owner')}
-            </Link>
-            <Link
-              href="/collectie"
-              className="border border-white/30 text-white rounded-full px-8 py-4 text-sm font-medium hover:border-white/60 transition-colors"
-            >
-              {t('cta_collection')}
-            </Link>
-          </div>
-        </motion.div>
-      </section>
-
-    </main>
-  );
+    </Register>
+  )
 }

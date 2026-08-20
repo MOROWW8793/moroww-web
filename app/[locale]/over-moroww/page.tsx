@@ -16,5 +16,5 @@ export default async function OverMorowwPage({
 }) {
   const { locale } = await params
   setRequestLocale(locale)
-  return <OverMorowwContent />;
+  return <OverMorowwContent locale={locale} />;
 }
