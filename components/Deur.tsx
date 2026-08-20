@@ -22,22 +22,21 @@ interface Props {
 }
 
 export function Deur({ naam, tagline, href, beeld, beeldAlt }: Props) {
-  const isShore = naam === 'the shore'
-  const bgKleur = isShore ? 'var(--moroww-shore)' : 'var(--moroww-fields)'
-  const kleurClass = isShore ? 'bg-moroww-shore' : 'bg-moroww-fields'
+  const bgKleur = naam === 'the shore' ? 'var(--moroww-shore)' : 'var(--moroww-fields)'
 
   const heeftBeeld = Boolean(beeld)
 
   // Met beeld: witte tekst op donker verloop. Zonder beeld: donkere tekst op
-  // de gekleurde tegel — de collectiekleur zou een streep in eigen kleur
-  // opslokken, dus daar wordt de streep ook donker.
+  // de gekleurde tegel. De 3px-streep is wit boven een beeld (de
+  // collectiekleur zou wegvallen tegen de zee bij the shore) en donker op
+  // de placeholder-tegel (waar wit weer wegvalt tegen de eigen kleur).
   const tekstKleur = heeftBeeld ? 'text-white' : 'text-moroww-dark'
-  const streepClass = heeftBeeld ? kleurClass : 'bg-moroww-dark'
+  const streepClass = heeftBeeld ? 'bg-white' : 'bg-moroww-dark'
 
   return (
     <Link
       href={href}
-      className="group relative block w-full aspect-[4/5] lg:max-h-[72vh] overflow-hidden outline-none focus-visible:outline-2 focus-visible:outline-moroww-orange focus-visible:outline-offset-4"
+      className="group relative block w-full aspect-[4/5] lg:max-h-[62vh] overflow-hidden outline-none focus-visible:outline-2 focus-visible:outline-moroww-orange focus-visible:outline-offset-4"
       style={{ backgroundColor: bgKleur }}
       aria-label={`${naam} — ${tagline}`}
     >
@@ -52,8 +51,8 @@ export function Deur({ naam, tagline, href, beeld, beeldAlt }: Props) {
             priority
           />
           <div
-            className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none"
-            style={{ background: 'linear-gradient(to top, rgba(26,26,26,0.55), rgba(26,26,26,0))' }}
+            className="absolute inset-x-0 bottom-0 h-[60%] pointer-events-none"
+            style={{ background: 'linear-gradient(to top, rgba(26,26,26,0.65), rgba(26,26,26,0))' }}
             aria-hidden
           />
         </>

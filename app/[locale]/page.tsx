@@ -39,10 +39,11 @@ export default async function HomePage({
 
       {/* HERO — bouwspec sectie 2. Blush achtergrond, één regel display,
           geen beeld, geen video, geen knop. Hoogte krap gehouden zodat de
-          deuren op 1440×900 volledig zichtbaar zijn onder de vouw. */}
+          deuren op 1440×900 volledig zichtbaar zijn onder de vouw, inclusief
+          het onderste tekstblok. */}
       <section
-        className="w-full flex items-center px-6 md:px-12 pt-mw-8"
-        style={{ minHeight: '22vh' }}
+        className="w-full flex items-center px-6 md:px-12 pt-mw-6"
+        style={{ minHeight: '18vh' }}
       >
         <div className="mx-auto max-w-7xl w-full">
           <h1 className="text-display text-moroww-dark">
@@ -52,8 +53,10 @@ export default async function HomePage({
       </section>
 
       {/* DE TWEE DEUREN — bouwspec sectie 3. 50/50 met 8px gutter vanaf lg,
-          gestapeld daaronder. Beelden vooraf laden (priority in Deur zelf). */}
-      <section className="w-full px-6 md:px-12">
+          gestapeld daaronder. Op mobiel space-6 tussen hero-regel en eerste
+          deur; op desktop kunnen ze dichter want er staat display + witruimte
+          tussenin. Beelden vooraf laden (priority in Deur zelf). */}
+      <section className="w-full px-6 md:px-12 mt-mw-6 lg:mt-0">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-2">
           <Deur
             naam="the shore"
