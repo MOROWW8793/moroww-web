@@ -80,24 +80,9 @@ export const eigenaarDropdown: EigenaarDropdownItem[] = [
   },
 ]
 
-// De publieke kennispagina's. Ook naar de voettekst voor Google — twee
-// interne routes naar het cluster.
-export interface KennisLink {
-  titel: string
-  href: string
-}
-export const kennisLinks: KennisLink[] = [
-  { titel: 'logiesdecreet',             href: '/kennis/logiesdecreet-vakantiewoning-vlaanderen' },
-  { titel: 'omgevingsvergunning',       href: '/kennis/omgevingsvergunning-functiewijziging-vakantiewoning' },
-  { titel: 'wat een nacht kost',        href: '/kennis/wat-kost-een-nacht-vakantiewoning' },
-  { titel: 'belasting op huurinkomsten', href: '/kennis/belasting-huurinkomsten-vakantiewoning' },
-  { titel: 'verblijfsbelasting',        href: '/kennis/verblijfsbelasting-vakantiewoning' },
-  { titel: 'tweedeverblijf of logies',  href: '/kennis/tweedeverblijfsbelasting-of-logiesbelasting' },
-  { titel: 'brandveiligheidsattest',    href: '/kennis/brandveiligheidsattest-vakantiewoning-vlaanderen' },
-  { titel: 'verzekering',               href: '/kennis/verzekering-vakantiewoning' },
-  { titel: 'vier manieren',             href: '/kennis/vakantiewoning-verhuren-zelf-platform-beheerder-label' },
-  { titel: 'is je woning er klaar voor?', href: '/kennis/is-je-woning-klaar-voor-premium-verhuur' },
-]
+// (De vroegere kennisLinks-array is verwijderd. De voettekst toont sinds
+//  deze stap één samengevouwen link "kennis voor eigenaars → /kennis".
+//  De hub op /kennis toont alle artikels.)
 
 export const footerNavItems: NavItem[] = [
   { labelKey: 'home',       href: '/' },
@@ -108,6 +93,39 @@ export const footerNavItems: NavItem[] = [
   { labelKey: 'partners',   href: '/partners' },
   { labelKey: 'contact',    href: '/contact' },
   { labelKey: 'privacy',    href: '/privacy' },
+]
+
+// Voettekst-kolommen. Explicit label + href zodat we niet voor elke nieuwe
+// route een NavLabelKey en messages-key hoeven aan te maken. De voettekst
+// is NL-only in bewoording (de vertaling per locale zit al in de nav zelf).
+export interface FooterLink {
+  titel: string
+  href: string
+  extern?: boolean
+}
+
+// Kolom 2 · de collectie
+export const footerCollectieLinks: FooterLink[] = [
+  { titel: 'de collectie',   href: '/collectie' },
+  { titel: 'the shore',      href: '/the-shore' },
+  { titel: 'the fields',     href: '/the-fields' },
+  { titel: 'de standaard',   href: '/de-standaard' },
+  { titel: 'over moroww',    href: '/over-moroww' },
+  { titel: 'partners',       href: '/partners' },
+]
+
+// Kolom 3 · voor eigenaars. Eén link naar /kennis (was tien) — de hub op
+// /kennis toont alle artikels, de voettekst hoeft dat niet te dupliceren.
+export const footerEigenaarLinks: FooterLink[] = [
+  { titel: 'voor eigenaars',          href: '/eigenaar-worden' },
+  { titel: 'kennis voor eigenaars',   href: '/kennis' },
+  { titel: 'contact',                 href: '/contact' },
+  {
+    titel: 'een gesprek inplannen',
+    href: 'https://calendar.app.google/BH8wYeA9AGf6KrUz7',
+    extern: true,
+  },
+  { titel: 'privacy',                 href: '/privacy' },
 ]
 
 // NL-only pagina's: taalwissel-knop is verborgen op deze pagina's, want
