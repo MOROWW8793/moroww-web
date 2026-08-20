@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
-import { woningen, type Locale } from '@/lib/woningen'
+import { liveWoningen, wachtOpBeeldCount, type Locale } from '@/lib/woningen'
 import { WoningKaarten } from '@/components/sections/WoningKaarten'
+import { AuditLijn } from '@/components/AuditLijn'
 
 export async function generateMetadata({
   params,
@@ -37,7 +38,8 @@ export default async function TheShorePage({
   const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations('theshore')
-  const shorePanden = woningen.filter((w) => w.collectie === 'the shore')
+  const shorePanden = liveWoningen().filter((w) => w.collectie === 'the shore')
+  const wachtendCount = wachtOpBeeldCount('the shore')
 
   return (
     <main className="bg-moroww-blush">
@@ -66,6 +68,35 @@ export default async function TheShorePage({
           <WoningKaarten woningen={shorePanden} locale={locale as Locale} />
         </div>
       </section>
+
+      {/* Binnenkort — geauditeerde panden die wachten op fotoshoot.
+          Aantal komt uit lib/woningen.ts (status='wacht_op_beeld'),
+          zichtbaar zolang er minstens één wachtend pand in the shore zit. */}
+      {wachtendCount > 0 && (
+        <section className="w-full px-6 md:px-16 lg:px-24 pb-20">
+          <div className="max-w-3xl mx-auto">
+            <AuditLijn density="quiet" items={['binnenkort']} />
+            <h3 className="mt-mw-4 text-h3 text-moroww-dark">
+              {wachtendCount === 1
+                ? 'één woning wacht op haar fotoshoot'
+                : `${wachtendCount === 2 ? 'twee' : wachtendCount} woningen wachten op hun fotoshoot`}
+            </h3>
+            <p className="mt-mw-3 text-body text-moroww-dark">
+              {wachtendCount === 1 ? 'Eén kustwoning is' : `${wachtendCount === 2 ? 'Twee' : wachtendCount} kustwoningen zijn`}{' '}
+              geauditeerd en opgenomen.{' '}
+              {wachtendCount === 1 ? 'Ze verschijnt' : 'Ze verschijnen'} hier zodra het beeld klopt.
+            </p>
+            <p className="mt-mw-5">
+              <Link
+                href="/de-standaard"
+                className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+              >
+                lees hoe we keuren →
+              </Link>
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* Streektekst */}
       <section className="w-full py-20 md:py-28 px-6 bg-moroww-brown/15">

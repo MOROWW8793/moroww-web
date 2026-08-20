@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { woningen, lw, lwArr, type Locale } from "@/lib/woningen";
+import { woningen, liveWoningen, lw, lwArr, type Locale } from "@/lib/woningen";
 import { WoningGalerij } from "./WoningGalerij";
 import { InlineFoto } from "@/components/InlineFoto";
 import { VacationRentalJsonLd, BreadcrumbListJsonLd } from "@/components/JsonLd";
@@ -13,7 +13,9 @@ import { formatAuditMaand } from "@/components/PandKaart";
 interface Props { params: { locale: string; id: string } }
 
 export function generateStaticParams() {
-  return woningen.flatMap((w) => [
+  // Panden met status 'wacht_op_beeld' krijgen geen eigen pagina — er is
+  // niets te tonen tot de fotoshoot klaar is. liveWoningen filtert ze uit.
+  return liveWoningen().flatMap((w) => [
     { locale: 'nl', id: w.id },
     { locale: 'en', id: w.id },
   ]);
@@ -133,6 +135,8 @@ export default async function WoningDetailPage({ params }: Props) {
   const locale = params.locale as Locale
   const woning = woningen.find((w) => w.id === params.id);
   if (!woning) notFound();
+  // Wachtende panden hebben geen inhoud om te tonen — 404 tot ze live gaan.
+  if (woning.status === 'wacht_op_beeld') notFound();
 
   const isNl = locale === 'nl'
   const baseUrl = 'https://www.moroww.com'

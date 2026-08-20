@@ -55,6 +55,11 @@ export interface Woning {
   fotoNaBeschrijving?: string | null
   fotoNaBuurt?: string | null
   boekUrl: string
+  /** Publicatiestatus. `undefined` of 'live' = zichtbaar in het raster
+   *  en op de sitemap. 'wacht_op_beeld' = geauditeerd en opgenomen,
+   *  wacht op de fotoshoot: telt mee in de "binnenkort"-teller op
+   *  /the-shore en /collectie, maar rendert niet als kaart of pagina. */
+  status?: 'live' | 'wacht_op_beeld'
   comingSoon?: boolean
   vergunningsnummer?: string
   waaromOpgenomen?: BilingualText
@@ -631,6 +636,50 @@ const _woningenRaw: Woning[] = [
     boekUrl: 'https://book.moroww.com/nl/properties/6a3a3e76ebec11002bd6c298?minOccupancy=1',
     amenities: ['Smart lock', 'Wifi', 'Eigen parking'],
   },
+
+  // ── WACHT OP BEELD ─────────────────────────────────────────────────
+  // Twee kustwoningen zijn geauditeerd en opgenomen. Ze tellen mee voor de
+  // "binnenkort"-teller op /the-shore en /collectie, maar renderen niet in
+  // het raster of als eigen pandpagina tot de fotoshoot klaar is.
+  //
+  // Velden die je moet aanleveren voor publicatie zijn met TBD gemarkeerd.
+  // Zolang status='wacht_op_beeld' staat, worden deze niet gerenderd.
+  {
+    id: 'shore-wacht-1',
+    naam: 'TBD',
+    collectie: 'the shore',
+    locatie: 'TBD',
+    tags: [],
+    slogan: { nl: '', en: '' },
+    introductie: { nl: '', en: '' },
+    beschrijving: { nl: '', en: '' },
+    volledigeBeschrijving: { nl: '', en: '' },
+    hoogtepunten: [],
+    inCheckin: '',
+    uitCheckin: '',
+    heroFoto: '',
+    fotos: [],
+    boekUrl: '',
+    status: 'wacht_op_beeld',
+  },
+  {
+    id: 'shore-wacht-2',
+    naam: 'TBD',
+    collectie: 'the shore',
+    locatie: 'TBD',
+    tags: [],
+    slogan: { nl: '', en: '' },
+    introductie: { nl: '', en: '' },
+    beschrijving: { nl: '', en: '' },
+    volledigeBeschrijving: { nl: '', en: '' },
+    hoogtepunten: [],
+    inCheckin: '',
+    uitCheckin: '',
+    heroFoto: '',
+    fotos: [],
+    boekUrl: '',
+    status: 'wacht_op_beeld',
+  },
 ]
 
 // Runtime-validatie: kap fotos-array af naar MAX_PHOTOS_PER_PAND met een
@@ -649,4 +698,22 @@ export const woningen: Woning[] = _woningenRaw.map((w) => {
 export const BADGE_STYLES: Record<Woning['collectie'], { bg: string; color: string }> = {
   'the shore': { bg: '#EEBC9D', color: '#1A1A1A' },
   'the fields': { bg: '#CBD085', color: '#1A1A1A' },
+}
+
+// Filters. Alle renderpaden (raster, sitemap, generateStaticParams,
+// pandpagina) horen op `liveWoningen` te leunen — panden met status
+// 'wacht_op_beeld' tellen wel mee voor de "binnenkort"-teller maar mogen
+// niet als lege kaart of pagina verschijnen.
+export function liveWoningen(): Woning[] {
+  return woningen.filter((w) => w.status !== 'wacht_op_beeld')
+}
+
+/** Aantal geauditeerde panden dat wacht op zijn fotoshoot. Filter
+ *  optioneel per collectie. */
+export function wachtOpBeeldCount(collectie?: Woning['collectie']): number {
+  return woningen.filter((w) => {
+    if (w.status !== 'wacht_op_beeld') return false
+    if (collectie && w.collectie !== collectie) return false
+    return true
+  }).length
 }

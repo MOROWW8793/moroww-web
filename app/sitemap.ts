@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { woningen } from '@/lib/woningen'
+import { liveWoningen } from '@/lib/woningen'
 import { alleGemeenten } from '@/lib/kennis/verblijfsbelasting'
 import { supabase } from '@/lib/supabase'
 
@@ -70,9 +70,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   }
 
-  // Pandpagina's NL — iterreer over lib/woningen (zo staat elk nieuw pand
-  // automatisch in de sitemap, wat eerder mis ging bij Sophora).
-  for (const w of woningen) {
+  // Pandpagina's NL — iterreer over live panden. Wachtende panden
+  // (status='wacht_op_beeld') hebben geen pagina, dus ook geen sitemap-entry.
+  for (const w of liveWoningen()) {
     entries.push({
       url: `${BASE}/collectie/${w.id}`,
       lastModified: now,
@@ -102,7 +102,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // Pandpagina's EN
-  for (const w of woningen) {
+  for (const w of liveWoningen()) {
     entries.push({
       url: `${BASE}/en/collection/${w.id}`,
       lastModified: now,

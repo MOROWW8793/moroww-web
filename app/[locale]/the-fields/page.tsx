@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
-import { woningen, type Locale } from '@/lib/woningen'
+import { liveWoningen, type Locale } from '@/lib/woningen'
 import { WoningKaarten } from '@/components/sections/WoningKaarten'
 
 export async function generateMetadata({
@@ -37,7 +37,7 @@ export default async function TheFieldsPage({
   const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations('thefields')
-  const fieldsPanden = woningen.filter((w) => w.collectie === 'the fields')
+  const fieldsPanden = liveWoningen().filter((w) => w.collectie === 'the fields')
 
   return (
     <main className="bg-moroww-blush">
