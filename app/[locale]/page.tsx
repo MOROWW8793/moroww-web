@@ -38,14 +38,14 @@ export default async function HomePage({
       <FaqJsonLd />
 
       {/* HERO — bouwspec sectie 2. Blush achtergrond, één regel display,
-          geen beeld, geen video, geen knop. Hoogte krap gehouden zodat de
-          deuren op 1440×900 volledig zichtbaar zijn onder de vouw, inclusief
-          het onderste tekstblok. */}
+          geen beeld, geen video, geen knop.
+          pt-mw-8 (5rem) houdt de kop onder de fixed nav (64px); overflow
+          visible zodat de ascenders van 'll' en 'é' niet klippen. */}
       <section
-        className="w-full flex items-center px-6 md:px-12 pt-mw-6"
+        className="w-full flex items-center px-6 md:px-12 pt-mw-8 overflow-visible"
         style={{ minHeight: '18vh' }}
       >
-        <div className="mx-auto max-w-7xl w-full">
+        <div className="mx-auto max-w-7xl w-full overflow-visible">
           <h1 className="text-display text-moroww-dark">
             twee collecties. één standaard.
           </h1>

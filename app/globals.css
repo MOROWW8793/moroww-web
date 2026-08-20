@@ -26,6 +26,10 @@
 
   /* ── Bouwspec sectie 2.2 — typografie ─────────────────────────────────── */
   --type-display:  clamp(3.5rem, 9vw, 8rem);
+  /* Regelhoogte 0.92 laat de ascenders (l-stokken, é-accent) boven de
+     regelbox uitsteken. Regelhoogte staat vast per spec, dus we geven het
+     element een kleine padding-top zodat de bovenlengtes ruimte houden.
+     Toegepast op elke .text-display via een utility-regel hieronder. */
   --type-h2:       clamp(1.75rem, 3vw, 2.75rem);
   --type-h3:       1.25rem;
   --type-body:     1.0625rem;
@@ -223,6 +227,14 @@ body {
    De artikelen in /kennis staan in gewone HTML met deze klassenlaag eromheen.
    Prose van Tailwind niet installeren voor een handvol pagina's; dat werd
    later toch weer overschreven. Alleen wat we hier gebruiken. */
+/* text-display gebruikt line-height 0.92; zonder padding klippen de ascenders
+   (l-stokken, é-accent) tegen de bovenrand. Regelhoogte blijft staan per
+   bouwspec sectie 2.2. Overflow expliciet visible — sommige parents
+   erven overflow-y: auto van body's overflow-x: hidden en zouden anders
+   glyphs kunnen afknijpen. */
+.text-display { padding-top: 0.08em; overflow: visible; }
+.text-display > * { overflow: visible; }
+
 .prose-kennis { color: #1A1A1A; font-size: 17px; line-height: 1.7; }
 .prose-kennis h2 {
   font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; line-height: 1.2;
