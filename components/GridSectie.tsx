@@ -1,13 +1,10 @@
-// Register-sectie in het 12-koloms raster.
+// Register-sectie: sectietitel als eyebrow boven de kop, één tekstkolom
+// links uitgelijnd op het raster, hairline op de breedte van die kolom.
 //
-// Vanaf lg (1024px):
-//   kolom 1-3   sticky sectietitel in text-audit ink-2
-//   kolom 4-10  inhoud (kop + body), max 62ch
-//   kolom 11-12 leeg (marge)
-//   hairline    spant kolom 1-10 en zit boven de inhoud
-//
-// Onder lg vervalt het raster: sectietitel boven de kop, hairline over
-// de volledige kolom.
+// De vroegere 12-koloms-variant met sticky sidebar-titel is teruggedraaid:
+// die herhaalde de H2 en liet naast korte secties een leeg vlak van meer
+// dan 1000px achter. Deze layout leest natuurlijker en houdt de hairline
+// nooit langer dan de inhoud.
 
 import type { ReactNode } from 'react'
 
@@ -16,21 +13,25 @@ interface Props {
   children: ReactNode
   /** Wanneer true: geen hairline erboven (voor de eerste sectie). */
   geenHairline?: boolean
+  /** Wanneer true: geen 62ch-cap op de inhoud. Gebruiken bij secties met
+   *  een intern raster (bv. de tech-tegels op /de-standaard) die anders
+   *  te krap zouden zijn. */
+  breed?: boolean
 }
 
-export function GridSectie({ titel, children, geenHairline }: Props) {
+export function GridSectie({ titel, children, geenHairline, breed }: Props) {
   return (
-    <section className="mt-mw-8 mb-mw-6 lg:grid lg:grid-cols-12 lg:gap-mw-5">
-      {!geenHairline && (
-        <hr
-          className="lg:col-span-10 lg:col-start-1 mb-mw-4 lg:mb-mw-5 border-0 border-t border-moroww-rule"
-          aria-hidden
-        />
-      )}
-      <p className="text-audit uppercase text-moroww-ink-2 lg:col-span-3 lg:col-start-1 lg:sticky lg:top-24 lg:self-start mb-mw-3 lg:mb-0">
-        {titel}
-      </p>
-      <div className="lg:col-span-7 lg:col-start-4 max-w-[62ch]">
+    <section className="mt-mw-8 mb-mw-6">
+      <div className={breed ? '' : 'max-w-[62ch]'}>
+        {!geenHairline && (
+          <hr
+            className="mb-mw-5 border-0 border-t border-moroww-rule"
+            aria-hidden
+          />
+        )}
+        <p className="text-audit uppercase text-moroww-ink-2 mb-mw-3">
+          {titel}
+        </p>
         {children}
       </div>
     </section>

@@ -123,9 +123,10 @@ export default async function DeStandaardPage({
           </div>
         </GridSectie>
 
-        {/* Zes tech-items in een twee-koloms grid binnen de sectie. Bewust
-            behouden — user's spec: deze werkt en is het model voor de rest. */}
-        <GridSectie titel="de standaard stopt niet bij de keuring">
+        {/* Zes tech-items in een twee-koloms grid binnen de sectie. `breed`
+            zorgt dat de 2-koloms opbouw genoeg ruimte heeft — behouden per
+            user's spec. */}
+        <GridSectie titel="de standaard stopt niet bij de keuring" breed>
           <h2 className="text-h2 text-moroww-dark">{t('add_title')}</h2>
           <div className="mt-mw-4 space-y-mw-3 text-body text-moroww-dark">
             <p>{t('add_intro1')}</p>
