@@ -19,6 +19,11 @@ const KENNIS_ROUTES: Array<{ path: string; priority: number }> = [
   { path: '/kennis/verblijfsbelasting-vakantiewoning',                priority: 0.85 },
   { path: '/kennis/tweedeverblijfsbelasting-of-logiesbelasting',      priority: 0.8  },
   { path: '/kennis/vakantiewoning-verhuren-zelf-platform-beheerder-label', priority: 0.8 },
+  { path: '/kennis/logiesdecreet-vakantiewoning-vlaanderen',          priority: 0.85 },
+  { path: '/kennis/omgevingsvergunning-functiewijziging-vakantiewoning', priority: 0.85 },
+  { path: '/kennis/belasting-huurinkomsten-vakantiewoning',           priority: 0.85 },
+  { path: '/kennis/verzekering-vakantiewoning',                       priority: 0.8  },
+  { path: '/kennis/is-je-woning-klaar-voor-premium-verhuur',          priority: 0.8  },
 ]
 
 // Routes die in beide talen bestaan. Voor NL: pad direct; voor EN: 'en'-alias.

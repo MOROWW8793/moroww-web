@@ -87,11 +87,16 @@ export interface KennisLink {
   href: string
 }
 export const kennisLinks: KennisLink[] = [
+  { titel: 'logiesdecreet',             href: '/kennis/logiesdecreet-vakantiewoning-vlaanderen' },
+  { titel: 'omgevingsvergunning',       href: '/kennis/omgevingsvergunning-functiewijziging-vakantiewoning' },
   { titel: 'wat een nacht kost',        href: '/kennis/wat-kost-een-nacht-vakantiewoning' },
+  { titel: 'belasting op huurinkomsten', href: '/kennis/belasting-huurinkomsten-vakantiewoning' },
   { titel: 'verblijfsbelasting',        href: '/kennis/verblijfsbelasting-vakantiewoning' },
   { titel: 'tweedeverblijf of logies',  href: '/kennis/tweedeverblijfsbelasting-of-logiesbelasting' },
   { titel: 'brandveiligheidsattest',    href: '/kennis/brandveiligheidsattest-vakantiewoning-vlaanderen' },
+  { titel: 'verzekering',               href: '/kennis/verzekering-vakantiewoning' },
   { titel: 'vier manieren',             href: '/kennis/vakantiewoning-verhuren-zelf-platform-beheerder-label' },
+  { titel: 'is je woning er klaar voor?', href: '/kennis/is-je-woning-klaar-voor-premium-verhuur' },
 ]
 
 export const footerNavItems: NavItem[] = [

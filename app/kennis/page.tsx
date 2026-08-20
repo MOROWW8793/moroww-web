@@ -24,11 +24,32 @@ interface Kaart {
 // robots-metadata op die pagina's zelf en de comment in app/sitemap.ts.
 const KAARTEN: Kaart[] = [
   {
+    href: '/kennis/logiesdecreet-vakantiewoning-vlaanderen',
+    eyebrow: 'regels en vergunningen',
+    titel: 'Het Vlaams Logiesdecreet in mensentaal',
+    intro:
+      'Aanmelden bij Toerisme Vlaanderen, brandveiligheidsattest, verzekering, strafregister, stedenbouw. Vijf voorwaarden voor wie in Vlaanderen tegen betaling laat overnachten.',
+  },
+  {
+    href: '/kennis/omgevingsvergunning-functiewijziging-vakantiewoning',
+    eyebrow: 'regels en vergunningen',
+    titel: 'Omgevingsvergunning voor een vakantiewoning',
+    intro:
+      'De verplichting waar de meeste eigenaars over vallen. Je aanmelding bij Toerisme Vlaanderen is geen vergunning. Brugge en De Panne geven de vergunning niet meer af in de binnenstad.',
+  },
+  {
     href: '/kennis/wat-kost-een-nacht-vakantiewoning',
     eyebrow: 'opbrengst en rendement',
     titel: 'Wat kost één nacht in je vakantiewoning je echt?',
     intro:
       'Van bruto naar netto, post per post. Btw ging op 1 maart 2026 van 6 naar 12 procent en er is geen drempel van € 25.000 meer. Wie het niet doorrekent, geeft de facto zes procent van zijn logiesomzet weg.',
+  },
+  {
+    href: '/kennis/belasting-huurinkomsten-vakantiewoning',
+    eyebrow: 'opbrengst en rendement',
+    titel: 'Belasting op je huurinkomsten',
+    intro:
+      'De 60/40-opsplitsing tussen onroerend en roerend inkomen, het kadastraal inkomen, en wanneer de fiscus alles herkwalificeert als beroepsinkomen.',
   },
   {
     href: '/kennis/verblijfsbelasting-vakantiewoning',
@@ -52,11 +73,25 @@ const KAARTEN: Kaart[] = [
       'A, Abis, B of C — welk type, welke bijlage, waar aanvragen en hoe lang het geldig is. Sinds 28 september 2025 loopt de keuring voor kleinere logies via ACEG vzw, niet meer via Vinçotte.',
   },
   {
+    href: '/kennis/verzekering-vakantiewoning',
+    eyebrow: 'regels en vergunningen',
+    titel: 'Verzekering voor een vakantiewoning',
+    intro:
+      'Een gewone brandpolis dekt toeristische verhuur niet automatisch. Wat je nodig hebt, wat er misgaat, en welke vraag je aan je makelaar moet stellen.',
+  },
+  {
     href: '/kennis/vakantiewoning-verhuren-zelf-platform-beheerder-label',
     eyebrow: 'kiezen hoe je verhuurt',
     titel: 'Zelf verhuren, platform, beheerder of label?',
     intro:
       'Vier manieren, met hun echte kosten en tijdsbesteding. Inclusief de vier situaties waarin je beter iets anders kiest dan moroww.',
+  },
+  {
+    href: '/kennis/is-je-woning-klaar-voor-premium-verhuur',
+    eyebrow: 'wat het label anders doet',
+    titel: 'Is je woning klaar voor het hogere segment?',
+    intro:
+      'De meeste woningen die we bekijken halen de standaard niet. Wat vast is en wat op te lossen is. De enige bottom-of-funnel-pagina die eerlijk durft nee te zeggen.',
   },
 ]
 
