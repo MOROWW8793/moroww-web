@@ -4,7 +4,10 @@ import { Cta, VerderLezen } from '@/components/kennis/Cta'
 import { Faq } from '@/components/kennis/Faq'
 import { Actualiteitsblok } from '@/components/kennis/Actualiteitsblok'
 import { ArticleJsonLd, SoftwareApplicationJsonLd } from '@/components/kennis/JsonLd'
-import { SCREENINGS_TOTAL, SCREENINGS_ACCEPTED } from '@/lib/screenings'
+import { screeningsPubliek } from '@/lib/screenings'
+
+// ISR — cijfers zitten in dit artikel; blijven bij op elke keuring.
+export const revalidate = 3600
 
 const URL = 'https://www.moroww.com/kennis/rendement-vakantiewoning-berekenen'
 
@@ -22,7 +25,8 @@ export const metadata = {
   robots: { index: false, follow: false },
 }
 
-export default function RendementPage() {
+export default async function RendementPage() {
+  const cijfers = await screeningsPubliek()
   return (
     <>
       <ArticleJsonLd
@@ -135,9 +139,16 @@ export default function RendementPage() {
         </p>
         <p>
           moroww, een Belgisch kwaliteitslabel voor vakantiewoningen aan de kust en op
-          het platteland, bezoekt elke woning fysiek voor ze in de collectie komt. Ruim{' '}
-          {SCREENINGS_TOTAL} woningen kwamen die weg al langs. {SCREENINGS_ACCEPTED}{' '}
-          haalden het.
+          het platteland, bezoekt elke woning fysiek voor ze in de collectie komt.
+          {cijfers ? (
+            <>
+              {' '}Ruim {cijfers.aantal_dossier} dossiers kwamen die weg al langs,{' '}
+              {cijfers.aantal_bezoek} werden fysiek bezocht en{' '}
+              {cijfers.aantal_opgenomen} haalden het.
+            </>
+          ) : (
+            <> De meeste dossiers die die weg gaan, halen het niet.</>
+          )}
         </p>
         <p>De poortentoets stelt je dezelfde harde vragen die wij ter plaatse stellen:</p>
         <table>

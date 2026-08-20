@@ -1,8 +1,8 @@
 /**
  * Vaste statrij met vier cijfers gescheiden door hairlines. Wordt gebruikt
- * op /de-standaard (350 · 7 · 129 · 10/10) en op /eigenaar-worden. Cijfers
- * komen uit constanten (lib/screenings.ts, lib/reviews.ts) via props, zodat
- * ze op één plek staan en niet in lopende tekst verdwijnen.
+ * op /eigenaar-worden. Cijfers komen live uit de screenings_publiek-view op
+ * moroww-os (via lib/screenings.ts) en uit lib/reviews.ts, aangeleverd door
+ * de caller. Bij een null-cijfer valt de cel terug op '—' (nooit '0').
  */
 export function Statrij({
   items,

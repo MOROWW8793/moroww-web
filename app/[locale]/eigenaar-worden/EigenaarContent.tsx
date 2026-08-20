@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { LeadForm } from "@/components/ui/LeadForm";
 import { Statrij } from "@/components/sections/Statrij";
-import { SCREENINGS_TOTAL, SCREENINGS_ACCEPTED } from "@/lib/screenings";
+import { screeningsPubliek } from "@/lib/screenings";
 import { TOTAL_STAYS_REVIEWED } from "@/lib/reviews";
 import { Register } from "@/components/Register";
 import { AuditLijn } from "@/components/AuditLijn";
@@ -24,7 +24,13 @@ function DefRij({ label, value }: { label: string; value: React.ReactNode }) {
   )
 }
 
-export function EigenaarContent() {
+export async function EigenaarContent() {
+  // Screenings-cijfers live uit moroww-os. Bij een fout op de view valt de
+  // Statrij-cel terug op '—' zodat we nooit een misleidende '0' tonen.
+  const cijfers = await screeningsPubliek()
+  const cel = (n: number | undefined) =>
+    typeof n === 'number' ? String(n) : '—'
+
   return (
     <Register kant="eigenaar">
       <h1 className="sr-only">
@@ -49,12 +55,13 @@ export function EigenaarContent() {
         </div>
       </section>
 
-      {/* ── STATRIJ — het bewijs in cijfers ── */}
+      {/* ── STATRIJ — het bewijs in cijfers. Eerste drie live uit
+          screenings_publiek (moroww-os), vierde uit lib/reviews. ── */}
       <Statrij items={[
-        { cijfer: String(SCREENINGS_TOTAL),     label: 'woningen bekeken' },
-        { cijfer: String(SCREENINGS_ACCEPTED),  label: 'opgenomen' },
-        { cijfer: String(TOTAL_STAYS_REVIEWED), label: 'verblijven' },
-        { cijfer: '10/10',                      label: 'beoordeling' },
+        { cijfer: cel(cijfers?.aantal_dossier),   label: 'dossiers bekeken' },
+        { cijfer: cel(cijfers?.aantal_bezoek),    label: 'fysiek bezocht'   },
+        { cijfer: cel(cijfers?.aantal_opgenomen), label: 'opgenomen'        },
+        { cijfer: String(TOTAL_STAYS_REVIEWED),   label: 'verblijven'       },
       ]} />
 
       {/* ── WAT HET LABEL DOET ── */}

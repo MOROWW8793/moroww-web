@@ -5,9 +5,12 @@ import { Cta, VerderLezen } from '@/components/kennis/Cta'
 import { Faq } from '@/components/kennis/Faq'
 import { Actualiteitsblok } from '@/components/kennis/Actualiteitsblok'
 import { ArticleJsonLd } from '@/components/kennis/JsonLd'
-import { SCREENINGS_TOTAL, SCREENINGS_ACCEPTED } from '@/lib/screenings'
+import { screeningsPubliek } from '@/lib/screenings'
 
 const URL = 'https://www.moroww.com/kennis/vakantiewoning-verhuren-zelf-platform-beheerder-label'
+
+// ISR — screenings-cijfers zitten in dit artikel, in lijn met /de-standaard.
+export const revalidate = 3600
 
 export const metadata = kennisMetadata({
   titel: 'Zelf verhuren, platform, beheerder of label? · vier modellen vergeleken',
@@ -16,7 +19,8 @@ export const metadata = kennisMetadata({
   pad: '/kennis/vakantiewoning-verhuren-zelf-platform-beheerder-label',
 })
 
-export default function VierModellenPage() {
+export default async function VierModellenPage() {
+  const cijfers = await screeningsPubliek()
   return (
     <>
       <ArticleJsonLd
@@ -71,8 +75,15 @@ export default function VierModellenPage() {
         </p>
         <p>
           De woning wordt fysiek geïnspecteerd voor ze in de collectie komt. Ze wordt
-          opnieuw geauditeerd. En ze gaat eruit als ze niet meer voldoet. Van de{' '}
-          {SCREENINGS_TOTAL} woningen die we bekeken, kwamen er {SCREENINGS_ACCEPTED} in.
+          opnieuw geauditeerd. En ze gaat eruit als ze niet meer voldoet.
+          {cijfers ? (
+            <>
+              {' '}Van de {cijfers.aantal_bezoek} woningen die we bezochten, kwamen er{' '}
+              {cijfers.aantal_opgenomen} in.
+            </>
+          ) : (
+            <> Van de woningen die we bezoeken, komt slechts een fractie in de collectie.</>
+          )}
         </p>
         <p>
           Wat het niet is: wij nemen je gastcontact niet over als je dat zelf wil doen.

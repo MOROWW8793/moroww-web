@@ -6,8 +6,14 @@ import { Register } from '@/components/Register'
 import { GridSectie } from '@/components/GridSectie'
 import { AuditLijn } from '@/components/AuditLijn'
 import { InlineFoto } from '@/components/InlineFoto'
+import { CijferBlok } from '@/components/CijferBlok'
 import { formatAuditMaand } from '@/components/PandKaart'
 import { siteMetadata } from '@/lib/seo/siteMetadata'
+import { screeningsPubliek } from '@/lib/screenings'
+
+// ISR: elk uur revalidate zodat de cijfers uit screenings_publiek meebewegen
+// zonder dat we bij elke keuring een deploy hoeven te draaien.
+export const revalidate = 3600
 
 export async function generateMetadata({
   params,
@@ -17,9 +23,18 @@ export async function generateMetadata({
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'destandaard' })
   const isNl = locale === 'nl'
+  // Meta-description leest live uit de view. Bij een fout valt hij terug op
+  // t('meta_description') — die zin bevat geen cijfers meer (zie nl.json /
+  // en.json na deze commit), dus staan er nooit stale getallen in de SERP.
+  const s = await screeningsPubliek()
+  const beschrijving = s
+    ? isNl
+      ? `Van de ${s.aantal_bezoek} woningen die moroww bezocht, kwamen er ${s.aantal_opgenomen} in de collectie. Wat we keuren, en waarom de rest afvalt.`
+      : `Of the ${s.aantal_bezoek} homes moroww visited, ${s.aantal_opgenomen} entered the collection. What we certify, and why the rest falls out.`
+    : t('meta_description')
   return siteMetadata({
     titel: t('meta_title'),
-    beschrijving: t('meta_description'),
+    beschrijving,
     pad: isNl ? '/de-standaard' : '/en/the-standard',
     locale: isNl ? 'nl' : 'en',
     hreflang: { nl: '/de-standaard', en: '/en/the-standard' },
@@ -40,6 +55,7 @@ export default async function DeStandaardPage({
   const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations('destandaard')
+  const cijfers = await screeningsPubliek()
 
   const gates = [
     { title: t('gate01_title'), body: t('gate01_body') },
@@ -71,7 +87,13 @@ export default async function DeStandaardPage({
 
       <div className="mx-auto max-w-6xl px-6 md:px-12">
 
+        {/* Cijferblok — substantieert "wij zeggen vaker nee dan ja" voor de
+            vier poorten volgen. Live uit screenings_publiek (moroww-os). */}
         <GridSectie geenHairline>
+          <CijferBlok data={cijfers} />
+        </GridSectie>
+
+        <GridSectie>
           <h2 className="text-h2 text-moroww-dark">{t('gates_title')}</h2>
           <p className="mt-mw-4 text-body-lg text-moroww-dark">
             Er is geen weging en er zijn geen uitzonderingen. Alle vier, of het

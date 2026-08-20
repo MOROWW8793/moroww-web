@@ -4,59 +4,69 @@ import { Cta, VerderLezen } from '@/components/kennis/Cta'
 import { Faq } from '@/components/kennis/Faq'
 import { Actualiteitsblok } from '@/components/kennis/Actualiteitsblok'
 import { ArticleJsonLd, DatasetJsonLd } from '@/components/kennis/JsonLd'
-import { SCREENINGS_TOTAL, SCREENINGS_ACCEPTED } from '@/lib/screenings'
+import { CijferBlok } from '@/components/CijferBlok'
+import { screeningsPubliek, formatBijgewerktMaand } from '@/lib/screenings'
 
 const URL = 'https://www.moroww.com/kennis/waarom-vakantiewoningen-afvallen'
 
-const percentageAccepted = ((SCREENINGS_ACCEPTED / SCREENINGS_TOTAL) * 100).toFixed(1)
+// ISR — dezelfde bron als /de-standaard, zelfde revalidate-window.
+export const revalidate = 3600
 
-// Nog niet publiek: de redenen-per-categorie ontbreken. Zodra de screeningstabel
-// per reden gepubliceerd wordt (op moroww-os) hoort deze pagina met echte data
-// terug te komen. Tot dan geen indexering en niet in de sitemap of op de hub.
-export const metadata = {
-  ...kennisMetadata({
-    titel: `${SCREENINGS_TOTAL} vakantiewoningen bekeken, ${SCREENINGS_ACCEPTED} opgenomen · moroww`,
-    beschrijving:
-      'moroww bezoekt elke woning fysiek. De meeste halen de standaard niet. Dit zijn de aantallen; de redenen volgen per publicatiereeks.',
-    pad: '/kennis/waarom-vakantiewoningen-afvallen',
-  }),
-  robots: { index: false, follow: false },
+// Blijft noindex tot screenings_redenen effectief gevuld is (nu 0 rijen,
+// zie migratie 053 op moroww-os). Zodra we per bezochte reject een
+// reden_categorie invullen, kan deze bovenkant terug naar index.
+export async function generateMetadata() {
+  return {
+    ...kennisMetadata({
+      titel: 'Waarom vakantiewoningen afvallen · moroww',
+      beschrijving:
+        'moroww bezoekt elke woning fysiek. De meeste halen de standaard niet. Dit zijn de aantallen; de redenen volgen per publicatiereeks.',
+      pad: '/kennis/waarom-vakantiewoningen-afvallen',
+    }),
+    robots: { index: false, follow: false },
+  }
 }
 
-export default function AfvalRedenenPage() {
+export default async function AfvalRedenenPage() {
+  const cijfers = await screeningsPubliek()
+  const maand = cijfers ? formatBijgewerktMaand(cijfers.bijgewerkt_op) : ''
+
+  // Bij een fout op de view: schrijf de korte-antwoord zonder cijfers. De
+  // DatasetJsonLd laten we dan weg — zonder aantallen is er geen dataset.
+  const korteAntwoord = cijfers
+    ? `moroww, een Belgisch kwaliteitslabel voor vakantiewoningen, bezocht ${cijfers.aantal_bezoek} woningen. ${cijfers.aantal_opgenomen} kwamen in de collectie. Daarvoor lagen er ${cijfers.aantal_dossier} dossiers op tafel. Elke woning wordt fysiek bezocht voor er een oordeel valt, en woningen die niet meer voldoen verlaten de collectie.`
+    : 'moroww, een Belgisch kwaliteitslabel voor vakantiewoningen, bezoekt elke woning fysiek voor er een oordeel valt. Woningen die niet meer voldoen verlaten de collectie. De actuele aantallen zijn nu even niet bereikbaar.'
+
   return (
     <>
       <ArticleJsonLd
-        titel={`${SCREENINGS_TOTAL} vakantiewoningen bekeken, ${SCREENINGS_ACCEPTED} opgenomen`}
-        beschrijving="Cijfers over de fysieke selectie van vakantiewoningen door moroww: aantal bekeken woningen, aantal opgenomen en de redenen waarop de rest afviel."
+        titel="Waarom vakantiewoningen afvallen"
+        beschrijving="Cijfers over de fysieke selectie van vakantiewoningen door moroww: aantal bezochte woningen, aantal opgenomen en de redenen waarop de rest afviel."
         url={URL}
         datumGepubliceerd={KENNIS_GEPUBLICEERD}
-        datumGewijzigd="2026-08-19"
+        datumGewijzigd={cijfers?.bijgewerkt_op?.slice(0, 10) ?? KENNIS_GEPUBLICEERD}
       />
-      <DatasetJsonLd
-        naam="moroww · screenings van vakantiewoningen"
-        beschrijving={`Aantallen uit het moroww-auditsysteem: ${SCREENINGS_TOTAL} bekeken woningen, ${SCREENINGS_ACCEPTED} opgenomen.`}
-        url={URL}
-        datumGewijzigd="2026-08-19"
-      />
+      {cijfers && (
+        <DatasetJsonLd
+          naam="moroww · screenings van vakantiewoningen"
+          beschrijving={`Aantallen uit het moroww-auditsysteem: ${cijfers.aantal_dossier} dossiers bekeken, ${cijfers.aantal_bezoek} fysiek bezocht, ${cijfers.aantal_opgenomen} opgenomen.`}
+          url={URL}
+          datumGewijzigd={cijfers.bijgewerkt_op.slice(0, 10)}
+        />
+      )}
 
       <ArticleLayout
         eyebrow="wat het label anders doet"
         terug={{ href: '/kennis', label: 'kennisbank' }}
         titel="Waarom vakantiewoningen afvallen"
-        korteAntwoord={`moroww, een Belgisch kwaliteitslabel voor vakantiewoningen, bekeek ${SCREENINGS_TOTAL} woningen. ${SCREENINGS_ACCEPTED} kwamen in de collectie. Dat is een aanvaardingspercentage van ${percentageAccepted} procent. Elke woning wordt fysiek bezocht voor er een oordeel valt, en woningen die niet meer voldoen verlaten de collectie.`}
+        korteAntwoord={korteAntwoord}
       >
-        <h2>De cijfers</h2>
-        <table>
-          <tbody>
-            <tr><th>Woningen bekeken</th><td>{SCREENINGS_TOTAL}</td></tr>
-            <tr><th>Opgenomen in de collectie</th><td>{SCREENINGS_ACCEPTED}</td></tr>
-            <tr><th>Aanvaardingspercentage</th><td>{percentageAccepted} %</td></tr>
-          </tbody>
-        </table>
-        <p>
-          <em>Uit het moroww-auditsysteem. Bijgewerkt op 19 augustus 2026.</em>
-        </p>
+        {/* not-prose zodat de CijferBlok-typografie niet door de artikel-
+            prose-stijlen wordt opgeblazen. Zelfde bron, zelfde formulering
+            als /de-standaard — één component. */}
+        <div className="not-prose my-mw-8">
+          <CijferBlok data={cijfers} />
+        </div>
 
         <h2>De redenen</h2>
         <p>
@@ -152,8 +162,8 @@ export default function AfvalRedenenPage() {
         />
 
         <Actualiteitsblok
-          nagekekenOp="19 augustus 2026"
-          bron="moroww auditsysteem — aantallen uit lib/screenings.ts, live-integratie met de screeningstabel volgt"
+          nagekekenOp={maand ? `${maand} (moroww-systeem)` : 'moroww-systeem'}
+          bron="Cijfers live uit de view screenings_publiek op moroww-os. Redenen-per-categorie volgen zodra screenings_redenen gevuld is."
         />
       </ArticleLayout>
     </>
