@@ -151,7 +151,7 @@ const _woningenRaw: Woning[] = [
     ],
     boekUrl: 'https://book.moroww.com/nl/properties/698c63ff3d9a2d0013fefd72?minOccupancy=1',
     // Architectuurdetail met het schaduwvlak — override op de default fotos[2].
-    fotoNaBeschrijving: '/images/woningen/knokke-new/Nosso_Logies_36.jpg',
+    fotoNaBeschrijving: '/images/woningen/knokke-new/Nosso Logies_35.jpg',
     // Onder "de buurt" bewust geen foto tot er iets passends is.
     fotoNaBuurt: null,
     amenities: ['Smart lock', 'Wifi'],
