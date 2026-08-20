@@ -28,9 +28,15 @@ export function Register({ kant, children }: Props) {
   } as CSSProperties
 
   return (
+    // flow-root maakt van Register een block formatting context. Zonder dit
+    // ontsnapt de mb van de laatste GridSectie (mb-mw-6 = 48px) via
+    // margin-collapse door de wrapper, valt buiten de paper-bg, en toont
+    // daar het blush van body/main — een strookje in de verkeerde kleur
+    // tussen het paginaslot en de voettekst. Zelfde ontsnapping speelt
+    // bovenaan bij mt-mw-8 (80px) van de eerste sectie.
     <div
       data-register={kant}
-      className={isGast ? 'bg-moroww-blush' : 'bg-moroww-paper'}
+      className={`flow-root ${isGast ? 'bg-moroww-blush' : 'bg-moroww-paper'}`}
       style={style}
     >
       {children}
