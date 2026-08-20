@@ -1,17 +1,12 @@
-// H2 met sidebar-label in het prose-kennis-raster.
+// H2 met hairline erboven in het prose-kennis-raster.
 //
-// Rendert drie siblings binnen .prose-kennis:
-//   .sectie-label      kleine kapitalen, sticky in kolom 1-3
-//   .sectie-hairline   1px in --moroww-rule, kolom 1-10
-//   h2                 hoofdkop in kolom 4-10
-//
-// De styling zit in globals.css .prose-kennis > * selectoren. Onder lg
-// vervalt het raster en stapelen de siblings zoals normaal.
+// Vroeger rendered dit component ook een .sectie-label als eyebrow, maar
+// dat label was op elke kennispagina een letterlijke herhaling van de H2.
+// Nu alleen hairline + h2 — de scheiding is de hairline, de kop is de h2.
 
 export function H2Section({ titel }: { titel: string }) {
   return (
     <>
-      <p className="sectie-label">{titel}</p>
       <hr className="sectie-hairline" aria-hidden />
       <h2>{titel}</h2>
     </>

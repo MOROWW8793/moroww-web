@@ -79,7 +79,7 @@ export default async function DeStandaardPage({
 
       <div className="mx-auto max-w-6xl px-6 md:px-12">
 
-        <GridSectie titel="de vier poorten" geenHairline>
+        <GridSectie geenHairline>
           <h2 className="text-h2 text-moroww-dark">{t('gates_title')}</h2>
           <p className="mt-mw-4 text-body-lg text-moroww-dark">
             Er is geen weging en er zijn geen uitzonderingen. Alle vier, of het
@@ -98,7 +98,7 @@ export default async function DeStandaardPage({
           <InlineFoto src="/images/standaard/V2-210.jpg" alt="glas water op tafel, laag zonlicht" />
         </div>
 
-        <GridSectie titel="wat er gebeurt voor opname">
+        <GridSectie>
           <h2 className="text-h2 text-moroww-dark">{t('visit_title')}</h2>
           <div className="mt-mw-4 space-y-mw-3 text-body text-moroww-dark">
             <p>{t('visit_p1')}</p>
@@ -115,12 +115,12 @@ export default async function DeStandaardPage({
         {/* Zes tech-items zijn uitgesplitst naar individuele secties.
             add_limit en add_invisible zijn per user's spec uit de publicatie
             gehaald. Het slot krijgt geen beeld. */}
-        <GridSectie titel="het slot">
+        <GridSectie>
           <h3 className="text-h3 text-moroww-dark">{t('add_lock_title')}</h3>
           <p className="mt-mw-3 text-body text-moroww-dark">{t('add_lock_body')}</p>
         </GridSectie>
 
-        <GridSectie titel="licht, warmte en geluid">
+        <GridSectie>
           <h3 className="text-h3 text-moroww-dark">{t('add_ambient_title')}</h3>
           <p className="mt-mw-3 text-body text-moroww-dark">{t('add_ambient_body')}</p>
         </GridSectie>
@@ -128,7 +128,7 @@ export default async function DeStandaardPage({
           <InlineFoto src="/images/standaard/V2-63.jpg" alt="kunstwerk aan de muur, speaker in de hoek" />
         </div>
 
-        <GridSectie titel="de geur">
+        <GridSectie>
           <h3 className="text-h3 text-moroww-dark">{t('add_scent_title')}</h3>
           <p className="mt-mw-3 text-body text-moroww-dark">{t('add_scent_body')}</p>
         </GridSectie>
@@ -136,7 +136,7 @@ export default async function DeStandaardPage({
           <InlineFoto src="/images/standaard/V2-36.jpg" alt="man wast zijn handen aan de wastafel, lachend" />
         </div>
 
-        <GridSectie titel="het gewone">
+        <GridSectie>
           <h3 className="text-h3 text-moroww-dark">{t('add_ordinary_title')}</h3>
           <p className="mt-mw-3 text-body text-moroww-dark">{t('add_ordinary_body')}</p>
         </GridSectie>
@@ -144,7 +144,7 @@ export default async function DeStandaardPage({
           <InlineFoto src="/images/standaard/V2-19.jpg" alt="linnen wordt opengeslagen, opgemaakt bed" />
         </div>
 
-        <GridSectie titel="elk jaar opnieuw">
+        <GridSectie>
           <h2 className="text-h2 text-moroww-dark">{t('reaudit_title')}</h2>
           <div className="mt-mw-4 space-y-mw-3 text-body text-moroww-dark">
             <p>{t('reaudit_p1')}</p>

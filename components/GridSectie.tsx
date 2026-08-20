@@ -9,13 +9,13 @@
 import type { ReactNode } from 'react'
 
 interface Props {
-  titel: string
+  /** Optionele eyebrow boven de kop. Laat weg als de kop hem letterlijk
+   *  of bijna letterlijk zou herhalen — dubbele signalen leiden af. */
+  titel?: string
   children: ReactNode
   /** Wanneer true: geen hairline erboven (voor de eerste sectie). */
   geenHairline?: boolean
-  /** Wanneer true: geen 62ch-cap op de inhoud. Gebruiken bij secties met
-   *  een intern raster (bv. de tech-tegels op /de-standaard) die anders
-   *  te krap zouden zijn. */
+  /** Wanneer true: geen 62ch-cap op de inhoud. */
   breed?: boolean
 }
 
@@ -29,9 +29,11 @@ export function GridSectie({ titel, children, geenHairline, breed }: Props) {
             aria-hidden
           />
         )}
-        <p className="text-audit uppercase text-moroww-ink-2 mb-mw-3">
-          {titel}
-        </p>
+        {titel && (
+          <p className="text-audit uppercase text-moroww-ink-2 mb-mw-3">
+            {titel}
+          </p>
+        )}
         {children}
       </div>
     </section>
