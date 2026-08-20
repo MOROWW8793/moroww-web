@@ -1,95 +1,55 @@
-"use client";
-
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import Link from "next/link";
 import { LeadForm } from "@/components/ui/LeadForm";
 import { Statrij } from "@/components/sections/Statrij";
 import { SCREENINGS_TOTAL, SCREENINGS_ACCEPTED } from "@/lib/screenings";
 import { TOTAL_STAYS_REVIEWED } from "@/lib/reviews";
+import { Register } from "@/components/Register";
+import { AuditLijn } from "@/components/AuditLijn";
 
-const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.4, ease: "easeOut" as const },
-};
+// Herschreven in het eigenaarsregister (bouwspec stap 5B). Paper-achtergrond,
+// hairlines tussen secties, geen witte kaarten, geen afgeronde blokken, geen
+// schaduwen. Copy hardgecodeerd in NL — deze pagina is NL-only.
+
+// Hairline in --moroww-rule tussen inhoudsblokken.
+function Hr() {
+  return <hr className="mt-mw-8 mb-mw-6 border-0 border-t border-moroww-rule" aria-hidden />
+}
+
+function DefRij({ label, value }: { label: string; value: React.ReactNode }) {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,14rem)_1fr] gap-mw-3 py-mw-4">
+      <dt className="text-audit uppercase text-moroww-ink-2">{label}</dt>
+      <dd className="text-body text-moroww-dark">{value}</dd>
+    </div>
+  )
+}
 
 export function EigenaarContent() {
-  const t = useTranslations('owner')
-
-  const systeem = [
-    { nr: "01", titel: t('sys_01_titel'), tekst: t('sys_01_tekst') },
-    { nr: "02", titel: t('sys_02_titel'), tekst: t('sys_02_tekst') },
-    { nr: "03", titel: t('sys_03_titel'), tekst: t('sys_03_tekst') },
-    { nr: "04", titel: t('sys_04_titel'), tekst: t('sys_04_tekst') },
-    { nr: "05", titel: t('sys_05_titel'), tekst: t('sys_05_tekst') },
-    { nr: "06", titel: t('sys_06_titel'), tekst: t('sys_06_tekst') },
-  ]
-
-  const voordelen = [
-    { titel: t('fp_01_titel'), tekst: t('fp_01_tekst') },
-    { titel: t('fp_02_titel'), tekst: t('fp_02_tekst') },
-    { titel: t('fp_03_titel'), tekst: t('fp_03_tekst') },
-    { titel: t('fp_04_titel'), tekst: t('fp_04_tekst') },
-  ]
-
-  const stappen = [
-    { nr: "01", titel: t('stap_01_titel'), tekst: t('stap_01_tekst') },
-    { nr: "02", titel: t('stap_02_titel'), tekst: t('stap_02_tekst') },
-    { nr: "03", titel: t('stap_03_titel'), tekst: t('stap_03_tekst') },
-  ]
-
   return (
-    <div className="bg-moroww-dark">
+    <Register kant="eigenaar">
       <h1 className="sr-only">
         Vakantiewoning verhuren in België via moroww — gecertificeerd kwaliteitslabel met smart lock, audit en directe boeking
       </h1>
-      {/* ── SECTIE 1: HERO ── */}
-      <section className="h-hero relative w-full overflow-hidden mb-0">
-        {/* Achtergrondfoto vult volledige viewport */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/woningen/knokke-new/2026-AmelieBauwens-Moroww-V2-115.jpg"
-            alt="moroww woning detail"
-            fill
-            className="object-cover object-center"
-            priority
-            sizes="100vw"
-          />
+
+      {/* ── HERO ── */}
+      <section className="w-full px-6 md:px-12 pt-28 pb-mw-8">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-audit uppercase text-moroww-label">voor eigenaars</p>
+          <h2
+            className="mt-mw-4 font-bold text-moroww-dark leading-[1.05] tracking-[-0.02em] max-w-[16ch]"
+            style={{ fontSize: 'clamp(2.5rem, 7vw, 6rem)' }}
+          >
+            je woning. onze standaard. één label.
+          </h2>
+          <p className="mt-mw-5 text-body-lg text-moroww-dark max-w-[62ch]">
+            moroww is een label voor vakantiewoningen, geen beheerder. Je blijft
+            eigenaar van je woning, van je boekingen en van je gasten. Wij
+            leveren de standaard, de audit, het systeem en de distributie.
+          </p>
         </div>
-
-        {/* Donkere gradient onderaan voor tekst-leesbaarheid */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
-
-        {/* Content onderaan gepositioneerd */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="relative z-10 h-full flex flex-col justify-end px-6 md:px-16 lg:px-24 pb-16 md:pb-20 lg:pb-24"
-        >
-          <div className="max-w-3xl">
-            <p className="text-moroww-orange text-sm font-medium tracking-[0.2em] uppercase mb-6 md:mb-8">
-              {t('hero_label')}
-            </p>
-            <h2 className="text-white text-[clamp(2rem,7vw,6rem)] leading-[1.05] mb-8 md:mb-10">
-              <span className="font-light">{t('hero_h1_light1')} </span>
-              <span className="font-bold">{t('hero_h1_main')} </span>
-              <span className="font-light">{t('hero_h1_light2')} </span>
-              <span className="font-bold">{t('hero_h1_bold')}</span>
-            </h2>
-            <p className="text-white/85 text-base md:text-lg leading-relaxed max-w-xl mb-8 md:mb-10">
-              {t('hero_body')}
-            </p>
-            <div className="inline-block border border-white/40 rounded-full px-6 py-3 text-white/80 text-sm">
-              {t('hero_badge')}
-            </div>
-          </div>
-        </motion.div>
       </section>
 
-      {/* ── STATRIJ — het bewijs in vier cijfers ── */}
+      {/* ── STATRIJ — het bewijs in cijfers ── */}
       <Statrij items={[
         { cijfer: String(SCREENINGS_TOTAL),     label: 'woningen bekeken' },
         { cijfer: String(SCREENINGS_ACCEPTED),  label: 'opgenomen' },
@@ -97,182 +57,235 @@ export function EigenaarContent() {
         { cijfer: '10/10',                      label: 'beoordeling' },
       ]} />
 
-      {/* ── SECTIE 2: WAT MOROWW INSTALLEERT ── */}
-      <section className="w-full bg-moroww-dark py-12 md:py-20 mt-0">
-        <div className="relative z-10">
-          <motion.div {...fadeUp} className="max-w-4xl mx-auto px-6 md:px-16 mb-12">
-            <p className="text-xs uppercase tracking-widest text-moroww-orange mb-5">
-              {t('tech_label')}
+      {/* ── WAT HET LABEL DOET ── */}
+      <section className="w-full px-6 md:px-12 py-mw-8">
+        <div className="mx-auto max-w-6xl">
+          <AuditLijn density="quiet" items={['wat het label doet']} />
+          <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[68ch]">
+            de standaard komt van ons, de woning blijft van jou
+          </h2>
+          <div className="mt-mw-4 max-w-[68ch] space-y-mw-3 text-body text-moroww-dark">
+            <p>
+              Voor een woning in de collectie komt, staan we er ter plaatse. We
+              beoordelen op vier poorten: ruimte, ligging, karakter en staat.
+              Van de woningen die we bekijken, haalt de meerderheid de standaard
+              niet.
             </p>
-            <h2 className="text-[clamp(1.75rem,5.5vw,5rem)] font-bold leading-[1.1] text-white">
-              <span className="font-light">{t('tech_h2_light')}</span><br />
-              {t('tech_h2_main')}<br />
-              <span className="font-light">{t('tech_h2_light2')}</span>
-            </h2>
-            <p className="mt-5 text-lg text-white/60 max-w-lg leading-relaxed">
-              {t('tech_body')}
+            <p>
+              Halen we de standaard wel: dan installeren we de systemen die het
+              verblijf dragen. We voeren jaarlijks een heraudit uit. Voldoet
+              een woning niet meer, dan verlaat ze de collectie. Ook als ze
+              goed verhuurt.
             </p>
-          </motion.div>
+          </div>
+        </div>
+      </section>
 
-          <div className="max-w-4xl mx-auto px-6 md:px-16">
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              {systeem.map((item, i) => (
-                <motion.div
-                  key={item.nr}
-                  {...fadeUp}
-                  transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.06 }}
-                  className={`border-t border-white/10 py-8 ${i % 2 === 1 ? "md:pl-10 md:border-l md:border-white/10" : "md:pr-10"}`}
-                >
-                  <span
-                    className="block font-bold leading-none text-moroww-orange select-none"
-                    style={{ fontSize: "2.5rem", opacity: 0.18 }}
-                  >
-                    {item.nr}
-                  </span>
-                  <h3 className="text-base font-semibold text-white mt-2 mb-1.5">{item.titel}</h3>
-                  <p className="text-sm leading-relaxed text-white/60">{item.tekst}</p>
-                </motion.div>
-              ))}
+      {/* ── WAT HET LABEL KOST ── */}
+      <section className="w-full px-6 md:px-12 py-mw-8">
+        <div className="mx-auto max-w-6xl">
+          <AuditLijn density="quiet" items={['wat het kost']} />
+          <h2 className="mt-mw-4 text-h2 text-moroww-dark">wat het label kost</h2>
+          <dl className="mt-mw-5 max-w-[68ch] divide-y divide-moroww-rule border-t border-b border-moroww-rule">
+            <DefRij
+              label="commissie"
+              value="15 % op de logiesfare, exclusief btw en exclusief schoonmaak"
+            />
+            <DefRij
+              label="collectielidmaatschap"
+              value="€ 149,99 per maand, of jaarlijks vooruitbetaald met 10 % korting"
+            />
+            <DefRij
+              label="onboarding"
+              value="eenmalig, afhankelijk van de omvang van de woning"
+            />
+          </dl>
+          <p className="mt-mw-5 text-body text-moroww-dark max-w-[62ch]">
+            Het collectielidmaatschap is geen abonnement op een dienst. Het is
+            het lidmaatschap van het label: de audit, de heraudit, de standaard
+            en het systeem eronder.
+          </p>
+          <p className="mt-mw-5">
+            <Link
+              href="/kennis/wat-kost-een-nacht-vakantiewoning"
+              className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+            >
+              reken je opbrengst door met alle kosten erin →
+            </Link>
+          </p>
+        </div>
+      </section>
+
+      {/* ── JE ZIT NERGENS AAN VAST ── */}
+      <section className="w-full px-6 md:px-12 py-mw-8">
+        <div className="mx-auto max-w-6xl">
+          <AuditLijn density="quiet" items={['uitstapclausule']} />
+          <h2 className="mt-mw-4 text-h2 text-moroww-dark">je zit nergens aan vast</h2>
+          <div className="mt-mw-4 max-w-[68ch] space-y-mw-3 text-body text-moroww-dark">
+            <p>
+              Een label dat mensen moet vasthouden met een contract, heeft geen
+              label nodig maar een advocaat. De hardware wordt na volledige
+              betaling jouw eigendom. De software blijft in licentie. Je
+              boekingen en je gastgegevens blijven van jou. Stop je, dan stop je.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── TECH: DRIE DINGEN DIE EEN EIGENAAR 'S NACHTS WAKKER HOUDEN ── */}
+      <section className="w-full px-6 md:px-12 py-mw-8">
+        <div className="mx-auto max-w-6xl">
+          <AuditLijn density="quiet" items={['de tech-laag']} />
+          <h2 className="mt-mw-4 text-h2 text-moroww-dark">
+            drie dingen die het systeem bewaakt
+          </h2>
+
+          <div className="mt-mw-6 grid grid-cols-1 md:grid-cols-3 gap-mw-6">
+            <div>
+              <p className="text-audit uppercase text-moroww-label">je vergunning</p>
+              <p className="mt-mw-3 text-body text-moroww-dark">
+                Een decibelsensor bewaakt of het rustig blijft. Hij meet
+                geluidsniveau, geen gesprekken. Overlast wordt gedetecteerd
+                voor het een probleem wordt.
+              </p>
             </div>
-            <div className="border-b border-white/10" />
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTIE 4: VOORDELEN ── */}
-      <section className="grid grid-cols-1 md:grid-cols-2 min-h-[80vh]">
-        {/* Tekst links */}
-        <motion.div
-          {...fadeUp}
-          className="flex items-center px-6 py-12 md:px-20 md:py-20 bg-moroww-blush"
-        >
-          <div className="max-w-sm">
-            <p className="text-xs uppercase tracking-widest text-moroww-label mb-5">
-              {t('fp_label')}
-            </p>
-            <h2 className="text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.1] text-moroww-dark">
-              <span className="font-light">{t('fp_h2_light')}</span><br />
-              {t('fp_h2_bold')}
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-moroww-dark">
-              {t('fp_body')}
-            </p>
-
-            <div className="mt-10 border-t border-moroww-label/30">
-              {voordelen.map(({ titel, tekst }) => (
-                <div key={titel} className="flex items-start gap-4 py-5 border-b border-moroww-label/30">
-                  <span className="text-moroww-orange mt-0.5 shrink-0">→</span>
-                  <div>
-                    <p className="text-sm font-semibold text-moroww-dark">{titel}</p>
-                    <p className="text-sm text-moroww-dark/60 mt-0.5 leading-relaxed">{tekst}</p>
-                  </div>
-                </div>
-              ))}
+            <div>
+              <p className="text-audit uppercase text-moroww-label">je vastgoed</p>
+              <p className="mt-mw-3 text-body text-moroww-dark">
+                Waterlek, rookontwikkeling, klimaatafwijking: je wordt
+                gewaarschuwd voor er schade is. Het systeem merkt het voor
+                iemand het merkt.
+              </p>
+            </div>
+            <div>
+              <p className="text-audit uppercase text-moroww-label">je tijd</p>
+              <p className="mt-mw-3 text-body text-moroww-dark">
+                Sleutelloze aankomst, sfeer die zichzelf klaarzet, schoonmaak
+                die vanzelf wordt aangestuurd. Bezetting en rapportage in je
+                dashboard. Je hoeft er nooit bij te zijn.
+              </p>
             </div>
           </div>
-        </motion.div>
-
-        {/* Foto rechts */}
-        <div className="relative overflow-hidden min-h-[60vw] md:min-h-full">
-          <Image
-            src="/images/fp-interieur-1.jpg"
-            alt="moroww woning"
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
         </div>
       </section>
 
-      {/* ── SECTIE 5: HOE HET WERKT ── */}
-      <section className="w-full py-12 md:py-20 px-6 md:px-16 lg:px-24 bg-moroww-blush">
-        <div className="max-w-xl">
-          <motion.div {...fadeUp}>
-            <p className="text-xs uppercase tracking-widest text-moroww-label mb-5">
-              {t('traject_label')}
-            </p>
-            <h2 className="text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.1] text-moroww-dark">
-              {t('traject_h2_1')}<br />
-              <span className="font-light">{t('traject_h2_2')}</span>
-            </h2>
-          </motion.div>
+      {/* ── HET TRAJECT ── */}
+      <section className="w-full px-6 md:px-12 py-mw-8">
+        <div className="mx-auto max-w-6xl">
+          <AuditLijn density="quiet" items={['het traject']} />
+          <h2 className="mt-mw-4 text-h2 text-moroww-dark">van aanmelding tot live</h2>
 
-          <div className="mt-10 border-t border-moroww-label/30">
-            {stappen.map(({ nr, titel, tekst }, i) => (
-              <motion.div
-                key={nr}
-                {...fadeUp}
-                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.08 }}
-                className="flex items-start gap-5 py-6 border-b border-moroww-label/30"
-              >
-                <p className="text-moroww-orange text-sm font-semibold tracking-widest shrink-0 pt-0.5">{nr}</p>
-                <div>
-                  <h3 className="text-base font-semibold text-moroww-dark mb-1.5">{titel}</h3>
-                  <p className="text-sm leading-relaxed text-moroww-dark/70">{tekst}</p>
-                </div>
-              </motion.div>
-            ))}
+          <dl className="mt-mw-5 max-w-[68ch] divide-y divide-moroww-rule border-t border-b border-moroww-rule">
+            <DefRij
+              label="01 · aanmelding"
+              value="Je vult het formulier in. We nemen binnen twee werkdagen contact op en beoordelen elke woning op locatie, oppervlakte en karakter."
+            />
+            <DefRij
+              label="02 · audit en installatie"
+              value="Ons team bezoekt de woning, voert de audit uit, geeft interieuradvies en installeert de tech-stack."
+            />
+            <DefRij
+              label="03 · live in de collectie"
+              value="De woning draagt het label. We starten de distributie via alle kanalen en via book.moroww.com. Je volgt alles op via het host-dashboard."
+            />
+          </dl>
+        </div>
+      </section>
+
+      {/* ── DE OPRICHTER — één, niet meerdere ── */}
+      <section className="w-full px-6 md:px-12 py-mw-8">
+        <div className="mx-auto max-w-6xl">
+          <AuditLijn density="quiet" items={['het team']} />
+          <h2 className="mt-mw-4 text-h2 text-moroww-dark">je werkt met de oprichter</h2>
+          <p className="mt-mw-4 text-body text-moroww-dark max-w-[62ch]">
+            Je werkt met Noam. Geen callcenter, geen accountmanager, geen
+            tussenpersoon. Hij komt zelf kijken en blijft je aanspreekpunt.
+          </p>
+          <p className="mt-mw-3 text-body text-moroww-dark">
+            <a
+              href="mailto:info@moroww.com"
+              className="underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+            >
+              info@moroww.com
+            </a>
+          </p>
+        </div>
+      </section>
+
+      {/* ── VOOR JE BESLIST — doorverwijzing kennisbank ── */}
+      <section className="w-full px-6 md:px-12 py-mw-8">
+        <div className="mx-auto max-w-6xl">
+          <AuditLijn density="quiet" items={['voor je beslist']} />
+          <h3 className="mt-mw-4 text-h3 text-moroww-dark">eerst uitzoeken hoe het zit</h3>
+
+          <div className="mt-mw-5 grid grid-cols-1 md:grid-cols-3 gap-mw-6">
+            <Link
+              href="/kennis/wat-kost-een-nacht-vakantiewoning"
+              className="group block"
+            >
+              <p className="text-audit uppercase text-moroww-label">opbrengst en rendement</p>
+              <p className="mt-mw-3 text-h3 text-moroww-dark group-hover:text-moroww-orange transition-colors">
+                wat een nacht kost →
+              </p>
+            </Link>
+            <Link
+              href="/kennis/verblijfsbelasting-vakantiewoning"
+              className="group block"
+            >
+              <p className="text-audit uppercase text-moroww-label">regels en vergunningen</p>
+              <p className="mt-mw-3 text-h3 text-moroww-dark group-hover:text-moroww-orange transition-colors">
+                regels en belasting →
+              </p>
+            </Link>
+            <Link
+              href="/kennis/vakantiewoning-verhuren-zelf-platform-beheerder-label"
+              className="group block"
+            >
+              <p className="text-audit uppercase text-moroww-label">kiezen hoe je verhuurt</p>
+              <p className="mt-mw-3 text-h3 text-moroww-dark group-hover:text-moroww-orange transition-colors">
+                zelf, platform, beheerder of label →
+              </p>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* ── SECTIE 6: DE OPRICHTER ── */}
-      <section className="grid grid-cols-1 md:grid-cols-2 min-h-[60vh]">
-        {/* Foto links */}
-        <div className="relative overflow-hidden min-h-[60vw] md:min-h-full">
-          <Image
-            src="/images/noam.jpg"
-            alt="Noam Landries, oprichter van moroww"
-            fill
-            className="object-cover object-[center_20%]"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-        </div>
-
-        {/* Tekst rechts */}
-        <motion.div
-          {...fadeUp}
-          className="flex items-center px-6 py-12 md:px-16 md:py-20 bg-moroww-dark"
-        >
-          <div className="max-w-sm">
-            <p className="text-xs uppercase tracking-widest text-moroww-orange mb-5">
-              {t('team_label')}
-            </p>
-            <h2 className="text-[clamp(1.8rem,4vw,3.5rem)] font-bold leading-[1.1] text-white">
-              <span className="font-light">{t('team_h2_light')}</span><br />
-              {t('team_h2_bold')}
-            </h2>
-            <p className="mt-5 text-base leading-relaxed text-white/60">
-              {t('team_p1')}
-            </p>
-            <p className="mt-4 text-base text-white/60">
-              {t('team_email')}
-            </p>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* ── SECTIE 7: FORMULIER ── */}
-      <section className="w-full py-16 md:py-28 px-6 bg-moroww-blush">
-        <div className="max-w-2xl mx-auto">
-          <motion.div {...fadeUp}>
-            <p className="text-xs uppercase tracking-widest text-moroww-label mb-5">
-              {t('form_label')}
-            </p>
-            <h2 className="text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.1] text-moroww-dark">
-              <span className="font-light">{t('form_h2_light')}</span><br />
-              {t('form_h2_bold')}
-            </h2>
-            <p className="mt-4 text-lg leading-relaxed text-moroww-dark/70">
-              {t('form_body')}
-            </p>
-          </motion.div>
-
-          <div className="mt-12">
+      {/* ── FORMULIER ── */}
+      <section className="w-full px-6 md:px-12 py-mw-8" id="poortentoets">
+        <div className="mx-auto max-w-6xl">
+          <AuditLijn density="quiet" items={['aanmelden']} />
+          <h2 className="mt-mw-4 text-h2 text-moroww-dark">meld je woning aan</h2>
+          <p className="mt-mw-4 text-body text-moroww-dark max-w-[62ch]">
+            We nemen binnen twee werkdagen persoonlijk contact op. Elke woning
+            wordt fysiek beoordeeld, ook als het antwoord uiteindelijk nee is.
+          </p>
+          <div className="mt-mw-6 max-w-[52ch]">
             <LeadForm />
           </div>
         </div>
       </section>
-    </div>
-  );
+
+      {/* ── AFSLUITING — CTA-D gesprek ── */}
+      <section className="w-full px-6 md:px-12 pt-mw-8 pb-mw-10">
+        <div className="mx-auto max-w-6xl">
+          <Hr />
+          <AuditLijn density="quiet" items={['gesprek']} />
+          <h3 className="mt-mw-4 text-h3 text-moroww-dark">liever meteen iemand spreken?</h3>
+          <p className="mt-mw-3 text-body text-moroww-dark max-w-[62ch]">
+            Kies zelf een moment voor een digitaal gesprek van dertig minuten.
+          </p>
+          <p className="mt-mw-5">
+            <a
+              href="https://calendar.app.google/BH8wYeA9AGf6KrUz7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center rounded-full px-mw-4 py-3 font-semibold bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85 transition-colors"
+            >
+              kies een moment
+            </a>
+          </p>
+        </div>
+      </section>
+    </Register>
+  )
 }

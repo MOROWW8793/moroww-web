@@ -27,12 +27,71 @@ export type NavItem = {
   href: NavHref
 }
 
-export const mainNavItems: NavItem[] = [
+// Nav-structuur splitst gast en eigenaar. Bouwspec stap 5A.
+//
+// Gastenkant komt links: waar de collectie is, waar de standaard uitgelegd
+// wordt, wie moroww is. Alles wat een gast nodig heeft om te kiezen.
+//
+// Eigenaarskant zit als ééne ingang rechts, met een dropdown naar de vier
+// kennispagina's en de eigenaars-landing zelf. Vanuit hier vindt Google én
+// een bezoeker het volledige kennis-cluster.
+//
+// 'partners' is uit de nav gehaald. De route blijft bestaan en blijft
+// bereikbaar via de voettekst; op de site moet partners bewijsmateriaal
+// zijn op /over-moroww, geen bestemming.
+export const gastenNavItems: NavItem[] = [
   { labelKey: 'collection', href: '/collectie' },
-  { labelKey: 'about',      href: '/over-moroww' },
   { labelKey: 'standard',   href: '/de-standaard' },
-  { labelKey: 'partners',   href: '/partners' },
-  { labelKey: 'for_owners', href: '/eigenaar-worden' },
+  { labelKey: 'about',      href: '/over-moroww' },
+]
+
+// Legacy — mainNavItems blijft geëxporteerd voor backwards-compat.
+// Gebruik in nieuwe code `gastenNavItems`.
+export const mainNavItems: NavItem[] = gastenNavItems
+
+// Dropdown onder "voor eigenaars ▾". Elk item krijgt een korte toelichting
+// in type-audit onder de titel; die staat hier bij het item zodat we op één
+// plek kunnen wijzigen.
+export interface EigenaarDropdownItem {
+  titel: string
+  toelichting: string
+  href: string
+}
+export const eigenaarDropdown: EigenaarDropdownItem[] = [
+  {
+    titel: 'voor eigenaars',
+    toelichting: 'wat het label doet en wat het kost',
+    href: '/eigenaar-worden',
+  },
+  {
+    titel: 'wat een nacht kost',
+    toelichting: 'btw, schoonmaak, linnen, commissie',
+    href: '/kennis/wat-kost-een-nacht-vakantiewoning',
+  },
+  {
+    titel: 'regels en belasting',
+    toelichting: 'verblijfsbelasting en brandveiligheid',
+    href: '/kennis/verblijfsbelasting-vakantiewoning',
+  },
+  {
+    titel: 'vier manieren',
+    toelichting: 'zelf, platform, beheerder of label',
+    href: '/kennis/vakantiewoning-verhuren-zelf-platform-beheerder-label',
+  },
+]
+
+// De publieke kennispagina's. Ook naar de voettekst voor Google — twee
+// interne routes naar het cluster.
+export interface KennisLink {
+  titel: string
+  href: string
+}
+export const kennisLinks: KennisLink[] = [
+  { titel: 'wat een nacht kost',        href: '/kennis/wat-kost-een-nacht-vakantiewoning' },
+  { titel: 'verblijfsbelasting',        href: '/kennis/verblijfsbelasting-vakantiewoning' },
+  { titel: 'tweedeverblijf of logies',  href: '/kennis/tweedeverblijfsbelasting-of-logiesbelasting' },
+  { titel: 'brandveiligheidsattest',    href: '/kennis/brandveiligheidsattest-vakantiewoning-vlaanderen' },
+  { titel: 'vier manieren',             href: '/kennis/vakantiewoning-verhuren-zelf-platform-beheerder-label' },
 ]
 
 export const footerNavItems: NavItem[] = [
@@ -67,4 +126,5 @@ export const lightHeroRoutes: string[] = [
   '/moroww-os',
   '/kennis',
   '/collectie',
+  '/eigenaar-worden',
 ]
