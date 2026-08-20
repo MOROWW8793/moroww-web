@@ -17,7 +17,7 @@ const URL = 'https://www.moroww.com/kennis/verblijfsbelasting-vakantiewoning'
 export const metadata = kennisMetadata({
   titel: 'Verblijfsbelasting vakantiewoning per gemeente · tarieven 2026',
   beschrijving:
-    'Wat de verblijfsbelasting op een vakantiewoning kost per gemeente, hoe ze berekend wordt en wanneer je aangifte doet. Nagekeken tegen het gemeentelijk reglement.',
+    'Wat de verblijfsbelasting op een vakantiewoning kost per gemeente, hoe ze berekend wordt en wanneer je aangifte doet.',
   pad: '/kennis/verblijfsbelasting-vakantiewoning',
 })
 

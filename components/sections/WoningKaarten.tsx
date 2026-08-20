@@ -28,7 +28,7 @@ export async function WoningKaarten({
         return (
           <PandKaart
             key={w.id}
-            href={`/collectie/${w.id}`}
+            href={{ pathname: '/collectie/[id]', params: { id: w.id } }}
             beeld={w.heroFoto}
             beeldAlt={w.naam}
             titel={w.naam}

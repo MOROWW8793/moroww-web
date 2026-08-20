@@ -11,7 +11,7 @@ const URL = 'https://www.moroww.com/kennis/omgevingsvergunning-functiewijziging-
 export const metadata = kennisMetadata({
   titel: 'Omgevingsvergunning vakantiewoning · functiewijziging naar verblijfsrecreatie',
   beschrijving:
-    'Je aanmelding bij Toerisme Vlaanderen is geen omgevingsvergunning. Wanneer je een functiewijziging nodig hebt, wanneer je vrijgesteld bent, en wat er misgaat zonder.',
+    'Je aanmelding bij Toerisme Vlaanderen is geen omgevingsvergunning. Wanneer je een functiewijziging nodig hebt en wanneer niet.',
   pad: '/kennis/omgevingsvergunning-functiewijziging-vakantiewoning',
 })
 

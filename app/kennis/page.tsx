@@ -8,7 +8,7 @@ import { Actualiteitsblok } from '@/components/kennis/Actualiteitsblok'
 export const metadata = kennisMetadata({
   titel: 'Kennisbank vakantieverhuur België · moroww',
   beschrijving:
-    'Onderwerpen over rendement, btw, verblijfsbelasting per gemeente, brandveiligheidsattest en de vier manieren om een vakantiewoning te verhuren. Nagekeken tegen de bron.',
+    'Onderwerpen over rendement, btw, verblijfsbelasting per gemeente, brandveiligheid en de vier manieren om een vakantiewoning te verhuren.',
   pad: '/kennis',
 })
 

@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { liveWoningen, wachtOpBeeldCount } from "@/lib/woningen";
 import { PandKaart, formatAuditMaand } from "@/components/PandKaart";
 import { AuditLijn } from "@/components/AuditLijn";
@@ -50,7 +50,7 @@ export function CollectieStatisch() {
             return (
               <PandKaart
                 key={w.id}
-                href={`/collectie/${w.id}`}
+                href={{ pathname: '/collectie/[id]', params: { id: w.id } }}
                 beeld={w.heroFoto}
                 beeldAlt={w.naam}
                 titel={w.naam}

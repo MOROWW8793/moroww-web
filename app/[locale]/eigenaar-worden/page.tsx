@@ -12,7 +12,7 @@ import { siteMetadata } from "@/lib/seo/siteMetadata";
 export const metadata: Metadata = siteMetadata({
   titel: 'Vakantiewoning verhuren in België met kwaliteitslabel',
   beschrijving:
-    'Verhuur je vakantiewoning aan de Belgische kust of in het Meetjesland via moroww. Geen beheerder. Jij beheert je eigen woning — wij installeren de technologie, bewaken de standaard en regelen de directe boekingen. Certified. Controlled. Yours.',
+    'Vakantiewoning verhuren aan de Belgische kust of in het Meetjesland via moroww. Wij installeren de tech, bewaken de standaard, boeken direct.',
   pad: '/eigenaar-worden',
   locale: 'nl',
   ogBeeld: '/images/og-eigenaar.jpg',

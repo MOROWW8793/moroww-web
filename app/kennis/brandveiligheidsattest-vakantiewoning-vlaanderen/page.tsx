@@ -11,7 +11,7 @@ const URL = 'https://www.moroww.com/kennis/brandveiligheidsattest-vakantiewoning
 export const metadata = kennisMetadata({
   titel: 'Brandveiligheidsattest vakantiewoning Vlaanderen · A, Abis, B of C',
   beschrijving:
-    'Elke vakantiewoning in Vlaanderen heeft een eigen positief brandveiligheidsattest nodig. Welk type, welke bijlage, waar aanvragen en hoe lang het geldig is.',
+    'Elke vakantiewoning in Vlaanderen heeft een positief brandveiligheidsattest nodig. Welk type, waar aanvragen, en hoe lang geldig.',
   pad: '/kennis/brandveiligheidsattest-vakantiewoning-vlaanderen',
 })
 

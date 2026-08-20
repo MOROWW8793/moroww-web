@@ -9,12 +9,20 @@
 //
 // Alleen velden die er zijn worden getoond. Geen placeholder-tekst.
 
-import Link from 'next/link'
+import type { ComponentProps } from 'react'
 import Image from 'next/image'
+import { Link } from '@/i18n/navigation'
 import { AuditLijn } from '@/components/AuditLijn'
 
+// next-intl's typed Link vertaalt het pandpad naar de juiste locale-URL.
+// Callers geven het canonieke pattern: { pathname: '/collectie/[id]',
+// params: { id } }. Zonder deze typering vervalt de kaart op
+// /en/collection terug naar /collectie/[id] (NL) — dat was de oorzaak
+// dat elke EN-pand-URL nul interne inkomende links had.
+type LinkHref = ComponentProps<typeof Link>['href']
+
 interface Props {
-  href: string
+  href: LinkHref
   beeld: string
   beeldAlt: string
   titel: string

@@ -11,7 +11,7 @@ const URL = 'https://www.moroww.com/kennis/logiesdecreet-vakantiewoning-vlaander
 export const metadata = kennisMetadata({
   titel: 'Het Vlaams Logiesdecreet in mensentaal · aanmelden, attesten, boetes',
   beschrijving:
-    'Wat het logiesdecreet van je vraagt als je een vakantiewoning verhuurt in Vlaanderen: aanmelden bij Toerisme Vlaanderen, brandveiligheidsattest, verzekering, en wat er in 2026 verandert.',
+    'Wat het logiesdecreet vraagt: aanmelden bij Toerisme Vlaanderen, brandveiligheidsattest, verzekering — en wat er in 2026 verandert.',
   pad: '/kennis/logiesdecreet-vakantiewoning-vlaanderen',
 })
 

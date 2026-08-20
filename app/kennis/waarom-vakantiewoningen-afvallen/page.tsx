@@ -17,7 +17,7 @@ export const metadata = {
   ...kennisMetadata({
     titel: `${SCREENINGS_TOTAL} vakantiewoningen bekeken, ${SCREENINGS_ACCEPTED} opgenomen · moroww`,
     beschrijving:
-      'moroww bezoekt elke woning fysiek. De meeste halen de standaard niet. Dit zijn de aantallen; de gerangschikte redenen volgen zodra de screeningstabel per reden gepubliceerd wordt.',
+      'moroww bezoekt elke woning fysiek. De meeste halen de standaard niet. Dit zijn de aantallen; de redenen volgen per publicatiereeks.',
     pad: '/kennis/waarom-vakantiewoningen-afvallen',
   }),
   robots: { index: false, follow: false },

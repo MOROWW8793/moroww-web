@@ -11,7 +11,7 @@ const URL = 'https://www.moroww.com/kennis/belasting-huurinkomsten-vakantiewonin
 export const metadata = kennisMetadata({
   titel: 'Belasting op huurinkomsten vakantiewoning · roerend, onroerend, divers',
   beschrijving:
-    'Hoe je huurinkomsten uit een vakantiewoning belast worden: de 60/40-opsplitsing, het kadastraal inkomen, en wanneer de fiscus alles als beroepsinkomen herkwalificeert.',
+    'Hoe huurinkomsten uit een vakantiewoning belast worden: de 60/40-opsplitsing, het kadastraal inkomen, en wanneer beroepsinkomen.',
   pad: '/kennis/belasting-huurinkomsten-vakantiewoning',
 })
 

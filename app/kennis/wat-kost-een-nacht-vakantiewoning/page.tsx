@@ -12,7 +12,7 @@ const URL = 'https://www.moroww.com/kennis/wat-kost-een-nacht-vakantiewoning'
 export const metadata = kennisMetadata({
   titel: 'Wat kost één nacht in je vakantiewoning je echt? · kostenstructuur 2026',
   beschrijving:
-    'Van bruto nachtprijs naar netto. Btw aan 12 procent sinds maart 2026, schoonmaak, linnen, energie, verblijfsbelasting, commissie en onderhoud, post per post.',
+    'Bruto naar netto per nacht: btw aan 12 procent sinds maart 2026, schoonmaak, linnen, energie, verblijfsbelasting en commissie.',
   pad: '/kennis/wat-kost-een-nacht-vakantiewoning',
 })
 

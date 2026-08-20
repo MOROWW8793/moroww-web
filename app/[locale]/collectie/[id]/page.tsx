@@ -22,34 +22,77 @@ export function generateStaticParams() {
   ]);
 }
 
-// Per pand overrulen we titel en meta-beschrijving (kortere, marketing-
-// gerichte varianten dan de long-form op de pagina). keywords staan hier
-// bewust NIET meer — Google negeert de tag sinds 2009 en de lijst met
-// competitor-alternatieven was zichtbaar in de broncode.
-const woningMeta: Record<string, { title: string; description: string }> = {
+// Per pand overrulen we titel en meta-beschrijving in beide talen. Vóór
+// deze stap deelden alle EN-pand-URL's de NL-titel en -description — dat
+// gaf 6 dubbele title-tags in de zoekresultaten. keywords staan hier bewust
+// niet: Google negeert die tag sinds 2009 en de lijst met concurrent-
+// alternatieven stond zichtbaar in de broncode.
+//
+// Descriptions blijven onder 155 tekens (SERP-cutoff Google), titels
+// onder 60 (idem, plus ruimte voor het `| moroww`-suffix).
+const woningMeta: Record<
+  string,
+  { title: { nl: string; en: string }; description: { nl: string; en: string } }
+> = {
   'nosso-knokke': {
-    title: 'Nosso Logies — vakantiewoning Knokke-Heist',
-    description: 'Luxe vakantiewoning in Heist-aan-Zee, Knokke. 110m², 2 slaapkamers, max 6 personen. Strand op 2 minuten. Fysiek gecertificeerd door moroww. Vanaf €370/nacht.',
+    title: {
+      nl: 'Nosso Logies — vakantiewoning Knokke-Heist',
+      en: 'Nosso Logies — holiday home in Knokke-Heist',
+    },
+    description: {
+      nl: 'Luxe vakantiewoning in Heist-aan-Zee, Knokke. 110 m², 2 slaapkamers, max 6, strand op 2 minuten. Gecertificeerd door moroww. Vanaf €370/nacht.',
+      en: 'Luxury holiday home in Heist-aan-Zee, Knokke. 110 sqm, 2 bedrooms, up to 6 guests, beach in 2 minutes. Certified by moroww. From €370/night.',
+    },
   },
   'moroww-oostende': {
-    title: 'The Sixteenth — vakantiewoning Oostende met zeezicht',
-    description: 'The Sixteenth — vakantiewoning op de 16e verdieping in Oostende. Panoramisch zeezicht, privé parking, 2 slaapkamers, max 4 personen. Gecertificeerd door moroww. Vanaf €210/nacht.',
+    title: {
+      nl: 'The Sixteenth — vakantiewoning Oostende met zeezicht',
+      en: 'The Sixteenth — Ostend holiday home with sea view',
+    },
+    description: {
+      nl: 'The Sixteenth — vakantiewoning op de 16e verdieping in Oostende. Panoramisch zeezicht, 2 slaapkamers, max 4. Gecertificeerd. Vanaf €210/nacht.',
+      en: 'The Sixteenth — 16th-floor holiday home in Ostend. Panoramic sea view, 2 bedrooms, up to 4 guests. Certified by moroww. From €210/night.',
+    },
   },
   'anna-helena-ursel': {
-    title: 'Chalet Anna-Helena — vakantiewoning Ursel Meetjesland',
-    description: 'Chalet met privétuin en vijver in Ursel, Meetjesland. 2 slaapkamers, max 5 personen. Bosrand, gezinsvriendelijk. Gecertificeerd door moroww. Vanaf €220/nacht.',
+    title: {
+      nl: 'Chalet Anna-Helena — vakantiewoning Ursel Meetjesland',
+      en: 'Chalet Anna-Helena — holiday home in Ursel, Meetjesland',
+    },
+    description: {
+      nl: 'Chalet Anna-Helena — privétuin en vijver in Ursel, Meetjesland. 2 slaapkamers, max 5, gezinsvriendelijk. Gecertificeerd. Vanaf €220/nacht.',
+      en: 'Chalet Anna-Helena — private garden and pond in Ursel, Meetjesland. 2 bedrooms, up to 5 guests, family-friendly. Certified. From €220/night.',
+    },
   },
   'cozy-relax-beernem': {
-    title: 'The Cozy Relax Home — vakantiewoning Beernem met zwembad',
-    description: 'Ruime vakantiewoning in Beernem met zwembad, hottub en tuin met BBQ. 4 slaapkamers, max 10 personen. Ideaal voor groepen. Gecertificeerd door moroww. Vanaf €600/nacht.',
+    title: {
+      nl: 'The Cozy Relax Home — vakantiewoning Beernem met zwembad',
+      en: 'The Cozy Relax Home — Beernem holiday home with pool',
+    },
+    description: {
+      nl: 'Ruime vakantiewoning in Beernem met zwembad, hottub en BBQ-tuin. 4 slaapkamers, max 10, ideaal voor groepen. Gecertificeerd. Vanaf €600/nacht.',
+      en: 'Spacious holiday home in Beernem with pool, hot tub and BBQ garden. 4 bedrooms, up to 10 guests, ideal for groups. Certified. From €600/night.',
+    },
   },
   'sophora': {
-    title: 'Sophora — vakantiewoning Elst, Vlaamse Ardennen',
-    description: 'Een familiehuis in het hart van Elst, gedragen door drie zussen. 9 slaapkamers elk met eigen badkamer, zwembad, sauna en tuin. Max 18 personen. Gecertificeerd door moroww. Vanaf €800/nacht.',
+    title: {
+      nl: 'Sophora — vakantiewoning Elst, Vlaamse Ardennen',
+      en: 'Sophora — holiday home in Elst, Flemish Ardennes',
+    },
+    description: {
+      nl: 'Familiehuis in Elst, Vlaamse Ardennen. Gedragen door drie zussen. 9 en-suite slaapkamers, zwembad, sauna, max 18. Gecertificeerd. Vanaf €800/nacht.',
+      en: 'Family home in Elst, Flemish Ardennes, run by three sisters. 9 en-suite bedrooms, pool, sauna, up to 18 guests. Certified. From €800/night.',
+    },
   },
   'lammersdamhoeve': {
-    title: 'De Lammersdamhoeve — vakantiewoning Wingene, Brugse Ommeland',
-    description: 'Hoeve in Wingene, aan de rand van natuurgebied De Gulke Putten. 220m², 4 slaapkamers, 2 badkamers, max 8 personen. Volledig omheinde tuin, huisdieren welkom zonder toeslag. Gecertificeerd door moroww. Vanaf €330/nacht.',
+    title: {
+      nl: 'De Lammersdamhoeve — vakantiewoning Wingene, Brugse Ommeland',
+      en: 'De Lammersdamhoeve — Wingene farmhouse, Bruges Ommeland',
+    },
+    description: {
+      nl: 'Hoeve in Wingene aan De Gulke Putten. 220 m², 4 slaapkamers, max 8, omheinde tuin, huisdieren welkom. Gecertificeerd. Vanaf €330/nacht.',
+      en: 'Farmhouse in Wingene by De Gulke Putten. 220 sqm, 4 bedrooms, up to 8 guests, fenced garden, pets welcome. Certified. From €330/night.',
+    },
   },
 };
 
@@ -58,9 +101,11 @@ export async function generateMetadata({ params }: Props) {
   const woning = woningen.find((w) => w.id === params.id);
   if (!woning) return { title: "Woning" };
   const meta = woningMeta[woning.id];
-  const desc = meta?.description ?? lw(woning.beschrijving, locale)
-  const pageTitle = meta?.title ?? `${woning.naam} — vakantiewoning in ${woning.locatie}`
   const isNl = locale === 'nl'
+  const fallbackTitleNl = `${woning.naam} — vakantiewoning in ${woning.locatie}`
+  const fallbackTitleEn = `${woning.naam} — holiday home in ${woning.locatie}`
+  const pageTitle = meta?.title?.[locale] ?? (isNl ? fallbackTitleNl : fallbackTitleEn)
+  const desc = meta?.description?.[locale] ?? lw(woning.beschrijving, locale)
   return siteMetadata({
     titel: pageTitle,
     beschrijving: desc,
