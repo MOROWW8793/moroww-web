@@ -94,6 +94,16 @@ const woningMeta: Record<
       en: 'Farmhouse in Wingene by De Gulke Putten. 220 sqm, 4 bedrooms, up to 8 guests, fenced garden, pets welcome. Certified. From €330/night.',
     },
   },
+  'zeedijk-nieuwpoort': {
+    title: {
+      nl: 'The Eighth — vakantiewoning Nieuwpoort met zeezicht',
+      en: 'The Eighth — Nieuwpoort holiday home with sea view',
+    },
+    description: {
+      nl: 'The Eighth — 8e verdieping op de Zeedijk in Nieuwpoort-Bad. Zicht op staketsel en vuurtoren, 3 slaapkamers, max 8. Gecertificeerd. Vanaf €270/nacht.',
+      en: 'The Eighth — 8th-floor apartment on the Zeedijk in Nieuwpoort-Bad. Views of pier and lighthouse, 3 bedrooms, up to 8 guests. Certified. From €270/night.',
+    },
+  },
 };
 
 export async function generateMetadata({ params }: Props) {

@@ -644,47 +644,70 @@ const _woningenRaw: Woning[] = [
   //
   // Velden die je moet aanleveren voor publicatie zijn met TBD gemarkeerd.
   // Zolang status='wacht_op_beeld' staat, worden deze niet gerenderd.
+  // ── The Eighth · Zeedijk 9/801, Nieuwpoort-Bad ─────────────────────
+  // Content is compleet en door de eigenaar-check heen; entry blijft
+  // 'wacht_op_beeld' tot drie blokkers gesloten zijn:
+  //   1) foto's van Zeedijk 9/801 in /public/images/woningen/nieuwpoort-new/
+  //      (53 stuks zonder Artier-logo, zelfde volgorde als Airbnb) en de
+  //      heroFoto/fotos-paden hieronder ingevuld.
+  //   2) vergunningsnummer (Vlaams logies-decreet, wettelijk verplicht).
+  //   3) antwoorden van eigenaar op de open vragen uit de mail 27-09-2026:
+  //      parkeergelegenheid, wifi, wasmachine, CO-melder.
+  // Zodra 1) rond is en 2)+3) beslist zijn, status → 'live'.
   {
-    id: 'penthouse-v8b',
-    naam: 'Penthouse V8B',
+    id: 'zeedijk-nieuwpoort',
+    naam: 'The Eighth',
     collectie: 'the shore',
-    locatie: 'Oostende',
+    locatie: 'Nieuwpoort-Bad',
+    prijs: 270,
     slaapkamers: 3,
-    badkamers: 2,
-    maxGasten: 6,
+    badkamers: 1,
+    maxGasten: 8,
     oppervlakte: '150m²',
-    geauditeerdOp: '2026-08',
-    tags: [],
+    geauditeerdOp: '2026-09',
+    tags: [
+      { nl: '8e verdieping',   en: '8th floor' },
+      { nl: 'Zeezicht',        en: 'Sea view' },
+      { nl: 'Zeebalkon',       en: 'Sea balcony' },
+    ],
     slogan: {
-      nl: 'Waar de zee de hele dag in de kamer staat.',
+      nl: 'Eerste rij op de Zeedijk. Het staketsel in je raam.',
       // TODO: EN-vertaling volgt; voorlopig gelijk aan NL zodat de build niet breekt.
-      en: 'Waar de zee de hele dag in de kamer staat.',
+      en: 'Eerste rij op de Zeedijk. Het staketsel in je raam.',
     },
     introductie: {
-      nl: 'Honderdvijftig vierkante meter op hoogte, met een terras dat over de kust kijkt. Drie slaapkamers, twee badkamers, ruimte voor zes.',
+      nl: 'Achtste verdieping, eerste rij op de Zeedijk. De woonkamer kijkt door ramen van vloer tot plafond uit op de Noordzee, met het staketsel en de vuurtoren in beeld. Drie slaapkamers, plek voor acht.',
       // TODO: EN-vertaling volgt.
-      en: 'Honderdvijftig vierkante meter op hoogte, met een terras dat over de kust kijkt. Drie slaapkamers, twee badkamers, ruimte voor zes.',
+      en: 'Achtste verdieping, eerste rij op de Zeedijk. De woonkamer kijkt door ramen van vloer tot plafond uit op de Noordzee, met het staketsel en de vuurtoren in beeld. Drie slaapkamers, plek voor acht.',
     },
-    // TODO: aparte beschrijving (voor kaart-alt en meta) volgt.
-    beschrijving: { nl: '', en: '' },
-    volledigeBeschrijving: {
-      nl: 'Dit is een appartement waar het licht het werk doet. De ramen lopen door tot op het terras en de zee blijft de hele dag aanwezig, ook als je binnen zit. In februari is dat anders dan in juli, en allebei de moeite.\n\nDe keuken is volledig uitgerust en de leefruimte loopt naadloos over in het terras. Dat terras is groot genoeg om er te eten, niet alleen om er te staan.\n\nDe ligging is bewust net buiten het centrum. De kusttram stopt vlakbij en het strand ligt op wandelafstand, maar wat je \'s ochtends hoort is de zee en niet de stad.',
+    beschrijving: {
+      nl: 'Achtste verdieping, eerste rij op de Zeedijk in Nieuwpoort-Bad. Ramen van vloer tot plafond, zeebalkon met houten vlonder en zicht op het staketsel. Drie slaapkamers, max 8.',
       // TODO: EN-vertaling volgt.
-      en: 'Dit is een appartement waar het licht het werk doet. De ramen lopen door tot op het terras en de zee blijft de hele dag aanwezig, ook als je binnen zit. In februari is dat anders dan in juli, en allebei de moeite.\n\nDe keuken is volledig uitgerust en de leefruimte loopt naadloos over in het terras. Dat terras is groot genoeg om er te eten, niet alleen om er te staan.\n\nDe ligging is bewust net buiten het centrum. De kusttram stopt vlakbij en het strand ligt op wandelafstand, maar wat je \'s ochtends hoort is de zee en niet de stad.',
+      en: 'Achtste verdieping, eerste rij op de Zeedijk in Nieuwpoort-Bad. Ramen van vloer tot plafond, zeebalkon met houten vlonder en zicht op het staketsel. Drie slaapkamers, max 8.',
+    },
+    volledigeBeschrijving: {
+      nl: 'De woonkamer kijkt door ramen van vloer tot plafond uit op de Noordzee. Een diepe zetel, twee fauteuils, een wand met ingebouwde kasten en haard, en de balkondeur binnen handbereik: vanuit de zetel zie je het tij opkomen over het strand. Aan de ovale eettafel zitten zes mensen, onder een groot strandschilderij. De keuken draait rond een eiland met kookplaat, oven, vaatwasser en een volautomatische koffiemachine. Twee slaapkamers met een dubbel bed en een stapelbedkamer liggen aan de achterkant, met een tweede balkon over de daken van Nieuwpoort-Bad.',
+      // TODO: EN-vertaling volgt.
+      en: 'De woonkamer kijkt door ramen van vloer tot plafond uit op de Noordzee. Een diepe zetel, twee fauteuils, een wand met ingebouwde kasten en haard, en de balkondeur binnen handbereik: vanuit de zetel zie je het tij opkomen over het strand. Aan de ovale eettafel zitten zes mensen, onder een groot strandschilderij. De keuken draait rond een eiland met kookplaat, oven, vaatwasser en een volautomatische koffiemachine. Twee slaapkamers met een dubbel bed en een stapelbedkamer liggen aan de achterkant, met een tweede balkon over de daken van Nieuwpoort-Bad.',
+    },
+    buurt: {
+      nl: 'Onder je het brede strand, rechts de havengeul waar de IJzer in zee uitmondt, en het lange houten staketsel naar de vuurtoren. Wandel het staketsel op bij zonsondergang, koop verse vis aan de kaai, of kijk over de geul naar natuurreservaat De IJzermonding. Met de Kusttram ben je langs de hele kust; met de trein via Oostende.',
+      // TODO: EN-vertaling volgt.
+      en: 'Onder je het brede strand, rechts de havengeul waar de IJzer in zee uitmondt, en het lange houten staketsel naar de vuurtoren. Wandel het staketsel op bij zonsondergang, koop verse vis aan de kaai, of kijk over de geul naar natuurreservaat De IJzermonding. Met de Kusttram ben je langs de hele kust; met de trein via Oostende.',
     },
     hoogtepunten: [
-      { nl: '150 m² met zeezicht',                en: '150 m² met zeezicht' },
-      { nl: 'Terras over de volledige breedte',   en: 'Terras over de volledige breedte' },
-      { nl: 'Drie slaapkamers, twee badkamers',   en: 'Drie slaapkamers, twee badkamers' },
-      { nl: 'Kusttram voor de deur',              en: 'Kusttram voor de deur' },
-      { nl: 'Strand op wandelafstand',            en: 'Strand op wandelafstand' },
-      { nl: 'Lift en parkeergelegenheid',         en: 'Lift en parkeergelegenheid' },
+      { nl: 'Achtste verdieping, eerste rij op de Zeedijk',              en: 'Achtste verdieping, eerste rij op de Zeedijk' },
+      { nl: 'Zeebalkon met houten vlonder aan de woonkamer',             en: 'Zeebalkon met houten vlonder aan de woonkamer' },
+      { nl: 'Zicht op het staketsel en de vuurtoren vanuit de eethoek',  en: 'Zicht op het staketsel en de vuurtoren vanuit de eethoek' },
+      { nl: 'Drie slaapkamers voor 8, met een stapelbedkamer',           en: 'Drie slaapkamers voor 8, met een stapelbedkamer' },
+      { nl: 'Inloopdouche met regendouche en dubbele stenen wastafel',   en: 'Inloopdouche met regendouche en dubbele stenen wastafel' },
+      { nl: 'Kusttram voor de deur — halte Nieuwpoort Bad',              en: 'Kusttram voor de deur — halte Nieuwpoort Bad' },
     ],
-    inCheckin: '15:00',
+    inCheckin: '17:00',
     uitCheckin: '10:00',
     heroFoto: '',
     fotos: [],
-    boekUrl: '',
+    boekUrl: 'https://book.moroww.com/properties/6ab65d3568ceea00136f518d',
     status: 'wacht_op_beeld',
   },
   {
