@@ -660,7 +660,7 @@ const _woningenRaw: Woning[] = [
     slaapkamers: 3,
     badkamers: 1,
     maxGasten: 8,
-    oppervlakte: '150m²',
+    oppervlakte: '105m²',
     geauditeerdOp: '2026-09',
     vergunningsnummer: 'LD 416795',
     tags: [
