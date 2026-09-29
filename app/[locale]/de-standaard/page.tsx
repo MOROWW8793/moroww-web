@@ -184,7 +184,7 @@ export default async function DeStandaardPage({
         </div>
 
         {/* Afsluiter · voor eigenaars — geen beeld */}
-        <GridSectie titel="voor eigenaars">
+        <GridSectie titel={t('owner_label')}>
           <h2 className="text-h2 text-moroww-dark">{t('owner_title')}</h2>
           <p className="mt-mw-4 text-body text-moroww-dark">
             Meld het aan. We nemen binnen twee werkdagen persoonlijk contact
