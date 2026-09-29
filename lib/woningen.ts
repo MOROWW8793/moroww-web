@@ -5,10 +5,7 @@ export type BilingualText = { nl: string; en: string }
 // letterlijk 'witruimte is je beste vriend, less is more'. Meer dan
 // MAX_PHOTOS_PER_PAND in de fotos-array wordt runtime afgekapt met een
 // console-warning; update de source om die warning te verhelpen.
-// Cap verhoogd van 30 → 60 bij intrede van The Eight (53 foto's,
-// bewust brede reeks met exterieur/buurt-shots die het pand aan zee
-// verankeren). Andere panden zitten allemaal onder 30, geen effect.
-export const MAX_PHOTOS_PER_PAND = 60
+export const MAX_PHOTOS_PER_PAND = 30
 
 export function lw(field: BilingualText | string, locale: Locale): string {
   if (typeof field === 'string') return field
@@ -52,6 +49,11 @@ export interface Woning {
   uitCheckin: string
   heroFoto: string
   fotos: string[]
+  /** Alt-teksten per foto, parallel aan `fotos` (index n hoort bij `fotos[n]`).
+   *  Optioneel: als leeg of ontbrekend, valt de galerij terug op `naam`.
+   *  Kortere array dan `fotos` is toegestaan; ontbrekende indexen vallen
+   *  ook terug op `naam`. */
+  fotoAlts?: BilingualText[]
   /** Foto tussen de secties op de pandpagina. `undefined` = default
    *  (val terug op fotos[2] resp. fotos[3]). `null` = expliciet geen foto.
    *  Een string overschrijft met een specifiek pad. */
@@ -647,13 +649,10 @@ const _woningenRaw: Woning[] = [
   //
   // Velden die je moet aanleveren voor publicatie zijn met TBD gemarkeerd.
   // Zolang status='wacht_op_beeld' staat, worden deze niet gerenderd.
-  // ── The Eight · Zeedijk 9/801, Nieuwpoort-Bad ──────────────────────
-  // Foto's zijn tijdelijk: Artier-logo verwijderd met toestemming, in
-  // gebruik onder art. 19.1 van de platformovereenkomst. Vervangen zodra
-  // de nieuwe shoot geleverd wordt.
+  // ── The Eighth · Zeedijk 9/801, Nieuwpoort-Bad ─────────────────────
   {
     id: 'zeedijk-nieuwpoort',
-    naam: 'The Eight',
+    naam: 'The Eighth',
     collectie: 'the shore',
     locatie: 'Nieuwpoort-Bad',
     prijs: 270,
@@ -726,38 +725,50 @@ const _woningenRaw: Woning[] = [
       '/images/woningen/nieuwpoort/the-eight-19.jpg',
       '/images/woningen/nieuwpoort/the-eight-20.jpg',
       '/images/woningen/nieuwpoort/the-eight-21.jpg',
-      '/images/woningen/nieuwpoort/the-eight-22.jpg',
-      '/images/woningen/nieuwpoort/the-eight-23.jpg',
-      '/images/woningen/nieuwpoort/the-eight-24.jpg',
-      '/images/woningen/nieuwpoort/the-eight-25.jpg',
-      '/images/woningen/nieuwpoort/the-eight-26.jpg',
-      '/images/woningen/nieuwpoort/the-eight-27.jpg',
-      '/images/woningen/nieuwpoort/the-eight-28.jpg',
-      '/images/woningen/nieuwpoort/the-eight-29.jpg',
-      '/images/woningen/nieuwpoort/the-eight-30.jpg',
-      '/images/woningen/nieuwpoort/the-eight-31.jpg',
-      '/images/woningen/nieuwpoort/the-eight-32.jpg',
-      '/images/woningen/nieuwpoort/the-eight-33.jpg',
-      '/images/woningen/nieuwpoort/the-eight-34.jpg',
-      '/images/woningen/nieuwpoort/the-eight-35.jpg',
-      '/images/woningen/nieuwpoort/the-eight-36.jpg',
-      '/images/woningen/nieuwpoort/the-eight-37.jpg',
-      '/images/woningen/nieuwpoort/the-eight-38.jpg',
-      '/images/woningen/nieuwpoort/the-eight-39.jpg',
-      '/images/woningen/nieuwpoort/the-eight-40.jpg',
-      '/images/woningen/nieuwpoort/the-eight-41.jpg',
-      '/images/woningen/nieuwpoort/the-eight-42.jpg',
-      '/images/woningen/nieuwpoort/the-eight-43.jpg',
-      '/images/woningen/nieuwpoort/the-eight-44.jpg',
-      '/images/woningen/nieuwpoort/the-eight-45.jpg',
-      '/images/woningen/nieuwpoort/the-eight-46.jpg',
-      '/images/woningen/nieuwpoort/the-eight-47.jpg',
-      '/images/woningen/nieuwpoort/the-eight-48.jpg',
-      '/images/woningen/nieuwpoort/the-eight-49.jpg',
-      '/images/woningen/nieuwpoort/the-eight-50.jpg',
-      '/images/woningen/nieuwpoort/the-eight-51.jpg',
-      '/images/woningen/nieuwpoort/the-eight-52.jpg',
-      '/images/woningen/nieuwpoort/the-eight-53.jpg',
+    ],
+    fotoAlts: [
+      { nl: 'De woonkamer kijkt door ramen van vloer tot plafond uit op de Noordzee.',
+        en: 'The living room faces the North Sea through floor-to-ceiling glass.' },
+      { nl: 'Woonkamer en eettafel in één open ruimte, met het strandschilderij boven de tafel.',
+        en: 'Living room and dining table in one open space, the beach painting above the table.' },
+      { nl: 'Diepe zetel voor de kastenwand met haard, rechts de balkondeur.',
+        en: 'Deep sofa facing the shelving wall and fireplace, balcony door to the right.' },
+      { nl: 'Loungestoel op het zeebalkon, het strand acht verdiepingen lager.',
+        en: 'Lounge chair on the sea-facing balcony, the beach eight floors below.' },
+      { nl: 'Keukeneiland met de spoelbak naar de leefruimte, de eettafel ernaast.',
+        en: 'Kitchen island with the sink facing the room, dining table alongside.' },
+      { nl: 'Eettafel voor zes onder het strandschilderij.',
+        en: 'Dining table for six under the beach painting.' },
+      { nl: 'Eethoek met het staketsel en de vuurtoren in het raam.',
+        en: 'Dining corner with the pier and lighthouse framed in the window.' },
+      { nl: 'Slaapkamer met dubbel bed, kasten tot aan het plafond en een deur naar het achterbalkon.',
+        en: 'Double bedroom with full-height wardrobes and a door to the back balcony.' },
+      { nl: 'Tweede slaapkamer met dubbel bed, met zicht over de daken van Nieuwpoort-Bad.',
+        en: 'Second double bedroom, looking over the rooftops of Nieuwpoort-Bad.' },
+      { nl: 'Stapelbedkamer: twee stapelbedden voor de kinderen, met een deur naar het achterbalkon.',
+        en: 'Bunk room: two bunk beds for the kids, with a door to the back balcony.' },
+      { nl: 'Dubbele stenen wastafel, met handdoeken klaar voor elke gast.',
+        en: 'Double stone basin, towels laid out for every guest.' },
+      { nl: 'Inloopdouche met regendouche en handdouche.',
+        en: 'Walk-in shower with rain head and hand shower.' },
+      { nl: 'Keuken: kookplaat tegen handgemaakte tegels, oven en hoge kasten.',
+        en: 'Kitchen: hob against handmade tiles, oven and full-height cabinets.' },
+      { nl: 'Twee fauteuils en een lage tafel: de rustige hoek van de woonkamer.',
+        en: 'Two armchairs and a low table: the quiet corner of the living room.' },
+      { nl: 'Haard in de wand van de woonkamer.',
+        en: 'Fireplace set into the living-room wall.' },
+      { nl: 'Ingebouwde bank met kussens aan de eettafel.',
+        en: 'Built-in bench with cushions at the dining table.' },
+      { nl: 'Ingebouwde kasten met boeken, naast de haard.',
+        en: 'Built-in shelving with books, next to the fireplace.' },
+      { nl: 'Keramiek op de kasten in de woonkamer.',
+        en: 'Ceramic detail on the living-room shelves.' },
+      { nl: 'De havengeul, het staketsel en De IJzermonding, gezien vanaf het balkon.',
+        en: 'The harbour mouth, the pier and the IJzermonding, seen from the balcony.' },
+      { nl: 'De residentie op de Zeedijk, eerste rij aan het strand.',
+        en: 'The residence on the Zeedijk, front row to the beach.' },
+      { nl: 'De residentie vanachter het helmgras.',
+        en: 'The residence seen from behind the dune grass.' },
     ],
     boekUrl: 'https://book.moroww.com/properties/6ab65d3568ceea00136f518d',
   },

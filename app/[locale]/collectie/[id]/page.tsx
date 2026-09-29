@@ -96,12 +96,12 @@ const woningMeta: Record<
   },
   'zeedijk-nieuwpoort': {
     title: {
-      nl: 'The Eight — vakantiewoning Nieuwpoort met zeezicht',
-      en: 'The Eight — Nieuwpoort holiday home with sea view',
+      nl: 'The Eighth — vakantiewoning Nieuwpoort met zeezicht',
+      en: 'The Eighth — Nieuwpoort holiday home with sea view',
     },
     description: {
-      nl: 'The Eight — 8e verdieping op de Zeedijk in Nieuwpoort-Bad. Zicht op staketsel en vuurtoren, 3 slaapkamers, max 8. Gecertificeerd. Vanaf €270/nacht.',
-      en: 'The Eight — 8th-floor apartment on the Zeedijk in Nieuwpoort-Bad. Views of pier and lighthouse, 3 bedrooms, up to 8 guests. Certified. From €270/night.',
+      nl: 'The Eighth — 8e verdieping op de Zeedijk in Nieuwpoort-Bad. Zicht op staketsel en vuurtoren, 3 slaapkamers, max 8. Gecertificeerd. Vanaf €270/nacht.',
+      en: 'The Eighth — 8th-floor apartment on the Zeedijk in Nieuwpoort-Bad. Views of pier and lighthouse, 3 bedrooms, up to 8 guests. Certified. From €270/night.',
     },
   },
 };
@@ -248,7 +248,11 @@ export default async function WoningDetailPage({ params }: Props) {
 
         {/* Hero-galerij */}
         <div className="mb-mw-6">
-          <WoningGalerij fotos={woning.fotos} naam={woning.naam} />
+          <WoningGalerij
+            fotos={woning.fotos}
+            naam={woning.naam}
+            alts={woning.fotoAlts ? lwArr(woning.fotoAlts, locale) : undefined}
+          />
         </div>
 
         {/* Twee kolommen vanaf lg. Onder lg: stacken (breadcrumb → kop → tagline

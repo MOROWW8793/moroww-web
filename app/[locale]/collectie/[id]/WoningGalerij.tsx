@@ -7,13 +7,17 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 interface Props {
   fotos: string[];
   naam: string;
+  /** Alt-tekst per foto, parallel aan `fotos`. Ontbrekende indexen
+   *  vallen terug op `naam`. */
+  alts?: string[];
 }
 
 // Twee foto's naast elkaar, 50/50, 8px gutter, hoogte 62vh op ≥lg,
 // gestapeld op smaller schermen. Geen afgeronde hoeken, geen schaduw.
 // Rechtsonder in de tweede foto: rechthoek-knop 2px radius die de lightbox
 // opent op index 0. De lightbox houdt alle foto's beschikbaar.
-export function WoningGalerij({ fotos, naam }: Props) {
+export function WoningGalerij({ fotos, naam, alts }: Props) {
+  const altFor = (i: number) => alts?.[i] || naam;
   const [lightbox, setLightbox] = useState<number | null>(null);
   const touchStartX = useRef<number>(0);
   const touchEndX = useRef<number>(0);
@@ -59,7 +63,7 @@ export function WoningGalerij({ fotos, naam }: Props) {
         >
           <Image
             src={fotos[0]}
-            alt={naam}
+            alt={altFor(0)}
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 50vw"
@@ -76,7 +80,7 @@ export function WoningGalerij({ fotos, naam }: Props) {
             >
               <Image
                 src={fotos[1]}
-                alt={`${naam} foto 2`}
+                alt={altFor(1)}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -123,7 +127,7 @@ export function WoningGalerij({ fotos, naam }: Props) {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={fotos[lightbox]}
-              alt={`${naam} ${lightbox + 1}`}
+              alt={altFor(lightbox)}
               style={{ maxWidth: "100%", maxHeight: "85vh", objectFit: "contain" }}
             />
             <p className="text-white/60 text-center text-audit uppercase mt-3">
