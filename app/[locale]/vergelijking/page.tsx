@@ -42,11 +42,16 @@ export default async function VergelijkingPage({
         <p className="text-xs uppercase tracking-widest text-moroww-label mb-4">
           het verschil
         </p>
-        <h1 className="text-[clamp(2rem,5vw,4rem)] font-bold leading-[1.1] text-moroww-dark mb-6">
-          moroww is geen beheerder.<br />
-          <span className="font-light">geen platform. een label.</span>
+        {/* De positioneringszin (Fix 8) is te lang voor één H1-regel. Zin
+            gesplitst bij de dubbelpunt: eerste helft als H1, tweede helft
+            als leadin daaronder — samen dekken ze de volledige zin. */}
+        <h1 className="text-[clamp(1.75rem,4vw,3rem)] font-bold leading-[1.15] text-moroww-dark mb-4">
+          moroww is het kwaliteitslabel voor vakantiewoningen in België.
         </h1>
-        <p className="text-lg text-moroww-dark/70 max-w-2xl mb-16 leading-relaxed">
+        <p className="text-lg text-moroww-dark mb-8 leading-relaxed max-w-2xl">
+          Elke moroww-woning is geauditeerd, uitgerust en opgevolgd.
+        </p>
+        <p className="text-base text-moroww-dark/70 max-w-2xl mb-16 leading-relaxed">
           De Belgische vakantieverhuurmarkt telt veel spelers. Hier is hoe moroww
           zich verhoudt tot de bekendste namen.
         </p>
