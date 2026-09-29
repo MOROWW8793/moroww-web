@@ -1,13 +1,9 @@
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
-import { woningen, lw, type Locale } from '@/lib/woningen'
 import { Register } from '@/components/Register'
-import { GridSectie } from '@/components/GridSectie'
-import { AuditLijn } from '@/components/AuditLijn'
 import { InlineFoto } from '@/components/InlineFoto'
-import { CijferBlok } from '@/components/CijferBlok'
-import { formatAuditMaand } from '@/components/PandKaart'
+import { TekstBlok } from '@/components/sections/TekstBlok'
 import { siteMetadata } from '@/lib/seo/siteMetadata'
 import { screeningsPubliek } from '@/lib/screenings'
 import { countWord } from '@/lib/getallen'
@@ -24,15 +20,11 @@ export async function generateMetadata({
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'destandaard' })
   const isNl = locale === 'nl'
-  // Meta-description leest live uit de view. Bij een fout valt hij terug op
-  // t('meta_description') — die zin bevat geen cijfers meer (zie nl.json /
-  // en.json na deze commit), dus staan er nooit stale getallen in de SERP.
   const s = await screeningsPubliek()
   // Aantallen op /de-standaard lezen uit de view screenings_publiek:
-  // aantal_dossier voor "dossiers bekeken", aantal_bezoek voor "bezocht"
-  // en aantal_opgenomen voor "haalden de standaard". liveWoningen()
-  // beschrijft alleen wat online staat, niet wat officieel opgenomen is
-  // (een pand kan wachten op fotoshoot en toch tellen als opgenomen).
+  // aantal_dossier voor "dossiers bekeken" en aantal_opgenomen voor
+  // "haalden de standaard". liveWoningen() beschrijft alleen wat online
+  // staat, niet wat officieel opgenomen is.
   const opgenomenWord = s ? countWord(s.aantal_opgenomen, isNl ? 'nl' : 'en', false) : ''
   const beschrijving = s
     ? isNl
@@ -48,12 +40,6 @@ export async function generateMetadata({
   })
 }
 
-// Beeld-wrapper: op <lg gelijk aan de tekstkolom (62ch), vanaf lg 80 %
-// van de outer container — van de linkerrand van de tekst tot 80 % van de
-// paginabreedte. InlineFoto zelf blijft 3:2 met object-cover; via deze
-// wrapper krijgt elk beeld dezelfde verhouding en dezelfde ritme.
-const BEELD_WRAPPER = 'max-w-[62ch] lg:w-4/5 lg:max-w-none'
-
 export default async function DeStandaardPage({
   params,
 }: {
@@ -62,14 +48,36 @@ export default async function DeStandaardPage({
   const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations('destandaard')
+  const isNl = locale === 'nl'
   const cijfers = await screeningsPubliek()
 
-  const gates = [
-    { title: t('gate01_title'), body: t('gate01_body') },
-    { title: t('gate02_title'), body: t('gate02_body') },
-    { title: t('gate03_title'), body: t('gate03_body') },
-    { title: t('gate04_title'), body: t('gate04_body') },
-  ]
+  const gates = isNl
+    ? [
+        { title: 'ruimte',   body: 'minstens 100 m² en twee slaapkamers.' },
+        { title: 'karakter', body: 'natuurlijke materialen, een authentiek element, zicht op groen of water.' },
+        { title: 'stilte',   body: 'door afstand of door hoogte. Natuur, kust, of hoog genoeg dat de straat niet tot binnen komt.' },
+        { title: 'bezocht',  body: 'iemand van ons stond in die kamers. Geen fotoakkoord, geen videorondleiding.' },
+      ]
+    : [
+        { title: 'space',    body: 'at least 100 m² and two bedrooms.' },
+        { title: 'character',body: 'natural materials, an authentic element, a view of green or water.' },
+        { title: 'quiet',    body: 'through distance or through height. Nature, coast, or high enough that the street does not reach inside.' },
+        { title: 'visited',  body: 'someone from our team stood in those rooms. No photo approval, no video tour.' },
+      ]
+
+  const klaarstaat = isNl
+    ? [
+        { title: 'het slot',        body: 'je eigen code, geldig vanaf je aankomst.' },
+        { title: 'warmte en licht', body: 'de verwarming staat op temperatuur, het licht staat klaar.' },
+        { title: 'de geur',         body: 'één signatuurgeur voor the shore, één voor the fields.' },
+        { title: 'het linnen',      body: 'bedden opgemaakt, handdoeken klaar.' },
+      ]
+    : [
+        { title: 'the lock',     body: 'your own code, valid from your arrival.' },
+        { title: 'warmth and light', body: 'the heating is up to temperature, the light is set.' },
+        { title: 'the scent',    body: 'one signature scent for the shore, one for the fields.' },
+        { title: 'the linen',    body: 'beds made up, towels laid out.' },
+      ]
 
   return (
     <Register kant="eigenaar">
@@ -83,10 +91,22 @@ export default async function DeStandaardPage({
           >
             {t('hero_h1')}
           </h1>
-          <p className="mt-mw-5 text-body-lg text-moroww-dark max-w-[62ch]">
-            {t('hero_intro')}
+
+          {cijfers && (
+            <p className="mt-mw-5 text-audit uppercase text-moroww-ink-2">
+              {isNl
+                ? `${cijfers.aantal_dossier} bekeken · ${cijfers.aantal_bezoek} bezocht · ${cijfers.aantal_opgenomen} opgenomen`
+                : `${cijfers.aantal_dossier} reviewed · ${cijfers.aantal_bezoek} visited · ${cijfers.aantal_opgenomen} accepted`}
+            </p>
+          )}
+
+          <p className="mt-mw-4 text-body-lg text-moroww-dark max-w-[62ch]">
+            {isNl
+              ? 'De waarde van het label zit in de huizen die er niet in zitten.'
+              : 'The value of the label sits in the homes that are not in it.'}
           </p>
-          <div className={BEELD_WRAPPER}>
+
+          <div className="mt-mw-6 max-w-[62ch]">
             <InlineFoto src="/images/standaard/V2-127.jpg" alt={t('alt_travertijn')} />
           </div>
         </div>
@@ -94,150 +114,69 @@ export default async function DeStandaardPage({
 
       <div className="mx-auto max-w-6xl px-6 md:px-12">
 
-        {/* Cijferblok — substantieert "wij zeggen vaker nee dan ja" voor de
-            vier poorten volgen. Live uit screenings_publiek (moroww-os). */}
-        <GridSectie geenHairline>
-          <CijferBlok data={cijfers} />
-        </GridSectie>
-
-        <GridSectie>
-          <h2 className="text-h2 text-moroww-dark">{t('gates_title')}</h2>
-          <p className="mt-mw-4 text-body-lg text-moroww-dark">
-            Er is geen weging en er zijn geen uitzonderingen. Alle vier, of het
-            huis komt er niet in.
+        {/* ── DE VIER POORTEN ── */}
+        <TekstBlok eyebrow={isNl ? 'de vier poorten' : 'the four gates'} heading={isNl ? 'alle vier, of het huis komt er niet in.' : 'all four, or the home does not come in.'}>
+          <p>
+            {isNl
+              ? 'Wat niet klopt, zetten we op de pagina van het huis zelf.'
+              : 'Whatever is not right, we put on the page of the home itself.'}
           </p>
           <div className="mt-mw-6 border-t border-moroww-rule">
             {gates.map((g) => (
-              <div key={g.title} className="border-b border-moroww-rule py-mw-5">
+              <div key={g.title} className="border-b border-moroww-rule py-mw-4">
                 <h3 className="text-h3 text-moroww-dark">{g.title}</h3>
-                <p className="mt-mw-3 text-body text-moroww-dark">{g.body}</p>
+                <p className="mt-mw-2 text-body text-moroww-dark">{g.body}</p>
               </div>
             ))}
           </div>
-        </GridSectie>
-        <div className={BEELD_WRAPPER}>
-          <InlineFoto src="/images/standaard/V2-210.jpg" alt={t('alt_glas_water')} />
-        </div>
+        </TekstBlok>
 
-        <GridSectie>
-          <h2 className="text-h2 text-moroww-dark">{t('visit_title')}</h2>
-          <div className="mt-mw-4 space-y-mw-3 text-body text-moroww-dark">
-            <p>{t('visit_p1')}</p>
-            <p>{t('visit_p2')}</p>
-            <p>{t('visit_p3')}</p>
-            <p>{t('visit_p4')}</p>
+        {/* ── WAT KLAARSTAAT ── */}
+        <TekstBlok eyebrow={isNl ? 'wat klaarstaat als je aankomt' : 'what is ready when you arrive'}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-mw-6">
+            {klaarstaat.map((k) => (
+              <div key={k.title}>
+                <p className="text-audit uppercase text-moroww-label">{k.title}</p>
+                <p className="mt-mw-2 text-body text-moroww-dark">{k.body}</p>
+              </div>
+            ))}
           </div>
-        </GridSectie>
+        </TekstBlok>
 
-        {/* "wat er gebeurt voor opname" krijgt bewust geen beeld — het
-            bestand met de beoogde hand-onder-regendouche is uit de
-            publicatie gehaald. */}
-
-        {/* Zes tech-items zijn uitgesplitst naar individuele secties.
-            add_limit en add_invisible zijn per user's spec uit de publicatie
-            gehaald. Het slot krijgt geen beeld. */}
-        <GridSectie>
-          <h3 className="text-h3 text-moroww-dark">{t('add_lock_title')}</h3>
-          <p className="mt-mw-3 text-body text-moroww-dark">{t('add_lock_body')}</p>
-        </GridSectie>
-
-        <GridSectie>
-          <h3 className="text-h3 text-moroww-dark">{t('add_ambient_title')}</h3>
-          <p className="mt-mw-3 text-body text-moroww-dark">{t('add_ambient_body')}</p>
-        </GridSectie>
-        <div className={BEELD_WRAPPER}>
-          <InlineFoto src="/images/standaard/V2-63.jpg" alt={t('alt_kunstwerk_speaker')} />
-        </div>
-
-        <GridSectie>
-          <h3 className="text-h3 text-moroww-dark">{t('add_scent_title')}</h3>
-          <p className="mt-mw-3 text-body text-moroww-dark">{t('add_scent_body')}</p>
-        </GridSectie>
-        <div className={BEELD_WRAPPER}>
-          <InlineFoto src="/images/standaard/V2-36.jpg" alt={t('alt_wastafel_man')} />
-        </div>
-
-        <GridSectie>
-          <h3 className="text-h3 text-moroww-dark">{t('add_ordinary_title')}</h3>
-          <p className="mt-mw-3 text-body text-moroww-dark">{t('add_ordinary_body')}</p>
-        </GridSectie>
-        <div className={BEELD_WRAPPER}>
-          <InlineFoto src="/images/standaard/V2-19.jpg" alt={t('alt_bedlinnen')} />
-        </div>
-
-        <GridSectie>
-          <h2 className="text-h2 text-moroww-dark">{t('reaudit_title')}</h2>
-          <div className="mt-mw-4 space-y-mw-3 text-body text-moroww-dark">
-            <p>{t('reaudit_p1')}</p>
-            <p>{t('reaudit_p2')}</p>
-            <p>{t('reaudit_p3')}</p>
-            <p className="font-semibold text-moroww-dark">{t('reaudit_p4')}</p>
-          </div>
-        </GridSectie>
-        <div className={BEELD_WRAPPER}>
-          <InlineFoto src="/images/standaard/V2-12.jpg" alt={t('alt_handdoeken')} />
-        </div>
-
-        <ReviewsSectie locale={locale as Locale} />
-        <div className={BEELD_WRAPPER}>
-          <InlineFoto src="/images/standaard/V2-40.jpg" alt={t('alt_bed_tijdschrift')} />
-        </div>
-
-        {/* Afsluiter · voor eigenaars — geen beeld */}
-        <GridSectie titel={t('owner_label')}>
-          <h2 className="text-h2 text-moroww-dark">{t('owner_title')}</h2>
-          <p className="mt-mw-4 text-body text-moroww-dark">
-            Meld het aan. We nemen binnen twee werkdagen persoonlijk contact
-            op, en we komen zelf kijken.
+        {/* ── OPGEVOLGD ── */}
+        <TekstBlok eyebrow={isNl ? 'opgevolgd' : 'looked after'}>
+          <p>
+            {isNl
+              ? 'Onze partners komen er telkens weer over de vloer, en elk jaar keuren we opnieuw. Haalt een huis de standaard niet meer, dan krijgt de eigenaar dertig dagen. Daarna verlaat het de collectie, ook als het goed verhuurt.'
+              : 'Our partners return to every home again and again, and every year we re-audit. If a home no longer meets the standard, the owner has thirty days. After that it leaves the collection, even if it books well.'}
           </p>
-          <p className="mt-mw-5">
+          <div className="mt-mw-6">
+            <InlineFoto src="/images/standaard/V2-40.jpg" alt={t('alt_bed_tijdschrift')} />
+          </div>
+        </TekstBlok>
+
+        {/* ── AFSLUITER: gastquote + eigenaarslink ── */}
+        <TekstBlok eyebrow={isNl ? 'wat een gast zei' : 'what a guest said'}>
+          <blockquote className="text-body-lg text-moroww-dark italic">
+            {isNl
+              ? '"Het is een enorm smaakvol appartement, tot in de puntjes afgewerkt. Ruim, licht en heel luxe. Het ligt heel dicht aan zee maar toch enorm veel rust en geen enkel geluidsoverlast."'
+              : '"A very tasteful apartment, finished down to the last detail. Spacious, light and very luxurious. It sits very close to the sea and still there is complete calm — no noise at all."'}
+          </blockquote>
+          <p className="mt-mw-3 text-audit uppercase text-moroww-ink-2">
+            Ragna · Nosso Logies · 2026-08
+          </p>
+          <p className="mt-mw-6">
             <Link
               href="/eigenaar-worden"
-              className="inline-flex items-center rounded-full px-mw-4 py-3 font-semibold bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85 transition-colors"
+              className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
             >
-              {t('owner_cta')}
+              {isNl
+                ? 'eigenaar? denk je dat jouw huis de standaard haalt →'
+                : 'owner? do you think your home meets the standard →'}
             </Link>
           </p>
-        </GridSectie>
+        </TekstBlok>
       </div>
-
     </Register>
-  )
-}
-
-const REVIEW_KEUZE: Array<{ pandId: string; naam: string }> = [
-  { pandId: 'nosso-knokke', naam: 'Ragna'     },
-  { pandId: 'nosso-knokke', naam: 'Alexander' },
-]
-
-function ReviewsSectie({ locale }: { locale: Locale }) {
-  const geselecteerd = REVIEW_KEUZE.flatMap(({ pandId, naam }) => {
-    const w = woningen.find((w) => w.id === pandId)
-    const r = w?.reviews?.find((r) => r.naam === naam)
-    return r ? [r] : []
-  })
-  if (geselecteerd.length === 0) return null
-
-  return (
-    <GridSectie titel="wat gasten opmerken">
-      <div className="divide-y divide-moroww-rule border-t border-b border-moroww-rule">
-        {geselecteerd.map((r) => {
-          const maand = formatAuditMaand(r.datum)
-          return (
-            <div key={r.naam} className="py-mw-6">
-              {maand && (
-                <div className="mb-mw-4">
-                  <AuditLijn density="quiet" items={['gast', maand]} />
-                </div>
-              )}
-              <p className="text-body-lg italic text-moroww-dark">
-                &ldquo;{lw(r.citaat, locale)}&rdquo;
-              </p>
-              <p className="mt-mw-3 text-audit uppercase text-moroww-ink-2">{r.naam}</p>
-            </div>
-          )
-        })}
-      </div>
-    </GridSectie>
   )
 }
