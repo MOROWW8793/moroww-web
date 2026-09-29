@@ -6,7 +6,7 @@
 // moet krijgen — de meeste callsites gebruiken hem aan het zinsbegin.
 
 const NL_WOORDEN: readonly string[] = [
-  'nul', 'eén', 'twee', 'drie', 'vier', 'vijf', 'zes', 'zeven', 'acht',
+  'nul', 'één', 'twee', 'drie', 'vier', 'vijf', 'zes', 'zeven', 'acht',
   'negen', 'tien', 'elf', 'twaalf', 'dertien', 'veertien', 'vijftien',
   'zestien', 'zeventien', 'achttien', 'negentien', 'twintig',
 ]
@@ -24,5 +24,10 @@ export function countWord(
 ): string {
   const table = locale === 'nl' ? NL_WOORDEN : EN_WOORDEN
   const word = n >= 0 && n <= 20 ? table[n] : String(n)
-  return capitalize ? word.charAt(0).toUpperCase() + word.slice(1) : word
+  if (!capitalize) return word
+  // Nederlands "één" (accenten op beide e's) wordt aan zinsbegin "Eén":
+  // hoofdletter E zonder accent, tweede é blijft. `.toUpperCase()` op de
+  // eerste é zou "Één" produceren en dat willen we niet.
+  if (locale === 'nl' && word === 'één') return 'Eén'
+  return word.charAt(0).toUpperCase() + word.slice(1)
 }
