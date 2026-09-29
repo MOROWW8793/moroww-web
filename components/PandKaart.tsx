@@ -51,7 +51,7 @@ export function PandKaart({ href, beeld, beeldAlt, titel, plaats, auditItems, pr
           src={beeld}
           alt={beeldAlt}
           fill
-          className="object-cover transition-transform duration-[700ms] ease-out group-hover:scale-[1.03]"
+          className="object-cover transition-transform duration-[700ms] ease-out group-hover:scale-[1.03] motion-reduce:group-hover:scale-100 motion-reduce:transition-none"
           sizes="(max-width: 768px) 100vw, 50vw"
           priority={priority}
         />
