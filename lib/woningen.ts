@@ -610,7 +610,7 @@ const _woningenRaw: Woning[] = [
       { nl: 'Negen kamers, elk met een eigen badkamer',                  en: 'Nine bedrooms, each with its own bathroom' },
       { nl: 'Een kamer op het gelijkvloers, volledig toegankelijk',      en: 'A ground-floor room, fully accessible' },
       { nl: 'Zwembad, sauna en een grote tuin',                          en: 'Pool, sauna and a large garden' },
-      { nl: 'Gerund door drie zussen, met de moeder achter de schermen', en: 'Run by three sisters, with their mother behind the scenes' },
+      { nl: 'Gerund door drie zussen',                                    en: 'Run by three sisters' },
       { nl: 'Op wandelafstand van het dorpscentrum van Elst',            en: 'Within walking distance of the village centre of Elst' },
     ],
     waaromOpgenomen: {
