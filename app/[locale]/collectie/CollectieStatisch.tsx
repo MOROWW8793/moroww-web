@@ -43,7 +43,7 @@ export function CollectieStatisch() {
               shore → fields, binnen collectie op prijs oplopend. ── */}
       <div className="px-6 md:px-16 lg:px-24 pb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {sortForCollectie(liveWoningen()).map((w) => {
+          {sortForCollectie(liveWoningen()).map((w, i) => {
             // Vaste volgorde: m² · X slk. · X gasten · vanaf €X / nacht.
             const auditItems = [
               w.oppervlakte ?? '',
@@ -60,6 +60,8 @@ export function CollectieStatisch() {
                 titel={w.naam}
                 plaats={w.locatie}
                 auditItems={auditItems}
+                // Eerste rij eager laden — geen fade-in above the fold.
+                priority={i < 2}
               />
             )
           })}

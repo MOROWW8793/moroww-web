@@ -108,7 +108,7 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-150 ease-out ${
         effectiveScrolled ? 'bg-moroww-blush shadow-sm' : 'bg-transparent'
       }`}
     >
@@ -121,7 +121,7 @@ export function Navbar() {
             alt="moroww"
             width={120}
             height={32}
-            className={`h-8 w-auto object-contain transition-all duration-300 ${
+            className={`h-8 w-auto object-contain transition-all duration-150 ${
               effectiveScrolled ? '' : 'brightness-0 invert'
             }`}
           />
@@ -133,7 +133,7 @@ export function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`text-sm font-medium transition-colors duration-300 ${
+              className={`text-sm font-medium transition-colors duration-150 ${
                 effectiveScrolled
                   ? 'text-moroww-dark hover:text-moroww-orange'
                   : 'text-white/90 hover:text-white'
@@ -156,7 +156,7 @@ export function Navbar() {
               onFocus={openViaHover}
               aria-expanded={dropdownOpen}
               aria-haspopup="menu"
-              className={`text-sm font-medium transition-colors duration-300 inline-flex items-center gap-1.5 ${
+              className={`text-sm font-medium transition-colors duration-150 inline-flex items-center gap-1.5 ${
                 effectiveScrolled
                   ? 'text-moroww-dark hover:text-moroww-orange'
                   : 'text-white/90 hover:text-white'
@@ -216,7 +216,7 @@ export function Navbar() {
           {!isNlOnly && (
             <button
               onClick={toggleLocale}
-              className={`text-sm font-medium transition-colors duration-300 px-2 py-1 ${
+              className={`text-sm font-medium transition-colors duration-150 px-2 py-1 ${
                 effectiveScrolled
                   ? 'text-moroww-dark/60 hover:text-moroww-dark'
                   : 'text-white/60 hover:text-white'

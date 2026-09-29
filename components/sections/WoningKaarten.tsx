@@ -21,9 +21,10 @@ export async function WoningKaarten({
   const gastenLabel = t('guests')
   const bedroomsLabel = t('bedrooms')
 
+  const sorted = sortForCollectie(items)
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {sortForCollectie(items).map((w) => {
+      {sorted.map((w, i) => {
         // Vaste volgorde: m² · X slk. · X gasten · vanaf €X / nacht.
         // Collectie zit al in de sortering (shore vóór fields) en in de
         // pagina-context; niet ook nog eens op de kaart.
@@ -42,6 +43,9 @@ export async function WoningKaarten({
             titel={w.naam}
             plaats={w.locatie}
             auditItems={auditItems}
+            // Eerste rij (2 kaarten op desktop, 1 op mobiel — we prioriteren
+            // de eerste twee) laadt eager, zonder lazy-fade of vertraging.
+            priority={i < 2}
           />
         )
       })}

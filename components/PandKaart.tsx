@@ -31,9 +31,13 @@ interface Props {
    *  worden hier eruit gefilterd zodat de AuditLijn geen crash krijgt en
    *  er geen placeholder verschijnt. */
   auditItems: string[]
+  /** Above-the-fold kaarten (eerste rij op home en /collectie) zetten dit
+   *  op true zodat next/image de foto eager laadt en er geen fade-in of
+   *  vertraging is bij het eerste zichtbare beeld. */
+  priority?: boolean
 }
 
-export function PandKaart({ href, beeld, beeldAlt, titel, plaats, auditItems }: Props) {
+export function PandKaart({ href, beeld, beeldAlt, titel, plaats, auditItems, priority }: Props) {
   const items = auditItems.filter((it) => typeof it === 'string' && it.trim() !== '')
 
   return (
@@ -49,6 +53,7 @@ export function PandKaart({ href, beeld, beeldAlt, titel, plaats, auditItems }: 
           fill
           className="object-cover transition-transform duration-[700ms] ease-out group-hover:scale-[1.03]"
           sizes="(max-width: 768px) 100vw, 50vw"
+          priority={priority}
         />
       </div>
       <div className="mt-mw-4">
