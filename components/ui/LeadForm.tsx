@@ -1,7 +1,8 @@
 "use client";
 
-import { useFormState } from "react-dom";
-import { useRef } from "react";
+// React 19 vervangt useFormState (react-dom) door useActionState (react).
+// Same signature; enkel de import verschuift van react-dom naar react.
+import { useActionState, useRef } from "react";
 import { submitLead } from "@/app/[locale]/eigenaar-worden/actions";
 import type { LeadFormState } from "@/types/lead";
 import { CheckCircle } from "lucide-react";
@@ -13,7 +14,7 @@ const labelClass = "flex flex-col gap-1.5";
 const spanClass  = "text-xs font-semibold text-moroww-black/50 uppercase tracking-wide";
 
 export function LeadForm() {
-  const [state, action] = useFormState(submitLead, initial);
+  const [state, action] = useActionState(submitLead, initial);
   const formRef = useRef<HTMLFormElement>(null);
 
   if (state.success) {
