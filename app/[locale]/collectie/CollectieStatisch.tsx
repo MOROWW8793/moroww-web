@@ -2,8 +2,8 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { liveWoningen, wachtOpBeeldCount } from "@/lib/woningen";
-import { PandKaart, formatAuditMaand } from "@/components/PandKaart";
+import { liveWoningen, wachtOpBeeldCount, sortForCollectie } from "@/lib/woningen";
+import { PandKaart } from "@/components/PandKaart";
 import { AuditLijn } from "@/components/AuditLijn";
 
 // Filter-tabs zijn Link-elementen naar de collectiepagina's. /collectie
@@ -36,16 +36,17 @@ export function CollectieStatisch() {
         </div>
       </div>
 
-      {/* ── Woning kaarten ── */}
+      {/* ── Woning kaarten. Vaste volgorde via sortForCollectie:
+              shore → fields, binnen collectie op prijs oplopend. ── */}
       <div className="px-6 md:px-16 lg:px-24 pb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {liveWoningen().map((w) => {
-            const maand = formatAuditMaand(w.geauditeerdOp)
+          {sortForCollectie(liveWoningen()).map((w) => {
+            const vanaf = t('from').toLowerCase()
             const auditItems = [
               w.collectie,
               w.oppervlakte ?? '',
-              w.slaapkamers ? `${w.slaapkamers} ${t('bedrooms')}` : '',
-              maand ? `geauditeerd ${maand}` : '',
+              w.maxGasten ? `${w.maxGasten} ${t('guests')}` : '',
+              w.prijs ? `${vanaf} €${w.prijs} ${t('per_night')}` : '',
             ]
             return (
               <PandKaart

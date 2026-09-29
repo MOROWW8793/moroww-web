@@ -843,6 +843,21 @@ export function liveWoningen(): Woning[] {
   return woningen.filter((w) => w.status !== 'wacht_op_beeld')
 }
 
+// Vaste sorteervolgorde voor kaartrasters: eerst the shore, dan the fields,
+// binnen een collectie oplopend op prijs. Panden zonder prijs zakken naar
+// het einde van hun collectie zonder de rest te storen.
+const _collectieRank: Record<Woning['collectie'], number> = {
+  'the shore': 0,
+  'the fields': 1,
+}
+export function sortForCollectie(items: Woning[]): Woning[] {
+  return [...items].sort((a, b) => {
+    const c = _collectieRank[a.collectie] - _collectieRank[b.collectie]
+    if (c !== 0) return c
+    return (a.prijs ?? Infinity) - (b.prijs ?? Infinity)
+  })
+}
+
 /** Aantal geauditeerde panden dat wacht op zijn fotoshoot. Filter
  *  optioneel per collectie. */
 export function wachtOpBeeldCount(collectie?: Woning['collectie']): number {
