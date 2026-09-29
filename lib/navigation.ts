@@ -95,37 +95,50 @@ export const footerNavItems: NavItem[] = [
   { labelKey: 'privacy',    href: '/privacy' },
 ]
 
-// Voettekst-kolommen. Explicit label + href zodat we niet voor elke nieuwe
-// route een NavLabelKey en messages-key hoeven aan te maken. De voettekst
-// is NL-only in bewoording (de vertaling per locale zit al in de nav zelf).
+// Voettekst-kolommen. Elke link verwijst naar een messages-key onder de
+// footer-namespace zodat NL en EN hetzelfde array delen en de vertaling
+// uit één plek komt (messages/{nl,en}.json → "footer.*").
+export type FooterLabelKey =
+  | 'collection'
+  | 'the_shore'
+  | 'the_fields'
+  | 'standard'
+  | 'about'
+  | 'partners'
+  | 'for_owners'
+  | 'knowledge_for_owners'
+  | 'contact'
+  | 'calendar_link'
+  | 'privacy'
+
 export interface FooterLink {
-  titel: string
+  labelKey: FooterLabelKey
   href: string
   extern?: boolean
 }
 
 // Kolom 2 · de collectie
 export const footerCollectieLinks: FooterLink[] = [
-  { titel: 'de collectie',   href: '/collectie' },
-  { titel: 'the shore',      href: '/the-shore' },
-  { titel: 'the fields',     href: '/the-fields' },
-  { titel: 'de standaard',   href: '/de-standaard' },
-  { titel: 'over moroww',    href: '/over-moroww' },
-  { titel: 'partners',       href: '/partners' },
+  { labelKey: 'collection', href: '/collectie' },
+  { labelKey: 'the_shore',  href: '/the-shore' },
+  { labelKey: 'the_fields', href: '/the-fields' },
+  { labelKey: 'standard',   href: '/de-standaard' },
+  { labelKey: 'about',      href: '/over-moroww' },
+  { labelKey: 'partners',   href: '/partners' },
 ]
 
 // Kolom 3 · voor eigenaars. Eén link naar /kennis (was tien) — de hub op
 // /kennis toont alle artikels, de voettekst hoeft dat niet te dupliceren.
 export const footerEigenaarLinks: FooterLink[] = [
-  { titel: 'voor eigenaars',          href: '/eigenaar-worden' },
-  { titel: 'kennis voor eigenaars',   href: '/kennis' },
-  { titel: 'contact',                 href: '/contact' },
+  { labelKey: 'for_owners',           href: '/eigenaar-worden' },
+  { labelKey: 'knowledge_for_owners', href: '/kennis' },
+  { labelKey: 'contact',              href: '/contact' },
   {
-    titel: 'een gesprek inplannen',
+    labelKey: 'calendar_link',
     href: 'https://calendar.app.google/BH8wYeA9AGf6KrUz7',
     extern: true,
   },
-  { titel: 'privacy',                 href: '/privacy' },
+  { labelKey: 'privacy',              href: '/privacy' },
 ]
 
 // NL-only pagina's: taalwissel-knop is verborgen op deze pagina's, want

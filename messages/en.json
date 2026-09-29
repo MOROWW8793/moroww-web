@@ -37,17 +37,22 @@
     "tagline": "nothing left to chance.",
     "home": "home",
     "collection": "the collection",
+    "the_shore": "the shore",
+    "the_fields": "the fields",
     "about": "about moroww",
     "standard": "the standard",
     "partners": "partners",
     "owner": "become an owner",
     "for_owners": "for owners",
+    "knowledge_for_owners": "knowledge for owners",
     "contact": "contact",
     "privacy": "privacy",
     "address_line": "moroww bv · Belgium · www.moroww.com",
     "vat_line": "VAT BE1030.667.956",
     "copyright": "© 2026 moroww bv. all rights reserved.",
-    "calendar_link": "book a call"
+    "calendar_link": "book a call",
+    "column_collection": "the collection",
+    "column_for_owners": "for owners"
   },
   "collectie": {
     "label": "Curated selection",

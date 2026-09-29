@@ -18,7 +18,15 @@ const CONTACT_EMAIL = 'info@moroww.com'
 // op mobiel. Kolom 1 (bedrijfsgegevens) staat altijd open — kolom 2 en 3
 // starten dicht op mobiel zodat de voettekst één scherm blijft.
 
-function FooterLinkItem({ link, onClick }: { link: FooterLink; onClick?: () => void }) {
+function FooterLinkItem({
+  link,
+  label,
+  onClick,
+}: {
+  link: FooterLink
+  label: string
+  onClick?: () => void
+}) {
   if (link.extern) {
     return (
       <a
@@ -28,14 +36,14 @@ function FooterLinkItem({ link, onClick }: { link: FooterLink; onClick?: () => v
         className="hover:text-white transition-colors"
         onClick={onClick}
       >
-        {link.titel}
+        {label}
       </a>
     )
   }
   return (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <Link href={link.href as any} className="hover:text-white transition-colors" onClick={onClick}>
-      {link.titel}
+      {label}
     </Link>
   )
 }
@@ -78,7 +86,7 @@ export function Footer() {
               className="h-7 w-auto brightness-0 invert mb-4"
             />
             <p className="text-sm text-white/40 leading-relaxed mb-6">
-              niets aan het toeval overgelaten.
+              {t('tagline')}
             </p>
             <p className="text-xs text-white/25">
               {t('address_line')}
@@ -100,7 +108,7 @@ export function Footer() {
               aria-expanded={col2Open}
               aria-controls="footer-col-collectie"
             >
-              <span>de collectie</span>
+              <span>{t('column_collection')}</span>
               {isMobile && (
                 <span aria-hidden className="text-sm">{col2Open ? '−' : '+'}</span>
               )}
@@ -109,7 +117,7 @@ export function Footer() {
               <ul id="footer-col-collectie" className="flex flex-col gap-2 text-sm text-white/50">
                 {footerCollectieLinks.map((link) => (
                   <li key={link.href}>
-                    <FooterLinkItem link={link} />
+                    <FooterLinkItem link={link} label={t(link.labelKey)} />
                   </li>
                 ))}
               </ul>
@@ -125,7 +133,7 @@ export function Footer() {
               aria-expanded={col3Open}
               aria-controls="footer-col-eigenaars"
             >
-              <span>voor eigenaars</span>
+              <span>{t('column_for_owners')}</span>
               {isMobile && (
                 <span aria-hidden className="text-sm">{col3Open ? '−' : '+'}</span>
               )}
@@ -133,7 +141,7 @@ export function Footer() {
             {col3Open && (
               <div id="footer-col-eigenaars" className="flex flex-col gap-2 text-sm text-white/50">
                 {footerEigenaarLinks.map((link) => (
-                  <FooterLinkItem key={link.href} link={link} />
+                  <FooterLinkItem key={link.href} link={link} label={t(link.labelKey)} />
                 ))}
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
