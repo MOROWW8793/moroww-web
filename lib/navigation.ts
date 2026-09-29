@@ -131,7 +131,6 @@ export const footerEigenaarLinks: FooterLink[] = [
 // NL-only pagina's: taalwissel-knop is verborgen op deze pagina's, want
 // een taalwissel die naar een 404 of home leidt suggereert dat er iets stuk is.
 export const nlOnlyRoutes: NavHref[] = [
-  '/eigenaar-worden',
   '/vergelijking',
   '/privacy',
 ]

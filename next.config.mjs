@@ -26,9 +26,11 @@ const nextConfig = {
       { source: "/about", destination: "/over-moroww", permanent: true },
       { source: "/nl", destination: "/", permanent: true },
       { source: "/nl/:path*", destination: "/:path*", permanent: true },
+      // /en/eigenaar-worden was NL-only en 301'de naar de NL-URL. Sinds
+      // WP K.5 hebben we een echte EN-pagina op /en/become-an-owner; de
+      // oude /en/eigenaar-worden redirect nu naar die nieuwe EN-URL.
+      { source: "/en/eigenaar-worden", destination: "/en/become-an-owner", permanent: true },
       // NL-only pagina's: /en/... redirect naar de NL-URL.
-      { source: "/en/become-an-owner", destination: "/eigenaar-worden", permanent: true },
-      { source: "/en/eigenaar-worden", destination: "/eigenaar-worden", permanent: true },
       { source: "/en/vergelijking", destination: "/vergelijking", permanent: true },
       { source: "/en/privacy", destination: "/privacy", permanent: true },
       // Slug-fix Anna-Helena: oude URL bewaart permanent 301 → nieuwe URL.

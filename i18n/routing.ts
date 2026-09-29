@@ -35,12 +35,15 @@ export const routing = defineRouting({
       nl: '/moroww-os',
       en: '/moroww-os',
     },
-    // NL-only pagina's: 'en'-pad is dezelfde string, next.config.mjs
-    // redirect /en/... naar de NL-URL. Taalwissel-knop verborgen via nlOnlyRoutes.
+    // /eigenaar-worden is nu bilinguaal. EN wordt gemount op /en/become-an-owner
+    // via de pathnames-mapping; next.config.mjs 301't /en/eigenaar-worden naar
+    // /en/become-an-owner.
     '/eigenaar-worden': {
       nl: '/eigenaar-worden',
-      en: '/eigenaar-worden',
+      en: '/become-an-owner',
     },
+    // NL-only pagina's: 'en'-pad is dezelfde string, next.config.mjs
+    // redirect /en/... naar de NL-URL. Taalwissel-knop verborgen via nlOnlyRoutes.
     '/partners': {
       nl: '/partners',
       en: '/partners',

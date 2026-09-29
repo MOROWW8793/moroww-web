@@ -41,8 +41,9 @@ const BILINGUAL_ROUTES: Array<{
   { nl: '/over-moroww',   en: '/en/about',              freq: 'monthly', priority: 0.7 },
   { nl: '/de-standaard',  en: '/en/the-standard',       freq: 'monthly', priority: 0.8 },
   { nl: '/moroww-os',     en: '/en/moroww-os',          freq: 'monthly', priority: 0.7 },
-  { nl: '/partners',      en: '/en/partners',           freq: 'monthly', priority: 0.5 },
-  { nl: '/contact',       en: '/en/contact',            freq: 'yearly',  priority: 0.4 },
+  { nl: '/partners',        en: '/en/partners',           freq: 'monthly', priority: 0.5 },
+  { nl: '/contact',         en: '/en/contact',            freq: 'yearly',  priority: 0.4 },
+  { nl: '/eigenaar-worden', en: '/en/become-an-owner',    freq: 'monthly', priority: 0.9 },
 ]
 
 // NL-only routes (zie next.config.mjs voor 301 vanuit /en/...).
@@ -54,7 +55,6 @@ const NL_ONLY_ROUTES: Array<{
   freq: 'weekly' | 'monthly' | 'yearly'
   priority: number
 }> = [
-  { path: '/eigenaar-worden', freq: 'monthly', priority: 0.9 },
   { path: '/privacy',         freq: 'yearly',  priority: 0.3 },
 ]
 
