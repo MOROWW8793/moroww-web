@@ -5,7 +5,6 @@ import path from "node:path";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { FaqJsonLd } from "@/components/FaqJsonLd";
 import { Deur } from "@/components/Deur";
-import { AuditLijn } from "@/components/AuditLijn";
 import { WoningKaarten } from "@/components/sections/WoningKaarten";
 import { siteMetadata } from "@/lib/seo/siteMetadata";
 import { liveWoningen, type Locale } from "@/lib/woningen";
@@ -29,8 +28,9 @@ export async function generateMetadata({
     titel: isNl
       ? 'moroww — gekeurde vakantiewoningen in België'
       : 'moroww — inspected holiday homes in Belgium',
-    beschrijving:
-      'Twee collecties, één standaard. Elke woning fysiek geïnspecteerd voor ze in de collectie komt.',
+    beschrijving: isNl
+      ? 'Twee collecties, één standaard. Elke woning fysiek geïnspecteerd voor ze in de collectie komt.'
+      : 'Two collections, one standard. Every home inspected in person before it joins the collection.',
     pad: isNl ? '/' : '/en',
     locale: isNl ? 'nl' : 'en',
     hreflang: { nl: '/', en: '/en' },
@@ -44,13 +44,17 @@ export default async function HomePage({
 }) {
   const { locale } = await params
   setRequestLocale(locale)
-  // t is niet strikt nodig — de homepage-tekst is hier hardgecodeerd zoals
-  // gevraagd. i18n voor de deur-taglines volgt zodra de EN-copy vast staat.
   await getTranslations({ locale, namespace: 'home' })
+  const isNl = locale === 'nl'
+  // Prefix voor de Deur-hrefs: NL zonder prefix, EN met /en. Deur gebruikt
+  // een gewone next/link (geen next-intl Link) en verwacht een absoluut pad.
+  const prefix = isNl ? '' : '/en'
 
   return (
     <>
-      <FaqJsonLd />
+      {/* FAQ-JSON-LD is Nederlandstalig; niet renderen op /en om de EN-pagina
+          niet met NL structured data te vervuilen. */}
+      {isNl && <FaqJsonLd />}
 
       {/* HERO — bouwspec sectie 2. Blush achtergrond, één regel display,
           geen beeld, geen video, geen knop.
@@ -62,7 +66,7 @@ export default async function HomePage({
       >
         <div className="mx-auto max-w-7xl w-full overflow-visible">
           <h1 className="text-display text-moroww-dark">
-            twee collecties. één standaard.
+            {isNl ? 'twee collecties. één standaard.' : 'two collections. one standard.'}
           </h1>
         </div>
       </section>
@@ -83,39 +87,43 @@ export default async function HomePage({
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-2">
           <Deur
             naam="the shore"
-            tagline="waar het licht verandert"
-            href="/the-shore"
+            tagline={isNl ? 'waar het licht verandert' : 'where the light shifts'}
+            href={`${prefix}/the-shore`}
             beeld={beeldOfNull('/images/home/shore-door.jpg')}
-            beeldAlt="de Belgische kust"
+            beeldAlt={isNl ? 'de Belgische kust' : 'the Belgian coast'}
           />
           <Deur
             naam="the fields"
-            tagline="waar het stil blijft"
-            href="/the-fields"
+            tagline={isNl ? 'waar het stil blijft' : 'where the quiet stays'}
+            href={`${prefix}/the-fields`}
             beeld={beeldOfNull('/images/home/fields-door.jpg')}
-            beeldAlt="het binnenland in winter"
+            beeldAlt={isNl ? 'het binnenland in winter' : 'the countryside in winter'}
           />
         </div>
       </section>
 
-      {/* HET LABEL — bouwspec sectie 4. space-12 boven en onder. */}
+      {/* HET LABEL — bouwspec sectie 4. space-12 boven en onder.
+          Kop = 'het label', body = positioneringszin, link = 'lees hoe we
+          keuren'. Oude H2 ('moroww is een label, geen verhuurkantoor')
+          en de tweede body-zin ('De meeste halen de standaard niet.') zijn
+          weg — positioneringszin is nu de dragende regel. */}
       <section className="w-full px-6 md:px-12 mt-mw-12 mb-mw-12">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-[52ch]">
-            <AuditLijn density="quiet" items={['het label']} />
-            <h2 className="mt-mw-4 text-h2 text-moroww-dark">
-              moroww is een label, geen verhuurkantoor
+            <h2 className="text-h2 text-moroww-dark">
+              {isNl ? 'het label' : 'the label'}
             </h2>
             <p className="mt-mw-4 text-body-lg text-moroww-dark">
-              Elke woning wordt fysiek geïnspecteerd voor ze in de collectie
-              komt. De meeste halen de standaard niet.
+              {isNl
+                ? 'moroww is het kwaliteitslabel voor vakantiewoningen in België: elke moroww-woning is geauditeerd, uitgerust en opgevolgd.'
+                : 'moroww is the quality label for holiday homes in Belgium: every moroww home is audited, equipped and looked after.'}
             </p>
             <p className="mt-mw-5">
               <Link
-                href="/de-standaard"
+                href={isNl ? '/de-standaard' : '/en/the-standard'}
                 className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
               >
-                lees hoe we keuren →
+                {isNl ? 'lees hoe we keuren →' : 'how we inspect →'}
               </Link>
             </p>
           </div>
