@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { Register } from "@/components/Register";
-import { BrandLoop } from "@/components/BrandLoop";
 import { TekstBlok } from "@/components/sections/TekstBlok";
 
 // WP M-versie. Kort en duidelijk: hero (label-zin + lead), verhaal
@@ -96,16 +95,6 @@ export function OverMorowwContent({ locale }: { locale: string }) {
             />
           </div>
         </TekstBlok>
-
-        {/* ── BRANDLOOP — merkmoment vlak vóór de verder-links. Muted,
-            loop, respecteert prefers-reduced-motion (poster i.p.v. video). */}
-        <div className="mt-mw-8 max-w-3xl mx-auto">
-          <BrandLoop
-            alt={isNl
-              ? 'moroww — wordmark met bladlogo dat er bovenop groeit'
-              : 'moroww — wordmark with the leaf mark growing above it'}
-          />
-        </div>
 
         {/* ── VERDER ── drie links */}
         <TekstBlok eyebrow={isNl ? 'verder' : 'more'}>
