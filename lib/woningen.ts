@@ -404,32 +404,32 @@ const _woningenRaw: Woning[] = [
       { nl: 'Tuin met BBQ',     en: 'Max 10 guests' },
     ],
     slogan: {
-      nl: 'Groot genoeg voor het hele gezelschap. Rustig genoeg voor de rest.',
-      en: 'A full house, a private pool and a garden built for long evenings.',
+      nl: 'groot genoeg voor het hele gezelschap. rustig genoeg voor de rest.',
+      en: 'big enough for the whole group. quiet enough for everything else.',
     },
     introductie: {
-      nl: 'Voor groepen die echt samen willen zijn. Niet op elkaars lip - maar wel samen. Vier slaapkamers, een zwembad, een hottub, een vuurschaal en een tuin die groot genoeg is om iedereen hun eigen hoekje te geven. Beernem is geen bestemming die je kent. Dat is precies waarom het zo goed werkt.',
-      en: 'For groups that want to be truly together. Not on top of each other — but together. Four bedrooms, a pool, a hot tub, a fire pit and a garden big enough to give everyone their own corner. Beernem is not a destination you know. That\'s exactly why it works so well.',
+      nl: 'Vier slaapkamers en twee badkamers in Beernem, tussen Brugge en Gent. Volledig uitgeruste keuken, overdekt terras, zwembad, hottub, vuurschaal en pétanquebaan. Ruimte voor tien gasten.',
+      en: 'Four bedrooms and two bathrooms in Beernem, between Bruges and Ghent. Fully equipped kitchen, covered terrace, pool, hot tub, fire pit and pétanque court. Room for ten guests.',
     },
     beschrijving: {
-      nl: 'Stijlvolle vakantiewoning voor maximaal 10 gasten, midden in het groen in Beernem. Luxueuze badkamers, ruime tuin met overdekt terras, zwembad, vuurschaal en pétanquebaan.',
-      en: 'Stylish holiday home for up to 10 guests, surrounded by nature in Beernem. Luxurious bathrooms, spacious garden with covered terrace, pool, fire pit and pétanque court.',
+      nl: 'Vakantiewoning in Beernem, tussen Brugge en Gent. Vier slaapkamers, twee badkamers, zwembad, hottub, vuurschaal en pétanquebaan. Max 10.',
+      en: 'Holiday home in Beernem, between Bruges and Ghent. Four bedrooms, two bathrooms, pool, hot tub, fire pit and pétanque court. Up to 10 guests.',
     },
     volledigeBeschrijving: {
-      nl: 'Binnen vind je vier gezellige slaapkamers met kwalitatieve boxspringbedden en een mezzanine met twee eenpersoonsbedden. Er zijn twee moderne badkamers: één met inloopdouche en één met ligbad, plus een apart gastentoilet. De open leefruimte bestaat uit een lichtrijke zithoek, een grote eettafel en een volledig uitgeruste keuken: vaatwasser, oven, koelkast met diepvries, microgolfoven, koffiemachine en wasmachine. Buiten wacht de absolute troef van deze woning. Ontspan in de hottub, steek de vuurschaal aan, neem een duik in het zwembad of speel een potje pétanque terwijl de kinderen zich uitleven op de trampoline of speeltuin. Het overdekte terras is de ideale plek om te genieten, ongeacht het weer. Het buitenzwembad is niet verwarmd — ideaal tijdens de warmere maanden of voor wie houdt van een frisse duik. De hottub, BBQ en vuurschaal zijn het hele jaar beschikbaar.',
-      en: 'The Cozy Relax Home is the right choice when you want to be with a group and not compromise. Private heated pool, hot tub, a garden with BBQ and enough space for everyone to have their own corner. Four bedrooms, two bathrooms and a fully equipped kitchen make this a genuine base for a group holiday. The covered terrace is the ideal spot whatever the weather. The outdoor pool is unheated — ideal in the warmer months or for those who like a refreshing dip. The hot tub, BBQ and fire pit are available all year round.',
+      nl: 'Binnen: vier slaapkamers met boxspringbedden en een mezzanine met twee eenpersoonsbedden. Twee badkamers — één met inloopdouche, één met ligbad — plus een apart gastentoilet. De open leefruimte bestaat uit een lichtrijke zithoek, een grote eettafel en een volledig uitgeruste keuken: vaatwasser, oven, koelkast met diepvries, microgolfoven, koffiemachine en wasmachine.\n\nBuiten: hottub, vuurschaal, zwembad en pétanquebaan. Voor kinderen een trampoline en een speeltuin. Het overdekte terras is bruikbaar bij elk weer. Het buitenzwembad is niet verwarmd. De hottub, BBQ en vuurschaal zijn het hele jaar beschikbaar.',
+      en: 'Inside: four bedrooms with box-spring beds and a mezzanine with two single beds. Two bathrooms — one with walk-in shower, one with bath — and a separate guest toilet. The open living space has a bright sitting area, a large dining table and a fully equipped kitchen: dishwasher, oven, fridge-freezer, microwave, coffee machine and washing machine.\n\nOutside: hot tub, fire pit, pool and pétanque court. For children a trampoline and a play area. The covered terrace works in any weather. The outdoor pool is unheated. The hot tub, BBQ and fire pit are available all year round.',
     },
     buurt: {
       nl: 'Beernem ligt in een groene, rustige omgeving tussen Brugge en Gent — de ideale uitvalsbasis voor wie houdt van natuur, fietsen en wandelen. In de buurt vind je mooie bossen, landelijke wegen en charmante dorpjes. Brugge bereik je op 14 km, de kust op 25 km en Gent op 35 km. Tegelijk bereik je vlot culturele hotspots, restaurants en winkels in de omliggende steden. De woning is bereikbaar met de wagen en heeft private parkeergelegenheid voor 5 wagens op het terrein.',
       en: 'Beernem is located between Bruges and Ghent in the heart of the West Flemish countryside. Bruges is 14 km away, the coast 25 km and Ghent 35 km. The surrounding area offers beautiful cycling routes through the polders and forests. The home is accessible by car and has private parking for 5 vehicles on site.',
     },
     hoogtepunten: [
-      { nl: 'Zwembad, hottub en vuurschaal',                     en: 'Private heated pool, hot tub and fire pit' },
+      { nl: 'Zwembad, hottub en vuurschaal',                     en: 'Pool, hot tub and fire pit' },
       { nl: 'Overdekt terras met BBQ en pétanquebaan',           en: 'Covered terrace with BBQ and pétanque court' },
-      { nl: 'Tot 10 gasten — ideaal voor groepen',               en: '4 bedrooms, max 10 guests' },
+      { nl: 'Max 10 gasten',                                     en: 'Up to 10 guests' },
       { nl: '14 km van Brugge, 25 km van de kust',               en: '14 km from Bruges, 25 km from the coast' },
       { nl: 'Parkeren voor 5 wagens op het terrein',             en: 'Parking for 5 cars on site' },
-      { nl: '4 slaapkamers met boxspringbedden',                 en: 'Fully equipped for groups' },
+      { nl: '4 slaapkamers met boxspringbedden',                 en: '4 bedrooms with box-spring beds' },
     ],
     reviews: [
       {
