@@ -610,23 +610,23 @@ const _woningenRaw: Woning[] = [
       en: 'big enough for the whole group. quiet enough for everything else.',
     },
     introductie: {
-      nl: 'Vier slaapkamers en twee badkamers in Beernem, tussen Brugge en Gent. Volledig uitgeruste keuken, overdekt terras, zwembad, hottub, vuurschaal en pétanquebaan. Ruimte voor tien gasten.',
-      en: 'Four bedrooms and two bathrooms in Beernem, between Bruges and Ghent. Fully equipped kitchen, covered terrace, pool, hot tub, fire pit and pétanque court. Room for ten guests.',
+      nl: 'Vier slaapkamers en twee badkamers in Beernem, tussen Brugge en Gent. Volledig uitgeruste keuken, overdekt terras, binnenzwembad in een serre, hottub, vuurschaal en pétanquebaan. Ruimte voor tien gasten.',
+      en: 'Four bedrooms and two bathrooms in Beernem, between Bruges and Ghent. Fully equipped kitchen, covered terrace, indoor pool in a conservatory, hot tub, fire pit and pétanque court. Room for ten guests.',
     },
     beschrijving: {
-      nl: 'Vakantiewoning in Beernem, tussen Brugge en Gent. Vier slaapkamers, twee badkamers, zwembad, hottub, vuurschaal en pétanquebaan. Max 10.',
-      en: 'Holiday home in Beernem, between Bruges and Ghent. Four bedrooms, two bathrooms, pool, hot tub, fire pit and pétanque court. Up to 10 guests.',
+      nl: 'Vakantiewoning in Beernem, tussen Brugge en Gent. Vier slaapkamers, twee badkamers, binnenzwembad in een serre, hottub, vuurschaal en pétanquebaan. Max 10.',
+      en: 'Holiday home in Beernem, between Bruges and Ghent. Four bedrooms, two bathrooms, indoor pool in a conservatory, hot tub, fire pit and pétanque court. Up to 10 guests.',
     },
     volledigeBeschrijving: {
-      nl: 'Binnen: vier slaapkamers met boxspringbedden en een mezzanine met twee eenpersoonsbedden. Twee badkamers — één met inloopdouche, één met ligbad — plus een apart gastentoilet. De open leefruimte bestaat uit een lichtrijke zithoek, een grote eettafel en een volledig uitgeruste keuken: vaatwasser, oven, koelkast met diepvries, microgolfoven, koffiemachine en wasmachine.\n\nBuiten: hottub, vuurschaal, zwembad en pétanquebaan. Voor kinderen een trampoline en een speeltuin. Het overdekte terras is bruikbaar bij elk weer. Het buitenzwembad is niet verwarmd. De hottub, BBQ en vuurschaal zijn het hele jaar beschikbaar.',
-      en: 'Inside: four bedrooms with box-spring beds and a mezzanine with two single beds. Two bathrooms — one with walk-in shower, one with bath — and a separate guest toilet. The open living space has a bright sitting area, a large dining table and a fully equipped kitchen: dishwasher, oven, fridge-freezer, microwave, coffee machine and washing machine.\n\nOutside: hot tub, fire pit, pool and pétanque court. For children a trampoline and a play area. The covered terrace works in any weather. The outdoor pool is unheated. The hot tub, BBQ and fire pit are available all year round.',
+      nl: 'Binnen: vier slaapkamers met boxspringbedden en een mezzanine met twee eenpersoonsbedden. Twee badkamers — één met inloopdouche, één met ligbad — plus een apart gastentoilet. De open leefruimte bestaat uit een lichtrijke zithoek, een grote eettafel en een volledig uitgeruste keuken: vaatwasser, oven, koelkast met diepvries, microgolfoven, koffiemachine en wasmachine.\n\nHet zwembad ligt in een serre en is het hele jaar bruikbaar, ongeacht het weer. Buiten: hottub, vuurschaal en pétanquebaan. Voor kinderen een trampoline en een speeltuin. Het overdekte terras is bruikbaar bij elk weer. De hottub, BBQ en vuurschaal zijn het hele jaar beschikbaar.',
+      en: 'Inside: four bedrooms with box-spring beds and a mezzanine with two single beds. Two bathrooms — one with walk-in shower, one with bath — and a separate guest toilet. The open living space has a bright sitting area, a large dining table and a fully equipped kitchen: dishwasher, oven, fridge-freezer, microwave, coffee machine and washing machine.\n\nThe pool sits in a conservatory and is usable all year round, whatever the weather. Outside: hot tub, fire pit and pétanque court. For children a trampoline and a play area. The covered terrace works in any weather. The hot tub, BBQ and fire pit are available all year round.',
     },
     buurt: {
       nl: 'Beernem ligt tussen Brugge en Gent. Brugge op 14 km, de kust op 25 km, Gent op 35 km. Rondom: bossen, landelijke wegen en dorpjes voor wie fietst of wandelt. De woning is bereikbaar met de wagen; parkeren voor vijf wagens op het terrein.',
       en: 'Beernem sits between Bruges and Ghent. Bruges 14 km, the coast 25 km, Ghent 35 km. All around: forests, country roads and villages for those who cycle or walk. The home is accessible by car; parking for five vehicles on the property.',
     },
     hoogtepunten: [
-      { nl: 'Zwembad, hottub en vuurschaal',                     en: 'Pool, hot tub and fire pit' },
+      { nl: 'Binnenzwembad in serre, hottub en vuurschaal',      en: 'Indoor pool in conservatory, hot tub and fire pit' },
       { nl: 'Overdekt terras met BBQ en pétanquebaan',           en: 'Covered terrace with BBQ and pétanque court' },
       { nl: 'Max 10 gasten',                                     en: 'Up to 10 guests' },
       { nl: '14 km van Brugge, 25 km van de kust',               en: '14 km from Bruges, 25 km from the coast' },
@@ -650,8 +650,8 @@ const _woningenRaw: Woning[] = [
       },
     ],
     waaromOpgenomen: {
-      nl: 'waarom dit huis de standaard haalde\n\nOm de tegels, die het huis zijn karakter geven.\n\nOm de ligging. Groen en rustig, tussen Brugge en Gent.\n\nEn om de tuin. Groot genoeg dat iedereen een eigen hoek vindt, met zwembad, hottub en vuurschaal, en een trampoline en speeltuin voor de kinderen. Een familiewoning, met plek voor tien.',
-      en: 'why this house met the standard\n\nFor the tiles, which give the house its character.\n\nFor the setting. Green and quiet, between Bruges and Ghent.\n\nAnd for the garden. Large enough for everyone to find a corner of their own, with a pool, a hot tub and a fire pit, and a trampoline and play area for the children. A family home, with room for ten.',
+      nl: 'waarom dit huis de standaard haalde\n\nOm de tegels, die het huis zijn karakter geven.\n\nOm de ligging. Groen en rustig, tussen Brugge en Gent.\n\nEn om de tuin. Groot genoeg dat iedereen een eigen hoek vindt, met binnenzwembad in een serre, hottub en vuurschaal, en een trampoline en speeltuin voor de kinderen. Een familiewoning, met plek voor tien.',
+      en: 'why this house met the standard\n\nFor the tiles, which give the house its character.\n\nFor the setting. Green and quiet, between Bruges and Ghent.\n\nAnd for the garden. Large enough for everyone to find a corner of their own, with an indoor pool in a conservatory, a hot tub and a fire pit, and a trampoline and play area for the children. A family home, with room for ten.',
     },
     inCheckin: '15:00',
     uitCheckin: '11:00',
