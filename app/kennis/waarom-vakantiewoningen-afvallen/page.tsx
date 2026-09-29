@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { kennisMetadata, KENNIS_GEPUBLICEERD } from '@/lib/kennis/meta'
 import { ArticleLayout } from '@/components/kennis/ArticleLayout'
 import { Cta, VerderLezen } from '@/components/kennis/Cta'
@@ -79,7 +80,7 @@ export default async function AfvalRedenenPage() {
         <p>
           Tot dan houden we ons hier aan wat we wél kunnen zeggen: de vier poorten waarop
           een woning wordt beoordeeld staan al publiek op{' '}
-          <a href="/de-standaard">de standaard</a>, en de meest voorkomende reden waarom
+          <Link href="/de-standaard">de standaard</Link>, en de meest voorkomende reden waarom
           een woning afvalt is een combinatie van oppervlakte en karakter — te klein voor
           het segment, of gerenoveerd tot een showroom.
         </p>

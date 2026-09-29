@@ -12,31 +12,33 @@ function isAuthed(request: NextRequest) {
   return request.cookies.get('admin_auth')?.value === 'true'
 }
 
-export async function GET(request: NextRequest, { params }: { params: { pandId: string } }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ pandId: string }> }) {
   if (!isAuthed(request)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const { pandId } = await params
 
   const { data: pageData } = await adminClient()
     .from('welcome_pages')
     .select('*')
-    .eq('pand_id', params.pandId)
+    .eq('pand_id', pandId)
     .maybeSingle()
 
   const { data: tips } = await adminClient()
     .from('lokale_tips')
     .select('*')
-    .eq('pand_id', params.pandId)
+    .eq('pand_id', pandId)
     .order('created_at', { ascending: true })
 
   return NextResponse.json({ data: pageData, tips: tips ?? [] })
 }
 
-export async function POST(request: NextRequest, { params }: { params: { pandId: string } }) {
+export async function POST(request: NextRequest, { params }: { params: Promise<{ pandId: string }> }) {
   if (!isAuthed(request)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const { pandId } = await params
 
   const body = await request.json()
   const { error } = await adminClient()
     .from('welcome_pages')
-    .upsert({ ...body, pand_id: params.pandId }, { onConflict: 'pand_id' })
+    .upsert({ ...body, pand_id: pandId }, { onConflict: 'pand_id' })
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
   return NextResponse.json({ success: true })

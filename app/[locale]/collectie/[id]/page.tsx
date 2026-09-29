@@ -11,7 +11,7 @@ import { AuditLijn } from "@/components/AuditLijn";
 import { formatAuditMaand } from "@/components/PandKaart";
 import { siteMetadata } from "@/lib/seo/siteMetadata";
 
-interface Props { params: { locale: string; id: string } }
+interface Props { params: Promise<{ locale: string; id: string }> }
 
 export function generateStaticParams() {
   // Panden met status 'wacht_op_beeld' krijgen geen eigen pagina — er is
@@ -107,8 +107,9 @@ const woningMeta: Record<
 };
 
 export async function generateMetadata({ params }: Props) {
-  const locale = params.locale as Locale
-  const woning = woningen.find((w) => w.id === params.id);
+  const p = await params
+  const locale = p.locale as Locale
+  const woning = woningen.find((w) => w.id === p.id);
   if (!woning) return { title: "Woning" };
   const meta = woningMeta[woning.id];
   const isNl = locale === 'nl'
@@ -190,8 +191,9 @@ async function BoekingsPaneel({
 
 export default async function WoningDetailPage({ params }: Props) {
   const t = await getTranslations('property')
-  const locale = params.locale as Locale
-  const woning = woningen.find((w) => w.id === params.id);
+  const p = await params
+  const locale = p.locale as Locale
+  const woning = woningen.find((w) => w.id === p.id);
   if (!woning) notFound();
   // Wachtende panden hebben geen inhoud om te tonen — 404 tot ze live gaan.
   if (woning.status === 'wacht_op_beeld') notFound();

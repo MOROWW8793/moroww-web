@@ -6,8 +6,9 @@ import { createClient } from '@supabase/supabase-js'
 export default async function WelcomePage({
   params
 }: {
-  params: { pandId: string }
+  params: Promise<{ pandId: string }>
 }) {
+  const { pandId } = await params
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
@@ -17,18 +18,18 @@ export default async function WelcomePage({
   const { data: page } = await supabase
     .from('welcome_pages')
     .select('*')
-    .eq('pand_id', params.pandId)
+    .eq('pand_id', pandId)
     .is('actief', true)
     .maybeSingle()
 
   const { data: tips } = await supabase
     .from('lokale_tips')
     .select('*')
-    .eq('pand_id', params.pandId)
+    .eq('pand_id', pandId)
     .order('categorie', { ascending: true })
 
   if (!page) {
-    return <div style={{ padding: 40 }}>Pagina niet gevonden voor {params.pandId}</div>
+    return <div style={{ padding: 40 }}>Pagina niet gevonden voor {pandId}</div>
   }
 
   const { WelcomeClient } = await import('./WelcomeClient')
@@ -37,8 +38,8 @@ export default async function WelcomePage({
     <WelcomeClient
       page={page}
       tips={tips ?? []}
-      pandNaam={page.pand_naam ?? params.pandId}
-      pandId={params.pandId}
+      pandNaam={page.pand_naam ?? pandId}
+      pandId={pandId}
     />
   )
 }
