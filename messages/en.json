@@ -63,7 +63,13 @@
     "view_book": "View & book",
     "coming_soon": "coming soon",
     "cta_title": "every home has been personally inspected.",
-    "cta_body": "No algorithm. No mass market. Only homes that meet our standard."
+    "cta_body": "No algorithm. No mass market. Only homes that meet our standard.",
+    "binnenkort_label": "coming soon",
+    "binnenkort_h3_singular": "one home is waiting for its photo shoot",
+    "binnenkort_h3_plural": "{countWord} homes are waiting for their photo shoot",
+    "binnenkort_body_singular": "One coastal home has been inspected and included. It will appear here once the imagery is ready.",
+    "binnenkort_body_plural": "{countWord} coastal homes have been inspected and included. They will appear here once the imagery is ready.",
+    "binnenkort_link": "read how we inspect →"
   },
   "property": {
     "per_night": "/ night",

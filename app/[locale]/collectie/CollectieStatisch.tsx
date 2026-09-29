@@ -1,17 +1,20 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { liveWoningen, wachtOpBeeldCount, sortForCollectie } from "@/lib/woningen";
 import { PandKaart } from "@/components/PandKaart";
 import { AuditLijn } from "@/components/AuditLijn";
+import { countWord } from "@/lib/getallen";
 
 // Filter-tabs zijn Link-elementen naar de collectiepagina's. /collectie
 // zelf toont altijd alle panden; klikken op 'the shore' of 'the fields'
 // gaat naar de dedicated collectiepagina met streektekst.
 export function CollectieStatisch() {
   const t = useTranslations('collectie')
+  const locale = useLocale()
   const wachtendCount = wachtOpBeeldCount()
+  const wordCap = countWord(wachtendCount, locale === 'en' ? 'en' : 'nl', true)
 
   return (
     <div>
@@ -68,23 +71,23 @@ export function CollectieStatisch() {
       {wachtendCount > 0 && (
         <div className="px-6 md:px-16 lg:px-24 pb-24">
           <div className="max-w-3xl mx-auto">
-            <AuditLijn density="quiet" items={['binnenkort']} />
+            <AuditLijn density="quiet" items={[t('binnenkort_label')]} />
             <h3 className="mt-mw-4 text-h3 text-moroww-dark">
               {wachtendCount === 1
-                ? 'één woning wacht op haar fotoshoot'
-                : `${wachtendCount === 2 ? 'twee' : wachtendCount} woningen wachten op hun fotoshoot`}
+                ? t('binnenkort_h3_singular')
+                : t('binnenkort_h3_plural', { countWord: wordCap })}
             </h3>
             <p className="mt-mw-3 text-body text-moroww-dark">
-              {wachtendCount === 1 ? 'Eén kustwoning is' : `${wachtendCount === 2 ? 'Twee' : wachtendCount} kustwoningen zijn`}{' '}
-              geauditeerd en opgenomen.{' '}
-              {wachtendCount === 1 ? 'Ze verschijnt' : 'Ze verschijnen'} hier zodra het beeld klopt.
+              {wachtendCount === 1
+                ? t('binnenkort_body_singular')
+                : t('binnenkort_body_plural', { countWord: wordCap })}
             </p>
             <p className="mt-mw-5">
               <Link
                 href="/de-standaard"
                 className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
               >
-                lees hoe we keuren →
+                {t('binnenkort_link')}
               </Link>
             </p>
           </div>

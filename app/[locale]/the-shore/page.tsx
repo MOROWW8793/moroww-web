@@ -35,8 +35,10 @@ export default async function TheShorePage({
   const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations('theshore')
+  const tCollectie = await getTranslations('collectie')
   const shorePanden = liveWoningen().filter((w) => w.collectie === 'the shore')
   const wachtendCount = wachtOpBeeldCount('the shore')
+  const binnenkortWord = countWord(wachtendCount, locale === 'en' ? 'en' : 'nl', true)
 
   return (
     <main className="bg-moroww-blush">
@@ -74,23 +76,23 @@ export default async function TheShorePage({
       {wachtendCount > 0 && (
         <section className="w-full px-6 md:px-16 lg:px-24 pb-20">
           <div className="max-w-3xl mx-auto">
-            <AuditLijn density="quiet" items={['binnenkort']} />
+            <AuditLijn density="quiet" items={[tCollectie('binnenkort_label')]} />
             <h3 className="mt-mw-4 text-h3 text-moroww-dark">
               {wachtendCount === 1
-                ? 'één woning wacht op haar fotoshoot'
-                : `${wachtendCount === 2 ? 'twee' : wachtendCount} woningen wachten op hun fotoshoot`}
+                ? tCollectie('binnenkort_h3_singular')
+                : tCollectie('binnenkort_h3_plural', { countWord: binnenkortWord })}
             </h3>
             <p className="mt-mw-3 text-body text-moroww-dark">
-              {wachtendCount === 1 ? 'Eén kustwoning is' : `${wachtendCount === 2 ? 'Twee' : wachtendCount} kustwoningen zijn`}{' '}
-              geauditeerd en opgenomen.{' '}
-              {wachtendCount === 1 ? 'Ze verschijnt' : 'Ze verschijnen'} hier zodra het beeld klopt.
+              {wachtendCount === 1
+                ? tCollectie('binnenkort_body_singular')
+                : tCollectie('binnenkort_body_plural', { countWord: binnenkortWord })}
             </p>
             <p className="mt-mw-5">
               <Link
                 href="/de-standaard"
                 className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
               >
-                lees hoe we keuren →
+                {tCollectie('binnenkort_link')}
               </Link>
             </p>
           </div>

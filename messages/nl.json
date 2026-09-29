@@ -63,7 +63,13 @@
     "view_book": "Bekijk & boek",
     "coming_soon": "binnenkort te boeken",
     "cta_title": "elke woning is persoonlijk geïnspecteerd.",
-    "cta_body": "Geen algoritme. Geen massa. Alleen woningen die onze standaard halen."
+    "cta_body": "Geen algoritme. Geen massa. Alleen woningen die onze standaard halen.",
+    "binnenkort_label": "binnenkort",
+    "binnenkort_h3_singular": "één woning wacht op haar fotoshoot",
+    "binnenkort_h3_plural": "{countWord} woningen wachten op hun fotoshoot",
+    "binnenkort_body_singular": "Eén kustwoning is geauditeerd en opgenomen. Ze verschijnt hier zodra het beeld klopt.",
+    "binnenkort_body_plural": "{countWord} kustwoningen zijn geauditeerd en opgenomen. Ze verschijnen hier zodra het beeld klopt.",
+    "binnenkort_link": "lees hoe we keuren →"
   },
   "property": {
     "per_night": "/ nacht",
