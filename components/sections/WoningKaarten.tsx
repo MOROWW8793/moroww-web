@@ -19,13 +19,17 @@ export async function WoningKaarten({
   const vanaf = t('from')
   const perNacht = t('per_night')
   const gastenLabel = t('guests')
+  const bedroomsLabel = t('bedrooms')
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       {sortForCollectie(items).map((w) => {
+        // Vaste volgorde: m² · X slk. · X gasten · vanaf €X / nacht.
+        // Collectie zit al in de sortering (shore vóór fields) en in de
+        // pagina-context; niet ook nog eens op de kaart.
         const auditItems = [
-          w.collectie,
           w.oppervlakte ?? '',
+          w.slaapkamers ? `${w.slaapkamers} ${bedroomsLabel}` : '',
           w.maxGasten ? `${w.maxGasten} ${gastenLabel}` : '',
           w.prijs ? `${vanaf} €${w.prijs} ${perNacht}` : '',
         ]

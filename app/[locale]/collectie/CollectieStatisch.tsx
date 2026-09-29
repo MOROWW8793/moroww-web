@@ -41,9 +41,10 @@ export function CollectieStatisch() {
       <div className="px-6 md:px-16 lg:px-24 pb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {sortForCollectie(liveWoningen()).map((w) => {
+            // Vaste volgorde: m² · X slk. · X gasten · vanaf €X / nacht.
             const auditItems = [
-              w.collectie,
               w.oppervlakte ?? '',
+              w.slaapkamers ? `${w.slaapkamers} ${t('bedrooms')}` : '',
               w.maxGasten ? `${w.maxGasten} ${t('guests')}` : '',
               w.prijs ? `${t('from')} €${w.prijs} ${t('per_night')}` : '',
             ]
