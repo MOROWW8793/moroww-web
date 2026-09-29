@@ -39,6 +39,8 @@ next-env.d.ts
 node_modules/
 *.mp4
 *.MP4
+# Uitzondering: publieke merkvideo's mogen wél in de repo.
+!/public/videos/*.mp4
 
 # supabase local scratch
 /supabase/.temp/
