@@ -315,8 +315,8 @@ const _woningenRaw: Woning[] = [
       en: 'The open living space catches natural light all day, with a sitting area, dining corner and a fully equipped kitchen: dishwasher, oven, coffee machine.\n\nStep onto the private balcony: sunrise over the golf course, sunset over the sea.\n\nBoth bedrooms have their own en-suite bathroom with a walk-in shower or a bath.\n\nPrivate underground parking is included.',
     },
     buurt: {
-      nl: 'Oostende is veel meer dan alleen strand: het is een levendige kuststad met musea, fijne restaurants, markten en boetieks. Dankzij de hoge ligging geniet je hier van uniek zicht rondom over zee, golf en stad. Of je nu houdt van cultuur, gastronomie of lange wandelingen langs de kust: alles ligt binnen handbereik. De Kusttram brengt je vlot naar alle badplaatsen en stopt voor de deur: van Knokke tot De Panne. Brugge bereik je in slechts 15 minuten met de trein.',
-      en: 'Ostend is Belgium\'s most dynamic coastal city. The beach and promenade are a five-minute walk. The city centre with its restaurants, market and museum is easily reached on foot or by tram. The coastal tram stops at the door, connecting you to every resort from Knokke to De Panne. Bruges is 15 minutes by train.',
+      nl: 'Oostende is een kuststad met musea, restaurants, markten en boetieks. Vanaf de zestiende verdieping is er zicht rondom over zee, golf en stad. De Kusttram stopt voor de deur, van Knokke tot De Panne. Brugge bereik je in 15 minuten met de trein.',
+      en: 'Ostend is a coastal city with museums, restaurants, markets and boutiques. From the sixteenth floor there is a view all around over sea, golf course and city. The coastal tram stops at the door, from Knokke to De Panne. Bruges is 15 minutes by train.',
     },
     hoogtepunten: [
       { nl: '16e verdieping — panoramisch zeezicht',        en: '16th floor — panoramic sea view' },
