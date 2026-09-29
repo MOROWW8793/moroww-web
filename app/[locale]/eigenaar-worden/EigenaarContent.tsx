@@ -95,23 +95,10 @@ export async function EigenaarContent() {
           <h2 className="mt-mw-4 text-h2 text-moroww-dark">wat het label kost</h2>
           <dl className="mt-mw-5 max-w-[68ch] divide-y divide-moroww-rule border-t border-b border-moroww-rule">
             <DefRij
-              label="commissie"
-              value="15 % op de logiesfare, exclusief btw en exclusief schoonmaak"
-            />
-            <DefRij
-              label="collectielidmaatschap"
-              value="€ 149,99 per maand, of jaarlijks vooruitbetaald met 10 % korting"
-            />
-            <DefRij
               label="onboarding"
-              value="eenmalig, afhankelijk van de omvang van de woning"
+              value="eenmalig, € 1.950"
             />
           </dl>
-          <p className="mt-mw-5 text-body text-moroww-dark max-w-[62ch]">
-            Het collectielidmaatschap is geen abonnement op een dienst. Het is
-            het lidmaatschap van het label: de audit, de heraudit, de standaard
-            en het systeem eronder.
-          </p>
           <p className="mt-mw-5">
             <Link
               href="/kennis/wat-kost-een-nacht-vakantiewoning"

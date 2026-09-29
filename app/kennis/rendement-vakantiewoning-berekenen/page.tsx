@@ -180,7 +180,7 @@ export default async function RendementPage() {
             {
               vraag: 'Rekenen jullie jullie eigen commissie mee?',
               antwoord:
-                'Ja. Vink "via een label of beheerder" aan en de module trekt 15 procent commissie op de logiesfare en het maandelijkse collectielidmaatschap af. We laten het liever zien dan dat je het achteraf ontdekt.',
+                'Ja. Na het eerste bezoek rekenen we je opbrengst door met al onze kosten erin, op basis van jouw woning en jouw bezetting. Een algemeen percentage zegt weinig zonder die cijfers.',
             },
             {
               vraag: 'Waar komen de nachtprijzen vandaan?',

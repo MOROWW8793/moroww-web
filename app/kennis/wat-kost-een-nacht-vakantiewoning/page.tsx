@@ -198,43 +198,6 @@ export default function WatKostEenNachtPage() {
 
         <Cta kind="poortentoets" />
 
-        <H2Section titel="Wat moroww kost, zwart op wit" />
-        <p>
-          moroww is een Belgisch kwaliteitslabel voor vakantiewoningen aan de kust en op
-          het platteland. Dit is wat het label kost:
-        </p>
-
-        <table>
-          <tbody>
-            <tr>
-              <th>Commissie</th>
-              <td>15 % op de logiesfare, exclusief btw en exclusief schoonmaak</td>
-            </tr>
-            <tr>
-              <th>Collectielidmaatschap</th>
-              <td>€ 149,99 per maand. Bij jaarlijkse vooruitbetaling geldt 10 % korting</td>
-            </tr>
-            <tr>
-              <th>Onboarding</th>
-              <td>eenmalig, via een pakket, afhankelijk van de omvang van de woning</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p>
-          Dat staat hier om twee redenen. Omdat je het liever nu leest dan in maand
-          drie. En omdat een label dat over de kosten van andere partijen schrijft,
-          niet kan zwijgen over de eigen.
-        </p>
-        <p>
-          Het collectielidmaatschap is geen abonnement op een dienst. Het is het
-          lidmaatschap van het label: de audit, de heraudit, de standaard en het systeem
-          eronder. Een woning die niet meer voldoet, verlaat de collectie. Dat is precies
-          waar het lidmaatschap voor staat.
-        </p>
-
-        <Cta kind="poortentoets" />
-
         <Faq
           items={[
             {
