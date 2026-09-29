@@ -25,10 +25,10 @@ export function FaqJsonLd() {
             },
             {
               '@type': 'Question',
-              name: 'Hoe verschilt moroww van een lokale co-host of beheerder?',
+              name: 'Wat is moroww?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Een lokale co-host werkt ad hoc, zonder systeem en zonder merkgarantie. moroww installeert een volledige tech-stack in de woning, bewaakt de standaard via jaarlijkse audits en mystery guest-inspecties, en levert een herkenbaar kwaliteitslabel. De eigenaar beheert zijn eigen woning — op de moroww-standaard.',
+                text: 'moroww is het kwaliteitslabel voor vakantiewoningen in België: elke moroww-woning is geauditeerd, uitgerust en opgevolgd.',
               },
             },
             {
