@@ -135,21 +135,19 @@ export const nlOnlyRoutes: NavHref[] = [
   '/privacy',
 ]
 
-// Pagina's zonder donkere foto-hero. De Navbar start op deze routes meteen
-// in 'scrolled' state (blush of paper, donkere tekst) — anders zou witte
-// menutekst op een lichte pagina-achtergrond onleesbaar zijn.
+// Pagina's mét een donkere foto-hero. Op alle andere pagina's start de
+// Navbar meteen in 'scrolled' state (blush, donker logo), zodat het logo
+// en de menutekst leesbaar zijn op een lichte achtergrond.
 //
-// Type is bewust string zodat we prefixen mogen bevatten die niet in NavHref
-// zitten (`/kennis` staat niet in de nav zelf). Matching is exact óf via
-// startsWith '<prefix>/', dus '/kennis' vangt ook '/kennis/wat-kost-…'.
-export const lightHeroRoutes: string[] = [
-  '/',
-  '/de-standaard',
-  '/moroww-os',
-  '/kennis',
-  '/collectie',
-  '/eigenaar-worden',
-  '/over-moroww',
-  '/en/about',
-  '/en/become-an-owner',
+// Deze inversie (opt-out i.p.v. opt-in) is de generieke fix: alle nieuwe
+// pagina's zijn standaard "light hero" en tonen het donkere logo direct.
+// Alleen pandpagina's — waar de foto-galerij donker vult — staan in deze
+// lijst.
+//
+// Matching via startsWith zodat '/collectie/' ook '/collectie/{id}' vangt.
+// De collectie-overzichtspagina zelf (/collectie) heeft géén donkere hero
+// en zit niet in de lijst.
+export const darkHeroRoutes: string[] = [
+  '/collectie/',
+  '/en/collection/',
 ]
