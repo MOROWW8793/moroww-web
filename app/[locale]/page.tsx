@@ -5,6 +5,7 @@ import path from "node:path";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { FaqJsonLd } from "@/components/FaqJsonLd";
 import { Deur } from "@/components/Deur";
+import { Aankomst } from "@/components/sections/Aankomst";
 import { WoningKaarten } from "@/components/sections/WoningKaarten";
 import { siteMetadata } from "@/lib/seo/siteMetadata";
 import { liveWoningen, type Locale } from "@/lib/woningen";
@@ -79,6 +80,12 @@ export default async function HomePage({
           <WoningKaarten woningen={liveWoningen()} locale={locale as Locale} />
         </div>
       </section>
+
+      {/* AANKOMSTSEQUENTIE — vier regels van The Eighth, één voor één in
+          zicht (client, IntersectionObserver, one-shot,
+          prefers-reduced-motion toont alles direct). Zit onder het
+          woningraster zodat er niets boven de vouw animeert. */}
+      <Aankomst />
 
       {/* DE TWEE DEUREN — verplaatst onder het woningenraster. Blijven de
           twee ingangen naar de streek-collecties (bouwspec sectie 3),

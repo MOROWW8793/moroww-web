@@ -31,7 +31,13 @@
     "host_title": "you stay in control.",
     "host_subtitle": "",
     "host_body": "moroww installs the system, safeguards the standard and handles the bookings. you decide, you remain the owner in every sense. we are your label, not your manager.",
-    "host_cta": "become an owner"
+    "host_cta": "become an owner",
+    "aankomst_kop": "an arrival at The Eighth",
+    "aankomst_link": "see The Eighth →",
+    "aankomst_1": "15:00 · the heating reaches 21°",
+    "aankomst_2": "16:45 · the lights come on",
+    "aankomst_3": "17:00 · your code works",
+    "aankomst_4": "17:02 · music is playing"
   },
   "footer": {
     "tagline": "nothing left to chance.",
