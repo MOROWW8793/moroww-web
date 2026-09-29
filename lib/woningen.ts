@@ -420,8 +420,8 @@ const _woningenRaw: Woning[] = [
       en: 'Inside: four bedrooms with box-spring beds and a mezzanine with two single beds. Two bathrooms — one with walk-in shower, one with bath — and a separate guest toilet. The open living space has a bright sitting area, a large dining table and a fully equipped kitchen: dishwasher, oven, fridge-freezer, microwave, coffee machine and washing machine.\n\nOutside: hot tub, fire pit, pool and pétanque court. For children a trampoline and a play area. The covered terrace works in any weather. The outdoor pool is unheated. The hot tub, BBQ and fire pit are available all year round.',
     },
     buurt: {
-      nl: 'Beernem ligt in een groene, rustige omgeving tussen Brugge en Gent — de ideale uitvalsbasis voor wie houdt van natuur, fietsen en wandelen. In de buurt vind je mooie bossen, landelijke wegen en charmante dorpjes. Brugge bereik je op 14 km, de kust op 25 km en Gent op 35 km. Tegelijk bereik je vlot culturele hotspots, restaurants en winkels in de omliggende steden. De woning is bereikbaar met de wagen en heeft private parkeergelegenheid voor 5 wagens op het terrein.',
-      en: 'Beernem is located between Bruges and Ghent in the heart of the West Flemish countryside. Bruges is 14 km away, the coast 25 km and Ghent 35 km. The surrounding area offers beautiful cycling routes through the polders and forests. The home is accessible by car and has private parking for 5 vehicles on site.',
+      nl: 'Beernem ligt tussen Brugge en Gent. Brugge op 14 km, de kust op 25 km, Gent op 35 km. Rondom: bossen, landelijke wegen en dorpjes voor wie fietst of wandelt. De woning is bereikbaar met de wagen; parkeren voor vijf wagens op het terrein.',
+      en: 'Beernem sits between Bruges and Ghent. Bruges 14 km, the coast 25 km, Ghent 35 km. All around: forests, country roads and villages for those who cycle or walk. The home is accessible by car; parking for five vehicles on the property.',
     },
     hoogtepunten: [
       { nl: 'Zwembad, hottub en vuurschaal',                     en: 'Pool, hot tub and fire pit' },
