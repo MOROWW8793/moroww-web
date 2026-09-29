@@ -14,9 +14,10 @@ export async function generateMetadata({
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'theshore' })
   const isNl = locale === 'nl'
+  const shoreCount = liveWoningen().filter((w) => w.collectie === 'the shore').length
   return siteMetadata({
     titel: t('meta_title'),
-    beschrijving: t('meta_description'),
+    beschrijving: t('meta_description', { count: shoreCount }),
     pad: isNl ? '/the-shore' : '/en/the-shore',
     locale: isNl ? 'nl' : 'en',
     hreflang: { nl: '/the-shore', en: '/en/the-shore' },
@@ -50,7 +51,7 @@ export default async function TheShorePage({
             {t('hero_h1')}
           </h1>
           <p className="text-moroww-black/70 leading-relaxed" style={{ fontSize: 20 }}>
-            {t('hero_intro')}
+            {t('hero_intro', { count: shorePanden.length })}
           </p>
         </div>
       </section>

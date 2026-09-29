@@ -13,9 +13,10 @@ export async function generateMetadata({
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'thefields' })
   const isNl = locale === 'nl'
+  const fieldsCount = liveWoningen().filter((w) => w.collectie === 'the fields').length
   return siteMetadata({
     titel: t('meta_title'),
-    beschrijving: t('meta_description'),
+    beschrijving: t('meta_description', { count: fieldsCount }),
     pad: isNl ? '/the-fields' : '/en/the-fields',
     locale: isNl ? 'nl' : 'en',
     hreflang: { nl: '/the-fields', en: '/en/the-fields' },
@@ -48,7 +49,7 @@ export default async function TheFieldsPage({
             {t('hero_h1')}
           </h1>
           <p className="text-moroww-black/70 leading-relaxed" style={{ fontSize: 20 }}>
-            {t('hero_intro')}
+            {t('hero_intro', { count: fieldsPanden.length })}
           </p>
         </div>
       </section>

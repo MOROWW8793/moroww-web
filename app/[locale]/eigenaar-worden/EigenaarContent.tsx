@@ -25,11 +25,16 @@ function DefRij({ label, value }: { label: string; value: React.ReactNode }) {
 }
 
 export async function EigenaarContent() {
-  // Screenings-cijfers live uit moroww-os. Bij een fout op de view valt de
-  // Statrij-cel terug op '—' zodat we nooit een misleidende '0' tonen.
+  // Screenings-cijfers live uit moroww-os. Ontbrekende cellen (view kapot,
+  // net-gestart pand, cijfer nog niet gepubliceerd) worden weggefilterd —
+  // een lege cel of '—' zou stiller misleiden dan geen cel.
   const cijfers = await screeningsPubliek()
-  const cel = (n: number | undefined) =>
-    typeof n === 'number' ? String(n) : '—'
+  const statItems = [
+    cijfers?.aantal_dossier    ? { cijfer: String(cijfers.aantal_dossier),   label: 'dossiers bekeken' } : null,
+    cijfers?.aantal_bezoek     ? { cijfer: String(cijfers.aantal_bezoek),    label: 'fysiek bezocht'   } : null,
+    cijfers?.aantal_opgenomen  ? { cijfer: String(cijfers.aantal_opgenomen), label: 'opgenomen'        } : null,
+    { cijfer: String(TOTAL_STAYS_REVIEWED), label: 'verblijven' },
+  ].filter((x): x is { cijfer: string; label: string } => x !== null)
 
   return (
     <Register kant="eigenaar">
@@ -56,13 +61,10 @@ export async function EigenaarContent() {
       </section>
 
       {/* ── STATRIJ — het bewijs in cijfers. Eerste drie live uit
-          screenings_publiek (moroww-os), vierde uit lib/reviews. ── */}
-      <Statrij items={[
-        { cijfer: cel(cijfers?.aantal_dossier),   label: 'dossiers bekeken' },
-        { cijfer: cel(cijfers?.aantal_bezoek),    label: 'fysiek bezocht'   },
-        { cijfer: cel(cijfers?.aantal_opgenomen), label: 'opgenomen'        },
-        { cijfer: String(TOTAL_STAYS_REVIEWED),   label: 'verblijven'       },
-      ]} />
+          screenings_publiek (moroww-os), vierde uit lib/reviews. Als de
+          view faalt of een cel leeg is, valt die cel weg — Statrij wordt
+          alleen gerenderd zolang er minstens twee cellen overblijven. ── */}
+      {statItems.length > 1 && <Statrij items={statItems} />}
 
       {/* ── WAT HET LABEL DOET ── */}
       <section className="w-full px-6 md:px-12 py-mw-8">

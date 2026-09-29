@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CollectieStatisch } from "./CollectieStatisch";
 import { Register } from "@/components/Register";
 import { siteMetadata } from "@/lib/seo/siteMetadata";
+import { liveWoningen } from "@/lib/woningen";
 
 export async function generateMetadata({
   params,
@@ -43,7 +44,7 @@ export default async function CollectiePage({
             {t('title')}
           </h1>
           <p className="text-moroww-black/55 text-lg">
-            {t('subtitle')}
+            {t('subtitle', { count: liveWoningen().length })}
           </p>
         </div>
         <CollectieStatisch />
