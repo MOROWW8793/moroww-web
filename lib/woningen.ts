@@ -72,6 +72,11 @@ export interface Woning {
   // deze lijst, dan komt ze ook niet in de VacationRentalJsonLd — we willen
   // geen voorzieningen bij Google claimen die het pand niet heeft.
   amenities?: string[]
+  /** Alleen aan zetten als er in de praktijk een decibelsensor hangt in het
+   *  pand. Op de pandpagina verschijnt dan één regel onder "praktische info"
+   *  die vertelt dat er wél een geluidsniveau-meting is, en dat er geen
+   *  geluid wordt opgenomen. Absent = geen regel. */
+  geluidssensor?: boolean
 }
 
 const _woningenRaw: Woning[] = [

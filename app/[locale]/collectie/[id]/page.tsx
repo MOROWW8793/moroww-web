@@ -385,6 +385,12 @@ export default async function WoningDetailPage({ params }: Props) {
               {woning.vergunningsnummer && (
                 <PraktischRij label={t('vergunning_label')} value={woning.vergunningsnummer} />
               )}
+              {woning.geluidssensor && (
+                <PraktischRij
+                  label={t('geluidssensor_label')}
+                  value={t('geluidssensor_body')}
+                />
+              )}
             </dl>
 
             {/* Kenmerken — geen labelparen. Gescheiden door " · ". */}

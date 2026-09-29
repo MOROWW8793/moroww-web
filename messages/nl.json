@@ -97,7 +97,9 @@
     "coming_soon_body": "deze woning is binnenkort beschikbaar via moroww.",
     "vergunning_label": "vergunningsnummer",
     "waarom_label": "de standaard",
-    "gallery_button": "bekijk alle {count} foto's"
+    "gallery_button": "bekijk alle {count} foto's",
+    "geluidssensor_label": "geluidssensor",
+    "geluidssensor_body": "Er hangt een sensor die het geluidsniveau in decibel meet. Hij neemt geen geluid op."
   },
   "contact": {
     "meta_title": "Contact",

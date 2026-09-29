@@ -97,7 +97,9 @@
     "coming_soon_body": "this home will be available soon via moroww.",
     "vergunning_label": "licence number",
     "waarom_label": "the standard",
-    "gallery_button": "view all {count} photos"
+    "gallery_button": "view all {count} photos",
+    "geluidssensor_label": "noise sensor",
+    "geluidssensor_body": "A sensor measures the noise level in decibels. It does not record sound."
   },
   "contact": {
     "meta_title": "Contact",
