@@ -91,6 +91,7 @@ const _woningenRaw: Woning[] = [
     maxGasten: 6,
     oppervlakte: '110m²',
     geauditeerdOp: '2026-02',
+    vergunningsnummer: '408817',
     tags: [
       { nl: 'Strand op 2 min',  en: '2 min to beach' },
       { nl: 'Privé koer',       en: 'Private courtyard' },
@@ -255,6 +256,7 @@ const _woningenRaw: Woning[] = [
     maxGasten: 5,
     oppervlakte: null,
     geauditeerdOp: '2026-04',
+    vergunningsnummer: '404331',
     tags: [
       { nl: 'Bosrand',                  en: 'Forest edge' },
       { nl: 'Privétuin met vijver',      en: 'Private garden' },
@@ -355,6 +357,7 @@ const _woningenRaw: Woning[] = [
     maxGasten: 4,
     oppervlakte: null,
     geauditeerdOp: '2026-03',
+    vergunningsnummer: '411387',
     tags: [
       { nl: '16e verdieping',   en: '16th floor' },
       { nl: 'Zeezicht',         en: 'Sea view' },
@@ -460,6 +463,7 @@ const _woningenRaw: Woning[] = [
     maxGasten: 10,
     oppervlakte: null,
     geauditeerdOp: '2026-05',
+    vergunningsnummer: '396363',
     tags: [
       { nl: 'Zwembad',          en: 'Private pool' },
       { nl: 'Hottub',           en: 'Hot tub' },
@@ -560,6 +564,7 @@ const _woningenRaw: Woning[] = [
     maxGasten: 18,
     oppervlakte: null,
     geauditeerdOp: '2026-05',
+    vergunningsnummer: '399821',
     tags: [
       { nl: 'Zwembad & sauna',              en: 'Pool & sauna' },
       { nl: '9 kamers, eigen badkamer',     en: '9 rooms, en-suite' },
