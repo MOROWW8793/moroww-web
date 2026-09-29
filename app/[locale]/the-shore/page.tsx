@@ -5,6 +5,7 @@ import { liveWoningen, wachtOpBeeldCount, type Locale } from '@/lib/woningen'
 import { WoningKaarten } from '@/components/sections/WoningKaarten'
 import { AuditLijn } from '@/components/AuditLijn'
 import { siteMetadata } from '@/lib/seo/siteMetadata'
+import { countWord } from '@/lib/getallen'
 
 export async function generateMetadata({
   params,
@@ -17,7 +18,9 @@ export async function generateMetadata({
   const shoreCount = liveWoningen().filter((w) => w.collectie === 'the shore').length
   return siteMetadata({
     titel: t('meta_title'),
-    beschrijving: t('meta_description', { count: shoreCount }),
+    beschrijving: t('meta_description', {
+      countWord: countWord(shoreCount, isNl ? 'nl' : 'en', true),
+    }),
     pad: isNl ? '/the-shore' : '/en/the-shore',
     locale: isNl ? 'nl' : 'en',
     hreflang: { nl: '/the-shore', en: '/en/the-shore' },
@@ -51,7 +54,9 @@ export default async function TheShorePage({
             {t('hero_h1')}
           </h1>
           <p className="text-moroww-black/70 leading-relaxed" style={{ fontSize: 20 }}>
-            {t('hero_intro', { count: shorePanden.length })}
+            {t('hero_intro', {
+              countWord: countWord(shorePanden.length, locale === 'en' ? 'en' : 'nl', true),
+            })}
           </p>
         </div>
       </section>

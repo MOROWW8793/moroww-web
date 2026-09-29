@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation'
 import { liveWoningen, type Locale } from '@/lib/woningen'
 import { WoningKaarten } from '@/components/sections/WoningKaarten'
 import { siteMetadata } from '@/lib/seo/siteMetadata'
+import { countWord } from '@/lib/getallen'
 
 export async function generateMetadata({
   params,
@@ -16,7 +17,9 @@ export async function generateMetadata({
   const fieldsCount = liveWoningen().filter((w) => w.collectie === 'the fields').length
   return siteMetadata({
     titel: t('meta_title'),
-    beschrijving: t('meta_description', { count: fieldsCount }),
+    beschrijving: t('meta_description', {
+      countWord: countWord(fieldsCount, isNl ? 'nl' : 'en', true),
+    }),
     pad: isNl ? '/the-fields' : '/en/the-fields',
     locale: isNl ? 'nl' : 'en',
     hreflang: { nl: '/the-fields', en: '/en/the-fields' },
@@ -49,7 +52,9 @@ export default async function TheFieldsPage({
             {t('hero_h1')}
           </h1>
           <p className="text-moroww-black/70 leading-relaxed" style={{ fontSize: 20 }}>
-            {t('hero_intro', { count: fieldsPanden.length })}
+            {t('hero_intro', {
+              countWord: countWord(fieldsPanden.length, locale === 'en' ? 'en' : 'nl', true),
+            })}
           </p>
         </div>
       </section>

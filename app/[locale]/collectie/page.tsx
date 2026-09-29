@@ -4,6 +4,7 @@ import { CollectieStatisch } from "./CollectieStatisch";
 import { Register } from "@/components/Register";
 import { siteMetadata } from "@/lib/seo/siteMetadata";
 import { liveWoningen } from "@/lib/woningen";
+import { countWord } from "@/lib/getallen";
 
 export async function generateMetadata({
   params,
@@ -44,7 +45,9 @@ export default async function CollectiePage({
             {t('title')}
           </h1>
           <p className="text-moroww-black/55 text-lg">
-            {t('subtitle', { count: liveWoningen().length })}
+            {t('subtitle', {
+              countWord: countWord(liveWoningen().length, locale === 'en' ? 'en' : 'nl', true),
+            })}
           </p>
         </div>
         <CollectieStatisch />
