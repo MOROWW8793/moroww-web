@@ -1,8 +1,13 @@
+import { StatCel } from '@/components/sections/StatCel'
+
 /**
  * Statrij met drie of vier cijfers gescheiden door hairlines. Wordt gebruikt
  * op /eigenaar-worden (vier cellen) en /de-standaard (drie cellen). Cijfers
  * komen live uit de screenings_publiek-view op moroww-os (via
  * lib/screenings.ts) en uit lib/reviews.ts, aangeleverd door de caller.
+ *
+ * Wrapper blijft server-component; elke cel is een aparte client-component
+ * (StatCel) die het cijfer eenmalig laat optellen bij in-view.
  */
 export function Statrij({
   items,
@@ -18,17 +23,7 @@ export function Statrij({
       <div className="max-w-6xl mx-auto">
         <div className={`grid grid-cols-2 ${desktopGrid} divide-x divide-white/15`}>
           {items.map((item) => (
-            <div key={item.label} className="px-4 py-3 md:px-8 text-center">
-              <div
-                className="font-bold text-moroww-orange leading-none"
-                style={{ fontSize: 'clamp(2.25rem, 4.5vw, 3.75rem)', letterSpacing: '-0.02em' }}
-              >
-                {item.cijfer}
-              </div>
-              <div className="text-white/60 mt-3" style={{ fontSize: 13, letterSpacing: 0.5 }}>
-                {item.label}
-              </div>
-            </div>
+            <StatCel key={item.label} cijfer={item.cijfer} label={item.label} />
           ))}
         </div>
       </div>
