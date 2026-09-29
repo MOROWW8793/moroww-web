@@ -97,7 +97,7 @@ export default async function HomePage({
             tagline={isNl ? 'waar het stil blijft' : 'where the quiet stays'}
             href={`${prefix}/the-fields`}
             beeld={beeldOfNull('/images/home/fields-door.jpg')}
-            beeldAlt={isNl ? 'het binnenland in winter' : 'the countryside in winter'}
+            beeldAlt={isNl ? 'het platteland' : 'the countryside'}
           />
         </div>
       </section>
