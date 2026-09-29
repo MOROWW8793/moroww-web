@@ -141,7 +141,7 @@ export async function OverMorowwContent({ locale }: { locale: string }) {
             </div>
             <div>
               <dt className="text-moroww-dark font-semibold">Opruimingen CB</dt>
-              <dd className="mt-1 text-audit uppercase text-moroww-ink-2">schoonmaak en ontruiming</dd>
+              <dd className="mt-1 text-audit uppercase text-moroww-ink-2">schoonmaak</dd>
             </div>
             <div>
               <dt className="text-moroww-dark font-semibold">Nuki</dt>
