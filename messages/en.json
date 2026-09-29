@@ -270,7 +270,14 @@
     "stat_screened_label": "properties screened",
     "stat_accepted_label": "accepted",
     "stat_stays_label": "stays",
-    "stat_rating_label": "rating"
+    "stat_rating_label": "rating",
+    "alt_travertijn": "travertine edge with texture, low sunlight",
+    "alt_glas_water": "glass of water on table, low sunlight",
+    "alt_kunstwerk_speaker": "artwork on the wall, speaker in the corner",
+    "alt_wastafel_man": "man washing his hands at the basin, smiling",
+    "alt_bedlinnen": "linen being opened out, made-up bed",
+    "alt_handdoeken": "towels being laid on the bed",
+    "alt_bed_tijdschrift": "bed with a magazine and a towel wrapped around the head"
   },
   "about": {
     "hero_h1_bold": "about moroww.",

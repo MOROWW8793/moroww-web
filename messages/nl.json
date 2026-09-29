@@ -270,7 +270,14 @@
     "stat_screened_label": "woningen bekeken",
     "stat_accepted_label": "opgenomen",
     "stat_stays_label": "verblijven",
-    "stat_rating_label": "beoordeling"
+    "stat_rating_label": "beoordeling",
+    "alt_travertijn": "travertijnrand met textuur, laag zonlicht",
+    "alt_glas_water": "glas water op tafel, laag zonlicht",
+    "alt_kunstwerk_speaker": "kunstwerk aan de muur, speaker in de hoek",
+    "alt_wastafel_man": "man wast zijn handen aan de wastafel, lachend",
+    "alt_bedlinnen": "linnen wordt opengeslagen, opgemaakt bed",
+    "alt_handdoeken": "handdoeken worden op het bed gelegd",
+    "alt_bed_tijdschrift": "bed met tijdschrift en handdoek om het hoofd gedraaid"
   },
   "about": {
     "hero_h1_bold": "over moroww.",

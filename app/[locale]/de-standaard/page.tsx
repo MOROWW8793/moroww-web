@@ -86,7 +86,7 @@ export default async function DeStandaardPage({
             {t('hero_intro')}
           </p>
           <div className={BEELD_WRAPPER}>
-            <InlineFoto src="/images/standaard/V2-127.jpg" alt="travertijnrand met textuur, laag zonlicht" />
+            <InlineFoto src="/images/standaard/V2-127.jpg" alt={t('alt_travertijn')} />
           </div>
         </div>
       </section>
@@ -115,7 +115,7 @@ export default async function DeStandaardPage({
           </div>
         </GridSectie>
         <div className={BEELD_WRAPPER}>
-          <InlineFoto src="/images/standaard/V2-210.jpg" alt="glas water op tafel, laag zonlicht" />
+          <InlineFoto src="/images/standaard/V2-210.jpg" alt={t('alt_glas_water')} />
         </div>
 
         <GridSectie>
@@ -145,7 +145,7 @@ export default async function DeStandaardPage({
           <p className="mt-mw-3 text-body text-moroww-dark">{t('add_ambient_body')}</p>
         </GridSectie>
         <div className={BEELD_WRAPPER}>
-          <InlineFoto src="/images/standaard/V2-63.jpg" alt="kunstwerk aan de muur, speaker in de hoek" />
+          <InlineFoto src="/images/standaard/V2-63.jpg" alt={t('alt_kunstwerk_speaker')} />
         </div>
 
         <GridSectie>
@@ -153,7 +153,7 @@ export default async function DeStandaardPage({
           <p className="mt-mw-3 text-body text-moroww-dark">{t('add_scent_body')}</p>
         </GridSectie>
         <div className={BEELD_WRAPPER}>
-          <InlineFoto src="/images/standaard/V2-36.jpg" alt="man wast zijn handen aan de wastafel, lachend" />
+          <InlineFoto src="/images/standaard/V2-36.jpg" alt={t('alt_wastafel_man')} />
         </div>
 
         <GridSectie>
@@ -161,7 +161,7 @@ export default async function DeStandaardPage({
           <p className="mt-mw-3 text-body text-moroww-dark">{t('add_ordinary_body')}</p>
         </GridSectie>
         <div className={BEELD_WRAPPER}>
-          <InlineFoto src="/images/standaard/V2-19.jpg" alt="linnen wordt opengeslagen, opgemaakt bed" />
+          <InlineFoto src="/images/standaard/V2-19.jpg" alt={t('alt_bedlinnen')} />
         </div>
 
         <GridSectie>
@@ -174,12 +174,12 @@ export default async function DeStandaardPage({
           </div>
         </GridSectie>
         <div className={BEELD_WRAPPER}>
-          <InlineFoto src="/images/standaard/V2-12.jpg" alt="handdoeken worden op het bed gelegd" />
+          <InlineFoto src="/images/standaard/V2-12.jpg" alt={t('alt_handdoeken')} />
         </div>
 
         <ReviewsSectie locale={locale as Locale} />
         <div className={BEELD_WRAPPER}>
-          <InlineFoto src="/images/standaard/V2-40.jpg" alt="bed met tijdschrift en handdoek om het hoofd gedraaid" />
+          <InlineFoto src="/images/standaard/V2-40.jpg" alt={t('alt_bed_tijdschrift')} />
         </div>
 
         {/* Afsluiter · voor eigenaars — geen beeld */}
