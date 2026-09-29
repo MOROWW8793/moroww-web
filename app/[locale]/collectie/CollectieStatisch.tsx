@@ -41,12 +41,11 @@ export function CollectieStatisch() {
       <div className="px-6 md:px-16 lg:px-24 pb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {sortForCollectie(liveWoningen()).map((w) => {
-            const vanaf = t('from').toLowerCase()
             const auditItems = [
               w.collectie,
               w.oppervlakte ?? '',
               w.maxGasten ? `${w.maxGasten} ${t('guests')}` : '',
-              w.prijs ? `${vanaf} €${w.prijs} ${t('per_night')}` : '',
+              w.prijs ? `${t('from')} €${w.prijs} ${t('per_night')}` : '',
             ]
             return (
               <PandKaart

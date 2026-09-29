@@ -94,7 +94,7 @@ export default async function PrivacyPage({
         <Section title="1. Wie is verantwoordelijk">
           <P>De verwerkingsverantwoordelijke voor uw persoonsgegevens is:</P>
           <P>
-            moroww BV (besloten vennootschap)<br />
+            moroww bv (besloten vennootschap)<br />
             Neerstraat 10, 8793 Sint-Eloois-Vijve (Waregem), België<br />
             Ondernemingsnummer / btw: BE1030.667.956<br />
             E-mail:{" "}

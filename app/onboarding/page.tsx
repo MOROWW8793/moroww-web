@@ -612,7 +612,7 @@ export default function OnboardingPage() {
         </div>
 
         <p className="mt-8 text-center text-xs text-moroww-black/30">
-          moroww BV &middot; BTW BE1030.667.956 &middot; info@moroww.com
+          moroww bv &middot; BTW BE1030.667.956 &middot; info@moroww.com
         </p>
       </div>
     </div>

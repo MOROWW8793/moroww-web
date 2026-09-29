@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { woningen, liveWoningen, lw, lwArr, type Locale } from "@/lib/woningen";
+import { woningen, liveWoningen, lw, lwArr, boekUrlFor, type Locale } from "@/lib/woningen";
 import { WoningGalerij } from "./WoningGalerij";
 import { InlineFoto } from "@/components/InlineFoto";
 import { VacationRentalJsonLd, BreadcrumbListJsonLd } from "@/components/JsonLd";
@@ -174,7 +174,7 @@ async function BoekingsPaneel({
         </p>
       ) : null}
       <a
-        href={woning.boekUrl}
+        href={boekUrlFor(woning, locale)}
         target="_blank"
         rel="noopener noreferrer"
         className="mt-mw-4 inline-flex items-center rounded-full px-mw-4 py-3 font-semibold bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85 transition-colors"
@@ -202,7 +202,7 @@ export default async function WoningDetailPage({ params }: Props) {
   const pandUrl = isNl ? `${baseUrl}/collectie/${woning.id}` : `${baseUrl}/en/collection/${woning.id}`
   const breadcrumbs = [
     { name: 'Home', url: isNl ? baseUrl : `${baseUrl}/en` },
-    { name: isNl ? 'De Collectie' : 'The Collection', url: collectieUrl },
+    { name: isNl ? 'de collectie' : 'the collection', url: collectieUrl },
     { name: woning.naam, url: pandUrl },
   ]
 
@@ -307,6 +307,14 @@ export default async function WoningDetailPage({ params }: Props) {
                   />
                   <h2 className="text-h2 text-moroww-dark">{t('highlights_title')}</h2>
                 </div>
+                <p className="mt-mw-2">
+                  <Link
+                    href="/de-standaard"
+                    className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+                  >
+                    {isNl ? 'wat dit label betekent →' : 'what this label means →'}
+                  </Link>
+                </p>
                 <div className="mt-mw-4 grid grid-cols-1 sm:grid-cols-2 gap-x-mw-4 gap-y-mw-3 max-w-[62ch]">
                   {lwArr(woning.hoogtepunten, locale).map((h) => (
                     <p key={h} className="text-body text-moroww-dark">{h}</p>

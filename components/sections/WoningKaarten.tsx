@@ -16,7 +16,7 @@ export async function WoningKaarten({
   locale: Locale
 }) {
   const t = await getTranslations('collectie')
-  const vanaf = t('from').toLowerCase()
+  const vanaf = t('from')
   const perNacht = t('per_night')
   const gastenLabel = t('guests')
 

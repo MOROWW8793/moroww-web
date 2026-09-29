@@ -843,6 +843,16 @@ export function liveWoningen(): Woning[] {
   return woningen.filter((w) => w.status !== 'wacht_op_beeld')
 }
 
+// Boekingslink met de juiste locale-prefix en verplichte `minOccupancy=1`.
+// De listing-id wordt geparst uit de bestaande boekUrl, zodat de bron één
+// veld blijft — al eerder ingevulde URL's zonder locale of query-string
+// (bv. The Eighth) worden zo automatisch geregulariseerd.
+export function boekUrlFor(w: Woning, locale: Locale): string {
+  const m = w.boekUrl.match(/properties\/([a-f0-9]+)/i)
+  if (!m) return w.boekUrl
+  return `https://book.moroww.com/${locale}/properties/${m[1]}?minOccupancy=1`
+}
+
 // Vaste sorteervolgorde voor kaartrasters: eerst the shore, dan the fields,
 // binnen een collectie oplopend op prijs. Panden zonder prijs zakken naar
 // het einde van hun collectie zonder de rest te storen.
