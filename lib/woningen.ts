@@ -92,32 +92,32 @@ const _woningenRaw: Woning[] = [
       { nl: '2 badkamers',      en: '2 bathrooms' },
     ],
     slogan: {
-      nl: 'Goed slapen, goed eten, goed ademen. Twee minuten van de zee.',
-      en: 'Sleep well, eat well, breathe well. Two minutes from the sea.',
+      nl: 'goed slapen, goed eten, goed ademen. twee minuten van de zee.',
+      en: 'sleep well, eat well, breathe well. two minutes from the sea.',
     },
     introductie: {
-      nl: 'Sommige plekken voel je meteen. Nosso is er één van. Niet omdat het opschept - maar omdat het klopt. Het licht, de ruimte, de stilte van het koertje op een zaterdagochtend. Dit is geen Airbnb-gok. Dit is een woning die we persoonlijk hebben geïnspecteerd, ingericht en klaargemaakt voor mensen die weten wat ze willen.',
-      en: 'Some places you feel immediately. Nosso is one of them. Not because it shows off — but because it works. The light, the space, the stillness of the courtyard on a Saturday morning. This is no Airbnb gamble. This is a home we personally inspected, furnished and prepared for people who know what they want.',
+      nl: 'Een lichtrijk appartement van honderdtien vierkante meter in Heist-aan-Zee, op twee minuten van de Noordzee. Twee slaapkamers, twee volledige badkamers, en een privé koer aan de achterkant.',
+      en: 'A bright apartment of one hundred and ten square metres in Heist-aan-Zee, two minutes from the North Sea. Two bedrooms, two full bathrooms, and a private courtyard at the back.',
     },
     beschrijving: {
-      nl: 'Op twee minuten van de Noordzee, verscholen in een rustige straat in Heist-aan-Zee. Een lichtrijk appartement van 110m² met twee slaapkamers, twee volledige badkamers en een privé koer.',
-      en: 'Two minutes from the North Sea, tucked in a quiet street in Heist-aan-Zee. A bright 110m² apartment with two bedrooms, two full bathrooms and a private courtyard.',
+      nl: 'Appartement van 110m² in Heist-aan-Zee, op twee minuten van de Noordzee. Twee slaapkamers, twee badkamers, privé koer. Max 6.',
+      en: '110m² apartment in Heist-aan-Zee, two minutes from the North Sea. Two bedrooms, two bathrooms, private courtyard. Up to 6 guests.',
     },
     volledigeBeschrijving: {
-      nl: 'Nosso Logies is gebouwd rond één idee: ruimte om te ademen. De open leefruimte baadt de hele dag in natuurlijk licht en loopt naadloos over in een volledig uitgeruste keuken: oven, vaatwasser, inductiekookplaat, microgolf, koffiemachine, waterkoker, broodrooster en alles wat je nodig hebt voor een echte maaltijd. De eettafel biedt ruimte voor het hele gezelschap. De eerste slaapkamer heeft een kwalitatief tweepersoonsbed. De tweede heeft een tweepersoonsbed én een stapelbed, ideaal voor gezinnen met kinderen. Twee volledige badkamers betekenen nooit wachten — elk voorzien van kwaliteitshanddoeken, shampoo, douchegel en haardroger. De woonkamer heeft een smart-tv, gezelschapsspellen en snelle wifi. Stap buiten op het privé koertje: beschut, groen en helemaal van jou. Ochtendkoffie, een aperitief bij zonsondergang, een glas wijn nadat de kinderen slapen.',
-      en: 'Nosso Logies is built around one idea: room to breathe. The open living space bathes in natural light all day and flows seamlessly into a fully equipped kitchen: oven, dishwasher, induction hob, microwave, coffee machine, kettle, toaster and everything you need for a proper meal. The dining table seats the whole group. The first bedroom has a quality double bed. The second has a double bed and a bunk bed, ideal for families with children. Two full bathrooms means no waiting — each equipped with quality towels, shampoo, shower gel and hairdryer. The living room has a smart TV, board games and fast wifi. Step outside to the private courtyard: sheltered, green and yours. Morning coffee, an aperitif at sunset, a glass of wine after the children are asleep.',
+      nl: 'De open leefruimte loopt door in een volledig uitgeruste keuken: oven, vaatwasser, inductiekookplaat, microgolf, koffiemachine, waterkoker, broodrooster. Aan de eettafel is er plek voor het gezelschap.\n\nDe eerste slaapkamer heeft een tweepersoonsbed. De tweede heeft een tweepersoonsbed én een stapelbed. Twee volledige badkamers, elk voorzien van kwaliteitshanddoeken, shampoo, douchegel en haardroger. In de woonkamer een smart-tv, gezelschapsspellen en snelle wifi.\n\nAan de achterkant ligt de privé koer: beschut, groen, helemaal van jou.\n\nJe laat jezelf binnen met je eigen code.',
+      en: 'The open living space runs into a fully equipped kitchen: oven, dishwasher, induction hob, microwave, coffee machine, kettle, toaster. The dining table seats the group.\n\nThe first bedroom has a double bed. The second has a double bed and a bunk bed. Two full bathrooms, each with quality towels, shampoo, shower gel and hairdryer. In the living room a smart TV, board games and fast wifi.\n\nThe private courtyard sits at the back: sheltered, green, entirely yours.\n\nYou let yourself in with your own code.',
     },
     buurt: {
       nl: 'Nosso Logies ligt in Heist-aan-Zee, het ontspannen westelijke uiteinde van Knokke-Heist. Het strand ligt op twee minuten te voet: twaalf kilometer breed, goudkleurig zand dat zich uitstrekt van de vissershaven in Heist tot de exclusieve strandclubs van Het Zoute. De beroemde Lippenslaan en Kustlaan van Knokke zijn omzoomd met boetiekjes, kunstgalerijen en zonnige terrassen - op een korte tram- of fietsrit afstand. Het Zwinnatuurpark, een uniek getijdenreservaat op de Belgisch-Nederlandse grens, is een prachtige bestemming voor vogelspotters en rustige wandelingen. Fietsen door de polders richting Cadzand, Damme of Brugge is een van de mooiste ritten aan de kust. Met de wagen ben je op 20 minuten in Brugge.',
       en: 'Nosso Logies is situated in Heist-aan-Zee, the relaxed western tip of Knokke-Heist. The beach is two minutes on foot: twelve kilometres of golden sand stretching from the fishing harbour in Heist to the exclusive beach clubs of Het Zoute. Knokke\'s famous Lippenslaan and Kustlaan are lined with boutiques, art galleries and sunny terraces — a short tram or bike ride away. The Zwin nature reserve, a unique tidal wetland on the Belgian-Dutch border, is a beautiful destination for birdwatchers and quiet walks. Cycling through the polders towards Cadzand, Damme or Bruges is one of the finest rides on the coast. By car you\'re in Bruges in 20 minutes.',
     },
     hoogtepunten: [
-      { nl: '110m² — ruimte om te ademen',           en: '110m² — room to breathe' },
-      { nl: 'Strand op 2 minuten te voet',            en: 'Beach 2 minutes on foot' },
-      { nl: 'Privé koertje — jouw stille oase',       en: 'Private courtyard — your quiet retreat' },
-      { nl: '2 volledige badkamers — nooit wachten',  en: '2 full bathrooms — no waiting' },
+      { nl: '110m²',                                   en: '110m²' },
+      { nl: 'Twee volledige badkamers',                en: 'Two full bathrooms' },
+      { nl: 'Privé koer aan de achterkant',            en: 'Private courtyard at the back' },
+      { nl: 'Strand op 2 minuten te voet',             en: 'Beach 2 minutes on foot' },
       { nl: 'Volledig uitgeruste keuken',              en: 'Fully equipped kitchen' },
-      { nl: 'Zelf inchecken via slim slot',            en: 'Self check-in via smart lock' },
+      { nl: 'Zelf inchecken via smart lock',           en: 'Self check-in via smart lock' },
     ],
     reviews: [
       {
