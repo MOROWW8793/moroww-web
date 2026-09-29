@@ -299,20 +299,20 @@ const _woningenRaw: Woning[] = [
       { nl: 'Privé parking',    en: 'Private parking' },
     ],
     slogan: {
-      nl: 'Hoog boven de kust. Helemaal voor jullie.',
-      en: 'Panoramic sea views from the 16th floor. The North Sea, always present.',
+      nl: 'hoog boven de kust. helemaal voor jullie.',
+      en: 'high above the coast. entirely yours.',
     },
     introductie: {
-      nl: 'Er is zeezicht. En dan is er dit. Zestien verdiepingen boven de drukte, met de Noordzee voor je neus en de golfers onder je. Geen gedeelde gang. Gewoon een appartement dat je het gevoel geeft dat Oostende van jou is — en een parkeerplaats die er echt bij hoort.',
-      en: 'There\'s sea view. And then there\'s this. Sixteen floors above the noise, with the North Sea in front of you and the golf links below. No shared corridor. Just an apartment that makes you feel Ostend is yours — and a parking space that genuinely comes with it.',
+      nl: 'Een appartement op de 16e verdieping in Oostende, met de Noordzee voor je en de Golf van Oostende naast je. Twee slaapkamers met een eigen ensuite badkamer, een panoramisch balkon, en een privé ondergrondse parking inbegrepen.',
+      en: 'An apartment on the sixteenth floor in Ostend, with the North Sea in front of you and the Ostend golf course beside you. Two bedrooms with their own en-suite bathroom, a panoramic balcony, and private underground parking included.',
     },
     beschrijving: {
-      nl: 'Zestien verdiepingen hoog, met de Noordzee voor je en de Golf van Oostende aan je zij. Ensuite badkamers, panoramisch balkon en privé ondergrondse parking.',
-      en: 'Sixteen floors up, with the North Sea ahead and Ostend Golf beside you. En-suite bathrooms, panoramic balcony and private underground parking.',
+      nl: 'Appartement op de 16e verdieping in Oostende. Twee slaapkamers met ensuite badkamer, panoramisch balkon, privé ondergrondse parking. Max 4.',
+      en: '16th-floor apartment in Ostend. Two bedrooms with en-suite bathroom, panoramic balcony, private underground parking. Up to 4 guests.',
     },
     volledigeBeschrijving: {
-      nl: '16e verdieping. De Noordzee voor je, de Golf van Oostende naast je, en de stad uitgespreid aan je voeten. De open leefruimte baadt de hele dag in natuurlijk licht, met een comfortabele salon, eethoek en een volledig uitgeruste keuken: vaatwasser, oven, koffiemachine en alles wat je verwacht. Stap op het privébalkon en laat het uitzicht de rest doen: zonsopgang boven de golfbaan, zonsondergang boven de zee. Elke slaapkamer is een privéretraite met eigen ensuite badkamer: inloopdouche of bad, kwaliteitsarmaturen en hotelwaardige voorzieningen. En dan is er nog de parking. Een privé ondergrondse plaats, inbegrepen - een echte zeldzaamheid in Oostende.',
-      en: 'The Sixteenth sits on the 16th floor of a modern building in Ostend. From every room: the North Sea. Whether it rains or shines, the view changes but never disappoints. The apartment is tastefully furnished with comfort as priority — quality linen, a fully equipped kitchen, two full bathrooms and a living room that makes you want to stay in. Step onto the private balcony for sunrise over the golf course and sunset over the sea. Private underground parking is included — a genuine rarity in Ostend.',
+      nl: 'De open leefruimte baadt de hele dag in natuurlijk licht, met een salon, eethoek en een volledig uitgeruste keuken: vaatwasser, oven, koffiemachine.\n\nStap op het privébalkon en kijk uit: zonsopgang boven de golfbaan, zonsondergang boven de zee.\n\nBeide slaapkamers hebben een eigen ensuite badkamer met een inloopdouche of een bad.\n\nDe privé ondergrondse parkeerplaats is inbegrepen.',
+      en: 'The open living space catches natural light all day, with a sitting area, dining corner and a fully equipped kitchen: dishwasher, oven, coffee machine.\n\nStep onto the private balcony: sunrise over the golf course, sunset over the sea.\n\nBoth bedrooms have their own en-suite bathroom with a walk-in shower or a bath.\n\nPrivate underground parking is included.',
     },
     buurt: {
       nl: 'Oostende is veel meer dan alleen strand: het is een levendige kuststad met musea, fijne restaurants, markten en boetieks. Dankzij de hoge ligging geniet je hier van uniek zicht rondom over zee, golf en stad. Of je nu houdt van cultuur, gastronomie of lange wandelingen langs de kust: alles ligt binnen handbereik. De Kusttram brengt je vlot naar alle badplaatsen en stopt voor de deur: van Knokke tot De Panne. Brugge bereik je in slechts 15 minuten met de trein.',
