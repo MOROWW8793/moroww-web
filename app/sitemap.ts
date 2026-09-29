@@ -46,13 +46,15 @@ const BILINGUAL_ROUTES: Array<{
 ]
 
 // NL-only routes (zie next.config.mjs voor 301 vanuit /en/...).
+// /vergelijking staat op noindex tot de tabel opnieuw onderbouwd is en
+// hoort daarom niet in de sitemap — de pagina blijft bereikbaar, maar
+// niet vindbaar.
 const NL_ONLY_ROUTES: Array<{
   path: string
   freq: 'weekly' | 'monthly' | 'yearly'
   priority: number
 }> = [
   { path: '/eigenaar-worden', freq: 'monthly', priority: 0.9 },
-  { path: '/vergelijking',    freq: 'monthly', priority: 0.7 },
   { path: '/privacy',         freq: 'yearly',  priority: 0.3 },
 ]
 
@@ -60,24 +62,51 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date()
   const entries: MetadataRoute.Sitemap = []
 
-  // Bilinguale statische routes — NL variant
+  // Bilinguale statische routes — NL en EN krijgen dezelfde hreflang-mapping
+  // zodat Google beide varianten als één canonieke pagina in twee talen ziet.
   for (const r of BILINGUAL_ROUTES) {
+    const languages = {
+      nl: `${BASE}${r.nl}`,
+      en: `${BASE}${r.en}`,
+      'x-default': `${BASE}${r.nl}`,
+    }
     entries.push({
       url: `${BASE}${r.nl}`,
       lastModified: now,
       changeFrequency: r.freq,
       priority: r.priority,
+      alternates: { languages },
+    })
+    entries.push({
+      url: `${BASE}${r.en}`,
+      lastModified: now,
+      changeFrequency: r.freq,
+      priority: Math.max(0.3, r.priority - 0.1),
+      alternates: { languages },
     })
   }
 
-  // Pandpagina's NL — iterreer over live panden. Wachtende panden
-  // (status='wacht_op_beeld') hebben geen pagina, dus ook geen sitemap-entry.
+  // Pandpagina's — NL en EN paarsgewijs met hreflang-alternates. Wachtende
+  // panden (status='wacht_op_beeld') hebben geen pagina en dus geen entry.
   for (const w of liveWoningen()) {
+    const languages = {
+      nl: `${BASE}/collectie/${w.id}`,
+      en: `${BASE}/en/collection/${w.id}`,
+      'x-default': `${BASE}/collectie/${w.id}`,
+    }
     entries.push({
       url: `${BASE}/collectie/${w.id}`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,
+      alternates: { languages },
+    })
+    entries.push({
+      url: `${BASE}/en/collection/${w.id}`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+      alternates: { languages },
     })
   }
 
@@ -88,26 +117,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
       changeFrequency: r.freq,
       priority: r.priority,
-    })
-  }
-
-  // Bilinguale statische routes — EN variant
-  for (const r of BILINGUAL_ROUTES) {
-    entries.push({
-      url: `${BASE}${r.en}`,
-      lastModified: now,
-      changeFrequency: r.freq,
-      priority: Math.max(0.3, r.priority - 0.1),
-    })
-  }
-
-  // Pandpagina's EN
-  for (const w of liveWoningen()) {
-    entries.push({
-      url: `${BASE}/en/collection/${w.id}`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
     })
   }
 
