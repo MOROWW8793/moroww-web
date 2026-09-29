@@ -7,7 +7,10 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   images: {
-    formats: ['image/avif', 'image/webp'],
+    // AVIF verwijderd i.v.m. GHSA-2xp9-vwfh-vxw4 (RCE in de Next Image
+    // Optimization API bij AVIF-input). WebP als enige moderne output.
+    // Terugzetten pas na next-major-bump die die advisory dicht.
+    formats: ['image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     // Toegestane quality-waarden. 65 gebruiken we op kleine thumbs waar
