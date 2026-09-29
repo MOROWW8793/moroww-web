@@ -28,8 +28,22 @@ const key = process.env.MOROWW_OS_SUPABASE_ANON_KEY
 // Client alleen aanmaken als beide env-vars gezet zijn; anders geven we
 // hieronder netjes null terug. persistSession=false want dit is een
 // server-side aggregate-lezer, geen user-session.
+//
+// Next 15 defaults fetch naar 'no-store'. Zonder expliciete revalidate zou
+// elke pagina-render de view opvragen — te veel voor een aggregate die
+// ~ elke keuring 1× beweegt. global.fetch overriden zodat elke query op
+// deze client via de Next-datacache loopt met 1h TTL.
+const SCREENINGS_REVALIDATE_SECONDS = 3600
+const cachedFetch: typeof fetch = (input, init) =>
+  fetch(input, { ...(init ?? {}), next: { revalidate: SCREENINGS_REVALIDATE_SECONDS } })
+
 const client =
-  url && key ? createClient(url, key, { auth: { persistSession: false } }) : null
+  url && key
+    ? createClient(url, key, {
+        auth: { persistSession: false },
+        global: { fetch: cachedFetch },
+      })
+    : null
 
 export async function screeningsPubliek(): Promise<ScreeningsPubliek | null> {
   if (!client) return null
