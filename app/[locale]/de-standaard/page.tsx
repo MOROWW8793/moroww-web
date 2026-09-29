@@ -105,10 +105,6 @@ export default async function DeStandaardPage({
               ? 'De waarde van het label zit in de huizen die er niet in zitten.'
               : 'The value of the label sits in the homes that are not in it.'}
           </p>
-
-          <div className="mt-mw-6 max-w-[62ch]">
-            <InlineFoto src="/images/standaard/V2-127.jpg" alt={t('alt_travertijn')} />
-          </div>
         </div>
       </section>
 
