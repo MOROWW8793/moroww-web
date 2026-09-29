@@ -252,6 +252,7 @@ export default async function WoningDetailPage({ params }: Props) {
             fotos={woning.fotos}
             naam={woning.naam}
             alts={woning.fotoAlts ? lwArr(woning.fotoAlts, locale) : undefined}
+            galleryLabel={t('gallery_button', { count: woning.fotos.length })}
           />
         </div>
 

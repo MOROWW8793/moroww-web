@@ -10,13 +10,17 @@ interface Props {
   /** Alt-tekst per foto, parallel aan `fotos`. Ontbrekende indexen
    *  vallen terug op `naam`. */
   alts?: string[];
+  /** Pre-gelokaliseerd label voor de "bekijk alle N foto's"-knop.
+   *  Wordt door de Server-Component-caller ingevuld met t('gallery_button',
+   *  { count }); zo blijft de client component locale-onafhankelijk. */
+  galleryLabel: string;
 }
 
 // Twee foto's naast elkaar, 50/50, 8px gutter, hoogte 62vh op ≥lg,
 // gestapeld op smaller schermen. Geen afgeronde hoeken, geen schaduw.
 // Rechtsonder in de tweede foto: rechthoek-knop 2px radius die de lightbox
 // opent op index 0. De lightbox houdt alle foto's beschikbaar.
-export function WoningGalerij({ fotos, naam, alts }: Props) {
+export function WoningGalerij({ fotos, naam, alts, galleryLabel }: Props) {
   const altFor = (i: number) => alts?.[i] || naam;
   const [lightbox, setLightbox] = useState<number | null>(null);
   const touchStartX = useRef<number>(0);
@@ -90,7 +94,7 @@ export function WoningGalerij({ fotos, naam, alts }: Props) {
               onClick={() => open(0)}
               className="absolute bottom-4 right-4 bg-white text-moroww-dark text-audit uppercase font-semibold px-4 py-2 rounded-[2px] hover:bg-moroww-blush transition-colors"
             >
-              bekijk alle {fotos.length} foto&apos;s
+              {galleryLabel}
             </button>
           </div>
         )}

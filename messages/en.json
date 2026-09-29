@@ -90,7 +90,8 @@
     "coming_soon": "coming soon",
     "coming_soon_body": "this home will be available soon via moroww.",
     "vergunning_label": "licence number",
-    "waarom_label": "the standard"
+    "waarom_label": "the standard",
+    "gallery_button": "view all {count} photos"
   },
   "contact": {
     "meta_title": "Contact",
