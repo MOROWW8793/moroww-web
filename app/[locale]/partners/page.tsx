@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { siteMetadata } from "@/lib/seo/siteMetadata";
 
 export async function generateMetadata({
@@ -54,7 +55,7 @@ function PartnerBlock({
   naam: string
   badge: string
   category: string
-  paragraphs: string[]
+  paragraphs: React.ReactNode[]
   // Optioneel keurmerk (certificering) klein afgebeeld onder de paragrafen —
   // geen sierlogo, dus bewust kleiner dan het hoofdlogo.
   certification?: { src: string; alt: string; width: number; height: number }
@@ -200,7 +201,7 @@ function PartnerBlockEmblem({
   naam: string
   badge: string
   category: string
-  paragraphs: string[]
+  paragraphs: React.ReactNode[]
   cta: string
   ctaHref: string
 }) {
@@ -380,7 +381,20 @@ export default async function PartnersPage({
           naam="Nuki"
           badge={t('nuki_badge')}
           category={t('nuki_category')}
-          paragraphs={[t('nuki_body_p1'), t('nuki_body_p2'), t('nuki_body_p3')]}
+          paragraphs={[
+            t('nuki_body_p1'),
+            t('nuki_body_p2'),
+            t.rich('nuki_body_p3', {
+              link: (chunks) => (
+                <Link
+                  href="/moroww-os"
+                  className="underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+                >
+                  {chunks}
+                </Link>
+              ),
+            }),
+          ]}
           certification={{ src: "/images/partners/nuki-pro-partner-badge.png", alt: t('nuki_pro_partner_alt'), width: 220, height: 34 }}
           cta={t('nuki_cta')}
           ctaHref="https://nuki.io/nl-nl/"
