@@ -96,8 +96,6 @@ export function Navbar() {
     }
   }
 
-  const bookUrl = `https://book.moroww.com/${locale}/properties?minOccupancy=1`
-
   const isNlOnly = nlOnlyRoutes.some((r) => pathname === r || pathname.startsWith(`${r}/`))
 
   const isLightHero = lightHeroRoutes.some((r) => pathname === r || pathname.startsWith(`${r}/`))
@@ -228,15 +226,15 @@ export function Navbar() {
             </button>
           )}
 
-          {/* Book CTA — blijft rechts, oranje */}
-          <a
-            href={bookUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          {/* CTA rechts: leidt naar de collectie op moroww.com, niet meer
+              naar book.moroww.com. book.moroww.com is een boekingsplatform;
+              wij willen dat de bezoeker eerst de gecureerde selectie ziet. */}
+          <Link
+            href="/collectie"
             className="bg-moroww-orange text-white rounded-full px-5 py-2.5 text-sm font-semibold hover:bg-moroww-orange/85 transition-colors"
           >
             {t('book')}
-          </a>
+          </Link>
         </div>
 
         {/* Hamburger */}
@@ -321,15 +319,13 @@ export function Navbar() {
                 {locale === 'nl' ? 'English' : 'Nederlands'}
               </button>
             )}
-            <a
-              href={bookUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/collectie"
               className="mt-2 bg-moroww-orange text-white rounded-full px-6 py-3 text-base font-semibold text-center min-h-[44px] flex items-center justify-center"
               onClick={() => setOpen(false)}
             >
               {t('book')}
-            </a>
+            </Link>
           </div>
         )}
       </nav>

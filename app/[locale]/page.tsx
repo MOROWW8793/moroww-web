@@ -6,7 +6,9 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { FaqJsonLd } from "@/components/FaqJsonLd";
 import { Deur } from "@/components/Deur";
 import { AuditLijn } from "@/components/AuditLijn";
+import { WoningKaarten } from "@/components/sections/WoningKaarten";
 import { siteMetadata } from "@/lib/seo/siteMetadata";
+import { liveWoningen, type Locale } from "@/lib/woningen";
 
 // Server-side check: als het bestand in /public niet bestaat, geef undefined
 // terug zodat de Deur alleen de placeholder-tegel toont. Zo staat er nooit
@@ -24,7 +26,9 @@ export async function generateMetadata({
   const { locale } = await params
   const isNl = locale === 'nl'
   return siteMetadata({
-    titel: 'moroww — premium vakantiewoningen in België',
+    titel: isNl
+      ? 'moroww — gekeurde vakantiewoningen in België'
+      : 'moroww — inspected holiday homes in Belgium',
     beschrijving:
       'Twee collecties, één standaard. Elke woning fysiek geïnspecteerd voor ze in de collectie komt.',
     pad: isNl ? '/' : '/en',
@@ -63,11 +67,19 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* DE TWEE DEUREN — bouwspec sectie 3. 50/50 met 8px gutter vanaf lg,
-          gestapeld daaronder. Op mobiel space-6 tussen hero-regel en eerste
-          deur; op desktop kunnen ze dichter want er staat display + witruimte
-          tussenin. Beelden vooraf laden (priority in Deur zelf). */}
-      <section className="w-full px-6 md:px-12 mt-mw-6 lg:mt-0">
+      {/* DE COLLECTIE — raster van live panden direct onder de H1, zelfde
+          PandKaart als op /collectie. Zo landt een bezoeker op de home
+          meteen op woningen in plaats van op de twee collectie-tegels. */}
+      <section className="w-full px-6 md:px-12 mt-mw-6">
+        <div className="mx-auto max-w-7xl">
+          <WoningKaarten woningen={liveWoningen()} locale={locale as Locale} />
+        </div>
+      </section>
+
+      {/* DE TWEE DEUREN — verplaatst onder het woningenraster. Blijven de
+          twee ingangen naar de streek-collecties (bouwspec sectie 3),
+          nu als vervolg op wie al gescrold heeft. */}
+      <section className="w-full px-6 md:px-12 mt-mw-8">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-2">
           <Deur
             naam="the shore"
