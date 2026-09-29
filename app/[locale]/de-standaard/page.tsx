@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
-import { woningen, liveWoningen, lw, type Locale } from '@/lib/woningen'
+import { woningen, lw, type Locale } from '@/lib/woningen'
 import { Register } from '@/components/Register'
 import { GridSectie } from '@/components/GridSectie'
 import { AuditLijn } from '@/components/AuditLijn'
@@ -28,15 +28,16 @@ export async function generateMetadata({
   // t('meta_description') — die zin bevat geen cijfers meer (zie nl.json /
   // en.json na deze commit), dus staan er nooit stale getallen in de SERP.
   const s = await screeningsPubliek()
-  // Aantal opgenomen leest uit de code (liveWoningen), niet uit de view —
-  // dat is één bron voor alle "aantal woningen"-plekken op de site. Aantal
-  // bezocht blijft uit de view, want dat is een groter, dynamischer cijfer.
-  const opgenomen = liveWoningen().length
-  const opgenomenWord = countWord(opgenomen, isNl ? 'nl' : 'en', false)
+  // Aantallen op /de-standaard lezen uit de view screenings_publiek:
+  // aantal_dossier voor "dossiers bekeken", aantal_bezoek voor "bezocht"
+  // en aantal_opgenomen voor "haalden de standaard". liveWoningen()
+  // beschrijft alleen wat online staat, niet wat officieel opgenomen is
+  // (een pand kan wachten op fotoshoot en toch tellen als opgenomen).
+  const opgenomenWord = s ? countWord(s.aantal_opgenomen, isNl ? 'nl' : 'en', false) : ''
   const beschrijving = s
     ? isNl
-      ? `Van de ${s.aantal_bezoek} woningen die moroww bezocht, kwamen er ${opgenomenWord} in de collectie. Wat we keuren, en waarom de rest afvalt.`
-      : `Of the ${s.aantal_bezoek} homes moroww visited, ${opgenomenWord} entered the collection. What we certify, and why the rest falls out.`
+      ? `Van de ${s.aantal_dossier} dossiers die moroww bekeek, haalden er ${opgenomenWord} de standaard. Wat we keuren, en waarom de rest afvalt.`
+      : `Of the ${s.aantal_dossier} files moroww reviewed, ${opgenomenWord} met the standard. What we certify, and why the rest falls out.`
     : t('meta_description')
   return siteMetadata({
     titel: t('meta_title'),
