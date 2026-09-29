@@ -341,6 +341,7 @@ const _woningenRaw: Woning[] = [
     ],
     boekUrl: 'https://book.moroww.com/nl/properties/696b49bf47f69b0013026516?minOccupancy=1',
     amenities: ['Smart lock', 'Wifi', 'Eigen parking'],
+    geluidssensor: true,
   },
 
   {
@@ -545,6 +546,7 @@ const _woningenRaw: Woning[] = [
     ],
     boekUrl: 'https://book.moroww.com/nl/properties/690781db69d1700012bf6dd3?minOccupancy=1',
     amenities: ['Smart lock', 'Wifi', 'Eigen parking'],
+    geluidssensor: true,
   },
 
   {
