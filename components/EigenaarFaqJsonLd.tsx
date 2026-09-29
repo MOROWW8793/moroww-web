@@ -49,10 +49,10 @@ export function EigenaarFaqJsonLd() {
             },
             {
               '@type': 'Question',
-              name: 'Wat is het verschil tussen moroww en een platform zoals Airbnb of Xepa?',
+              name: 'Wat is het verschil tussen moroww en een platform zoals Airbnb?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Airbnb is een boekingsplatform — zij nemen 15% commissie en bieden geen kwaliteitsgarantie. Xepa is een full-service property manager — zij nemen het volledige beheer over. moroww is een kwaliteitslabel: jij behoudt de controle over je woning, wij installeren de technologie, bewaken de standaard en bieden een eigen boekingskanaal zonder platformkosten.',
+                text: 'Airbnb is een boekingsplatform — zij nemen 15% commissie en bieden geen kwaliteitsgarantie. moroww is een kwaliteitslabel: jij behoudt de controle over je woning, wij installeren de technologie, bewaken de standaard en bieden een eigen boekingskanaal zonder platformkosten.',
               },
             },
             {

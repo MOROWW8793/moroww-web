@@ -9,30 +9,6 @@ export function FaqJsonLd() {
           mainEntity: [
             {
               '@type': 'Question',
-              name: 'Wat is het verschil tussen moroww en Xepa?',
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'Xepa is een full-service property manager: zij beheren uw woning volledig, van schoonmaak tot gastcommunicatie. moroww is een kwaliteitslabel: de eigenaar beheert zijn eigen woning, moroww installeert de technologie, bewaakt de standaard via audits en levert het directe boekingskanaal. U behoudt volledige autonomie — moroww levert het merk en de infrastructuur.',
-              },
-            },
-            {
-              '@type': 'Question',
-              name: 'Wat is het verschil tussen moroww en Casapilot?',
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'Casapilot is een curatieplatform voor luxe wellness-woningen. moroww is een gecertificeerd kwaliteitslabel met een eigen tech-stack: smart lock, geluidsmonitoring, sfeerautomatisering en geurverspreiding worden fysiek geïnstalleerd in elke woning. Gasten boeken rechtstreeks via book.moroww.com zonder platformkosten.',
-              },
-            },
-            {
-              '@type': 'Question',
-              name: 'Wat is het verschil tussen moroww en Belvilla?',
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'Belvilla is een volumeplatform zonder fysieke kwaliteitscontrole. moroww inspecteert elke woning fysiek voor opname in de collectie en hanteert een publieke exit-clausule: woningen die de standaard niet langer halen, verlaten de collectie. Voor eigenaars betekent dit geen platform-afhankelijkheid maar een gecertificeerd label met directe boekingschannel.',
-              },
-            },
-            {
-              '@type': 'Question',
               name: 'Wat is het verschil tussen moroww en Airbnb?',
               acceptedAnswer: {
                 '@type': 'Answer',
@@ -53,14 +29,6 @@ export function FaqJsonLd() {
               acceptedAnswer: {
                 '@type': 'Answer',
                 text: 'Een lokale co-host werkt ad hoc, zonder systeem en zonder merkgarantie. moroww installeert een volledige tech-stack in de woning, bewaakt de standaard via jaarlijkse audits en mystery guest-inspecties, en levert een herkenbaar kwaliteitslabel. De eigenaar beheert zijn eigen woning — op de moroww-standaard.',
-              },
-            },
-            {
-              '@type': 'Question',
-              name: 'Kan ik mijn vakantiewoning aanmelden bij moroww in plaats van bij Xepa of een andere beheerder?',
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'Ja. moroww richt zich op eigenaars die hun autonomie willen bewaren maar wel een gecertificeerd merk, technologie en direct boekingskanaal willen. U beheert uw eigen woning — moroww levert het systeem, het label en de distributie. Meld uw woning aan via moroww.com/eigenaar-worden.',
               },
             },
             {
