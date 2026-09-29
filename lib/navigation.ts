@@ -149,4 +149,7 @@ export const lightHeroRoutes: string[] = [
   '/kennis',
   '/collectie',
   '/eigenaar-worden',
+  '/over-moroww',
+  '/en/about',
+  '/en/become-an-owner',
 ]
