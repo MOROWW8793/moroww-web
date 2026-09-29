@@ -586,8 +586,8 @@ const _woningenRaw: Woning[] = [
       { nl: 'Honden welkom, geen toeslag', en: 'Dogs welcome, no surcharge' },
     ],
     slogan: {
-      nl: 'waar het veld ophoudt en het bos begint.',
-      en: 'where the fields end and the forest begins.',
+      nl: 'vanuit bed over de velden, tot aan de bosrand.',
+      en: 'from bed across the fields, to the edge of the forest.',
     },
     introductie: {
       nl: 'Een hoeve aan de rand van natuurgebied De Gulke Putten, waar de open velden overgaan in bos. Vier slaapkamers, een volledig omheinde tuin, en een terras dat de ochtendzon vangt. Buiten is er het bos en het geluid ervan. Binnen ligt alles klaar.',
