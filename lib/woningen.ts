@@ -121,10 +121,6 @@ const _woningenRaw: Woning[] = [
     ],
     reviews: [
       {
-        citaat: { nl: 'Een heel fijne accommodatie.', en: 'A very nice accommodation.' },
-        naam: 'Lin',
-      },
-      {
         citaat: {
           nl: 'Het is een enorm smaakvol appartement, tot in de puntjes afgewerkt. Ruim, licht en heel luxe. Het ligt heel dicht aan zee maar toch enorm veel rust en geen enkel geluidsoverlast.',
           en: 'A very tasteful apartment, finished down to the last detail. Spacious, light and very luxurious. It sits very close to the sea and still there is complete calm — no noise at all.',
