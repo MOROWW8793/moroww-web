@@ -72,9 +72,10 @@ export async function EigenaarContent() {
           <div className="mt-mw-4 max-w-[68ch] space-y-mw-3 text-body text-moroww-dark">
             <p>
               Voor een woning in de collectie komt, staan we er ter plaatse. We
-              beoordelen op vier poorten: ruimte, ligging, karakter en staat.
-              Van de woningen die we bekijken, haalt de meerderheid de standaard
-              niet.
+              beoordelen op vier poorten: minimaal 100 m² met twee slaapkamers,
+              karakter in natuurlijke materialen, een ligging waar het stil is,
+              en wij zijn er geweest. Van de woningen die we bekijken, haalt de
+              meerderheid de standaard niet.
             </p>
             <p>
               Halen we de standaard wel: dan installeren we de systemen die het
@@ -170,7 +171,7 @@ export async function EigenaarContent() {
           <dl className="mt-mw-5 max-w-[68ch] divide-y divide-moroww-rule border-t border-b border-moroww-rule">
             <DefRij
               label="01 · aanmelding"
-              value="Je vult het formulier in. We nemen binnen twee werkdagen contact op en beoordelen elke woning op locatie, oppervlakte en karakter."
+              value="Je vult het formulier in. We nemen binnen twee werkdagen contact op en beoordelen elke woning op de vier poorten."
             />
             <DefRij
               label="02 · audit en installatie"
