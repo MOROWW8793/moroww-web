@@ -38,20 +38,16 @@ export async function EigenaarContent() {
 
   return (
     <Register kant="eigenaar">
-      <h1 className="sr-only">
-        Vakantiewoning verhuren in België via moroww — gecertificeerd kwaliteitslabel met smart lock, audit en directe boeking
-      </h1>
-
       {/* ── HERO ── */}
       <section className="w-full px-6 md:px-12 pt-28 pb-mw-8">
         <div className="mx-auto max-w-6xl">
           <p className="text-audit uppercase text-moroww-label">voor eigenaars</p>
-          <h2
+          <h1
             className="mt-mw-4 font-bold text-moroww-dark leading-[1.05] tracking-[-0.02em] max-w-[16ch]"
             style={{ fontSize: 'clamp(2.5rem, 7vw, 6rem)' }}
           >
             je woning. onze standaard. één label.
-          </h2>
+          </h1>
           <p className="mt-mw-5 text-body-lg text-moroww-dark max-w-[62ch]">
             moroww is een label voor vakantiewoningen, geen beheerder. Je blijft
             eigenaar van je woning, van je boekingen en van je gasten. Wij
