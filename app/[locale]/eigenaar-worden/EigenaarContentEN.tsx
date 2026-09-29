@@ -4,15 +4,10 @@ import { Statrij } from "@/components/sections/Statrij";
 import { screeningsPubliek } from "@/lib/screenings";
 import { TOTAL_STAYS_REVIEWED } from "@/lib/reviews";
 import { Register } from "@/components/Register";
-import { AuditLijn } from "@/components/AuditLijn";
+import { TekstBlok } from "@/components/sections/TekstBlok";
 
-// EN-tegenhanger van EigenaarContent. Gerouteerd naar /en/become-an-owner
-// via next-intl pathnames. Copy is hardgecodeerd EN — dezelfde structuur als
-// de NL-versie, geen tarieven behalve onboarding € 1,950.
-
-function Hr() {
-  return <hr className="mt-mw-8 mb-mw-6 border-0 border-t border-moroww-rule" aria-hidden />
-}
+// WP M-versie EN. Zelfde structuur als de NL-versie; natuurlijk Engels
+// (geen letterlijke vertaling).
 
 function DefRij({ label, value }: { label: string; value: React.ReactNode }) {
   return (
@@ -45,221 +40,125 @@ export async function EigenaarContentEN() {
             your home. our standard. one label.
           </h1>
           <p className="mt-mw-5 text-body-lg text-moroww-dark max-w-[62ch]">
-            moroww is a label for holiday homes, not a manager. You stay the
-            owner of your home, your bookings and your guests. We bring the
-            standard, the audit, the system and the distribution.
+            moroww is the quality label for holiday homes in Belgium: every
+            moroww home is audited, equipped and looked after.
           </p>
+          <div className="mt-mw-6 flex flex-wrap gap-mw-3">
+            <a
+              href="#poortentoets"
+              className="inline-flex items-center rounded-full px-mw-4 py-3 font-semibold bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85 transition-colors"
+            >
+              register your home
+            </a>
+            <a
+              href="https://calendar.app.google/BH8wYeA9AGf6KrUz7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center rounded-full px-mw-4 py-3 font-semibold border border-moroww-dark text-moroww-dark hover:bg-moroww-dark hover:text-white transition-colors"
+            >
+              book a call
+            </a>
+          </div>
         </div>
       </section>
 
       {/* ── STATRIJ ── */}
       {statItems.length > 1 && <Statrij items={statItems} />}
 
-      {/* ── WAT HET LABEL DOET ── */}
-      <section className="w-full px-6 md:px-12 py-mw-8">
-        <div className="mx-auto max-w-6xl">
-          <AuditLijn density="quiet" items={['what the label does']} />
-          <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[68ch]">
-            the standard is ours. the home stays yours.
-          </h2>
-          <div className="mt-mw-4 max-w-[68ch] space-y-mw-3 text-body text-moroww-dark">
-            <p>
-              Before a home enters the collection, we visit in person. We
-              assess it on four gates: at least 100 m² with two bedrooms,
-              character in natural materials, a quiet setting, and we have
-              been there. Most of what we look at does not make it.
-            </p>
-            <p>
-              If a home does make it, we install the systems that carry the
-              stay. Every year we re-audit. If a home no longer meets the
-              standard, it leaves the collection. Even when it books well.
-            </p>
-          </div>
-        </div>
-      </section>
+      <div className="mx-auto max-w-6xl px-6 md:px-12">
 
-      {/* ── WAT HET LABEL KOST ── */}
-      <section className="w-full px-6 md:px-12 py-mw-8">
-        <div className="mx-auto max-w-6xl">
-          <AuditLijn density="quiet" items={['what it costs']} />
-          <h2 className="mt-mw-4 text-h2 text-moroww-dark">what the label costs</h2>
-          <dl className="mt-mw-5 max-w-[68ch] divide-y divide-moroww-rule border-t border-b border-moroww-rule">
-            <DefRij
-              label="onboarding"
-              value="one-off, € 1,950"
-            />
+        {/* ── WAT JE KRIJGT ── */}
+        <TekstBlok eyebrow="what you get">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-mw-6">
+            <div>
+              <p className="text-audit uppercase text-moroww-label">the standard</p>
+              <p className="mt-mw-2 text-body text-moroww-dark">
+                We assess your home in person on four gates and follow it
+                afterwards. If it no longer meets the standard, you hear it
+                from us.
+              </p>
+            </div>
+            <div>
+              <p className="text-audit uppercase text-moroww-label">the system</p>
+              <p className="mt-mw-2 text-body text-moroww-dark">
+                Smart lock, lights and heating that set themselves up, a
+                signature scent, and sensors for noise, water and smoke. You
+                know before there is damage.
+              </p>
+            </div>
+            <div>
+              <p className="text-audit uppercase text-moroww-label">the bookings</p>
+              <p className="mt-mw-2 text-body text-moroww-dark">
+                Distribution across every channel and via book.moroww.com. We
+                handle guest contact and steer the cleaning. You follow it
+                all in your dashboard.
+              </p>
+            </div>
+          </div>
+        </TekstBlok>
+
+        {/* ── HOE HET LOOPT ── */}
+        <TekstBlok eyebrow="how it runs">
+          <dl className="divide-y divide-moroww-rule border-t border-b border-moroww-rule">
+            <DefRij label="01 · register"               value="We get in touch within two working days." />
+            <DefRij label="02 · visit and installation" value="We assess the home in person and install the system." />
+            <DefRij label="03 · live"                   value="Your home carries the label and joins the collection." />
           </dl>
-          <p className="mt-mw-5">
-            <Link
-              href="/kennis/wat-kost-een-nacht-vakantiewoning"
-              className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
-            >
-              work out your income, all costs included →
-            </Link>
+        </TekstBlok>
+
+        {/* ── WAT HET KOST ── */}
+        <TekstBlok eyebrow="what it costs">
+          <p>
+            <span className="font-semibold">Onboarding:</span> one-off,
+            € 1,950.
           </p>
-        </div>
-      </section>
-
-      {/* ── JE ZIT NERGENS AAN VAST ── */}
-      <section className="w-full px-6 md:px-12 py-mw-8">
-        <div className="mx-auto max-w-6xl">
-          <AuditLijn density="quiet" items={['exit clause']} />
-          <h2 className="mt-mw-4 text-h2 text-moroww-dark">no lock-in.</h2>
-          <div className="mt-mw-4 max-w-[68ch] space-y-mw-3 text-body text-moroww-dark">
-            <p>
-              A label that needs a contract to keep owners doesn&apos;t need a
-              label. It needs a lawyer. After full payment, the hardware is
-              yours. The software stays under licence. Your bookings and your
-              guest data remain yours. If you stop, you stop.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── TECH ── */}
-      <section className="w-full px-6 md:px-12 py-mw-8">
-        <div className="mx-auto max-w-6xl">
-          <AuditLijn density="quiet" items={['the tech layer']} />
-          <h2 className="mt-mw-4 text-h2 text-moroww-dark">
-            three things the system watches over
-          </h2>
-
-          <div className="mt-mw-6 grid grid-cols-1 md:grid-cols-3 gap-mw-6">
-            <div>
-              <p className="text-audit uppercase text-moroww-label">your permit</p>
-              <p className="mt-mw-3 text-body text-moroww-dark">
-                A decibel sensor watches the noise. It measures noise level,
-                not conversations. Disturbance is picked up before it becomes
-                a problem.
-              </p>
-            </div>
-            <div>
-              <p className="text-audit uppercase text-moroww-label">your property</p>
-              <p className="mt-mw-3 text-body text-moroww-dark">
-                A leak, smoke, unusual temperature or humidity: you are warned
-                before there is damage. The system notices before anyone else
-                does.
-              </p>
-            </div>
-            <div>
-              <p className="text-audit uppercase text-moroww-label">your time</p>
-              <p className="mt-mw-3 text-body text-moroww-dark">
-                Keyless arrival, lights and heating ready before you arrive,
-                cleaning triggered by the calendar. Occupancy and reporting
-                in your dashboard. You never have to be there.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── HET TRAJECT ── */}
-      <section className="w-full px-6 md:px-12 py-mw-8">
-        <div className="mx-auto max-w-6xl">
-          <AuditLijn density="quiet" items={['the journey']} />
-          <h2 className="mt-mw-4 text-h2 text-moroww-dark">from registration to live</h2>
-
-          <dl className="mt-mw-5 max-w-[68ch] divide-y divide-moroww-rule border-t border-b border-moroww-rule">
-            <DefRij
-              label="01 · registration"
-              value="You fill in the form. We get in touch within two working days and assess every home on the four gates."
-            />
-            <DefRij
-              label="02 · audit and installation"
-              value="Our team visits the home, runs the audit, gives interior advice and installs the tech stack."
-            />
-            <DefRij
-              label="03 · live in the collection"
-              value="The home carries the label. We start distribution on every channel and via book.moroww.com. You follow it all through the host dashboard."
-            />
-          </dl>
-        </div>
-      </section>
-
-      {/* ── DE OPRICHTER ── */}
-      <section className="w-full px-6 md:px-12 py-mw-8">
-        <div className="mx-auto max-w-6xl">
-          <AuditLijn density="quiet" items={['the team']} />
-          <h2 className="mt-mw-4 text-h2 text-moroww-dark">you work with the founder</h2>
-          <p className="mt-mw-4 text-body text-moroww-dark max-w-[62ch]">
-            You work with Noam. No call centre, no account manager, no
-            intermediary. He comes to look at the home himself and stays your
-            point of contact.
+          <p>
+            No lock-in. After full payment the hardware is yours; so are your
+            bookings and guest data. If you stop, you stop.
           </p>
-          <p className="mt-mw-3 text-body text-moroww-dark">
+        </TekstBlok>
+
+        {/* ── MET WIE JE WERKT ── */}
+        <TekstBlok eyebrow="who you work with">
+          <p>
+            With our team, not a call centre. We come to look at the home
+            ourselves and stay your point of contact.
+          </p>
+          <p className="text-audit uppercase">
             <a
               href="mailto:info@moroww.com"
-              className="underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+              className="text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
             >
               info@moroww.com
             </a>
           </p>
-        </div>
-      </section>
+        </TekstBlok>
 
-      {/* ── VOOR JE BESLIST ── */}
-      <section className="w-full px-6 md:px-12 py-mw-8">
-        <div className="mx-auto max-w-6xl">
-          <AuditLijn density="quiet" items={['before you decide']} />
-          <h3 className="mt-mw-4 text-h3 text-moroww-dark">figure out how it works first</h3>
-
-          <div className="mt-mw-5 grid grid-cols-1 md:grid-cols-3 gap-mw-6">
-            <Link
-              href="/kennis/wat-kost-een-nacht-vakantiewoning"
-              className="group block"
-            >
-              <p className="text-audit uppercase text-moroww-label">income and yield</p>
-              <p className="mt-mw-3 text-h3 text-moroww-dark group-hover:text-moroww-orange transition-colors">
-                what a night costs →
-              </p>
-            </Link>
-            <Link
-              href="/kennis/verblijfsbelasting-vakantiewoning"
-              className="group block"
-            >
-              <p className="text-audit uppercase text-moroww-label">rules and permits</p>
-              <p className="mt-mw-3 text-h3 text-moroww-dark group-hover:text-moroww-orange transition-colors">
-                rules and taxes →
-              </p>
-            </Link>
-            <Link
-              href="/kennis/vakantiewoning-verhuren-zelf-platform-beheerder-label"
-              className="group block"
-            >
-              <p className="text-audit uppercase text-moroww-label">choosing how to rent</p>
-              <p className="mt-mw-3 text-h3 text-moroww-dark group-hover:text-moroww-orange transition-colors">
-                yourself, platform, manager or label →
-              </p>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── FORMULIER ── */}
-      <section className="w-full px-6 md:px-12 py-mw-8" id="poortentoets">
-        <div className="mx-auto max-w-6xl">
-          <AuditLijn density="quiet" items={['register']} />
-          <h2 className="mt-mw-4 text-h2 text-moroww-dark">register your home</h2>
-          <p className="mt-mw-4 text-body text-moroww-dark max-w-[62ch]">
+        {/* ── FORMULIER ── */}
+        <TekstBlok eyebrow="register" heading="register your home">
+          <p>
             We get in touch personally within two working days. Every home is
             assessed in person, even when the answer turns out to be no.
           </p>
-          <div className="mt-mw-6 max-w-[52ch]">
+          <div id="poortentoets" className="mt-mw-4 max-w-[52ch]">
             <LeadForm />
           </div>
-        </div>
-      </section>
+          <p className="mt-mw-5">
+            <Link
+              href="/kennis"
+              className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+            >
+              want to figure it out yourself first? read the knowledge base →
+            </Link>
+          </p>
+        </TekstBlok>
 
-      {/* ── AFSLUITING ── */}
-      <section className="w-full px-6 md:px-12 pt-mw-8 pb-mw-10">
-        <div className="mx-auto max-w-6xl">
-          <Hr />
-          <AuditLijn density="quiet" items={['a talk']} />
-          <h3 className="mt-mw-4 text-h3 text-moroww-dark">prefer to speak to someone directly?</h3>
-          <p className="mt-mw-3 text-body text-moroww-dark max-w-[62ch]">
+        {/* ── AFSLUITING — CTA-D gesprek ── */}
+        <TekstBlok eyebrow="a talk" heading="prefer to speak to someone directly?" headingLevel="h3">
+          <p>
             Book a thirty-minute video call at a time that suits you.
           </p>
-          <p className="mt-mw-5">
+          <p className="mt-mw-3">
             <a
               href="https://calendar.app.google/BH8wYeA9AGf6KrUz7"
               target="_blank"
@@ -269,8 +168,8 @@ export async function EigenaarContentEN() {
               book a time
             </a>
           </p>
-        </div>
-      </section>
+        </TekstBlok>
+      </div>
     </Register>
   )
 }

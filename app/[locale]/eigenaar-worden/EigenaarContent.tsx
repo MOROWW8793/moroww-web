@@ -4,16 +4,10 @@ import { Statrij } from "@/components/sections/Statrij";
 import { screeningsPubliek } from "@/lib/screenings";
 import { TOTAL_STAYS_REVIEWED } from "@/lib/reviews";
 import { Register } from "@/components/Register";
-import { AuditLijn } from "@/components/AuditLijn";
+import { TekstBlok } from "@/components/sections/TekstBlok";
 
-// Herschreven in het eigenaarsregister (bouwspec stap 5B). Paper-achtergrond,
-// hairlines tussen secties, geen witte kaarten, geen afgeronde blokken, geen
-// schaduwen. Copy hardgecodeerd in NL — deze pagina is NL-only.
-
-// Hairline in --moroww-rule tussen inhoudsblokken.
-function Hr() {
-  return <hr className="mt-mw-8 mb-mw-6 border-0 border-t border-moroww-rule" aria-hidden />
-}
+// WP M-versie NL. Kort, drie kolommen ("wat je krijgt"), compacte
+// blokken voor kost en team, en een hero met twee CTA's.
 
 function DefRij({ label, value }: { label: string; value: React.ReactNode }) {
   return (
@@ -25,9 +19,6 @@ function DefRij({ label, value }: { label: string; value: React.ReactNode }) {
 }
 
 export async function EigenaarContent() {
-  // Screenings-cijfers live uit moroww-os. Ontbrekende cellen (view kapot,
-  // net-gestart pand, cijfer nog niet gepubliceerd) worden weggefilterd —
-  // een lege cel of '—' zou stiller misleiden dan geen cel.
   const cijfers = await screeningsPubliek()
   const statItems = [
     cijfers?.aantal_dossier    ? { cijfer: String(cijfers.aantal_dossier),   label: 'dossiers bekeken' } : null,
@@ -38,7 +29,7 @@ export async function EigenaarContent() {
 
   return (
     <Register kant="eigenaar">
-      {/* ── HERO ── */}
+      {/* ── HERO — H1 + lead + twee CTA's ── */}
       <section className="w-full px-6 md:px-12 pt-28 pb-mw-8">
         <div className="mx-auto max-w-6xl">
           <p className="text-audit uppercase text-moroww-label">voor eigenaars</p>
@@ -49,225 +40,126 @@ export async function EigenaarContent() {
             je woning. onze standaard. één label.
           </h1>
           <p className="mt-mw-5 text-body-lg text-moroww-dark max-w-[62ch]">
-            moroww is een label voor vakantiewoningen, geen beheerder. Je blijft
-            eigenaar van je woning, van je boekingen en van je gasten. Wij
-            leveren de standaard, de audit, het systeem en de distributie.
+            moroww is het kwaliteitslabel voor vakantiewoningen in België:
+            elke moroww-woning is geauditeerd, uitgerust en opgevolgd.
           </p>
+          <div className="mt-mw-6 flex flex-wrap gap-mw-3">
+            <a
+              href="#poortentoets"
+              className="inline-flex items-center rounded-full px-mw-4 py-3 font-semibold bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85 transition-colors"
+            >
+              meld je woning aan
+            </a>
+            <a
+              href="https://calendar.app.google/BH8wYeA9AGf6KrUz7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center rounded-full px-mw-4 py-3 font-semibold border border-moroww-dark text-moroww-dark hover:bg-moroww-dark hover:text-white transition-colors"
+            >
+              plan een gesprek
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* ── STATRIJ — het bewijs in cijfers. Eerste drie live uit
-          screenings_publiek (moroww-os), vierde uit lib/reviews. Als de
-          view faalt of een cel leeg is, valt die cel weg — Statrij wordt
-          alleen gerenderd zolang er minstens twee cellen overblijven. ── */}
+      {/* ── STATRIJ — donkere cijferband ── */}
       {statItems.length > 1 && <Statrij items={statItems} />}
 
-      {/* ── WAT HET LABEL DOET ── */}
-      <section className="w-full px-6 md:px-12 py-mw-8">
-        <div className="mx-auto max-w-6xl">
-          <AuditLijn density="quiet" items={['wat het label doet']} />
-          <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[68ch]">
-            de standaard komt van ons, de woning blijft van jou
-          </h2>
-          <div className="mt-mw-4 max-w-[68ch] space-y-mw-3 text-body text-moroww-dark">
-            <p>
-              Voor een woning in de collectie komt, staan we er ter plaatse. We
-              beoordelen op vier poorten: minimaal 100 m² met twee slaapkamers,
-              karakter in natuurlijke materialen, een ligging waar het stil is,
-              en wij zijn er geweest. Van de woningen die we bekijken, haalt de
-              meerderheid de standaard niet.
-            </p>
-            <p>
-              Halen we de standaard wel: dan installeren we de systemen die het
-              verblijf dragen. We voeren jaarlijks een heraudit uit. Voldoet
-              een woning niet meer, dan verlaat ze de collectie. Ook als ze
-              goed verhuurt.
-            </p>
-          </div>
-        </div>
-      </section>
+      <div className="mx-auto max-w-6xl px-6 md:px-12">
 
-      {/* ── WAT HET LABEL KOST ── */}
-      <section className="w-full px-6 md:px-12 py-mw-8">
-        <div className="mx-auto max-w-6xl">
-          <AuditLijn density="quiet" items={['wat het kost']} />
-          <h2 className="mt-mw-4 text-h2 text-moroww-dark">wat het label kost</h2>
-          <dl className="mt-mw-5 max-w-[68ch] divide-y divide-moroww-rule border-t border-b border-moroww-rule">
-            <DefRij
-              label="onboarding"
-              value="eenmalig, € 1.950"
-            />
+        {/* ── WAT JE KRIJGT ── drie kolommen */}
+        <TekstBlok eyebrow="wat je krijgt">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-mw-6">
+            <div>
+              <p className="text-audit uppercase text-moroww-label">de standaard</p>
+              <p className="mt-mw-2 text-body text-moroww-dark">
+                We keuren je woning ter plaatse op vier poorten en volgen ze
+                daarna op. Haalt ze de standaard niet meer, dan hoor je het
+                van ons.
+              </p>
+            </div>
+            <div>
+              <p className="text-audit uppercase text-moroww-label">het systeem</p>
+              <p className="mt-mw-2 text-body text-moroww-dark">
+                Slim slot, licht en warmte die zich klaarzetten, een
+                signatuurgeur, en sensoren voor geluid, water en rook. Je
+                weet het voor er schade is.
+              </p>
+            </div>
+            <div>
+              <p className="text-audit uppercase text-moroww-label">de verhuur</p>
+              <p className="mt-mw-2 text-body text-moroww-dark">
+                Distributie via alle kanalen en book.moroww.com. Wij doen het
+                gastcontact en sturen de schoonmaak aan. Jij volgt alles in
+                je dashboard.
+              </p>
+            </div>
+          </div>
+        </TekstBlok>
+
+        {/* ── HOE HET LOOPT ── */}
+        <TekstBlok eyebrow="hoe het loopt">
+          <dl className="divide-y divide-moroww-rule border-t border-b border-moroww-rule">
+            <DefRij label="01 · aanmelden"              value="Binnen twee werkdagen nemen we contact op." />
+            <DefRij label="02 · bezoek en installatie"  value="We keuren de woning ter plaatse en installeren het systeem." />
+            <DefRij label="03 · live"                   value="Je woning draagt het label en staat in de collectie." />
           </dl>
-          <p className="mt-mw-5">
-            <Link
-              href="/kennis/wat-kost-een-nacht-vakantiewoning"
-              className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
-            >
-              reken je opbrengst door met alle kosten erin →
-            </Link>
+        </TekstBlok>
+
+        {/* ── WAT HET KOST ── compact */}
+        <TekstBlok eyebrow="wat het kost">
+          <p>
+            <span className="font-semibold">Onboarding:</span> eenmalig,
+            € 1.950.
           </p>
-        </div>
-      </section>
-
-      {/* ── JE ZIT NERGENS AAN VAST ── */}
-      <section className="w-full px-6 md:px-12 py-mw-8">
-        <div className="mx-auto max-w-6xl">
-          <AuditLijn density="quiet" items={['uitstapclausule']} />
-          <h2 className="mt-mw-4 text-h2 text-moroww-dark">je zit nergens aan vast</h2>
-          <div className="mt-mw-4 max-w-[68ch] space-y-mw-3 text-body text-moroww-dark">
-            <p>
-              Een label dat mensen moet vasthouden met een contract, heeft geen
-              label nodig maar een advocaat. De hardware wordt na volledige
-              betaling jouw eigendom. De software blijft in licentie. Je
-              boekingen en je gastgegevens blijven van jou. Stop je, dan stop je.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── TECH: DRIE DINGEN DIE EEN EIGENAAR 'S NACHTS WAKKER HOUDEN ── */}
-      <section className="w-full px-6 md:px-12 py-mw-8">
-        <div className="mx-auto max-w-6xl">
-          <AuditLijn density="quiet" items={['de tech-laag']} />
-          <h2 className="mt-mw-4 text-h2 text-moroww-dark">
-            drie dingen die het systeem bewaakt
-          </h2>
-
-          <div className="mt-mw-6 grid grid-cols-1 md:grid-cols-3 gap-mw-6">
-            <div>
-              <p className="text-audit uppercase text-moroww-label">je vergunning</p>
-              <p className="mt-mw-3 text-body text-moroww-dark">
-                Een decibelsensor bewaakt of het rustig blijft. Hij meet
-                geluidsniveau, geen gesprekken. Overlast wordt gedetecteerd
-                voor het een probleem wordt.
-              </p>
-            </div>
-            <div>
-              <p className="text-audit uppercase text-moroww-label">je vastgoed</p>
-              <p className="mt-mw-3 text-body text-moroww-dark">
-                Waterlek, rookontwikkeling, klimaatafwijking: je wordt
-                gewaarschuwd voor er schade is. Het systeem merkt het voor
-                iemand het merkt.
-              </p>
-            </div>
-            <div>
-              <p className="text-audit uppercase text-moroww-label">je tijd</p>
-              <p className="mt-mw-3 text-body text-moroww-dark">
-                Sleutelloze aankomst, sfeer die zichzelf klaarzet, schoonmaak
-                die vanzelf wordt aangestuurd. Bezetting en rapportage in je
-                dashboard. Je hoeft er nooit bij te zijn.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── HET TRAJECT ── */}
-      <section className="w-full px-6 md:px-12 py-mw-8">
-        <div className="mx-auto max-w-6xl">
-          <AuditLijn density="quiet" items={['het traject']} />
-          <h2 className="mt-mw-4 text-h2 text-moroww-dark">van aanmelding tot live</h2>
-
-          <dl className="mt-mw-5 max-w-[68ch] divide-y divide-moroww-rule border-t border-b border-moroww-rule">
-            <DefRij
-              label="01 · aanmelding"
-              value="Je vult het formulier in. We nemen binnen twee werkdagen contact op en beoordelen elke woning op de vier poorten."
-            />
-            <DefRij
-              label="02 · audit en installatie"
-              value="Ons team bezoekt de woning, voert de audit uit, geeft interieuradvies en installeert de tech-stack."
-            />
-            <DefRij
-              label="03 · live in de collectie"
-              value="De woning draagt het label. We starten de distributie via alle kanalen en via book.moroww.com. Je volgt alles op via het host-dashboard."
-            />
-          </dl>
-        </div>
-      </section>
-
-      {/* ── DE OPRICHTER — één, niet meerdere ── */}
-      <section className="w-full px-6 md:px-12 py-mw-8">
-        <div className="mx-auto max-w-6xl">
-          <AuditLijn density="quiet" items={['het team']} />
-          <h2 className="mt-mw-4 text-h2 text-moroww-dark">je werkt met de oprichter</h2>
-          <p className="mt-mw-4 text-body text-moroww-dark max-w-[62ch]">
-            Je werkt met Noam. Geen callcenter, geen accountmanager, geen
-            tussenpersoon. Hij komt zelf kijken en blijft je aanspreekpunt.
+          <p>
+            Je zit nergens aan vast. De hardware is na betaling van jou, je
+            boekingen en gastgegevens ook. Stop je, dan stop je.
           </p>
-          <p className="mt-mw-3 text-body text-moroww-dark">
+        </TekstBlok>
+
+        {/* ── MET WIE JE WERKT ── compact */}
+        <TekstBlok eyebrow="met wie je werkt">
+          <p>
+            Met ons team, niet met een callcenter. Wij komen zelf kijken en
+            blijven je aanspreekpunt.
+          </p>
+          <p className="text-audit uppercase">
             <a
               href="mailto:info@moroww.com"
-              className="underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+              className="text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
             >
               info@moroww.com
             </a>
           </p>
-        </div>
-      </section>
+        </TekstBlok>
 
-      {/* ── VOOR JE BESLIST — doorverwijzing kennisbank ── */}
-      <section className="w-full px-6 md:px-12 py-mw-8">
-        <div className="mx-auto max-w-6xl">
-          <AuditLijn density="quiet" items={['voor je beslist']} />
-          <h3 className="mt-mw-4 text-h3 text-moroww-dark">eerst uitzoeken hoe het zit</h3>
-
-          <div className="mt-mw-5 grid grid-cols-1 md:grid-cols-3 gap-mw-6">
-            <Link
-              href="/kennis/wat-kost-een-nacht-vakantiewoning"
-              className="group block"
-            >
-              <p className="text-audit uppercase text-moroww-label">opbrengst en rendement</p>
-              <p className="mt-mw-3 text-h3 text-moroww-dark group-hover:text-moroww-orange transition-colors">
-                wat een nacht kost →
-              </p>
-            </Link>
-            <Link
-              href="/kennis/verblijfsbelasting-vakantiewoning"
-              className="group block"
-            >
-              <p className="text-audit uppercase text-moroww-label">regels en vergunningen</p>
-              <p className="mt-mw-3 text-h3 text-moroww-dark group-hover:text-moroww-orange transition-colors">
-                regels en belasting →
-              </p>
-            </Link>
-            <Link
-              href="/kennis/vakantiewoning-verhuren-zelf-platform-beheerder-label"
-              className="group block"
-            >
-              <p className="text-audit uppercase text-moroww-label">kiezen hoe je verhuurt</p>
-              <p className="mt-mw-3 text-h3 text-moroww-dark group-hover:text-moroww-orange transition-colors">
-                zelf, platform, beheerder of label →
-              </p>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── FORMULIER ── */}
-      <section className="w-full px-6 md:px-12 py-mw-8" id="poortentoets">
-        <div className="mx-auto max-w-6xl">
-          <AuditLijn density="quiet" items={['aanmelden']} />
-          <h2 className="mt-mw-4 text-h2 text-moroww-dark">meld je woning aan</h2>
-          <p className="mt-mw-4 text-body text-moroww-dark max-w-[62ch]">
-            We nemen binnen twee werkdagen persoonlijk contact op. Elke woning
-            wordt fysiek beoordeeld, ook als het antwoord uiteindelijk nee is.
+        {/* ── FORMULIER ── */}
+        <TekstBlok eyebrow="aanmelden" heading="meld je woning aan">
+          <p>
+            We nemen binnen twee werkdagen persoonlijk contact op. Elke
+            woning wordt fysiek beoordeeld, ook als het antwoord uiteindelijk
+            nee is.
           </p>
-          <div className="mt-mw-6 max-w-[52ch]">
+          <div id="poortentoets" className="mt-mw-4 max-w-[52ch]">
             <LeadForm />
           </div>
-        </div>
-      </section>
+          <p className="mt-mw-5">
+            <Link
+              href="/kennis"
+              className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+            >
+              eerst alles zelf uitzoeken? lees de kennisbank →
+            </Link>
+          </p>
+        </TekstBlok>
 
-      {/* ── AFSLUITING — CTA-D gesprek ── */}
-      <section className="w-full px-6 md:px-12 pt-mw-8 pb-mw-10">
-        <div className="mx-auto max-w-6xl">
-          <Hr />
-          <AuditLijn density="quiet" items={['gesprek']} />
-          <h3 className="mt-mw-4 text-h3 text-moroww-dark">liever meteen iemand spreken?</h3>
-          <p className="mt-mw-3 text-body text-moroww-dark max-w-[62ch]">
+        {/* ── AFSLUITING — CTA-D gesprek ── */}
+        <TekstBlok eyebrow="gesprek" heading="liever meteen iemand spreken?" headingLevel="h3">
+          <p>
             Kies zelf een moment voor een digitaal gesprek van dertig minuten.
           </p>
-          <p className="mt-mw-5">
+          <p className="mt-mw-3">
             <a
               href="https://calendar.app.google/BH8wYeA9AGf6KrUz7"
               target="_blank"
@@ -277,8 +169,8 @@ export async function EigenaarContent() {
               kies een moment
             </a>
           </p>
-        </div>
-      </section>
+        </TekstBlok>
+      </div>
     </Register>
   )
 }
