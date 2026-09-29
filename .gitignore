@@ -39,3 +39,6 @@ next-env.d.ts
 node_modules/
 *.mp4
 *.MP4
+
+# supabase local scratch
+/supabase/.temp/
