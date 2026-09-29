@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { Register } from '@/components/Register'
 import { InlineFoto } from '@/components/InlineFoto'
+import { Statrij } from '@/components/sections/Statrij'
 import { TekstBlok } from '@/components/sections/TekstBlok'
 import { siteMetadata } from '@/lib/seo/siteMetadata'
 import { screeningsPubliek } from '@/lib/screenings'
@@ -91,22 +92,27 @@ export default async function DeStandaardPage({
           >
             {t('hero_h1')}
           </h1>
-
-          {cijfers && (
-            <p className="mt-mw-5 text-audit uppercase text-moroww-ink-2">
-              {isNl
-                ? `${cijfers.aantal_dossier} bekeken · ${cijfers.aantal_bezoek} bezocht · ${cijfers.aantal_opgenomen} opgenomen`
-                : `${cijfers.aantal_dossier} reviewed · ${cijfers.aantal_bezoek} visited · ${cijfers.aantal_opgenomen} accepted`}
-            </p>
-          )}
-
-          <p className="mt-mw-4 text-body-lg text-moroww-dark max-w-[62ch]">
+          <p className="mt-mw-5 text-body-lg text-moroww-dark max-w-[62ch]">
             {isNl
               ? 'De waarde van het label zit in de huizen die er niet in zitten.'
               : 'The value of the label sits in the homes that are not in it.'}
           </p>
         </div>
       </section>
+
+      {/* ── STATRIJ — donkere cijferband, direct onder hero ── */}
+      {cijfers && (
+        <Statrij
+          items={[
+            { cijfer: String(cijfers.aantal_dossier),
+              label: isNl ? 'bekeken' : 'reviewed' },
+            { cijfer: String(cijfers.aantal_bezoek),
+              label: isNl ? 'bezocht' : 'visited' },
+            { cijfer: String(cijfers.aantal_opgenomen),
+              label: isNl ? 'opgenomen' : 'accepted' },
+          ]}
+        />
+      )}
 
       <div className="mx-auto max-w-6xl px-6 md:px-12">
 
