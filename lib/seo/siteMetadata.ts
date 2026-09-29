@@ -50,8 +50,13 @@ export function siteMetadata({
     }
   }
 
+  // Root-layout zet `title.template = '%s | moroww'`. Titels die de merknaam
+  // al bevatten (home, over-moroww, moroww-os, kennis-hub, …) zouden anders
+  // renderen als "… moroww | moroww". { absolute } slaat het template over.
+  const titleField = /moroww/i.test(titel) ? { absolute: titel } : titel
+
   return {
-    title: titel,
+    title: titleField,
     description: beschrijving,
     alternates,
     ...(noindex ? { robots: { index: false, follow: false } } : {}),

@@ -4,12 +4,16 @@ import { setRequestLocale } from 'next-intl/server'
 import { siteMetadata } from '@/lib/seo/siteMetadata'
 
 // NL-only pagina — geen hreflang naar EN.
+// Noindex: de vergelijkingstabel is niet onderbouwd genoeg om publiek te tonen;
+// de pagina blijft bestaan voor eventuele terugkeer, maar wordt niet
+// geïndexeerd. Uitsluiten uit sitemap gebeurt in app/sitemap.ts.
 export const metadata: Metadata = siteMetadata({
   titel: 'moroww vs Xepa, Casapilot en Belvilla — wat is het verschil?',
   beschrijving:
     'moroww is een gecertificeerd kwaliteitslabel voor vakantiewoningen in België. Ontdek hoe moroww verschilt van Xepa, Casapilot, Belvilla en andere spelers op de Belgische markt.',
   pad: '/vergelijking',
   locale: 'nl',
+  noindex: true,
 })
 
 const kenmerken = [

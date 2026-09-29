@@ -38,8 +38,13 @@ export function kennisMetadata({
   const imageUrl = ogBeeld.startsWith('http') ? ogBeeld : `${BASE}${ogBeeld}`
   const modified = gewijzigd ?? gepubliceerd
 
+  // Root-layout zet `title.template = '%s | moroww'`. Kennis-titels die "moroww"
+  // al bevatten (bv. "Kennisbank vakantieverhuur België · moroww") zouden anders
+  // renderen als "… moroww | moroww". { absolute } slaat het template over.
+  const titleField = /moroww/i.test(titel) ? { absolute: titel } : titel
+
   return {
-    title: titel,
+    title: titleField,
     description: beschrijving,
     alternates: { canonical: url },
     openGraph: {
