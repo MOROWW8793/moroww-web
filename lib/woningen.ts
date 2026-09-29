@@ -200,20 +200,20 @@ const _woningenRaw: Woning[] = [
       { nl: 'Gezinsvriendelijk',         en: 'Near Bruges' },
     ],
     slogan: {
-      nl: 'Tussen Gent en Brugge. Maar eigenlijk ergens heel anders.',
-      en: 'Peace, nature and a garden you won\'t want to leave.',
+      nl: 'tussen Gent en Brugge. maar eigenlijk ergens heel anders.',
+      en: 'between Ghent and Bruges. but really somewhere else entirely.',
     },
     introductie: {
-      nl: 'Er bestaat een moment waarop het bos begint te werken. Vijf minuten na aankomst laat je de snelweg los. Tien minuten later begint iedereen zachter te praten. Chalet Anna-Helena is gebouwd voor dat moment. Warm hout, hoge plafonds, een vijver die nergens naartoe hoeft. Dit is hoe ontsnappen aanvoelt als je het goed doet.',
-      en: 'There is a moment when the forest starts to work. Five minutes after arrival you let go of the motorway. Ten minutes later everyone speaks more quietly. Chalet Anna-Helena is built for that moment. Warm wood, high ceilings, a pond that has nowhere to be. This is what escaping feels like when you do it right.',
+      nl: 'Een authentiek houten chalet met twee verdiepingen in Ursel, in het hart van het Drongengoedbos. Twee slaapkamers, een badkamer, een ruim privéterras en een volledig omheinde privétuin met vijver.',
+      en: 'An authentic wooden chalet on two floors in Ursel, in the heart of the Drongengoed forest. Two bedrooms, one bathroom, a large private terrace and a fully enclosed private garden with a pond.',
     },
     beschrijving: {
-      nl: 'Een warm houten chalet in het hart van het grootste bos van Oost-Vlaanderen. Hoge plafonds, natuurlijk hout, een privétuin met vijver en stilte als standaard.',
-      en: 'A warm wooden chalet in the heart of the largest forest in East Flanders. High ceilings, natural wood, a private garden with pond and silence as standard.',
+      nl: 'Houten chalet in Ursel, in het hart van het Drongengoedbos. Twee slaapkamers, een badkamer, ruim privéterras, volledig omheinde tuin met vijver. Max 5.',
+      en: 'Wooden chalet in Ursel, in the heart of the Drongengoed forest. Two bedrooms, one bathroom, large private terrace, fully enclosed garden with a pond. Up to 5 guests.',
     },
     volledigeBeschrijving: {
-      nl: 'Chalet Anna-Helena is een authentiek houten chalet met twee verdiepingen, waar natuurlijk hout, warm licht en het omliggende bos samen een onmiddellijk gevoel van rust creëren. De open leefruimte draait om een lichte woonkamer met grote ramen die uitkijken op de tuin. Nestel je in de ruime leren hoeksalon met een plaid en een kaars, of kom samen aan de eettafel voor lange, ongehaaste maaltijden. De volledig uitgeruste keuken heeft alles: oven, vaatwasser, Nespresso-machine, waterkoker, broodrooster en meer. Op de eerste verdieping wachten twee comfortabele slaapkamers. De grote slaapkamer met tweepersoonsbed en verse lakens, de tweede slaapkamer afgestemd op kinderen: stapelbed, extra eenpersoonsbed en reisbedje op aanvraag. De badkamer heeft een bad, douche en verwarmd handdoekrek. Buiten nodigt een ruim privéterras uit tot buiten eten, terwijl de sfeervolle vijver en de volledig omheinde tuin kinderen de vrijheid geven om veilig te spelen. Gratis parkeren voor 2 wagens op het terrein.',
-      en: 'Chalet Anna-Helena sits at the edge of the Meetjesland countryside, surrounded by meadows and forest. The garden with its pond is your private piece of nature. In the morning you might spot deer. In the evening, complete silence. The chalet is fully equipped for families or groups up to 5: a well-appointed kitchen, comfortable living room and two bedrooms with quality beds. The bathroom has a bath, shower and heated towel rail. Outside, the private terrace and fully enclosed garden give children the freedom to play safely. Free parking for 2 cars on site.',
+      nl: 'De open leefruimte draait om een lichte woonkamer met grote ramen die uitkijken op de tuin. Er is een ruime leren hoeksalon en een eettafel. De volledig uitgeruste keuken heeft oven, vaatwasser, Nespresso-machine, waterkoker en broodrooster.\n\nOp de eerste verdieping liggen twee slaapkamers. De grote slaapkamer heeft een tweepersoonsbed. De tweede is afgestemd op kinderen: stapelbed, extra eenpersoonsbed, reisbedje op aanvraag. De badkamer heeft een bad, een douche en een verwarmd handdoekrek.\n\nBuiten: ruim privéterras, sfeervolle vijver, volledig omheinde tuin. Gratis parkeren voor 2 wagens op het terrein.\n\nHet chalet is bereikbaar via een onverhard bospad — rijd voorzichtig bij nat weer.',
+      en: 'The open living space is built around a light living room with large windows facing the garden. There is a spacious leather corner sofa and a dining table. The fully equipped kitchen has an oven, dishwasher, Nespresso machine, kettle and toaster.\n\nOn the first floor are two bedrooms. The main bedroom has a double bed. The second is set up for children: bunk bed, extra single bed, travel cot on request. The bathroom has a bath, shower and heated towel rail.\n\nOutside: a large private terrace, a pond, a fully enclosed garden. Free parking for two cars on site.\n\nThe chalet is accessed via an unpaved forest track — drive carefully in wet weather.',
     },
     buurt: {
       nl: 'Chalet Anna-Helena ligt in het hart van het Drongengoedbos in Ursel - een charmant dorp in de Meetjeslandse regio. Met 750 hectare is dit het grootste aaneengesloten bos van Oost-Vlaanderen: een landschap van eeuwenoude drevenstructuren, paarse heide, knuppelpaden en stille waterwegen. Meer dan 236 kilometer bewegwijzerde wandelpaden starten pal aan de voordeur. Kinderen zijn dol op het Kabouter Wandelpad en de natuurspeelplaatsen. De Maldegemse Veldhoek is een verborgen parel - heide en knuppelpaden die aanvoelen als een miniatuur Hoge Venen. In het dorp: Villa Maria voor een heerlijk diner, Bar Boudoir voor ontspannen koffie, Brasserie Het Jagershof aan de bosrand. Gent op 30 minuten, Brugge op 25 minuten. Opgelet: het chalet is bereikbaar via een onverhard bospad — rijd voorzichtig bij nat weer.',
@@ -221,11 +221,11 @@ const _woningenRaw: Woning[] = [
     },
     hoogtepunten: [
       { nl: 'Hart van het Drongengoedbos',                    en: 'Heart of the Drongengoed forest' },
-      { nl: 'Privétuin met vijver - volledig omheind',        en: 'Private garden with pond - fully enclosed' },
-      { nl: 'Gezinsvriendelijk - stapelbed, reisbedje, speelgoed', en: 'Family-friendly - bunk bed, travel cot, toys' },
+      { nl: 'Privétuin met vijver — volledig omheind',        en: 'Private garden with pond — fully enclosed' },
+      { nl: 'Stapelbed, reisbedje op aanvraag',               en: 'Bunk bed, travel cot on request' },
       { nl: 'Gratis parkeren voor 2 wagens',                  en: 'Free parking for 2 cars' },
       { nl: 'Terras en balkon met bosuitkijk',                en: 'Terrace and balcony with forest view' },
-      { nl: 'Gent (30 min) en Brugge (25 min)',               en: 'Ghent (30 min) and Bruges (25 min)' },
+      { nl: 'Gent 30 min, Brugge 25 min',                     en: 'Ghent 30 min, Bruges 25 min' },
     ],
     reviews: [
       {
