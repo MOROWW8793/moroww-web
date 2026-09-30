@@ -97,22 +97,16 @@ export async function EigenaarContent() {
           </div>
         </TekstBlok>
 
-        {/* ── HOE HET LOOPT ── */}
+        {/* ── HOE HET LOOPT ── (uitstapzin verplaatst uit het geschrapte
+            'wat het kost'-blok — die zin staat sinds die schrap hier als
+            slotregel onder de drie stappen). */}
         <TekstBlok eyebrow="hoe het loopt">
           <dl className="divide-y divide-moroww-rule border-t border-b border-moroww-rule">
             <DefRij label="01 · aanmelden"              value="Binnen twee werkdagen nemen we contact op." />
             <DefRij label="02 · bezoek en installatie"  value="We keuren de woning ter plaatse en installeren het systeem." />
             <DefRij label="03 · live"                   value="Je woning draagt het label en staat in de collectie." />
           </dl>
-        </TekstBlok>
-
-        {/* ── WAT HET KOST ── compact */}
-        <TekstBlok eyebrow="wat het kost">
-          <p>
-            <span className="font-semibold">Onboarding:</span> eenmalig,
-            € 1.950.
-          </p>
-          <p>
+          <p className="mt-mw-5">
             Je zit nergens aan vast. De hardware is na betaling van jou, je
             boekingen en gastgegevens ook. Stop je, dan stop je.
           </p>
