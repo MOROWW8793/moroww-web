@@ -6,6 +6,14 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts')
 const nextConfig = {
   compress: true,
   poweredByHeader: false,
+  // Next 15 streamt metadata standaard in de body voor gewone browsers en
+  // schrijft ze alleen in de <head> voor bots die in htmlLimitedBots
+  // matchen (Googlebot e.a.). Voor SEO-scrapers, sharing-previews en
+  // link-unfurlers die een browser-UA gebruiken (LinkedIn, Slack, X, e-mail-
+  // previews die JS niet uitvoeren) mist daardoor title/description/canonical/
+  // og:image bij first paint. We willen metadata voor iedereen in <head>,
+  // dus matchen we alle user-agents.
+  htmlLimitedBots: '.*',
   images: {
     // AVIF weer aan. GHSA-2xp9-vwfh-vxw4 is gedicht in next >= 15.5.24;
     // deze branch draait op 15.5.26 (zie package.json), dus veilig om
