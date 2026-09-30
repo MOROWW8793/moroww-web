@@ -52,7 +52,7 @@ export default async function VierModellenPage() {
             <tbody>
               <tr><th>Wie zoekt gasten</th><td>jij</td><td>het platform</td><td>de beheerder</td><td>het label en de platformen</td></tr>
               <tr><th>Wie bepaalt de standaard</th><td>jij</td><td>niemand</td><td>de beheerder, vaak impliciet</td><td>het label, expliciet en met inspectie</td></tr>
-              <tr><th>Kost</th><td>tijd</td><td>platformcommissie</td><td>commissie, doorgaans hoger</td><td>commissie plus lidmaatschap</td></tr>
+              <tr><th>Kost</th><td>tijd</td><td>platformcommissie</td><td>commissie, doorgaans hoger</td><td>op aanvraag, na een bezoek</td></tr>
               <tr><th>Tijdsbesteding per week</th><td>hoog</td><td>middelhoog</td><td>laag</td><td>laag</td></tr>
               <tr><th>Kwaliteitscontrole ter plaatse</th><td>jijzelf</td><td>geen</td><td>wisselend</td><td>fysieke audit, met heraudit</td></tr>
               <tr><th>Kan je woning geweigerd worden</th><td>nee</td><td>nee</td><td>zelden</td><td>ja, meestal wel</td></tr>
@@ -108,9 +108,9 @@ export default async function VierModellenPage() {
           Als dat wringt, is een beheerder of eigen beheer eerlijker voor iedereen.
         </p>
         <p>
-          <strong>Je verhuurt enkele weekends per jaar.</strong> Het model, met
-          lidmaatschap en onboarding, weegt dan niet op tegen de opbrengst. Blijf bij
-          eigen beheer via de platformen.
+          <strong>Je verhuurt enkele weekends per jaar.</strong> De vaste kosten van
+          een fysieke audit en installatie wegen dan niet op tegen de opbrengst. Blijf
+          bij eigen beheer via de platformen.
         </p>
         <p>
           <strong>Je zoekt in de eerste plaats de laagste kost.</strong> Een beheerder
