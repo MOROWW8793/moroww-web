@@ -52,7 +52,7 @@ export function EigenaarFaqJsonLd() {
               name: 'Wat is het verschil tussen moroww en een platform zoals Airbnb?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Airbnb is een boekingsplatform — zij nemen 15% commissie en bieden geen kwaliteitsgarantie. moroww is een kwaliteitslabel: jij behoudt de controle over je woning, wij installeren de technologie, bewaken de standaard en bieden een eigen boekingskanaal zonder platformkosten.',
+                text: 'Airbnb is een boekingsplatform: iedereen kan er een woning op zetten. moroww is het kwaliteitslabel voor vakantiewoningen in België: elke moroww-woning is geauditeerd, uitgerust en opgevolgd.',
               },
             },
             {
