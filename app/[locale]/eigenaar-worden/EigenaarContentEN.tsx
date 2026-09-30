@@ -142,7 +142,7 @@ export async function EigenaarContentEN() {
               href="/kennis"
               className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
             >
-              want to figure it out yourself first? read the knowledge base →
+              want to figure it out yourself first? read the knowledge base (in Dutch) →
             </Link>
           </p>
         </TekstBlok>
