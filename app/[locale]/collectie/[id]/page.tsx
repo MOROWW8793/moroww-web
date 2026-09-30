@@ -211,7 +211,7 @@ export default async function WoningDetailPage({ params }: Props) {
     woning.collectie,
     woning.oppervlakte ?? '',
     woning.slaapkamers ? `${woning.slaapkamers} ${t('bedrooms')}` : '',
-    auditMaand ? `geauditeerd ${auditMaand}` : '',
+    auditMaand ? `${t('audited_prefix')} ${auditMaand}` : '',
   ].filter((s) => s.trim() !== '')
 
   // Foto's die tussen de secties komen. Fotos[0,1] zitten in de hero-galerij.
@@ -238,7 +238,7 @@ export default async function WoningDetailPage({ params }: Props) {
         pricePerNight={woning.prijs}
         maxOccupancy={woning.maxGasten}
         address={woning.locatie}
-        url={`https://www.moroww.com/collectie/${woning.id}`}
+        url={pandUrl}
         amenities={woning.amenities}
       />
 
@@ -264,7 +264,10 @@ export default async function WoningDetailPage({ params }: Props) {
           <div className="lg:col-span-7">
             {/* Breadcrumb */}
             <nav className="text-audit uppercase text-moroww-ink-2">
-              <Link href="/collectie" className="hover:text-moroww-dark transition-colors">
+              <Link
+                href={isNl ? '/collectie' : '/en/collection'}
+                className="hover:text-moroww-dark transition-colors"
+              >
                 {t('breadcrumb_collection')}
               </Link>
               <span className="mx-2">·</span>
@@ -310,10 +313,10 @@ export default async function WoningDetailPage({ params }: Props) {
                 </div>
                 <p className="mt-mw-2">
                   <Link
-                    href="/de-standaard"
+                    href={isNl ? '/de-standaard' : '/en/the-standard'}
                     className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
                   >
-                    {isNl ? 'wat dit label betekent →' : 'what this label means →'}
+                    {t('label_link_short')}
                   </Link>
                 </p>
                 <div className="mt-mw-4 grid grid-cols-1 sm:grid-cols-2 gap-x-mw-4 gap-y-mw-3 max-w-[62ch]">
@@ -353,7 +356,7 @@ export default async function WoningDetailPage({ params }: Props) {
               </p>
             </div>
             {fotoNaBeschrijving && (
-              <InlineFoto src={fotoNaBeschrijving} alt={`${woning.naam} — sfeerbeeld`} />
+              <InlineFoto src={fotoNaBeschrijving} alt={`${woning.naam} — ${t('atmosphere_alt_suffix')}`} />
             )}
 
             {/* Buurt */}
@@ -365,7 +368,7 @@ export default async function WoningDetailPage({ params }: Props) {
                   {lw(woning.buurt, locale)}
                 </p>
                 {fotoNaBuurt && (
-                  <InlineFoto src={fotoNaBuurt} alt={`${woning.naam} — omgeving`} />
+                  <InlineFoto src={fotoNaBuurt} alt={`${woning.naam} — ${t('surroundings_alt_suffix')}`} />
                 )}
               </>
             )}
@@ -380,7 +383,7 @@ export default async function WoningDetailPage({ params }: Props) {
                 <PraktischRij label={t('max_guests_label')} value={`${woning.maxGasten} ${t('persons')}`} />
               ) : null}
               {woning.oppervlakte ? (
-                <PraktischRij label="oppervlakte" value={woning.oppervlakte} />
+                <PraktischRij label={t('surface_label')} value={woning.oppervlakte} />
               ) : null}
               {woning.vergunningsnummer && (
                 <PraktischRij label={t('vergunning_label')} value={woning.vergunningsnummer} />

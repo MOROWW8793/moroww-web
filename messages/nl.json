@@ -110,7 +110,12 @@
     "waarom_label": "de standaard",
     "gallery_button": "bekijk alle {count} foto's",
     "geluidssensor_label": "geluidssensor",
-    "geluidssensor_body": "Er hangt een sensor die het geluidsniveau in decibel meet. Hij neemt geen geluid op."
+    "geluidssensor_body": "Er hangt een sensor die het geluidsniveau in decibel meet. Hij neemt geen geluid op.",
+    "audited_prefix": "geauditeerd",
+    "surface_label": "oppervlakte",
+    "atmosphere_alt_suffix": "sfeerbeeld",
+    "surroundings_alt_suffix": "omgeving",
+    "label_link_short": "wat dit label betekent →"
   },
   "contact": {
     "meta_title": "Contact",

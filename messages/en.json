@@ -110,7 +110,12 @@
     "waarom_label": "the standard",
     "gallery_button": "view all {count} photos",
     "geluidssensor_label": "noise sensor",
-    "geluidssensor_body": "A sensor measures the noise level in decibels. It does not record sound."
+    "geluidssensor_body": "A sensor measures the noise level in decibels. It does not record sound.",
+    "audited_prefix": "audited",
+    "surface_label": "surface area",
+    "atmosphere_alt_suffix": "atmosphere",
+    "surroundings_alt_suffix": "surroundings",
+    "label_link_short": "what this label means →"
   },
   "contact": {
     "meta_title": "Contact",
