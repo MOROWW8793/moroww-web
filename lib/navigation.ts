@@ -55,12 +55,17 @@ export const mainNavItems: NavItem[] = gastenNavItems
 export interface EigenaarDropdownItem {
   titel: string
   toelichting: string
+  /** Optionele EN-variant van de toelichting. Als leeg gelaten, valt de
+   *  Navbar terug op de NL-tekst (de overige items op /kennis zijn
+   *  NL-only inhoud, daar heeft een EN-variant geen doel). */
+  toelichtingEn?: string
   href: string
 }
 export const eigenaarDropdown: EigenaarDropdownItem[] = [
   {
     titel: 'voor eigenaars',
-    toelichting: 'wat het label doet en wat het kost',
+    toelichting: 'wat het label doet en hoe het loopt',
+    toelichtingEn: 'what the label does and how it works',
     href: '/eigenaar-worden',
   },
   {

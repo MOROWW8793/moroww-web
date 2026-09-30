@@ -191,7 +191,9 @@ export function Navbar() {
                         >
                           <p className="text-moroww-dark font-semibold text-sm">{item.titel}</p>
                           <p className="text-audit uppercase text-moroww-ink-2 mt-1">
-                            {item.toelichting}
+                            {locale === 'en' && item.toelichtingEn
+                              ? item.toelichtingEn
+                              : item.toelichting}
                           </p>
                         </Link>
                       </li>
