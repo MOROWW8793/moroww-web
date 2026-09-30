@@ -178,11 +178,6 @@ export default async function RendementPage() {
                 'Nee. De rekenmodule en de poortentoets zijn volledig open. Je krijgt je resultaat op het scherm, zonder formulier.',
             },
             {
-              vraag: 'Rekenen jullie jullie eigen commissie mee?',
-              antwoord:
-                'Ja. Na het eerste bezoek rekenen we je opbrengst door met al onze kosten erin, op basis van jouw woning en jouw bezetting. Een algemeen percentage zegt weinig zonder die cijfers.',
-            },
-            {
               vraag: 'Waar komen de nachtprijzen vandaan?',
               antwoord:
                 'Uit de effectief geboekte nachten in de moroww-collectie, aangevuld met publiek beschikbare marktdata per streek. Bij elke uitkomst staat op hoeveel waarnemingen ze steunt.',
