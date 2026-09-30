@@ -1038,36 +1038,31 @@ const _woningenRaw: Woning[] = [
     ],
     slogan: {
       nl: 'Eerste rij op de Zeedijk. Het staketsel in je raam.',
-      // TODO: EN-vertaling volgt; voorlopig gelijk aan NL zodat de build niet breekt.
-      en: 'Eerste rij op de Zeedijk. Het staketsel in je raam.',
+      en: 'Front row on the Zeedijk. The pier in your window.',
     },
     introductie: {
       nl: 'Achtste verdieping, eerste rij op de Zeedijk. De woonkamer kijkt door ramen van vloer tot plafond uit op de Noordzee, met het staketsel en de vuurtoren in beeld. Drie slaapkamers, plek voor acht.',
-      // TODO: EN-vertaling volgt.
-      en: 'Achtste verdieping, eerste rij op de Zeedijk. De woonkamer kijkt door ramen van vloer tot plafond uit op de Noordzee, met het staketsel en de vuurtoren in beeld. Drie slaapkamers, plek voor acht.',
+      en: 'Eighth floor, front row on the Zeedijk. The living room faces the North Sea through floor-to-ceiling windows, with the pier and the lighthouse in view. Three bedrooms, room for eight.',
     },
     beschrijving: {
       nl: 'Achtste verdieping, eerste rij op de Zeedijk in Nieuwpoort-Bad. Ramen van vloer tot plafond, zeebalkon met houten vlonder en zicht op het staketsel. Drie slaapkamers, max 8.',
-      // TODO: EN-vertaling volgt.
-      en: 'Achtste verdieping, eerste rij op de Zeedijk in Nieuwpoort-Bad. Ramen van vloer tot plafond, zeebalkon met houten vlonder en zicht op het staketsel. Drie slaapkamers, max 8.',
+      en: 'Eighth floor, front row on the Zeedijk in Nieuwpoort-Bad. Floor-to-ceiling windows, sea-facing balcony with wooden decking and views of the pier. Three bedrooms, up to 8 guests.',
     },
     volledigeBeschrijving: {
       nl: 'De woonkamer kijkt door ramen van vloer tot plafond uit op de Noordzee. Een diepe zetel, twee fauteuils, een wand met ingebouwde kasten en haard, en de balkondeur binnen handbereik: vanuit de zetel zie je het tij opkomen over het strand. Aan de ovale eettafel zitten zes mensen, onder een groot strandschilderij. De keuken draait rond een eiland met kookplaat, oven, vaatwasser en een volautomatische koffiemachine. Twee slaapkamers met een dubbel bed en een stapelbedkamer liggen aan de achterkant, met een tweede balkon over de daken van Nieuwpoort-Bad.',
-      // TODO: EN-vertaling volgt.
-      en: 'De woonkamer kijkt door ramen van vloer tot plafond uit op de Noordzee. Een diepe zetel, twee fauteuils, een wand met ingebouwde kasten en haard, en de balkondeur binnen handbereik: vanuit de zetel zie je het tij opkomen over het strand. Aan de ovale eettafel zitten zes mensen, onder een groot strandschilderij. De keuken draait rond een eiland met kookplaat, oven, vaatwasser en een volautomatische koffiemachine. Twee slaapkamers met een dubbel bed en een stapelbedkamer liggen aan de achterkant, met een tweede balkon over de daken van Nieuwpoort-Bad.',
+      en: 'The living room faces the North Sea through floor-to-ceiling windows. A deep sofa, two armchairs, a wall of built-in shelving with a fireplace, and the balcony door within arm\'s reach: from the sofa you watch the tide come in across the beach. The oval dining table seats six under a large beach painting. The kitchen turns around an island with hob, oven, dishwasher and a fully automatic coffee machine. Two double bedrooms and a bunk-bed room sit at the back, with a second balcony overlooking the rooftops of Nieuwpoort-Bad.',
     },
     buurt: {
       nl: 'Onder je het brede strand, rechts de havengeul waar de IJzer in zee uitmondt, en het lange houten staketsel naar de vuurtoren. Wandel het staketsel op bij zonsondergang, koop verse vis aan de kaai, of kijk over de geul naar natuurreservaat De IJzermonding. Met de Kusttram ben je langs de hele kust; met de trein via Oostende.',
-      // TODO: EN-vertaling volgt.
-      en: 'Onder je het brede strand, rechts de havengeul waar de IJzer in zee uitmondt, en het lange houten staketsel naar de vuurtoren. Wandel het staketsel op bij zonsondergang, koop verse vis aan de kaai, of kijk over de geul naar natuurreservaat De IJzermonding. Met de Kusttram ben je langs de hele kust; met de trein via Oostende.',
+      en: 'Below you the wide beach, to the right the harbour mouth where the IJzer flows into the sea, and the long wooden pier to the lighthouse. Walk the pier at sunset, buy fresh fish at the quay, or look across the channel to the IJzermonding nature reserve. The Kusttram takes you along the whole coast; the train, via Ostend.',
     },
     hoogtepunten: [
-      { nl: 'Achtste verdieping, eerste rij op de Zeedijk',              en: 'Achtste verdieping, eerste rij op de Zeedijk' },
-      { nl: 'Zeebalkon met houten vlonder aan de woonkamer',             en: 'Zeebalkon met houten vlonder aan de woonkamer' },
-      { nl: 'Zicht op het staketsel en de vuurtoren vanuit de eethoek',  en: 'Zicht op het staketsel en de vuurtoren vanuit de eethoek' },
-      { nl: 'Drie slaapkamers voor 8, met een stapelbedkamer',           en: 'Drie slaapkamers voor 8, met een stapelbedkamer' },
-      { nl: 'Inloopdouche met regendouche en dubbele stenen wastafel',   en: 'Inloopdouche met regendouche en dubbele stenen wastafel' },
-      { nl: 'Kusttram voor de deur — halte Nieuwpoort Bad',              en: 'Kusttram voor de deur — halte Nieuwpoort Bad' },
+      { nl: 'Achtste verdieping, eerste rij op de Zeedijk',              en: 'Eighth floor, front row on the Zeedijk' },
+      { nl: 'Zeebalkon met houten vlonder aan de woonkamer',             en: 'Sea-facing balcony with wooden decking off the living room' },
+      { nl: 'Zicht op het staketsel en de vuurtoren vanuit de eethoek',  en: 'View of the pier and lighthouse from the dining corner' },
+      { nl: 'Drie slaapkamers voor 8, met een stapelbedkamer',           en: 'Three bedrooms for 8, including a bunk-bed room' },
+      { nl: 'Inloopdouche met regendouche en dubbele stenen wastafel',   en: 'Walk-in shower with rain head and double stone basin' },
+      { nl: 'Kusttram voor de deur — halte Nieuwpoort Bad',              en: 'Kusttram at the door — Nieuwpoort Bad stop' },
     ],
     waaromOpgenomen: {
       nl: 'waarom dit huis de standaard haalde\n\nOm het licht. Door de ramen van vloer tot plafond valt het zeelicht binnen op de betonnen vloer.\n\nOm de haard, en om wat je niet ziet. Airco voor de warme zomerdagen, en domotica die licht en warmte klaarzet voor je binnenkomt.\n\nEn om de plek. Eerste rij op de Zeedijk, met het staketsel en de vuurtoren in je raam.',
