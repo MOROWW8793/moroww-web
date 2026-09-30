@@ -28,7 +28,7 @@ export function EigenaarFaqJsonLd() {
               name: 'Moet ik mijn vakantiewoning volledig uit handen geven aan moroww?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Nee. moroww is geen property manager en neemt het beheer van je woning niet over. Jij blijft volledig verantwoordelijk voor je eigen pand. moroww levert het kwaliteitslabel, de technologie en het boekingskanaal — de dagelijkse werking blijft bij jou.',
+                text: 'Nee. moroww is het kwaliteitslabel voor vakantiewoningen in België: elke moroww-woning is geauditeerd, uitgerust en opgevolgd. Jij blijft volledig verantwoordelijk voor je eigen pand — moroww levert het label, de technologie en het boekingskanaal, de dagelijkse werking blijft bij jou.',
               },
             },
             {
