@@ -1,0 +1,136 @@
+import Image from 'next/image'
+import { AuditLijn } from '@/components/AuditLijn'
+
+/**
+ * WP O — sneak peek van twee panden die nog niet publiek te boeken zijn.
+ * Vervangt het oude "binnenkort"-tekstblok op /collectie en /the-shore,
+ * en verschijnt op home tussen het woningraster en de aankomstsequentie.
+ *
+ * Bewust géén link naar een pandpagina en géén prijs of oppervlakte —
+ * de teasers wachten op fotoshoot + copy en zitten daarom niet in de
+ * `woningen`-array (liveWoningen, sitemap en generateStaticParams blijven
+ * dus op 7 live). Data staat lokaal in `TEASERS` hieronder.
+ *
+ * Component is puur presentatie (geen hooks, geen 'use client'), zodat
+ * hij zowel in server- (home, /the-shore) als client-componenten
+ * (CollectieStatisch) inzetbaar is.
+ */
+
+type TeaserFoto = { src: string; alt: { nl: string; en: string } }
+type Teaser = {
+  naam: string
+  plaats: { nl: string; en: string }
+  fotos: [TeaserFoto, TeaserFoto, TeaserFoto]
+}
+
+const TEASERS: Teaser[] = [
+  {
+    naam: 'House 1783-11',
+    plaats: { nl: 'Knokke', en: 'Knokke' },
+    fotos: [
+      {
+        src: '/images/woningen/knokke-1783-11/house-1783-11-01-eettafel.jpg',
+        alt: {
+          nl: 'Ovale eettafel met vier donkere houten stoelen; ontbijt met croissants, sinaasappelsap en druiven, ingebouwde bank tegen de wand.',
+          en: 'Oval dining table with four dark wooden chairs; breakfast with croissants, orange juice and grapes, built-in bench against the wall.',
+        },
+      },
+      {
+        src: '/images/woningen/knokke-1783-11/house-1783-11-02-zetel.jpg',
+        alt: {
+          nl: 'Iemand in gestreepte trui zit met een tijdschrift in een lichte crèmezetel voor grote vitrages.',
+          en: 'A person in a striped sweater sits with a magazine in a pale cream sofa in front of large sheer curtains.',
+        },
+      },
+      {
+        src: '/images/woningen/knokke-1783-11/house-1783-11-03-koer.jpg',
+        alt: {
+          nl: 'Van bovenaf: ronde tafel met zes zwarte stoelen op een tegelvloer, groene struiken langs de muren, pergola bovenaan.',
+          en: 'From above: round table with six black chairs on a tiled floor, green shrubs along the walls, pergola at the top.',
+        },
+      },
+    ],
+  },
+  {
+    naam: 'Penthouse V8B',
+    plaats: { nl: 'Oostende', en: 'Ostend' },
+    fotos: [
+      {
+        src: '/images/woningen/penthouse-v8b/penthouse-v8b-01-terras.jpg',
+        alt: {
+          nl: 'Houten terras op hoogte met een lange eettafel voor acht, zicht over de zee en het strand van Oostende.',
+          en: 'Wooden terrace high up with a long dining table for eight, looking out over the sea and the Ostend beach.',
+        },
+      },
+      {
+        src: '/images/woningen/penthouse-v8b/penthouse-v8b-02-leefruimte.jpg',
+        alt: {
+          nl: 'Curved zetel en zwart lage bijzettafel voor floor-to-ceiling schuiframen; terras met witte draadstoelen erachter.',
+          en: 'Curved sofa and low black side table in front of floor-to-ceiling sliding windows; terrace with white wire chairs behind.',
+        },
+      },
+      {
+        src: '/images/woningen/penthouse-v8b/penthouse-v8b-03-badkamer.jpg',
+        alt: {
+          nl: 'Twee witte wastafelkommen op een houten meubel tegen een groen-bruine marmeren wand, ronde spiegel erboven.',
+          en: 'Two white basin bowls on a wooden vanity against a green-brown marble wall, round mirror above.',
+        },
+      },
+    ],
+  },
+]
+
+export function SneakPeek({ locale }: { locale: string }) {
+  const isNl = locale !== 'en'
+  const pick = (v: { nl: string; en: string }) => (isNl ? v.nl : v.en)
+
+  return (
+    <section className="w-full px-6 md:px-16 lg:px-24 py-20">
+      <div className="max-w-6xl mx-auto">
+        <AuditLijn density="quiet" items={[isNl ? 'binnenkort' : 'coming soon']} />
+        <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[52ch]">
+          {isNl ? 'twee nieuwe woningen aan de kust.' : 'two new homes on the coast.'}
+        </h2>
+        <div className="mt-mw-8 flex flex-col gap-mw-8">
+          {TEASERS.map((teaser) => (
+            <div key={teaser.naam}>
+              <p className="text-audit uppercase text-moroww-ink-2">
+                {teaser.naam} · {pick(teaser.plaats)}
+              </p>
+              <div className="mt-mw-3 grid grid-cols-1 md:grid-cols-3 gap-2">
+                {/* Groot beeld: op desktop 2 kolommen breed, op mobiel volle
+                    breedte. */}
+                <div className="relative aspect-[3/2] overflow-hidden md:col-span-2">
+                  <Image
+                    src={teaser.fotos[0].src}
+                    alt={pick(teaser.fotos[0].alt)}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 66vw"
+                    className="object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                {/* Twee kleinere beelden: mobiel 2 kolommen naast elkaar,
+                    desktop verticaal gestapeld in één kolom. */}
+                <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
+                  {[1, 2].map((i) => (
+                    <div key={i} className="relative aspect-[3/2] overflow-hidden">
+                      <Image
+                        src={teaser.fotos[i].src}
+                        alt={pick(teaser.fotos[i].alt)}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 33vw"
+                        className="object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
