@@ -36,17 +36,17 @@ const TEASERS: Teaser[] = [
         },
       },
       {
-        src: '/images/woningen/knokke-1783-11/house-1783-11-02-zetel.jpg',
+        src: '/images/woningen/knokke-1783-11/house-1783-11-02-boeket.jpg',
         alt: {
-          nl: 'Iemand in gestreepte trui zit met een tijdschrift in een lichte crèmezetel voor grote vitrages.',
-          en: 'A person in a striped sweater sits with a magazine in a pale cream sofa in front of large sheer curtains.',
+          nl: 'Lage witte salontafel met een amberkleurige vaas en herfstboeket; achter een tv-meubel met reisgidsen, iemand loopt voorbij.',
+          en: 'Low white coffee table with an amber vase and autumn bouquet; behind it a TV cabinet with travel books, a person walks past.',
         },
       },
       {
-        src: '/images/woningen/knokke-1783-11/house-1783-11-03-koer.jpg',
+        src: '/images/woningen/knokke-1783-11/house-1783-11-03-doorkijk.jpg',
         alt: {
-          nl: 'Van bovenaf: ronde tafel met zes zwarte stoelen op een tegelvloer, groene struiken langs de muren, pergola bovenaan.',
-          en: 'From above: round table with six black chairs on a tiled floor, green shrubs along the walls, pergola at the top.',
+          nl: 'Doorkijk vanuit een gang naar een curved crème zetel met gebreide plaid, floor-to-ceiling vitrages en houten vloer.',
+          en: 'View through a hallway onto a curved cream sofa with a knitted throw, floor-to-ceiling sheer curtains and a wooden floor.',
         },
       },
     ],
