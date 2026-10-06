@@ -18,10 +18,15 @@ export class GuestyBookingError extends Error {
   }
 }
 
+// guesty_token_cache staat op "service role only": met de anon-key lukt
+// lezen noch schrijven, en haalt elke koude serverinstantie een nieuw token
+// tot Guesty 429 geeft. Daarom de service-role-key, die enkel server-side
+// bestaat.
 function getSupabase() {
   return createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    { auth: { persistSession: false } },
   );
 }
 

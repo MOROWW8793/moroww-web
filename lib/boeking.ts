@@ -33,6 +33,12 @@ export function listingIdVoor(w: Woning): string | null {
   return m ? m[1] : null;
 }
 
+/** Guesty's eigen boekingspagina. Enkel als uitweg wanneer de Booking
+ *  Engine API niet antwoordt, zodat een gast altijd kan boeken. */
+export function boekPaginaUrl(listingId: string, locale: string): string {
+  return `https://book.moroww.com/${locale}/properties/${listingId}?minOccupancy=1`;
+}
+
 export function boekbareWoning(
   id: unknown,
 ): (Woning & { listingId: string; maxGasten: number }) | null {

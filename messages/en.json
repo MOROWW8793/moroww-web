@@ -411,7 +411,6 @@
     "total": "total",
     "calculating": "calculating price…",
     "quote_error": "These dates are not available. Choose other dates.",
-    "calendar_error": "The calendar is not loading. Try again later or contact us.",
     "no_checkout_day": "Departure is not possible on this day.",
     "not_available_range": "Not every night in this period is available.",
     "min_nights": "Minimum {count} nights from this arrival date.",
@@ -456,6 +455,8 @@
     "next_1": "You receive a confirmation by email right away.",
     "next_2": "If you paid a deposit, the balance follows 30 days before arrival on the same card.",
     "next_3": "No later than 24 hours before arrival you receive your access code and everything you need to know.",
-    "next_4": "Check-in is from {time}. The home will be ready for you."
+    "next_4": "Check-in is from {time}. The home will be ready for you.",
+    "calendar_fallback": "The live calendar is not loading right now. You can still book this home on our booking page.",
+    "calendar_fallback_cta": "book on the booking page"
   }
 }

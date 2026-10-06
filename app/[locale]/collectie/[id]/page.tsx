@@ -4,7 +4,7 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { woningen, liveWoningen, lw, lwArr, type Locale } from "@/lib/woningen";
 import { BoekWidget } from "./BoekWidget";
-import { boekbareWoning } from "@/lib/boeking";
+import { boekbareWoning, boekPaginaUrl } from "@/lib/boeking";
 import { WoningGalerij } from "./WoningGalerij";
 import { InlineFoto } from "@/components/InlineFoto";
 import { VacationRentalJsonLd, BreadcrumbListJsonLd } from "@/components/JsonLd";
@@ -177,7 +177,13 @@ async function BoekingsPaneel({
           <span className="text-body text-moroww-ink-2"> {t('per_night')}</span>
         </p>
       ) : null}
-      {boekbaar && <BoekWidget woningId={boekbaar.id} maxGasten={boekbaar.maxGasten} />}
+      {boekbaar && (
+        <BoekWidget
+          woningId={boekbaar.id}
+          maxGasten={boekbaar.maxGasten}
+          uitwegUrl={boekPaginaUrl(boekbaar.listingId, locale)}
+        />
+      )}
     </div>
   )
 }

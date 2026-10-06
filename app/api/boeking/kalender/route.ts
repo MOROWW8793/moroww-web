@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getCalendar } from "@/lib/guesty-booking";
+import { getCalendar, GuestyBookingError } from "@/lib/guesty-booking";
 import { boekbareWoning, type KalenderDag } from "@/lib/boeking";
 
 const DAGEN_VOORUIT = 365;
@@ -14,7 +14,16 @@ export async function GET(req: NextRequest) {
 
   const van = new Date();
   const tot = new Date(van.getTime() + DAGEN_VOORUIT * 86_400_000);
-  const dagen = await getCalendar(woning.listingId, iso(van), iso(tot));
+  let dagen;
+  try {
+    dagen = await getCalendar(woning.listingId, iso(van), iso(tot));
+  } catch (err) {
+    if (err instanceof GuestyBookingError) {
+      console.error("[boeking/kalender]", err.message);
+      return NextResponse.json({ error: "kalender niet beschikbaar" }, { status: 503 });
+    }
+    throw err;
+  }
 
   const kalender: KalenderDag[] = dagen.map((d) => ({
     datum: d.date,

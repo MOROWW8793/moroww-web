@@ -411,7 +411,6 @@
     "total": "totaal",
     "calculating": "prijs berekenen…",
     "quote_error": "Deze data zijn niet beschikbaar. Kies andere data.",
-    "calendar_error": "De kalender laadt niet. Probeer later opnieuw of contacteer ons.",
     "no_checkout_day": "Op deze dag kan je niet vertrekken.",
     "not_available_range": "Niet alle nachten in deze periode zijn vrij.",
     "min_nights": "Minimum {count} nachten vanaf deze aankomstdag.",
@@ -456,6 +455,8 @@
     "next_1": "Je krijgt meteen een bevestiging per e-mail.",
     "next_2": "Betaalde je een voorschot, dan volgt het saldo 30 dagen voor aankomst op dezelfde kaart.",
     "next_3": "Uiterlijk 24 uur voor aankomst krijg je je toegangscode en alles wat je moet weten.",
-    "next_4": "Inchecken kan vanaf {time}. Het huis is dan klaar voor je."
+    "next_4": "Inchecken kan vanaf {time}. Het huis is dan klaar voor je.",
+    "calendar_fallback": "De live kalender laadt even niet. Je kan deze woning wel boeken via onze boekingspagina.",
+    "calendar_fallback_cta": "boek via de boekingspagina"
   }
 }

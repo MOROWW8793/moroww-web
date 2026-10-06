@@ -25,6 +25,11 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     // Guesty weigert een offerte bij niet-beschikbare data of min-nachten;
     // die fout gaat als 409 terug zodat de UI andere data kan vragen.
+    // 429 is Guesty die ons afremt, niet een probleem met de aanvraag.
+    if (err instanceof GuestyBookingError && err.status === 429) {
+      console.error("[boeking]", err.message);
+      return NextResponse.json({ error: "even niet beschikbaar" }, { status: 503 });
+    }
     if (err instanceof GuestyBookingError && err.status < 500) {
       console.error("[boeking/offerte]", err.message);
       return NextResponse.json({ error: "niet beschikbaar" }, { status: 409 });

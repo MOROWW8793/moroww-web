@@ -41,6 +41,11 @@ export async function POST(req: NextRequest) {
     });
     return NextResponse.json({ code: reservatie.confirmationCode });
   } catch (err) {
+    // 429 is Guesty die ons afremt, niet een probleem met de aanvraag.
+    if (err instanceof GuestyBookingError && err.status === 429) {
+      console.error("[boeking]", err.message);
+      return NextResponse.json({ error: "even niet beschikbaar" }, { status: 503 });
+    }
     if (err instanceof GuestyBookingError && err.status < 500) {
       console.error("[boeking/reservatie]", err.message);
       return NextResponse.json({ error: "reservatie mislukt" }, { status: 409 });

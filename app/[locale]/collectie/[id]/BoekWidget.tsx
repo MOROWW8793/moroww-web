@@ -29,7 +29,15 @@ function maandRaster(jaar: number, maand: number): (string | null)[] {
   return cellen
 }
 
-export function BoekWidget({ woningId, maxGasten }: { woningId: string; maxGasten: number }) {
+export function BoekWidget({
+  woningId,
+  maxGasten,
+  uitwegUrl,
+}: {
+  woningId: string
+  maxGasten: number
+  uitwegUrl: string
+}) {
   const t = useTranslations('booking')
   const locale = useLocale()
   const [kalender, setKalender] = useState<Map<string, KalenderDag> | null>(null)
@@ -60,7 +68,10 @@ export function BoekWidget({ woningId, maxGasten }: { woningId: string; maxGaste
       body: JSON.stringify({ woningId, aankomst, vertrek, gasten }),
       signal: ctrl.signal,
     })
-      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((r) => {
+        if (r.status === 503) setKalenderFout(true)
+        return r.ok ? r.json() : Promise.reject(r.status)
+      })
       .then((o: Offerte) => {
         setOfferte(o)
         setOfferteStatus('idle')
@@ -136,8 +147,19 @@ export function BoekWidget({ woningId, maxGasten }: { woningId: string; maxGaste
       maximumFractionDigits: 0,
     }).format(n)
 
+  // Antwoordt de kalender niet, dan nog altijd een weg naar een boeking.
   if (kalenderFout) {
-    return <p className="mt-mw-4 text-body text-moroww-ink-2">{t('calendar_error')}</p>
+    return (
+      <div className="mt-mw-4">
+        <p className="text-body text-moroww-ink-2">{t('calendar_fallback')}</p>
+        <a
+          href={uitwegUrl}
+          className="mt-mw-4 flex w-full justify-center rounded-full px-mw-4 py-3 font-semibold bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85 transition-colors"
+        >
+          {t('calendar_fallback_cta')}
+        </a>
+      </div>
+    )
   }
 
   return (
