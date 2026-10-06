@@ -155,9 +155,7 @@ export const nlOnlyRoutes: NavHref[] = [
 
 // Pagina's mét een foto-hero die onder de navbar doorloopt. Op alle andere
 // pagina's start de Navbar meteen in 'scrolled' state (blush, donker logo).
-// De pandpagina hoort er niet bij: de galerij begint ónder de navbar, dus
-// een transparante navbar zou wit op blush tonen. De afreken- en
-// bevestigingspagina openen wel met een foto tot bovenaan.
+// Pandpagina, afrekenen en bevestiging openen allemaal met een foto tot bovenaan.
 export function isDarkHeroPath(pathname: string): boolean {
-  return /\/(collectie|collection)\/[^/]+\/(boeken|book|bevestigd|confirmed)(\/|$)/.test(pathname)
+  return /\/(collectie|collection)\/[^/]+(\/(boeken|book|bevestigd|confirmed))?\/?$/.test(pathname)
 }

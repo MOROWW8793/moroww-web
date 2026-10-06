@@ -1,32 +1,49 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
-interface Props {
-  fotos: string[];
-  naam: string;
-  /** Alt-tekst per foto, parallel aan `fotos`. Ontbrekende indexen
-   *  vallen terug op `naam`. */
-  alts?: string[];
-  /** Pre-gelokaliseerd label voor de "bekijk alle N foto's"-knop.
-   *  Wordt door de Server-Component-caller ingevuld met t('gallery_button',
-   *  { count }); zo blijft de client component locale-onafhankelijk. */
-  galleryLabel: string;
+interface Labels {
+  sluit: string;
+  vorige: string;
+  volgende: string;
+  /** Met {n} als plaatshouder voor het fotonummer. */
+  foto: string;
 }
 
-// Twee foto's naast elkaar, 50/50, 8px gutter, hoogte 62vh op ≥lg,
-// gestapeld op smaller schermen. Geen afgeronde hoeken, geen schaduw.
-// Rechtsonder in de tweede foto: rechthoek-knop 2px radius die de lightbox
-// opent op index 0. De lightbox houdt alle foto's beschikbaar.
-export function WoningGalerij({ fotos, naam, alts, galleryLabel }: Props) {
+interface Galerij {
+  fotos: string[];
+  altFor: (i: number) => string;
+  labels: Labels;
+  open: (i: number) => void;
+}
+
+const GalerijContext = createContext<Galerij | null>(null);
+
+const useGalerij = () => useContext(GalerijContext)!;
+
+// De pandpagina toont foto's op meerdere plekken (hero, rondleiding,
+// beeldband). Eén provider houdt de lightbox, zodat elke foto op de pagina
+// dezelfde galerij opent op de juiste index.
+export function GalerijProvider({
+  fotos,
+  naam,
+  alts,
+  labels,
+  children,
+}: {
+  fotos: string[];
+  naam: string;
+  /** Alt-tekst per foto, parallel aan `fotos`. Ontbrekende indexen vallen terug op `naam`. */
+  alts?: string[];
+  labels: Labels;
+  children: ReactNode;
+}) {
   const altFor = (i: number) => alts?.[i] || naam;
   const [lightbox, setLightbox] = useState<number | null>(null);
-  const touchStartX = useRef<number>(0);
-  const touchEndX = useRef<number>(0);
+  const touchStartX = useRef(0);
 
-  const open = (i: number) => setLightbox(i);
   const close = () => setLightbox(null);
   const prev = () => setLightbox((i) => (i! > 0 ? i! - 1 : fotos.length - 1));
   const next = () => setLightbox((i) => (i! < fotos.length - 1 ? i! + 1 : 0));
@@ -39,77 +56,25 @@ export function WoningGalerij({ fotos, naam, alts, galleryLabel }: Props) {
       if (e.key === "ArrowRight") next();
     };
     document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = overflow;
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lightbox, fotos.length]);
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    touchEndX.current = e.changedTouches[0].clientX;
-    const diff = touchStartX.current - touchEndX.current;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) next(); else prev();
-    }
-  };
-
-  const heeftTweede = fotos.length > 1;
-
   return (
-    <>
-      {/* Twee foto's naast elkaar (of één op smal scherm). 8px gutter. */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 h-[50vh] md:h-[62vh]">
-        <button
-          className="relative w-full h-full cursor-zoom-in overflow-hidden"
-          onClick={() => open(0)}
-          aria-label={`bekijk ${naam} — foto 1`}
-        >
-          <Image
-            src={fotos[0]}
-            alt={altFor(0)}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            priority
-          />
-        </button>
+    <GalerijContext.Provider value={{ fotos, altFor, labels, open: setLightbox }}>
+      {children}
 
-        {heeftTweede && (
-          <div className="relative w-full h-full">
-            <button
-              className="relative w-full h-full cursor-zoom-in overflow-hidden block"
-              onClick={() => open(1)}
-              aria-label={`bekijk ${naam} — foto 2`}
-            >
-              <Image
-                src={fotos[1]}
-                alt={altFor(1)}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </button>
-            <button
-              onClick={() => open(0)}
-              className="absolute bottom-4 right-4 bg-white text-moroww-dark text-audit uppercase font-semibold px-4 py-2 rounded-[2px] hover:bg-moroww-blush transition-colors"
-            >
-              {galleryLabel}
-            </button>
-          </div>
-        )}
-      </div>
-
-      {/* Lightbox */}
       {lightbox !== null && (
-        <div
-          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
-          onClick={close}
-        >
+        <div className="fixed inset-0 z-[60] bg-black/95 flex items-center justify-center" onClick={close}>
           <button
             className="absolute top-4 right-4 text-white p-2 hover:bg-white/10 rounded-full transition-colors z-10"
             onClick={close}
-            aria-label="sluit galerij"
+            aria-label={labels.sluit}
           >
             <X size={24} />
           </button>
@@ -117,7 +82,7 @@ export function WoningGalerij({ fotos, naam, alts, galleryLabel }: Props) {
           <button
             className="absolute left-4 text-white p-2 hover:bg-white/10 rounded-full transition-colors z-10"
             onClick={(e) => { e.stopPropagation(); prev(); }}
-            aria-label="vorige foto"
+            aria-label={labels.vorige}
           >
             <ChevronLeft size={32} />
           </button>
@@ -125,8 +90,11 @@ export function WoningGalerij({ fotos, naam, alts, galleryLabel }: Props) {
           <div
             className="max-w-6xl max-h-[85vh] mx-16 relative"
             onClick={(e) => e.stopPropagation()}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
+            onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
+            onTouchEnd={(e) => {
+              const diff = touchStartX.current - e.changedTouches[0].clientX;
+              if (Math.abs(diff) > 50) (diff > 0 ? next : prev)();
+            }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -142,12 +110,53 @@ export function WoningGalerij({ fotos, naam, alts, galleryLabel }: Props) {
           <button
             className="absolute right-4 text-white p-2 hover:bg-white/10 rounded-full transition-colors z-10"
             onClick={(e) => { e.stopPropagation(); next(); }}
-            aria-label="volgende foto"
+            aria-label={labels.volgende}
           >
             <ChevronRight size={32} />
           </button>
         </div>
       )}
-    </>
+    </GalerijContext.Provider>
+  );
+}
+
+// Eén foto uit de galerij als klikbaar vlak. De parent bepaalt de maat.
+export function FotoKnop({
+  index,
+  sizes,
+  priority,
+  className = "",
+}: {
+  index: number;
+  sizes: string;
+  priority?: boolean;
+  className?: string;
+}) {
+  const { fotos, altFor, labels, open } = useGalerij();
+  return (
+    <button
+      type="button"
+      onClick={() => open(index)}
+      aria-label={labels.foto.replace("{n}", String(index + 1))}
+      className={`group relative block overflow-hidden cursor-zoom-in ${className}`}
+    >
+      <Image
+        src={fotos[index]}
+        alt={altFor(index)}
+        fill
+        sizes={sizes}
+        priority={priority}
+        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03] motion-reduce:transition-none"
+      />
+    </button>
+  );
+}
+
+export function AlleFotosKnop({ label, className }: { label: string; className: string }) {
+  const { open } = useGalerij();
+  return (
+    <button type="button" onClick={() => open(0)} className={className}>
+      {label}
+    </button>
   );
 }

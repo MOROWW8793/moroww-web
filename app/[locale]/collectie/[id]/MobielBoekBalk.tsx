@@ -2,6 +2,33 @@
 
 import { useEffect, useState } from 'react'
 
+// Het boekingspaneel staat op desktop in de zijkolom en op mobiel inline.
+// Deze knop scrollt naar de variant die op dit scherm zichtbaar is.
+export function NaarBoekenKnop({
+  doelIds,
+  label,
+  className,
+}: {
+  doelIds: string[]
+  label: string
+  className: string
+}) {
+  return (
+    <button
+      type="button"
+      className={className}
+      onClick={() =>
+        doelIds
+          .map((id) => document.getElementById(id))
+          .find((el) => el?.offsetParent)
+          ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    >
+      {label}
+    </button>
+  )
+}
+
 // Op mobiel staat het boekingspaneel ergens halverwege de pagina. Deze balk
 // houdt prijs en actie in beeld tot het paneel zelf zichtbaar is.
 export function MobielBoekBalk({

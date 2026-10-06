@@ -2,18 +2,15 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { BadgeCheck, Bath, BedDouble, CalendarCheck, Handshake, Maximize2, Users } from "lucide-react";
 import { woningen, liveWoningen, lw, lwArr, type Locale } from "@/lib/woningen";
-import { BoekWidget } from "./BoekWidget";
-import { MobielBoekBalk } from "./MobielBoekBalk";
-import { PandKaart } from "@/components/PandKaart";
-import { BadgeCheck, CalendarCheck, Handshake } from "lucide-react";
 import { boekbareWoning, boekPaginaUrl } from "@/lib/boeking";
-import { WoningGalerij } from "./WoningGalerij";
-import { InlineFoto } from "@/components/InlineFoto";
+import { BoekWidget } from "./BoekWidget";
+import { MobielBoekBalk, NaarBoekenKnop } from "./MobielBoekBalk";
+import { GalerijProvider, FotoKnop, AlleFotosKnop } from "./WoningGalerij";
+import { PandKaart } from "@/components/PandKaart";
 import { VacationRentalJsonLd, BreadcrumbListJsonLd } from "@/components/JsonLd";
 import { Register } from "@/components/Register";
-import { AuditLijn } from "@/components/AuditLijn";
-import { formatAuditMaand } from "@/components/PandKaart";
 import { siteMetadata } from "@/lib/seo/siteMetadata";
 
 interface Props { params: Promise<{ locale: string; id: string }> }
@@ -139,9 +136,19 @@ export async function generateMetadata({ params }: Props) {
 }
 
 // Sectiescheiding tussen inhoudsblokken. Bouwspec: hairlines in --moroww-rule,
-// geen kaders. Blijft zoals in 3c.
+// geen kaders.
 function Hr() {
   return <hr className="mt-mw-8 mb-mw-6 border-0 border-t border-moroww-rule" aria-hidden />
+}
+
+function maandLang(iso: string | undefined, locale: Locale) {
+  const d = iso ? new Date(iso) : null
+  if (!d || Number.isNaN(d.getTime())) return null
+  return new Intl.DateTimeFormat(locale === 'nl' ? 'nl-BE' : 'en-GB', {
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(d)
 }
 
 // Boekingspaneel. Enige plek op het gastenregister waar een kader mag staan.
@@ -168,11 +175,7 @@ async function BoekingsPaneel({
     )
   }
 
-  const auditDatum = woning.geauditeerdOp ? new Date(woning.geauditeerdOp) : null
-  const auditMaandLang =
-    auditDatum && !Number.isNaN(auditDatum.getTime())
-      ? new Intl.DateTimeFormat(locale === 'nl' ? 'nl-BE' : 'en-GB', { month: 'long', year: 'numeric' }).format(auditDatum)
-      : null
+  const auditMaand = maandLang(woning.geauditeerdOp, locale)
 
   return (
     <div
@@ -203,10 +206,10 @@ async function BoekingsPaneel({
             <Handshake className="h-4 w-4 shrink-0 mt-0.5 text-moroww-label" aria-hidden />
             {t('trust_direct')}
           </li>
-          {auditMaandLang && (
+          {auditMaand && (
             <li className="flex gap-3">
               <BadgeCheck className="h-4 w-4 shrink-0 mt-0.5 text-moroww-label" aria-hidden />
-              {t('trust_audit', { month: auditMaandLang })}
+              {t('trust_audit', { month: auditMaand })}
             </li>
           )}
         </ul>
@@ -234,25 +237,45 @@ export default async function WoningDetailPage({ params }: Props) {
     { name: woning.naam, url: pandUrl },
   ]
 
-  const auditMaand = formatAuditMaand(woning.geauditeerdOp)
-  const auditItems = [
-    woning.collectie,
-    woning.oppervlakte ?? '',
-    woning.slaapkamers ? `${woning.slaapkamers} ${t('bedrooms')}` : '',
-    auditMaand ? `${t('audited_prefix')} ${auditMaand}` : '',
-  ].filter((s) => s.trim() !== '')
+  const boekbaar = boekbareWoning(woning.id)
+  const auditMaand = maandLang(woning.geauditeerdOp, locale)
+  const prijsLabel = woning.prijs ? `${t('from_label')} €${woning.prijs} ${t('per_night')}` : null
 
-  // Foto's die tussen de secties komen. Fotos[0,1] zitten in de hero-galerij.
-  // Rest zit in de lightbox; wij hangen er twee expliciet op tussen de tekst.
-  //
+  const kerncijfers = [
+    woning.maxGasten ? { Icoon: Users, tekst: t('facts_guests', { count: woning.maxGasten }) } : null,
+    woning.slaapkamers ? { Icoon: BedDouble, tekst: t('facts_bedrooms', { count: woning.slaapkamers }) } : null,
+    woning.badkamers ? { Icoon: Bath, tekst: t('facts_bathrooms', { count: woning.badkamers }) } : null,
+    woning.oppervlakte ? { Icoon: Maximize2, tekst: woning.oppervlakte } : null,
+  ].filter((k): k is NonNullable<typeof k> => k !== null)
+
   // Per-pand override via `fotoNaBeschrijving` / `fotoNaBuurt`:
   //   undefined → default (fotos[2] resp. fotos[3])
-  //   null      → expliciet geen foto onder die sectie
+  //   null      → expliciet geen foto bij die sectie
   //   string    → dat specifieke pad gebruiken
   const fotoNaBeschrijving =
     woning.fotoNaBeschrijving === undefined ? woning.fotos[2] : woning.fotoNaBeschrijving
   const fotoNaBuurt =
     woning.fotoNaBuurt === undefined ? woning.fotos[3] : woning.fotoNaBuurt
+
+  // De rondleiding toont vijf foto's die nergens anders op de pagina staan.
+  const heroIndex = Math.max(0, woning.fotos.indexOf(woning.heroFoto))
+  const elders = new Set([woning.fotos[heroIndex], fotoNaBeschrijving, fotoNaBuurt])
+  const rondleiding = woning.fotos
+    .map((src, i) => ({ src, i }))
+    .filter(({ src }) => !elders.has(src))
+    .slice(0, 5)
+    .map(({ i }) => i)
+
+  const alineas = (tekst: string) => tekst.split('\n\n').filter((a) => a.trim() !== '')
+
+  // waaromOpgenomen is opgebouwd als kop + alinea's die elk openen met een
+  // korte reden ("Om het gebouw."). Die eerste zin wordt de tussenkop.
+  const standaard = woning.waaromOpgenomen ? alineas(lw(woning.waaromOpgenomen, locale)) : []
+  const standaardKop = standaard[0]
+  const standaardRedenen = standaard.slice(1).map((a) => {
+    const einde = a.indexOf('. ')
+    return einde === -1 ? { kop: a, rest: '' } : { kop: a.slice(0, einde + 1), rest: a.slice(einde + 2) }
+  })
 
   const paneel = await BoekingsPaneel({ woning, locale })
 
@@ -263,6 +286,8 @@ export default async function WoningDetailPage({ params }: Props) {
     ...anderen.filter((w) => w.collectie === woning.collectie),
     ...anderen.filter((w) => w.collectie !== woning.collectie),
   ].slice(0, 2)
+
+  const reviews = woning.reviews ?? []
 
   return (
     <Register kant="gast">
@@ -278,250 +303,333 @@ export default async function WoningDetailPage({ params }: Props) {
         amenities={woning.amenities}
       />
 
-      {/* Container voor beeld én grid — één set marges, zodat het beeld
-          exact even breed is als de inhoudskolom eronder. */}
-      <div className="mx-auto max-w-7xl px-6 md:px-12 pt-24 pb-mw-10">
-
-        {/* Hero-galerij */}
-        <div className="mb-mw-6">
-          <WoningGalerij
-            fotos={woning.fotos}
-            naam={woning.naam}
-            alts={woning.fotoAlts ? lwArr(woning.fotoAlts, locale) : undefined}
-            galleryLabel={t('gallery_button', { count: woning.fotos.length })}
+      <GalerijProvider
+        fotos={woning.fotos}
+        naam={woning.naam}
+        alts={woning.fotoAlts ? lwArr(woning.fotoAlts, locale) : undefined}
+        labels={{
+          sluit: t('gallery_close'),
+          vorige: t('gallery_prev'),
+          volgende: t('gallery_next'),
+          foto: t('gallery_photo', { name: woning.naam, n: '{n}' }),
+        }}
+      >
+        {/* Hero — het huis eerst, volle breedte, tot onder de navbar. */}
+        <section className="relative h-[78svh] min-h-[480px] md:h-[88vh] w-full bg-moroww-dark">
+          <FotoKnop index={heroIndex} sizes="100vw" priority className="absolute inset-0 h-full w-full" />
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/45 via-black/0 to-black/65"
+            aria-hidden
           />
-        </div>
-
-        {/* Twee kolommen vanaf lg. Onder lg: stacken (breadcrumb → kop → tagline
-            → boeking → auditlijn → inhoud). */}
-        <div className="lg:grid lg:grid-cols-12 lg:gap-x-mw-6">
-
-          {/* LINKS · content — kolom 1 tot 7 */}
-          <div className="lg:col-span-7">
-            {/* Breadcrumb */}
-            <nav className="text-audit uppercase text-moroww-ink-2">
-              <Link
-                href={isNl ? '/collectie' : '/en/collection'}
-                className="hover:text-moroww-dark transition-colors"
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 mx-auto max-w-7xl px-6 md:px-12 pb-mw-6 md:pb-mw-8 flex flex-col gap-mw-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-audit uppercase text-white/80">
+                {woning.collectie} · {woning.locatie}
+              </p>
+              <h1
+                className="mt-mw-2 font-bold text-white leading-[1.02] tracking-[-0.02em]"
+                style={{ fontSize: 'clamp(2.75rem, 7vw, 6rem)' }}
               >
-                {t('breadcrumb_collection')}
-              </Link>
-              <span className="mx-2">·</span>
-              <span>{woning.naam}</span>
-            </nav>
+                {woning.naam}
+              </h1>
+              <p className="mt-mw-3 max-w-[46ch] text-body-lg text-white/90">{lw(woning.slogan, locale)}</p>
+            </div>
+            <AlleFotosKnop
+              label={t('gallery_button', { count: woning.fotos.length })}
+              className="pointer-events-auto self-start md:self-auto shrink-0 bg-white text-moroww-dark text-audit uppercase font-semibold px-4 py-2 rounded-[2px] hover:bg-moroww-blush transition-colors"
+            />
+          </div>
+        </section>
 
-            {/* Titel */}
-            <h1
-              className="mt-mw-4 font-bold text-moroww-dark leading-[1.05] tracking-[-0.02em]"
-              style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
-            >
-              {woning.naam}
-            </h1>
+        <div className="mx-auto max-w-7xl px-6 md:px-12 pt-mw-6 lg:pt-mw-8">
+          <div className="lg:grid lg:grid-cols-12 lg:gap-x-mw-6">
 
-            {/* Tagline */}
-            <p className="mt-mw-3 text-body-lg italic text-moroww-ink-2 max-w-[62ch]">
-              {lw(woning.slogan, locale)}
-            </p>
-            <p className="mt-mw-2 text-body text-moroww-dark">{woning.locatie}</p>
+            {/* LINKS · content — kolom 1 tot 7 */}
+            <div className="lg:col-span-7">
+              <nav className="text-audit uppercase text-moroww-ink-2">
+                <Link
+                  href={isNl ? '/collectie' : '/en/collection'}
+                  className="hover:text-moroww-dark transition-colors"
+                >
+                  {t('breadcrumb_collection')}
+                </Link>
+                <span className="mx-2">·</span>
+                <span>{woning.naam}</span>
+              </nav>
 
-            {/* Eén gastenstem bovenaan, waar de beslissing valt. De volledige
-                reviews staan onderaan. */}
-            {woning.reviews?.[0] && (
-              <figure className="mt-mw-4 max-w-[62ch] border-l-2 border-moroww-label pl-mw-3">
-                <blockquote className="text-body text-moroww-dark line-clamp-3">
-                  &ldquo;{lw(woning.reviews[0].citaat, locale)}&rdquo;
-                </blockquote>
-                <figcaption className="mt-1 text-sm text-moroww-ink-2">
-                  {woning.reviews[0].naam}
-                  {woning.reviews.length > 1 && (
-                    <>
-                      {' · '}
-                      <a href="#reviews" className="underline underline-offset-2 hover:text-moroww-dark">
-                        {t('all_reviews', { count: woning.reviews.length })}
-                      </a>
-                    </>
-                  )}
-                </figcaption>
-              </figure>
-            )}
-
-            {/* Boekingspaneel op mobiel — inline na de tagline, geen sticky */}
-            <div id="boeken-mobiel" className="lg:hidden mt-mw-5 scroll-mt-24">{paneel}</div>
-
-            {auditItems.length > 0 && (
-              <div className="mt-mw-5 max-w-[62ch]">
-                <AuditLijn density="quiet" items={auditItems} />
-              </div>
-            )}
-
-            {/* Waarom deze woning — hoogtepunten, met certified-embleem naast de kop */}
-            {woning.hoogtepunten.length > 0 && (
-              <>
-                <Hr />
-                <div className="flex items-center gap-mw-4">
-                  <Image
-                    src="/images/Moroww_Certified_01_RGB.png"
-                    alt="moroww certified"
-                    width={64}
-                    height={64}
-                    className="w-14 h-14 shrink-0"
-                  />
-                  <h2 className="text-h2 text-moroww-dark">{t('highlights_title')}</h2>
-                </div>
-                <p className="mt-mw-2">
-                  <Link
-                    href={isNl ? '/de-standaard' : '/en/the-standard'}
-                    className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
-                  >
-                    {t('label_link_short')}
-                  </Link>
-                </p>
-                <div className="mt-mw-4 grid grid-cols-1 sm:grid-cols-2 gap-x-mw-4 gap-y-mw-3 max-w-[62ch]">
-                  {lwArr(woning.hoogtepunten, locale).map((h) => (
-                    <p key={h} className="text-body text-moroww-dark">{h}</p>
+              {kerncijfers.length > 0 && (
+                <ul className="mt-mw-5 flex flex-wrap gap-x-mw-5 gap-y-mw-2 border-y border-moroww-rule py-mw-3">
+                  {kerncijfers.map(({ Icoon, tekst }) => (
+                    <li key={tekst} className="flex items-center gap-2 text-body text-moroww-dark">
+                      <Icoon className="h-[18px] w-[18px] text-moroww-label" strokeWidth={1.5} aria-hidden />
+                      {tekst}
+                    </li>
                   ))}
-                </div>
-              </>
-            )}
+                </ul>
+              )}
 
-            {/* Waarom moroww deze woning opnam */}
-            {woning.waaromOpgenomen && (() => {
-              const raw = lw(woning.waaromOpgenomen, locale)
-              const alineas = raw.split('\n\n')
-              return (
+              <p className="mt-mw-5 max-w-[58ch] text-body-lg text-moroww-dark">
+                {lw(woning.introductie, locale)}
+              </p>
+
+              {/* Eén gastenstem bovenaan, waar de beslissing valt. */}
+              {reviews[0] && (
+                <figure className="mt-mw-5 max-w-[58ch] border-l-2 border-moroww-label pl-mw-3">
+                  <blockquote className="text-body italic text-moroww-dark line-clamp-3">
+                    &ldquo;{lw(reviews[0].citaat, locale)}&rdquo;
+                  </blockquote>
+                  <figcaption className="mt-1 text-sm text-moroww-ink-2">
+                    {reviews[0].naam}
+                    {reviews.length > 1 && (
+                      <>
+                        {' · '}
+                        <a href="#reviews" className="underline underline-offset-2 hover:text-moroww-dark">
+                          {t('all_reviews', { count: reviews.length })}
+                        </a>
+                      </>
+                    )}
+                  </figcaption>
+                </figure>
+              )}
+
+              {/* Boekingspaneel op mobiel — inline, geen sticky */}
+              <div id="boeken-mobiel" className="lg:hidden mt-mw-6 scroll-mt-24">{paneel}</div>
+
+              {/* Waarom deze woning — hoogtepunten als scanbaar raster */}
+              {woning.hoogtepunten.length > 0 && (
                 <>
                   <Hr />
-                  <h2 className="text-h2 text-moroww-dark">{t('waarom_label')}</h2>
-                  <div className="max-w-[62ch]">
-                    {alineas.map((p, i) => (
-                      <p key={i} className="mt-mw-3 text-body text-moroww-dark">{p}</p>
+                  <div className="flex items-center gap-mw-4">
+                    <Image
+                      src="/images/Moroww_Certified_01_RGB.png"
+                      alt="moroww certified"
+                      width={64}
+                      height={64}
+                      className="w-14 h-14 shrink-0"
+                    />
+                    <div>
+                      <h2 className="text-h2 text-moroww-dark">{t('highlights_title')}</h2>
+                      {auditMaand && (
+                        <p className="mt-1 text-audit uppercase text-moroww-ink-2">
+                          {t('audited_prefix')} {auditMaand}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  <ul className="mt-mw-5 grid grid-cols-1 sm:grid-cols-2 gap-x-mw-5">
+                    {lwArr(woning.hoogtepunten, locale).map((h) => (
+                      <li key={h} className="border-t border-moroww-rule py-mw-3 text-body-lg text-moroww-dark">
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-mw-3">
+                    <Link
+                      href={isNl ? '/de-standaard' : '/en/the-standard'}
+                      className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+                    >
+                      {t('label_link_short')}
+                    </Link>
+                  </p>
+                </>
+              )}
+
+              {/* Waarom moroww deze woning opnam */}
+              {standaardKop && (
+                <>
+                  <Hr />
+                  <h2 className="text-h2 text-moroww-dark">{standaardKop}</h2>
+                  <div className="mt-mw-5 space-y-mw-5 max-w-[58ch]">
+                    {standaardRedenen.map(({ kop, rest }) => (
+                      <div key={kop}>
+                        <h3 className="text-h3 text-moroww-dark">{kop}</h3>
+                        {rest && <p className="mt-mw-2 text-body text-moroww-ink-2">{rest}</p>}
+                      </div>
                     ))}
                   </div>
                 </>
-              )
-            })()}
+              )}
 
-            {/* Over deze woning */}
-            <Hr />
-            <h2 className="text-h2 text-moroww-dark">{t('about_title')}</h2>
-            <div className="max-w-[62ch]">
-              <p className="mt-mw-4 text-body text-moroww-dark">
-                {lw(woning.introductie, locale)}
-              </p>
-              <p className="mt-mw-3 text-body text-moroww-dark">
-                {lw(woning.volledigeBeschrijving, locale)}
-              </p>
-            </div>
-            {fotoNaBeschrijving && (
-              <InlineFoto src={fotoNaBeschrijving} alt={`${woning.naam} — ${t('atmosphere_alt_suffix')}`} />
-            )}
+              {/* Over deze woning */}
+              <Hr />
+              <h2 className="text-h2 text-moroww-dark">{t('about_title')}</h2>
+              <div className="max-w-[58ch]">
+                {alineas(lw(woning.volledigeBeschrijving, locale)).map((a) => (
+                  <p key={a} className="mt-mw-3 text-body text-moroww-dark">{a}</p>
+                ))}
+              </div>
 
-            {/* Buurt */}
-            {woning.buurt && (
-              <>
-                <Hr />
-                <h2 className="text-h2 text-moroww-dark">{t('neighbourhood_title')}</h2>
-                <p className="mt-mw-4 text-body text-moroww-dark max-w-[62ch]">
-                  {lw(woning.buurt, locale)}
-                </p>
-                {fotoNaBuurt && (
-                  <InlineFoto src={fotoNaBuurt} alt={`${woning.naam} — ${t('surroundings_alt_suffix')}`} />
+              {/* Praktisch */}
+              <Hr />
+              <h2 className="text-h2 text-moroww-dark">{t('practical_title')}</h2>
+              <dl className="mt-mw-4 divide-y divide-moroww-rule border-t border-b border-moroww-rule max-w-[58ch]">
+                <PraktischRij label={t('checkin_label')} value={`${t('from_label')} ${woning.inCheckin}`} />
+                <PraktischRij label={t('checkout_label')} value={`${t('before_label')} ${woning.uitCheckin}`} />
+                {woning.vergunningsnummer && (
+                  <PraktischRij label={t('vergunning_label')} value={woning.vergunningsnummer} />
                 )}
-              </>
-            )}
-
-            {/* Praktisch */}
-            <Hr />
-            <h2 className="text-h2 text-moroww-dark">{t('practical_title')}</h2>
-            <dl className="mt-mw-4 divide-y divide-moroww-rule border-t border-b border-moroww-rule max-w-[62ch]">
-              <PraktischRij label={t('checkin_label')} value={`${t('from_label')} ${woning.inCheckin}`} />
-              <PraktischRij label={t('checkout_label')} value={`${t('before_label')} ${woning.uitCheckin}`} />
-              {woning.maxGasten ? (
-                <PraktischRij label={t('max_guests_label')} value={`${woning.maxGasten} ${t('persons')}`} />
-              ) : null}
-              {woning.oppervlakte ? (
-                <PraktischRij label={t('surface_label')} value={woning.oppervlakte} />
-              ) : null}
-              {woning.vergunningsnummer && (
-                <PraktischRij label={t('vergunning_label')} value={woning.vergunningsnummer} />
-              )}
-              {woning.geluidssensor && (
-                <PraktischRij
-                  label={t('geluidssensor_label')}
-                  value={t('geluidssensor_body')}
-                />
-              )}
-            </dl>
-
-            {/* Kenmerken — geen labelparen. Gescheiden door " · ". */}
-            {woning.tags.length > 0 && (
-              <>
-                <hr className="mt-mw-6 mb-mw-4 border-0 border-t border-moroww-rule max-w-[62ch]" aria-hidden />
-                <p className="text-audit uppercase text-moroww-ink-2 max-w-[62ch]">
+                {woning.geluidssensor && (
+                  <PraktischRij label={t('geluidssensor_label')} value={t('geluidssensor_body')} />
+                )}
+              </dl>
+              {woning.tags.length > 0 && (
+                <p className="mt-mw-4 text-audit uppercase text-moroww-ink-2 max-w-[58ch]">
                   {lwArr(woning.tags, locale).join(' · ')}
                 </p>
-              </>
-            )}
+              )}
+            </div>
 
-            {/* Reviews */}
-            {(woning.reviews?.length ?? 0) > 0 && (
-              <>
-                <Hr />
-                <h2 id="reviews" className="text-h2 text-moroww-dark scroll-mt-24">{t('reviews_label')}</h2>
-                <div className="mt-mw-4 space-y-mw-5 max-w-[62ch]">
-                  {woning.reviews!.map(({ citaat, naam }) => (
-                    <blockquote key={naam}>
-                      <p className="text-body italic text-moroww-dark">
-                        &ldquo;{lw(citaat, locale)}&rdquo;
-                      </p>
-                      <footer className="mt-mw-2 text-audit uppercase text-moroww-ink-2">
-                        {naam}
-                      </footer>
-                    </blockquote>
-                  ))}
-                </div>
-              </>
-            )}
+            {/* RECHTS · boekingspaneel — kolom 9 tot 12, sticky vanaf lg */}
+            <aside id="boeken" className="hidden lg:block lg:col-span-4 lg:col-start-9 scroll-mt-24">
+              <div className="sticky top-24">{paneel}</div>
+            </aside>
           </div>
-
-          {/* RECHTS · boekingspaneel — kolom 9 tot 12, sticky vanaf lg */}
-          <aside className="hidden lg:block lg:col-span-4 lg:col-start-9">
-            <div className="sticky top-24">{paneel}</div>
-          </aside>
         </div>
 
-        {/* Wie deze data of dit huis niet vindt, krijgt een volgende stap
-            binnen dezelfde collectie in plaats van een doodlopend einde. */}
-        {verwant.length > 0 && (
-          <section className="mt-mw-10">
-            <h2 className="text-h2 text-moroww-dark">{t('more_in', { collection: woning.collectie })}</h2>
-            <div className="mt-mw-5 grid grid-cols-1 md:grid-cols-2 gap-8">
-              {verwant.map((w) => (
-                <PandKaart
-                  key={w.id}
-                  href={{ pathname: '/collectie/[id]', params: { id: w.id } }}
-                  beeld={w.heroFoto}
-                  beeldAlt={w.naam}
-                  titel={w.naam}
-                  plaats={w.locatie}
-                  auditItems={[
-                    w.slaapkamers ? `${w.slaapkamers} ${t('bedrooms')}` : '',
-                    w.maxGasten ? `${w.maxGasten} ${t('guests')}` : '',
-                    w.prijs ? `${t('from_label')} €${w.prijs} ${t('per_night')}` : '',
-                  ]}
+        {/* Rondleiding — vijf beelden in één blik, de rest in de galerij */}
+        {rondleiding.length === 5 && (
+          <section className="mx-auto max-w-7xl px-6 md:px-12 mt-mw-10">
+            <div className="flex items-end justify-between gap-mw-4">
+              <h2 className="text-h2 text-moroww-dark">{t('tour_title', { name: woning.naam })}</h2>
+              <AlleFotosKnop
+                label={t('gallery_button', { count: woning.fotos.length })}
+                className="shrink-0 text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+              />
+            </div>
+            <div className="mt-mw-5 grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-2 md:h-[72vh]">
+              {rondleiding.map((i, n) => (
+                <FotoKnop
+                  key={i}
+                  index={i}
+                  sizes={n === 0 ? '(max-width: 768px) 100vw, 50vw' : '(max-width: 768px) 50vw, 25vw'}
+                  className={
+                    n === 0
+                      ? 'col-span-2 md:row-span-2 aspect-[4/3] md:aspect-auto'
+                      : 'aspect-square md:aspect-auto'
+                  }
                 />
               ))}
             </div>
           </section>
         )}
-      </div>
 
-      {boekbareWoning(woning.id) && (
-        <MobielBoekBalk
-          doelId="boeken-mobiel"
-          prijsLabel={woning.prijs ? `${t('from_label')} €${woning.prijs} ${t('per_night')}` : null}
-          knopLabel={t('mobile_cta')}
-        />
+        {/* Beeldband — één sfeerbeeld over de volle breedte */}
+        {fotoNaBeschrijving && (
+          <section className="relative mt-mw-10 h-[60vh] md:h-[80vh] w-full">
+            {woning.fotos.includes(fotoNaBeschrijving) ? (
+              <FotoKnop
+                index={woning.fotos.indexOf(fotoNaBeschrijving)}
+                sizes="100vw"
+                className="absolute inset-0 h-full w-full"
+              />
+            ) : (
+              <Image
+                src={fotoNaBeschrijving}
+                alt={`${woning.naam} — ${t('atmosphere_alt_suffix')}`}
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            )}
+          </section>
+        )}
+
+        {/* De buurt */}
+        {woning.buurt && (
+          <section className="mx-auto max-w-7xl px-6 md:px-12 mt-mw-10 lg:grid lg:grid-cols-12 lg:gap-x-mw-6 lg:items-center">
+            <div className="lg:col-span-6">
+              <h2 className="text-h2 text-moroww-dark">{t('neighbourhood_title')}</h2>
+              <p className="mt-mw-4 text-body text-moroww-dark max-w-[58ch]">{lw(woning.buurt, locale)}</p>
+            </div>
+            {fotoNaBuurt && (
+              <div className="relative mt-mw-6 lg:mt-0 lg:col-span-5 lg:col-start-8 aspect-[4/5]">
+                {woning.fotos.includes(fotoNaBuurt) ? (
+                  <FotoKnop
+                    index={woning.fotos.indexOf(fotoNaBuurt)}
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="absolute inset-0 h-full w-full"
+                  />
+                ) : (
+                  <Image
+                    src={fotoNaBuurt}
+                    alt={`${woning.naam} — ${t('surroundings_alt_suffix')}`}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-cover"
+                  />
+                )}
+              </div>
+            )}
+          </section>
+        )}
+      </GalerijProvider>
+
+      {/* Wat gasten zeggen — groot, want dit is wat overtuigt */}
+      {reviews.length > 0 && (
+        <section className="mx-auto max-w-7xl px-6 md:px-12 mt-mw-10">
+          <h2 id="reviews" className="text-h2 text-moroww-dark scroll-mt-24">{t('reviews_label')}</h2>
+          <div className="mt-mw-5 grid grid-cols-1 md:grid-cols-2 gap-x-mw-6 gap-y-mw-6">
+            {reviews.map(({ citaat, naam, datum }) => (
+              <figure key={naam} className="border-t border-moroww-rule pt-mw-4">
+                <blockquote className="text-h3 font-normal text-moroww-dark">
+                  &ldquo;{lw(citaat, locale)}&rdquo;
+                </blockquote>
+                <figcaption className="mt-mw-3 text-audit uppercase text-moroww-ink-2">
+                  {[naam, maandLang(datum, locale)].filter(Boolean).join(' · ')}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Afsluiter — wie tot hier leest, krijgt de beslissing nog één keer
+          aangereikt in plaats van terug te moeten scrollen. */}
+      {boekbaar && (
+        <section className="mx-auto max-w-7xl px-6 md:px-12 mt-mw-10">
+          <div className="bg-moroww-dark px-mw-5 py-mw-8 md:px-mw-8 md:flex md:items-end md:justify-between md:gap-mw-6">
+            <div>
+              <h2 className="text-h2 text-white">{t('closing_title', { name: woning.naam })}</h2>
+              <p className="mt-mw-3 text-body text-white/75 max-w-[48ch]">
+                {[prijsLabel, t('trust_cancel')].filter(Boolean).join(' · ')}
+              </p>
+            </div>
+            <NaarBoekenKnop
+              doelIds={['boeken', 'boeken-mobiel']}
+              label={t('mobile_cta')}
+              className="mt-mw-5 md:mt-0 shrink-0 rounded-full px-mw-5 py-3 font-semibold bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85 transition-colors"
+            />
+          </div>
+        </section>
+      )}
+
+      {/* Wie deze data of dit huis niet vindt, krijgt een volgende stap
+          binnen dezelfde collectie in plaats van een doodlopend einde. */}
+      {verwant.length > 0 && (
+        <section className="mx-auto max-w-7xl px-6 md:px-12 mt-mw-10 pb-mw-10">
+          <h2 className="text-h2 text-moroww-dark">{t('more_in', { collection: woning.collectie })}</h2>
+          <div className="mt-mw-5 grid grid-cols-1 md:grid-cols-2 gap-8">
+            {verwant.map((w) => (
+              <PandKaart
+                key={w.id}
+                href={{ pathname: '/collectie/[id]', params: { id: w.id } }}
+                beeld={w.heroFoto}
+                beeldAlt={w.naam}
+                titel={w.naam}
+                plaats={w.locatie}
+                auditItems={[
+                  w.slaapkamers ? `${w.slaapkamers} ${t('bedrooms')}` : '',
+                  w.maxGasten ? `${w.maxGasten} ${t('guests')}` : '',
+                  w.prijs ? `${t('from_label')} €${w.prijs} ${t('per_night')}` : '',
+                ]}
+              />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {boekbaar && (
+        <MobielBoekBalk doelId="boeken-mobiel" prijsLabel={prijsLabel} knopLabel={t('mobile_cta')} />
       )}
     </Register>
   );
