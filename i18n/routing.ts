@@ -14,6 +14,14 @@ export const routing = defineRouting({
       nl: '/collectie/[id]',
       en: '/collection/[id]',
     },
+    '/collectie/[id]/boeken': {
+      nl: '/collectie/[id]/boeken',
+      en: '/collection/[id]/book',
+    },
+    '/collectie/[id]/bevestigd': {
+      nl: '/collectie/[id]/bevestigd',
+      en: '/collection/[id]/confirmed',
+    },
     '/over-moroww': {
       nl: '/over-moroww',
       en: '/about',

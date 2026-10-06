@@ -36,7 +36,7 @@ export function FaqJsonLd() {
               name: 'Kan ik een vakantiewoning in Knokke of Oostende boeken via moroww?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Ja. De moroww-collectie "the shore" omvat Nosso Logies in Heist-aan-Zee (Knokke) en The Sixteenth in Oostende. Beide woningen zijn fysiek gecertificeerd en direct te boeken via book.moroww.com.',
+                text: 'Ja. De moroww-collectie "the shore" omvat Nosso Logies in Heist-aan-Zee (Knokke) en The Sixteenth in Oostende. Beide woningen zijn fysiek gecertificeerd en direct te boeken via moroww.com.',
               },
             },
           ],

@@ -2,7 +2,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { woningen, liveWoningen, lw, lwArr, boekUrlFor, type Locale } from "@/lib/woningen";
+import { woningen, liveWoningen, lw, lwArr, type Locale } from "@/lib/woningen";
+import { BoekWidget } from "./BoekWidget";
+import { boekbareWoning } from "@/lib/boeking";
 import { WoningGalerij } from "./WoningGalerij";
 import { InlineFoto } from "@/components/InlineFoto";
 import { VacationRentalJsonLd, BreadcrumbListJsonLd } from "@/components/JsonLd";
@@ -149,6 +151,7 @@ async function BoekingsPaneel({
   locale: Locale
 }) {
   const t = await getTranslations({ locale, namespace: 'property' })
+  const boekbaar = boekbareWoning(woning.id)
 
   if (woning.comingSoon) {
     return (
@@ -174,17 +177,7 @@ async function BoekingsPaneel({
           <span className="text-body text-moroww-ink-2"> {t('per_night')}</span>
         </p>
       ) : null}
-      <a
-        href={boekUrlFor(woning, locale)}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-mw-4 inline-flex items-center rounded-full px-mw-4 py-3 font-semibold bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85 transition-colors"
-      >
-        {t('book_direct')}
-      </a>
-      <p className="mt-mw-3 text-audit uppercase text-moroww-ink-2 text-center">
-        {t('redirect_note')}
-      </p>
+      {boekbaar && <BoekWidget woningId={boekbaar.id} maxGasten={boekbaar.maxGasten} />}
     </div>
   )
 }
