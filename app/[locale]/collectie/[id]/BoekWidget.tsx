@@ -120,6 +120,15 @@ export function BoekWidget({ woningId, maxGasten }: { woningId: string; maxGaste
     setVertrek(null)
   }
 
+  // Kosteloos annuleren tot 14 dagen vóór aankomst (voorwaarden art. 5.2).
+  const annulerenTot = aankomst ? plusDagen(aankomst, -14) : ''
+  const kort = (d: string) =>
+    new Intl.DateTimeFormat(locale === 'nl' ? 'nl-BE' : 'en-GB', {
+      day: 'numeric',
+      month: 'long',
+      timeZone: 'UTC',
+    }).format(new Date(`${d}T00:00:00Z`))
+
   const fmt = (n: number, valuta: string) =>
     new Intl.NumberFormat(locale === 'nl' ? 'nl-BE' : 'en-GB', {
       style: 'currency',
@@ -216,10 +225,18 @@ export function BoekWidget({ woningId, maxGasten }: { woningId: string; maxGaste
           {offerteStatus === 'laden' && <p className="mt-1 text-moroww-ink-2">{t('calculating')}</p>}
           {offerteStatus === 'fout' && <p className="mt-1 text-moroww-ink-2">{t('quote_error')}</p>}
           {offerte && (
-            <p className="mt-1 flex justify-between font-semibold">
-              <span>{t('total')}</span>
-              <span>{fmt(offerte.totaal, offerte.valuta)}</span>
-            </p>
+            <>
+              <p className="mt-1 flex justify-between font-semibold">
+                <span>{t('total')}</span>
+                <span>{fmt(offerte.totaal, offerte.valuta)}</span>
+              </p>
+              <p className="mt-mw-2 text-sm text-moroww-ink-2">{t('no_service_fees')}</p>
+              {annulerenTot > vandaag && (
+                <p className="text-sm text-moroww-ink-2">
+                  {t('free_cancel_until', { date: kort(annulerenTot) })}
+                </p>
+              )}
+            </>
           )}
         </div>
       )}

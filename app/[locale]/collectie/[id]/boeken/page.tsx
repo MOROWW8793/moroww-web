@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
-import { getTranslations } from "next-intl/server";
 import { Register } from "@/components/Register";
+import { lw, type Locale } from "@/lib/woningen";
 import { boekbareWoning, isIsoDatum } from "@/lib/boeking";
 import { Checkout } from "./Checkout";
 
@@ -12,7 +12,7 @@ interface Props {
 export const metadata = { robots: { index: false, follow: false } };
 
 export default async function BoekenPage({ params, searchParams }: Props) {
-  const { id } = await params;
+  const { id, locale } = await params;
   const q = await searchParams;
   const woning = boekbareWoning(id);
   if (!woning) notFound();
@@ -29,20 +29,24 @@ export default async function BoekenPage({ params, searchParams }: Props) {
     notFound();
   }
 
-  const t = await getTranslations("booking");
+  const review = woning.reviews?.[0];
 
   return (
     <Register kant="gast">
-      <div className="mx-auto max-w-2xl px-mw-4 pt-32 pb-mw-10">
-        <p className="text-audit uppercase text-moroww-label">{t("checkout_kicker")}</p>
-        <h1 className="mt-mw-3 text-h2 text-moroww-dark">{woning.naam}</h1>
-        <Checkout
-          woningId={woning.id}
-          aankomst={q.aankomst}
-          vertrek={q.vertrek}
-          gasten={gasten}
-        />
-      </div>
+      <Checkout
+        woning={{
+          id: woning.id,
+          naam: woning.naam,
+          locatie: woning.locatie,
+          heroFoto: woning.heroFoto,
+          inCheckin: woning.inCheckin,
+          uitCheckin: woning.uitCheckin,
+          review: review ? { citaat: lw(review.citaat, locale as Locale), naam: review.naam } : null,
+        }}
+        aankomst={q.aankomst}
+        vertrek={q.vertrek}
+        gasten={gasten}
+      />
     </Register>
   );
 }
