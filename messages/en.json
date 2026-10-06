@@ -113,7 +113,13 @@
     "surface_label": "surface area",
     "atmosphere_alt_suffix": "atmosphere",
     "surroundings_alt_suffix": "surroundings",
-    "label_link_short": "what this label means →"
+    "label_link_short": "what this label means →",
+    "trust_cancel": "Free cancellation up to 14 days before arrival",
+    "trust_direct": "Directly with moroww, no service fees",
+    "trust_audit": "Visited and approved by moroww in {month}",
+    "mobile_cta": "choose your dates",
+    "more_in": "also in {collection}",
+    "all_reviews": "{count, plural, one {# review} other {all # reviews}}"
   },
   "contact": {
     "meta_title": "Contact",

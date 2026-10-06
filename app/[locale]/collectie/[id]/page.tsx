@@ -4,6 +4,9 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { woningen, liveWoningen, lw, lwArr, type Locale } from "@/lib/woningen";
 import { BoekWidget } from "./BoekWidget";
+import { MobielBoekBalk } from "./MobielBoekBalk";
+import { PandKaart } from "@/components/PandKaart";
+import { BadgeCheck, CalendarCheck, Handshake } from "lucide-react";
 import { boekbareWoning, boekPaginaUrl } from "@/lib/boeking";
 import { WoningGalerij } from "./WoningGalerij";
 import { InlineFoto } from "@/components/InlineFoto";
@@ -165,6 +168,12 @@ async function BoekingsPaneel({
     )
   }
 
+  const auditDatum = woning.geauditeerdOp ? new Date(woning.geauditeerdOp) : null
+  const auditMaandLang =
+    auditDatum && !Number.isNaN(auditDatum.getTime())
+      ? new Intl.DateTimeFormat(locale === 'nl' ? 'nl-BE' : 'en-GB', { month: 'long', year: 'numeric' }).format(auditDatum)
+      : null
+
   return (
     <div
       className="bg-white border border-moroww-rule p-mw-5"
@@ -183,6 +192,24 @@ async function BoekingsPaneel({
           maxGasten={boekbaar.maxGasten}
           uitwegUrl={boekPaginaUrl(boekbaar.listingId, locale)}
         />
+      )}
+      {boekbaar && (
+        <ul className="mt-mw-4 space-y-mw-2 border-t border-moroww-rule pt-mw-4 text-sm text-moroww-ink-2">
+          <li className="flex gap-3">
+            <CalendarCheck className="h-4 w-4 shrink-0 mt-0.5 text-moroww-label" aria-hidden />
+            {t('trust_cancel')}
+          </li>
+          <li className="flex gap-3">
+            <Handshake className="h-4 w-4 shrink-0 mt-0.5 text-moroww-label" aria-hidden />
+            {t('trust_direct')}
+          </li>
+          {auditMaandLang && (
+            <li className="flex gap-3">
+              <BadgeCheck className="h-4 w-4 shrink-0 mt-0.5 text-moroww-label" aria-hidden />
+              {t('trust_audit', { month: auditMaandLang })}
+            </li>
+          )}
+        </ul>
       )}
     </div>
   )
@@ -228,6 +255,14 @@ export default async function WoningDetailPage({ params }: Props) {
     woning.fotoNaBuurt === undefined ? woning.fotos[3] : woning.fotoNaBuurt
 
   const paneel = await BoekingsPaneel({ woning, locale })
+
+  // Twee andere huizen uit dezelfde collectie; is die te klein, aangevuld
+  // met de andere collectie.
+  const anderen = liveWoningen().filter((w) => w.id !== woning.id)
+  const verwant = [
+    ...anderen.filter((w) => w.collectie === woning.collectie),
+    ...anderen.filter((w) => w.collectie !== woning.collectie),
+  ].slice(0, 2)
 
   return (
     <Register kant="gast">
@@ -289,8 +324,29 @@ export default async function WoningDetailPage({ params }: Props) {
             </p>
             <p className="mt-mw-2 text-body text-moroww-dark">{woning.locatie}</p>
 
+            {/* Eén gastenstem bovenaan, waar de beslissing valt. De volledige
+                reviews staan onderaan. */}
+            {woning.reviews?.[0] && (
+              <figure className="mt-mw-4 max-w-[62ch] border-l-2 border-moroww-label pl-mw-3">
+                <blockquote className="text-body text-moroww-dark line-clamp-3">
+                  &ldquo;{lw(woning.reviews[0].citaat, locale)}&rdquo;
+                </blockquote>
+                <figcaption className="mt-1 text-sm text-moroww-ink-2">
+                  {woning.reviews[0].naam}
+                  {woning.reviews.length > 1 && (
+                    <>
+                      {' · '}
+                      <a href="#reviews" className="underline underline-offset-2 hover:text-moroww-dark">
+                        {t('all_reviews', { count: woning.reviews.length })}
+                      </a>
+                    </>
+                  )}
+                </figcaption>
+              </figure>
+            )}
+
             {/* Boekingspaneel op mobiel — inline na de tagline, geen sticky */}
-            <div className="lg:hidden mt-mw-5">{paneel}</div>
+            <div id="boeken-mobiel" className="lg:hidden mt-mw-5 scroll-mt-24">{paneel}</div>
 
             {auditItems.length > 0 && (
               <div className="mt-mw-5 max-w-[62ch]">
@@ -411,7 +467,7 @@ export default async function WoningDetailPage({ params }: Props) {
             {(woning.reviews?.length ?? 0) > 0 && (
               <>
                 <Hr />
-                <h2 className="text-h2 text-moroww-dark">{t('reviews_label')}</h2>
+                <h2 id="reviews" className="text-h2 text-moroww-dark scroll-mt-24">{t('reviews_label')}</h2>
                 <div className="mt-mw-4 space-y-mw-5 max-w-[62ch]">
                   {woning.reviews!.map(({ citaat, naam }) => (
                     <blockquote key={naam}>
@@ -433,7 +489,40 @@ export default async function WoningDetailPage({ params }: Props) {
             <div className="sticky top-24">{paneel}</div>
           </aside>
         </div>
+
+        {/* Wie deze data of dit huis niet vindt, krijgt een volgende stap
+            binnen dezelfde collectie in plaats van een doodlopend einde. */}
+        {verwant.length > 0 && (
+          <section className="mt-mw-10">
+            <h2 className="text-h2 text-moroww-dark">{t('more_in', { collection: woning.collectie })}</h2>
+            <div className="mt-mw-5 grid grid-cols-1 md:grid-cols-2 gap-8">
+              {verwant.map((w) => (
+                <PandKaart
+                  key={w.id}
+                  href={{ pathname: '/collectie/[id]', params: { id: w.id } }}
+                  beeld={w.heroFoto}
+                  beeldAlt={w.naam}
+                  titel={w.naam}
+                  plaats={w.locatie}
+                  auditItems={[
+                    w.slaapkamers ? `${w.slaapkamers} ${t('bedrooms')}` : '',
+                    w.maxGasten ? `${w.maxGasten} ${t('guests')}` : '',
+                    w.prijs ? `${t('from_label')} €${w.prijs} ${t('per_night')}` : '',
+                  ]}
+                />
+              ))}
+            </div>
+          </section>
+        )}
       </div>
+
+      {boekbareWoning(woning.id) && (
+        <MobielBoekBalk
+          doelId="boeken-mobiel"
+          prijsLabel={woning.prijs ? `${t('from_label')} €${woning.prijs} ${t('per_night')}` : null}
+          knopLabel={t('mobile_cta')}
+        />
+      )}
     </Register>
   );
 }

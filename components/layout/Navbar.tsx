@@ -8,7 +8,7 @@ import {
   gastenNavItems,
   eigenaarDropdown,
   nlOnlyRoutes,
-  darkHeroRoutes,
+  isDarkHeroPath,
 } from '@/lib/navigation'
 
 export function Navbar() {
@@ -98,7 +98,7 @@ export function Navbar() {
 
   const isNlOnly = nlOnlyRoutes.some((r) => pathname === r || pathname.startsWith(`${r}/`))
 
-  const isDarkHero = darkHeroRoutes.some((r) => pathname.startsWith(r))
+  const isDarkHero = isDarkHeroPath(pathname)
   const effectiveScrolled = scrolled || !isDarkHero
 
   function toggleLocale() {

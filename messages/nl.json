@@ -113,7 +113,13 @@
     "surface_label": "oppervlakte",
     "atmosphere_alt_suffix": "sfeerbeeld",
     "surroundings_alt_suffix": "omgeving",
-    "label_link_short": "wat dit label betekent →"
+    "label_link_short": "wat dit label betekent →",
+    "trust_cancel": "Kosteloos annuleren tot 14 dagen voor aankomst",
+    "trust_direct": "Rechtstreeks bij moroww, zonder servicekosten",
+    "trust_audit": "Bezocht en gekeurd door moroww in {month}",
+    "mobile_cta": "kies je data",
+    "more_in": "ook in {collection}",
+    "all_reviews": "{count, plural, one {# review} other {alle # reviews}}"
   },
   "contact": {
     "meta_title": "Contact",

@@ -252,9 +252,8 @@ export function BoekWidget({
                 <span>{t('total')}</span>
                 <span>{fmt(offerte.totaal, offerte.valuta)}</span>
               </p>
-              <p className="mt-mw-2 text-sm text-moroww-ink-2">{t('no_service_fees')}</p>
               {annulerenTot > vandaag && (
-                <p className="text-sm text-moroww-ink-2">
+                <p className="mt-mw-2 text-sm text-moroww-ink-2">
                   {t('free_cancel_until', { date: kort(annulerenTot) })}
                 </p>
               )}
