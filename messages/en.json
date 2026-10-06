@@ -435,6 +435,10 @@
     "back_to_home": "back to the home",
     "line_stay": "stay",
     "line_cleaning": "cleaning",
-    "line_vat": "VAT"
+    "line_vat": "VAT",
+    "pay_now_deposit": "due now (50%)",
+    "balance_on": "balance, charged on {date}",
+    "pay_now_full": "Your arrival is within 30 days: the full amount is charged now.",
+    "accept_terms": "I accept the <link>terms and conditions</link>, including the cancellation policy."
   }
 }

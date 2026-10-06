@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import { loadStripe, type Stripe, type StripeCardElement } from '@stripe/stripe-js'
-import { useRouter } from '@/i18n/navigation'
+import { Link, useRouter } from '@/i18n/navigation'
 import type { Offerte } from '@/lib/boeking'
 
 // Stripe-account dat in Guesty aan de panden hangt. Kaartgegevens gaan van
@@ -18,6 +18,21 @@ const REGEL_SLEUTELS: Record<string, string> = {
   AF: 'line_stay',
   CF: 'line_cleaning',
   VAT: 'line_vat',
+}
+
+// Betaalschema volgens de voorwaarden (art. 4.2): 50% bij boeking, saldo
+// 30 dagen vóór aankomst; wie later boekt, betaalt alles meteen. Guesty's
+// betaalautomatisering int; dit toont enkel wat de gast kan verwachten.
+const SALDO_DAGEN_VOOR_AANKOMST = 30
+
+function betaalschema(totaal: number, aankomst: string) {
+  const vandaag = new Date().toISOString().slice(0, 10)
+  const saldoDatum = new Date(`${aankomst}T00:00:00Z`)
+  saldoDatum.setUTCDate(saldoDatum.getUTCDate() - SALDO_DAGEN_VOOR_AANKOMST)
+  const saldoIso = saldoDatum.toISOString().slice(0, 10)
+  if (saldoIso <= vandaag) return { nu: totaal, saldo: 0, saldoDatum: null }
+  const nu = Math.round(totaal * 50) / 100
+  return { nu, saldo: Math.round((totaal - nu) * 100) / 100, saldoDatum: saldoIso }
 }
 
 interface Props {
@@ -141,6 +156,8 @@ export function Checkout({ woningId, aankomst, vertrek, gasten }: Props) {
       timeZone: 'UTC',
     }).format(new Date(`${d}T00:00:00Z`))
 
+  const schema = offerte ? betaalschema(offerte.totaal, aankomst) : null
+
   const veld =
     'mt-1 w-full border border-moroww-rule bg-white px-3 py-2 text-body text-moroww-dark focus:outline-none focus:border-moroww-dark'
 
@@ -179,6 +196,24 @@ export function Checkout({ woningId, aankomst, vertrek, gasten }: Props) {
               <td className="pt-mw-2">{t('total')}</td>
               <td className="pt-mw-2 text-right tabular-nums">{fmt(offerte.totaal)}</td>
             </tr>
+            {schema && schema.saldoDatum ? (
+              <>
+                <tr>
+                  <td className="pt-mw-3 text-moroww-ink-2">{t('pay_now_deposit')}</td>
+                  <td className="pt-mw-3 text-right tabular-nums">{fmt(schema.nu)}</td>
+                </tr>
+                <tr>
+                  <td className="py-1 text-moroww-ink-2">
+                    {t('balance_on', { date: datum(schema.saldoDatum) })}
+                  </td>
+                  <td className="py-1 text-right tabular-nums">{fmt(schema.saldo)}</td>
+                </tr>
+              </>
+            ) : (
+              <tr>
+                <td colSpan={2} className="pt-mw-3 text-moroww-ink-2">{t('pay_now_full')}</td>
+              </tr>
+            )}
           </tbody>
         </table>
       )}
@@ -212,12 +247,25 @@ export function Checkout({ woningId, aankomst, vertrek, gasten }: Props) {
             style={{ borderRadius: 4 }}
           />
 
+          <label className="mt-mw-5 flex items-start gap-3 text-sm text-moroww-dark">
+            <input type="checkbox" name="voorwaarden" required className="mt-1" />
+            <span>
+              {t.rich('accept_terms', {
+                link: (chunks) => (
+                  <Link href="/voorwaarden" target="_blank" className="underline underline-offset-2">
+                    {chunks}
+                  </Link>
+                ),
+              })}
+            </span>
+          </label>
+
           <button
             type="submit"
             disabled={!kaartKlaar || bezig}
             className="mt-mw-5 flex w-full justify-center rounded-full px-mw-4 py-3 font-semibold bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85 transition-colors disabled:opacity-50"
           >
-            {bezig ? t('processing') : t('confirm_and_pay', { amount: fmt(offerte.totaal) })}
+            {bezig ? t('processing') : t('confirm_and_pay', { amount: fmt(schema!.nu) })}
           </button>
         </form>
       )}

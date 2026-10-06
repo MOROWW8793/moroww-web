@@ -60,6 +60,10 @@ export const routing = defineRouting({
       nl: '/contact',
       en: '/contact',
     },
+    '/voorwaarden': {
+      nl: '/voorwaarden',
+      en: '/terms',
+    },
     '/privacy': {
       nl: '/privacy',
       en: '/privacy',

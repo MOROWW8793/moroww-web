@@ -435,6 +435,10 @@
     "back_to_home": "terug naar de woning",
     "line_stay": "verblijf",
     "line_cleaning": "schoonmaak",
-    "line_vat": "btw"
+    "line_vat": "btw",
+    "pay_now_deposit": "nu te betalen (50%)",
+    "balance_on": "saldo, aangerekend op {date}",
+    "pay_now_full": "Je aankomst is binnen 30 dagen: het volledige bedrag wordt nu aangerekend.",
+    "accept_terms": "Ik ga akkoord met de <link>algemene voorwaarden</link>, inclusief het annuleringsbeleid."
   }
 }
