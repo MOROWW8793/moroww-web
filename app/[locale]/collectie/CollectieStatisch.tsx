@@ -37,7 +37,7 @@ export function CollectieStatisch() {
       </div>
 
       {/* ── Woning kaarten. Vaste volgorde via sortForCollectie:
-              shore → fields, binnen collectie op prijs oplopend. ── */}
+              nieuw → shore → fields, binnen collectie op prijs oplopend. ── */}
       <div className="px-6 md:px-16 lg:px-24 pb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {sortForCollectie(liveWoningen()).map((w, i) => {

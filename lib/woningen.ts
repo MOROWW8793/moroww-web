@@ -1142,6 +1142,7 @@ const _woningenRaw: Woning[] = [
         en: 'The residence seen from behind the dune grass.' },
     ],
     boekUrl: 'https://book.moroww.com/properties/6ab65d3568ceea00136f518d',
+    nieuw: true,
   },
   {
     id: 'penthouse-v8b',
@@ -1363,15 +1364,17 @@ export function liveWoningen(): Woning[] {
   return woningen.filter((w) => w.status !== 'wacht_op_beeld')
 }
 
-// Vaste sorteervolgorde voor kaartrasters: eerst the shore, dan the fields,
-// binnen een collectie oplopend op prijs. Panden zonder prijs zakken naar
-// het einde van hun collectie zonder de rest te storen.
+// Vaste sorteervolgorde voor kaartrasters: nieuwe panden altijd bovenaan,
+// daarna the shore, dan the fields, binnen een collectie oplopend op prijs.
+// Panden zonder prijs zakken naar het einde van hun collectie.
 const _collectieRank: Record<Woning['collectie'], number> = {
   'the shore': 0,
   'the fields': 1,
 }
 export function sortForCollectie(items: Woning[]): Woning[] {
   return [...items].sort((a, b) => {
+    const n = Number(!!b.nieuw) - Number(!!a.nieuw)
+    if (n !== 0) return n
     const c = _collectieRank[a.collectie] - _collectieRank[b.collectie]
     if (c !== 0) return c
     return (a.prijs ?? Infinity) - (b.prijs ?? Infinity)

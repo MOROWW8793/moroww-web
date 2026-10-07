@@ -6,7 +6,7 @@ import { PandKaart } from '@/components/PandKaart'
  * Rendert een raster van pandkaarten zonder filter-tabs. Gebruikt op
  * /the-shore, /the-fields en overal waar we een subset panden willen
  * tonen. De filter-versie zit in CollectieStatisch. Sortering
- * (shore → fields → prijs oplopend) gebeurt hier zodat elke caller
+ * (nieuw → shore → fields → prijs oplopend) gebeurt hier zodat elke caller
  * automatisch dezelfde volgorde krijgt.
  */
 export async function WoningKaarten({
