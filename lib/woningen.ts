@@ -1190,7 +1190,7 @@ const _woningenRaw: Woning[] = [
     ],
     inCheckin: '17:00',
     uitCheckin: '10:00',
-    heroFoto: '/images/woningen/penthouse-v8b/penthouse-v8b-01.jpg',
+    heroFoto: '/images/woningen/penthouse-v8b/penthouse-v8b-28.jpg',
     fotos: [
       '/images/woningen/penthouse-v8b/penthouse-v8b-01.jpg',
       '/images/woningen/penthouse-v8b/penthouse-v8b-02.jpg',
