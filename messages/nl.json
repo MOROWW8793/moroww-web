@@ -80,7 +80,8 @@
     "binnenkort_h3_plural": "{countWord} woningen wachten op hun fotoshoot",
     "binnenkort_body_singular": "Eén kustwoning is geauditeerd en opgenomen. Ze verschijnt hier zodra het beeld klopt.",
     "binnenkort_body_plural": "{countWord} kustwoningen zijn geauditeerd en opgenomen. Ze verschijnen hier zodra het beeld klopt.",
-    "binnenkort_link": "lees hoe we keuren →"
+    "binnenkort_link": "lees hoe we keuren →",
+    "new_label": "nieuw"
   },
   "property": {
     "per_night": "/ nacht",
@@ -125,7 +126,8 @@
     "gallery_close": "sluit galerij",
     "gallery_prev": "vorige foto",
     "gallery_next": "volgende foto",
-    "gallery_photo": "bekijk foto {n} van {name}"
+    "gallery_photo": "bekijk foto {n} van {name}",
+    "new_in": "nieuw in {collection}"
   },
   "contact": {
     "meta_title": "Contact",

@@ -80,7 +80,8 @@
     "binnenkort_h3_plural": "{countWord} homes are waiting for their photo shoot",
     "binnenkort_body_singular": "One coastal home has been inspected and included. It will appear here once the imagery is ready.",
     "binnenkort_body_plural": "{countWord} coastal homes have been inspected and included. They will appear here once the imagery is ready.",
-    "binnenkort_link": "read how we inspect →"
+    "binnenkort_link": "read how we inspect →",
+    "new_label": "new"
   },
   "property": {
     "per_night": "/ night",
@@ -125,7 +126,8 @@
     "gallery_close": "close gallery",
     "gallery_prev": "previous photo",
     "gallery_next": "next photo",
-    "gallery_photo": "view photo {n} of {name}"
+    "gallery_photo": "view photo {n} of {name}",
+    "new_in": "new in {collection}"
   },
   "contact": {
     "meta_title": "Contact",

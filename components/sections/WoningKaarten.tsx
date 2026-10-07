@@ -43,6 +43,7 @@ export async function WoningKaarten({
             titel={w.naam}
             plaats={w.locatie}
             auditItems={auditItems}
+            label={w.nieuw ? t('new_label') : undefined}
             // Eerste rij (2 kaarten op desktop, 1 op mobiel — we prioriteren
             // de eerste twee) laadt eager, zonder lazy-fade of vertraging.
             priority={i < 2}

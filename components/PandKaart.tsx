@@ -35,9 +35,11 @@ interface Props {
    *  op true zodat next/image de foto eager laadt en er geen fade-in of
    *  vertraging is bij het eerste zichtbare beeld. */
   priority?: boolean
+  /** Kort label linksboven op het beeld, bv. 'nieuw'. */
+  label?: string
 }
 
-export function PandKaart({ href, beeld, beeldAlt, titel, plaats, auditItems, priority }: Props) {
+export function PandKaart({ href, beeld, beeldAlt, titel, plaats, auditItems, priority, label }: Props) {
   const items = auditItems.filter((it) => typeof it === 'string' && it.trim() !== '')
 
   return (
@@ -55,6 +57,11 @@ export function PandKaart({ href, beeld, beeldAlt, titel, plaats, auditItems, pr
           sizes="(max-width: 768px) 100vw, 50vw"
           priority={priority}
         />
+        {label && (
+          <span className="absolute left-3 top-3 bg-white px-2 py-1 text-audit uppercase text-moroww-dark" style={{ borderRadius: 2 }}>
+            {label}
+          </span>
+        )}
       </div>
       <div className="mt-mw-4">
         <h3 className="text-h3 text-moroww-dark">{titel}</h3>

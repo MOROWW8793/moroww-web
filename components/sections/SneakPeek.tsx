@@ -2,14 +2,14 @@ import Image from 'next/image'
 import { AuditLijn } from '@/components/AuditLijn'
 
 /**
- * WP O — sneak peek van twee panden die nog niet publiek te boeken zijn.
+ * WP O — sneak peek van panden die nog niet publiek te boeken zijn.
  * Vervangt het oude "binnenkort"-tekstblok op /collectie en /the-shore,
  * en verschijnt op home tussen het woningraster en de aankomstsequentie.
  *
  * Bewust géén link naar een pandpagina en géén prijs of oppervlakte —
  * de teasers wachten op fotoshoot + copy en zitten daarom niet in de
- * `woningen`-array (liveWoningen, sitemap en generateStaticParams blijven
- * dus op 7 live). Data staat lokaal in `TEASERS` hieronder.
+ * `woningen`-array (liveWoningen, sitemap en generateStaticParams tonen ze
+ * dus niet). Data staat lokaal in `TEASERS` hieronder.
  *
  * Component is puur presentatie (geen hooks, geen 'use client'), zodat
  * hij zowel in server- (home, /the-shore) als client-componenten
@@ -51,33 +51,6 @@ const TEASERS: Teaser[] = [
       },
     ],
   },
-  {
-    naam: 'Penthouse V8B',
-    plaats: { nl: 'Oostende', en: 'Ostend' },
-    fotos: [
-      {
-        src: '/images/woningen/penthouse-v8b/penthouse-v8b-01-terras.jpg',
-        alt: {
-          nl: 'Houten terras op hoogte met een lange eettafel voor acht, zicht over de zee en het strand van Oostende.',
-          en: 'Wooden terrace high up with a long dining table for eight, looking out over the sea and the Ostend beach.',
-        },
-      },
-      {
-        src: '/images/woningen/penthouse-v8b/penthouse-v8b-02-leefruimte.jpg',
-        alt: {
-          nl: 'Curved zetel en zwart lage bijzettafel voor floor-to-ceiling schuiframen; terras met witte draadstoelen erachter.',
-          en: 'Curved sofa and low black side table in front of floor-to-ceiling sliding windows; terrace with white wire chairs behind.',
-        },
-      },
-      {
-        src: '/images/woningen/penthouse-v8b/penthouse-v8b-03-badkamer.jpg',
-        alt: {
-          nl: 'Twee witte wastafelkommen op een houten meubel tegen een groen-bruine marmeren wand, ronde spiegel erboven.',
-          en: 'Two white basin bowls on a wooden vanity against a green-brown marble wall, round mirror above.',
-        },
-      },
-    ],
-  },
 ]
 
 export function SneakPeek({ locale }: { locale: string }) {
@@ -89,7 +62,7 @@ export function SneakPeek({ locale }: { locale: string }) {
       <div className="max-w-6xl mx-auto">
         <AuditLijn density="quiet" items={[isNl ? 'binnenkort' : 'coming soon']} />
         <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[52ch]">
-          {isNl ? 'twee nieuwe woningen aan de kust.' : 'two new homes on the coast.'}
+          {isNl ? 'een nieuwe woning aan de kust.' : 'a new home on the coast.'}
         </h2>
         <div className="mt-mw-8 flex flex-col gap-mw-8">
           {TEASERS.map((teaser) => (

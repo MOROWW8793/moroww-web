@@ -57,6 +57,7 @@ export function CollectieStatisch() {
                 titel={w.naam}
                 plaats={w.locatie}
                 auditItems={auditItems}
+                label={w.nieuw ? t('new_label') : undefined}
                 // Eerste rij eager laden — geen fade-in above the fold.
                 priority={i < 2}
               />

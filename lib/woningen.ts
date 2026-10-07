@@ -77,6 +77,9 @@ export interface Woning {
    *  die vertelt dat er wél een geluidsniveau-meting is, en dat er geen
    *  geluid wordt opgenomen. Absent = geen regel. */
   geluidssensor?: boolean
+  /** Pas opgenomen in de collectie. Toont een label op de kaart en in de
+   *  hero van de pandpagina; weghalen zodra het pand niet meer nieuw is. */
+  nieuw?: boolean
 }
 
 const _woningenRaw: Woning[] = [
@@ -1287,6 +1290,7 @@ const _woningenRaw: Woning[] = [
     boekUrl: 'https://book.moroww.com/nl/properties/6abd205fc20c4200490cb1b9?minOccupancy=1',
     vergunningsnummer: '412717',
     amenities: ['Smart lock', 'Wifi', 'Eigen parking'],
+    nieuw: true,
   },
   {
     id: 'house-1783-11',

@@ -334,7 +334,7 @@ export default async function WoningDetailPage({ params }: Props) {
           <div className="pointer-events-none absolute inset-x-0 bottom-0 mx-auto max-w-7xl px-6 md:px-12 pb-mw-6 md:pb-mw-8 flex flex-col gap-mw-4 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-audit uppercase text-white/80">
-                {woning.collectie} · {woning.locatie}
+                {woning.nieuw ? t('new_in', { collection: woning.collectie }) : woning.collectie} · {woning.locatie}
               </p>
               <h1
                 className="mt-mw-2 font-bold text-white leading-[1.02] tracking-[-0.02em]"
