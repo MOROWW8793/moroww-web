@@ -96,6 +96,16 @@ const woningMeta: Record<
       en: 'Farmhouse in Wingene by De Gulke Putten. 220 sqm, 4 bedrooms, up to 8 guests, fenced garden, pets welcome. Certified. From €330/night.',
     },
   },
+  'penthouse-v8b': {
+    title: {
+      nl: 'Penthouse V8B — vakantiewoning Oostende met zeezicht',
+      en: 'Penthouse V8B — Ostend holiday home with sea view',
+    },
+    description: {
+      nl: 'Penthouse V8B — 8e verdieping in Oostende, terras recht op zee. 2 slaapkamers, max 7, zwembad, parking. Gecertificeerd. Vanaf €300/nacht.',
+      en: 'Penthouse V8B — 8th-floor holiday home in Ostend, terrace onto the sea. 2 bedrooms, up to 7 guests, pool, parking. Certified. From €300/night.',
+    },
+  },
   'zeedijk-nieuwpoort': {
     title: {
       nl: 'The Eighth — vakantiewoning Nieuwpoort met zeezicht',
