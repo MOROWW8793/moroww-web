@@ -1338,10 +1338,10 @@ const _woningenRaw: Woning[] = [
     ],
     inCheckin: '15:00',
     uitCheckin: '10:00',
-    heroFoto: '/images/woningen/knokke-1783-11/house-1783-11-01.jpg',
+    heroFoto: '/images/woningen/knokke-1783-11/house-1783-11-02.jpg',
     fotos: [
-      '/images/woningen/knokke-1783-11/house-1783-11-01.jpg',
       '/images/woningen/knokke-1783-11/house-1783-11-02.jpg',
+      '/images/woningen/knokke-1783-11/house-1783-11-01.jpg',
       '/images/woningen/knokke-1783-11/house-1783-11-03.jpg',
       '/images/woningen/knokke-1783-11/house-1783-11-04.jpg',
       '/images/woningen/knokke-1783-11/house-1783-11-05.jpg',
@@ -1372,8 +1372,8 @@ const _woningenRaw: Woning[] = [
       '/images/woningen/knokke-1783-11/house-1783-11-30.jpg',
     ],
     fotoAlts: [
-      { nl: 'Iemand leest een tijdschrift op de zetel, lamp op het bijzettafeltje.', en: 'Someone reading a magazine on the sofa, lamp on the side table.' },
       { nl: 'Leefruimte met diepe zetel, ronde salontafel en lichte gordijnen.', en: 'Living room with deep sofa, round coffee table and sheer curtains.' },
+      { nl: 'Iemand leest een tijdschrift op de zetel, lamp op het bijzettafeltje.', en: 'Someone reading a magazine on the sofa, lamp on the side table.' },
       { nl: 'Eettafel voor zes met ontbijt, zetel ervoor.', en: 'Dining table for six with breakfast, sofa in front.' },
       { nl: 'Voorterras met glazen balustrade, zicht op de bakstenen kapel.', en: 'Front terrace with glass balustrade, view of the brick chapel.' },
       { nl: 'Keuken in hout met inductiekookplaat en lijnverlichting.', en: 'Wooden kitchen with induction hob and strip lighting.' },
