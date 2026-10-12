@@ -96,6 +96,16 @@ const woningMeta: Record<
       en: 'Farmhouse in Wingene by De Gulke Putten. 220 sqm, 4 bedrooms, up to 8 guests, fenced garden, pets welcome. Certified. From €330/night.',
     },
   },
+  'house-1783-11': {
+    title: {
+      nl: 'House 1783-11 — vakantiewoning Knokke-Heist aan zee',
+      en: 'House 1783-11 — holiday home in Knokke-Heist by the sea',
+    },
+    description: {
+      nl: 'House 1783-11 — appartement in Heist-aan-Zee, twee minuten van het strand. 3 slaapkamers, 2 badkamers, twee terrassen, max 6. Gecertificeerd.',
+      en: 'House 1783-11 — apartment in Heist-aan-Zee, two minutes from the beach. 3 bedrooms, 2 bathrooms, two terraces, up to 6 guests. Certified.',
+    },
+  },
   'penthouse-v8b': {
     title: {
       nl: 'Penthouse V8B — vakantiewoning Oostende met zeezicht',

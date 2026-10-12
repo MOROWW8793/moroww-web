@@ -23,37 +23,10 @@ type Teaser = {
   fotos: [TeaserFoto, TeaserFoto, TeaserFoto]
 }
 
-const TEASERS: Teaser[] = [
-  {
-    naam: 'House 1783-11',
-    plaats: { nl: 'Knokke', en: 'Knokke' },
-    fotos: [
-      {
-        src: '/images/woningen/knokke-1783-11/house-1783-11-01-eettafel.jpg',
-        alt: {
-          nl: 'Ovale eettafel met vier donkere houten stoelen; ontbijt met croissants, sinaasappelsap en druiven, ingebouwde bank tegen de wand.',
-          en: 'Oval dining table with four dark wooden chairs; breakfast with croissants, orange juice and grapes, built-in bench against the wall.',
-        },
-      },
-      {
-        src: '/images/woningen/knokke-1783-11/house-1783-11-02-boeket.jpg',
-        alt: {
-          nl: 'Lage witte salontafel met een amberkleurige vaas en herfstboeket; achter een tv-meubel met reisgidsen, iemand loopt voorbij.',
-          en: 'Low white coffee table with an amber vase and autumn bouquet; behind it a TV cabinet with travel books, a person walks past.',
-        },
-      },
-      {
-        src: '/images/woningen/knokke-1783-11/house-1783-11-03-doorkijk.jpg',
-        alt: {
-          nl: 'Doorkijk vanuit een gang naar een curved crème zetel met gebreide plaid, floor-to-ceiling vitrages en houten vloer.',
-          en: 'View through a hallway onto a curved cream sofa with a knitted throw, floor-to-ceiling sheer curtains and a wooden floor.',
-        },
-      },
-    ],
-  },
-]
+const TEASERS: Teaser[] = []
 
 export function SneakPeek({ locale }: { locale: string }) {
+  if (TEASERS.length === 0) return null
   const isNl = locale !== 'en'
   const pick = (v: { nl: string; en: string }) => (isNl ? v.nl : v.en)
 
