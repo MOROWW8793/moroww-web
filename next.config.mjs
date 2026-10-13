@@ -48,6 +48,9 @@ const nextConfig = {
       { source: "/collectie/ann-helena-ursel", destination: "/collectie/anna-helena-ursel", permanent: true },
       { source: "/en/collection/ann-helena-ursel", destination: "/en/collection/anna-helena-ursel", permanent: true },
       { source: "/welcome/ann-helena-ursel", destination: "/welcome/anna-helena-ursel", permanent: true },
+      // Samenwerking Lammersdamhoeve stopgezet (okt 2026): oude pand-URL's naar the fields.
+      { source: "/collectie/lammersdamhoeve", destination: "/the-fields", permanent: true },
+      { source: "/en/collection/lammersdamhoeve", destination: "/en/the-fields", permanent: true },
     ]
   },
   // /welkom/<token> is een verblijfsgebonden gastpagina die op host.moroww.com

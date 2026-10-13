@@ -86,16 +86,6 @@ const woningMeta: Record<
       en: 'Family home in Elst, Flemish Ardennes, run by three sisters. 9 en-suite bedrooms, pool, sauna, up to 18 guests. Certified. From €800/night.',
     },
   },
-  'lammersdamhoeve': {
-    title: {
-      nl: 'De Lammersdamhoeve — vakantiewoning Wingene, Brugse Ommeland',
-      en: 'De Lammersdamhoeve — Wingene farmhouse, Bruges Ommeland',
-    },
-    description: {
-      nl: 'Hoeve in Wingene aan De Gulke Putten. 220 m², 4 slaapkamers, max 8, omheinde tuin, huisdieren welkom. Gecertificeerd. Vanaf €330/nacht.',
-      en: 'Farmhouse in Wingene by De Gulke Putten. 220 sqm, 4 bedrooms, up to 8 guests, fenced garden, pets welcome. Certified. From €330/night.',
-    },
-  },
   'house-1783-11': {
     title: {
       nl: 'House 1783-11 — vakantiewoning Knokke-Heist aan zee',
