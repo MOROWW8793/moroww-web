@@ -42,8 +42,8 @@ const woningMeta: Record<
       en: 'Nosso Logies — holiday home in Knokke-Heist',
     },
     description: {
-      nl: 'Appartement van 110 m² in Heist-aan-Zee, op twee minuten van het strand. 2 slaapkamers, max 6. Gecertificeerd door moroww. Vanaf €370/nacht.',
-      en: 'Apartment of 110 sqm in Heist-aan-Zee, two minutes from the beach. 2 bedrooms, up to 6 guests. Certified by moroww. From €370/night.',
+      nl: 'Appartement van 110 m² in Heist-aan-Zee, op twee minuten van het strand. 2 slaapkamers, max 6. Gecertificeerd door moroww. Vanaf €230/nacht.',
+      en: 'Apartment of 110 sqm in Heist-aan-Zee, two minutes from the beach. 2 bedrooms, up to 6 guests. Certified by moroww. From €230/night.',
     },
   },
   'moroww-oostende': {
