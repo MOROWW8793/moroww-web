@@ -53,9 +53,6 @@ const nextConfig = {
       { source: "/en/collection/lammersdamhoeve", destination: "/en/the-fields", permanent: true },
     ]
   },
-  // /welkom/<token> is een verblijfsgebonden gastpagina die op host.moroww.com
-  // (moroww-os) leeft. We proxyen zodat de gast moroww.com in de adresbalk ziet
-  // en de token binnen dit domein blijft — geen redirect.
   // Basisbeveiliging voor elke pagina. Geen volledige CSP: Stripe, Vercel
   // en next/image laden van meerdere hosts en een te strikte lijst breekt
   // de afrekenpagina. frame-ancestors volstaat tegen clickjacking.
@@ -73,6 +70,9 @@ const nextConfig = {
       },
     ]
   },
+  // /welkom/<token> is een verblijfsgebonden gastpagina die op host.moroww.com
+  // (moroww-os) leeft. We proxyen zodat de gast moroww.com in de adresbalk ziet
+  // en de token binnen dit domein blijft — geen redirect.
   async rewrites() {
     return [
       {
