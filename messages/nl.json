@@ -471,6 +471,12 @@
     "next_3": "Uiterlijk 24 uur voor aankomst krijg je je toegangscode en alles wat je moet weten.",
     "next_4": "Inchecken kan vanaf {time}. Het huis is dan klaar voor je.",
     "calendar_fallback": "De live kalender laadt even niet. Je kan deze woning wel boeken via onze boekingspagina.",
-    "calendar_fallback_cta": "boek via de boekingspagina"
+    "calendar_fallback_cta": "boek via de boekingspagina",
+    "discount_toggle": "Kortingscode?",
+    "discount_label": "Kortingscode",
+    "discount_apply": "Toepassen",
+    "discount_applied": "Kortingscode {code} toegepast",
+    "discount_remove": "Verwijderen",
+    "discount_invalid": "Deze code is niet geldig voor dit verblijf."
   }
 }

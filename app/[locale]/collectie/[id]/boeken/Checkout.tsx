@@ -66,23 +66,62 @@ export function Checkout({ woning, aankomst, vertrek, gasten }: Props) {
   const [fout, setFout] = useState<string | null>(null)
   const [bezig, setBezig] = useState(false)
   const [kaartKlaar, setKaartKlaar] = useState(false)
+  const [codeOpen, setCodeOpen] = useState(false)
+  const [code, setCode] = useState('')
+  const [codeBezig, setCodeBezig] = useState(false)
+  const [codeFout, setCodeFout] = useState(false)
   const kaartRef = useRef<HTMLDivElement>(null)
   const stripe = useRef<Stripe | null>(null)
   const kaart = useRef<StripeCardElement | null>(null)
 
-  useEffect(() => {
+  const vraagOfferte = (kortingscode?: string) =>
     fetch('/api/boeking/offerte', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ woningId: woning.id, aankomst, vertrek, gasten }),
-    })
-      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
-      .then(setOfferte)
-      .catch(() => setFout(t('quote_error')))
-  }, [woning.id, aankomst, vertrek, gasten, t])
+      body: JSON.stringify({ woningId: woning.id, aankomst, vertrek, gasten, kortingscode }),
+    }).then((r) => (r.ok ? (r.json() as Promise<Offerte>) : Promise.reject(r.status)))
 
   useEffect(() => {
-    if (!offerte || !kaartRef.current) return
+    vraagOfferte()
+      .then(setOfferte)
+      .catch(() => setFout(t('quote_error')))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [woning.id, aankomst, vertrek, gasten, t])
+
+  // Een nieuwe offerte (met of zonder code) vervangt de vorige; de
+  // reservatie gebruikt altijd de laatst opgehaalde quoteId.
+  async function pasCodeToe(e: React.FormEvent) {
+    e.preventDefault()
+    if (!code.trim()) return
+    setCodeBezig(true)
+    setCodeFout(false)
+    try {
+      setOfferte(await vraagOfferte(code))
+    } catch {
+      setCodeFout(true)
+    } finally {
+      setCodeBezig(false)
+    }
+  }
+
+  async function verwijderCode() {
+    setCodeBezig(true)
+    try {
+      setOfferte(await vraagOfferte())
+      setCode('')
+    } catch {
+      setFout(t('quote_error'))
+    } finally {
+      setCodeBezig(false)
+    }
+  }
+
+  // Het kaartveld hangt enkel af van óf er een offerte is, niet van welke:
+  // een kortingscode toepassen mag de ingevulde kaart niet wissen.
+  const heeftOfferte = offerte !== null
+
+  useEffect(() => {
+    if (!heeftOfferte || !kaartRef.current) return
     let actief = true
     stripePromise
       .then((s) => {
@@ -111,7 +150,7 @@ export function Checkout({ woning, aankomst, vertrek, gasten }: Props) {
       kaart.current?.destroy()
       kaart.current = null
     }
-  }, [offerte, locale, t])
+  }, [heeftOfferte, locale, t])
 
   async function bevestig(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -217,6 +256,55 @@ export function Checkout({ woning, aankomst, vertrek, gasten }: Props) {
               </tbody>
             </table>
             <p className="mt-1 text-sm text-moroww-ink-2">{t('no_service_fees')}</p>
+
+            {offerte.korting ? (
+              <p className="mt-mw-3 flex items-center justify-between text-sm text-moroww-dark">
+                <span>{t('discount_applied', { code: offerte.korting })}</span>
+                <button
+                  type="button"
+                  onClick={verwijderCode}
+                  disabled={codeBezig}
+                  className="text-moroww-ink-2 underline underline-offset-2 hover:text-moroww-dark disabled:opacity-50"
+                >
+                  {t('discount_remove')}
+                </button>
+              </p>
+            ) : codeOpen ? (
+              <form onSubmit={pasCodeToe} className="mt-mw-3">
+                <label htmlFor="kortingscode" className="text-sm text-moroww-ink-2">
+                  {t('discount_label')}
+                </label>
+                <div className="mt-1 flex gap-2">
+                  <input
+                    id="kortingscode"
+                    value={code}
+                    onChange={(e) => {
+                      setCode(e.target.value)
+                      setCodeFout(false)
+                    }}
+                    autoComplete="off"
+                    autoCapitalize="characters"
+                    className="min-w-0 flex-1 border border-moroww-rule bg-white px-3 py-2 text-body uppercase text-moroww-dark focus:outline-none focus:border-moroww-dark"
+                  />
+                  <button
+                    type="submit"
+                    disabled={codeBezig || !code.trim()}
+                    className="shrink-0 border border-moroww-dark px-4 py-2 text-sm font-semibold text-moroww-dark hover:bg-moroww-dark hover:text-white transition-colors disabled:opacity-50"
+                  >
+                    {t('discount_apply')}
+                  </button>
+                </div>
+                {codeFout && <p className="mt-1 text-sm text-moroww-dark">{t('discount_invalid')}</p>}
+              </form>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setCodeOpen(true)}
+                className="mt-mw-3 text-sm text-moroww-ink-2 underline underline-offset-2 hover:text-moroww-dark"
+              >
+                {t('discount_toggle')}
+              </button>
+            )}
 
             <div className="mt-mw-4 bg-moroww-blush/60 p-mw-3 text-sm text-moroww-dark" style={{ borderRadius: 4 }}>
               {schema.saldoDatum ? (

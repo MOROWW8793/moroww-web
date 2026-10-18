@@ -18,6 +18,8 @@ export interface Offerte {
   valuta: string;
   totaal: number;
   regels: { code: string; titel: string; bedrag: number }[];
+  /** Code van de toegepaste kortingscode, of null zonder korting. */
+  korting: string | null;
 }
 
 const ISO_DATUM = /^\d{4}-\d{2}-\d{2}$/;
@@ -62,5 +64,6 @@ export function offerteVan(quote: GuestyQuote): Offerte {
     valuta: plan.money.currency,
     totaal: regels.reduce((s, r) => s + r.bedrag, 0),
     regels,
+    korting: quote.coupons?.[0]?.code ?? null,
   };
 }

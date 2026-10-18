@@ -471,6 +471,12 @@
     "next_3": "No later than 24 hours before arrival you receive your access code and everything you need to know.",
     "next_4": "Check-in is from {time}. The home will be ready for you.",
     "calendar_fallback": "The live calendar is not loading right now. You can still book this home on our booking page.",
-    "calendar_fallback_cta": "book on the booking page"
+    "calendar_fallback_cta": "book on the booking page",
+    "discount_toggle": "Discount code?",
+    "discount_label": "Discount code",
+    "discount_apply": "Apply",
+    "discount_applied": "Discount code {code} applied",
+    "discount_remove": "Remove",
+    "discount_invalid": "This code is not valid for this stay."
   }
 }

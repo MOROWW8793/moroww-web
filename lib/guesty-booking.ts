@@ -137,6 +137,7 @@ export interface GuestyQuote {
   _id: string;
   expiresAt: string;
   rates: { ratePlans: GuestyRatePlan[] };
+  coupons?: { name: string; type: string; code: string; adjustment: number }[];
 }
 
 export interface GuestyGuest {
@@ -164,6 +165,7 @@ export function createQuote(input: {
   checkIn: string;
   checkOut: string;
   guestsCount: number;
+  coupon?: string;
 }) {
   return be<GuestyQuote>("/reservations/quotes", {
     method: "POST",
@@ -172,6 +174,8 @@ export function createQuote(input: {
       checkInDateLocalized: input.checkIn,
       checkOutDateLocalized: input.checkOut,
       guestsCount: input.guestsCount,
+      // Enkel coupons uit Guesty Revenue Management werken in deze flow.
+      ...(input.coupon ? { coupons: input.coupon } : {}),
     }),
   });
 }
