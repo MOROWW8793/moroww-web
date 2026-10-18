@@ -29,7 +29,14 @@ export async function POST(req: NextRequest) {
     const offerte = offerteVan(quote);
     // Guesty kan een onbekende code stil negeren; dan is er geen korting.
     if (code && offerte.korting === null) {
-      return NextResponse.json({ error: "ongeldige kortingscode" }, { status: 422 });
+      console.warn("[boeking/offerte] kortingscode niet toegepast", code, JSON.stringify({
+        coupons: quote.coupons,
+        regels: offerte.regels.map((r) => r.code),
+      }));
+      return NextResponse.json(
+        { error: "ongeldige kortingscode", reden: "niet_toegepast" },
+        { status: 422 },
+      );
     }
     return NextResponse.json(offerte);
   } catch (err) {
@@ -44,7 +51,13 @@ export async function POST(req: NextRequest) {
     // code ligt dus aan de code.
     if (code && err instanceof GuestyBookingError && err.status < 500) {
       console.error("[boeking/offerte] kortingscode", err.message);
-      return NextResponse.json({ error: "ongeldige kortingscode" }, { status: 422 });
+      // Guesty's foutcode mee teruggeven: zonder serverlogs is dat de enige
+      // manier om een misconfigureerde coupon van een typfout te onderscheiden.
+      const guestyCode = (err.body as { error?: { code?: string } } | null)?.error?.code;
+      return NextResponse.json(
+        { error: "ongeldige kortingscode", reden: guestyCode ?? "geweigerd" },
+        { status: 422 },
+      );
     }
     if (err instanceof GuestyBookingError && err.status < 500) {
       console.error("[boeking/offerte]", err.message);
