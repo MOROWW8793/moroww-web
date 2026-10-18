@@ -56,6 +56,23 @@ const nextConfig = {
   // /welkom/<token> is een verblijfsgebonden gastpagina die op host.moroww.com
   // (moroww-os) leeft. We proxyen zodat de gast moroww.com in de adresbalk ziet
   // en de token binnen dit domein blijft — geen redirect.
+  // Basisbeveiliging voor elke pagina. Geen volledige CSP: Stripe, Vercel
+  // en next/image laden van meerdere hosts en een te strikte lijst breekt
+  // de afrekenpagina. frame-ancestors volstaat tegen clickjacking.
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "Content-Security-Policy", value: "frame-ancestors 'self'" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+        ],
+      },
+    ]
+  },
   async rewrites() {
     return [
       {
