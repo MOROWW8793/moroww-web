@@ -478,6 +478,6 @@
     "discount_applied": "Discount code {code} applied",
     "discount_remove": "Remove",
     "discount_invalid": "This code is not valid for this stay.",
-    "line_discount": "Discount"
+    "line_discount": "discount"
   }
 }

@@ -478,6 +478,6 @@
     "discount_applied": "Kortingscode {code} toegepast",
     "discount_remove": "Verwijderen",
     "discount_invalid": "Deze code is niet geldig voor dit verblijf.",
-    "line_discount": "Korting"
+    "line_discount": "korting"
   }
 }
