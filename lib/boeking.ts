@@ -51,7 +51,7 @@ export function boekbareWoning(
   return listingId ? { ...w, listingId, maxGasten: w.maxGasten } : null;
 }
 
-export function offerteVan(quote: GuestyQuote): Offerte {
+export function offerteVan(quote: GuestyQuote, korting: string | null = null): Offerte {
   const plan = quote.rates.ratePlans[0].ratePlan;
   const regels = plan.money.invoiceItems.map((i) => ({
     code: i.normalType,
@@ -64,6 +64,6 @@ export function offerteVan(quote: GuestyQuote): Offerte {
     valuta: plan.money.currency,
     totaal: regels.reduce((s, r) => s + r.bedrag, 0),
     regels,
-    korting: quote.coupons?.[0]?.code ?? null,
+    korting,
   };
 }

@@ -19,26 +19,34 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const quote = await createQuote({
+    const aanvraag = {
       listingId: woning.listingId,
       checkIn: aankomst,
       checkOut: vertrek,
       guestsCount: gasten,
-      coupon: code || undefined,
-    });
-    const offerte = offerteVan(quote);
-    // Guesty kan een onbekende code stil negeren; dan is er geen korting.
-    if (code && offerte.korting === null) {
+    };
+    if (!code) return NextResponse.json(offerteVan(await createQuote(aanvraag)));
+
+    // Guesty negeert een code die niet geldt stil, en meldt een toegepaste
+    // code niet altijd in `coupons`. Wat telt is of het totaal zakt, dus
+    // vergelijken we met dezelfde offerte zonder code.
+    const [basis, metCode] = await Promise.all([
+      createQuote(aanvraag),
+      createQuote({ ...aanvraag, coupon: code }),
+    ]);
+    const zonder = offerteVan(basis);
+    const met = offerteVan(metCode, code);
+    if (met.totaal >= zonder.totaal) {
       console.warn("[boeking/offerte] kortingscode niet toegepast", code, JSON.stringify({
-        coupons: quote.coupons,
-        regels: offerte.regels.map((r) => r.code),
+        coupons: metCode.coupons,
+        totaal: [zonder.totaal, met.totaal],
       }));
       return NextResponse.json(
         { error: "ongeldige kortingscode", reden: "niet_toegepast" },
         { status: 422 },
       );
     }
-    return NextResponse.json(offerte);
+    return NextResponse.json(met);
   } catch (err) {
     // Guesty weigert een offerte bij niet-beschikbare data of min-nachten;
     // die fout gaat als 409 terug zodat de UI andere data kan vragen.
