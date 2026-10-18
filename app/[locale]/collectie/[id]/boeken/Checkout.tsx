@@ -23,10 +23,10 @@ const REGEL_SLEUTELS: Record<string, string> = {
 }
 
 // Termijnen uit de voorwaarden: saldo 30 dagen vóór aankomst (art. 4.2),
-// kosteloos annuleren tot 14 dagen vóór aankomst (art. 5.2, "Firm" in
-// Guesty). Guesty int en annuleert; dit toont enkel wat de gast verwacht.
+// kosteloos annuleren tot 30 dagen vóór aankomst (art. 5.2, "Semi-strict"
+// met 50% annuleringskost in Guesty). Guesty int en annuleert; dit toont enkel wat de gast verwacht.
 const SALDO_DAGEN_VOOR_AANKOMST = 30
-const ANNULEREN_DAGEN_VOOR_AANKOMST = 14
+const ANNULEREN_DAGEN_VOOR_AANKOMST = 30
 
 function dagenVoor(datum: string, dagen: number) {
   const d = new Date(`${datum}T00:00:00Z`)

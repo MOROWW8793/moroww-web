@@ -131,8 +131,8 @@ export function BoekWidget({
     setVertrek(null)
   }
 
-  // Kosteloos annuleren tot 14 dagen vóór aankomst (voorwaarden art. 5.2).
-  const annulerenTot = aankomst ? plusDagen(aankomst, -14) : ''
+  // Kosteloos annuleren tot 30 dagen vóór aankomst (voorwaarden art. 5.2).
+  const annulerenTot = aankomst ? plusDagen(aankomst, -30) : ''
   const kort = (d: string) =>
     new Intl.DateTimeFormat(locale === 'nl' ? 'nl-BE' : 'en-GB', {
       day: 'numeric',

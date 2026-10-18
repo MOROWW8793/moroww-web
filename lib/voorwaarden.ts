@@ -1,8 +1,8 @@
-// Algemene voorwaarden voor gasten, v1.3. Bron: het document "Algemene
-// Voorwaarden voor gasten — v1.3". Wijzigingen eerst daar, dan hier — en de
+// Algemene voorwaarden voor gasten, v1.4. Bron: het document "Algemene
+// Voorwaarden voor gasten — v1.3", met artikel 5.2 aangepast in v1.4. Wijzigingen eerst daar, dan hier — en de
 // versie ophogen, want gasten aanvaarden een specifieke versie bij boeking.
 
-export const VOORWAARDEN_VERSIE = '1.3'
+export const VOORWAARDEN_VERSIE = '1.4'
 
 export interface Artikel {
   titel: string
@@ -25,7 +25,7 @@ const nl: Voorwaarden = {
   titel: 'Algemene voorwaarden voor gasten',
   intro: [
     'Van toepassing op elk verblijf in een moroww-woning dat geboekt wordt via www.moroww.com of via een ander boekingskanaal waarop moroww de woning aanbiedt.',
-    'Versie 1.3 — oktober 2026. Vervangt versie 1.2.',
+    'Versie 1.4 — oktober 2026. Vervangt versie 1.3.',
   ],
   delen: [
     {
@@ -97,8 +97,9 @@ const nl: Voorwaarden = {
             '5.1 Voor een boeking via een ander boekingskanaal geldt het annuleringsbeleid van dat kanaal.',
             '5.2 Voor een directe boeking geldt:',
             [
-              'Annulering tot 14 dagen vóór aankomst: volledige terugbetaling van alle betaalde bedragen.',
-              'Annulering binnen 14 dagen vóór aankomst of no-show: geen terugbetaling.',
+              'Annulering tot 30 dagen vóór aankomst: volledige terugbetaling van alle betaalde bedragen.',
+              'Annulering binnen 30 dagen vóór aankomst: 50% van de totale verblijfsprijs blijft verschuldigd, het overige wordt terugbetaald.',
+              'No-show: geen terugbetaling.',
             ],
             '5.3 Annuleren gebeurt schriftelijk via info@moroww.com. De datum van ontvangst is bepalend. Terugbetalingen gebeuren op de gebruikte betaalkaart.',
             '5.4 moroww is niet verantwoordelijk voor externe omstandigheden die een verblijf verhinderen, tenzij moroww zelf de oorzaak is.',
@@ -218,7 +219,7 @@ const en: Voorwaarden = {
   titel: 'General terms and conditions for guests',
   intro: [
     'Applies to every stay in a moroww home booked via www.moroww.com or via another booking channel on which moroww offers the home.',
-    'Version 1.3 — October 2026. Replaces version 1.2. In case of any discrepancy, the Dutch version prevails.',
+    'Version 1.4 — October 2026. Replaces version 1.3. In case of any discrepancy, the Dutch version prevails.',
   ],
   delen: [
     {
@@ -290,8 +291,9 @@ const en: Voorwaarden = {
             "5.1 For a booking via another booking channel, that channel's cancellation policy applies.",
             '5.2 For a direct booking:',
             [
-              'Cancellation up to 14 days before arrival: full refund of all amounts paid.',
-              'Cancellation within 14 days of arrival, or no-show: no refund.',
+              'Cancellation up to 30 days before arrival: full refund of all amounts paid.',
+              'Cancellation within 30 days of arrival: 50% of the total price of the stay remains due, the rest is refunded.',
+              'No-show: no refund.',
             ],
             '5.3 Cancellations are made in writing to info@moroww.com. The date of receipt is decisive. Refunds are made to the card used.',
             '5.4 moroww is not responsible for external circumstances that prevent a stay, unless moroww itself is the cause.',
