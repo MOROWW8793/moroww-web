@@ -62,7 +62,7 @@ export function offerteVan(quote: GuestyQuote, korting: string | null = null): O
     quoteId: quote._id,
     ratePlanId: plan._id,
     valuta: plan.money.currency,
-    totaal: regels.reduce((s, r) => s + r.bedrag, 0),
+    totaal: Math.round(regels.reduce((s, r) => s + r.bedrag, 0) * 100) / 100,
     regels,
     korting,
   };

@@ -477,6 +477,7 @@
     "discount_apply": "Toepassen",
     "discount_applied": "Kortingscode {code} toegepast",
     "discount_remove": "Verwijderen",
-    "discount_invalid": "Deze code is niet geldig voor dit verblijf."
+    "discount_invalid": "Deze code is niet geldig voor dit verblijf.",
+    "line_discount": "Korting"
   }
 }

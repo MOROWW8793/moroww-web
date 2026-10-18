@@ -20,6 +20,7 @@ const REGEL_SLEUTELS: Record<string, string> = {
   AF: 'line_stay',
   CF: 'line_cleaning',
   VAT: 'line_vat',
+  CO: 'line_discount',
 }
 
 // Termijnen uit de voorwaarden: saldo 30 dagen vóór aankomst (art. 4.2),
