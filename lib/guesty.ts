@@ -3,10 +3,13 @@ import { createClient } from "@supabase/supabase-js";
 
 const BASE_URL = "https://open-api.guesty.com/v1";
 
+// guesty_token_cache is service role only: met de anon-key faalt lezen én
+// schrijven stil, en vraagt elke aanroep een nieuw token aan tot Guesty 429 geeft.
 function getSupabase() {
   return createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    { auth: { persistSession: false } }
   );
 }
 
