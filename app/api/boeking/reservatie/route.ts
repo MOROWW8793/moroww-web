@@ -1,16 +1,19 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse, after } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { createInstantReservation, getQuote, GuestyBookingError } from "@/lib/guesty-booking";
-import { PARTNER_COOKIE, leesPartnerCookie, type PartnerSlug } from "@/lib/partner";
+import { setReservationCustomField } from "@/lib/guesty";
+import { PARTNERS, PARTNER_COOKIE, leesPartnerCookie, type PartnerSlug } from "@/lib/partner";
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Logt in plaats van te gooien: op dit punt heeft de gast al betaald, een
-// mislukte registratie mag de boeking niet als mislukt tonen.
+// Loopt na het antwoord aan de gast (after) en logt in plaats van te gooien:
+// de gast heeft al betaald, een mislukte registratie mag de boeking niet
+// vertragen of als mislukt tonen.
 async function registreerPartner(
-  confirmationCode: string,
+  reservatie: { _id: string; confirmationCode: string },
   p: { partner: PartnerSlug; aangekomenOp: Date },
 ) {
+  const { confirmationCode } = reservatie;
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
@@ -22,6 +25,16 @@ async function registreerPartner(
     aangekomen_op: p.aangekomenOp.toISOString(),
   });
   if (error) console.error("[boeking/partner]", confirmationCode, error.message);
+
+  try {
+    await setReservationCustomField(
+      reservatie._id,
+      process.env.GUESTY_PARTNER_FIELD_ID!,
+      PARTNERS[p.partner],
+    );
+  } catch (err) {
+    console.error("[boeking/partner] Guesty-veld niet gezet", confirmationCode, err);
+  }
 }
 
 function tekst(s: unknown, max = 100): s is string {
@@ -61,7 +74,7 @@ export async function POST(req: NextRequest) {
       },
     });
     const partner = leesPartnerCookie(req.cookies.get(PARTNER_COOKIE)?.value);
-    if (partner) await registreerPartner(reservatie.confirmationCode, partner);
+    if (partner) after(() => registreerPartner(reservatie, partner));
     return NextResponse.json({ code: reservatie.confirmationCode });
   } catch (err) {
     // 429 is Guesty die ons afremt, niet een probleem met de aanvraag.

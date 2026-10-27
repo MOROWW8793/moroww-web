@@ -70,6 +70,27 @@ export async function getGuestyToken(): Promise<string> {
   return token;
 }
 
+export async function setReservationCustomField(
+  reservationId: string,
+  fieldId: string,
+  value: string,
+): Promise<void> {
+  const token = await getGuestyToken();
+  const response = await fetch(`${BASE_URL}/reservations-v3/${reservationId}/custom-fields`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({ customFields: [{ fieldId, value }] }),
+    cache: "no-store",
+  });
+  if (!response.ok) {
+    throw new Error(`Custom field ${response.status}: ${await response.text()}`);
+  }
+}
+
 // ── Mock data voor development ─────────────────────────────────────────────
 function getMockListings(): GuestyListing[] {
   return [
