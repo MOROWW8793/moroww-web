@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { track } from '@vercel/analytics'
 import { Link } from '@/i18n/navigation'
 import {
   PARTNERS,
@@ -15,7 +14,7 @@ import {
 
 // De cookie wordt pas gezet na een expliciet "ja" (de privacypagina belooft
 // geen andere cookies dan functionele). Het bezoek zelf telt wel altijd mee,
-// via de cookieloze Vercel Analytics.
+// anoniem via /api/partner/bezoek.
 export function PartnerToestemming() {
   const t = useTranslations('partner_tracking')
   const [partner, setPartner] = useState<PartnerSlug | null>(null)
@@ -25,7 +24,12 @@ export function PartnerToestemming() {
     const ref = url.searchParams.get('ref')
     if (!isPartner(ref)) return
 
-    track('partner_landing', { partner: ref })
+    fetch('/api/partner/bezoek', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ partner: ref }),
+      keepalive: true,
+    })
 
     // ref meteen uit de adresbalk: een refresh telt anders dubbel, en een
     // gedeelde link zou het bezoek van iemand anders aan de partner toeschrijven.

@@ -1,4 +1,4 @@
--- Reservaties op moroww.com die via een partnerlink binnenkwamen
+-- Bezoeken en reservaties op moroww.com via een partnerlink
 -- (?ref=<slug>, zie lib/partner.ts). Bedragen en data staan in Guesty; hier
 -- enkel de koppeling bevestigingscode → partner.
 --
@@ -12,3 +12,13 @@ create table if not exists partner_reservaties (
 );
 
 alter table partner_reservaties enable row level security;
+
+-- Eén rij per landing via een partnerlink. Geen IP of andere
+-- bezoekersgegevens: enkel welke partner en wanneer.
+create table if not exists partner_bezoeken (
+  id         bigint generated always as identity primary key,
+  partner    text not null,
+  bezocht_op timestamptz not null default now()
+);
+
+alter table partner_bezoeken enable row level security;
