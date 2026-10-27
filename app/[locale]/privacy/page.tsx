@@ -75,7 +75,7 @@ export default async function PrivacyPage({
           Uw gegevens, helder uitgelegd.
         </h1>
         <p className="text-sm text-moroww-black/40 mb-10">
-          Versie 1.0 — Laatst bijgewerkt: 15 juni 2026
+          Versie 1.1 — Laatst bijgewerkt: 27 oktober 2026
         </p>
 
         <P>
@@ -275,10 +275,18 @@ export default async function PrivacyPage({
 
         <Section title="9. Cookies">
           <P>
-            Onze website gebruikt enkel functionele cookies die nodig zijn om te werken, zoals het
+            Onze website gebruikt functionele cookies die nodig zijn om te werken, zoals het
             onthouden van uw taalkeuze. Voor het meten van het gebruik zetten we een
             privacyvriendelijke, cookieloze analysetool in, die geen persoonsgegevens of unieke
-            identificatoren opslaat. Daarom is er geen toestemmingsvenster nodig.
+            identificatoren opslaat.
+          </P>
+          <P>
+            Komt u via de link van een partner, zoals een immokantoor, dan vragen we eerst uw
+            toestemming om dat 30 dagen te onthouden met één cookie. Die bevat enkel de naam van de
+            partner en het tijdstip van uw eerste bezoek. Boekt u binnen die periode, dan noteren we
+            bij uw reservatie via welke partner u kwam, zodat we de samenwerking kunnen opvolgen. De
+            partner krijgt geen gegevens waarmee u herkend kunt worden. Weigert u, dan plaatsen we
+            niets. U kunt de cookie altijd verwijderen via de instellingen van uw browser.
           </P>
         </Section>
 

@@ -479,5 +479,12 @@
     "discount_remove": "Remove",
     "discount_invalid": "This code is not valid for this stay.",
     "line_discount": "discount"
+  },
+  "partner_tracking": {
+    "label": "partner link",
+    "vraag": "You came here via {partner}. May we remember that for {dagen} days with a single cookie, so they get credit if you book?",
+    "meer": "privacy",
+    "ja": "yes, fine",
+    "nee": "no"
   }
 }

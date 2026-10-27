@@ -479,5 +479,12 @@
     "discount_remove": "Verwijderen",
     "discount_invalid": "Deze code is niet geldig voor dit verblijf.",
     "line_discount": "korting"
+  },
+  "partner_tracking": {
+    "label": "partnerlink",
+    "vraag": "Je komt via {partner}. Mogen we dat {dagen} dagen onthouden met één cookie, zodat zij erkenning krijgen als je boekt?",
+    "meer": "privacy",
+    "ja": "ja, goed",
+    "nee": "nee"
   }
 }

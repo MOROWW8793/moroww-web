@@ -24,3 +24,5 @@ De migraties zijn idempotent: `create type` in een `do $$` blok en
   eerst opvragen bij de dienst belastingen (zie
   `moroww-kennisbank-pagina2-verblijfsbelasting.md`, sectie "Wat je nog moet
   opvragen").
+- `002_partner_reservaties.sql` — koppelt reservaties op moroww.com aan de
+  partner via wiens link de gast binnenkwam. Enkel service role.

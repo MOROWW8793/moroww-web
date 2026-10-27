@@ -1,7 +1,28 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
 import { createInstantReservation, getQuote, GuestyBookingError } from "@/lib/guesty-booking";
+import { PARTNER_COOKIE, leesPartnerCookie, type PartnerSlug } from "@/lib/partner";
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Logt in plaats van te gooien: op dit punt heeft de gast al betaald, een
+// mislukte registratie mag de boeking niet als mislukt tonen.
+async function registreerPartner(
+  confirmationCode: string,
+  p: { partner: PartnerSlug; aangekomenOp: Date },
+) {
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    { auth: { persistSession: false } },
+  );
+  const { error } = await supabase.from("partner_reservaties").insert({
+    confirmation_code: confirmationCode,
+    partner: p.partner,
+    aangekomen_op: p.aangekomenOp.toISOString(),
+  });
+  if (error) console.error("[boeking/partner]", confirmationCode, error.message);
+}
 
 function tekst(s: unknown, max = 100): s is string {
   return typeof s === "string" && s.trim().length > 0 && s.length <= max;
@@ -39,6 +60,8 @@ export async function POST(req: NextRequest) {
         phone: gast.telefoon.trim(),
       },
     });
+    const partner = leesPartnerCookie(req.cookies.get(PARTNER_COOKIE)?.value);
+    if (partner) await registreerPartner(reservatie.confirmationCode, partner);
     return NextResponse.json({ code: reservatie.confirmationCode });
   } catch (err) {
     // 429 is Guesty die ons afremt, niet een probleem met de aanvraag.
