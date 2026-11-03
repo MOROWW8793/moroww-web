@@ -40,8 +40,8 @@ export async function EigenaarContentEN() {
             your home. our standard. one label.
           </h1>
           <p className="mt-mw-5 text-body-lg text-moroww-dark max-w-[62ch]">
-            moroww is the quality label for holiday homes in Belgium: every
-            moroww home is audited, equipped and looked after.
+            Your home stays yours. We hold it to a standard, even when you
+            are not there.
           </p>
           <div className="mt-mw-6 flex flex-wrap gap-mw-3">
             <a
@@ -66,6 +66,33 @@ export async function EigenaarContentEN() {
       {statItems.length > 1 && <Statrij items={statItems} />}
 
       <div className="mx-auto max-w-6xl px-6 md:px-12">
+
+        {/* ── WAAROM ── eigenaarsverhaal uit 'De moroww-belofte' (nov 2026). */}
+        <TekstBlok eyebrow="why moroww">
+          <p>
+            You did not buy it on a whim. You stood there one evening in
+            September, shutters open, the sea or the hills in the distance.
+            And you thought: this is where I want to be.
+          </p>
+          <p>
+            But you are not there. You are in a meeting and your phone
+            lights up. A guest who cannot find the key. A review about a
+            stain on the sheets. A cleaner who did not show.
+          </p>
+          <p>That is where we start.</p>
+          <p>
+            We come and look first. Always. We walk through every room and
+            say honestly what is needed. Sometimes we say no. A label that
+            lets everything in protects nothing.
+          </p>
+          <p>
+            Every home in the collection is held to a standard. The same
+            cleaning, every time. The same arrival, every time. Local
+            partners we chose and keep checking. Guests who come for calm,
+            not for a party.
+          </p>
+          <p>That way you sleep well, even when you are not there.</p>
+        </TekstBlok>
 
         {/* ── WAT JE KRIJGT ── */}
         <TekstBlok eyebrow="what you get">

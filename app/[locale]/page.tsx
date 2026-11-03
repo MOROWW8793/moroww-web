@@ -68,7 +68,7 @@ export default async function HomePage({
       >
         <div className="mx-auto max-w-7xl w-full overflow-visible">
           <h1 className="text-display text-moroww-dark">
-            {isNl ? 'twee collecties. één standaard.' : 'two collections. one standard.'}
+            {isNl ? 'karaktervolle huizen. een standaard die niet wijkt.' : 'homes with character. a standard that does not bend.'}
           </h1>
         </div>
       </section>
@@ -115,30 +115,56 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* HET LABEL — bouwspec sectie 4. space-12 boven en onder.
-          Kop = 'het label', body = positioneringszin, link = 'lees hoe we
-          keuren'. Oude H2 ('moroww is een label, geen verhuurkantoor')
-          en de tweede body-zin ('De meeste halen de standaard niet.') zijn
-          weg — positioneringszin is nu de dragende regel. */}
+      {/* WAAR HET BEGON — het Edinburgh-verhaal uit 'De moroww-belofte'
+          (nov 2026) vervangt de losse positioneringszin. De one-liner sluit
+          af; het volledige verhaal staat op /over-moroww. */}
       <section className="w-full px-6 md:px-12 mt-mw-12 mb-mw-12">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-[52ch]">
             <h2 className="text-h2 text-moroww-dark">
-              {isNl ? 'het label' : 'the label'}
+              {isNl ? 'waar het begon' : 'where it started'}
             </h2>
-            <p className="mt-mw-4 text-body-lg text-moroww-dark">
-              {isNl
-                ? 'moroww is het kwaliteitslabel voor vakantiewoningen in België: elke moroww-woning is geauditeerd, uitgerust en opgevolgd.'
-                : 'moroww is the quality label for holiday homes in Belgium: every moroww home is audited, equipped and looked after.'}
-            </p>
-            <p className="mt-mw-5">
-              <Link
-                href={isNl ? '/de-standaard' : '/en/the-standard'}
-                className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
-              >
-                {isNl ? 'lees hoe we keuren →' : 'how we inspect →'}
-              </Link>
-            </p>
+            <div className="mt-mw-4 space-y-mw-3 text-body-lg text-moroww-dark">
+              {isNl ? (
+                <>
+                  <p>
+                    Edinburgh. Een mooie woning, goede foto&apos;s, sterke
+                    reviews. De eerste nacht tilden we de matras op. Eronder
+                    zat schimmel.
+                  </p>
+                  <p>Niemand had gelogen. Er had gewoon niemand gekeken.</p>
+                  <p>moroww kijkt, zodat jij het niet hoeft te doen.</p>
+                </>
+              ) : (
+                <>
+                  <p>
+                    Edinburgh. A beautiful flat, good photos, strong reviews.
+                    The first night we lifted the mattress. Underneath was
+                    mould.
+                  </p>
+                  <p>Nobody had lied. Nobody had looked.</p>
+                  <p>moroww looks, so you don&apos;t have to.</p>
+                </>
+              )}
+            </div>
+            <ul className="mt-mw-5 flex flex-wrap gap-x-mw-5 gap-y-mw-3 text-audit uppercase">
+              <li>
+                <Link
+                  href={isNl ? '/over-moroww' : '/en/about'}
+                  className="text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+                >
+                  {isNl ? 'lees ons verhaal →' : 'read our story →'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={isNl ? '/de-standaard' : '/en/the-standard'}
+                  className="text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+                >
+                  {isNl ? 'hoe we kijken →' : 'how we look →'}
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       </section>

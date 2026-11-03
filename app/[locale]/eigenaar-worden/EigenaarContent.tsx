@@ -40,8 +40,8 @@ export async function EigenaarContent() {
             je woning. onze standaard. één label.
           </h1>
           <p className="mt-mw-5 text-body-lg text-moroww-dark max-w-[62ch]">
-            moroww is het kwaliteitslabel voor vakantiewoningen in België:
-            elke moroww-woning is geauditeerd, uitgerust en opgevolgd.
+            Jouw huis blijft van jou. Wij houden het aan een standaard, ook
+            als je er niet bent.
           </p>
           <div className="mt-mw-6 flex flex-wrap gap-mw-3">
             <a
@@ -66,6 +66,33 @@ export async function EigenaarContent() {
       {statItems.length > 1 && <Statrij items={statItems} />}
 
       <div className="mx-auto max-w-6xl px-6 md:px-12">
+
+        {/* ── WAAROM ── eigenaarsverhaal uit 'De moroww-belofte' (nov 2026). */}
+        <TekstBlok eyebrow="waarom moroww">
+          <p>
+            Je kocht het niet zomaar. Je stond er op een avond in september,
+            de luiken open, de zee of de heuvels in de verte. En je dacht:
+            hier wil ik zijn.
+          </p>
+          <p>
+            Maar je bent er niet. Je zit in een vergadering en je telefoon
+            licht op. Een gast die de sleutel niet vindt. Een recensie over
+            een vlek op het laken. Een poetshulp die niet kwam.
+          </p>
+          <p>Daar beginnen wij.</p>
+          <p>
+            We komen eerst kijken. Altijd. We lopen door elke kamer en zeggen
+            eerlijk wat er nodig is. Soms zeggen we nee. Een label dat alles
+            toelaat, beschermt niets.
+          </p>
+          <p>
+            Wie in de collectie komt, wordt aan een standaard gehouden.
+            Dezelfde schoonmaak, elke keer. Dezelfde aankomst, elke keer.
+            Partners ter plaatse die wij kozen en blijven controleren. Gasten
+            die kiezen voor rust, niet voor een feestje.
+          </p>
+          <p>Zo slaap je rustig, ook als je er niet bent.</p>
+        </TekstBlok>
 
         {/* ── WAT JE KRIJGT ── drie kolommen */}
         <TekstBlok eyebrow="wat je krijgt">
