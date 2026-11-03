@@ -13,6 +13,7 @@ import {
 const INSTAGRAM_URL = 'https://www.instagram.com/moroww.com_/'
 const LINKEDIN_URL = 'https://www.linkedin.com/company/moroww/'
 const CONTACT_EMAIL = 'info@moroww.com'
+const STARTIT_URL = 'https://www.kbc.be/ondernemen/nl/artikel/zelfstandige-worden/eigen-zaak-starten/wat-is-kbc-start-it.html'
 
 // Voettekst in drie kolommen op desktop, gestapeld met uitklapbare koppen
 // op mobiel. Kolom 1 (bedrijfsgegevens) staat altijd open — kolom 2 en 3
@@ -97,6 +98,21 @@ export function Footer() {
             <p className="text-xs text-white/25 mt-6">
               {t('copyright')}
             </p>
+            <a
+              href={STARTIT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex flex-col gap-2 opacity-80 hover:opacity-100 transition-opacity"
+            >
+              <span className="text-audit uppercase text-white/40">{t('supported_by')}</span>
+              <Image
+                src="/images/partners/start-it-kbc.png"
+                alt="Start it @KBC"
+                width={550}
+                height={213}
+                className="h-10 w-auto"
+              />
+            </a>
           </div>
 
           {/* Kolom 2 — de collectie */}

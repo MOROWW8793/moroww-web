@@ -401,6 +401,38 @@ export default async function PartnersPage({
         />
       </section>
 
+      {/* ── SUPPORTED BY — Start it @KBC is geen leverancier maar een
+          ondersteuner, dus geen PartnerBlock met sfeerbeeld. ── */}
+      <section className="bg-white px-6 pb-12 md:px-16 md:pb-20">
+        <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-12 border-t border-moroww-rule pt-12 md:pt-16">
+          <div className="shrink-0">
+            <p className="mb-4" style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: 3, color: "#C08D6E" }}>
+              {t('startit_label')}
+            </p>
+            <Image
+              src="/images/partners/start-it-kbc.png"
+              alt="Start it @KBC"
+              width={550}
+              height={213}
+              className="h-16 md:h-20 w-auto"
+            />
+          </div>
+          <div className="min-w-0 max-w-[52ch]">
+            <p className="break-words" style={{ fontSize: 16, lineHeight: 1.8, color: "#444444" }}>
+              {t('startit_body')}
+            </p>
+            <a
+              href="https://www.kbc.be/ondernemen/nl/artikel/zelfstandige-worden/eigen-zaak-starten/wat-is-kbc-start-it.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-4 text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+            >
+              {t('startit_cta')} →
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ── 6. BINNENKORT — alleen lokale handelaars ── */}
       <section className="px-6 py-16 md:px-16 md:py-20" style={{ background: "#FAE4D6" }}>
         <h2

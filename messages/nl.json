@@ -58,7 +58,8 @@
     "copyright": "© 2026 moroww bv. alle rechten voorbehouden.",
     "calendar_link": "een gesprek inplannen",
     "column_collection": "de collectie",
-    "column_for_owners": "voor eigenaars"
+    "column_for_owners": "voor eigenaars",
+    "supported_by": "supported by"
   },
   "collectie": {
     "label": "Gecureerde selectie",
@@ -176,7 +177,10 @@
     "locals_body": "In elke streek waar moroww actief is, zoeken we contact met bakkers, slagers, traiteurs en wijnhuizen. Gasten die willen weten waar ze terecht kunnen voor het beste van de streek, vinden dat via moroww. Geen gidsen, geen gesponsorde lijsten — enkel adressen waar we zelf voor instaan.",
     "cta_title": "Jouw merk in onze woningen?",
     "cta_body": "We zoeken Belgische en Europese merken en vakmensen die kwaliteit en eerlijkheid centraal stellen. Geen massamarkt. Geen compromis.",
-    "cta_button": "Neem contact op"
+    "cta_button": "Neem contact op",
+    "startit_label": "supported by",
+    "startit_body": "moroww is geselecteerd voor Start it Accelerate @KBC, het acceleratorprogramma van KBC voor jonge ondernemingen.",
+    "startit_cta": "Bekijk Start it @KBC"
   },
   "not_found": {
     "label": "pagina niet gevonden",

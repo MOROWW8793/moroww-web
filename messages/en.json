@@ -58,7 +58,8 @@
     "copyright": "© 2026 moroww bv. all rights reserved.",
     "calendar_link": "book a call",
     "column_collection": "the collection",
-    "column_for_owners": "for owners"
+    "column_for_owners": "for owners",
+    "supported_by": "supported by"
   },
   "collectie": {
     "label": "Curated selection",
@@ -176,7 +177,10 @@
     "locals_body": "In every region where moroww operates, we seek out bakers, butchers, delicatessens and wine merchants. Guests who want to know where to go for the best of the region find it through moroww. No guides, no sponsored listings — only addresses we stand behind ourselves.",
     "cta_title": "Your brand in our homes?",
     "cta_body": "We are looking for Belgian and European brands and specialists who put quality and honesty first. No mass market. No compromise.",
-    "cta_button": "Get in touch"
+    "cta_button": "Get in touch",
+    "startit_label": "supported by",
+    "startit_body": "moroww was selected for Start it Accelerate @KBC, the KBC accelerator programme for young companies.",
+    "startit_cta": "See Start it @KBC"
   },
   "not_found": {
     "label": "page not found",
