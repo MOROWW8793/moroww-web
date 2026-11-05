@@ -6,8 +6,13 @@ import { TOTAL_STAYS_REVIEWED } from "@/lib/reviews";
 import { Register } from "@/components/Register";
 import { TekstBlok } from "@/components/sections/TekstBlok";
 
-// WP M-versie EN. Zelfde structuur als de NL-versie; natuurlijk Engels
-// (geen letterlijke vertaling).
+// Labelversie EN (nov 2026). Zelfde structuur als de NL-versie; natuurlijk
+// Engels, geen letterlijke vertaling.
+
+const LINK = "text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+const CTA_VOL = "inline-flex items-center rounded-full px-mw-4 py-3 font-semibold bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85 transition-colors"
+const CTA_RAND = "inline-flex items-center rounded-full px-mw-4 py-3 font-semibold border border-moroww-dark text-moroww-dark hover:bg-moroww-dark hover:text-white transition-colors"
+const GESPREK = "https://calendar.app.google/BH8wYeA9AGf6KrUz7"
 
 function DefRij({ label, value }: { label: string; value: React.ReactNode }) {
   return (
@@ -18,12 +23,22 @@ function DefRij({ label, value }: { label: string; value: React.ReactNode }) {
   )
 }
 
+function Keuze({ label, kop, tekst }: { label: string; kop: string; tekst: string }) {
+  return (
+    <div>
+      <p className="text-audit uppercase text-moroww-label">{label}</p>
+      <p className="mt-mw-2 text-body font-semibold text-moroww-dark">{kop}</p>
+      <p className="mt-mw-2 text-body text-moroww-dark">{tekst}</p>
+    </div>
+  )
+}
+
 export async function EigenaarContentEN() {
   const cijfers = await screeningsPubliek()
   const statItems = [
-    cijfers?.aantal_dossier    ? { cijfer: String(cijfers.aantal_dossier),   label: 'files reviewed'     } : null,
-    cijfers?.aantal_bezoek     ? { cijfer: String(cijfers.aantal_bezoek),    label: 'visited in person'  } : null,
-    cijfers?.aantal_opgenomen  ? { cijfer: String(cijfers.aantal_opgenomen), label: 'accepted'           } : null,
+    cijfers?.aantal_dossier    ? { cijfer: String(cijfers.aantal_dossier),   label: 'files reviewed'   } : null,
+    cijfers?.aantal_bezoek     ? { cijfer: String(cijfers.aantal_bezoek),    label: 'visited in person' } : null,
+    cijfers?.aantal_opgenomen  ? { cijfer: String(cijfers.aantal_opgenomen), label: 'accepted'         } : null,
     { cijfer: String(TOTAL_STAYS_REVIEWED), label: 'stays' },
   ].filter((x): x is { cijfer: string; label: string } => x !== null)
 
@@ -34,28 +49,20 @@ export async function EigenaarContentEN() {
         <div className="mx-auto max-w-6xl">
           <p className="text-audit uppercase text-moroww-label">for owners</p>
           <h1
-            className="mt-mw-4 font-bold text-moroww-dark leading-[1.05] tracking-[-0.02em] max-w-[16ch]"
+            className="mt-mw-4 font-bold text-moroww-dark leading-[1.05] tracking-[-0.02em] max-w-[18ch]"
             style={{ fontSize: 'clamp(2.5rem, 7vw, 6rem)' }}
           >
-            your home. our standard. one label.
+            you rent it out. we vouch for the standard.
           </h1>
           <p className="mt-mw-5 text-body-lg text-moroww-dark max-w-[62ch]">
-            Your home stays yours. We hold it to a standard, even when you
-            are not there.
+            moroww is a label for holiday homes with character. We inspect
+            your home in person, hold it to the standard and give it a place
+            in a small collection. You keep renting through your own
+            channels.
           </p>
           <div className="mt-mw-6 flex flex-wrap gap-mw-3">
-            <a
-              href="#poortentoets"
-              className="inline-flex items-center rounded-full px-mw-4 py-3 font-semibold bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85 transition-colors"
-            >
-              register your home
-            </a>
-            <a
-              href="https://calendar.app.google/BH8wYeA9AGf6KrUz7"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center rounded-full px-mw-4 py-3 font-semibold border border-moroww-dark text-moroww-dark hover:bg-moroww-dark hover:text-white transition-colors"
-            >
+            <a href="#poortentoets" className={CTA_VOL}>put your home forward</a>
+            <a href={GESPREK} target="_blank" rel="noopener noreferrer" className={CTA_RAND}>
               book a call
             </a>
           </div>
@@ -67,7 +74,7 @@ export async function EigenaarContentEN() {
 
       <div className="mx-auto max-w-6xl px-6 md:px-12">
 
-        {/* ── WAAROM ── eigenaarsverhaal uit 'De moroww-belofte' (nov 2026). */}
+        {/* ── WAAROM ── eigenaarsverhaal uit 'De moroww-belofte'. */}
         <TekstBlok eyebrow="why moroww">
           <p>
             You did not buy it on a whim. You stood there one evening in
@@ -75,67 +82,92 @@ export async function EigenaarContentEN() {
             And you thought: this is where I want to be.
           </p>
           <p>
-            But you are not there. You are in a meeting and your phone
-            lights up. A guest who cannot find the key. A review about a
-            stain on the sheets. A cleaner who did not show.
+            But you are not there. You are in a meeting and your phone lights
+            up. A guest who cannot find the key. A review about a stain on
+            the sheets. A cleaner who did not turn up.
           </p>
           <p>That is where we start.</p>
           <p>
-            We come and look first. Always. We walk through every room and
-            say honestly what is needed. Sometimes we say no. A label that
-            lets everything in protects nothing.
+            We always come to look first. We walk through every room and say
+            honestly what it needs. Sometimes we say no. A label that lets
+            everything in protects nothing.
+          </p>
+        </TekstBlok>
+
+        {/* ── WAT ER VERANDERDE ── Start it @KBC */}
+        <TekstBlok eyebrow="what changed">
+          <p>
+            In October moroww was selected for Start it @KBC, the KBC
+            accelerator for young companies. In the coaching there we took
+            an honest look at the answers we got from owners, and at the
+            silence.
           </p>
           <p>
-            Every home in the collection is held to a standard. The same
-            cleaning, every time. The same arrival, every time. Local
-            partners we chose and keep checking. Guests who come for calm,
-            not for a party.
+            What we offered then was mostly management. The idea is simpler
+            now. You keep renting as you do today. We inspect your home. If
+            it passes, it carries the moroww label.
           </p>
-          <p>That way you sleep well, even when you are not there.</p>
         </TekstBlok>
 
-        {/* ── WAT JE KRIJGT ── */}
-        <TekstBlok eyebrow="what you get">
+        {/* ── WAT HET LABEL JE GEEFT ── */}
+        <TekstBlok eyebrow="what the label gives you">
+          <dl className="divide-y divide-moroww-rule border-t border-b border-moroww-rule">
+            <DefRij label="the inspection" value="We inspect your home in person on four gates, every year again. If it no longer meets the standard, you hear it from us." />
+            <DefRij label="the label"    value="Your home carries the label on your own listings and gets a place on moroww.com, in a small collection of homes with character." />
+            <DefRij label="the promise"  value="Your guests get a promise that we stand behind." />
+            <DefRij label="the partners" value="Local craftspeople for cleaning, linen and maintenance, and the technology behind a smooth arrival. We choose them ourselves, hold them to the standard and agree terms for the whole collection. You decide what you use." />
+            <DefRij label="a say"        value="As one of the first homes, you help shape what the standard looks like." />
+          </dl>
+          <p className="mt-mw-5 flex flex-wrap gap-x-mw-5 gap-y-mw-2">
+            <Link href="/de-standaard" className={LINK}>read the standard →</Link>
+            <Link href="/partners" className={LINK}>see the partners →</Link>
+          </p>
+        </TekstBlok>
+
+        {/* ── DRIE MANIEREN ── */}
+        <TekstBlok eyebrow="you choose how far we go">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-mw-6">
-            <div>
-              <p className="text-audit uppercase text-moroww-label">the standard</p>
-              <p className="mt-mw-2 text-body text-moroww-dark">
-                We assess your home in person on four gates and follow it
-                afterwards. If it no longer meets the standard, you hear it
-                from us.
-              </p>
-            </div>
-            <div>
-              <p className="text-audit uppercase text-moroww-label">the system</p>
-              <p className="mt-mw-2 text-body text-moroww-dark">
-                Smart lock, lights and heating that set themselves up, a
-                signature scent, and sensors for noise, water and smoke. You
-                know before there is damage.
-              </p>
-            </div>
-            <div>
-              <p className="text-audit uppercase text-moroww-label">the bookings</p>
-              <p className="mt-mw-2 text-body text-moroww-dark">
-                Distribution across every channel and via book.moroww.com. We
-                handle guest contact and steer the cleaning. You follow it
-                all in your dashboard.
-              </p>
-            </div>
+            <Keuze
+              label="01 · the label"
+              kop="you rent it out."
+              tekst="We inspect, certify and follow up. Your home is in the collection and carries the label on your own channels."
+            />
+            <Keuze
+              label="02 · help where needed"
+              kop="you stay in control."
+              tekst="We fix what chafes. A local partner, a smart lock, sensors for noise, water and smoke. You know before there is damage."
+            />
+            <Keuze
+              label="03 · we do it for you"
+              kop="you get your weekends back."
+              tekst="Distribution across all channels and book.moroww.com. We handle guest contact and run the cleaning. You follow everything in your dashboard."
+            />
           </div>
+          <p className="mt-mw-5">The standard is the same for every home.</p>
         </TekstBlok>
 
-        {/* ── HOE HET LOOPT ── (exit-line uit het geschrapte 'what it
-            costs'-blok verplaatst naar hier, als slotregel onder de drie
-            stappen). */}
+        {/* ── DE VOLGENDE BATCH ── */}
+        <TekstBlok eyebrow="the next batch" heading="ten homes">
+          <p>
+            We have opened our next batch to ten homes that want to test the
+            label with us. Not every home passes the
+            inspection.
+          </p>
+          <p className="mt-mw-3">
+            <a href="#poortentoets" className={CTA_VOL}>put your home forward</a>
+          </p>
+        </TekstBlok>
+
+        {/* ── HOE HET LOOPT ── */}
         <TekstBlok eyebrow="how it runs">
           <dl className="divide-y divide-moroww-rule border-t border-b border-moroww-rule">
-            <DefRij label="01 · register"               value="We get in touch within two working days." />
-            <DefRij label="02 · visit and installation" value="We assess the home in person and install the system." />
-            <DefRij label="03 · live"                   value="Your home carries the label and joins the collection." />
+            <DefRij label="01 · put it forward" value="We get in touch personally within two working days." />
+            <DefRij label="02 · the inspection" value="We come to look, walk through every room and say honestly what it needs." />
+            <DefRij label="03 · the label"      value="If your home passes, it carries the label and joins the collection." />
           </dl>
           <p className="mt-mw-5">
-            No lock-in. After payment the hardware is yours; so are your
-            bookings and guest data. If you stop, you stop.
+            You are not tied to anything. Your listings, your bookings and
+            your guest data stay yours. If you stop, you stop.
           </p>
         </TekstBlok>
 
@@ -146,17 +178,12 @@ export async function EigenaarContentEN() {
             ourselves and stay your point of contact.
           </p>
           <p className="text-audit uppercase">
-            <a
-              href="mailto:info@moroww.com"
-              className="text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
-            >
-              info@moroww.com
-            </a>
+            <a href="mailto:info@moroww.com" className={LINK}>info@moroww.com</a>
           </p>
         </TekstBlok>
 
         {/* ── FORMULIER ── */}
-        <TekstBlok eyebrow="register" heading="register your home">
+        <TekstBlok eyebrow="put your home forward" heading="put your home forward">
           <p>
             We get in touch personally within two working days. Every home is
             assessed in person, even when the answer turns out to be no.
@@ -165,27 +192,17 @@ export async function EigenaarContentEN() {
             <LeadForm />
           </div>
           <p className="mt-mw-5">
-            <Link
-              href="/kennis"
-              className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
-            >
+            <Link href="/kennis" className={LINK}>
               want to figure it out yourself first? read the knowledge base (in Dutch) →
             </Link>
           </p>
         </TekstBlok>
 
-        {/* ── AFSLUITING — CTA-D gesprek ── */}
+        {/* ── GESPREK ── */}
         <TekstBlok eyebrow="a talk" heading="prefer to speak to someone directly?" headingLevel="h3">
-          <p>
-            Book a thirty-minute video call at a time that suits you.
-          </p>
+          <p>Book a thirty-minute video call at a time that suits you.</p>
           <p className="mt-mw-3">
-            <a
-              href="https://calendar.app.google/BH8wYeA9AGf6KrUz7"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center rounded-full px-mw-4 py-3 font-semibold bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85 transition-colors"
-            >
+            <a href={GESPREK} target="_blank" rel="noopener noreferrer" className={CTA_VOL}>
               book a time
             </a>
           </p>

@@ -24,8 +24,8 @@ export async function generateMetadata({
       ? 'Vakantiewoning verhuren in België met kwaliteitslabel'
       : 'Rent out your holiday home in Belgium with a certified label',
     beschrijving: isNl
-      ? 'Vakantiewoning verhuren in België met het moroww-kwaliteitslabel: geauditeerd, uitgerust en opgevolgd.'
-      : 'Rent out your holiday home in Belgium with the moroww quality label: audited, equipped and looked after.',
+      ? 'Het moroww-label voor karaktervolle vakantiewoningen in België: ter plaatse gekeurd, elk jaar opnieuw. Je verhuurt zelf, wij staan in voor de standaard.'
+      : 'The moroww label for holiday homes with character in Belgium: inspected in person, every year again. You rent it out, we vouch for the standard.',
     pad: isNl ? '/eigenaar-worden' : '/en/become-an-owner',
     locale: isNl ? 'nl' : 'en',
     ogBeeld: '/images/og-eigenaar.jpg',

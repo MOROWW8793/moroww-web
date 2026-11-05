@@ -12,7 +12,7 @@ export function EigenaarFaqJsonLd() {
               name: 'Hoe kan ik mijn vakantiewoning verhuren via moroww?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Meld je woning aan via het formulier op moroww.com/eigenaar-worden. We nemen binnen 48u persoonlijk contact op. Elke woning wordt beoordeeld op de vier poorten: minimum 100 m² met twee slaapkamers, karakter in natuurlijke materialen, een rustige ligging, en een fysiek bezoek. Bij goedkeuring volgt de installatie van de volledige tech-stack.',
+                text: 'Meld je woning aan via het formulier op moroww.com/eigenaar-worden. We nemen binnen 48u persoonlijk contact op. Elke woning wordt beoordeeld op de vier poorten: minimum 100 m² met twee slaapkamers, karakter in natuurlijke materialen, een rustige ligging, en een fysiek bezoek. Haalt de woning de keuring, dan draagt ze het moroww-label en krijgt ze een plaats in de collectie.',
               },
             },
             {
@@ -20,7 +20,7 @@ export function EigenaarFaqJsonLd() {
               name: 'Wat doet moroww voor eigenaars van vakantiewoningen?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'moroww installeert een volledige tech-stack in je woning: smart lock, geluidsmonitoring, sfeerautomatisering en geurverspreiding. We bewaken de kwaliteitsstandaard via jaarlijkse audits en regelen de distributie via Airbnb, Booking.com én ons eigen directe boekingskanaal book.moroww.com. Jij beheert je eigen woning — wij leveren het merk, de technologie en de boekingen.',
+                text: 'moroww keurt je woning ter plaatse en houdt ze elk jaar opnieuw aan de standaard. Je woning draagt het label op je eigen listings en staat op moroww.com. Je krijgt toegang tot de partners van het label. Wil je meer hulp, dan kies je voor hulp op maat of laat je de verhuur volledig aan ons over.',
               },
             },
             {
@@ -28,7 +28,7 @@ export function EigenaarFaqJsonLd() {
               name: 'Moet ik mijn vakantiewoning volledig uit handen geven aan moroww?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Nee. moroww is het kwaliteitslabel voor vakantiewoningen in België: elke moroww-woning is geauditeerd, uitgerust en opgevolgd. Jij blijft volledig verantwoordelijk voor je eigen pand — moroww levert het label, de technologie en het boekingskanaal, de dagelijkse werking blijft bij jou.',
+                text: 'Nee. moroww is in de eerste plaats een kwaliteitslabel. Je blijft verhuren via je eigen kanalen en beslist zelf welke partners je gebruikt. Wil je de verhuur toch uit handen geven, dan kan dat ook.',
               },
             },
             {
@@ -61,14 +61,6 @@ export function EigenaarFaqJsonLd() {
               acceptedAnswer: {
                 '@type': 'Answer',
                 text: 'Minimum 100 m² met minstens twee slaapkamers, karakter in natuurlijke materialen (minstens één authentiek architecturaal element, zicht op groen of water vanuit de leefruimte), rustige of natuurlijke omgeving (kust, landelijk, bosrand — geen drukke stadscentra). Elke woning wordt fysiek bezocht door ons team voor de certificeringsbeslissing.',
-              },
-            },
-            {
-              '@type': 'Question',
-              name: 'Wat is een smart lock en waarom installeert moroww die in mijn woning?',
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'Een smart lock vervangt de fysieke sleuteloverdracht door een unieke code per boeking. Gasten komen binnen zonder dat je aanwezig moet zijn. moroww installeert en onderhoudt het systeem. Je hebt er geen beheer over — dat is de bedoeling.',
               },
             },
           ],
