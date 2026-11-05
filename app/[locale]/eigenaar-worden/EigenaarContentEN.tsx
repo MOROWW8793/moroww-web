@@ -1,5 +1,6 @@
 import { screeningsPubliek } from "@/lib/screenings";
 import { TOTAL_STAYS_REVIEWED } from "@/lib/reviews";
+import { liveWoningen, sortForCollectie } from "@/lib/woningen";
 import { EigenaarPagina, type EigenaarCopy } from "@/components/eigenaar/EigenaarPagina";
 
 // Labelversie EN (nov 2026). Natuurlijk Engels, geen letterlijke vertaling.
@@ -19,6 +20,8 @@ const COPY: EigenaarCopy = {
     { titel: 'the partners of the collection', tekst: 'Craftspeople, technology and lifestyle brands we choose ourselves and hold to the standard, on terms we agree for all homes together. You no longer have to search yourself.' },
     { titel: 'peace of mind, even when you are away', tekst: 'We hold your home to the standard and keep an eye on what the rules ask, from registration to fire safety. If something is off, you hear it from us before a guest notices.' },
   ],
+  huizenEyebrow: 'the homes that belong',
+  huizenH2: 'this is the company your home would keep.',
   kringEyebrow: 'why owners want in',
   kringH2: 'a home made with care belongs among homes of its kind.',
   kringP: [
@@ -82,5 +85,7 @@ export async function EigenaarContentEN() {
     { cijfer: String(TOTAL_STAYS_REVIEWED), label: 'stays' },
   ].filter((x): x is { cijfer: string; label: string } => x !== null)
 
-  return <EigenaarPagina copy={COPY} statItems={statItems} kennisHref="/kennis" standaardHref="/en/the-standard" partnersHref="/en/partners" />
+  const huizen = sortForCollectie(liveWoningen()).filter((w) => w.heroFoto).map((w) => ({ id: w.id, naam: w.naam, locatie: w.locatie, foto: w.heroFoto as string }))
+
+  return <EigenaarPagina copy={COPY} statItems={statItems} huizen={huizen} kennisHref="/kennis" standaardHref="/en/the-standard" partnersHref="/en/partners" />
 }

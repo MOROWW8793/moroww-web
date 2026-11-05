@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Link as IntlLink } from "@/i18n/navigation";
 import { LeadForm } from "@/components/ui/LeadForm";
 import { Statrij } from "@/components/sections/Statrij";
 import { Register } from "@/components/Register";
@@ -18,6 +19,8 @@ export type EigenaarCopy = {
   waardeEyebrow: string
   waardeH2: string
   waarde: Array<{ titel: string; tekst: string }>
+  huizenEyebrow: string
+  huizenH2: string
   kringEyebrow: string
   kringH2: string
   kringP: string[]
@@ -55,7 +58,7 @@ const GESPREK = "https://calendar.app.google/BH8wYeA9AGf6KrUz7"
 const LINK = "text-[0.9375rem] text-moroww-dark underline underline-offset-[6px] decoration-moroww-dark/30 hover:decoration-moroww-dark transition-colors"
 const CTA_VOL = "inline-flex items-center justify-center min-h-[52px] px-mw-5 py-4 text-[0.9375rem] tracking-[0.01em] bg-moroww-dark text-moroww-paper border border-moroww-dark hover:bg-transparent hover:text-moroww-dark transition-colors duration-500"
 const CTA_RAND = "inline-flex items-center justify-center min-h-[52px] px-mw-5 py-4 text-[0.9375rem] tracking-[0.01em] border border-moroww-dark/40 text-moroww-dark hover:border-moroww-dark transition-colors duration-500"
-const CTA_LICHT = "inline-flex items-center justify-center min-h-[52px] px-mw-5 py-4 text-[0.9375rem] tracking-[0.01em] bg-moroww-paper text-moroww-dark border border-moroww-paper hover:bg-transparent hover:text-moroww-paper transition-colors duration-500"
+const CTA_LICHT = "inline-flex items-center justify-center min-h-[52px] px-mw-5 py-4 text-[0.9375rem] tracking-[0.01em] bg-moroww-blush text-moroww-dark border border-moroww-blush hover:bg-transparent hover:text-moroww-blush transition-colors duration-500"
 
 function Eyebrow({ children, licht = false }: { children: React.ReactNode; licht?: boolean }) {
   return (
@@ -69,15 +72,20 @@ export function EigenaarPagina({
   kennisHref,
   standaardHref,
   partnersHref,
+  huizen,
 }: {
   copy: EigenaarCopy
   statItems: Array<{ cijfer: string; label: string }>
   kennisHref: string
   standaardHref: string
   partnersHref: string
+  huizen: Array<{ id: string; naam: string; locatie: string; foto: string }>
 }) {
   return (
     <Register kant="eigenaar">
+      {/* Warme ondergrond (nov 2026): crème in plaats van koel papierwit,
+          zodat de pagina uitnodigt in plaats van keurt. */}
+      <div className="bg-[#F5ECE3] flow-root">
       {/* ── HERO ── display-kop zoals op de homepage */}
       <section className="w-full px-6 md:px-12 pt-mw-8 lg:pt-mw-10 overflow-visible">
         <div className="mx-auto max-w-7xl">
@@ -124,7 +132,7 @@ export function EigenaarPagina({
       </section>
 
       {/* ── DE KRING ── waarom je erbij wil horen */}
-      <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
+      <section className="w-full bg-moroww-blush px-6 md:px-12 py-mw-8 lg:py-mw-10 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6">
           <div className="lg:col-span-5">
             <Eyebrow>{c.kringEyebrow}</Eyebrow>
@@ -135,6 +143,34 @@ export function EigenaarPagina({
           </div>
         </div>
       </section>
+
+      {/* ── DE HUIZEN DIE ERBIJ HOREN ── het gezelschap waar je bij komt */}
+      {huizen.length > 0 && (
+        <section className="w-full bg-moroww-blush pb-mw-8 lg:pb-mw-10">
+          <div className="px-6 md:px-12">
+            <div className="mx-auto max-w-7xl">
+              <Eyebrow>{c.huizenEyebrow}</Eyebrow>
+              <h2 className="mt-mw-4 text-h2 font-light text-moroww-dark max-w-[24ch]">{c.huizenH2}</h2>
+            </div>
+          </div>
+          {/* Strook lijnt links uit met het raster van de pagina en loopt rechts door tot de rand. */}
+          <ul
+            className="mt-mw-6 flex gap-mw-4 overflow-x-auto snap-x snap-mandatory pb-mw-3 pr-6 md:pr-12 [scrollbar-width:thin] pl-6 md:pl-[max(3rem,calc((100vw-80rem)/2))] scroll-pl-6 md:scroll-pl-[max(3rem,calc((100vw-80rem)/2))]"
+          >
+            {huizen.map((h) => (
+              <li key={h.id} className="snap-start shrink-0 w-[72vw] sm:w-[44vw] lg:w-[28vw] max-w-[380px]">
+                <IntlLink href={{ pathname: '/collectie/[id]', params: { id: h.id } }} className="group block">
+                  <div className="relative aspect-[4/5] overflow-hidden">
+                    <Image src={h.foto} alt={h.naam} fill className="object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-[1.02] motion-reduce:group-hover:scale-100" sizes="(max-width: 640px) 72vw, (max-width: 1024px) 44vw, 380px" />
+                  </div>
+                  <p className="mt-mw-3 text-h3 font-normal text-moroww-dark">{h.naam}</p>
+                  <p className="text-[0.9375rem] text-moroww-ink-2">{h.locatie}</p>
+                </IntlLink>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {/* ── DE STANDAARD ── vier beeldtegels */}
       <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
@@ -210,7 +246,7 @@ export function EigenaarPagina({
       </section>
 
       {/* ── DE VOLGENDE BATCH ── donkere band */}
-      <section className="w-full bg-moroww-dark text-white px-6 md:px-12 py-mw-8 lg:py-mw-10 mt-mw-8 lg:mt-mw-12">
+      <section className="w-full bg-[#2A211C] text-white px-6 md:px-12 py-mw-8 lg:py-mw-10 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6 items-end">
           <div className="lg:col-span-7">
             <Eyebrow licht>{c.batchEyebrow}</Eyebrow>
@@ -267,6 +303,7 @@ export function EigenaarPagina({
           </div>
         </div>
       </section>
+      </div>
     </Register>
   )
 }
