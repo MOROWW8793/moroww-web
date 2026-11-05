@@ -145,7 +145,7 @@ export function OverMorowwContent({ locale, brentFoto }: { locale: string; brent
                       src={i === 0 ? '/images/noam.jpg' : '/images/brent.jpg'}
                       alt={i === 0 ? c.noamAlt : c.brentAlt}
                       fill
-                      className={`object-cover ${i === 0 ? 'object-[72%_center]' : ''}`}
+                      className={`object-cover ${i === 0 ? 'object-[72%_center]' : 'object-[42%_center]'}`}
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
