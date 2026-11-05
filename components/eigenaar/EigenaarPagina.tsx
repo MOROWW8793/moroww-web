@@ -15,6 +15,9 @@ export type EigenaarCopy = {
   ctaKandidaat: string
   ctaGesprek: string
   heroAlt: string
+  waardeEyebrow: string
+  waardeH2: string
+  waarde: Array<{ titel: string; tekst: string }>
   kringEyebrow: string
   kringH2: string
   kringP: string[]
@@ -98,6 +101,25 @@ export function EigenaarPagina({
 
       {/* ── CIJFERS ── */}
       <div className="mt-mw-8">{statItems.length > 1 && <Statrij items={statItems} />}</div>
+
+      {/* ── WAT HET JE OPLEVERT ── de toegevoegde waarde, vooraan */}
+      <section className="w-full px-6 md:px-12 mt-mw-12">
+        <div className="mx-auto max-w-7xl">
+          <Eyebrow>{c.waardeEyebrow}</Eyebrow>
+          <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[22ch]">{c.waardeH2}</h2>
+          <div className="mt-mw-8 grid grid-cols-1 md:grid-cols-2 gap-x-mw-8 gap-y-mw-8">
+            {c.waarde.map((w, i) => (
+              <div key={w.titel} className="border-t border-moroww-dark pt-mw-5 grid grid-cols-[3.5rem_1fr] gap-mw-4">
+                <p className="text-h2 text-moroww-label">0{i + 1}</p>
+                <div>
+                  <h3 className="text-h2 text-moroww-dark">{w.titel}</h3>
+                  <p className="mt-mw-3 text-body-lg text-moroww-ink-2 max-w-[44ch]">{w.tekst}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── DE KRING ── waarom je erbij wil horen */}
       <section className="w-full px-6 md:px-12 mt-mw-12">
