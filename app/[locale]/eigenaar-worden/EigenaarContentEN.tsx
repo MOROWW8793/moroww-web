@@ -8,7 +8,7 @@ import { EigenaarPagina, type EigenaarCopy } from "@/components/eigenaar/Eigenaa
 const COPY: EigenaarCopy = {
   eyebrow: 'for owners',
   h1: 'not every home belongs.',
-  lead: 'moroww is a small collection of holiday homes with character, inspected in person and every year again. You keep renting through your own channels. We vouch for the standard, so your guests see beforehand what your home is worth.',
+  lead: 'moroww is becoming the place where travellers worldwide find stays that are right. Every home inspected in person, every year again. You keep renting through your own channels. We vouch for the standard, so your guests see beforehand what your home is worth.',
   ctaKandidaat: 'put your home forward',
   ctaGesprek: 'book a call',
   heroAlt: 'Open kitchen and living space of a moroww home looking out on the garden',
@@ -40,7 +40,7 @@ const COPY: EigenaarCopy = {
   erbijEyebrow: 'what comes with it',
   erbijH2: 'the label, and everything that comes with it.',
   erbij: [
-    { titel: 'the label', tekst: 'On your own listings and on moroww.com, in a small collection of homes with character.' },
+    { titel: 'the label', tekst: 'On your own listings and on moroww.com, among homes with character that meet the same standard.' },
     { titel: 'the promise', tekst: 'Your guests get a promise that we stand behind.' },
     { titel: 'the partners', tekst: 'Local craftspeople for cleaning, linen and maintenance, the technology behind a smooth arrival, and lifestyle brands we choose ourselves to be in the homes. We hold them to the standard. You decide what you use.' },
     { titel: 'a say', tekst: 'As one of the first homes, you help shape what the standard looks like.' },

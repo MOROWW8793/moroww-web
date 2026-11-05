@@ -8,7 +8,7 @@ import { EigenaarPagina, type EigenaarCopy } from "@/components/eigenaar/Eigenaa
 const COPY: EigenaarCopy = {
   eyebrow: 'voor eigenaars',
   h1: 'niet elk huis hoort erbij.',
-  lead: 'moroww is een kleine collectie karaktervolle vakantiewoningen, ter plaatse gekeurd en elk jaar opnieuw. Je blijft verhuren via je eigen kanalen. Wij staan in voor de standaard, zodat je gasten vooraf zien wat je huis waard is.',
+  lead: 'moroww wordt de plek waar reizigers wereldwijd verblijven vinden die kloppen. Elk huis ter plaatse gekeurd, elk jaar opnieuw. Je blijft verhuren via je eigen kanalen. Wij staan in voor de standaard, zodat je gasten vooraf zien wat je huis waard is.',
   ctaKandidaat: 'stel je huis kandidaat',
   ctaGesprek: 'plan een gesprek',
   heroAlt: 'Open keuken en leefruimte van een moroww-woning met zicht op de tuin',
@@ -40,7 +40,7 @@ const COPY: EigenaarCopy = {
   erbijEyebrow: 'wat erbij hoort',
   erbijH2: 'het label, en alles wat ermee meekomt.',
   erbij: [
-    { titel: 'het label', tekst: 'Op je eigen listings en op moroww.com, in een kleine collectie karaktervolle huizen.' },
+    { titel: 'het label', tekst: 'Op je eigen listings en op moroww.com, tussen karaktervolle huizen die dezelfde standaard halen.' },
     { titel: 'de belofte', tekst: 'Je gasten krijgen een belofte waar wij mee voor instaan.' },
     { titel: 'de partners', tekst: 'Lokale vakmensen voor schoonmaak, linnen en onderhoud, de techniek achter een vlotte aankomst, en lifestylemerken die we zelf kiezen om in de huizen te staan. Wij houden ze aan de standaard. Jij beslist wat je gebruikt.' },
     { titel: 'een stem', tekst: 'Als een van de eerste huizen bepaal je mee hoe de standaard eruitziet.' },

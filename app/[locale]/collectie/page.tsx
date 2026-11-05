@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
-import { CollectieStatisch } from "./CollectieStatisch";
+import { setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
+import { CollectieOverzicht } from "@/components/collectie/CollectieOverzicht";
+import { SneakPeek } from "@/components/sections/SneakPeek";
 import { Register } from "@/components/Register";
 import { siteMetadata } from "@/lib/seo/siteMetadata";
-import { liveWoningen } from "@/lib/woningen";
+import { liveWoningen, type Locale } from "@/lib/woningen";
 import { countWord } from "@/lib/getallen";
 
 export async function generateMetadata({
@@ -14,9 +16,10 @@ export async function generateMetadata({
   const { locale } = await params
   const isNl = locale === 'nl'
   return siteMetadata({
-    titel: 'De Collectie — gekeurde vakantiewoningen in België',
-    beschrijving:
-      'De moroww-collectie: gecertificeerde vakantiewoningen in België. Elk pand fysiek geïnspecteerd voor opname.',
+    titel: isNl ? 'De collectie — gekeurde vakantiewoningen' : 'The collection — inspected holiday homes',
+    beschrijving: isNl
+      ? 'Karaktervolle vakantiewoningen, elk ter plaatse gekeurd. Per huis alles op een rij: slaapkamers, gasten, buitenruimte, parking en prijs.'
+      : 'Holiday homes with character, each inspected in person. Everything per home side by side: bedrooms, guests, outdoor space, parking and price.',
     pad: isNl ? '/collectie' : '/en/collection',
     locale: isNl ? 'nl' : 'en',
     hreflang: { nl: '/collectie', en: '/en/collection' },
@@ -30,28 +33,44 @@ export default async function CollectiePage({
 }) {
   const { locale } = await params
   setRequestLocale(locale)
-  const t = await getTranslations('collectie')
+  const isNl = locale === 'nl'
+  const loc: Locale = isNl ? 'nl' : 'en'
+  const woningen = liveWoningen()
+  const aantal = countWord(woningen.length, loc, false)
+  const tab = 'inline-flex items-center min-h-[44px] px-mw-4 text-[0.9375rem] border transition-colors'
   return (
     <Register kant="gast">
-      <div className="min-h-screen">
-        <div className="px-6 md:px-16 lg:px-24 pt-32 pb-12 max-w-4xl mx-auto text-center">
-          <p className="text-xs font-medium uppercase tracking-widest text-moroww-label mb-6">
-            {t('label')}
-          </p>
-          <h1
-            className="font-bold lowercase text-moroww-black leading-[1.05] tracking-[-0.02em] mb-4"
-            style={{ fontSize: "clamp(2.5rem,5vw,4.5rem)" }}
-          >
-            {t('title')}
+      {/* ── HERO ── */}
+      <section className="w-full px-6 md:px-12 pt-mw-8 lg:pt-mw-10">
+        <div className="mx-auto max-w-7xl">
+          <p className="mw-in text-[0.9375rem] text-moroww-ink-2">{isNl ? 'de collectie' : 'the collection'}</p>
+          <h1 className="mw-in mt-mw-4 text-display font-light text-moroww-dark max-w-[14ch]">
+            {isNl ? 'verblijven die kloppen.' : 'stays that are right.'}
           </h1>
-          <p className="text-moroww-black/55 text-lg">
-            {t('subtitle', {
-              countWord: countWord(liveWoningen().length, locale === 'en' ? 'en' : 'nl', true),
-            })}
+          <p className="mw-in-2 mt-mw-6 text-body-lg text-moroww-dark max-w-[56ch]">
+            {isNl
+              ? `We bouwen de plek waar je overal ter wereld een verblijf vindt dat klopt. We beginnen in België: ${aantal} karaktervolle huizen, elk ter plaatse gekeurd.`
+              : `We are building the place where you find a stay that is right, anywhere in the world. We start in Belgium: ${aantal} homes with character, each inspected in person.`}
           </p>
+          <nav aria-label={isNl ? 'streken' : 'regions'} className="mt-mw-6 flex flex-wrap gap-2">
+            <span className={`${tab} bg-moroww-dark text-moroww-paper border-moroww-dark`}>{isNl ? 'alles' : 'all'}</span>
+            <Link href="/the-shore" className={`${tab} border-moroww-dark/25 text-moroww-dark hover:border-moroww-dark`}>the shore →</Link>
+            <Link href="/the-fields" className={`${tab} border-moroww-dark/25 text-moroww-dark hover:border-moroww-dark`}>the fields →</Link>
+            <Link href="/boeken" className={`${tab} border-moroww-dark/25 text-moroww-dark hover:border-moroww-dark`}>{isNl ? 'zoek op data →' : 'search by date →'}</Link>
+          </nav>
         </div>
-        <CollectieStatisch />
-      </div>
+      </section>
+
+      {/* ── OVERZICHT ── */}
+      <section className="w-full px-6 md:px-12 mt-mw-8 mb-mw-8 lg:mb-mw-10">
+        <div className="mx-auto max-w-7xl">
+          <CollectieOverzicht woningen={woningen} locale={loc} />
+        </div>
+      </section>
+
+      {/* Sneak peek: twee panden die nog niet boekbaar zijn. */}
+      <SneakPeek locale={locale} />
+      <div className="mb-mw-8 lg:mb-mw-12" />
     </Register>
   );
 }

@@ -21,6 +21,7 @@ const COPY = {
     labelEyebrow: 'waarom een label',
     labelH2: 'geen platform. geen verhuurkantoor. een label.',
     labelP: [
+      'We bouwen de plek waar je overal ter wereld een verblijf vindt dat klopt. We beginnen in België, huis per huis.',
       'Een platform laat iedereen toe. Een label zegt nee. We komen zelf kijken, keuren elk huis op wat een gast het eerst opmerkt, en doen dat elk jaar opnieuw.',
       'Eigenaars blijven verhuren zoals zij willen. Wie hulp wil, krijgt die, tot de volledige verhuur toe. Maar het label komt eerst.',
     ],
@@ -57,6 +58,7 @@ const COPY = {
     labelEyebrow: 'why a label',
     labelH2: 'not a platform. not a rental agency. a label.',
     labelP: [
+      'We are building the place where you find a stay that is right, anywhere in the world. We start in Belgium, one home at a time.',
       'A platform lets everyone in. A label says no. We come to look ourselves, inspect every home on what a guest notices first, and do it again every year.',
       'Owners keep renting the way they want. Those who want help get it, up to the full rental. But the label comes first.',
     ],
