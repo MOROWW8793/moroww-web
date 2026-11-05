@@ -119,7 +119,7 @@ export function Footer() {
           <div>
             <button
               type="button"
-              className="w-full flex items-center justify-between text-audit uppercase text-white/70 lg:pointer-events-none lg:cursor-default py-2 lg:py-0 mb-2 lg:mb-4"
+              className="w-full flex items-center justify-between text-audit uppercase text-white/70 lg:pointer-events-none lg:cursor-default min-h-[44px] py-3 lg:min-h-0 lg:py-0 mb-2 lg:mb-4"
               onClick={() => setCol2Open((v) => !v)}
               aria-expanded={col2Open}
               aria-controls="footer-col-collectie"
@@ -144,7 +144,7 @@ export function Footer() {
           <div>
             <button
               type="button"
-              className="w-full flex items-center justify-between text-audit uppercase text-white/70 lg:pointer-events-none lg:cursor-default py-2 lg:py-0 mb-2 lg:mb-4"
+              className="w-full flex items-center justify-between text-audit uppercase text-white/70 lg:pointer-events-none lg:cursor-default min-h-[44px] py-3 lg:min-h-0 lg:py-0 mb-2 lg:mb-4"
               onClick={() => setCol3Open((v) => !v)}
               aria-expanded={col3Open}
               aria-controls="footer-col-eigenaars"

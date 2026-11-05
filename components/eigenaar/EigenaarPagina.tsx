@@ -78,7 +78,7 @@ export function EigenaarPagina({
   return (
     <Register kant="eigenaar">
       {/* ── HERO ── display-kop zoals op de homepage */}
-      <section className="w-full px-6 md:px-12 pt-mw-10 overflow-visible">
+      <section className="w-full px-6 md:px-12 pt-mw-8 lg:pt-mw-10 overflow-visible">
         <div className="mx-auto max-w-7xl">
           <Eyebrow>{c.eyebrow}</Eyebrow>
           <h1 className="mt-mw-4 text-display text-moroww-dark max-w-[14ch]">{c.h1}</h1>
@@ -103,13 +103,13 @@ export function EigenaarPagina({
       <div className="mt-mw-8">{statItems.length > 1 && <Statrij items={statItems} />}</div>
 
       {/* ── WAT HET JE OPLEVERT ── de toegevoegde waarde, vooraan */}
-      <section className="w-full px-6 md:px-12 mt-mw-12">
+      <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl">
           <Eyebrow>{c.waardeEyebrow}</Eyebrow>
           <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[22ch]">{c.waardeH2}</h2>
-          <div className="mt-mw-8 grid grid-cols-1 md:grid-cols-2 gap-x-mw-8 gap-y-mw-8">
+          <div className="mt-mw-6 lg:mt-mw-8 grid grid-cols-1 md:grid-cols-2 gap-x-mw-8 gap-y-mw-6 lg:gap-y-mw-8">
             {c.waarde.map((w, i) => (
-              <div key={w.titel} className="border-t border-moroww-dark pt-mw-5 grid grid-cols-[3.5rem_1fr] gap-mw-4">
+              <div key={w.titel} className="border-t border-moroww-dark pt-mw-5 grid grid-cols-1 sm:grid-cols-[3.5rem_1fr] gap-mw-2 sm:gap-mw-4">
                 <p className="text-h2 text-moroww-label">0{i + 1}</p>
                 <div>
                   <h3 className="text-h2 text-moroww-dark">{w.titel}</h3>
@@ -122,7 +122,7 @@ export function EigenaarPagina({
       </section>
 
       {/* ── DE KRING ── waarom je erbij wil horen */}
-      <section className="w-full px-6 md:px-12 mt-mw-12">
+      <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6">
           <div className="lg:col-span-5">
             <Eyebrow>{c.kringEyebrow}</Eyebrow>
@@ -135,7 +135,7 @@ export function EigenaarPagina({
       </section>
 
       {/* ── DE STANDAARD ── vier beeldtegels */}
-      <section className="w-full px-6 md:px-12 mt-mw-12">
+      <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl">
           <Eyebrow>{c.standaardEyebrow}</Eyebrow>
           <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[22ch]">{c.standaardH2}</h2>
@@ -168,7 +168,7 @@ export function EigenaarPagina({
       </section>
 
       {/* ── WAT ERBIJ HOORT ── beeld links, lijst rechts */}
-      <section className="w-full px-6 md:px-12 mt-mw-12">
+      <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6 items-center">
           <div className="lg:col-span-6 relative aspect-[4/5] overflow-hidden">
             <Image src="/images/standaard/V2-12.jpg" alt={c.erbijBeeldAlt} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
@@ -190,7 +190,7 @@ export function EigenaarPagina({
       </section>
 
       {/* ── DRIE KEUZES ── */}
-      <section className="w-full px-6 md:px-12 mt-mw-12">
+      <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl">
           <Eyebrow>{c.keuzesEyebrow}</Eyebrow>
           <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[22ch]">{c.keuzesH2}</h2>
@@ -208,7 +208,7 @@ export function EigenaarPagina({
       </section>
 
       {/* ── DE VOLGENDE BATCH ── donkere band */}
-      <section className="w-full bg-moroww-dark text-white px-6 md:px-12 py-mw-10 mt-mw-12">
+      <section className="w-full bg-moroww-dark text-white px-6 md:px-12 py-mw-8 lg:py-mw-10 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6 items-end">
           <div className="lg:col-span-7">
             <Eyebrow licht>{c.batchEyebrow}</Eyebrow>
@@ -228,7 +228,7 @@ export function EigenaarPagina({
       </section>
 
       {/* ── HOE HET LOOPT ── */}
-      <section className="w-full px-6 md:px-12 mt-mw-12">
+      <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl">
           <Eyebrow>{c.stappenEyebrow}</Eyebrow>
           <ol className="mt-mw-6 grid grid-cols-1 md:grid-cols-3 gap-mw-6">
@@ -245,7 +245,7 @@ export function EigenaarPagina({
       </section>
 
       {/* ── KANDIDAAT STELLEN ── formulier links, gesprek rechts */}
-      <section id="kandidaat" className="w-full px-6 md:px-12 mt-mw-12 mb-mw-12 scroll-mt-24">
+      <section id="kandidaat" className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12 mb-mw-8 lg:mb-mw-12 scroll-mt-24">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-8">
           <div className="lg:col-span-6">
             <Eyebrow>{c.formEyebrow}</Eyebrow>

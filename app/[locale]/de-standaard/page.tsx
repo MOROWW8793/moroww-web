@@ -218,7 +218,7 @@ export default async function DeStandaardPage({
   return (
     <Register kant="eigenaar">
       {/* ── HERO ── */}
-      <section className="w-full px-6 md:px-12 pt-mw-10 overflow-visible">
+      <section className="w-full px-6 md:px-12 pt-mw-8 lg:pt-mw-10 overflow-visible">
         <div className="mx-auto max-w-7xl">
           <p className="text-audit uppercase text-moroww-label">{c.eyebrow}</p>
           <h1 className="mt-mw-4 text-display text-moroww-dark max-w-[15ch]">{c.h1}</h1>
@@ -247,7 +247,7 @@ export default async function DeStandaardPage({
       )}
 
       {/* ── WAAROM ── */}
-      <section className="w-full px-6 md:px-12 mt-mw-12">
+      <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6">
           <div className="lg:col-span-5">
             <p className="text-audit uppercase text-moroww-label">{c.waaromEyebrow}</p>
@@ -260,11 +260,11 @@ export default async function DeStandaardPage({
       </section>
 
       {/* ── DE VIER REGELS ── beeld en tekst om beurt */}
-      <section className="w-full px-6 md:px-12 mt-mw-12">
+      <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl">
           <p className="text-audit uppercase text-moroww-label">{c.regelsEyebrow}</p>
           <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[22ch]">{c.regelsH2}</h2>
-          <ol className="mt-mw-8 space-y-mw-10">
+          <ol className="mt-mw-8 space-y-mw-8 lg:space-y-mw-10">
             {c.regels.map((r, i) => {
               const rechts = i % 2 === 1
               return (
@@ -290,7 +290,7 @@ export default async function DeStandaardPage({
       </section>
 
       {/* ── HOE WE KEUREN ── */}
-      <section className="w-full px-6 md:px-12 mt-mw-12">
+      <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl">
           <p className="text-audit uppercase text-moroww-label">{c.keuringEyebrow}</p>
           <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[22ch]">{c.keuringH2}</h2>
@@ -306,7 +306,7 @@ export default async function DeStandaardPage({
       </section>
 
       {/* ── HET LABEL ── donkere band */}
-      <section className="w-full bg-moroww-dark text-white px-6 md:px-12 py-mw-10 mt-mw-12">
+      <section className="w-full bg-moroww-dark text-white px-6 md:px-12 py-mw-8 lg:py-mw-10 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6 items-end">
           <div className="lg:col-span-8">
             <p className="text-audit uppercase text-white/70">{c.bandEyebrow}</p>
@@ -317,7 +317,7 @@ export default async function DeStandaardPage({
       </section>
 
       {/* ── GAST AAN HET WOORD + DOORVERWIJZING ── */}
-      <section className="w-full px-6 md:px-12 mt-mw-12 mb-mw-12">
+      <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12 mb-mw-8 lg:mb-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6">
           <div className="lg:col-span-7">
             <p className="text-audit uppercase text-moroww-label">{c.quoteEyebrow}</p>

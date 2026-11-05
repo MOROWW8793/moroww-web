@@ -90,7 +90,7 @@ export function OverMorowwContent({ locale, brentFoto }: { locale: string; brent
   return (
     <Register kant="eigenaar">
       {/* ── HERO ── */}
-      <section className="w-full px-6 md:px-12 pt-mw-10 overflow-visible">
+      <section className="w-full px-6 md:px-12 pt-mw-8 lg:pt-mw-10 overflow-visible">
         <div className="mx-auto max-w-7xl">
           <p className="text-audit uppercase text-moroww-label">{c.eyebrow}</p>
           <h1 className="mt-mw-4 text-display text-moroww-dark max-w-[16ch]">{c.h1}</h1>
@@ -105,7 +105,7 @@ export function OverMorowwContent({ locale, brentFoto }: { locale: string; brent
       </section>
 
       {/* ── WAAR HET BEGON ── */}
-      <section className="w-full px-6 md:px-12 mt-mw-12">
+      <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6">
           <div className="lg:col-span-5">
             <p className="text-audit uppercase text-moroww-label">{c.begonEyebrow}</p>
@@ -118,7 +118,7 @@ export function OverMorowwContent({ locale, brentFoto }: { locale: string; brent
       </section>
 
       {/* ── WAAROM EEN LABEL ── */}
-      <section className="w-full px-6 md:px-12 mt-mw-12">
+      <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl border-t border-moroww-dark pt-mw-6 grid grid-cols-1 lg:grid-cols-12 gap-mw-6">
           <div className="lg:col-span-5">
             <p className="text-audit uppercase text-moroww-label">{c.labelEyebrow}</p>
@@ -132,7 +132,7 @@ export function OverMorowwContent({ locale, brentFoto }: { locale: string; brent
       </section>
 
       {/* ── WIE WIJ ZIJN ── */}
-      <section className="w-full px-6 md:px-12 mt-mw-12">
+      <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl">
           <p className="text-audit uppercase text-moroww-label">{c.teamEyebrow}</p>
           <h2 className="mt-mw-4 text-h2 text-moroww-dark">{c.teamH2}</h2>
@@ -177,7 +177,7 @@ export function OverMorowwContent({ locale, brentFoto }: { locale: string; brent
       </section>
 
       {/* ── SUPPORTED BY ── donkere band */}
-      <section className="w-full bg-moroww-dark text-white px-6 md:px-12 py-mw-10 mt-mw-12">
+      <section className="w-full bg-moroww-dark text-white px-6 md:px-12 py-mw-8 lg:py-mw-10 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6 items-end">
           <div className="lg:col-span-7">
             <p className="text-audit uppercase text-white/70">{c.steunEyebrow}</p>
@@ -194,7 +194,7 @@ export function OverMorowwContent({ locale, brentFoto }: { locale: string; brent
       </section>
 
       {/* ── VERDER ── */}
-      <section className="w-full px-6 md:px-12 mt-mw-12 mb-mw-12">
+      <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12 mb-mw-8 lg:mb-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-mw-6">
           {c.links.map((l) => (
             <Link key={l.href} href={l.href as '/de-standaard' | '/collectie' | '/eigenaar-worden'} className="group border-t border-moroww-dark pt-mw-4 text-h2 text-moroww-dark hover:text-moroww-ink-2 transition-colors">

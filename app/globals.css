@@ -318,3 +318,15 @@ body {
   font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em;
 }
 .prose-kennis tr:last-child td { border-bottom: none; }
+
+/* ── Mobiel (nov 2026) ─────────────────────────────────────────────
+   Auditlabels iets groter op kleine schermen, en een ruimer raakvlak
+   voor de inline auditlinks op aanraakschermen. Verticale padding op
+   een inline element vergroot het klikvlak zonder de layout te duwen. */
+@media (max-width: 640px) {
+  .text-audit { font-size: 0.75rem; }
+}
+@media (pointer: coarse) {
+  /* :where() houdt de specificiteit op nul, zodat py-* utilities voorgaan */
+  :where(a.text-audit, .text-audit a) { padding-block: 0.875rem; }
+}

@@ -346,7 +346,7 @@ export default async function WoningDetailPage({ params }: Props) {
             </div>
             <AlleFotosKnop
               label={t('gallery_button', { count: woning.fotos.length })}
-              className="pointer-events-auto self-start md:self-auto shrink-0 bg-white text-moroww-dark text-audit uppercase font-semibold px-4 py-2 rounded-[2px] hover:bg-moroww-blush transition-colors"
+              className="pointer-events-auto self-start md:self-auto shrink-0 bg-white text-moroww-dark text-audit uppercase font-semibold inline-flex items-center min-h-[44px] px-4 py-3 rounded-[2px] hover:bg-moroww-blush transition-colors"
             />
           </div>
         </section>
@@ -503,7 +503,7 @@ export default async function WoningDetailPage({ params }: Props) {
               <h2 className="text-h2 text-moroww-dark">{t('tour_title', { name: woning.naam })}</h2>
               <AlleFotosKnop
                 label={t('gallery_button', { count: woning.fotos.length })}
-                className="shrink-0 text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+                className="shrink-0 py-3 text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
               />
             </div>
             <div className="mt-mw-5 grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-2 md:h-[72vh]">
