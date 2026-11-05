@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { FaqJsonLd } from "@/components/FaqJsonLd";
 import { Deur } from "@/components/Deur";
-import { Aankomst } from "@/components/sections/Aankomst";
 import { SneakPeek } from "@/components/sections/SneakPeek";
-import { CollectieOverzicht } from "@/components/collectie/CollectieOverzicht";
+import { WoningKaarten } from "@/components/sections/WoningKaarten";
 import { siteMetadata } from "@/lib/seo/siteMetadata";
 import { liveWoningen, type Locale } from "@/lib/woningen";
 
@@ -29,11 +26,11 @@ export async function generateMetadata({
   const isNl = locale === 'nl'
   return siteMetadata({
     titel: isNl
-      ? 'moroww — boek gekeurde vakantiewoningen'
-      : 'moroww — book inspected holiday homes',
+      ? 'moroww — gekeurde vakantiewoningen in België'
+      : 'moroww — inspected holiday homes in Belgium',
     beschrijving: isNl
-      ? 'Boek karaktervolle vakantiewoningen die ter plaatse gekeurd zijn. Rechtstreeks bij moroww, zonder servicekosten.'
-      : 'Book holiday homes with character, each inspected in person. Directly with moroww, without service fees.',
+      ? 'Twee collecties, één standaard. Elke woning fysiek geïnspecteerd voor ze in de collectie komt.'
+      : 'Two collections, one standard. Every home inspected in person before it joins the collection.',
     pad: isNl ? '/' : '/en',
     locale: isNl ? 'nl' : 'en',
     hreflang: { nl: '/', en: '/en' },
@@ -59,35 +56,28 @@ export default async function HomePage({
           niet met NL structured data te vervuilen. */}
       {isNl && <FaqJsonLd />}
 
-      {/* HERO — beeld eerst, schermvullend (nov 2026). Nav ligt er
-          transparant over (isDarkHeroPath). Zoeken op data zit op /boeken. */}
-      <section className="relative w-full h-[100svh] min-h-[600px] overflow-hidden text-white">
-        <Image src="/images/hero.jpg" alt={isNl ? 'Leefruimte van een moroww-woning bij avondlicht' : 'Living space of a moroww home in evening light'} fill priority className="object-cover" sizes="100vw" />
-        <div aria-hidden className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to top, rgba(20,16,13,0.78) 0%, rgba(20,16,13,0.35) 50%, rgba(20,16,13,0.4) 100%)' }} />
-        <div className="relative h-full px-6 md:px-12">
-          <div className="mx-auto max-w-7xl h-full flex flex-col justify-end pb-mw-8 lg:pb-mw-10">
-            <p className="mw-in text-[0.9375rem] text-white/75">{isNl ? 'gekeurde vakantiewoningen' : 'inspected holiday homes'}</p>
-            <h1 className="mw-in mt-mw-3 text-display font-light text-white max-w-[13ch]">
-              {isNl ? 'een verblijf dat klopt.' : 'a stay that is right.'}
-            </h1>
-            <div className="mw-in-2 mt-mw-6 flex flex-col sm:flex-row sm:items-center gap-mw-4">
-              <Link
-                href={isNl ? '/boeken' : '/en/book'}
-                className="self-start inline-flex items-center min-h-[52px] px-mw-5 py-4 bg-moroww-paper text-moroww-dark text-[0.9375rem] border border-moroww-paper hover:bg-transparent hover:text-white transition-colors duration-500"
-              >
-                {isNl ? 'zoek op data' : 'search by date'}
-              </Link>
-              <a href="#huizen" className="self-start inline-flex items-center min-h-[48px] text-[0.9375rem] text-white underline underline-offset-[6px] decoration-white/40 hover:decoration-white transition-colors">
-                {isNl ? 'bekijk de huizen ↓' : 'see the homes ↓'}
-              </a>
-            </div>
-          </div>
+      {/* HERO — bouwspec sectie 2. Blush achtergrond, één regel display,
+          geen beeld, geen video, geen knop.
+          pt-mw-8 (5rem) houdt de kop onder de fixed nav (64px); overflow
+          visible zodat de ascenders van 'll' en 'é' niet klippen. */}
+      <section
+        className="w-full flex items-center px-6 md:px-12 pt-mw-8 overflow-visible"
+        style={{ minHeight: '18vh' }}
+      >
+        <div className="mx-auto max-w-7xl w-full overflow-visible">
+          <h1 className="text-display text-moroww-dark">
+            {isNl ? 'karaktervolle huizen. een standaard die niet wijkt.' : 'homes with character. a standard that does not bend.'}
+          </h1>
         </div>
       </section>
 
-      {/* DE HUIZEN — elk huis schermvullend, boeken als rustige laag. */}
-      <section id="huizen" className="w-full mt-2 scroll-mt-16">
-        <CollectieOverzicht woningen={liveWoningen()} locale={locale as Locale} tabel={false} variant="scherm" />
+      {/* DE COLLECTIE — raster van live panden direct onder de H1, zelfde
+          PandKaart als op /collectie. Zo landt een bezoeker op de home
+          meteen op woningen in plaats van op de twee collectie-tegels. */}
+      <section className="w-full px-6 md:px-12 mt-mw-6">
+        <div className="mx-auto max-w-7xl">
+          <WoningKaarten woningen={liveWoningen()} locale={locale as Locale} />
+        </div>
       </section>
 
       {/* SNEAK PEEK — twee panden die nog niet publiek boekbaar zijn,
@@ -95,16 +85,10 @@ export default async function HomePage({
           (WP O). Onder de vouw, lazy-loaded, niet klikbaar. */}
       <SneakPeek locale={locale} />
 
-      {/* AANKOMSTSEQUENTIE — vier regels van The Eighth, één voor één in
-          zicht (client, IntersectionObserver, one-shot,
-          prefers-reduced-motion toont alles direct). Zit onder het
-          woningraster zodat er niets boven de vouw animeert. */}
-      <Aankomst />
-
       {/* DE TWEE DEUREN — verplaatst onder het woningenraster. Blijven de
           twee ingangen naar de streek-collecties (bouwspec sectie 3),
           nu als vervolg op wie al gescrold heeft. */}
-      <section className="w-full px-6 md:px-12 mt-mw-8">
+      <section className="w-full px-6 md:px-12 mt-mw-8 mb-mw-8 lg:mb-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-2">
           <Deur
             naam="the shore"
@@ -123,59 +107,6 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* WAAR HET BEGON — het Edinburgh-verhaal uit 'De moroww-belofte'
-          (nov 2026) vervangt de losse positioneringszin. De one-liner sluit
-          af; het volledige verhaal staat op /over-moroww. */}
-      <section className="w-full px-6 md:px-12 mt-mw-12 mb-mw-12">
-        <div className="mx-auto max-w-7xl">
-          <div className="max-w-[52ch]">
-            <h2 className="text-h2 text-moroww-dark">
-              {isNl ? 'waar het begon' : 'where it started'}
-            </h2>
-            <div className="mt-mw-4 space-y-mw-3 text-body-lg text-moroww-dark">
-              {isNl ? (
-                <>
-                  <p>
-                    Edinburgh. Een mooie woning, goede foto&apos;s, sterke
-                    reviews. De eerste nacht tilden we de matras op. Eronder
-                    zat schimmel.
-                  </p>
-                  <p>Niemand had gelogen. Er had gewoon niemand gekeken.</p>
-                  <p>moroww kijkt, zodat jij het niet hoeft te doen.</p>
-                </>
-              ) : (
-                <>
-                  <p>
-                    Edinburgh. A beautiful flat, good photos, strong reviews.
-                    The first night we lifted the mattress. Underneath was
-                    mould.
-                  </p>
-                  <p>Nobody had lied. Nobody had looked.</p>
-                  <p>moroww looks, so you don&apos;t have to.</p>
-                </>
-              )}
-            </div>
-            <ul className="mt-mw-5 flex flex-wrap gap-x-mw-5 gap-y-mw-3 text-audit uppercase">
-              <li>
-                <Link
-                  href={isNl ? '/over-moroww' : '/en/about'}
-                  className="text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
-                >
-                  {isNl ? 'lees ons verhaal →' : 'read our story →'}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={isNl ? '/de-standaard' : '/en/the-standard'}
-                  className="text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
-                >
-                  {isNl ? 'hoe we kijken →' : 'how we look →'}
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
