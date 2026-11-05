@@ -7,7 +7,7 @@ import { FaqJsonLd } from "@/components/FaqJsonLd";
 import { Deur } from "@/components/Deur";
 import { Aankomst } from "@/components/sections/Aankomst";
 import { SneakPeek } from "@/components/sections/SneakPeek";
-import { WoningKaarten } from "@/components/sections/WoningKaarten";
+import { CollectieOverzicht } from "@/components/collectie/CollectieOverzicht";
 import { siteMetadata } from "@/lib/seo/siteMetadata";
 import { liveWoningen, type Locale } from "@/lib/woningen";
 
@@ -28,11 +28,11 @@ export async function generateMetadata({
   const isNl = locale === 'nl'
   return siteMetadata({
     titel: isNl
-      ? 'moroww — gekeurde vakantiewoningen in België'
-      : 'moroww — inspected holiday homes in Belgium',
+      ? 'moroww — boek gekeurde vakantiewoningen'
+      : 'moroww — book inspected holiday homes',
     beschrijving: isNl
-      ? 'Twee collecties, één standaard. Elke woning fysiek geïnspecteerd voor ze in de collectie komt.'
-      : 'Two collections, one standard. Every home inspected in person before it joins the collection.',
+      ? 'Boek karaktervolle vakantiewoningen die ter plaatse gekeurd zijn. Rechtstreeks bij moroww, zonder servicekosten.'
+      : 'Book holiday homes with character, each inspected in person. Directly with moroww, without service fees.',
     pad: isNl ? '/' : '/en',
     locale: isNl ? 'nl' : 'en',
     hreflang: { nl: '/', en: '/en' },
@@ -58,27 +58,45 @@ export default async function HomePage({
           niet met NL structured data te vervuilen. */}
       {isNl && <FaqJsonLd />}
 
-      {/* HERO — bouwspec sectie 2. Blush achtergrond, één regel display,
-          geen beeld, geen video, geen knop.
-          pt-mw-8 (5rem) houdt de kop onder de fixed nav (64px); overflow
-          visible zodat de ascenders van 'll' en 'é' niet klippen. */}
-      <section
-        className="w-full flex items-center px-6 md:px-12 pt-mw-8 overflow-visible"
-        style={{ minHeight: '18vh' }}
-      >
+      {/* HERO — boekingssite eerst (nov 2026): wat je hier doet, en twee
+          knoppen. Zoeken op data zit op /boeken. */}
+      <section className="w-full px-6 md:px-12 pt-mw-8 lg:pt-mw-10 overflow-visible">
         <div className="mx-auto max-w-7xl w-full overflow-visible">
-          <h1 className="text-display text-moroww-dark">
-            {isNl ? 'karaktervolle huizen. een standaard die niet wijkt.' : 'homes with character. a standard that does not bend.'}
+          <p className="mw-in text-[0.9375rem] text-moroww-ink-2">
+            {isNl ? 'gekeurde vakantiewoningen' : 'inspected holiday homes'}
+          </p>
+          <h1 className="mw-in mt-mw-4 text-display font-light text-moroww-dark max-w-[15ch]">
+            {isNl ? 'boek een verblijf dat klopt.' : 'book a stay that is right.'}
           </h1>
+          <div className="mw-in-2 mt-mw-6 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto] gap-mw-5 items-end">
+            <p className="text-body-lg text-moroww-dark max-w-[52ch]">
+              {isNl
+                ? 'Karaktervolle huizen, elk ter plaatse gekeurd op wat je het eerst opmerkt. Je boekt rechtstreeks bij ons, zonder servicekosten.'
+                : 'Homes with character, each inspected in person on what you notice first. You book directly with us, without service fees.'}
+            </p>
+            <div className="flex flex-wrap gap-mw-3">
+              <Link
+                href={isNl ? '/boeken' : '/en/book'}
+                className="inline-flex items-center min-h-[52px] px-mw-5 py-4 bg-moroww-dark text-moroww-paper border border-moroww-dark text-[0.9375rem] hover:bg-transparent hover:text-moroww-dark transition-colors duration-500"
+              >
+                {isNl ? 'zoek op data' : 'search by date'}
+              </Link>
+              <Link
+                href={isNl ? '/collectie' : '/en/collection'}
+                className="inline-flex items-center min-h-[52px] px-mw-2 text-[0.9375rem] text-moroww-dark underline underline-offset-[6px] decoration-moroww-dark/30 hover:decoration-moroww-dark transition-colors"
+              >
+                {isNl ? 'bekijk de collectie' : 'see the collection'}
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* DE COLLECTIE — raster van live panden direct onder de H1, zelfde
-          PandKaart als op /collectie. Zo landt een bezoeker op de home
-          meteen op woningen in plaats van op de twee collectie-tegels. */}
-      <section className="w-full px-6 md:px-12 mt-mw-6">
+      {/* DE HUIZEN — zelfde overzichtskaart als op /collectie: kenmerken,
+          prijs en een boekknop per huis. */}
+      <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl">
-          <WoningKaarten woningen={liveWoningen()} locale={locale as Locale} />
+          <CollectieOverzicht woningen={liveWoningen()} locale={locale as Locale} tabel={false} variant="verhaal" />
         </div>
       </section>
 

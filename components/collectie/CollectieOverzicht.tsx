@@ -1,6 +1,5 @@
 import Image from 'next/image'
-import { Bath, BedDouble, Car, Check, Flame, KeyRound, Minus, Ruler, Sun, Umbrella, Users, Waves, WavesLadder } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { Check, Minus } from 'lucide-react'
 import { Link } from '@/i18n/navigation'
 import { lw, sortForCollectie, type Locale, type Woning } from '@/lib/woningen'
 import { kenmerkenVan, KENMERK_LABELS, type Kenmerk } from '@/lib/kenmerken'
@@ -8,22 +7,12 @@ import { kenmerkenVan, KENMERK_LABELS, type Kenmerk } from '@/lib/kenmerken'
 // Collectie-overzicht (nov 2026): per woning in één oogopslag wat ze te
 // bieden heeft, plus een tabel om alles naast elkaar te leggen.
 
-const ICOON: Record<Kenmerk, LucideIcon> = {
-  zeezicht: Waves,
-  strand: Umbrella,
-  zwembad: WavesLadder,
-  wellness: Flame,
-  buiten: Sun,
-  parking: Car,
-  smartlock: KeyRound,
-}
-
 const T = {
   nl: {
     slk: (n: number) => (n === 1 ? '1 slaapkamer' : `${n} slaapkamers`),
     badk: (n: number) => (n === 1 ? '1 badkamer' : `${n} badkamers`),
     gasten: (n: number) => `tot ${n} gasten`,
-    vanaf: 'vanaf', nacht: '/ nacht', bekijk: 'bekijk woning', boek: 'bekijk data en boek', nieuw: 'nieuw',
+    vanaf: 'vanaf', nacht: '/ nacht', bekijk: 'bekijk woning', boek: 'boek', nieuw: 'nieuw',
     tabelKop: 'alles op een rij', tabelIntro: 'Leg de huizen naast elkaar en kies wat bij je verblijf past.',
     kol: { woning: 'woning', streek: 'streek', m2: 'm²', slk: 'slaapk.', badk: 'badk.', gasten: 'gasten', prijs: 'vanaf / nacht' },
     ja: 'ja', nee: 'nee', opAanvraag: 'bekijk data',
@@ -32,7 +21,7 @@ const T = {
     slk: (n: number) => (n === 1 ? '1 bedroom' : `${n} bedrooms`),
     badk: (n: number) => (n === 1 ? '1 bathroom' : `${n} bathrooms`),
     gasten: (n: number) => `up to ${n} guests`,
-    vanaf: 'from', nacht: '/ night', bekijk: 'see the home', boek: 'see dates and book', nieuw: 'new',
+    vanaf: 'from', nacht: '/ night', bekijk: 'see the home', boek: 'book', nieuw: 'new',
     tabelKop: 'everything side by side', tabelIntro: 'Put the homes next to each other and choose what fits your stay.',
     kol: { woning: 'home', streek: 'region', m2: 'm²', slk: 'bedr.', badk: 'bathr.', gasten: 'guests', prijs: 'from / night' },
     ja: 'yes', nee: 'no', opAanvraag: 'see dates',
@@ -41,23 +30,27 @@ const T = {
 
 const TABEL_KENMERKEN: Kenmerk[] = ['zeezicht', 'zwembad', 'buiten', 'parking']
 
-function Feit({ icoon: I, children }: { icoon: LucideIcon; children: React.ReactNode }) {
-  return (
-    <li className="inline-flex items-center gap-2 text-body text-moroww-dark">
-      <I aria-hidden className="h-4 w-4 shrink-0 text-moroww-ink-2" strokeWidth={1.5} />
-      {children}
-    </li>
-  )
+function feitenLijn(w: Woning, locale: Locale) {
+  const t = T[locale]
+  return [
+    w.oppervlakte ?? '',
+    w.slaapkamers ? t.slk(w.slaapkamers) : '',
+    w.badkamers ? t.badk(w.badkamers) : '',
+    w.maxGasten ? t.gasten(w.maxGasten) : '',
+  ].filter(Boolean).join('  ·  ')
 }
 
+const TEKSTLINK = 'inline-flex items-center min-h-[44px] text-[0.9375rem] text-moroww-dark underline underline-offset-[6px] decoration-moroww-dark/30 hover:decoration-moroww-dark transition-colors'
+
+// Raster (collectiepagina): beeld, naam, één regel feiten, één regel
+// kenmerken in woorden, twee tekstlinks. Geen badges, geen iconen.
 function Kaart({ w, locale, priority }: { w: Woning; locale: Locale; priority: boolean }) {
   const t = T[locale]
-  const kenmerken = kenmerkenVan(w)
-  const tags = w.tags.map((tg) => lw(tg, locale))
+  const kenmerken = kenmerkenVan(w).map((k) => KENMERK_LABELS[k][locale])
   return (
     <article className="flex flex-col">
       <Link href={{ pathname: '/collectie/[id]', params: { id: w.id } }} className="group block" aria-label={w.naam}>
-        <div className="relative aspect-[4/3] overflow-hidden">
+        <div className="relative aspect-[4/5] overflow-hidden">
           <Image
             src={w.heroFoto}
             alt={w.naam}
@@ -66,78 +59,84 @@ function Kaart({ w, locale, priority }: { w: Woning; locale: Locale; priority: b
             className="object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-[1.02] motion-reduce:group-hover:scale-100"
             sizes="(max-width: 768px) 100vw, 50vw"
           />
-          <span className="absolute left-3 top-3 bg-moroww-paper/95 px-2.5 py-1 text-[0.8125rem] text-moroww-dark">
-            {w.collectie}
-            {w.nieuw ? ` · ${t.nieuw}` : ''}
-          </span>
         </div>
       </Link>
-
-      <div className="mt-mw-4 flex items-baseline justify-between gap-mw-4">
-        <div>
-          <h2 className="text-h2 font-light text-moroww-dark">{w.naam}</h2>
-          <p className="mt-1 text-body text-moroww-ink-2">{w.locatie}</p>
-        </div>
-        {w.prijs ? (
-          <p className="shrink-0 text-right text-body text-moroww-dark">
-            <span className="text-moroww-ink-2">{t.vanaf} </span>€{w.prijs}
-            <span className="text-moroww-ink-2"> {t.nacht}</span>
-          </p>
-        ) : null}
-      </div>
-
-      <ul className="mt-mw-4 flex flex-wrap gap-x-mw-5 gap-y-mw-2 border-t border-moroww-dark/15 pt-mw-4">
-        {w.oppervlakte ? <Feit icoon={Ruler}>{w.oppervlakte}</Feit> : null}
-        {w.slaapkamers ? <Feit icoon={BedDouble}>{t.slk(w.slaapkamers)}</Feit> : null}
-        {w.badkamers ? <Feit icoon={Bath}>{t.badk(w.badkamers)}</Feit> : null}
-        {w.maxGasten ? <Feit icoon={Users}>{t.gasten(w.maxGasten)}</Feit> : null}
-      </ul>
-
-      {kenmerken.length > 0 && (
-        <ul className="mt-mw-3 flex flex-wrap gap-2">
-          {kenmerken.map((k) => {
-            const I = ICOON[k]
-            return (
-              <li key={k} className="inline-flex items-center gap-1.5 border border-moroww-dark/15 px-2.5 py-1 text-[0.875rem] text-moroww-dark">
-                <I aria-hidden className="h-3.5 w-3.5" strokeWidth={1.5} />
-                {KENMERK_LABELS[k][locale]}
-              </li>
-            )
-          })}
-        </ul>
-      )}
-
-      {tags.length > 0 && <p className="mt-mw-3 text-[0.9375rem] text-moroww-ink-2">{tags.join(' · ')}</p>}
-
-      <div className="mt-mw-4 flex flex-wrap gap-mw-3">
-        <Link
-          href={{ pathname: '/collectie/[id]', params: { id: w.id }, hash: 'boeken' }}
-          className="inline-flex items-center min-h-[48px] px-mw-4 py-3 bg-moroww-orange text-moroww-dark text-[0.9375rem] font-semibold hover:bg-moroww-orange/85 transition-colors"
-        >
-          {t.boek}
-        </Link>
-        <Link
-          href={{ pathname: '/collectie/[id]', params: { id: w.id } }}
-          className="inline-flex items-center min-h-[48px] px-mw-4 py-3 border border-moroww-dark/30 text-moroww-dark text-[0.9375rem] hover:border-moroww-dark transition-colors"
-        >
-          {t.bekijk}
+      <p className="mt-mw-4 text-[0.875rem] text-moroww-ink-2">{w.collectie}{w.nieuw ? `  ·  ${t.nieuw}` : ''}</p>
+      <h2 className="mt-1 text-h2 font-light text-moroww-dark">{w.naam}</h2>
+      <p className="mt-1 text-body text-moroww-ink-2">{w.locatie}</p>
+      <p className="mt-mw-3 text-body text-moroww-dark">{feitenLijn(w, locale)}</p>
+      {kenmerken.length > 0 && <p className="mt-1 text-body text-moroww-ink-2">{kenmerken.join(', ')}</p>}
+      <div className="mt-mw-3 flex flex-wrap items-center gap-x-mw-5">
+        <Link href={{ pathname: '/collectie/[id]', params: { id: w.id }, hash: 'boeken' }} className={TEKSTLINK}>
+          {w.prijs ? `${t.vanaf} €${w.prijs} ${t.nacht}  ·  ${t.boek} →` : `${t.boek} →`}
         </Link>
       </div>
     </article>
   )
 }
 
-export function CollectieOverzicht({ woningen, locale }: { woningen: Woning[]; locale: Locale }) {
+// Verhaal (homepage): elk huis als een hoofdstuk. Groot beeld, naam in
+// de dunne letter, de slogan van het huis, feiten in één regel.
+function Hoofdstuk({ w, locale, i }: { w: Woning; locale: Locale; i: number }) {
+  const t = T[locale]
+  const rechts = i % 2 === 1
+  const kenmerken = kenmerkenVan(w).map((k) => KENMERK_LABELS[k][locale])
+  return (
+    <article className="grid grid-cols-1 lg:grid-cols-12 gap-mw-5 lg:gap-mw-6 items-end">
+      <Link
+        href={{ pathname: '/collectie/[id]', params: { id: w.id } }}
+        aria-label={w.naam}
+        className={`group block lg:col-span-7 ${rechts ? 'lg:order-2 lg:col-start-6' : ''}`}
+      >
+        <div className="relative aspect-[4/5] sm:aspect-[5/4] overflow-hidden">
+          <Image
+            src={w.heroFoto}
+            alt={w.naam}
+            fill
+            priority={i === 0}
+            className="object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-[1.02] motion-reduce:group-hover:scale-100"
+            sizes="(max-width: 1024px) 100vw, 60vw"
+          />
+        </div>
+      </Link>
+      <div className={`lg:col-span-4 ${rechts ? 'lg:order-1 lg:col-start-1' : 'lg:col-start-9'} pb-mw-2`}>
+        <p className="text-[0.875rem] text-moroww-ink-2">
+          {String(i + 1).padStart(2, '0')}  ·  {w.collectie}  ·  {w.locatie}
+        </p>
+        <h2 className="mt-mw-3 text-h2 lg:text-[3rem] lg:leading-[1.02] font-light text-moroww-dark">{w.naam}</h2>
+        <p className="mt-mw-3 text-body-lg text-moroww-dark">{lw(w.slogan, locale)}</p>
+        <p className="mt-mw-4 text-body text-moroww-ink-2">{feitenLijn(w, locale)}</p>
+        {kenmerken.length > 0 && <p className="mt-1 text-body text-moroww-ink-2">{kenmerken.join(', ')}</p>}
+        <div className="mt-mw-4 flex flex-col items-start">
+          <Link href={{ pathname: '/collectie/[id]', params: { id: w.id }, hash: 'boeken' }} className={TEKSTLINK}>
+            {w.prijs ? `${t.vanaf} €${w.prijs} ${t.nacht}  ·  ${t.boek} →` : `${t.boek} →`}
+          </Link>
+        </div>
+      </div>
+    </article>
+  )
+}
+
+export function CollectieOverzicht({ woningen, locale, tabel = true, variant = 'raster' }: { woningen: Woning[]; locale: Locale; tabel?: boolean; variant?: 'raster' | 'verhaal' }) {
   const t = T[locale]
   const lijst = sortForCollectie(woningen)
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-mw-6 gap-y-mw-8">
-        {lijst.map((w, i) => (
-          <Kaart key={w.id} w={w} locale={locale} priority={i < 2} />
-        ))}
-      </div>
+      {variant === 'verhaal' ? (
+        <div className="space-y-mw-8 lg:space-y-mw-12">
+          {lijst.map((w, i) => (
+            <Hoofdstuk key={w.id} w={w} locale={locale} i={i} />
+          ))}
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-mw-6 gap-y-mw-8">
+          {lijst.map((w, i) => (
+            <Kaart key={w.id} w={w} locale={locale} priority={i < 2} />
+          ))}
+        </div>
+      )}
 
+      {tabel && (
       <section className="mt-mw-8 lg:mt-mw-10" aria-labelledby="tabel-kop">
         <h2 id="tabel-kop" className="text-h2 font-light text-moroww-dark">{t.tabelKop}</h2>
         <p className="mt-mw-2 text-body text-moroww-ink-2">{t.tabelIntro}</p>
@@ -194,6 +193,7 @@ export function CollectieOverzicht({ woningen, locale }: { woningen: Woning[]; l
           </table>
         </div>
       </section>
+      )}
     </>
   )
 }

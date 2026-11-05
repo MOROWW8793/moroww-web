@@ -37,7 +37,7 @@ export default async function CollectiePage({
   const loc: Locale = isNl ? 'nl' : 'en'
   const woningen = liveWoningen()
   const aantal = countWord(woningen.length, loc, false)
-  const tab = 'inline-flex items-center min-h-[44px] px-mw-4 text-[0.9375rem] border transition-colors'
+  const tab = 'inline-flex items-center min-h-[44px] text-[0.9375rem] underline-offset-[8px] transition-colors'
   return (
     <Register kant="gast">
       {/* ── HERO ── */}
@@ -52,11 +52,11 @@ export default async function CollectiePage({
               ? `We bouwen de plek waar je overal ter wereld een verblijf vindt dat klopt. We beginnen in België: ${aantal} karaktervolle huizen, elk ter plaatse gekeurd.`
               : `We are building the place where you find a stay that is right, anywhere in the world. We start in Belgium: ${aantal} homes with character, each inspected in person.`}
           </p>
-          <nav aria-label={isNl ? 'streken' : 'regions'} className="mt-mw-6 flex flex-wrap gap-2">
-            <span className={`${tab} bg-moroww-dark text-moroww-paper border-moroww-dark`}>{isNl ? 'alles' : 'all'}</span>
-            <Link href="/the-shore" className={`${tab} border-moroww-dark/25 text-moroww-dark hover:border-moroww-dark`}>the shore →</Link>
-            <Link href="/the-fields" className={`${tab} border-moroww-dark/25 text-moroww-dark hover:border-moroww-dark`}>the fields →</Link>
-            <Link href="/boeken" className={`${tab} border-moroww-dark/25 text-moroww-dark hover:border-moroww-dark`}>{isNl ? 'zoek op data →' : 'search by date →'}</Link>
+          <nav aria-label={isNl ? 'streken' : 'regions'} className="mt-mw-6 flex flex-wrap gap-x-mw-5 gap-y-1">
+            <span className={`${tab} text-moroww-dark underline decoration-moroww-dark decoration-2`}>{isNl ? 'alles' : 'all'}</span>
+            <Link href="/the-shore" className={`${tab} text-moroww-ink-2 hover:text-moroww-dark`}>the shore →</Link>
+            <Link href="/the-fields" className={`${tab} text-moroww-ink-2 hover:text-moroww-dark`}>the fields →</Link>
+            <Link href="/boeken" className={`${tab} text-moroww-ink-2 hover:text-moroww-dark`}>{isNl ? 'zoek op data →' : 'search by date →'}</Link>
           </nav>
         </div>
       </section>
