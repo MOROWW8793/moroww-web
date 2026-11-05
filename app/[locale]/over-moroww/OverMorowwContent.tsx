@@ -31,7 +31,7 @@ const COPY = {
       { naam: 'Brent', rol: 'oprichter · kwaliteit en werking', tekst: 'Bewaakt de standaard in de praktijk: hoe we keuren, hoe huizen opgevolgd worden, en dat het elke keer klopt.' },
     ],
     teamSlot: 'Wie een vraag heeft, gast of eigenaar, spreekt met ons. Niet met een callcenter.',
-    noamAlt: 'Noam aan tafel met zijn laptop in een moroww-woning',
+    noamAlt: 'Noam aan tafel in een moroww-woning',
     brentAlt: 'Brent, oprichter van moroww',
     steunEyebrow: 'supported by',
     steunH2: 'geselecteerd voor Start it @KBC.',
@@ -67,7 +67,7 @@ const COPY = {
       { naam: 'Brent', rol: 'founder · quality and operations', tekst: 'Guards the standard in practice: how we inspect, how homes are followed up, and that it is right every time.' },
     ],
     teamSlot: 'Whoever has a question, guest or owner, speaks with us. Not with a call centre.',
-    noamAlt: 'Noam at the table with his laptop in a moroww home',
+    noamAlt: 'Noam at the table in a moroww home',
     brentAlt: 'Brent, founder of moroww',
     steunEyebrow: 'supported by',
     steunH2: 'selected for Start it @KBC.',
@@ -142,10 +142,10 @@ export function OverMorowwContent({ locale, brentFoto }: { locale: string; brent
                 <div key={p.naam}>
                   <div className="relative aspect-[4/5] overflow-hidden">
                     <Image
-                      src={i === 0 ? '/images/noam.jpg' : '/images/brent.jpg'}
+                      src={i === 0 ? '/images/noam-portret.jpg' : '/images/brent.jpg'}
                       alt={i === 0 ? c.noamAlt : c.brentAlt}
                       fill
-                      className={`object-cover ${i === 0 ? 'object-[72%_center]' : 'object-[42%_center]'}`}
+                      className={`object-cover ${i === 0 ? 'object-[52%_center]' : 'object-[42%_center]'}`}
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
