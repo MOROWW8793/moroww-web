@@ -1,12 +1,11 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { useLocale, useTranslations } from 'next-intl'
 import { Link, usePathname, useRouter } from '@/i18n/navigation'
 import {
   gastenNavItems,
-  eigenaarDropdown,
   nlOnlyRoutes,
   isDarkHeroPath,
 } from '@/lib/navigation'
@@ -14,18 +13,10 @@ import {
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-  const [dropdownOpen, setDropdownOpen] = useState(false)
-  // Wanneer de gebruiker klikt: paneel blijft open tot een tweede klik of
-  // escape. Hover-open sluit met 200ms vertraging; pinned-open niet.
-  const [pinnedOpen, setPinnedOpen] = useState(false)
-  const [mobileEigenaarOpen, setMobileEigenaarOpen] = useState(false)
   const locale = useLocale()
   const t = useTranslations('nav')
   const router = useRouter()
   const pathname = usePathname()
-
-  const dropdownWrapper = useRef<HTMLDivElement>(null)
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -38,63 +29,14 @@ export function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [open])
 
-  // Escape sluit dropdown en mobiel menu, en heft de pinned-state op.
+  // Escape sluit het mobiele menu.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key !== 'Escape') return
-      if (dropdownOpen || pinnedOpen) {
-        setDropdownOpen(false)
-        setPinnedOpen(false)
-      }
-      if (open) setOpen(false)
+      if (e.key === 'Escape' && open) setOpen(false)
     }
     document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
-  }, [dropdownOpen, pinnedOpen, open])
-
-  // Klik buiten de dropdown sluit hem, ook wanneer hij pinned is.
-  useEffect(() => {
-    if (!dropdownOpen && !pinnedOpen) return
-    const onClick = (e: MouseEvent) => {
-      if (!dropdownWrapper.current) return
-      if (!dropdownWrapper.current.contains(e.target as Node)) {
-        setDropdownOpen(false)
-        setPinnedOpen(false)
-      }
-    }
-    document.addEventListener('mousedown', onClick)
-    return () => document.removeEventListener('mousedown', onClick)
-  }, [dropdownOpen, pinnedOpen])
-
-  useEffect(() => {
-    return () => {
-      if (closeTimer.current) clearTimeout(closeTimer.current)
-    }
-  }, [])
-
-  function openViaHover() {
-    if (closeTimer.current) {
-      clearTimeout(closeTimer.current)
-      closeTimer.current = null
-    }
-    setDropdownOpen(true)
-  }
-  function closeViaHover() {
-    if (pinnedOpen) return
-    if (closeTimer.current) clearTimeout(closeTimer.current)
-    closeTimer.current = setTimeout(() => setDropdownOpen(false), 200)
-  }
-  function toggleClick() {
-    if (pinnedOpen) {
-      // Tweede klik → sluiten.
-      setPinnedOpen(false)
-      setDropdownOpen(false)
-    } else {
-      // Eerste klik → openen en pinnen.
-      setPinnedOpen(true)
-      setDropdownOpen(true)
-    }
-  }
+  }, [open])
 
   const isNlOnly = nlOnlyRoutes.some((r) => pathname === r || pathname.startsWith(`${r}/`))
 
@@ -143,76 +85,30 @@ export function Navbar() {
             </Link>
           ))}
 
-          {/* Dropdown "voor eigenaars ▾" */}
-          <div
-            ref={dropdownWrapper}
-            className="relative"
-            onMouseEnter={openViaHover}
-            onMouseLeave={closeViaHover}
+          {/* Kennisbank: eigen ingang (nov 2026) */}
+          <Link
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            href={'/kennis' as any}
+            className={`text-sm font-medium transition-colors duration-150 ${
+              effectiveScrolled
+                ? 'text-moroww-dark hover:text-moroww-orange'
+                : 'text-white/90 hover:text-white'
+            }`}
           >
-            <button
-              type="button"
-              onClick={toggleClick}
-              onFocus={openViaHover}
-              aria-expanded={dropdownOpen}
-              aria-haspopup="menu"
-              className={`text-sm font-medium transition-colors duration-150 inline-flex items-center gap-1.5 ${
-                effectiveScrolled
-                  ? 'text-moroww-dark hover:text-moroww-orange'
-                  : 'text-white/90 hover:text-white'
-              }`}
-            >
-              {t('for_owners')}
-              <span aria-hidden className="text-xs">▾</span>
-            </button>
+            {t('knowledge')}
+          </Link>
 
-            {dropdownOpen && (
-              // Padding-top ipv margin-top: het paneel begint visueel 12px
-              // onder de trigger, maar de hit-area sluit aan op de trigger.
-              // Daardoor sluit het paneel niet als de muis er schuin naartoe
-              // beweegt.
-              <div className="absolute right-0 top-full pt-3">
-                <div
-                  role="menu"
-                  className="w-[22rem] bg-moroww-paper border border-moroww-rule p-mw-4"
-                  style={{ borderRadius: 2 }}
-                  onMouseEnter={openViaHover}
-                  onMouseLeave={closeViaHover}
-                >
-                  <ul className="flex flex-col">
-                    {eigenaarDropdown.map((item) => (
-                      <li key={item.href}>
-                        <Link
-                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                          href={item.href as any}
-                          role="menuitem"
-                          className="block py-mw-3 px-mw-3 hover:bg-moroww-rule/40 transition-colors"
-                          onClick={() => { setDropdownOpen(false); setPinnedOpen(false) }}
-                        >
-                          <p className="text-moroww-dark font-semibold text-sm">{item.titel}</p>
-                          <p className="text-audit uppercase text-moroww-ink-2 mt-1">
-                            {locale === 'en' && item.toelichtingEn
-                              ? item.toelichtingEn
-                              : item.toelichting}
-                          </p>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                  <hr className="my-mw-3 border-0 border-t border-moroww-rule" aria-hidden />
-                  <Link
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    href={'/kennis' as any}
-                    role="menuitem"
-                    className="block py-mw-3 px-mw-3 text-audit uppercase text-moroww-dark hover:bg-moroww-rule/40 transition-colors"
-                    onClick={() => { setDropdownOpen(false); setPinnedOpen(false) }}
-                  >
-                    alle kennispagina&apos;s →
-                  </Link>
-                </div>
-              </div>
-            )}
-          </div>
+          {/* voor eigenaars: één knop, geen dropdown (nov 2026) */}
+          <Link
+            href="/eigenaar-worden"
+            className={`rounded-full px-5 py-2.5 text-sm font-semibold border transition-colors duration-150 ${
+              effectiveScrolled
+                ? 'border-moroww-dark text-moroww-dark hover:bg-moroww-dark hover:text-white'
+                : 'border-white/80 text-white hover:bg-white hover:text-moroww-dark'
+            }`}
+          >
+            {t('for_owners')}
+          </Link>
 
           {/* Taalwisselaar */}
           {!isNlOnly && (
@@ -270,47 +166,21 @@ export function Navbar() {
               </Link>
             ))}
 
-            {/* voor eigenaars — uitklapbaar accordeon */}
-            <div className="border-t border-moroww-rule mt-2 pt-2">
-              <button
-                type="button"
-                className="w-full text-lg font-medium text-moroww-dark py-3 min-h-[44px] flex items-center justify-between"
-                onClick={() => setMobileEigenaarOpen((v) => !v)}
-                aria-expanded={mobileEigenaarOpen}
-              >
-                <span>{t('for_owners')}</span>
-                <span aria-hidden className="text-sm">{mobileEigenaarOpen ? '−' : '+'}</span>
-              </button>
-              {mobileEigenaarOpen && (
-                <ul className="flex flex-col pl-4 border-l border-moroww-rule">
-                  {eigenaarDropdown.map((item) => (
-                    <li key={item.href}>
-                      <Link
-                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                        href={item.href as any}
-                        className="block py-3 min-h-[44px]"
-                        onClick={() => setOpen(false)}
-                      >
-                        <p className="text-moroww-dark font-medium">{item.titel}</p>
-                        <p className="text-audit uppercase text-moroww-ink-2 mt-0.5">
-                          {item.toelichting}
-                        </p>
-                      </Link>
-                    </li>
-                  ))}
-                  <li>
-                    <Link
-                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                      href={'/kennis' as any}
-                      className="block py-3 text-audit uppercase text-moroww-dark"
-                      onClick={() => setOpen(false)}
-                    >
-                      alle kennispagina&apos;s →
-                    </Link>
-                  </li>
-                </ul>
-              )}
-            </div>
+            <Link
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              href={'/kennis' as any}
+              className="text-lg font-medium text-moroww-dark py-3 min-h-[44px] flex items-center"
+              onClick={() => setOpen(false)}
+            >
+              {t('knowledge')}
+            </Link>
+            <Link
+              href="/eigenaar-worden"
+              className="mt-2 border border-moroww-dark text-moroww-dark rounded-full px-6 py-3 text-base font-semibold text-center min-h-[44px] flex items-center justify-center"
+              onClick={() => setOpen(false)}
+            >
+              {t('for_owners')}
+            </Link>
 
             {!isNlOnly && (
               <button
