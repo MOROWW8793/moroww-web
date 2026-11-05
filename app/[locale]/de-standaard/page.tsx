@@ -179,7 +179,7 @@ const EN: typeof NL = {
   eigenaarLink: 'owner? does your home meet the standard →',
 }
 
-const LINK = 'text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors'
+const LINK = 'text-[0.9375rem] text-moroww-dark underline underline-offset-[6px] decoration-moroww-dark/30 hover:decoration-moroww-dark transition-colors'
 
 export async function generateMetadata({
   params,
@@ -220,9 +220,9 @@ export default async function DeStandaardPage({
       {/* ── HERO ── */}
       <section className="w-full px-6 md:px-12 pt-mw-8 lg:pt-mw-10 overflow-visible">
         <div className="mx-auto max-w-7xl">
-          <p className="text-audit uppercase text-moroww-label">{c.eyebrow}</p>
-          <h1 className="mt-mw-4 text-display text-moroww-dark max-w-[15ch]">{c.h1}</h1>
-          <p className="mt-mw-6 text-body-lg text-moroww-dark max-w-[56ch]">{c.lead}</p>
+          <p className="mw-in text-[0.9375rem] text-moroww-ink-2">{c.eyebrow}</p>
+          <h1 className="mw-in mt-mw-4 text-display font-light text-moroww-dark max-w-[15ch]">{c.h1}</h1>
+          <p className="mw-in-2 mt-mw-6 text-body-lg text-moroww-dark max-w-[56ch]">{c.lead}</p>
         </div>
       </section>
 
@@ -250,8 +250,8 @@ export default async function DeStandaardPage({
       <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6">
           <div className="lg:col-span-5">
-            <p className="text-audit uppercase text-moroww-label">{c.waaromEyebrow}</p>
-            <h2 className="mt-mw-4 text-h2 text-moroww-dark">{c.waaromH2}</h2>
+            <p className="text-[0.9375rem] text-moroww-ink-2">{c.waaromEyebrow}</p>
+            <h2 className="mt-mw-4 text-h2 font-light text-moroww-dark">{c.waaromH2}</h2>
           </div>
           <div className="lg:col-span-6 lg:col-start-7 space-y-mw-3 text-body-lg text-moroww-dark max-w-[52ch]">
             {c.waaromP.map((p) => <p key={p}>{p}</p>)}
@@ -262,8 +262,8 @@ export default async function DeStandaardPage({
       {/* ── DE VIER REGELS ── beeld en tekst om beurt */}
       <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl">
-          <p className="text-audit uppercase text-moroww-label">{c.regelsEyebrow}</p>
-          <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[22ch]">{c.regelsH2}</h2>
+          <p className="text-[0.9375rem] text-moroww-ink-2">{c.regelsEyebrow}</p>
+          <h2 className="mt-mw-4 text-h2 font-light text-moroww-dark max-w-[22ch]">{c.regelsH2}</h2>
           <ol className="mt-mw-8 space-y-mw-8 lg:space-y-mw-10">
             {c.regels.map((r, i) => {
               const rechts = i % 2 === 1
@@ -273,8 +273,8 @@ export default async function DeStandaardPage({
                     <Image src={r.beeld} alt={r.alt} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
                   </div>
                   <div className={`lg:col-span-5 ${rechts ? 'lg:order-1 lg:col-start-1' : 'lg:col-start-8'}`}>
-                    <p className="text-display text-moroww-rule leading-none">0{i + 1}</p>
-                    <h3 className="mt-mw-4 text-h2 text-moroww-dark">{r.titel}</h3>
+                    <p className="text-display font-light text-moroww-rule leading-none">0{i + 1}</p>
+                    <h3 className="mt-mw-4 text-h2 font-light text-moroww-dark">{r.titel}</h3>
                     <p className="mt-mw-3 text-body-lg text-moroww-dark">{r.kern}</p>
                     <ul className="mt-mw-5 border-t border-moroww-rule">
                       {r.punten.map((p) => (
@@ -292,12 +292,12 @@ export default async function DeStandaardPage({
       {/* ── HOE WE KEUREN ── */}
       <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl">
-          <p className="text-audit uppercase text-moroww-label">{c.keuringEyebrow}</p>
-          <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[22ch]">{c.keuringH2}</h2>
+          <p className="text-[0.9375rem] text-moroww-ink-2">{c.keuringEyebrow}</p>
+          <h2 className="mt-mw-4 text-h2 font-light text-moroww-dark max-w-[22ch]">{c.keuringH2}</h2>
           <div className="mt-mw-6 grid grid-cols-1 md:grid-cols-3 gap-mw-6">
             {c.keuring.map((k) => (
-              <div key={k.titel} className="border-t border-moroww-dark pt-mw-4">
-                <h3 className="text-h3 text-moroww-dark">{k.titel}</h3>
+              <div key={k.titel} className="border-t border-moroww-dark/20 pt-mw-4">
+                <h3 className="text-h3 font-normal text-moroww-dark">{k.titel}</h3>
                 <p className="mt-mw-3 text-body text-moroww-ink-2">{k.tekst}</p>
               </div>
             ))}
@@ -309,8 +309,8 @@ export default async function DeStandaardPage({
       <section className="w-full bg-moroww-dark text-white px-6 md:px-12 py-mw-8 lg:py-mw-10 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6 items-end">
           <div className="lg:col-span-8">
-            <p className="text-audit uppercase text-white/70">{c.bandEyebrow}</p>
-            <h2 className="mt-mw-4 text-h2 lg:text-[3.5rem] lg:leading-[1.02] text-white max-w-[20ch]">{c.bandH2}</h2>
+            <p className="text-[0.9375rem] text-white/60">{c.bandEyebrow}</p>
+            <h2 className="mt-mw-4 text-h2 font-light lg:text-[3.5rem] lg:leading-[1.02] text-white max-w-[20ch]">{c.bandH2}</h2>
           </div>
           <p className="lg:col-span-4 text-body-lg text-white/90">{c.bandP}</p>
         </div>
@@ -320,9 +320,9 @@ export default async function DeStandaardPage({
       <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12 mb-mw-8 lg:mb-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6">
           <div className="lg:col-span-7">
-            <p className="text-audit uppercase text-moroww-label">{c.quoteEyebrow}</p>
-            <blockquote className="mt-mw-4 text-h3 lg:text-[1.75rem] lg:leading-[1.35] font-normal text-moroww-dark italic">{c.quote}</blockquote>
-            <p className="mt-mw-4 text-audit uppercase text-moroww-ink-2">Ragna · Nosso Logies · 2026-08</p>
+            <p className="text-[0.9375rem] text-moroww-ink-2">{c.quoteEyebrow}</p>
+            <blockquote className="mt-mw-4 text-h3 font-normal lg:text-[1.75rem] lg:leading-[1.35] font-normal text-moroww-dark italic">{c.quote}</blockquote>
+            <p className="mt-mw-4 text-[0.9375rem] text-moroww-ink-2">Ragna · Nosso Logies · 2026-08</p>
           </div>
           <ul className="lg:col-span-4 lg:col-start-9 self-end space-y-mw-4">
             <li><Link href="/collectie" className={LINK}>{c.gastLink}</Link></li>

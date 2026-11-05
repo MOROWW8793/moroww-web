@@ -81,7 +81,7 @@ const COPY = {
   },
 } as const
 
-const LINK = "text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+const LINK = 'text-[0.9375rem] text-moroww-dark underline underline-offset-[6px] decoration-moroww-dark/30 hover:decoration-moroww-dark transition-colors'
 const STARTIT_URL = 'https://www.kbc.be/ondernemen/nl/artikel/zelfstandige-worden/eigen-zaak-starten/wat-is-kbc-start-it.html'
 
 export function OverMorowwContent({ locale, brentFoto }: { locale: string; brentFoto: boolean }) {
@@ -92,9 +92,9 @@ export function OverMorowwContent({ locale, brentFoto }: { locale: string; brent
       {/* ── HERO ── */}
       <section className="w-full px-6 md:px-12 pt-mw-8 lg:pt-mw-10 overflow-visible">
         <div className="mx-auto max-w-7xl">
-          <p className="text-audit uppercase text-moroww-label">{c.eyebrow}</p>
-          <h1 className="mt-mw-4 text-display text-moroww-dark max-w-[16ch]">{c.h1}</h1>
-          <p className="mt-mw-6 text-body-lg text-moroww-dark max-w-[56ch]">{c.lead}</p>
+          <p className="mw-in text-[0.9375rem] text-moroww-ink-2">{c.eyebrow}</p>
+          <h1 className="mw-in mt-mw-4 text-display font-light text-moroww-dark max-w-[16ch]">{c.h1}</h1>
+          <p className="mw-in-2 mt-mw-6 text-body-lg text-moroww-dark max-w-[56ch]">{c.lead}</p>
         </div>
       </section>
 
@@ -108,8 +108,8 @@ export function OverMorowwContent({ locale, brentFoto }: { locale: string; brent
       <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6">
           <div className="lg:col-span-5">
-            <p className="text-audit uppercase text-moroww-label">{c.begonEyebrow}</p>
-            <h2 className="mt-mw-4 text-h2 text-moroww-dark">{c.begonH2}</h2>
+            <p className="text-[0.9375rem] text-moroww-ink-2">{c.begonEyebrow}</p>
+            <h2 className="mt-mw-4 text-h2 font-light text-moroww-dark">{c.begonH2}</h2>
           </div>
           <div className="lg:col-span-6 lg:col-start-7 space-y-mw-3 text-body-lg text-moroww-dark max-w-[52ch]">
             {c.begonP.map((p) => <p key={p}>{p}</p>)}
@@ -119,10 +119,10 @@ export function OverMorowwContent({ locale, brentFoto }: { locale: string; brent
 
       {/* ── WAAROM EEN LABEL ── */}
       <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
-        <div className="mx-auto max-w-7xl border-t border-moroww-dark pt-mw-6 grid grid-cols-1 lg:grid-cols-12 gap-mw-6">
+        <div className="mx-auto max-w-7xl border-t border-moroww-dark/20 pt-mw-6 grid grid-cols-1 lg:grid-cols-12 gap-mw-6">
           <div className="lg:col-span-5">
-            <p className="text-audit uppercase text-moroww-label">{c.labelEyebrow}</p>
-            <h2 className="mt-mw-4 text-h2 text-moroww-dark">{c.labelH2}</h2>
+            <p className="text-[0.9375rem] text-moroww-ink-2">{c.labelEyebrow}</p>
+            <h2 className="mt-mw-4 text-h2 font-light text-moroww-dark">{c.labelH2}</h2>
           </div>
           <div className="lg:col-span-6 lg:col-start-7 space-y-mw-3 text-body-lg text-moroww-dark max-w-[52ch]">
             {c.labelP.map((p) => <p key={p}>{p}</p>)}
@@ -134,8 +134,8 @@ export function OverMorowwContent({ locale, brentFoto }: { locale: string; brent
       {/* ── WIE WIJ ZIJN ── */}
       <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl">
-          <p className="text-audit uppercase text-moroww-label">{c.teamEyebrow}</p>
-          <h2 className="mt-mw-4 text-h2 text-moroww-dark">{c.teamH2}</h2>
+          <p className="text-[0.9375rem] text-moroww-ink-2">{c.teamEyebrow}</p>
+          <h2 className="mt-mw-4 text-h2 font-light text-moroww-dark">{c.teamH2}</h2>
           {brentFoto ? (
             <div className="mt-mw-6 grid grid-cols-1 md:grid-cols-2 gap-mw-6">
               {c.team.map((p, i) => (
@@ -149,8 +149,8 @@ export function OverMorowwContent({ locale, brentFoto }: { locale: string; brent
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
-                  <h3 className="mt-mw-4 text-h2 text-moroww-dark">{p.naam}</h3>
-                  <p className="mt-mw-2 text-audit uppercase text-moroww-label">{p.rol}</p>
+                  <h3 className="mt-mw-4 text-h2 font-light text-moroww-dark">{p.naam}</h3>
+                  <p className="mt-mw-2 text-[0.9375rem] text-moroww-ink-2">{p.rol}</p>
                   <p className="mt-mw-3 text-body text-moroww-ink-2 max-w-[44ch]">{p.tekst}</p>
                 </div>
               ))}
@@ -162,9 +162,9 @@ export function OverMorowwContent({ locale, brentFoto }: { locale: string; brent
               </div>
               <div className="mt-mw-6 grid grid-cols-1 md:grid-cols-2 gap-mw-6">
                 {c.team.map((p) => (
-                  <div key={p.naam} className="border-t border-moroww-dark pt-mw-4">
-                    <h3 className="text-h2 text-moroww-dark">{p.naam}</h3>
-                    <p className="mt-mw-2 text-audit uppercase text-moroww-label">{p.rol}</p>
+                  <div key={p.naam} className="border-t border-moroww-dark/20 pt-mw-4">
+                    <h3 className="text-h2 font-light text-moroww-dark">{p.naam}</h3>
+                    <p className="mt-mw-2 text-[0.9375rem] text-moroww-ink-2">{p.rol}</p>
                     <p className="mt-mw-3 text-body text-moroww-ink-2 max-w-[44ch]">{p.tekst}</p>
                   </div>
                 ))}
@@ -180,15 +180,15 @@ export function OverMorowwContent({ locale, brentFoto }: { locale: string; brent
       <section className="w-full bg-moroww-dark text-white px-6 md:px-12 py-mw-8 lg:py-mw-10 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6 items-end">
           <div className="lg:col-span-7">
-            <p className="text-audit uppercase text-white/70">{c.steunEyebrow}</p>
+            <p className="text-[0.9375rem] text-white/60">{c.steunEyebrow}</p>
             <a href={STARTIT_URL} target="_blank" rel="noopener noreferrer" aria-label="Start it @KBC" className="mt-mw-4 inline-block">
               <Image src="/images/partners/start-it-kbc.png" alt="Start it @KBC" width={550} height={213} className="h-16 md:h-20 w-auto" />
             </a>
-            <h2 className="mt-mw-5 text-h2 text-white">{c.steunH2}</h2>
+            <h2 className="mt-mw-5 text-h2 font-light text-white">{c.steunH2}</h2>
           </div>
           <div className="lg:col-span-5 space-y-mw-4">
             <p className="text-body-lg text-white/90">{c.steunP}</p>
-            <Link href="/partners" className="text-audit uppercase text-white underline underline-offset-4 decoration-white/40 hover:decoration-white transition-colors">{c.partnersLink}</Link>
+            <Link href="/partners" className="text-[0.9375rem] text-white underline underline-offset-[6px] decoration-white/30 hover:decoration-white transition-colors">{c.partnersLink}</Link>
           </div>
         </div>
       </section>
@@ -197,7 +197,7 @@ export function OverMorowwContent({ locale, brentFoto }: { locale: string; brent
       <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12 mb-mw-8 lg:mb-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-mw-6">
           {c.links.map((l) => (
-            <Link key={l.href} href={l.href as '/de-standaard' | '/collectie' | '/eigenaar-worden'} className="group border-t border-moroww-dark pt-mw-4 text-h2 text-moroww-dark hover:text-moroww-ink-2 transition-colors">
+            <Link key={l.href} href={l.href as '/de-standaard' | '/collectie' | '/eigenaar-worden'} className="group border-t border-moroww-dark/20 pt-mw-4 text-h2 font-light text-moroww-dark hover:text-moroww-ink-2 transition-colors">
               {l.tekst}
             </Link>
           ))}

@@ -52,13 +52,14 @@ export type EigenaarCopy = {
 }
 
 const GESPREK = "https://calendar.app.google/BH8wYeA9AGf6KrUz7"
-const LINK = "text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
-const CTA_VOL = "inline-flex items-center min-h-[44px] rounded-full px-mw-5 py-3 font-semibold bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85 transition-colors"
-const CTA_RAND = "inline-flex items-center min-h-[44px] rounded-full px-mw-5 py-3 font-semibold border border-moroww-dark text-moroww-dark hover:bg-moroww-dark hover:text-white transition-colors"
+const LINK = "text-[0.9375rem] text-moroww-dark underline underline-offset-[6px] decoration-moroww-dark/30 hover:decoration-moroww-dark transition-colors"
+const CTA_VOL = "inline-flex items-center justify-center min-h-[52px] px-mw-5 py-4 text-[0.9375rem] tracking-[0.01em] bg-moroww-dark text-moroww-paper border border-moroww-dark hover:bg-transparent hover:text-moroww-dark transition-colors duration-500"
+const CTA_RAND = "inline-flex items-center justify-center min-h-[52px] px-mw-5 py-4 text-[0.9375rem] tracking-[0.01em] border border-moroww-dark/40 text-moroww-dark hover:border-moroww-dark transition-colors duration-500"
+const CTA_LICHT = "inline-flex items-center justify-center min-h-[52px] px-mw-5 py-4 text-[0.9375rem] tracking-[0.01em] bg-moroww-paper text-moroww-dark border border-moroww-paper hover:bg-transparent hover:text-moroww-paper transition-colors duration-500"
 
 function Eyebrow({ children, licht = false }: { children: React.ReactNode; licht?: boolean }) {
   return (
-    <p className={`text-audit uppercase ${licht ? 'text-white/70' : 'text-moroww-label'}`}>{children}</p>
+    <p className={`text-[0.9375rem] ${licht ? 'text-white/60' : 'text-moroww-ink-2'}`}>{children}</p>
   )
 }
 
@@ -80,9 +81,9 @@ export function EigenaarPagina({
       {/* ── HERO ── display-kop zoals op de homepage */}
       <section className="w-full px-6 md:px-12 pt-mw-8 lg:pt-mw-10 overflow-visible">
         <div className="mx-auto max-w-7xl">
-          <Eyebrow>{c.eyebrow}</Eyebrow>
-          <h1 className="mt-mw-4 text-display text-moroww-dark max-w-[14ch]">{c.h1}</h1>
-          <div className="mt-mw-6 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto] gap-mw-5 items-end">
+          <div className="mw-in"><Eyebrow>{c.eyebrow}</Eyebrow></div>
+          <h1 className="mw-in mt-mw-4 text-display font-light text-moroww-dark max-w-[14ch]">{c.h1}</h1>
+          <div className="mw-in-2 mt-mw-6 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto] gap-mw-5 items-end">
             <p className="text-body-lg text-moroww-dark max-w-[48ch]">{c.lead}</p>
             <div className="flex flex-wrap gap-mw-3">
               <a href="#kandidaat" className={CTA_VOL}>{c.ctaKandidaat}</a>
@@ -96,6 +97,7 @@ export function EigenaarPagina({
       <section className="w-full px-6 md:px-12 mt-mw-8">
         <div className="mx-auto max-w-7xl relative aspect-[4/5] sm:aspect-[16/9] lg:max-h-[78vh] w-full overflow-hidden">
           <Image src="/images/hero.jpg" alt={c.heroAlt} fill priority className="object-cover" sizes="(max-width: 1280px) 100vw, 1280px" />
+          <Image src="/images/Moroww_Certified_01_RGB.png" alt="moroww certified" width={240} height={240} className="absolute right-mw-4 bottom-mw-4 md:right-mw-6 md:bottom-mw-6 w-20 md:w-28 h-auto" />
         </div>
       </section>
 
@@ -106,13 +108,13 @@ export function EigenaarPagina({
       <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl">
           <Eyebrow>{c.waardeEyebrow}</Eyebrow>
-          <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[22ch]">{c.waardeH2}</h2>
+          <h2 className="mt-mw-4 text-h2 font-light text-moroww-dark max-w-[22ch]">{c.waardeH2}</h2>
           <div className="mt-mw-6 lg:mt-mw-8 grid grid-cols-1 md:grid-cols-2 gap-x-mw-8 gap-y-mw-6 lg:gap-y-mw-8">
             {c.waarde.map((w, i) => (
-              <div key={w.titel} className="border-t border-moroww-dark pt-mw-5 grid grid-cols-1 sm:grid-cols-[3.5rem_1fr] gap-mw-2 sm:gap-mw-4">
-                <p className="text-h2 text-moroww-label">0{i + 1}</p>
+              <div key={w.titel} className="border-t border-moroww-dark/20 pt-mw-5 grid grid-cols-1 sm:grid-cols-[3.5rem_1fr] gap-mw-2 sm:gap-mw-4">
+                <p className="text-h2 font-light text-moroww-label">0{i + 1}</p>
                 <div>
-                  <h3 className="text-h2 text-moroww-dark">{w.titel}</h3>
+                  <h3 className="text-h2 font-light text-moroww-dark">{w.titel}</h3>
                   <p className="mt-mw-3 text-body-lg text-moroww-ink-2 max-w-[44ch]">{w.tekst}</p>
                 </div>
               </div>
@@ -126,7 +128,7 @@ export function EigenaarPagina({
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6">
           <div className="lg:col-span-5">
             <Eyebrow>{c.kringEyebrow}</Eyebrow>
-            <h2 className="mt-mw-4 text-h2 text-moroww-dark">{c.kringH2}</h2>
+            <h2 className="mt-mw-4 text-h2 font-light text-moroww-dark">{c.kringH2}</h2>
           </div>
           <div className="lg:col-span-6 lg:col-start-7 space-y-mw-3 text-body-lg text-moroww-dark max-w-[52ch]">
             {c.kringP.map((p) => <p key={p}>{p}</p>)}
@@ -138,7 +140,7 @@ export function EigenaarPagina({
       <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl">
           <Eyebrow>{c.standaardEyebrow}</Eyebrow>
-          <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[22ch]">{c.standaardH2}</h2>
+          <h2 className="mt-mw-4 text-h2 font-light text-moroww-dark max-w-[22ch]">{c.standaardH2}</h2>
           <ol className="mt-mw-6 grid grid-cols-1 md:grid-cols-2 gap-2">
             {c.standaard.map((s, i) => (
               <li key={s.titel} className="group relative aspect-[4/5] lg:aspect-[5/4] overflow-hidden bg-moroww-dark">
@@ -146,7 +148,7 @@ export function EigenaarPagina({
                   src={s.beeld}
                   alt={s.alt}
                   fill
-                  className="object-cover transition-transform duration-[700ms] ease-out group-hover:scale-[1.03] motion-reduce:group-hover:scale-100"
+                  className="object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-[1.02] motion-reduce:group-hover:scale-100"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div
@@ -157,7 +159,7 @@ export function EigenaarPagina({
                 <div className="absolute inset-x-0 bottom-0 p-mw-5 text-white">
                   <div className="h-[3px] w-10 bg-white" aria-hidden />
                   <p className="mt-mw-3 text-audit uppercase text-white/80">0{i + 1}</p>
-                  <h3 className="mt-mw-2 text-h2 text-white max-w-[16ch]">{s.titel}</h3>
+                  <h3 className="mt-mw-2 text-h2 font-light text-white max-w-[16ch]">{s.titel}</h3>
                   <p className="mt-mw-2 text-body text-white/90 max-w-[40ch]">{s.tekst}</p>
                 </div>
               </li>
@@ -175,11 +177,11 @@ export function EigenaarPagina({
           </div>
           <div className="lg:col-span-5 lg:col-start-8">
             <Eyebrow>{c.erbijEyebrow}</Eyebrow>
-            <h2 className="mt-mw-4 text-h2 text-moroww-dark">{c.erbijH2}</h2>
+            <h2 className="mt-mw-4 text-h2 font-light text-moroww-dark">{c.erbijH2}</h2>
             <dl className="mt-mw-6 border-t border-moroww-rule">
               {c.erbij.map((e) => (
                 <div key={e.titel} className="border-b border-moroww-rule py-mw-4">
-                  <dt className="text-h3 text-moroww-dark">{e.titel}</dt>
+                  <dt className="text-h3 font-normal text-moroww-dark">{e.titel}</dt>
                   <dd className="mt-mw-2 text-body text-moroww-ink-2">{e.tekst}</dd>
                 </div>
               ))}
@@ -193,12 +195,12 @@ export function EigenaarPagina({
       <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl">
           <Eyebrow>{c.keuzesEyebrow}</Eyebrow>
-          <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[22ch]">{c.keuzesH2}</h2>
+          <h2 className="mt-mw-4 text-h2 font-light text-moroww-dark max-w-[22ch]">{c.keuzesH2}</h2>
           <div className="mt-mw-6 grid grid-cols-1 md:grid-cols-3 gap-mw-6">
             {c.keuzes.map((k) => (
-              <div key={k.titel} className="border-t border-moroww-dark pt-mw-4">
-                <p className="text-audit uppercase text-moroww-label">{k.nummer} · {k.titel}</p>
-                <h3 className="mt-mw-3 text-h3 text-moroww-dark">{k.kop}</h3>
+              <div key={k.titel} className="border-t border-moroww-dark/20 pt-mw-4">
+                <p className="text-[0.9375rem] text-moroww-ink-2">{k.nummer} · {k.titel}</p>
+                <h3 className="mt-mw-3 text-h3 font-normal text-moroww-dark">{k.kop}</h3>
                 <p className="mt-mw-3 text-body text-moroww-ink-2">{k.tekst}</p>
               </div>
             ))}
@@ -212,13 +214,13 @@ export function EigenaarPagina({
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6 items-end">
           <div className="lg:col-span-7">
             <Eyebrow licht>{c.batchEyebrow}</Eyebrow>
-            <h2 className="mt-mw-4 text-display text-white">{c.batchH2}</h2>
+            <h2 className="mt-mw-4 text-display font-light text-white">{c.batchH2}</h2>
           </div>
           <div className="lg:col-span-5 space-y-mw-4">
             <p className="text-body-lg text-white/90">{c.batchP}</p>
-            <a href="#kandidaat" className={CTA_VOL}>{c.ctaKandidaat}</a>
+            <a href="#kandidaat" className={CTA_LICHT}>{c.ctaKandidaat}</a>
             <div className="pt-mw-4 flex items-center gap-mw-4">
-              <span className="text-audit uppercase text-white/60">{c.batchStartIt}</span>
+              <span className="text-[0.9375rem] text-white/60">{c.batchStartIt}</span>
               <a href="https://www.kbc.be/ondernemen/nl/artikel/zelfstandige-worden/eigen-zaak-starten/wat-is-kbc-start-it.html" target="_blank" rel="noopener noreferrer" aria-label="Start it @KBC">
                 <Image src="/images/partners/start-it-kbc.png" alt="Start it @KBC" width={550} height={213} className="h-12 w-auto" />
               </a>
@@ -234,8 +236,8 @@ export function EigenaarPagina({
           <ol className="mt-mw-6 grid grid-cols-1 md:grid-cols-3 gap-mw-6">
             {c.stappen.map((s) => (
               <li key={s.titel}>
-                <p className="text-display text-moroww-rule leading-none">{s.nummer}</p>
-                <h3 className="mt-mw-3 text-h3 text-moroww-dark">{s.titel}</h3>
+                <p className="text-display font-light text-moroww-rule leading-none">{s.nummer}</p>
+                <h3 className="mt-mw-3 text-h3 font-normal text-moroww-dark">{s.titel}</h3>
                 <p className="mt-mw-2 text-body text-moroww-ink-2">{s.tekst}</p>
               </li>
             ))}
@@ -249,7 +251,7 @@ export function EigenaarPagina({
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-8">
           <div className="lg:col-span-6">
             <Eyebrow>{c.formEyebrow}</Eyebrow>
-            <h2 className="mt-mw-4 text-h2 text-moroww-dark">{c.formH2}</h2>
+            <h2 className="mt-mw-4 text-h2 font-light text-moroww-dark">{c.formH2}</h2>
             <p className="mt-mw-4 text-body text-moroww-dark max-w-[52ch]">{c.formP}</p>
             <div id="poortentoets" className="mt-mw-5 max-w-[52ch]">
               <LeadForm />
@@ -257,7 +259,7 @@ export function EigenaarPagina({
             <p className="mt-mw-5"><Link href={kennisHref} className={LINK}>{c.kennisLink}</Link></p>
           </div>
           <div className="lg:col-span-5 lg:col-start-8 lg:pt-mw-10 space-y-mw-4">
-            <h3 className="text-h3 text-moroww-dark">{c.gesprekH3}</h3>
+            <h3 className="text-h3 font-normal text-moroww-dark">{c.gesprekH3}</h3>
             <p className="text-body text-moroww-dark">{c.gesprekP}</p>
             <a href={GESPREK} target="_blank" rel="noopener noreferrer" className={CTA_RAND}>{c.gesprekCta}</a>
             <p className="pt-mw-4 text-body text-moroww-ink-2">{c.teamP}</p>

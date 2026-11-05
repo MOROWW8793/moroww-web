@@ -49,6 +49,13 @@
 
 @font-face {
   font-family: "OverusedGrotesk";
+  src: url("/fonts/OverusedGrotesk-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "OverusedGrotesk";
   src: url("/fonts/OverusedGrotesk-Book.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
@@ -330,3 +337,9 @@ body {
   /* :where() houdt de specificiteit op nul, zodat py-* utilities voorgaan */
   :where(a.text-audit, .text-audit a) { padding-block: 0.875rem; }
 }
+
+/* ── Rustige intrede voor hero's (nov 2026) ── */
+@keyframes mw-fade { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.mw-in { animation: mw-fade 1.2s cubic-bezier(.2,.7,.2,1) both; }
+.mw-in-2 { animation: mw-fade 1.2s cubic-bezier(.2,.7,.2,1) .25s both; }
+@media (prefers-reduced-motion: reduce) { .mw-in, .mw-in-2 { animation: none; } }

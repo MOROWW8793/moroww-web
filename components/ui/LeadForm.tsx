@@ -10,9 +10,9 @@ import { CheckCircle } from "lucide-react";
 
 const initial: LeadFormState = { success: false };
 
-const inputClass = "rounded-xl border border-moroww-brown/15 bg-moroww-blush/30 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-moroww-orange";
+const inputClass = "w-full border-0 border-b border-moroww-dark/25 bg-transparent px-0 py-3 text-base text-moroww-dark placeholder:text-moroww-ink-2/60 focus:outline-none focus:border-moroww-dark transition-colors rounded-none";
 const labelClass = "flex flex-col gap-1.5";
-const spanClass  = "text-xs font-semibold text-moroww-black/50 uppercase tracking-wide";
+const spanClass  = "text-[0.875rem] text-moroww-ink-2";
 
 // Copy per taal. NL blijft de bestaande copy; EN krijgt de vertaling
 // zonder next-intl messages, want de LeadForm zit in twee EigenaarContent-
@@ -89,12 +89,12 @@ export function LeadForm() {
 
   if (state.success) {
     return (
-      <div className="rounded-2xl bg-white p-10 text-center space-y-4">
-        <div className="flex justify-center">
-          <CheckCircle size={40} className="text-moroww-orange" />
+      <div className="border-t border-moroww-dark/20 py-mw-6 space-y-4">
+        <div className="flex">
+          <CheckCircle size={32} strokeWidth={1.25} className="text-moroww-dark" />
         </div>
-        <h3 className="font-bold text-xl text-moroww-black">{t.successTitel}</h3>
-        <p className="text-moroww-black/60 text-sm leading-relaxed max-w-xs mx-auto">
+        <h3 className="text-h3 font-normal text-moroww-dark">{t.successTitel}</h3>
+        <p className="text-moroww-ink-2 text-body leading-relaxed max-w-md">
           {t.successBody}
         </p>
       </div>
@@ -102,10 +102,10 @@ export function LeadForm() {
   }
 
   return (
-    <form ref={formRef} action={action} className="rounded-2xl bg-white p-8 md:p-10 space-y-5 shadow-sm">
-      <h3 className="font-bold text-xl text-moroww-black mb-2">{t.formKop}</h3>
+    <form ref={formRef} action={action} className="border-t border-moroww-dark/20 pt-mw-5 space-y-6">
+      <h3 className="sr-only">{t.formKop}</h3>
 
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-6 sm:grid-cols-2">
         <label className={labelClass}>
           <span className={spanClass}>{t.naamLabel}</span>
           <input name="name" required placeholder={t.naamPlaceholder} className={inputClass} />
@@ -157,7 +157,7 @@ export function LeadForm() {
 
       <button
         type="submit"
-        className="w-full rounded-full bg-moroww-orange hover:bg-moroww-orange/85 text-white font-semibold py-4 transition-colors duration-200"
+        className="w-full min-h-[52px] bg-moroww-dark text-moroww-paper border border-moroww-dark text-[0.9375rem] tracking-[0.01em] py-4 hover:bg-transparent hover:text-moroww-dark transition-colors duration-500"
       >
         {t.submit}
       </button>
