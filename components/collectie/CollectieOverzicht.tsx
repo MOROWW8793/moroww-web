@@ -117,12 +117,58 @@ function Hoofdstuk({ w, locale, i }: { w: Woning; locale: Locale; i: number }) {
   )
 }
 
-export function CollectieOverzicht({ woningen, locale, tabel = true, variant = 'raster' }: { woningen: Woning[]; locale: Locale; tabel?: boolean; variant?: 'raster' | 'verhaal' }) {
+// Scherm (homepage): elk huis vult het scherm. Beeld eerst, tekst als
+// een rustige laag onderaan, één link om te boeken.
+function Scherm({ w, locale, i }: { w: Woning; locale: Locale; i: number }) {
+  const t = T[locale]
+  return (
+    <article className="relative w-full h-[92svh] min-h-[560px] overflow-hidden text-white">
+      <Link href={{ pathname: '/collectie/[id]', params: { id: w.id } }} aria-label={w.naam} className="group absolute inset-0">
+        <Image
+          src={w.heroFoto}
+          alt={w.naam}
+          fill
+          priority={i === 0}
+          className="object-cover transition-transform duration-[2500ms] ease-out group-hover:scale-[1.02] motion-reduce:group-hover:scale-100"
+          sizes="100vw"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-x-0 bottom-0 h-[70%] pointer-events-none"
+          style={{ background: 'linear-gradient(to top, rgba(20,16,13,0.8), rgba(20,16,13,0))' }}
+        />
+      </Link>
+      <div className="relative h-full px-6 md:px-12 pointer-events-none">
+        <div className="mx-auto max-w-7xl h-full flex flex-col justify-end pb-mw-6 lg:pb-mw-8">
+          <p className="text-[0.875rem] text-white/75">{w.collectie}  ·  {w.locatie}</p>
+          <h2 className="mt-mw-2 text-display font-light text-white max-w-[14ch]">{w.naam}</h2>
+          <div className="mt-mw-4 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-mw-4">
+            <p className="text-body-lg text-white/90 max-w-[44ch]">{lw(w.slogan, locale)}</p>
+            <Link
+              href={{ pathname: '/collectie/[id]', params: { id: w.id }, hash: 'boeken' }}
+              className="pointer-events-auto self-start lg:self-auto inline-flex items-center min-h-[48px] text-[0.9375rem] text-white underline underline-offset-[6px] decoration-white/40 hover:decoration-white transition-colors"
+            >
+              {w.prijs ? `${t.vanaf} €${w.prijs} ${t.nacht}  ·  ${t.boek} →` : `${t.boek} →`}
+            </Link>
+          </div>
+        </div>
+      </div>
+    </article>
+  )
+}
+
+export function CollectieOverzicht({ woningen, locale, tabel = true, variant = 'raster' }: { woningen: Woning[]; locale: Locale; tabel?: boolean; variant?: 'raster' | 'verhaal' | 'scherm' }) {
   const t = T[locale]
   const lijst = sortForCollectie(woningen)
   return (
     <>
-      {variant === 'verhaal' ? (
+      {variant === 'scherm' ? (
+        <div className="flex flex-col gap-2">
+          {lijst.map((w, i) => (
+            <Scherm key={w.id} w={w} locale={locale} i={i} />
+          ))}
+        </div>
+      ) : variant === 'verhaal' ? (
         <div className="space-y-mw-8 lg:space-y-mw-12">
           {lijst.map((w, i) => (
             <Hoofdstuk key={w.id} w={w} locale={locale} i={i} />

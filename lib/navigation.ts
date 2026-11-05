@@ -157,5 +157,7 @@ export const nlOnlyRoutes: NavHref[] = [
 // pagina's start de Navbar meteen in 'scrolled' state (blush, donker logo).
 // Pandpagina, afrekenen en bevestiging openen allemaal met een foto tot bovenaan.
 export function isDarkHeroPath(pathname: string): boolean {
+  // Homepage (nov 2026): schermvullend beeld, dus transparante nav erover.
+  if (pathname === '/') return true
   return /\/(collectie|collection)\/[^/]+(\/(boeken|book|bevestigd|confirmed))?\/?$/.test(pathname)
 }

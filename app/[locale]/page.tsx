@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { existsSync } from "node:fs";
 import path from "node:path";
@@ -58,46 +59,35 @@ export default async function HomePage({
           niet met NL structured data te vervuilen. */}
       {isNl && <FaqJsonLd />}
 
-      {/* HERO — boekingssite eerst (nov 2026): wat je hier doet, en twee
-          knoppen. Zoeken op data zit op /boeken. */}
-      <section className="w-full px-6 md:px-12 pt-mw-8 lg:pt-mw-10 overflow-visible">
-        <div className="mx-auto max-w-7xl w-full overflow-visible">
-          <p className="mw-in text-[0.9375rem] text-moroww-ink-2">
-            {isNl ? 'gekeurde vakantiewoningen' : 'inspected holiday homes'}
-          </p>
-          <h1 className="mw-in mt-mw-4 text-display font-light text-moroww-dark max-w-[15ch]">
-            {isNl ? 'boek een verblijf dat klopt.' : 'book a stay that is right.'}
-          </h1>
-          <div className="mw-in-2 mt-mw-6 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto] gap-mw-5 items-end">
-            <p className="text-body-lg text-moroww-dark max-w-[52ch]">
-              {isNl
-                ? 'Karaktervolle huizen, elk ter plaatse gekeurd op wat je het eerst opmerkt. Je boekt rechtstreeks bij ons, zonder servicekosten.'
-                : 'Homes with character, each inspected in person on what you notice first. You book directly with us, without service fees.'}
-            </p>
-            <div className="flex flex-wrap gap-mw-3">
+      {/* HERO — beeld eerst, schermvullend (nov 2026). Nav ligt er
+          transparant over (isDarkHeroPath). Zoeken op data zit op /boeken. */}
+      <section className="relative w-full h-[100svh] min-h-[600px] overflow-hidden text-white">
+        <Image src="/images/hero.jpg" alt={isNl ? 'Leefruimte van een moroww-woning bij avondlicht' : 'Living space of a moroww home in evening light'} fill priority className="object-cover" sizes="100vw" />
+        <div aria-hidden className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to top, rgba(20,16,13,0.78) 0%, rgba(20,16,13,0.35) 50%, rgba(20,16,13,0.4) 100%)' }} />
+        <div className="relative h-full px-6 md:px-12">
+          <div className="mx-auto max-w-7xl h-full flex flex-col justify-end pb-mw-8 lg:pb-mw-10">
+            <p className="mw-in text-[0.9375rem] text-white/75">{isNl ? 'gekeurde vakantiewoningen' : 'inspected holiday homes'}</p>
+            <h1 className="mw-in mt-mw-3 text-display font-light text-white max-w-[13ch]">
+              {isNl ? 'een verblijf dat klopt.' : 'a stay that is right.'}
+            </h1>
+            <div className="mw-in-2 mt-mw-6 flex flex-col sm:flex-row sm:items-center gap-mw-4">
               <Link
                 href={isNl ? '/boeken' : '/en/book'}
-                className="inline-flex items-center min-h-[52px] px-mw-5 py-4 bg-moroww-dark text-moroww-paper border border-moroww-dark text-[0.9375rem] hover:bg-transparent hover:text-moroww-dark transition-colors duration-500"
+                className="self-start inline-flex items-center min-h-[52px] px-mw-5 py-4 bg-moroww-paper text-moroww-dark text-[0.9375rem] border border-moroww-paper hover:bg-transparent hover:text-white transition-colors duration-500"
               >
                 {isNl ? 'zoek op data' : 'search by date'}
               </Link>
-              <Link
-                href={isNl ? '/collectie' : '/en/collection'}
-                className="inline-flex items-center min-h-[52px] px-mw-2 text-[0.9375rem] text-moroww-dark underline underline-offset-[6px] decoration-moroww-dark/30 hover:decoration-moroww-dark transition-colors"
-              >
-                {isNl ? 'bekijk de collectie' : 'see the collection'}
-              </Link>
+              <a href="#huizen" className="self-start inline-flex items-center min-h-[48px] text-[0.9375rem] text-white underline underline-offset-[6px] decoration-white/40 hover:decoration-white transition-colors">
+                {isNl ? 'bekijk de huizen ↓' : 'see the homes ↓'}
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* DE HUIZEN — zelfde overzichtskaart als op /collectie: kenmerken,
-          prijs en een boekknop per huis. */}
-      <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
-        <div className="mx-auto max-w-7xl">
-          <CollectieOverzicht woningen={liveWoningen()} locale={locale as Locale} tabel={false} variant="verhaal" />
-        </div>
+      {/* DE HUIZEN — elk huis schermvullend, boeken als rustige laag. */}
+      <section id="huizen" className="w-full mt-2 scroll-mt-16">
+        <CollectieOverzicht woningen={liveWoningen()} locale={locale as Locale} tabel={false} variant="scherm" />
       </section>
 
       {/* SNEAK PEEK — twee panden die nog niet publiek boekbaar zijn,
