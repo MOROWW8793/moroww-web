@@ -228,11 +228,10 @@ export function Navbar() {
             </button>
           )}
 
-          {/* CTA rechts: leidt naar de collectie op moroww.com, niet meer
-              naar book.moroww.com. book.moroww.com is een boekingsplatform;
-              wij willen dat de bezoeker eerst de gecureerde selectie ziet. */}
+          {/* CTA rechts: leidt naar /boeken (nov 2026), zoeken op data over de
+              hele collectie op moroww.com. Niet naar book.moroww.com. */}
           <Link
-            href="/collectie"
+            href="/boeken"
             className="bg-moroww-orange text-white rounded-full px-5 py-2.5 text-sm font-semibold hover:bg-moroww-orange/85 transition-colors"
           >
             {t('book')}
@@ -322,7 +321,7 @@ export function Navbar() {
               </button>
             )}
             <Link
-              href="/collectie"
+              href="/boeken"
               className="mt-2 bg-moroww-orange text-white rounded-full px-6 py-3 text-base font-semibold text-center min-h-[44px] flex items-center justify-center"
               onClick={() => setOpen(false)}
             >

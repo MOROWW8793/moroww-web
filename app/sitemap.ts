@@ -36,6 +36,7 @@ const BILINGUAL_ROUTES: Array<{
 }> = [
   { nl: '/',              en: '/en',                    freq: 'weekly',  priority: 1.0 },
   { nl: '/collectie',     en: '/en/collection',         freq: 'weekly',  priority: 0.9 },
+  { nl: '/boeken',        en: '/en/book',               freq: 'weekly',  priority: 0.8 },
   { nl: '/the-shore',     en: '/en/the-shore',          freq: 'monthly', priority: 0.8 },
   { nl: '/the-fields',    en: '/en/the-fields',         freq: 'monthly', priority: 0.8 },
   { nl: '/over-moroww',   en: '/en/about',              freq: 'monthly', priority: 0.7 },

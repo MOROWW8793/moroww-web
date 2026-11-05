@@ -9,9 +9,7 @@ import { Aankomst } from "@/components/sections/Aankomst";
 import { SneakPeek } from "@/components/sections/SneakPeek";
 import { WoningKaarten } from "@/components/sections/WoningKaarten";
 import { siteMetadata } from "@/lib/seo/siteMetadata";
-import { liveWoningen, sortForCollectie, type Locale } from "@/lib/woningen";
-import { listingIdVoor } from "@/lib/boeking";
-import { Beschikbaarheid, type ZoekWoning } from "@/components/sections/Beschikbaarheid";
+import { liveWoningen, type Locale } from "@/lib/woningen";
 
 // Server-side check: als het bestand in /public niet bestaat, geef undefined
 // terug zodat de Deur alleen de placeholder-tegel toont. Zo staat er nooit
@@ -54,20 +52,6 @@ export default async function HomePage({
   // een gewone next/link (geen next-intl Link) en verwacht een absoluut pad.
   const prefix = isNl ? '' : '/en'
 
-  // Zoekbare woningen voor de beschikbaarheidszoeker bovenaan.
-  const zoekWoningen: ZoekWoning[] = sortForCollectie(liveWoningen())
-    .filter((w) => w.maxGasten && w.heroFoto)
-    .map((w) => ({
-      id: w.id,
-      naam: w.naam,
-      locatie: w.locatie,
-      collectie: w.collectie,
-      maxGasten: w.maxGasten as number,
-      prijs: w.prijs,
-      foto: w.heroFoto,
-      boekbaar: !w.comingSoon && listingIdVoor(w) !== null,
-    }))
-
   return (
     <>
       {/* FAQ-JSON-LD is Nederlandstalig; niet renderen op /en om de EN-pagina
@@ -86,21 +70,6 @@ export default async function HomePage({
           <h1 className="text-display text-moroww-dark">
             {isNl ? 'karaktervolle huizen. een standaard die niet wijkt.' : 'homes with character. a standard that does not bend.'}
           </h1>
-        </div>
-      </section>
-
-      {/* BESCHIKBAARHEID — boeken begint bovenaan (nov 2026): data en
-          gasten kiezen, en meteen zien welke huizen vrij zijn. */}
-      <section id="beschikbaarheid" className="w-full px-6 md:px-12 mt-mw-5 scroll-mt-24">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-body-lg text-moroww-dark max-w-[52ch]">
-            {isNl
-              ? 'Kies je data. We tonen meteen welke huizen vrij zijn, en je boekt rechtstreeks bij ons.'
-              : 'Choose your dates. We show right away which homes are free, and you book directly with us.'}
-          </p>
-          <div className="mt-mw-5 bg-white/60 p-mw-5 md:p-mw-6">
-            <Beschikbaarheid woningen={zoekWoningen} locale={locale} />
-          </div>
         </div>
       </section>
 
