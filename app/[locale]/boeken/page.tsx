@@ -13,7 +13,7 @@ import { siteMetadata } from '@/lib/seo/siteMetadata'
 const COPY = {
   nl: {
     eyebrow: 'boeken',
-    h1: 'wanneer kom je?',
+    h1: 'plan je verblijf.',
     lead: 'Kies je data en met hoeveel je bent. We tonen meteen welke huizen vrij zijn, en je boekt rechtstreeks bij ons.',
     zeker: [
       'rechtstreeks bij moroww, zonder servicekosten',
@@ -24,7 +24,7 @@ const COPY = {
   },
   en: {
     eyebrow: 'book',
-    h1: 'when are you coming?',
+    h1: 'plan your stay.',
     lead: 'Choose your dates and how many of you there are. We show right away which homes are free, and you book directly with us.',
     zeker: [
       'directly with moroww, no service fees',
