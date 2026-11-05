@@ -12,7 +12,7 @@ export function EigenaarFaqJsonLd() {
               name: 'Hoe kan ik mijn vakantiewoning verhuren via moroww?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Meld je woning aan via het formulier op moroww.com/eigenaar-worden. We nemen binnen 48u persoonlijk contact op. Elke woning wordt beoordeeld op de vier poorten: minimum 100 m² met twee slaapkamers, karakter in natuurlijke materialen, een rustige ligging, en een fysiek bezoek. Haalt de woning de keuring, dan draagt ze het moroww-label en krijgt ze een plaats in de collectie.',
+                text: 'Meld je woning aan via het formulier op moroww.com/eigenaar-worden. We nemen binnen 48u persoonlijk contact op. Elke woning wordt ter plaatse gekeurd op de standaard: geen spoor van de vorige gast, een badkamer zonder één haar, vers linnen bij elke wissel, en een huis dat klaar is vóór de gast aankomt. Haalt de woning de keuring, dan draagt ze het moroww-label en krijgt ze een plaats in de collectie.',
               },
             },
             {
@@ -44,7 +44,7 @@ export function EigenaarFaqJsonLd() {
               name: 'Kan ik mijn vakantiewoning aan de Belgische kust verhuren via moroww?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Ja. moroww is actief in België en de collectie breidt gestaag uit. Woningen moeten minimum 100 m² zijn met twee slaapkamers, karakter in natuurlijke materialen, en in een rustige omgeving liggen.',
+                text: 'Ja. moroww is actief in België en de collectie breidt gestaag uit. Elke woning wordt ter plaatse gekeurd op de standaard en elk jaar opnieuw.',
               },
             },
             {
@@ -60,7 +60,7 @@ export function EigenaarFaqJsonLd() {
               name: 'Welke woningen komen in aanmerking voor het moroww-label?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Minimum 100 m² met minstens twee slaapkamers, karakter in natuurlijke materialen (minstens één authentiek architecturaal element, zicht op groen of water vanuit de leefruimte), rustige of natuurlijke omgeving (kust, landelijk, bosrand — geen drukke stadscentra). Elke woning wordt fysiek bezocht door ons team voor de certificeringsbeslissing.',
+                text: 'Karaktervolle woningen die de standaard halen: geen spoor van de vorige gast, een badkamer zonder één haar, vers linnen bij elke wissel, en een huis dat klaar is vóór de gast aankomt. Elke woning wordt fysiek bezocht door ons team voor de certificeringsbeslissing.',
               },
             },
           ],

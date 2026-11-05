@@ -112,7 +112,7 @@ export async function EigenaarContentEN() {
         {/* ── WAT HET LABEL JE GEEFT ── */}
         <TekstBlok eyebrow="what the label gives you">
           <dl className="divide-y divide-moroww-rule border-t border-b border-moroww-rule">
-            <DefRij label="the inspection" value="We inspect your home in person on four gates, every year again. If it no longer meets the standard, you hear it from us." />
+            <DefRij label="the inspection" value="We inspect your home in person against the standard: no trace of the last guest, a bathroom without one hair, fresh linen every time, ready before arrival. Every year again. If it no longer meets the standard, you hear it from us." />
             <DefRij label="the label"    value="Your home carries the label on your own listings and gets a place on moroww.com, in a small collection of homes with character." />
             <DefRij label="the promise"  value="Your guests get a promise that we stand behind." />
             <DefRij label="the partners" value="Local craftspeople for cleaning, linen and maintenance, and the technology behind a smooth arrival. We choose them ourselves, hold them to the standard and agree terms for the whole collection. You decide what you use." />

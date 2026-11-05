@@ -54,16 +54,16 @@ export default async function DeStandaardPage({
 
   const gates = isNl
     ? [
-        { title: 'ruimte',   body: 'minstens 100 m² en twee slaapkamers.' },
-        { title: 'karakter', body: 'natuurlijke materialen, een authentiek element, zicht op groen of water.' },
-        { title: 'stilte',   body: 'door afstand of door hoogte. Natuur, kust, of hoog genoeg dat de straat niet tot binnen komt.' },
-        { title: 'bezocht',  body: 'iemand van ons stond in die kamers. Geen fotoakkoord, geen videorondleiding.' },
+        { title: 'geen spoor van de vorige gast', body: 'geen haar, geen kruimel, geen geur, geen vingerafdruk, geen vergeten voorwerp.' },
+        { title: 'een badkamer zonder één haar',  body: 'geen kalk op glas en kranen. Een afvoer die vrij is en nergens naar ruikt.' },
+        { title: 'vers linnen, elke keer',        body: 'professioneel gewassen, bij elke wissel volledig vervangen. Het bed is opgemaakt als je aankomt.' },
+        { title: 'klaar vóór aankomst',           body: 'het huis is volledig af voor je binnenkomt. Niet gelijktijdig, niet net erna.' },
       ]
     : [
-        { title: 'space',    body: 'at least 100 m² and two bedrooms.' },
-        { title: 'character',body: 'natural materials, an authentic element, a view of green or water.' },
-        { title: 'quiet',    body: 'through distance or through height. Nature, coast, or high enough that the street does not reach inside.' },
-        { title: 'visited',  body: 'someone from our team stood in those rooms. No photo approval, no video tour.' },
+        { title: 'no trace of the last guest',   body: 'no hair, no crumb, no smell, no fingerprint, no forgotten item.' },
+        { title: 'a bathroom without one hair',  body: 'no limescale on glass or taps. A drain that runs freely and smells of nothing.' },
+        { title: 'fresh linen, every time',      body: 'professionally laundered and fully changed at every turnover. The bed is made when you arrive.' },
+        { title: 'ready before arrival',         body: 'the home is completely finished before you walk in. Not at the same time, not just after.' },
       ]
 
   const klaarstaat = isNl
@@ -116,8 +116,8 @@ export default async function DeStandaardPage({
 
       <div className="mx-auto max-w-6xl px-6 md:px-12">
 
-        {/* ── DE VIER POORTEN ── */}
-        <TekstBlok eyebrow={isNl ? 'de vier poorten' : 'the four gates'} heading={isNl ? 'alle vier, of het huis komt er niet in.' : 'all four, or the home does not come in.'}>
+        {/* ── DE STANDAARD — hygiëneregels (nov 2026) ── */}
+        <TekstBlok eyebrow={isNl ? 'de standaard' : 'the standard'} heading={isNl ? 'wat een gast het eerst opmerkt, keuren we het strengst.' : 'what a guest notices first, we inspect most strictly.'}>
           <p>
             {isNl
               ? 'Wat niet klopt, zetten we op de pagina van het huis zelf.'

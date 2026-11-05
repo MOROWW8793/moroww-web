@@ -113,7 +113,7 @@ export async function EigenaarContent() {
         {/* ── WAT HET LABEL JE GEEFT ── */}
         <TekstBlok eyebrow="wat het label je geeft">
           <dl className="divide-y divide-moroww-rule border-t border-b border-moroww-rule">
-            <DefRij label="de keuring"   value="We keuren je huis ter plaatse op vier poorten, elk jaar opnieuw. Haalt het de standaard niet meer, dan hoor je het van ons." />
+            <DefRij label="de keuring"   value="We keuren je huis ter plaatse op de standaard: geen spoor van de vorige gast, een badkamer zonder één haar, vers linnen elke keer, klaar vóór aankomst. Elk jaar opnieuw. Haalt het de standaard niet meer, dan hoor je het van ons." />
             <DefRij label="het label"    value="Je huis draagt het label op je eigen listings en krijgt een plaats op moroww.com, in een kleine collectie karaktervolle huizen." />
             <DefRij label="de belofte"   value="Je gasten krijgen een belofte waar wij mee voor instaan." />
             <DefRij label="de partners"  value="Lokale vakmensen voor schoonmaak, linnen en onderhoud, en de techniek achter een vlotte aankomst. Wij kiezen ze zelf, houden ze aan de standaard en spreken voorwaarden af voor de hele collectie. Jij beslist wat je gebruikt." />
