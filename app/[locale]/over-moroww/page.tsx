@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { existsSync } from "node:fs";
+import path from "node:path";
 import { setRequestLocale } from "next-intl/server";
 import { OverMorowwContent } from "./OverMorowwContent";
 import { siteMetadata } from "@/lib/seo/siteMetadata";
@@ -15,8 +17,8 @@ export async function generateMetadata({
       ? 'Over moroww — het kwaliteitslabel voor vakantiewoningen'
       : 'About moroww — the quality label for holiday homes',
     beschrijving: isNl
-      ? 'moroww is het kwaliteitslabel voor vakantiewoningen in België: elke moroww-woning is geauditeerd, uitgerust en opgevolgd. Lees ons verhaal.'
-      : 'moroww is the quality label for holiday homes in Belgium: every moroww home is audited, equipped and looked after. Read our story.',
+      ? 'Iedere gast verdient te weten waarvoor hij betaalt. Wie achter het moroww-label staat, waarom we keuren en waar het begon.'
+      : 'Every guest deserves to know what they are paying for. Who is behind the moroww label, why we inspect and where it started.',
     pad: isNl ? '/over-moroww' : '/en/about',
     locale: isNl ? 'nl' : 'en',
     hreflang: { nl: '/over-moroww', en: '/en/about' },
@@ -30,5 +32,6 @@ export default async function OverMorowwPage({
 }) {
   const { locale } = await params
   setRequestLocale(locale)
-  return <OverMorowwContent locale={locale} />;
+  const brentFoto = existsSync(path.join(process.cwd(), 'public', 'images', 'brent.jpg'))
+  return <OverMorowwContent locale={locale} brentFoto={brentFoto} />;
 }
