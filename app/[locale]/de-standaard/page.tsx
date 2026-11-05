@@ -1,17 +1,185 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { Register } from '@/components/Register'
-import { InlineFoto } from '@/components/InlineFoto'
 import { Statrij } from '@/components/sections/Statrij'
-import { TekstBlok } from '@/components/sections/TekstBlok'
 import { siteMetadata } from '@/lib/seo/siteMetadata'
 import { screeningsPubliek } from '@/lib/screenings'
 import { countWord } from '@/lib/getallen'
 
-// ISR: elk uur revalidate zodat de cijfers uit screenings_publiek meebewegen
-// zonder dat we bij elke keuring een deploy hoeven te draaien.
+// De standaard, herschreven nov 2026. De vier harde poorten (oppervlakte,
+// slaapkamers, karakter, stilte) maken plaats voor vier hygiëneregels:
+// wat een gast het eerst opmerkt, keuren we het strengst. Bron van de
+// controlepunten: Schoonmaakstandaard en Linnenprotocol in de holy bible.
+// Beeldtaal volgt de homepage: display-kop, volle beelden, veel lucht.
+
+// ISR: elk uur revalidate zodat de cijfers uit screenings_publiek meebewegen.
 export const revalidate = 3600
+
+type Regel = { titel: string; kern: string; punten: string[]; beeld: string; alt: string }
+
+const NL = {
+  eyebrow: 'de standaard',
+  h1: 'geen spoor van wie er voor jou was.',
+  lead: 'Elk huis in de collectie wordt ter plaatse gekeurd op wat een gast het eerst opmerkt: hoe proper het is, hoe het bed voelt, of alles klaarstaat. Elk jaar opnieuw. Wat de standaard niet haalt, draagt het label niet.',
+  heroAlt: 'Gast leest in een vers opgemaakt bed',
+  stats: ['bekeken', 'bezocht', 'opgenomen'],
+  waaromEyebrow: 'waarom we hier beginnen',
+  waaromH2: 'een kleinere keuken vergeeft een gast. een haar in de douche niet.',
+  waaromP: [
+    'Wie aankomt in een vakantiewoning, beslist in de eerste minuten of het klopt. Niet op de vierkante meters, maar op drie dingen: de geur, het bed en de badkamer.',
+    'Wat dan misloopt, is zelden echt vuil. Het is een restant van iemand anders. Een haar, een kruimel in de lade, een handdoek die niet fris ruikt. Daar is onze standaard op gebouwd.',
+  ],
+  regelsEyebrow: 'de vier regels',
+  regelsH2: 'wat een gast het eerst opmerkt, keuren we het strengst.',
+  regels: [
+    {
+      titel: 'geen spoor van de vorige gast',
+      kern: 'Geen haar, geen kruimel, geen geur, geen vingerafdruk, geen vergeten voorwerp.',
+      punten: [
+        'de zetel tot in de naden gezogen, ook onder en achter de meubels',
+        'koelkast leeg, uitgewassen en geurloos',
+        'lades en kasten leeg en kruimelvrij',
+        'deurklinken en schakelaars gereinigd',
+      ],
+      beeld: '/images/over-interieur-2.jpg',
+      alt: 'Opgeruimde leefruimte met een rode stoel en zicht op de tuin',
+    },
+    {
+      titel: 'een badkamer zonder één haar',
+      kern: 'De zone waar het staat of valt. Nul haren, geen kalk, niets dat ruikt.',
+      punten: [
+        'douchehoek, afvoer, rand van het bad en achter de wc nagekeken',
+        'geen kalk op glas, kranen en douchekop',
+        'een afvoer die vrij is en geurloos',
+        'een reserverol in zicht, essentials aangevuld',
+      ],
+      beeld: '/images/og-eigenaar.jpg',
+      alt: 'Hand onder een regendouche',
+    },
+    {
+      titel: 'vers linnen, elke keer',
+      kern: 'Het enige deel van het huis dat een gast tegen zijn huid voelt.',
+      punten: [
+        'professioneel gewassen, nooit thuis',
+        'volledig gewisseld bij elke gast, ook als het ongebruikt lijkt',
+        'het bed strak opgemaakt bij aankomst, een gast maakt nooit zelf zijn bed op',
+        'handdoeken per gast, en een extra set in zicht',
+      ],
+      beeld: '/images/standaard/V2-19.jpg',
+      alt: 'Een bed wordt opgemaakt met wit linnen',
+    },
+    {
+      titel: 'klaar vóór aankomst',
+      kern: 'Het huis is af voor de gast binnenkomt. Niet gelijktijdig, niet net erna.',
+      punten: [
+        'een eigen code op het slot, geldig vanaf de aankomst',
+        'de verwarming op temperatuur, het licht klaar',
+        'één signatuurgeur voor the shore, één voor the fields',
+        'geen sleutel die ergens rondslingert',
+      ],
+      beeld: '/images/standaard/V2-210.jpg',
+      alt: 'Glas water en tijdschriften klaargezet op tafel',
+    },
+  ] as Regel[],
+  keuringEyebrow: 'hoe we keuren',
+  keuringH2: 'iemand van ons stond in die kamers.',
+  keuring: [
+    { titel: 'ter plaatse', tekst: 'We lopen door elke kamer. Geen fotoakkoord, geen videorondleiding.' },
+    { titel: 'bij elke wissel', tekst: 'Onze partners komen er telkens weer over de vloer en werken volgens dezelfde regels.' },
+    { titel: 'elk jaar opnieuw', tekst: 'Een label is geen stempel. Elk jaar keuren we het huis opnieuw.' },
+  ],
+  bandEyebrow: 'het label',
+  bandH2: 'een label dat je niet kan verliezen, is geen label.',
+  bandP: 'Haalt een huis de standaard niet meer, dan krijgt de eigenaar dertig dagen. Daarna verlaat het de collectie, ook als het goed verhuurt.',
+  quoteEyebrow: 'wat een gast zei',
+  quote: '"Het is een enorm smaakvol appartement, tot in de puntjes afgewerkt. Ruim, licht en heel luxe. Het ligt heel dicht aan zee maar toch enorm veel rust en geen enkel geluidsoverlast."',
+  gastLink: 'bekijk de collectie →',
+  eigenaarLink: 'eigenaar? haalt jouw huis de standaard →',
+}
+
+const EN: typeof NL = {
+  eyebrow: 'the standard',
+  h1: 'no trace of whoever was there before you.',
+  lead: 'Every home in the collection is inspected in person on what a guest notices first: how clean it is, how the bed feels, whether everything is ready. Every year again. What does not meet the standard does not carry the label.',
+  heroAlt: 'A guest reading in a freshly made bed',
+  stats: ['reviewed', 'visited', 'accepted'],
+  waaromEyebrow: 'why we start here',
+  waaromH2: 'a guest forgives a smaller kitchen. not a hair in the shower.',
+  waaromP: [
+    'Whoever arrives at a holiday home decides in the first minutes whether it is right. Not on the square metres, but on three things: the smell, the bed and the bathroom.',
+    'What goes wrong then is rarely real dirt. It is a trace of someone else. A hair, a crumb in the drawer, a towel that does not smell fresh. That is what our standard is built on.',
+  ],
+  regelsEyebrow: 'the four rules',
+  regelsH2: 'what a guest notices first, we inspect most strictly.',
+  regels: [
+    {
+      titel: 'no trace of the last guest',
+      kern: 'No hair, no crumb, no smell, no fingerprint, no forgotten item.',
+      punten: [
+        'the sofa vacuumed into the seams, also under and behind the furniture',
+        'fridge empty, washed out and odourless',
+        'drawers and cupboards empty and free of crumbs',
+        'door handles and switches cleaned',
+      ],
+      beeld: '/images/over-interieur-2.jpg',
+      alt: 'Tidy living room with a red chair and a view of the garden',
+    },
+    {
+      titel: 'a bathroom without one hair',
+      kern: 'The room where it stands or falls. Zero hairs, no limescale, nothing that smells.',
+      punten: [
+        'shower corner, drain, bath edge and behind the toilet checked',
+        'no limescale on glass, taps and shower head',
+        'a drain that runs freely and smells of nothing',
+        'a spare roll in sight, essentials topped up',
+      ],
+      beeld: '/images/og-eigenaar.jpg',
+      alt: 'A hand under a rain shower',
+    },
+    {
+      titel: 'fresh linen, every time',
+      kern: 'The only part of the home a guest feels against their skin.',
+      punten: [
+        'professionally laundered, never at home',
+        'fully changed for every guest, even if it looks unused',
+        'the bed made tight on arrival, a guest never makes their own bed',
+        'towels per guest, and an extra set in sight',
+      ],
+      beeld: '/images/standaard/V2-19.jpg',
+      alt: 'A bed being made with white linen',
+    },
+    {
+      titel: 'ready before arrival',
+      kern: 'The home is finished before the guest walks in. Not at the same time, not just after.',
+      punten: [
+        'your own code on the lock, valid from your arrival',
+        'the heating up to temperature, the light set',
+        'one signature scent for the shore, one for the fields',
+        'no key lying around anywhere',
+      ],
+      beeld: '/images/standaard/V2-210.jpg',
+      alt: 'A glass of water and magazines set out on the table',
+    },
+  ],
+  keuringEyebrow: 'how we inspect',
+  keuringH2: 'someone from our team stood in those rooms.',
+  keuring: [
+    { titel: 'in person', tekst: 'We walk through every room. No photo approval, no video tour.' },
+    { titel: 'at every turnover', tekst: 'Our partners return to every home again and again and work to the same rules.' },
+    { titel: 'every year again', tekst: 'A label is not a stamp. Every year we inspect the home again.' },
+  ],
+  bandEyebrow: 'the label',
+  bandH2: 'a label you cannot lose is not a label.',
+  bandP: 'If a home no longer meets the standard, the owner has thirty days. After that it leaves the collection, even if it books well.',
+  quoteEyebrow: 'what a guest said',
+  quote: '"A very tasteful apartment, finished down to the last detail. Spacious, light and very luxurious. It sits very close to the sea and still there is complete calm — no noise at all."',
+  gastLink: 'see the collection →',
+  eigenaarLink: 'owner? does your home meet the standard →',
+}
+
+const LINK = 'text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors'
 
 export async function generateMetadata({
   params,
@@ -22,15 +190,11 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'destandaard' })
   const isNl = locale === 'nl'
   const s = await screeningsPubliek()
-  // Aantallen op /de-standaard lezen uit de view screenings_publiek:
-  // aantal_dossier voor "dossiers bekeken" en aantal_opgenomen voor
-  // "haalden de standaard". liveWoningen() beschrijft alleen wat online
-  // staat, niet wat officieel opgenomen is.
   const opgenomenWord = s ? countWord(s.aantal_opgenomen, isNl ? 'nl' : 'en', false) : ''
   const beschrijving = s
     ? isNl
-      ? `Van de ${s.aantal_dossier} dossiers die moroww bekeek, haalden er ${opgenomenWord} de standaard. Wat we keuren, en waarom de rest afvalt.`
-      : `Of the ${s.aantal_dossier} files moroww reviewed, ${opgenomenWord} met the standard. What we certify, and why the rest falls out.`
+      ? `Van de ${s.aantal_dossier} dossiers die moroww bekeek, haalden er ${opgenomenWord} de standaard. Geen spoor van de vorige gast, een badkamer zonder één haar, vers linnen, klaar vóór aankomst.`
+      : `Of the ${s.aantal_dossier} files moroww reviewed, ${opgenomenWord} met the standard. No trace of the last guest, a bathroom without one hair, fresh linen, ready before arrival.`
     : t('meta_description')
   return siteMetadata({
     titel: t('meta_title'),
@@ -48,137 +212,124 @@ export default async function DeStandaardPage({
 }) {
   const { locale } = await params
   setRequestLocale(locale)
-  const t = await getTranslations('destandaard')
-  const isNl = locale === 'nl'
+  const c = locale === 'nl' ? NL : EN
   const cijfers = await screeningsPubliek()
-
-  const gates = isNl
-    ? [
-        { title: 'geen spoor van de vorige gast', body: 'geen haar, geen kruimel, geen geur, geen vingerafdruk, geen vergeten voorwerp.' },
-        { title: 'een badkamer zonder één haar',  body: 'geen kalk op glas en kranen. Een afvoer die vrij is en nergens naar ruikt.' },
-        { title: 'vers linnen, elke keer',        body: 'professioneel gewassen, bij elke wissel volledig vervangen. Het bed is opgemaakt als je aankomt.' },
-        { title: 'klaar vóór aankomst',           body: 'het huis is volledig af voor je binnenkomt. Niet gelijktijdig, niet net erna.' },
-      ]
-    : [
-        { title: 'no trace of the last guest',   body: 'no hair, no crumb, no smell, no fingerprint, no forgotten item.' },
-        { title: 'a bathroom without one hair',  body: 'no limescale on glass or taps. A drain that runs freely and smells of nothing.' },
-        { title: 'fresh linen, every time',      body: 'professionally laundered and fully changed at every turnover. The bed is made when you arrive.' },
-        { title: 'ready before arrival',         body: 'the home is completely finished before you walk in. Not at the same time, not just after.' },
-      ]
-
-  const klaarstaat = isNl
-    ? [
-        { title: 'het slot',        body: 'je eigen code, geldig vanaf je aankomst.' },
-        { title: 'warmte en licht', body: 'de verwarming staat op temperatuur, het licht staat klaar.' },
-        { title: 'de geur',         body: 'één signatuurgeur voor the shore, één voor the fields.' },
-        { title: 'het linnen',      body: 'bedden opgemaakt, handdoeken klaar.' },
-      ]
-    : [
-        { title: 'the lock',     body: 'your own code, valid from your arrival.' },
-        { title: 'warmth and light', body: 'the heating is up to temperature, the light is set.' },
-        { title: 'the scent',    body: 'one signature scent for the shore, one for the fields.' },
-        { title: 'the linen',    body: 'beds made up, towels laid out.' },
-      ]
 
   return (
     <Register kant="eigenaar">
-
       {/* ── HERO ── */}
-      <section className="w-full pt-28 pb-mw-6 px-6 md:px-12">
-        <div className="mx-auto max-w-6xl">
-          <h1
-            className="font-bold text-moroww-dark leading-[1.05] tracking-[-0.02em] max-w-[16ch]"
-            style={{ fontSize: 'clamp(2.25rem, 6vw, 5rem)' }}
-          >
-            {t('hero_h1')}
-          </h1>
-          <p className="mt-mw-5 text-body-lg text-moroww-dark max-w-[62ch]">
-            {isNl
-              ? 'De waarde van het label zit in de huizen die er niet in zitten.'
-              : 'The value of the label sits in the homes that are not in it.'}
-          </p>
+      <section className="w-full px-6 md:px-12 pt-mw-10 overflow-visible">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-audit uppercase text-moroww-label">{c.eyebrow}</p>
+          <h1 className="mt-mw-4 text-display text-moroww-dark max-w-[15ch]">{c.h1}</h1>
+          <p className="mt-mw-6 text-body-lg text-moroww-dark max-w-[56ch]">{c.lead}</p>
         </div>
       </section>
 
-      {/* ── STATRIJ — donkere cijferband, direct onder hero ── */}
+      {/* ── HEROBEELD ── */}
+      <section className="w-full px-6 md:px-12 mt-mw-8">
+        <div className="mx-auto max-w-7xl relative aspect-[4/5] sm:aspect-[16/9] lg:max-h-[78vh] w-full overflow-hidden">
+          <Image src="/images/standaard/V2-40.jpg" alt={c.heroAlt} fill priority className="object-cover" sizes="(max-width: 1280px) 100vw, 1280px" />
+        </div>
+      </section>
+
+      {/* ── CIJFERS ── */}
       {cijfers && (
-        <Statrij
-          items={[
-            { cijfer: String(cijfers.aantal_dossier),
-              label: isNl ? 'bekeken' : 'reviewed' },
-            { cijfer: String(cijfers.aantal_bezoek),
-              label: isNl ? 'bezocht' : 'visited' },
-            { cijfer: String(cijfers.aantal_opgenomen),
-              label: isNl ? 'opgenomen' : 'accepted' },
-          ]}
-        />
+        <div className="mt-mw-8">
+          <Statrij
+            items={[
+              { cijfer: String(cijfers.aantal_dossier), label: c.stats[0] },
+              { cijfer: String(cijfers.aantal_bezoek), label: c.stats[1] },
+              { cijfer: String(cijfers.aantal_opgenomen), label: c.stats[2] },
+            ]}
+          />
+        </div>
       )}
 
-      <div className="mx-auto max-w-6xl px-6 md:px-12">
+      {/* ── WAAROM ── */}
+      <section className="w-full px-6 md:px-12 mt-mw-12">
+        <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6">
+          <div className="lg:col-span-5">
+            <p className="text-audit uppercase text-moroww-label">{c.waaromEyebrow}</p>
+            <h2 className="mt-mw-4 text-h2 text-moroww-dark">{c.waaromH2}</h2>
+          </div>
+          <div className="lg:col-span-6 lg:col-start-7 space-y-mw-3 text-body-lg text-moroww-dark max-w-[52ch]">
+            {c.waaromP.map((p) => <p key={p}>{p}</p>)}
+          </div>
+        </div>
+      </section>
 
-        {/* ── DE STANDAARD — hygiëneregels (nov 2026) ── */}
-        <TekstBlok eyebrow={isNl ? 'de standaard' : 'the standard'} heading={isNl ? 'wat een gast het eerst opmerkt, keuren we het strengst.' : 'what a guest notices first, we inspect most strictly.'}>
-          <p>
-            {isNl
-              ? 'Wat niet klopt, zetten we op de pagina van het huis zelf.'
-              : 'Whatever is not right, we put on the page of the home itself.'}
-          </p>
-          <div className="mt-mw-6 border-t border-moroww-rule">
-            {gates.map((g) => (
-              <div key={g.title} className="border-b border-moroww-rule py-mw-4">
-                <h3 className="text-h3 text-moroww-dark">{g.title}</h3>
-                <p className="mt-mw-2 text-body text-moroww-dark">{g.body}</p>
+      {/* ── DE VIER REGELS ── beeld en tekst om beurt */}
+      <section className="w-full px-6 md:px-12 mt-mw-12">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-audit uppercase text-moroww-label">{c.regelsEyebrow}</p>
+          <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[22ch]">{c.regelsH2}</h2>
+          <ol className="mt-mw-8 space-y-mw-10">
+            {c.regels.map((r, i) => {
+              const rechts = i % 2 === 1
+              return (
+                <li key={r.titel} className="grid grid-cols-1 lg:grid-cols-12 gap-mw-6 items-center">
+                  <div className={`lg:col-span-6 relative aspect-[4/5] overflow-hidden ${rechts ? 'lg:order-2 lg:col-start-7' : ''}`}>
+                    <Image src={r.beeld} alt={r.alt} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+                  </div>
+                  <div className={`lg:col-span-5 ${rechts ? 'lg:order-1 lg:col-start-1' : 'lg:col-start-8'}`}>
+                    <p className="text-display text-moroww-rule leading-none">0{i + 1}</p>
+                    <h3 className="mt-mw-4 text-h2 text-moroww-dark">{r.titel}</h3>
+                    <p className="mt-mw-3 text-body-lg text-moroww-dark">{r.kern}</p>
+                    <ul className="mt-mw-5 border-t border-moroww-rule">
+                      {r.punten.map((p) => (
+                        <li key={p} className="border-b border-moroww-rule py-mw-3 text-body text-moroww-ink-2">{p}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </li>
+              )
+            })}
+          </ol>
+        </div>
+      </section>
+
+      {/* ── HOE WE KEUREN ── */}
+      <section className="w-full px-6 md:px-12 mt-mw-12">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-audit uppercase text-moroww-label">{c.keuringEyebrow}</p>
+          <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[22ch]">{c.keuringH2}</h2>
+          <div className="mt-mw-6 grid grid-cols-1 md:grid-cols-3 gap-mw-6">
+            {c.keuring.map((k) => (
+              <div key={k.titel} className="border-t border-moroww-dark pt-mw-4">
+                <h3 className="text-h3 text-moroww-dark">{k.titel}</h3>
+                <p className="mt-mw-3 text-body text-moroww-ink-2">{k.tekst}</p>
               </div>
             ))}
           </div>
-        </TekstBlok>
+        </div>
+      </section>
 
-        {/* ── WAT KLAARSTAAT ── */}
-        <TekstBlok eyebrow={isNl ? 'wat klaarstaat als je aankomt' : 'what is ready when you arrive'}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-mw-6">
-            {klaarstaat.map((k) => (
-              <div key={k.title}>
-                <p className="text-audit uppercase text-moroww-label">{k.title}</p>
-                <p className="mt-mw-2 text-body text-moroww-dark">{k.body}</p>
-              </div>
-            ))}
+      {/* ── HET LABEL ── donkere band */}
+      <section className="w-full bg-moroww-dark text-white px-6 md:px-12 py-mw-10 mt-mw-12">
+        <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6 items-end">
+          <div className="lg:col-span-8">
+            <p className="text-audit uppercase text-white/70">{c.bandEyebrow}</p>
+            <h2 className="mt-mw-4 text-h2 lg:text-[3.5rem] lg:leading-[1.02] text-white max-w-[20ch]">{c.bandH2}</h2>
           </div>
-        </TekstBlok>
+          <p className="lg:col-span-4 text-body-lg text-white/90">{c.bandP}</p>
+        </div>
+      </section>
 
-        {/* ── OPGEVOLGD ── */}
-        <TekstBlok eyebrow={isNl ? 'opgevolgd' : 'looked after'}>
-          <p>
-            {isNl
-              ? 'Onze partners komen er telkens weer over de vloer, en elk jaar keuren we opnieuw. Haalt een huis de standaard niet meer, dan krijgt de eigenaar dertig dagen. Daarna verlaat het de collectie, ook als het goed verhuurt.'
-              : 'Our partners return to every home again and again, and every year we re-audit. If a home no longer meets the standard, the owner has thirty days. After that it leaves the collection, even if it books well.'}
-          </p>
-          <div className="mt-mw-6">
-            <InlineFoto src="/images/standaard/V2-40.jpg" alt={t('alt_bed_tijdschrift')} />
+      {/* ── GAST AAN HET WOORD + DOORVERWIJZING ── */}
+      <section className="w-full px-6 md:px-12 mt-mw-12 mb-mw-12">
+        <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6">
+          <div className="lg:col-span-7">
+            <p className="text-audit uppercase text-moroww-label">{c.quoteEyebrow}</p>
+            <blockquote className="mt-mw-4 text-h3 lg:text-[1.75rem] lg:leading-[1.35] font-normal text-moroww-dark italic">{c.quote}</blockquote>
+            <p className="mt-mw-4 text-audit uppercase text-moroww-ink-2">Ragna · Nosso Logies · 2026-08</p>
           </div>
-        </TekstBlok>
-
-        {/* ── AFSLUITER: gastquote + eigenaarslink ── */}
-        <TekstBlok eyebrow={isNl ? 'wat een gast zei' : 'what a guest said'}>
-          <blockquote className="text-body-lg text-moroww-dark italic">
-            {isNl
-              ? '"Het is een enorm smaakvol appartement, tot in de puntjes afgewerkt. Ruim, licht en heel luxe. Het ligt heel dicht aan zee maar toch enorm veel rust en geen enkel geluidsoverlast."'
-              : '"A very tasteful apartment, finished down to the last detail. Spacious, light and very luxurious. It sits very close to the sea and still there is complete calm — no noise at all."'}
-          </blockquote>
-          <p className="mt-mw-3 text-audit uppercase text-moroww-ink-2">
-            Ragna · Nosso Logies · 2026-08
-          </p>
-          <p className="mt-mw-6">
-            <Link
-              href="/eigenaar-worden"
-              className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
-            >
-              {isNl
-                ? 'eigenaar? denk je dat jouw huis de standaard haalt →'
-                : 'owner? do you think your home meets the standard →'}
-            </Link>
-          </p>
-        </TekstBlok>
-      </div>
+          <ul className="lg:col-span-4 lg:col-start-9 self-end space-y-mw-4">
+            <li><Link href="/collectie" className={LINK}>{c.gastLink}</Link></li>
+            <li><Link href="/eigenaar-worden" className={LINK}>{c.eigenaarLink}</Link></li>
+          </ul>
+        </div>
+      </section>
     </Register>
   )
 }
