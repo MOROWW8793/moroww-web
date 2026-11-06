@@ -70,19 +70,10 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* DE COLLECTIE — raster van live panden direct onder de H1, zelfde
-          PandKaart als op /collectie. Zo landt een bezoeker op de home
-          meteen op woningen in plaats van op de twee collectie-tegels. */}
+      {/* DE TWEE DEUREN — direct onder de hero, zodat de eerste scroll
+          beeld onthult (parallax op data-parallax, clip-reveal op data-beeld).
+          Bouwspec sectie 3: twee ingangen naar de streek-collecties. */}
       <section className="w-full px-6 md:px-12 mt-mw-6">
-        <div className="mx-auto max-w-7xl">
-          <WoningKaarten woningen={liveWoningen()} locale={locale as Locale} />
-        </div>
-      </section>
-
-      {/* DE TWEE DEUREN — verplaatst onder het woningenraster. Blijven de
-          twee ingangen naar de streek-collecties (bouwspec sectie 3),
-          nu als vervolg op wie al gescrold heeft. */}
-      <section className="w-full px-6 md:px-12 mt-mw-8 mb-mw-8 lg:mb-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-2">
           <Deur
             naam="the shore"
@@ -98,6 +89,15 @@ export default async function HomePage({
             beeld={beeldOfNull('/images/home/fields-door.jpg')}
             beeldAlt={isNl ? 'het platteland' : 'the countryside'}
           />
+        </div>
+      </section>
+
+      {/* DE COLLECTIE — raster van live panden na de deuren. Elke kaart
+          linkt rechtstreeks naar de pandpagina met prijs en beschikbaarheid;
+          dit is het directe boekpad na de collectie-keuze erboven. */}
+      <section className="w-full px-6 md:px-12 mt-mw-8 mb-mw-8 lg:mb-mw-12">
+        <div className="mx-auto max-w-7xl">
+          <WoningKaarten woningen={liveWoningen()} locale={locale as Locale} />
         </div>
       </section>
 
