@@ -75,24 +75,19 @@ export default async function PrivacyPage({
           Uw gegevens, helder uitgelegd.
         </h1>
         <p className="text-sm text-moroww-black/40 mb-10">
-          Versie 1.2 — Laatst bijgewerkt: 6 november 2026
+          Versie 1.3 — Laatst bijgewerkt: 6 november 2026
         </p>
 
         <P>
-          moroww hecht belang aan de bescherming van uw persoonsgegevens. In dit beleid leggen we uit
-          welke gegevens we verwerken, waarom we dat doen, met wie we ze delen en welke rechten u
-          heeft. We schrijven het zoals we alles bij moroww doen: helder en zonder omwegen.
-        </P>
-        <P>
-          Dit beleid geldt voor iedereen van wie wij gegevens verwerken: gasten die in een woning van
-          de collectie verblijven, eigenaars en hosts die met ons samenwerken, kandidaat-hosts die we
-          benaderen, en bezoekers van onze website.
+          In dit beleid leest u welke persoonsgegevens moroww verwerkt, waarom, met wie we ze delen,
+          hoe lang we ze bewaren en welke rechten u heeft. Het geldt voor gasten, eigenaars en
+          hosts, kandidaat-hosts en bezoekers van moroww.com.
         </P>
 
         <Divider />
 
         <Section title="1. Wie is verantwoordelijk">
-          <P>De verwerkingsverantwoordelijke voor uw persoonsgegevens is:</P>
+          <P>De verwerkingsverantwoordelijke is:</P>
           <P>
             moroww bv (besloten vennootschap)<br />
             Neerstraat 10, 8793 Sint-Eloois-Vijve (Waregem), België<br />
@@ -102,8 +97,99 @@ export default async function PrivacyPage({
               info@moroww.com
             </a>
           </P>
+        </Section>
+
+        <Divider />
+
+        <Section title="2. Welke gegevens wij verwerken">
+          <P>Welke gegevens we verwerken, hangt af van uw relatie tot moroww.</P>
+
+          <p className="font-semibold text-moroww-black mb-2">Gasten</p>
+          <Ul>
+            <Li><B>Identiteit en contact:</B> naam, e-mailadres, telefoonnummer en taal.</Li>
+            <Li><B>Boeking:</B> woning, verblijfsdata, aantal gasten, prijs en betaalstatus.</Li>
+            <Li><B>Communicatie:</B> berichten die u met ons of via de gastpagina uitwisselt.</Li>
+            <Li><B>Toegang:</B> de tijdelijke code voor het slimme slot tijdens uw verblijf.</Li>
+            <Li><B>Geluidsniveau:</B> decibelwaarden van de geluidsmonitor in de woning (zie punt 3).</Li>
+            <Li><B>Partnerlink:</B> via welke partner u bij ons kwam, als u daarvoor toestemming gaf (zie punt 9).</Li>
+          </Ul>
           <P>
-            Voor alle vragen over dit beleid of over uw gegevens kan u ons bereiken via{" "}
+            Uw kaartgegevens verwerkt de betaaldienst of het boekingsplatform waarlangs u betaalt.
+            moroww ziet ze niet.
+          </P>
+
+          <p className="font-semibold text-moroww-black mb-2 mt-4">Eigenaars en hosts</p>
+          <Ul>
+            <Li><B>Identiteit en contact:</B> naam, e-mailadres en telefoonnummer.</Li>
+            <Li><B>Woning en samenwerking:</B> gegevens over de woning en de afspraken met moroww.</Li>
+            <Li><B>Financieel:</B> uitbetalingen, afrekeningen, commissie en facturatiegegevens.</Li>
+            <Li><B>Account:</B> uw inloggegevens voor het host-portaal en het tijdstip waarop u de voorwaarden aanvaardde.</Li>
+          </Ul>
+
+          <p className="font-semibold text-moroww-black mb-2 mt-4">Kandidaat-hosts</p>
+          <P>
+            Publiek beschikbare gegevens over de woning en de contactgegevens van de eigenaar of
+            beheerder. We gebruiken ze om de woning te beoordelen en u eventueel te contacteren.
+          </P>
+
+          <p className="font-semibold text-moroww-black mb-2 mt-4">Websitebezoekers</p>
+          <P>Cookies (zie punt 9) en wat u zelf invult in een contactformulier.</P>
+        </Section>
+
+        <Divider />
+
+        <Section title="3. De geluidsmonitor en het slimme slot">
+          <P>
+            In de woningen van de collectie staan slimme toestellen. Twee ervan verwerken gegevens.
+          </P>
+          <P>
+            <B>De geluidsmonitor</B> meet enkel decibelwaarden. Hij neemt geen gesprekken, stemmen of
+            ander geluid op. We gebruiken de waarden alleen om de kwaliteit te bewaken en de buren te
+            beschermen, zodat we overlast tijdig zien zonder uw privacy te raken.
+          </P>
+          <P>
+            <B>Het slimme slot</B> maakt sleutelloze toegang mogelijk. Voor uw verblijf maken we een
+            tijdelijke code aan die daarna vervalt. moroww beheert de codes; de eigenaar van de
+            woning ziet ze niet.
+          </P>
+        </Section>
+
+        <Divider />
+
+        <Section title="4. Waarvoor en op welke grond">
+          <P>We verwerken uw gegevens enkel voor deze doeleinden, telkens op een rechtsgrond uit de GDPR.</P>
+          <Ul>
+            <Li><B>Uw boeking en verblijf</B> (reservatie, communicatie, toegang tot de woning). Grond: uitvoering van de overeenkomst.</Li>
+            <Li><B>De samenwerking met eigenaars</B> (afrekeningen, uitbetalingen, portaal). Grond: uitvoering van de overeenkomst.</Li>
+            <Li><B>Kwaliteit en rust</B> (geluidsmonitor, buurtbescherming, beveiliging van de woning). Grond: gerechtvaardigd belang van moroww en de eigenaar.</Li>
+            <Li><B>Kandidaat-hosts beoordelen en contacteren.</B> Grond: gerechtvaardigd belang bij het opbouwen van de collectie. U kunt hiertegen bezwaar maken (zie punt 10).</Li>
+            <Li><B>Samenwerkingen met partners opvolgen</B> (partnerlink). Grond: toestemming.</Li>
+            <Li><B>Wettelijke verplichtingen</B> (boekhouding, btw, fiscale bewaarplicht). Grond: wettelijke verplichting.</Li>
+            <Li><B>Nieuws en aanbiedingen,</B> als u dat wenst. Grond: toestemming, die u altijd kunt intrekken.</Li>
+          </Ul>
+        </Section>
+
+        <Divider />
+
+        <Section title="5. Met wie wij gegevens delen">
+          <P>
+            moroww verkoopt uw gegevens niet. We delen ze alleen met wie ze nodig heeft om de dienst
+            te leveren, en alleen wat daarvoor nodig is:
+          </P>
+          <Ul>
+            <Li><B>Dienstverleners</B> voor reservatie- en kanaalbeheer, prijszetting, betalingen, slimme sloten, e-mail, hosting en opslag, en automatische vertaling van berichten.</Li>
+            <Li><B>Partners ter plaatse,</B> zoals de schoonmaak, voor wat ze nodig hebben om uw verblijf voor te bereiden.</Li>
+            <Li><B>De eigenaar of host</B> van de woning, voor zover nodig voor uw verblijf.</Li>
+            <Li><B>Boekingsplatformen</B> waarlangs u boekt. Voor de gegevens die zij zelf verzamelen, zijn zij zelf verantwoordelijk.</Li>
+            <Li><B>Onze boekhouder</B> en, als de wet het vraagt, de bevoegde overheden.</Li>
+          </Ul>
+          <P>
+            Partners die gasten naar moroww.com sturen, krijgen alleen totalen: hoeveel bezoekers en
+            boekingen via hen kwamen. Nooit gegevens waarmee u herkend kunt worden.
+          </P>
+          <P>
+            Met elke dienstverlener die namens ons gegevens verwerkt, sluiten we een
+            verwerkersovereenkomst. Een lijst van deze dienstverleners krijgt u op verzoek via{" "}
             <a href="mailto:info@moroww.com" className="underline underline-offset-2 hover:text-moroww-orange transition-colors">
               info@moroww.com
             </a>
@@ -113,151 +199,26 @@ export default async function PrivacyPage({
 
         <Divider />
 
-        <Section title="2. Welke gegevens wij verwerken">
-          <P>Welke gegevens we verwerken, hangt af van uw relatie tot moroww.</P>
-
-          <p className="font-semibold text-moroww-black mb-2">Van gasten</p>
-          <Ul>
-            <Li><B>Identiteits- en contactgegevens:</B> naam, e-mailadres, telefoonnummer, taal.</Li>
-            <Li><B>Boekingsgegevens:</B> de woning, verblijfsdata, aantal gasten, prijs en betaalstatus.</Li>
-            <Li><B>Communicatie:</B> berichten die u met ons of via de gastpagina uitwisselt.</Li>
-            <Li><B>Toegangsgegevens:</B> de tijdelijke toegangscode voor het slimme slot van de woning tijdens uw verblijf.</Li>
-            <Li><B>Geluidsniveaus:</B> decibelwaarden gemeten door de geluidsmonitor in de woning (zie punt 3).</Li>
-          </Ul>
-          <P>
-            Betaalgegevens worden in de regel verwerkt door het boekingskanaal of de betaaldienst
-            waarlangs u boekt, niet rechtstreeks door moroww.
-          </P>
-
-          <p className="font-semibold text-moroww-black mb-2 mt-4">Van eigenaars en hosts</p>
-          <Ul>
-            <Li><B>Identiteits- en contactgegevens:</B> naam, e-mailadres, telefoonnummer.</Li>
-            <Li>Gegevens over de woning en de samenwerking.</Li>
-            <Li><B>Financiële gegevens:</B> uitbetalingen, afrekeningen, commissie en facturatiegegevens.</Li>
-            <Li><B>Accountgegevens:</B> uw inloggegevens voor het host-portaal en het tijdstip waarop u de voorwaarden aanvaardde.</Li>
-          </Ul>
-
-          <p className="font-semibold text-moroww-black mb-2 mt-4">Van kandidaat-hosts (prospecten)</p>
-          <Ul>
-            <Li>
-              Publiek beschikbare gegevens over de woning en de contactgegevens van de eigenaar of
-              beheerder, die we gebruiken om de woning te beoordelen en u eventueel te benaderen.
-            </Li>
-          </Ul>
-
-          <p className="font-semibold text-moroww-black mb-2 mt-4">Van websitebezoekers</p>
-          <Ul>
-            <Li>Technische gegevens en cookies (zie punt 9), en de gegevens die u zelf invult in een contactformulier.</Li>
-          </Ul>
-        </Section>
-
-        <Divider />
-
-        <Section title="3. De geluidsmonitor en de slimme toestellen">
-          <P>
-            In de woningen van de collectie staan slimme toestellen die deel uitmaken van de
-            tech-stack. Twee daarvan verwerken gegevens, en daar willen we volledig transparant over
-            zijn.
-          </P>
-          <P>
-            <B>De geluidsmonitor</B> registreert uitsluitend decibelwaarden. Er worden geen gesprekken,
-            stemmen of andere geluidsinformatie opgenomen of bewaard. De data worden uitsluitend
-            gebruikt voor kwaliteitsmonitoring en buurtbescherming, zodat overlast tijdig kan worden
-            vastgesteld zonder de privacy van de gast aan te tasten.
-          </P>
-          <P>
-            <B>Het slimme slot</B> maakt sleutelloze toegang mogelijk. Tijdens uw verblijf wordt een
-            tijdelijke toegangscode aangemaakt die na afloop vervalt. De codes worden beheerd door
-            moroww en zijn niet zichtbaar voor de eigenaar van de woning.
-          </P>
-        </Section>
-
-        <Divider />
-
-        <Section title="4. Waarvoor wij uw gegevens gebruiken en op welke grond">
-          <P>
-            We verwerken uw gegevens enkel voor de doeleinden hieronder, telkens op basis van een
-            geldige rechtsgrond uit de GDPR.
-          </P>
-          <Ul>
-            <Li>
-              <B>De boeking en het verblijf mogelijk maken</B> (reservatie, communicatie, toegang tot de
-              woning). Grond: uitvoering van de overeenkomst.
-            </Li>
-            <Li>
-              <B>De samenwerking met eigenaars beheren</B> (afrekeningen, uitbetalingen, portaal). Grond:
-              uitvoering van de overeenkomst.
-            </Li>
-            <Li>
-              <B>De kwaliteit en de rust bewaken</B> (geluidsmonitoring, buurtbescherming, beveiliging van
-              de woning). Grond: gerechtvaardigd belang van moroww en van de eigenaar bij de
-              bescherming van de woning en de omgeving.
-            </Li>
-            <Li>
-              <B>Kandidaat-hosts beoordelen en benaderen.</B> Grond: gerechtvaardigd belang bij het
-              opbouwen van de collectie. U kan hiertegen bezwaar maken (zie punt 10).
-            </Li>
-            <Li>
-              <B>Wettelijke verplichtingen naleven</B> (boekhouding, btw, fiscale bewaarplicht). Grond:
-              wettelijke verplichting.
-            </Li>
-            <Li>
-              <B>U informeren en, indien u dat wenst, marketing sturen.</B> Grond: toestemming, die u op
-              elk moment kan intrekken.
-            </Li>
-          </Ul>
-        </Section>
-
-        <Divider />
-
-        <Section title="5. Met wie wij gegevens delen">
-          <P>
-            moroww verkoopt uw gegevens niet. We delen ze enkel met partijen die ons helpen de dienst
-            te leveren, en enkel voor zover dat nodig is. Onze belangrijkste verwerkers en ontvangers
-            zijn:
-          </P>
-          <Ul>
-            <Li><B>Guesty</B> — boekingsbeheer en synchronisatie met boekingskanalen.</Li>
-            <Li><B>PriceLabs</B> — dynamische prijszetting.</Li>
-            <Li><B>Nuki</B> — beheer van de slimme sloten.</Li>
-            <Li><B>Resend</B> — verzending van transactionele e-mails.</Li>
-            <Li><B>Supabase en Vercel</B> — hosting en opslag van onze systemen.</Li>
-            <Li><B>Anthropic</B> — automatische vertaling van berichten, zodat we u in uw eigen taal kunnen helpen.</Li>
-            <Li>
-              <B>Beehive Facility Services</B> — gecertificeerde poetspartner, die voor de planning van
-              de schoonmaak de nodige boekings- en contactgegevens ontvangt.
-            </Li>
-            <Li>
-              <B>Boekingskanalen</B> (zoals Airbnb en Booking.com), die voor de gegevens die zij zelf
-              verzamelen optreden als eigen verantwoordelijke.
-            </Li>
-            <Li>Onze boekhouder en, indien wettelijk verplicht, de bevoegde overheden.</Li>
-          </Ul>
-          <P>Met elke verwerker die namens ons gegevens verwerkt, sluiten we een verwerkersovereenkomst.</P>
-        </Section>
-
-        <Divider />
-
         <Section title="6. Doorgifte buiten de Europese Economische Ruimte">
           <P>
-            Enkele van onze verwerkers zijn gevestigd buiten de EER, onder meer in de Verenigde
-            Staten. Wanneer uw gegevens daarheen worden doorgegeven, gebeurt dat met passende
-            waarborgen zoals de modelcontractbepalingen van de Europese Commissie, zodat uw gegevens
-            een gelijkwaardig beschermingsniveau genieten.
+            Enkele dienstverleners zijn gevestigd buiten de EER, onder meer in de Verenigde Staten.
+            Gaan uw gegevens daarheen, dan gebeurt dat met passende waarborgen, zoals de
+            modelcontractbepalingen van de Europese Commissie.
           </P>
         </Section>
 
         <Divider />
 
         <Section title="7. Hoe lang wij uw gegevens bewaren">
-          <P>We bewaren uw gegevens niet langer dan nodig voor de doeleinden hierboven.</P>
+          <P>Niet langer dan nodig voor de doeleinden hierboven:</P>
           <Ul>
-            <Li>Boekings- en gastgegevens: gedurende de samenwerking en een redelijke periode nadien.</Li>
-            <Li>Boekhoudkundige en fiscale gegevens: gedurende de wettelijke bewaartermijn van zeven jaar.</Li>
-            <Li>Decibelwaarden van de geluidsmonitor: niet langer dan nodig voor kwaliteitsmonitoring en buurtbescherming.</Li>
-            <Li>Toegangscodes van de sloten: gedurende het verblijf en een korte periode nadien.</Li>
-            <Li>Accountgegevens van hosts: zolang het account actief is.</Li>
-            <Li>Gegevens van kandidaat-hosts: tot u bezwaar maakt of tot ze niet langer relevant zijn.</Li>
+            <Li><B>Boekings- en gastgegevens:</B> tijdens de samenwerking en een redelijke periode nadien.</Li>
+            <Li><B>Boekhoudkundige en fiscale gegevens:</B> de wettelijke termijn van zeven jaar.</Li>
+            <Li><B>Decibelwaarden:</B> niet langer dan nodig voor kwaliteitsbewaking en buurtbescherming.</Li>
+            <Li><B>Toegangscodes:</B> tijdens het verblijf en een korte periode nadien.</Li>
+            <Li><B>Accountgegevens van hosts:</B> zolang het account actief is.</Li>
+            <Li><B>Gegevens van kandidaat-hosts:</B> tot u bezwaar maakt of ze niet langer relevant zijn.</Li>
+            <Li><B>Partner bij een reservatie:</B> zolang we de boekingsgegevens bewaren.</Li>
           </Ul>
         </Section>
 
@@ -265,9 +226,8 @@ export default async function PrivacyPage({
 
         <Section title="8. Hoe wij uw gegevens beveiligen">
           <P>
-            We nemen passende technische en organisatorische maatregelen om uw gegevens te beschermen
-            tegen verlies, misbruik en ongeoorloofde toegang. De toegang tot gegevens is afgeschermd
-            en beperkt tot wie ze nodig heeft.
+            We nemen passende technische en organisatorische maatregelen tegen verlies, misbruik en
+            ongeoorloofde toegang. Alleen wie de gegevens nodig heeft, heeft er toegang toe.
           </P>
         </Section>
 
@@ -275,31 +235,29 @@ export default async function PrivacyPage({
 
         <Section title="9. Cookies">
           <P>
-            Onze website plaatst twee soorten cookies. Voor het meten van het gebruik zetten we een
-            privacyvriendelijke, cookieloze analysetool in, die geen persoonsgegevens of unieke
-            identificatoren opslaat.
+            Voor het meten van het gebruik van de site gebruiken we een cookieloze analysetool, die
+            geen persoonsgegevens of unieke identificatoren opslaat. Daarnaast plaatsen we:
           </P>
           <Ul>
             <Li>
-              Noodzakelijke cookies: uw taalkeuze (NEXT_LOCALE) en uw cookiekeuze
-              (moroww_toestemming, 6 maanden). Zonder deze werkt de site niet zoals verwacht; ze
+              <B>Noodzakelijke cookies:</B> uw taalkeuze (NEXT_LOCALE) en uw cookiekeuze
+              (moroww_toestemming, 6 maanden). Zonder deze werkt de site niet zoals het hoort; ze
               vragen geen toestemming.
             </Li>
             <Li>
-              Partnerlink (moroww_partner, tot 18 maanden): komt u via de link van een partner,
-              zoals een immokantoor, dan onthouden we dat met uw toestemming. De cookie bevat enkel
-              de naam van de partner en het tijdstip van uw eerste bezoek. Boekt u binnen 18
-              maanden na dat eerste bezoek, dan noteren we bij uw reservatie via welke partner u
-              kwam, zodat we de samenwerking kunnen opvolgen. De partner krijgt geen gegevens
-              waarmee u herkend kunt worden. Omdat sommige browsers een cookie na ongeveer 13
-              maanden wissen, vernieuwen we ze bij elk bezoek, maar nooit voorbij die 18 maanden.
+              <B>Partnerlink</B> (moroww_partner, tot 18 maanden), alleen met uw toestemming. Komt u
+              via de link van een partner, zoals een immokantoor, dan bevat deze cookie de naam van
+              die partner en het tijdstip van uw eerste bezoek. Boekt u binnen 18 maanden na dat
+              bezoek, dan noteren we bij uw reservatie via welke partner u kwam. Omdat sommige
+              browsers een cookie na ongeveer 13 maanden wissen, vernieuwen we ze bij elk bezoek,
+              maar nooit voorbij die 18 maanden.
             </Li>
           </Ul>
           <P>
-            Bij uw eerste bezoek vragen we uw keuze. Weigert u, dan plaatsen we enkel de
+            Bij uw eerste bezoek vragen we uw keuze. Weigert u, dan plaatsen we alleen de
             noodzakelijke cookies. We onthouden uw keuze 6 maanden en vragen ze daarna opnieuw. U
-            kunt ze altijd wijzigen of intrekken via &ldquo;cookie-instellingen&rdquo; onderaan
-            elke pagina; trekt u uw toestemming in, dan verwijderen we de partnercookie meteen.
+            kunt ze altijd wijzigen via &ldquo;cookie-instellingen&rdquo; onderaan elke pagina. Trekt
+            u uw toestemming in, dan verwijderen we de partnercookie meteen.
           </P>
         </Section>
 
@@ -317,30 +275,22 @@ export default async function PrivacyPage({
             <Li>een gegeven toestemming op elk moment in te trekken.</Li>
           </Ul>
           <P>
-            U oefent deze rechten uit via{" "}
+            Dat doet u via{" "}
             <a href="mailto:info@moroww.com" className="underline underline-offset-2 hover:text-moroww-orange transition-colors">
               info@moroww.com
             </a>
-            . Bent u het niet eens met hoe wij met uw gegevens omgaan, dan kan u ook klacht indienen
-            bij de Gegevensbeschermingsautoriteit (Drukpersstraat 35, 1000 Brussel,{" "}
-            <a
-              href="https://www.gegevensbeschermingsautoriteit.be"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-2 hover:text-moroww-orange transition-colors"
-            >
-              www.gegevensbeschermingsautoriteit.be
-            </a>
-            ).
+            . Bent u het niet eens met hoe we met uw gegevens omgaan, dan kunt u klacht indienen bij
+            de Gegevensbeschermingsautoriteit, Drukpersstraat 35, 1000 Brussel
+            (www.gegevensbeschermingsautoriteit.be).
           </P>
         </Section>
 
         <Divider />
 
-        <Section title="11. Wijzigingen aan dit beleid">
+        <Section title="11. Wijzigingen">
           <P>
-            We kunnen dit beleid van tijd tot tijd aanpassen. De meest recente versie vindt u steeds
-            op deze pagina, met de datum van de laatste wijziging bovenaan.
+            We kunnen dit beleid aanpassen. De meest recente versie staat altijd op deze pagina, met
+            de datum van de laatste wijziging bovenaan.
           </P>
         </Section>
 
@@ -348,7 +298,7 @@ export default async function PrivacyPage({
 
         <Section title="12. Contact">
           <P>
-            Vragen over dit beleid of over uw gegevens? Schrijf ons gerust op{" "}
+            Vragen over dit beleid of over uw gegevens? Schrijf ons op{" "}
             <a href="mailto:info@moroww.com" className="underline underline-offset-2 hover:text-moroww-orange transition-colors">
               info@moroww.com
             </a>
