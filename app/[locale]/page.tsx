@@ -4,7 +4,6 @@ import path from "node:path";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { FaqJsonLd } from "@/components/FaqJsonLd";
 import { Deur } from "@/components/Deur";
-import { Onthul } from "@/components/motion/Onthul";
 import { SneakPeek } from "@/components/sections/SneakPeek";
 import { WoningKaarten } from "@/components/sections/WoningKaarten";
 import { siteMetadata } from "@/lib/seo/siteMetadata";
@@ -76,23 +75,21 @@ export default async function HomePage({
           PandKaart als op /collectie. Zo landt een bezoeker op de home
           meteen op woningen in plaats van op de twee collectie-tegels. */}
       <section className="w-full px-6 md:px-12 mt-mw-6">
-        <Onthul className="mx-auto max-w-7xl" items=":scope > div > *">
+        <div className="mx-auto max-w-7xl">
           <WoningKaarten woningen={liveWoningen()} locale={locale as Locale} />
-        </Onthul>
+        </div>
       </section>
 
       {/* SNEAK PEEK — twee panden die nog niet publiek boekbaar zijn,
           in beeld tussen het woningraster en de aankomstsequentie
           (WP O). Onder de vouw, lazy-loaded, niet klikbaar. */}
-      <Onthul items=":scope > section > div > *">
-        <SneakPeek locale={locale} />
-      </Onthul>
+      <SneakPeek locale={locale} />
 
       {/* DE TWEE DEUREN — verplaatst onder het woningenraster. Blijven de
           twee ingangen naar de streek-collecties (bouwspec sectie 3),
           nu als vervolg op wie al gescrold heeft. */}
       <section className="w-full px-6 md:px-12 mt-mw-8 mb-mw-8 lg:mb-mw-12">
-        <Onthul className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-2" items=":scope > *">
+        <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-2">
           <Deur
             naam="the shore"
             tagline={isNl ? 'waar het licht verandert' : 'where the light shifts'}
@@ -107,7 +104,7 @@ export default async function HomePage({
             beeld={beeldOfNull('/images/home/fields-door.jpg')}
             beeldAlt={isNl ? 'het platteland' : 'the countryside'}
           />
-        </Onthul>
+        </div>
       </section>
 
     </>

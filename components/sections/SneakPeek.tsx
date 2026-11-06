@@ -34,7 +34,7 @@ export function SneakPeek({ locale }: { locale: string }) {
     <section className="w-full px-6 md:px-16 lg:px-24 py-20">
       <div className="max-w-6xl mx-auto">
         <AuditLijn density="quiet" items={[isNl ? 'binnenkort' : 'coming soon']} />
-        <h2 className="mt-mw-4 text-h2 text-moroww-dark max-w-[52ch]">
+        <h2 data-regels className="mt-mw-4 text-h2 text-moroww-dark max-w-[52ch]">
           {isNl ? 'een nieuwe woning aan de kust.' : 'a new home on the coast.'}
         </h2>
         <div className="mt-mw-8 flex flex-col gap-mw-8">
@@ -46,7 +46,7 @@ export function SneakPeek({ locale }: { locale: string }) {
               <div className="mt-mw-3 grid grid-cols-1 md:grid-cols-3 gap-2">
                 {/* Groot beeld: op desktop 2 kolommen breed, op mobiel volle
                     breedte. */}
-                <div className="relative aspect-[3/2] overflow-hidden md:col-span-2">
+                <div data-beeld className="relative aspect-[3/2] overflow-hidden md:col-span-2">
                   <Image
                     src={teaser.fotos[0].src}
                     alt={pick(teaser.fotos[0].alt)}
@@ -60,7 +60,7 @@ export function SneakPeek({ locale }: { locale: string }) {
                     desktop verticaal gestapeld in één kolom. */}
                 <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
                   {[1, 2].map((i) => (
-                    <div key={i} className="relative aspect-[3/2] overflow-hidden">
+                    <div key={i} data-beeld className="relative aspect-[3/2] overflow-hidden">
                       <Image
                         src={teaser.fotos[i].src}
                         alt={pick(teaser.fotos[i].alt)}

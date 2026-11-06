@@ -8,6 +8,7 @@ import { Footer } from '@/components/layout/Footer'
 import { OrganizationJsonLd } from '@/components/JsonLd'
 import { PartnerToestemming } from '@/components/PartnerToestemming'
 import { SmoothScroll } from '@/components/motion/SmoothScroll'
+import { Beweging } from '@/components/motion/Beweging'
 import type { ReactNode } from 'react'
 
 export function generateStaticParams() {
@@ -50,6 +51,7 @@ export default async function LocaleLayout({
           <Footer />
           <PartnerToestemming />
           <SmoothScroll />
+          <Beweging />
         </NextIntlClientProvider>
         <Analytics />
       </body>

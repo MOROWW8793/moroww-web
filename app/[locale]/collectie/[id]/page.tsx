@@ -418,7 +418,7 @@ export default async function WoningDetailPage({ params }: Props) {
                       className="w-14 h-14 shrink-0"
                     />
                     <div>
-                      <h2 className="text-h2 text-moroww-dark">{t('highlights_title')}</h2>
+                      <h2 data-regels className="text-h2 text-moroww-dark">{t('highlights_title')}</h2>
                       {auditMaand && (
                         <p className="mt-1 text-audit uppercase text-moroww-ink-2">
                           {t('audited_prefix')} {auditMaand}
@@ -448,7 +448,7 @@ export default async function WoningDetailPage({ params }: Props) {
               {standaardKop && (
                 <>
                   <Hr />
-                  <h2 className="text-h2 text-moroww-dark">{standaardKop}</h2>
+                  <h2 data-regels className="text-h2 text-moroww-dark">{standaardKop}</h2>
                   <div className="mt-mw-5 space-y-mw-5 max-w-[58ch]">
                     {standaardRedenen.map(({ kop, rest }) => (
                       <div key={kop}>
@@ -462,7 +462,7 @@ export default async function WoningDetailPage({ params }: Props) {
 
               {/* Over deze woning */}
               <Hr />
-              <h2 className="text-h2 text-moroww-dark">{t('about_title')}</h2>
+              <h2 data-regels className="text-h2 text-moroww-dark">{t('about_title')}</h2>
               <div className="max-w-[58ch]">
                 {alineas(lw(woning.volledigeBeschrijving, locale)).map((a) => (
                   <p key={a} className="mt-mw-3 text-body text-moroww-dark">{a}</p>
@@ -471,7 +471,7 @@ export default async function WoningDetailPage({ params }: Props) {
 
               {/* Praktisch */}
               <Hr />
-              <h2 className="text-h2 text-moroww-dark">{t('practical_title')}</h2>
+              <h2 data-regels className="text-h2 text-moroww-dark">{t('practical_title')}</h2>
               <dl className="mt-mw-4 divide-y divide-moroww-rule border-t border-b border-moroww-rule max-w-[58ch]">
                 <PraktischRij label={t('checkin_label')} value={`${t('from_label')} ${woning.inCheckin}`} />
                 <PraktischRij label={t('checkout_label')} value={`${t('before_label')} ${woning.uitCheckin}`} />
@@ -500,7 +500,7 @@ export default async function WoningDetailPage({ params }: Props) {
         {rondleiding.length === 5 && (
           <section className="mx-auto max-w-7xl px-6 md:px-12 mt-mw-10">
             <div className="flex items-end justify-between gap-mw-4">
-              <h2 className="text-h2 text-moroww-dark">{t('tour_title', { name: woning.naam })}</h2>
+              <h2 data-regels className="text-h2 text-moroww-dark">{t('tour_title', { name: woning.naam })}</h2>
               <AlleFotosKnop
                 label={t('gallery_button', { count: woning.fotos.length })}
                 className="shrink-0 py-3 text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
@@ -525,22 +525,24 @@ export default async function WoningDetailPage({ params }: Props) {
 
         {/* Beeldband — één sfeerbeeld over de volle breedte */}
         {fotoNaBeschrijving && (
-          <section className="relative mt-mw-10 h-[60vh] md:h-[80vh] w-full">
-            {woning.fotos.includes(fotoNaBeschrijving) ? (
-              <FotoKnop
-                index={woning.fotos.indexOf(fotoNaBeschrijving)}
-                sizes="100vw"
-                className="absolute inset-0 h-full w-full"
-              />
-            ) : (
-              <Image
-                src={fotoNaBeschrijving}
-                alt={`${woning.naam} — ${t('atmosphere_alt_suffix')}`}
-                fill
-                sizes="100vw"
-                className="object-cover"
-              />
-            )}
+          <section className="relative mt-mw-10 h-[60vh] md:h-[80vh] w-full overflow-hidden">
+            <div data-parallax className="absolute inset-x-0 -top-[8%] -bottom-[8%]">
+              {woning.fotos.includes(fotoNaBeschrijving) ? (
+                <FotoKnop
+                  index={woning.fotos.indexOf(fotoNaBeschrijving)}
+                  sizes="100vw"
+                  className="absolute inset-0 h-full w-full"
+                />
+              ) : (
+                <Image
+                  src={fotoNaBeschrijving}
+                  alt={`${woning.naam} — ${t('atmosphere_alt_suffix')}`}
+                  fill
+                  sizes="100vw"
+                  className="object-cover"
+                />
+              )}
+            </div>
           </section>
         )}
 
@@ -548,7 +550,7 @@ export default async function WoningDetailPage({ params }: Props) {
         {woning.buurt && (
           <section className="mx-auto max-w-7xl px-6 md:px-12 mt-mw-10 lg:grid lg:grid-cols-12 lg:gap-x-mw-6 lg:items-center">
             <div className="lg:col-span-6">
-              <h2 className="text-h2 text-moroww-dark">{t('neighbourhood_title')}</h2>
+              <h2 data-regels className="text-h2 text-moroww-dark">{t('neighbourhood_title')}</h2>
               <p className="mt-mw-4 text-body text-moroww-dark max-w-[58ch]">{lw(woning.buurt, locale)}</p>
             </div>
             {fotoNaBuurt && (
@@ -577,7 +579,7 @@ export default async function WoningDetailPage({ params }: Props) {
       {/* Wat gasten zeggen — groot, want dit is wat overtuigt */}
       {reviews.length > 0 && (
         <section className="mx-auto max-w-7xl px-6 md:px-12 mt-mw-10">
-          <h2 id="reviews" className="text-h2 text-moroww-dark scroll-mt-24">{t('reviews_label')}</h2>
+          <h2 id="reviews" data-regels className="text-h2 text-moroww-dark scroll-mt-24">{t('reviews_label')}</h2>
           <div className="mt-mw-5 grid grid-cols-1 md:grid-cols-2 gap-x-mw-6 gap-y-mw-6">
             {reviews.map(({ citaat, naam, datum }) => (
               <figure key={naam} className="border-t border-moroww-rule pt-mw-4">
@@ -599,7 +601,7 @@ export default async function WoningDetailPage({ params }: Props) {
         <section className="mx-auto max-w-7xl px-6 md:px-12 mt-mw-10">
           <div className="bg-moroww-dark px-mw-5 py-mw-8 md:px-mw-8 md:flex md:items-end md:justify-between md:gap-mw-6">
             <div>
-              <h2 className="text-h2 text-white">{t('closing_title', { name: woning.naam })}</h2>
+              <h2 data-regels className="text-h2 text-white">{t('closing_title', { name: woning.naam })}</h2>
               <p className="mt-mw-3 text-body text-white/75 max-w-[48ch]">
                 {[prijsLabel, t('trust_cancel')].filter(Boolean).join(' · ')}
               </p>
@@ -617,7 +619,7 @@ export default async function WoningDetailPage({ params }: Props) {
           binnen dezelfde collectie in plaats van een doodlopend einde. */}
       {verwant.length > 0 && (
         <section className="mx-auto max-w-7xl px-6 md:px-12 mt-mw-10 pb-mw-10">
-          <h2 className="text-h2 text-moroww-dark">{t('more_in', { collection: woning.collectie })}</h2>
+          <h2 data-regels className="text-h2 text-moroww-dark">{t('more_in', { collection: woning.collectie })}</h2>
           <div className="mt-mw-5 grid grid-cols-1 md:grid-cols-2 gap-8">
             {verwant.map((w) => (
               <PandKaart

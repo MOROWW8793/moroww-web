@@ -137,6 +137,7 @@ export function FotoKnop({
     <button
       type="button"
       onClick={() => open(index)}
+      data-beeld
       aria-label={labels.foto.replace("{n}", String(index + 1))}
       className={`group relative block overflow-hidden cursor-zoom-in ${className}`}
     >

@@ -48,7 +48,7 @@ export function PandKaart({ href, beeld, beeldAlt, titel, plaats, auditItems, pr
       aria-label={`bekijk ${titel}`}
       className="group block"
     >
-      <div className="relative aspect-[4/5] overflow-hidden">
+      <div data-beeld className="relative aspect-[4/5] overflow-hidden">
         <Image
           src={beeld}
           alt={beeldAlt}
@@ -63,7 +63,7 @@ export function PandKaart({ href, beeld, beeldAlt, titel, plaats, auditItems, pr
           </span>
         )}
       </div>
-      <div className="mt-mw-4">
+      <div data-onthul className="mt-mw-4">
         <h3 className="text-h3 text-moroww-dark">{titel}</h3>
         <p className="mt-1 text-body text-moroww-ink-2">{plaats}</p>
       </div>

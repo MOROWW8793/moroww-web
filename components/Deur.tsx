@@ -36,20 +36,23 @@ export function Deur({ naam, tagline, href, beeld, beeldAlt }: Props) {
   return (
     <Link
       href={href}
+      data-beeld
       className="group relative block w-full aspect-[4/5] lg:max-h-[62vh] overflow-hidden outline-none focus-visible:outline-2 focus-visible:outline-moroww-orange focus-visible:outline-offset-4"
       style={{ backgroundColor: bgKleur }}
       aria-label={`${naam} — ${tagline}`}
     >
       {heeftBeeld && (
         <>
-          <Image
-            src={beeld as string}
-            alt={beeldAlt}
-            fill
-            className="object-cover transition-transform duration-[700ms] ease-out group-hover:scale-[1.03] motion-reduce:group-hover:scale-100"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            priority
-          />
+          <div data-parallax className="absolute inset-x-0 -top-[8%] -bottom-[8%]">
+            <Image
+              src={beeld as string}
+              alt={beeldAlt}
+              fill
+              className="object-cover transition-transform duration-[700ms] ease-out group-hover:scale-[1.03] motion-reduce:group-hover:scale-100"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+            />
+          </div>
           <div
             className="absolute inset-x-0 bottom-0 h-[60%] pointer-events-none"
             style={{ background: 'linear-gradient(to top, rgba(26,26,26,0.65), rgba(26,26,26,0))' }}
