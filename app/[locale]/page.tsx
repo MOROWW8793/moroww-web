@@ -4,7 +4,6 @@ import path from "node:path";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { FaqJsonLd } from "@/components/FaqJsonLd";
 import { Deur } from "@/components/Deur";
-import { SneakPeek } from "@/components/sections/SneakPeek";
 import { WoningKaarten } from "@/components/sections/WoningKaarten";
 import { siteMetadata } from "@/lib/seo/siteMetadata";
 import { liveWoningen, type Locale } from "@/lib/woningen";
@@ -79,11 +78,6 @@ export default async function HomePage({
           <WoningKaarten woningen={liveWoningen()} locale={locale as Locale} />
         </div>
       </section>
-
-      {/* SNEAK PEEK — twee panden die nog niet publiek boekbaar zijn,
-          in beeld tussen het woningraster en de aankomstsequentie
-          (WP O). Onder de vouw, lazy-loaded, niet klikbaar. */}
-      <SneakPeek locale={locale} />
 
       {/* DE TWEE DEUREN — verplaatst onder het woningenraster. Blijven de
           twee ingangen naar de streek-collecties (bouwspec sectie 3),
