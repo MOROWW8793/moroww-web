@@ -64,7 +64,7 @@ export default async function HomePage({
         style={{ minHeight: '18vh' }}
       >
         <div className="mx-auto max-w-7xl w-full overflow-visible">
-          <h1 className="text-display text-moroww-dark">
+          <h1 data-regels className="text-display text-moroww-dark">
             {isNl ? 'karaktervolle huizen. een standaard die niet wijkt.' : 'homes with character. a standard that does not bend.'}
           </h1>
         </div>
