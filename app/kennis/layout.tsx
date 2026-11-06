@@ -14,6 +14,7 @@ import { Analytics } from '@vercel/analytics/next'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { OrganizationJsonLd } from '@/components/JsonLd'
+import { CookieBanner } from '@/components/CookieBanner'
 import type { ReactNode } from 'react'
 
 export default async function KennisLayout({ children }: { children: ReactNode }) {
@@ -28,6 +29,7 @@ export default async function KennisLayout({ children }: { children: ReactNode }
           <Navbar />
           <main className="bg-moroww-blush">{children}</main>
           <Footer />
+          <CookieBanner />
         </NextIntlClientProvider>
         <Analytics />
       </body>

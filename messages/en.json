@@ -59,7 +59,8 @@
     "calendar_link": "book a call",
     "column_collection": "the collection",
     "column_for_owners": "for owners",
-    "supported_by": "supported by"
+    "supported_by": "supported by",
+    "cookie_settings": "cookie settings"
   },
   "collectie": {
     "label": "Curated selection",
@@ -484,11 +485,19 @@
     "discount_invalid": "This code is not valid for this stay.",
     "line_discount": "discount"
   },
-  "partner_tracking": {
-    "label": "partner link",
-    "vraag": "You came here via {partner}. May we remember that for {dagen} days with a single cookie, so they get credit if you book?",
+  "cookies": {
+    "label": "cookie settings",
+    "via_partner": "You came here via {partner}.",
+    "intro": "We use cookies the site needs to work. With your consent we also use one to remember which partner sent you to us.",
     "meer": "privacy",
-    "ja": "yes, fine",
-    "nee": "no"
+    "weigeren": "decline",
+    "aanvaarden": "accept",
+    "kiezen": "choose",
+    "bewaren": "save choice",
+    "noodzakelijk_titel": "necessary",
+    "noodzakelijk_uitleg": "Your language and your cookie choice.",
+    "altijd_aan": "always on",
+    "doel_partner_titel": "partner link",
+    "doel_partner_uitleg": "Remembers for up to {maanden} months which partner sent you, so they get credit if you book. The partner receives nothing that identifies you."
   }
 }

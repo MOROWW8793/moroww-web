@@ -75,7 +75,7 @@ export default async function PrivacyPage({
           Uw gegevens, helder uitgelegd.
         </h1>
         <p className="text-sm text-moroww-black/40 mb-10">
-          Versie 1.1 — Laatst bijgewerkt: 27 oktober 2026
+          Versie 1.2 — Laatst bijgewerkt: 6 november 2026
         </p>
 
         <P>
@@ -275,18 +275,31 @@ export default async function PrivacyPage({
 
         <Section title="9. Cookies">
           <P>
-            Onze website gebruikt functionele cookies die nodig zijn om te werken, zoals het
-            onthouden van uw taalkeuze. Voor het meten van het gebruik zetten we een
+            Onze website plaatst twee soorten cookies. Voor het meten van het gebruik zetten we een
             privacyvriendelijke, cookieloze analysetool in, die geen persoonsgegevens of unieke
             identificatoren opslaat.
           </P>
+          <Ul>
+            <Li>
+              Noodzakelijke cookies: uw taalkeuze (NEXT_LOCALE) en uw cookiekeuze
+              (moroww_toestemming, 6 maanden). Zonder deze werkt de site niet zoals verwacht; ze
+              vragen geen toestemming.
+            </Li>
+            <Li>
+              Partnerlink (moroww_partner, tot 18 maanden): komt u via de link van een partner,
+              zoals een immokantoor, dan onthouden we dat met uw toestemming. De cookie bevat enkel
+              de naam van de partner en het tijdstip van uw eerste bezoek. Boekt u binnen 18
+              maanden na dat eerste bezoek, dan noteren we bij uw reservatie via welke partner u
+              kwam, zodat we de samenwerking kunnen opvolgen. De partner krijgt geen gegevens
+              waarmee u herkend kunt worden. Omdat sommige browsers een cookie na ongeveer 13
+              maanden wissen, vernieuwen we ze bij elk bezoek, maar nooit voorbij die 18 maanden.
+            </Li>
+          </Ul>
           <P>
-            Komt u via de link van een partner, zoals een immokantoor, dan vragen we eerst uw
-            toestemming om dat 30 dagen te onthouden met één cookie. Die bevat enkel de naam van de
-            partner en het tijdstip van uw eerste bezoek. Boekt u binnen die periode, dan noteren we
-            bij uw reservatie via welke partner u kwam, zodat we de samenwerking kunnen opvolgen. De
-            partner krijgt geen gegevens waarmee u herkend kunt worden. Weigert u, dan plaatsen we
-            niets. U kunt de cookie altijd verwijderen via de instellingen van uw browser.
+            Bij uw eerste bezoek vragen we uw keuze. Weigert u, dan plaatsen we enkel de
+            noodzakelijke cookies. We onthouden uw keuze 6 maanden en vragen ze daarna opnieuw. U
+            kunt ze altijd wijzigen of intrekken via &ldquo;cookie-instellingen&rdquo; onderaan
+            elke pagina; trekt u uw toestemming in, dan verwijderen we de partnercookie meteen.
           </P>
         </Section>
 

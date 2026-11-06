@@ -59,7 +59,8 @@
     "calendar_link": "een gesprek inplannen",
     "column_collection": "de collectie",
     "column_for_owners": "voor eigenaars",
-    "supported_by": "supported by"
+    "supported_by": "supported by",
+    "cookie_settings": "cookie-instellingen"
   },
   "collectie": {
     "label": "Gecureerde selectie",
@@ -484,11 +485,19 @@
     "discount_invalid": "Deze code is niet geldig voor dit verblijf.",
     "line_discount": "korting"
   },
-  "partner_tracking": {
-    "label": "partnerlink",
-    "vraag": "Je komt via {partner}. Mogen we dat {dagen} dagen onthouden met één cookie, zodat zij erkenning krijgen als je boekt?",
+  "cookies": {
+    "label": "cookie-instellingen",
+    "via_partner": "Je komt via {partner}.",
+    "intro": "We gebruiken cookies die nodig zijn om de site te laten werken. Met je toestemming gebruiken we er ook een om te onthouden via welke partner je bij ons kwam.",
     "meer": "privacy",
-    "ja": "ja, goed",
-    "nee": "nee"
+    "weigeren": "weigeren",
+    "aanvaarden": "aanvaarden",
+    "kiezen": "zelf kiezen",
+    "bewaren": "keuze bewaren",
+    "noodzakelijk_titel": "noodzakelijk",
+    "noodzakelijk_uitleg": "Je taalkeuze en je cookiekeuze.",
+    "altijd_aan": "altijd aan",
+    "doel_partner_titel": "partnerlink",
+    "doel_partner_uitleg": "Onthoudt tot {maanden} maanden via welke partner je kwam, zodat die erkenning krijgt als je boekt. De partner krijgt geen gegevens waarmee je herkend kunt worden."
   }
 }

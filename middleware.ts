@@ -1,8 +1,28 @@
 import createIntlMiddleware from 'next-intl/middleware'
 import { routing } from './i18n/routing'
 import { NextRequest, NextResponse } from 'next/server'
+import { PARTNER_COOKIE, isPartner, leesPartnerCookie, zetPartnerCookie } from './lib/partner'
+import { TOESTEMMING_COOKIE, leesToestemming } from './lib/toestemming'
 
 const intlMiddleware = createIntlMiddleware(routing)
+
+// Verlengt de partnercookie bij elk bezoek (Chrome houdt een cookie maximaal
+// 400 dagen bij) en zet ze meteen bij een partnerlink als de bezoeker al
+// toestemming gaf. Zonder keuze gebeurt hier niets: dat beslist de banner.
+function partnerCookie(request: NextRequest, response: NextResponse) {
+  const toestemming = leesToestemming(request.cookies.get(TOESTEMMING_COOKIE)?.value)
+  if (!toestemming) return
+  const waarde = request.cookies.get(PARTNER_COOKIE)?.value
+  if (!toestemming.doelen.includes('partner')) {
+    if (waarde) response.cookies.delete(PARTNER_COOKIE)
+    return
+  }
+  const bestaand = leesPartnerCookie(waarde)
+  const ref = request.nextUrl.searchParams.get('ref')
+  if (bestaand) zetPartnerCookie(response, bestaand)
+  else if (isPartner(ref)) zetPartnerCookie(response, { partner: ref, aangekomenOp: new Date() })
+  else if (waarde) response.cookies.delete(PARTNER_COOKIE)
+}
 
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
@@ -16,7 +36,9 @@ export default function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  return intlMiddleware(request)
+  const response = intlMiddleware(request)
+  partnerCookie(request, response)
+  return response
 }
 
 export const config = {
