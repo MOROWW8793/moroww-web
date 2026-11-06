@@ -6,7 +6,7 @@ import { routing } from '@/i18n/routing'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { OrganizationJsonLd } from '@/components/JsonLd'
-import { PartnerToestemming } from '@/components/PartnerToestemming'
+import { CookieBanner } from '@/components/CookieBanner'
 import type { ReactNode } from 'react'
 
 export function generateStaticParams() {
@@ -47,7 +47,7 @@ export default async function LocaleLayout({
           <Navbar />
           <main className="bg-moroww-blush">{children}</main>
           <Footer />
-          <PartnerToestemming />
+          <CookieBanner />
         </NextIntlClientProvider>
         <Analytics />
       </body>

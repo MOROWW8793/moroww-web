@@ -3,6 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import { createInstantReservation, getQuote, GuestyBookingError } from "@/lib/guesty-booking";
 import { setReservationCustomField } from "@/lib/guesty";
 import { PARTNERS, PARTNER_COOKIE, leesPartnerCookie, type PartnerSlug } from "@/lib/partner";
+import { TOESTEMMING_COOKIE, leesToestemming } from "@/lib/toestemming";
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -73,8 +74,12 @@ export async function POST(req: NextRequest) {
         phone: gast.telefoon.trim(),
       },
     });
+    // Zonder toestemmingscookie telt de partnercookie nog: die komt dan van de
+    // eerdere partnervraag, waar de gast zelf "ja" op klikte.
+    const toestemming = leesToestemming(req.cookies.get(TOESTEMMING_COOKIE)?.value);
+    const geweigerd = toestemming !== null && !toestemming.doelen.includes("partner");
     const partner = leesPartnerCookie(req.cookies.get(PARTNER_COOKIE)?.value);
-    if (partner) after(() => registreerPartner(reservatie, partner));
+    if (partner && !geweigerd) after(() => registreerPartner(reservatie, partner));
     return NextResponse.json({ code: reservatie.confirmationCode });
   } catch (err) {
     // 429 is Guesty die ons afremt, niet een probleem met de aanvraag.

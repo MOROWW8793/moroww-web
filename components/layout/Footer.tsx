@@ -9,6 +9,7 @@ import {
   footerJuridisch,
   type FooterLink,
 } from '@/lib/navigation'
+import { OPEN_COOKIE_INSTELLINGEN } from '@/components/CookieBanner'
 
 const INSTAGRAM_URL = 'https://www.instagram.com/moroww.com_/'
 const LINKEDIN_URL = 'https://www.linkedin.com/company/moroww/'
@@ -149,6 +150,13 @@ export function Footer() {
             {footerJuridisch.map((link) => (
               <FooterLinkItem key={link.href} link={link} label={t(link.labelKey)} />
             ))}
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new Event(OPEN_COOKIE_INSTELLINGEN))}
+              className="text-left hover:text-white transition-colors"
+            >
+              {t('cookie_settings')}
+            </button>
           </div>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white transition-colors">
