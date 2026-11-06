@@ -7,6 +7,7 @@ import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { OrganizationJsonLd } from '@/components/JsonLd'
 import { PartnerToestemming } from '@/components/PartnerToestemming'
+import { SmoothScroll } from '@/components/motion/SmoothScroll'
 import type { ReactNode } from 'react'
 
 export function generateStaticParams() {
@@ -48,6 +49,7 @@ export default async function LocaleLayout({
           <main className="bg-moroww-blush">{children}</main>
           <Footer />
           <PartnerToestemming />
+          <SmoothScroll />
         </NextIntlClientProvider>
         <Analytics />
       </body>
