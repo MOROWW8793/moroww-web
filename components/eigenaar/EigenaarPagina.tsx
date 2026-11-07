@@ -101,10 +101,15 @@ export function EigenaarPagina({
         </div>
       </section>
 
-      {/* ── HEROBEELD ── */}
+      {/* ── HEROBEELD ── clip-opent van onder (data-beeld); binnenin een
+          overmaat-laag met parallax zodat het beeld traag meebeweegt tegen
+          de scroll. De cert-badge zit buiten de parallax-laag en blijft
+          vast t.o.v. de container. */}
       <section className="w-full px-6 md:px-12 mt-mw-8">
-        <div className="mx-auto max-w-7xl relative aspect-[4/5] sm:aspect-[16/9] lg:max-h-[78vh] w-full overflow-hidden">
-          <Image src="/images/hero.jpg" alt={c.heroAlt} fill priority className="object-cover" sizes="(max-width: 1280px) 100vw, 1280px" />
+        <div data-beeld className="mx-auto max-w-7xl relative aspect-[4/5] sm:aspect-[16/9] lg:max-h-[78vh] w-full overflow-hidden">
+          <div data-parallax className="absolute inset-x-0 -top-[8%] -bottom-[8%]">
+            <Image src="/images/hero.jpg" alt={c.heroAlt} fill priority className="object-cover" sizes="(max-width: 1280px) 100vw, 1280px" />
+          </div>
           <Image src="/images/Moroww_Certified_01_RGB.png" alt="moroww certified" width={240} height={240} className="absolute right-mw-4 bottom-mw-4 md:right-mw-6 md:bottom-mw-6 w-20 md:w-28 h-auto" />
         </div>
       </section>
