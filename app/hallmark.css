@@ -202,10 +202,89 @@ body.hm {
   font-variant-numeric: lining-nums;
 }
 
+/* ───────────── motion ─────────────
+   Alle onthullingen zijn opt-in via data-anim. Zonder .hm-js (gezet door een
+   inline script in <body> voor de content binnenkomt) blijft content gewoon
+   zichtbaar: scripting-off en reduced-motion zien de pagina als een stilstaand
+   document, niet als een leeg scherm. */
+
+html.hm-js [data-anim="rise"] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 900ms var(--hm-ease),
+    transform 900ms var(--hm-ease);
+  will-change: opacity, transform;
+}
+html.hm-js [data-anim="rise"].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Lines: elke buitenste <span> is een mask (overflow:hidden, display:block);
+   elke binnenste <span> is de regel die van onderen omhoog komt. Stagger per
+   nth-child zodat de regel-beat gelezen kan worden. */
+html.hm-js [data-anim="lines"] > span {
+  display: block;
+  overflow: hidden;
+}
+html.hm-js [data-anim="lines"] > span > span {
+  display: inline-block;
+  transform: translateY(105%);
+  transition: transform 1100ms var(--hm-ease);
+  will-change: transform;
+}
+html.hm-js [data-anim="lines"].is-in > span > span {
+  transform: translateY(0);
+}
+html.hm-js [data-anim="lines"].is-in > span:nth-child(2) > span { transition-delay:  90ms; }
+html.hm-js [data-anim="lines"].is-in > span:nth-child(3) > span { transition-delay: 180ms; }
+html.hm-js [data-anim="lines"].is-in > span:nth-child(4) > span { transition-delay: 270ms; }
+
+/* Stagger: direct children rijzen één voor één; eerste zonder delay. */
+html.hm-js [data-anim="stagger"] > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 900ms var(--hm-ease),
+    transform 900ms var(--hm-ease);
+  will-change: opacity, transform;
+}
+html.hm-js [data-anim="stagger"].is-in > * {
+  opacity: 1;
+  transform: none;
+}
+html.hm-js [data-anim="stagger"].is-in > :nth-child(2) { transition-delay: 110ms; }
+html.hm-js [data-anim="stagger"].is-in > :nth-child(3) { transition-delay: 220ms; }
+html.hm-js [data-anim="stagger"].is-in > :nth-child(4) { transition-delay: 330ms; }
+html.hm-js [data-anim="stagger"].is-in > :nth-child(5) { transition-delay: 440ms; }
+
+/* Tijd-stappen voor de case-sectie: langere delay tussen rijen zodat tijd
+   voelbaar verstrijkt tussen 15:00 → daarna → 19:00. */
+html.hm-js [data-anim="timeline"] > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 700ms var(--hm-ease),
+    transform 700ms var(--hm-ease);
+  will-change: opacity, transform;
+}
+html.hm-js [data-anim="timeline"].is-in > * { opacity: 1; transform: none; }
+html.hm-js [data-anim="timeline"].is-in > :nth-child(2) { transition-delay: 400ms; }
+html.hm-js [data-anim="timeline"].is-in > :nth-child(3) { transition-delay: 800ms; }
+
+/* Reduced motion: alle animaties worden letterlijk uitgezet. */
 @media (prefers-reduced-motion: reduce) {
+  html.hm-js [data-anim="rise"],
+  html.hm-js [data-anim="stagger"] > *,
+  html.hm-js [data-anim="timeline"] > *,
+  html.hm-js [data-anim="lines"] > span > span {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 }
