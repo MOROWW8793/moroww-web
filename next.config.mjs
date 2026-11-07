@@ -50,7 +50,9 @@ const nextConfig = {
       // moroww how heet sinds nov 2026 moroww advisory. Oude adressen verwijzen door.
       { source: "/how/scan", destination: "/advisory", permanent: true },
       { source: "/how/traject", destination: "/advisory", permanent: true },
-      { source: "/how/makelaars", destination: "/advisory/property-managers", permanent: true },
+      { source: "/how/makelaars", destination: "/hub/property-managers", permanent: true },
+      { source: "/how/property-managers", destination: "/hub/property-managers", permanent: true },
+      { source: "/advisory/property-managers", destination: "/hub/property-managers", permanent: true },
       { source: "/how", destination: "/advisory", permanent: true },
       { source: "/how/:path*", destination: "/advisory/:path*", permanent: true },
       { source: "/en/how", destination: "/advisory", permanent: true },

@@ -32,6 +32,7 @@ export default function HubLayout({ children }: { children: React.ReactNode }) {
           { href: '/hub/partners', label: 'partners' },
           { href: '/hub/academy', label: 'academy' },
           { href: '/hub/market', label: 'market' },
+          { href: '/hub/property-managers', label: 'property managers' },
         ]}
         cta={{ href: '/hub/lid-worden', label: 'lid worden' }}
       />

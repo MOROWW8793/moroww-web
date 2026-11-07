@@ -118,13 +118,13 @@ export default async function VoorEigenaarsPage({ params }: { params: Promise<{ 
           <div>
             <h2 className="text-h3 text-moroww-dark">je beheert huizen voor anderen?</h2>
             <p className="mt-mw-3 text-body text-moroww-ink-2">
-              Voor property managers is er moroww advisory: één aanpak voor je hele portefeuille.
+              Voor property managers is er moroww hub: de partners, het label en de academy voor je hele portefeuille.
             </p>
             <Link
-              href="/advisory/property-managers"
+              href="/hub/property-managers"
               className="mt-mw-5 inline-block text-body text-moroww-dark underline underline-offset-4 decoration-moroww-label"
             >
-              advisory voor property managers
+              hub voor property managers
             </Link>
           </div>
         </div>

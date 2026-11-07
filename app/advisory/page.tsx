@@ -24,8 +24,8 @@ const vragen: { titel: string; tekst: string; href?: string }[] = [
   },
   {
     titel: 'ik beheer huizen voor anderen.',
-    tekst: 'Voor property managers: één aanpak voor je hele portefeuille.',
-    href: '/advisory/property-managers',
+    tekst: 'Property managers vinden de partners, het label en de academy in moroww hub. Met een concrete vraag kun je hier terecht.',
+    href: '/hub/property-managers',
   },
   {
     titel: 'iets anders.',
@@ -46,7 +46,7 @@ export default function How() {
           </p>
           <div className="knoppen">
             <Link href="/advisory/contact" className="btn btn-primair">vertel ons je vraag</Link>
-            <Link href="/advisory/property-managers" className="btn btn-lijn">ik ben property manager</Link>
+            <a href="#werkwijze" className="btn btn-lijn">hoe het werkt</a>
           </div>
         </div>
       </section>
@@ -79,16 +79,6 @@ export default function How() {
           <li><strong>voorstel op maat</strong><span>Wat er moet gebeuren, wie het doet, wanneer, en wat het kost. Vooraf, zwart op wit.</span></li>
           <li><strong>jij of wij</strong><span>Je voert het voorstel zelf uit, of wij regelen het voor je.</span></li>
         </ol>
-      </Sectie>
-
-      <Sectie toon="donker">
-        <div className="band">
-          <div className="band-tekst" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <span className="boven">voor property managers</span>
-            <span>jij beheert de huizen. wij zorgen dat ze mogen, en gezien worden.</span>
-          </div>
-          <Link href="/advisory/property-managers" className="btn btn-primair">voor property managers</Link>
-        </div>
       </Sectie>
 
       <Sectie>
