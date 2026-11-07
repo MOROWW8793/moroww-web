@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const aanbod: { label: string; titel: string; tekst: string; href: string }[] = [
   {
     label: 'op maat, per huis',
-    titel: 'how voor je portefeuille',
+    titel: 'advisory voor je portefeuille',
     tekst:
       'Mag een nieuw huis verhuurd worden, wat ontbreekt er, wat moet eerst? We bekijken het per huis en regelen op vraag wat nodig is tot het verhuurklaar is.',
     href: '/advisory',

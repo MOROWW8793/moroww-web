@@ -3,7 +3,6 @@ import Link from 'next/link'
 import type { ReactNode } from 'react'
 import { setRequestLocale } from 'next-intl/server'
 import { Logo, MerkTeken } from '@/components/merk/Logo'
-import '@fontsource/cormorant-garamond/500.css'
 
 export const metadata: Metadata = {
   title: 'voor eigenaars',
@@ -33,7 +32,7 @@ const takken: Tak[] = [
   },
   {
     merk: <MerkTeken merk="advisory" op="licht" size={28} />,
-    kleur: '#C8A46B',
+    kleur: '#F2C94C',
     titel: 'loop je ergens op vast?',
     tekst:
       'Een vergunning, een opstart, een eigen boekingssite: elke vraag is anders. We kijken naar jouw situatie en stellen voor wat nodig is.',

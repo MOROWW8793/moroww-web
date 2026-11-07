@@ -5,7 +5,7 @@ export const BLAADJES = {
   moroww: '#fea05e',
   how: '#a994f0',
   hub: '#7fa0c9',
-  advisory: '#C8A46B',
+  advisory: '#F2C94C',
 } as const;
 
 type Props = {
@@ -55,7 +55,7 @@ export function MerkTeken({ merk, op = 'licht', size = 22 }: { merk: 'how' | 'hu
     <span className={`merkteken merkteken-${merk}`} style={{ fontSize: size, whiteSpace: 'nowrap', display: 'inline-flex', alignItems: 'baseline', gap: '0.25em' }}>
       <Logo petal={BLAADJES[merk]} ink={ink} height={Math.round(size * 0.78)} title="moroww" />{' '}
       {merk === 'advisory' ? (
-        <span className="merkteken-woord" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 500, letterSpacing: 0 }}>advisory</span>
+        <span className="merkteken-woord">advisory</span>
       ) : merk === 'how' ? (
         <span className="merkteken-woord">how</span>
       ) : (

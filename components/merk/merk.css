@@ -34,16 +34,12 @@
   --font-tekst: var(--font-inter-tight), 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* moroww advisory: het plan. lobby, velvet, brass, linen */
+/* moroww advisory: het plan. paper en markeerstift-geel, zwarte inkt, geel alleen in de blaadjes en in kleine dosis */
 .merk-advisory {
-  --bg: #FBFAF8; --ink: #16302A; --muted: #3A4A44; --line: #E2DACB;
-  --zacht: #EFE8DA; --donker: #16302A; --donker-ink: #FBFAF8; --donker-muted: #D9CDB4;
-  --knop: #16302A; --knop-ink: #FBFAF8; --accent: #2E5547;
-  --font-titel: 'Cormorant Garamond', Georgia, serif;
-  --font-tekst: var(--font-inter-tight), 'Helvetica Neue', Arial, sans-serif;
-  --titel-gewicht: 500;
+  --bg: #FBFAF8; --ink: #1A1A1A; --muted: #4A4744; --line: #EAE2C8;
+  --zacht: #FBF5DF; --donker: #FBF5DF; --donker-ink: #1A1A1A; --donker-muted: #4A4744;
+  --knop: #1A1A1A; --knop-ink: #FFFFFF; --accent: #8A6D12;
 }
-.merk-advisory .titel-1, .merk-advisory .titel-2, .merk-advisory .kaart-titel { font-weight: 500; letter-spacing: -0.005em; }
 
 /* moroww hub: de dag buiten, in diep blauw. abyss, steel, powder, silver */
 .merk-hub {
@@ -68,8 +64,8 @@
 
 .merk .held { padding: 112px 0 120px; }
 .merk-how .held { background: radial-gradient(90% 120% at 100% 0%, #5B3FD0 0%, #2A1F5C 38%, #14122B 72%); color: #FBFAF8; }
-.merk-advisory .held { background: #16302A; color: #FBFAF8; border-bottom: 1px solid rgba(200,164,107,0.35); }
-.merk-advisory .held .inleiding, .merk-advisory .held .boven { color: #D9CDB4; }
+.merk-advisory .held { background: var(--zacht); color: var(--ink); }
+.merk-advisory .held .inleiding, .merk-advisory .held .boven { color: var(--muted); }
 .merk-hub .held { background: radial-gradient(80% 120% at 10% 0%, #2B4A70 0%, #0F2238 60%); color: #F4F7FB; }
 .merk-moroww .held { background: var(--zacht); }
 .merk-how .held .inleiding, .merk-how .held .boven { color: #E6E1FA; }
@@ -91,11 +87,11 @@
 .merk .btn-lijn { border-color: currentColor; color: inherit; background: transparent; }
 .merk .btn-kop { min-height: 44px; padding: 0 18px; font-size: 15px; background: var(--knop); color: var(--knop-ink); }
 .merk-how .btn-kop { background: #CFC6F7; color: #14122B; }
-.merk-advisory .btn-kop { background: #C8A46B; color: #16302A; }
-.merk-advisory .held .btn-primair, .merk-advisory .sectie-donker .btn-primair { background: #C8A46B; color: #16302A; }
+.merk-advisory .btn-kop { background: var(--knop); color: var(--knop-ink); }
 .merk-hub .btn-kop { background: #C9D8E8; color: #0F2238; }
 .merk .sectie-donker .btn-primair, .merk .held .btn-primair { background: #FFFFFF; color: var(--ink); }
 .merk-moroww .held .btn-primair { background: var(--knop); color: var(--knop-ink); }
+.merk-advisory .held .btn-primair, .merk-advisory .sectie-donker .btn-primair { background: var(--knop); color: var(--knop-ink); }
 
 /* ---------- kop en voet ---------- */
 .merk .kop { border-bottom: 1px solid var(--line); background: var(--bg); }
@@ -116,7 +112,7 @@
 
 .merkteken { display: inline-flex; align-items: baseline; gap: 0.25em; letter-spacing: -0.02em; line-height: 1; }
 .merkteken-how .merkteken-woord { font-family: var(--font-inter-tight), sans-serif; font-weight: 500; }
-.merkteken-advisory .merkteken-woord { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; letter-spacing: 0; }
+.merkteken-advisory .merkteken-woord { font-family: var(--font-titel, 'OverusedGrotesk', 'Overused Grotesk', 'Helvetica Neue', Arial, sans-serif); font-weight: 400; font-size: 0.86em; }
 .merkteken-hub .merkteken-woord { font-family: var(--font-fraunces), Georgia, serif; font-weight: 300; }
 
 /* ---------- blokken ---------- */

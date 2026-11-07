@@ -77,7 +77,7 @@ export default function How() {
           <li><strong>vertel je vraag</strong><span>Via het formulier of in een kort gesprek. Wat speelt er, en wat wil je bereiken?</span></li>
           <li><strong>we kijken samen</strong><span>Waar nodig komen we langs en bekijken we de documenten die er al zijn.</span></li>
           <li><strong>voorstel op maat</strong><span>Wat er moet gebeuren, wie het doet, wanneer, en wat het kost. Vooraf, zwart op wit.</span></li>
-          <li><strong>jij of wij</strong><span>Je voert het voorstel zelf uit, of how regelt het voor je.</span></li>
+          <li><strong>jij of wij</strong><span>Je voert het voorstel zelf uit, of wij regelen het voor je.</span></li>
         </ol>
       </Sectie>
 

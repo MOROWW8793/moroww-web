@@ -81,7 +81,7 @@ export const eigenaarDropdown: EigenaarDropdownItem[] = [
     toelichting: 'vergunning, opstart en je eigen website',
     toelichtingEn: 'permits, set-up and your own website',
     href: '/advisory',
-    kleur: '#C8A46B',
+    kleur: '#F2C94C',
   },
   {
     titel: 'moroww hub',

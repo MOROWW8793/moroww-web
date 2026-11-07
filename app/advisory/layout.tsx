@@ -7,8 +7,6 @@ import '@fontsource/fraunces/300-italic.css';
 import '@fontsource/fraunces/400.css';
 import '@fontsource/dm-sans/400.css';
 import '@fontsource/dm-sans/500.css';
-import '@fontsource/cormorant-garamond/500.css';
-import '@fontsource/cormorant-garamond/500-italic.css';
 import '@fontsource/inter-tight/300.css';
 import '@fontsource/inter-tight/400.css';
 import '@fontsource/inter-tight/500.css';
@@ -27,9 +25,8 @@ export default function AdvisoryLayout({ children }: { children: React.ReactNode
       <body>
     <div className="merk merk-advisory">
       <Header
-        donker
         home="/advisory"
-        merk={<MerkTeken merk="advisory" op="donker" size={24} />}
+        merk={<MerkTeken merk="advisory" op="licht" size={24} />}
         nav={[
           { href: '/advisory#werkwijze', label: 'werkwijze' },
           { href: '/advisory/website', label: 'website' },
@@ -38,7 +35,7 @@ export default function AdvisoryLayout({ children }: { children: React.ReactNode
         cta={{ href: '/advisory/contact', label: 'vertel je vraag' }}
       />
       <main>{children}</main>
-      <Footer donker merk={<span>every question, a plan.</span>} />
+      <Footer merk={<span>every question, a plan.</span>} />
     </div>
         <Analytics />
       </body>
