@@ -180,8 +180,8 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
           {fout && <p className="mt-2 text-body text-white" role="alert">{c.fout}</p>}
 
           {/* Bijschrift + bolletjes */}
-          <div className="mt-mw-4 flex items-center justify-between gap-mw-4 text-white/85">
-            <p className="text-audit" aria-live="polite">
+          <div className="mt-mw-4 flex items-center justify-end sm:justify-between gap-mw-4 text-white/85">
+            <p className="hidden sm:block text-audit" aria-live="polite">
               {huidig.naam}, {huidig.plaats}
             </p>
             <div className="flex items-center gap-2">
@@ -195,7 +195,7 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
                   className="p-2 -m-1"
                 >
                   <span
-                    className={`block h-[3px] w-8 origin-left transition-[transform,opacity] duration-300 motion-reduce:transition-none ${i === actief ? 'scale-x-100 opacity-100' : 'scale-x-50 opacity-45'} bg-white`}
+                    className={`block h-[3px] w-5 sm:w-8 origin-left transition-[transform,opacity] duration-300 motion-reduce:transition-none ${i === actief ? 'scale-x-100 opacity-100' : 'scale-x-50 opacity-45'} bg-white`}
                   />
                 </button>
               ))}
