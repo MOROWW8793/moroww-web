@@ -150,25 +150,30 @@ export default async function HomePage({
 
   return (
     <>
-      {/* HERO — pg 1. Eyebrow + grote belofte + twee acties links, portret-foto
-          rechts. 'met de steun van' onderaan het blok, klein. */}
+      {/* HERO — pg 1. Lines-reveal op de belofte, rise op de rest. */}
       <section className="hm-wrap hm-section" style={{ paddingBlock: 'clamp(2rem, 5vw, 4.5rem)' }}>
         <div
           style={{ display: 'grid', gap: 'clamp(2rem, 4vw, 3.5rem)', gridTemplateColumns: 'minmax(0, 1fr)', alignItems: 'center' }}
           className="hm-hero-grid"
         >
           <div>
-            <p className="hm-eyebrow">
+            <p className="hm-eyebrow" data-anim="rise">
               {isNl
                 ? 'voor eigenaars van karaktervolle vakantiewoningen'
                 : 'for owners of holiday homes with character'}
             </p>
-            <h1 className="hm-display hm-h-xl" style={{ marginTop: '1.5rem', maxWidth: '16ch' }}>
-              {isNl
-                ? 'Je doet het al goed. Nu mag het ook gezien worden.'
-                : 'You are already doing it well. Now it should also be seen.'}
+            <h1
+              className="hm-display hm-h-xl"
+              style={{ marginTop: '1.5rem', maxWidth: '16ch' }}
+              data-anim="lines"
+            >
+              <span><span>{isNl ? 'Je doet het al goed.' : 'You are already doing it well.'}</span></span>
+              <span><span>{isNl ? 'Nu mag het ook gezien worden.' : 'Now it should also be seen.'}</span></span>
             </h1>
-            <div style={{ marginTop: '2rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+            <div
+              style={{ marginTop: '2rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}
+              data-anim="rise"
+            >
               <Link href={`${prefix}/eigenaar-worden`} className="hm-cta">
                 {isNl ? 'verhuur jouw huis' : 'host with us'}
               </Link>
@@ -176,12 +181,12 @@ export default async function HomePage({
                 {isNl ? 'zie de woningen' : 'see the homes'}
               </Link>
             </div>
-            <p className="hm-dim" style={{ marginTop: '2.5rem', fontSize: '0.8125rem' }}>
+            <p className="hm-dim" style={{ marginTop: '2.5rem', fontSize: '0.8125rem' }} data-anim="rise">
               {isNl ? 'met de steun van Start it @KBC' : 'supported by Start it @KBC'}
             </p>
           </div>
 
-          <div className="hm-frame" style={{ aspectRatio: '3 / 4', position: 'relative' }}>
+          <div className="hm-frame" style={{ aspectRatio: '3 / 4', position: 'relative' }} data-anim="rise">
             <Image
               src="/images/host-teaser.jpg"
               alt={isNl ? 'een gast in een moroww-huis' : 'a guest in a moroww home'}
@@ -194,11 +199,10 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* HET PROBLEEM — pg 2. Twee grote cijfers met korte uitleg eronder.
-          Horizontale lijnen boven de cijfers. */}
+      {/* HET PROBLEEM — pg 2. Cijfers tellen op; de schaal wordt voelbaar. */}
       <section className="hm-wrap hm-section" style={{ borderTop: '1px solid var(--hm-rule-soft)' }}>
-        <p className="hm-eyebrow">{isNl ? 'het probleem' : 'the problem'}</p>
-        <h2 className="hm-display hm-h-lg" style={{ marginTop: '1.25rem', maxWidth: '22ch' }}>
+        <p className="hm-eyebrow" data-anim="rise">{isNl ? 'het probleem' : 'the problem'}</p>
+        <h2 className="hm-display hm-h-lg" style={{ marginTop: '1.25rem', maxWidth: '22ch' }} data-anim="rise">
           {isNl
             ? 'Op een foto lijkt elk huis goed. De gast kan het verschil niet zien.'
             : 'In a photo every home looks good. The guest cannot tell the difference.'}
@@ -207,10 +211,11 @@ export default async function HomePage({
         <div
           style={{ display: 'grid', gap: 'clamp(2rem, 4vw, 3rem)', gridTemplateColumns: 'minmax(0, 1fr)', marginTop: 'clamp(3rem, 6vw, 4.5rem)' }}
           className="hm-two-grid"
+          data-anim="stagger"
         >
           <div>
             <hr className="hm-rule" />
-            <p className="hm-figure" style={{ marginTop: '1.5rem' }}>83 %</p>
+            <p className="hm-figure" style={{ marginTop: '1.5rem' }} data-count-to="83" data-count-suffix=" %">83 %</p>
             <p className="hm-support" style={{ marginTop: '1rem', maxWidth: '36ch' }}>
               {isNl
                 ? 'van de 23.349 aangemelde vakantiewoningen in Vlaanderen kreeg nooit een controle ter plaatse'
@@ -219,32 +224,31 @@ export default async function HomePage({
           </div>
           <div>
             <hr className="hm-rule" />
-            <p className="hm-figure" style={{ marginTop: '1.5rem' }}>88,5 %</p>
+            <p className="hm-figure" style={{ marginTop: '1.5rem' }} data-count-to="88.5" data-count-suffix=" %" data-count-decimals="1">88,5 %</p>
             <p className="hm-support" style={{ marginTop: '1rem', maxWidth: '36ch' }}>
               {isNl ? 'aan de kust' : 'along the coast'}
             </p>
           </div>
         </div>
 
-        <p className="hm-dim" style={{ marginTop: '3rem', fontSize: '0.8125rem' }}>
+        <p className="hm-dim" style={{ marginTop: '3rem', fontSize: '0.8125rem' }} data-anim="rise">
           {isNl ? 'bron: businessplan moroww v7' : 'source: moroww business plan v7'}
         </p>
       </section>
 
-      {/* WAT MOROWW IS — pg 3. Drie criteria onder een horizontale lijn,
-          beeld rechts. Afsluiter 'geen beheerder, geen boekingsplatform'. */}
+      {/* WAT MOROWW IS — pg 3. Drie criteria staggered, beeld los met rise. */}
       <section className="hm-wrap hm-section" style={{ borderTop: '1px solid var(--hm-rule-soft)' }}>
         <div
           style={{ display: 'grid', gap: 'clamp(2rem, 4vw, 3.5rem)', gridTemplateColumns: 'minmax(0, 1fr)', alignItems: 'start' }}
           className="hm-hero-grid"
         >
           <div>
-            <p className="hm-eyebrow">{isNl ? 'wat moroww is' : 'what moroww is'}</p>
-            <h2 className="hm-display hm-h-lg" style={{ marginTop: '1.25rem', maxWidth: '16ch' }}>
+            <p className="hm-eyebrow" data-anim="rise">{isNl ? 'wat moroww is' : 'what moroww is'}</p>
+            <h2 className="hm-display hm-h-lg" style={{ marginTop: '1.25rem', maxWidth: '16ch' }} data-anim="rise">
               {isNl ? 'Een label dat bewijst dat het huis klopt.' : 'A label that proves the home holds up.'}
             </h2>
 
-            <div style={{ marginTop: '2.5rem', borderTop: '1px solid var(--hm-rule)' }}>
+            <div style={{ marginTop: '2.5rem', borderTop: '1px solid var(--hm-rule)' }} data-anim="stagger">
               {CRITERIA.map((c, i) => (
                 <div
                   key={c.naam.nl}
@@ -259,12 +263,12 @@ export default async function HomePage({
               ))}
             </div>
 
-            <p className="hm-dim" style={{ marginTop: '2rem', fontSize: '0.8125rem' }}>
+            <p className="hm-dim" style={{ marginTop: '2rem', fontSize: '0.8125rem' }} data-anim="rise">
               {isNl ? 'geen beheerder, geen boekingsplatform' : 'no property manager, no booking platform'}
             </p>
           </div>
 
-          <div className="hm-frame" style={{ aspectRatio: '3 / 4', position: 'relative' }}>
+          <div className="hm-frame" style={{ aspectRatio: '3 / 4', position: 'relative' }} data-anim="rise">
             <Image
               src="/images/over-interieur-2.jpg"
               alt={isNl ? 'detail van een gekeurd huis' : 'detail of an inspected home'}
@@ -276,12 +280,11 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* WAT ERBIJ HOREN JE GEEFT — pg 4. Beige achtergrond, vijf zuilen,
-          eerste met oranje lijn (primaire aanbod), rest in neutraal. */}
+      {/* WAT ERBIJ HOREN JE GEEFT — pg 4. Zuilen komen staggered. */}
       <section className="hm-tinted hm-bg-beige hm-section">
         <div className="hm-wrap">
-          <p className="hm-eyebrow">{isNl ? 'wat erbij horen je geeft' : 'what belonging gives you'}</p>
-          <h2 className="hm-display hm-h-lg" style={{ marginTop: '1.25rem', maxWidth: '22ch' }}>
+          <p className="hm-eyebrow" data-anim="rise">{isNl ? 'wat erbij horen je geeft' : 'what belonging gives you'}</p>
+          <h2 className="hm-display hm-h-lg" style={{ marginTop: '1.25rem', maxWidth: '22ch' }} data-anim="rise">
             {isNl ? 'Wie erbij hoort, staat er niet alleen voor.' : 'Those who belong, do not stand alone.'}
           </h2>
 
@@ -293,6 +296,7 @@ export default async function HomePage({
               gridTemplateColumns: 'minmax(0, 1fr)',
             }}
             className="hm-five-grid"
+            data-anim="stagger"
           >
             {ZUILEN.map((z) => (
               <div key={z.naam.nl}>
@@ -312,20 +316,21 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* HET BEWIJS — pg 6. Drie cijfers naast elkaar met lijnen erboven. */}
+      {/* HET BEWIJS — pg 6. 154 en 8 tellen op, €0 blijft staan. */}
       <section className="hm-wrap hm-section">
-        <p className="hm-eyebrow">{isNl ? 'het bewijs' : 'the proof'}</p>
-        <h2 className="hm-display hm-h-lg" style={{ marginTop: '1.25rem', maxWidth: '22ch' }}>
+        <p className="hm-eyebrow" data-anim="rise">{isNl ? 'het bewijs' : 'the proof'}</p>
+        <h2 className="hm-display hm-h-lg" style={{ marginTop: '1.25rem', maxWidth: '22ch' }} data-anim="rise">
           {isNl ? 'Wat eigenaars bij moroww meemaken.' : 'What owners experience at moroww.'}
         </h2>
 
         <div
           style={{ display: 'grid', gap: 'clamp(2rem, 4vw, 3rem)', gridTemplateColumns: 'minmax(0, 1fr)', marginTop: 'clamp(3rem, 6vw, 4.5rem)' }}
           className="hm-three-grid"
+          data-anim="stagger"
         >
           <div>
             <hr className="hm-rule" />
-            <p className="hm-figure" style={{ marginTop: '1.5rem' }}>154</p>
+            <p className="hm-figure" style={{ marginTop: '1.5rem' }} data-count-to="154">154</p>
             <p className="hm-support" style={{ marginTop: '1rem', maxWidth: '32ch' }}>
               {isNl ? 'verblijven sinds november 2025' : 'stays since November 2025'}
             </p>
@@ -341,22 +346,21 @@ export default async function HomePage({
           </div>
           <div>
             <hr className="hm-rule" />
-            <p className="hm-figure" style={{ marginTop: '1.5rem' }}>8</p>
+            <p className="hm-figure" style={{ marginTop: '1.5rem' }} data-count-to="8">8</p>
             <p className="hm-support" style={{ marginTop: '1rem', maxWidth: '32ch' }}>
               {isNl ? 'huizen in de collectie, in the shore en the fields' : 'homes in the collection, across the shore and the fields'}
             </p>
           </div>
         </div>
 
-        <p className="hm-dim" style={{ marginTop: '3rem', fontSize: '0.8125rem' }}>
+        <p className="hm-dim" style={{ marginTop: '3rem', fontSize: '0.8125rem' }} data-anim="rise">
           {isNl
             ? 'bron: Guesty, bevestigde verblijven met check-out tot 6 november 2026'
             : 'source: Guesty, confirmed stays with check-out through 6 November 2026'}
         </p>
       </section>
 
-      {/* VRAAG HET MOROWW — pg 7. Perzik achtergrond, case study in drie
-          regels (15:00 / daarna / 19:00), beeld rechts. */}
+      {/* VRAAG HET MOROWW — pg 7. Timeline-reveal: tijd voelbaar tussen rijen. */}
       <section className="hm-tinted hm-bg-peach hm-section">
         <div className="hm-wrap">
           <div
@@ -364,12 +368,15 @@ export default async function HomePage({
             className="hm-hero-grid"
           >
             <div>
-              <p className="hm-eyebrow">{isNl ? 'vraag het moroww' : 'ask moroww'}</p>
-              <h2 className="hm-display hm-h-lg" style={{ marginTop: '1.25rem', maxWidth: '18ch' }}>
+              <p className="hm-eyebrow" data-anim="rise">{isNl ? 'vraag het moroww' : 'ask moroww'}</p>
+              <h2 className="hm-display hm-h-lg" style={{ marginTop: '1.25rem', maxWidth: '18ch' }} data-anim="rise">
                 {isNl ? 'Om drie uur gevraagd. Om zeven uur geregeld.' : 'Asked at three. Handled by seven.'}
               </h2>
 
-              <div style={{ marginTop: '2.5rem', borderTop: '1px solid var(--hm-ink)' }}>
+              <div
+                style={{ marginTop: '2.5rem', borderTop: '1px solid var(--hm-ink)' }}
+                data-anim="timeline"
+              >
                 {CASE.map((c, i) => (
                   <div
                     key={c.tijd}
@@ -397,12 +404,16 @@ export default async function HomePage({
                 ))}
               </div>
 
-              <p className="hm-dim" style={{ marginTop: '2rem', fontSize: '0.8125rem' }}>
+              <p className="hm-dim" style={{ marginTop: '2rem', fontSize: '0.8125rem' }} data-anim="rise">
                 {isNl ? 'moroww regelt, een partner uit de community voert uit' : 'moroww arranges, a partner from the community executes'}
               </p>
             </div>
 
-            <div className="hm-frame" style={{ aspectRatio: '3 / 4', position: 'relative', background: 'rgba(26, 26, 26, 0.08)' }}>
+            <div
+              className="hm-frame"
+              style={{ aspectRatio: '3 / 4', position: 'relative', background: 'rgba(26, 26, 26, 0.08)' }}
+              data-anim="rise"
+            >
               <Image
                 src="/images/fp-interieur-1.jpg"
                 alt={isNl ? 'moment uit een gekeurd huis' : 'moment from an inspected home'}
@@ -415,17 +426,17 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* DRIE MANIEREN — pg 8. Drie kolommen, lijnen erboven, kleine positie
-          als eyebrow boven elke kolom-naam. Eerste kolom met oranje lijn. */}
+      {/* DRIE MANIEREN — pg 8. Kolommen staggered. */}
       <section className="hm-wrap hm-section">
-        <p className="hm-eyebrow">{isNl ? 'drie manieren om erbij te horen' : 'three ways to belong'}</p>
-        <h2 className="hm-display hm-h-lg" style={{ marginTop: '1.25rem', maxWidth: '18ch' }}>
+        <p className="hm-eyebrow" data-anim="rise">{isNl ? 'drie manieren om erbij te horen' : 'three ways to belong'}</p>
+        <h2 className="hm-display hm-h-lg" style={{ marginTop: '1.25rem', maxWidth: '18ch' }} data-anim="rise">
           {isNl ? 'Jij kiest hoe ver we gaan.' : 'You choose how far we go.'}
         </h2>
 
         <div
           style={{ marginTop: 'clamp(3rem, 6vw, 5rem)', display: 'grid', gap: '2rem', gridTemplateColumns: 'minmax(0, 1fr)' }}
           className="hm-three-grid"
+          data-anim="stagger"
         >
           {MANIEREN.map((m) => (
             <div key={m.naam.nl}>
@@ -445,17 +456,17 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* HOE WE STARTEN — pg 10. Vier genummerde stappen; de vierde heeft
-          een oranje lijn omdat daar het label valt. */}
+      {/* HOE WE STARTEN — pg 10. Vier stappen staggered. */}
       <section className="hm-wrap hm-section" style={{ borderTop: '1px solid var(--hm-rule-soft)' }}>
-        <p className="hm-eyebrow">{isNl ? 'hoe we starten' : 'how we start'}</p>
-        <h2 className="hm-display hm-h-lg" style={{ marginTop: '1.25rem', maxWidth: '18ch' }}>
+        <p className="hm-eyebrow" data-anim="rise">{isNl ? 'hoe we starten' : 'how we start'}</p>
+        <h2 className="hm-display hm-h-lg" style={{ marginTop: '1.25rem', maxWidth: '18ch' }} data-anim="rise">
           {isNl ? 'Vier stappen, zonder gedoe.' : 'Four steps, no fuss.'}
         </h2>
 
         <div
           style={{ marginTop: 'clamp(3rem, 6vw, 5rem)', display: 'grid', gap: '2rem', gridTemplateColumns: 'minmax(0, 1fr)' }}
           className="hm-four-grid"
+          data-anim="stagger"
         >
           {STAPPEN.map((s) => (
             <div key={s.nr}>
@@ -475,23 +486,25 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* CTA — pg 11. Beige achtergrond; de centrale vraag met de stichtende-
-          huizen-uitleg eronder, dan Noam als contact en Start it @KBC rechts. */}
+      {/* CTA — pg 11. Lines-reveal op de slotvraag. */}
       <section className="hm-tinted hm-bg-beige hm-section">
         <div className="hm-wrap">
-          <p className="hm-eyebrow">{isNl ? 'de stichtende huizen' : 'the founding homes'}</p>
-          <h2 className="hm-display hm-h-xl" style={{ marginTop: '1.25rem', maxWidth: '18ch' }}>
-            {isNl
-              ? 'Wordt jouw huis een van de eerste twintig?'
-              : 'Will your home be one of the first twenty?'}
+          <p className="hm-eyebrow" data-anim="rise">{isNl ? 'de stichtende huizen' : 'the founding homes'}</p>
+          <h2
+            className="hm-display hm-h-xl"
+            style={{ marginTop: '1.25rem', maxWidth: '18ch' }}
+            data-anim="lines"
+          >
+            <span><span>{isNl ? 'Wordt jouw huis een van' : 'Will your home be one'}</span></span>
+            <span><span>{isNl ? 'de eerste twintig?' : 'of the first twenty?'}</span></span>
           </h2>
-          <p className="hm-lead" style={{ marginTop: '1.5rem' }}>
+          <p className="hm-lead" style={{ marginTop: '1.5rem' }} data-anim="rise">
             {isNl
               ? 'Twintig huizen worden stichtend huis van moroww. Acht zijn er al. Wie tekent vóór 31 januari 2027, neemt een van de twaalf laatste plaatsen.'
               : 'Twenty homes become founding homes of moroww. Eight are in. Signing before 31 January 2027 takes one of the twelve remaining places.'}
           </p>
 
-          <div style={{ marginTop: '2.5rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+          <div style={{ marginTop: '2.5rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }} data-anim="rise">
             <a href="mailto:noam.landries@moroww.com?subject=stichtend%20huis" className="hm-cta">
               {isNl ? 'plan een kwartier' : 'book a quarter of an hour'}
             </a>
@@ -504,6 +517,7 @@ export default async function HomePage({
 
           <div
             style={{ marginTop: '2rem', display: 'flex', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}
+            data-anim="rise"
           >
             <div>
               <p className="hm-cell-head">Noam Landries</p>
@@ -523,7 +537,6 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* Responsief raster via media-queries; inline style kent geen @media. */}
       <style>{`
         @media (min-width: 900px) {
           .hm-hero-grid  { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); }
