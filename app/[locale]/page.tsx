@@ -5,11 +5,68 @@ import { setRequestLocale } from 'next-intl/server'
 import { woningen, lw } from '@/lib/woningen'
 
 export const metadata: Metadata = {
-  title: 'moroww — gekeurde vakantiewoningen in België',
+  title: 'moroww — het ecosysteem voor kortetermijnverhuur in België',
   description:
-    'Een handvol vakantiewoningen in België, elk in persoon gekeurd voor opname.',
+    'Van keuring tot afrekening. Eén systeem voor eigenaars, één standaard voor gasten.',
   alternates: { canonical: 'https://www.moroww.com' },
 }
+
+type Onderdeel = {
+  nr: string
+  naam: { nl: string; en: string }
+  regel: { nl: string; en: string }
+}
+
+const STACK: Onderdeel[] = [
+  {
+    nr: '01',
+    naam: { nl: 'keuring', en: 'inspection' },
+    regel: {
+      nl: 'elk huis fysiek bezocht. komt het door de keuring, dan komt het op moroww. komt het er niet door, dan ook niet.',
+      en: 'every home visited in person. passes the inspection, joins moroww. fails, does not.',
+    },
+  },
+  {
+    nr: '02',
+    naam: { nl: 'inrichting', en: 'setup' },
+    regel: {
+      nl: 'waar nodig passen we aan: licht, bedden, keuken, de dingen die je pas merkt als je er slaapt.',
+      en: 'where needed we adjust: light, beds, kitchen — the things you only notice after a night.',
+    },
+  },
+  {
+    nr: '03',
+    naam: { nl: 'publicatie', en: 'listing' },
+    regel: {
+      nl: 'één pandpagina met dezelfde opbouw als de rest, geen zestig profielen op platforms.',
+      en: 'one page per home, same structure as the others, not sixty profiles across platforms.',
+    },
+  },
+  {
+    nr: '04',
+    naam: { nl: 'kanalen', en: 'channels' },
+    regel: {
+      nl: 'jouw huis staat op de boekingskanalen, maar prijs, kalender en beschikbaarheid lopen bij ons samen.',
+      en: 'your home appears on booking channels; pricing, calendar and availability sit with us.',
+    },
+  },
+  {
+    nr: '05',
+    naam: { nl: 'gastbelofte', en: 'guest promise' },
+    regel: {
+      nl: 'reactie binnen vier uur, herstel binnen twee. we lossen op; alleen de nachten die eronder lijden gaan terug.',
+      en: 'reply within four hours, fix within two. we repair first; only the affected nights are refunded.',
+    },
+  },
+  {
+    nr: '06',
+    naam: { nl: 'afrekening', en: 'payout' },
+    regel: {
+      nl: 'eigenaarsdashboard dat laat zien wat binnenkomt, waar het vandaan komt en wat eruit gaat.',
+      en: 'owner dashboard showing what comes in, where it came from and what leaves it.',
+    },
+  },
+]
 
 export default async function HomePage({
   params,
@@ -19,14 +76,99 @@ export default async function HomePage({
   const { locale } = await params
   setRequestLocale(locale)
   const isNl = locale === 'nl'
+  const lcode = (isNl ? 'nl' : 'en') as 'nl' | 'en'
   const prefix = isNl ? '' : '/en'
   const geselecteerd = woningen.slice(0, 3)
 
   return (
     <>
-      {/* HERO — belofte links, foto rechts. Op lg past kop + zin + acties
-          samen met het beeld op 1280x800 zonder scroll (F12). */}
+      {/* HERO — typografisch, geen beeld. Index-First: de belofte is de stack
+          die eronder uitgeklapt wordt. Primaire actie voor eigenaars, de
+          secundaire voor gasten. */}
       <section className="hm-wrap hm-section">
+        <p className="hm-dim" style={{ fontSize: '0.9375rem', marginBottom: '1.25rem' }}>
+          {isNl ? 'moroww — kortetermijnverhuur in België' : 'moroww — short-term rentals in Belgium'}
+        </p>
+        <h1 className="hm-display hm-h-xl" style={{ maxWidth: '18ch' }}>
+          {isNl
+            ? 'het ecosysteem voor kortetermijnverhuur.'
+            : 'the ecosystem for short-term rentals.'}
+        </h1>
+        <p className="hm-lead" style={{ marginTop: '1.5rem' }}>
+          {isNl
+            ? 'van keuring tot afrekening. één systeem voor eigenaars, één standaard voor gasten.'
+            : 'from inspection to payout. one system for owners, one standard for guests.'}
+        </p>
+        <div style={{ marginTop: '2rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+          <Link href={`${prefix}/eigenaar-worden`} className="hm-cta">
+            {isNl ? 'verhuur jouw huis' : 'host with us'}
+          </Link>
+          <Link href={`${prefix}/collectie`} className="hm-cta-ghost">
+            {isNl ? 'zie de woningen' : 'see the homes'}
+          </Link>
+        </div>
+      </section>
+
+      {/* DE STACK — zes onderdelen in editorial-index. Nummer, naam, regel,
+          scheidingslijn ertussen. Dit is de signatuur van de pagina: moroww
+          als samenhangend systeem in plaats van een verzameling huizen. */}
+      <section className="hm-wrap hm-section" style={{ borderTop: '1px solid var(--hm-rule)' }}>
+        <div
+          style={{
+            display: 'grid',
+            gap: 'clamp(2rem, 4vw, 3.5rem)',
+            gridTemplateColumns: 'minmax(0, 1fr)',
+          }}
+          className="hm-split-grid"
+        >
+          <div>
+            <h2 className="hm-display hm-h-lg" style={{ maxWidth: '14ch' }}>
+              {isNl ? 'wat het systeem doet.' : 'what the system does.'}
+            </h2>
+            <p className="hm-dim hm-prose" style={{ marginTop: '1rem', fontSize: '0.9375rem' }}>
+              {isNl
+                ? 'zes stappen van ontvangst tot afrekening. voor een eigenaar is dit het hele verhaal; voor een gast de reden dat het verblijf werkt.'
+                : 'six steps from intake to payout. for an owner this is the whole arc; for a guest it is why the stay works.'}
+            </p>
+          </div>
+
+          <ol
+            style={{
+              listStyle: 'none',
+              padding: 0,
+              margin: 0,
+              borderTop: '1px solid var(--hm-rule)',
+            }}
+          >
+            {STACK.map((o) => (
+              <li
+                key={o.nr}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '2.5rem minmax(0, 10rem) minmax(0, 1fr)',
+                  gap: '1rem 1.5rem',
+                  alignItems: 'baseline',
+                  padding: '1.25rem 0',
+                  borderBottom: '1px solid var(--hm-rule)',
+                }}
+              >
+                <span className="hm-dim" style={{ fontVariantNumeric: 'tabular-nums', fontSize: '0.875rem' }}>
+                  {o.nr}
+                </span>
+                <span className="hm-display" style={{ fontSize: '1.375rem' }}>
+                  {o.naam[lcode]}
+                </span>
+                <span style={{ fontSize: '0.9375rem', lineHeight: 1.55 }}>{o.regel[lcode]}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* VOOR EIGENAARS — het hoofdspoor nu. Foto links, prose rechts op lg.
+          De belofte in gewone taal: één overdracht in plaats van drie
+          leveranciers. */}
+      <section className="hm-wrap hm-section" style={{ borderTop: '1px solid var(--hm-rule)' }}>
         <div
           style={{
             display: 'grid',
@@ -36,176 +178,30 @@ export default async function HomePage({
           }}
           className="hm-hero-grid"
         >
-          <div>
-            <h1 className="hm-display hm-h-xl" style={{ maxWidth: '14ch' }}>
-              {isNl ? 'elk huis, één keer bezocht.' : 'every home, visited once.'}
-            </h1>
-            <p className="hm-lead" style={{ marginTop: '1.5rem' }}>
-              {isNl
-                ? 'een handvol vakantiewoningen in België, in persoon gekeurd voor opname.'
-                : 'a handful of holiday homes in Belgium, inspected in person before they join.'}
-            </p>
-            <div style={{ marginTop: '2rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-              <Link href={`${prefix}/collectie`} className="hm-cta">
-                {isNl ? 'zie de woningen' : 'see the homes'}
-              </Link>
-              <Link href={`${prefix}/eigenaar-worden`} className="hm-cta-ghost">
-                {isNl ? 'verhuur jouw huis' : 'host with us'}
-              </Link>
-            </div>
-          </div>
-
-          <div
-            className="hm-frame"
-            style={{ aspectRatio: '4 / 5', position: 'relative' }}
-          >
+          <div className="hm-frame" style={{ aspectRatio: '4 / 5', position: 'relative' }}>
             <Image
-              src="/images/hero.jpg"
-              alt={isNl ? 'interieur van een gekeurde woning' : 'interior of an inspected home'}
+              src="/images/host-teaser.jpg"
+              alt={isNl ? 'een huis dat op moroww staat' : 'a home on moroww'}
               fill
               sizes="(max-width: 900px) 100vw, 45vw"
               style={{ objectFit: 'cover' }}
-              priority
             />
           </div>
-        </div>
-      </section>
-
-      {/* WAT MOROWW DOET — de belofte in gewone taal. Geen bullets, geen
-          iconen. Drie korte alinea's. Beide doelgroepen horen in de derde zin
-          waar het heen gaat. */}
-      <section className="hm-wrap hm-section" style={{ borderTop: '1px solid var(--hm-rule)' }}>
-        <div
-          style={{
-            display: 'grid',
-            gap: 'clamp(2rem, 4vw, 4rem)',
-            gridTemplateColumns: 'minmax(0, 1fr)',
-          }}
-          className="hm-split-grid"
-        >
-          <h2 className="hm-display hm-h-lg" style={{ maxWidth: '16ch' }}>
-            {isNl ? 'wat moroww doet.' : 'what moroww does.'}
-          </h2>
-          <div className="hm-prose">
-            {isNl ? (
-              <>
-                <p>
-                  We hebben twee collecties. <em>the shore</em>, aan de Belgische kust.{' '}
-                  <em>the fields</em>, in het Vlaamse binnenland en de Ardennen.
-                </p>
-                <p>
-                  Elk huis op moroww hebben we eerst zelf bezocht. We lopen rond, we
-                  kijken, we maken aantekeningen. Komt het door de keuring, dan komt
-                  het op de site. Komt het er niet door, dan ook niet.
-                </p>
-                <p>
-                  Voor gasten betekent dat één standaard, in plaats van zestig
-                  profielen op een platform. Voor eigenaars betekent dat één
-                  gesprekspartner die hun huis kent.
-                </p>
-              </>
-            ) : (
-              <>
-                <p>
-                  Two collections. <em>the shore</em>, along the Belgian coast.{' '}
-                  <em>the fields</em>, inland in Flanders and the Ardennes.
-                </p>
-                <p>
-                  Every home on moroww we visit in person first. We walk through, we
-                  look, we take notes. If it passes, it joins the site. If it does
-                  not, it does not.
-                </p>
-                <p>
-                  For guests that means one standard, not sixty profiles on a
-                  platform. For owners it means one person who knows their home.
-                </p>
-              </>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* TWEE LANDSCHAPPEN — shore en fields naast elkaar. Elk een foto, een
-          naam en één zin. De kaarten zijn niet omrand (geen card-in-card). */}
-      <section className="hm-wrap hm-section">
-        <h2 className="hm-display hm-h-lg" style={{ marginBottom: '2.5rem', maxWidth: '18ch' }}>
-          {isNl ? 'twee landschappen.' : 'two landscapes.'}
-        </h2>
-        <div
-          style={{
-            display: 'grid',
-            gap: '1.5rem',
-            gridTemplateColumns: 'minmax(0, 1fr)',
-          }}
-          className="hm-two-grid"
-        >
-          <Link href={`${prefix}/collectie?collectie=the-shore`} className="hm-tile">
-            <div className="hm-frame" style={{ aspectRatio: '5 / 6', position: 'relative' }}>
-              <Image
-                src="/images/collectie-1.jpg"
-                alt={isNl ? 'de Belgische kust' : 'the Belgian coast'}
-                fill
-                sizes="(max-width: 900px) 100vw, 45vw"
-                style={{ objectFit: 'cover' }}
-              />
+          <div>
+            <h2 className="hm-display hm-h-lg">{isNl ? 'voor eigenaars.' : 'for owners.'}</h2>
+            <div className="hm-prose" style={{ marginTop: '1.25rem' }}>
+              <p>
+                {isNl
+                  ? 'Je draagt je huis over aan één team, niet aan drie leveranciers. We komen eerst langs, nemen de briefing op papier, en pakken daarna keuring, inrichting, publicatie, kanalen, gastervaring en afrekening in één hand.'
+                  : 'You hand your home over to one team, not three vendors. We visit first, put the brief on paper, and then run inspection, setup, listing, channels, guest experience and payout as one.'}
+              </p>
+              <p>
+                {isNl
+                  ? 'Je ziet in je dashboard elke boeking, elk kanaal en elke betaling. Wat jij niet ziet: de telefoon om tien uur ’s avonds, de loodgieter om zeven uur ’s ochtends.'
+                  : 'In your dashboard you see every booking, every channel and every payment. What you do not see: the phone at ten in the evening, the plumber at seven in the morning.'}
+              </p>
             </div>
-            <p className="hm-display hm-h-md" style={{ marginTop: '1rem' }}>the shore</p>
-            <p className="hm-dim" style={{ marginTop: '0.25rem', fontSize: '0.9375rem' }}>
-              {isNl ? 'aan de Belgische kust.' : 'along the Belgian coast.'}
-            </p>
-          </Link>
-
-          <Link href={`${prefix}/collectie?collectie=the-fields`} className="hm-tile">
-            <div className="hm-frame" style={{ aspectRatio: '5 / 6', position: 'relative' }}>
-              <Image
-                src="/images/collectie-3.jpg"
-                alt={isNl ? 'het Vlaamse binnenland' : 'the Flemish countryside'}
-                fill
-                sizes="(max-width: 900px) 100vw, 45vw"
-                style={{ objectFit: 'cover' }}
-              />
-            </div>
-            <p className="hm-display hm-h-md" style={{ marginTop: '1rem' }}>the fields</p>
-            <p className="hm-dim" style={{ marginTop: '0.25rem', fontSize: '0.9375rem' }}>
-              {isNl ? 'in het Vlaamse binnenland en de Ardennen.' : 'inland in Flanders and the Ardennes.'}
-            </p>
-          </Link>
-        </div>
-      </section>
-
-      {/* TWEE SPOREN — gast en eigenaar op één sectie, naast elkaar, zodat de
-          belofte voor beide doelgroepen op hetzelfde moment leesbaar is. */}
-      <section className="hm-wrap hm-section" style={{ borderTop: '1px solid var(--hm-rule)' }}>
-        <div
-          style={{
-            display: 'grid',
-            gap: 'clamp(2.5rem, 5vw, 4rem)',
-            gridTemplateColumns: 'minmax(0, 1fr)',
-          }}
-          className="hm-split-grid"
-        >
-          <div className="hm-prose">
-            <h2 className="hm-display hm-h-lg">{isNl ? 'voor wie hier komt.' : 'for guests.'}</h2>
-            <p style={{ marginTop: '1.25rem' }}>
-              {isNl
-                ? 'Een reeks huizen die we zelf hebben doorlopen. Prijs, slaapkamers en huisregels staan op de pandpagina; je boekt rechtstreeks en je laat jezelf binnen met je eigen code.'
-                : 'A set of homes we have walked through ourselves. Rate, bedrooms and house rules on each page; you book directly and let yourself in with your own code.'}
-            </p>
-            <div style={{ marginTop: '1.75rem' }}>
-              <Link href={`${prefix}/collectie`} className="hm-cta">
-                {isNl ? 'zie de woningen' : 'see the homes'}
-              </Link>
-            </div>
-          </div>
-
-          <div className="hm-prose">
-            <h2 className="hm-display hm-h-lg">{isNl ? 'voor wie zijn huis toevertrouwt.' : 'for owners.'}</h2>
-            <p style={{ marginTop: '1.25rem' }}>
-              {isNl
-                ? 'We komen eerst langs. Wat je huis kan en wat het niet kan, zetten we samen op papier. Verhuur en beheer lopen daarna via ons — één huis, één gesprekspartner.'
-                : 'We come by first. What your home can and cannot do, we put on paper together. Rental and management then run through us — one home, one point of contact.'}
-            </p>
-            <div style={{ marginTop: '1.75rem' }}>
+            <div style={{ marginTop: '2rem' }}>
               <Link href={`${prefix}/eigenaar-worden`} className="hm-cta">
                 {isNl ? 'verhuur jouw huis' : 'host with us'}
               </Link>
@@ -214,9 +210,52 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* VANDAAG TE BOEKEN — een korte selectie. Prijs en locatie per kaart;
-          detail en beschikbaarheid op de pandpagina zelf. Geen filter, geen
-          sorteerbalk — dat hoort op /collectie. */}
+      {/* VOOR GASTEN — het gevolg van het systeem. Prose links, foto rechts.
+          Gastbelofte en directe boeking kort benoemd; details op de pandpagina. */}
+      <section className="hm-wrap hm-section" style={{ borderTop: '1px solid var(--hm-rule)' }}>
+        <div
+          style={{
+            display: 'grid',
+            gap: 'clamp(2rem, 4vw, 3.5rem)',
+            gridTemplateColumns: 'minmax(0, 1fr)',
+            alignItems: 'center',
+          }}
+          className="hm-hero-grid-rev"
+        >
+          <div>
+            <h2 className="hm-display hm-h-lg">{isNl ? 'voor gasten.' : 'for guests.'}</h2>
+            <div className="hm-prose" style={{ marginTop: '1.25rem' }}>
+              <p>
+                {isNl
+                  ? 'Eén standaard, in plaats van zestig profielen op een platform. Prijs, slaapkamers en huisregels staan op de pandpagina. Je boekt rechtstreeks en laat jezelf binnen met je eigen code.'
+                  : 'One standard, not sixty profiles on a platform. Rate, bedrooms and house rules on each page. You book directly and let yourself in with your own code.'}
+              </p>
+              <p>
+                {isNl
+                  ? 'Gaat er iets mis, dan geldt de gastbelofte: reactie binnen vier uur, herstel binnen twee, alleen de nachten die eronder lijden gaan terug.'
+                  : 'If something goes wrong, the guest promise applies: reply within four hours, fix within two, only the affected nights refunded.'}
+              </p>
+            </div>
+            <div style={{ marginTop: '2rem' }}>
+              <Link href={`${prefix}/collectie`} className="hm-cta">
+                {isNl ? 'zie de woningen' : 'see the homes'}
+              </Link>
+            </div>
+          </div>
+          <div className="hm-frame" style={{ aspectRatio: '4 / 5', position: 'relative' }}>
+            <Image
+              src="/images/fp-interieur-1.jpg"
+              alt={isNl ? 'interieur van een gekeurde woning' : 'interior of an inspected home'}
+              fill
+              sizes="(max-width: 900px) 100vw, 45vw"
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* VANDAAG TE BOEKEN — bewijs. Drie panden uit de collectie; de hele
+          lijst leeft op /collectie. */}
       <section className="hm-wrap hm-section" style={{ borderTop: '1px solid var(--hm-rule)' }}>
         <div
           style={{
@@ -270,7 +309,7 @@ export default async function HomePage({
                 </p>
                 {w.slogan ? (
                   <p style={{ marginTop: '0.75rem', fontSize: '0.9375rem', maxWidth: '38ch' }}>
-                    {lw(w.slogan, isNl ? 'nl' : 'en')}
+                    {lw(w.slogan, lcode)}
                   </p>
                 ) : null}
               </Link>
@@ -279,14 +318,14 @@ export default async function HomePage({
         </ul>
       </section>
 
-      {/* Responsief raster via media-queries — inline style kan geen @media,
+      {/* Responsief raster via media-queries — inline style kent geen @media,
           dus de grids staan hieronder als global-ish regel. */}
       <style>{`
         @media (min-width: 900px) {
-          .hm-hero-grid  { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
-          .hm-split-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-          .hm-two-grid   { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-          .hm-three-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+          .hm-hero-grid      { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); }
+          .hm-hero-grid-rev  { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+          .hm-split-grid     { grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); }
+          .hm-three-grid     { grid-template-columns: repeat(3, minmax(0, 1fr)); }
         }
         .hm-tile { display: block; color: var(--hm-ink); text-decoration: none; }
         .hm-tile:focus-visible { outline: 2px solid var(--hm-accent); outline-offset: 4px; }
