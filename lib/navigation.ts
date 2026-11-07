@@ -199,5 +199,7 @@ export const nlOnlyRoutes: NavHref[] = [
 // pagina's start de Navbar meteen in 'scrolled' state (blush, donker logo).
 // Pandpagina, afrekenen en bevestiging openen allemaal met een foto tot bovenaan.
 export function isDarkHeroPath(pathname: string): boolean {
+  // Home heeft sinds nov 2026 een foto-slideshow als hero.
+  if (pathname === '/' || pathname === '') return true
   return /\/(collectie|collection)\/[^/]+(\/(boeken|book|bevestigd|confirmed))?\/?$/.test(pathname)
 }

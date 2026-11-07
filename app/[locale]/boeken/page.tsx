@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { Register } from '@/components/Register'
-import { Beschikbaarheid, type ZoekWoning } from '@/components/sections/Beschikbaarheid'
+import { Beschikbaarheid, type ZoekWoning, type ZoekBegin } from '@/components/sections/Beschikbaarheid'
 import { liveWoningen, sortForCollectie } from '@/lib/woningen'
 import { listingIdVoor } from '@/lib/boeking'
 import { siteMetadata } from '@/lib/seo/siteMetadata'
@@ -49,8 +49,25 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   })
 }
 
-export default async function BoekenPagina({ params }: { params: Promise<{ locale: string }> }) {
+const ISO = /^\d{4}-\d{2}-\d{2}$/
+
+export default async function BoekenPagina({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string }>
+  searchParams: Promise<Record<string, string | string[] | undefined>>
+}) {
   const { locale } = await params
+  const sp = await searchParams
+  const een = (k: string) => (typeof sp[k] === 'string' ? (sp[k] as string) : undefined)
+  const streekIn = een('streek')
+  const begin: ZoekBegin = {
+    streek: streekIn === 'the shore' || streekIn === 'the fields' ? streekIn : undefined,
+    aankomst: een('aankomst') && ISO.test(een('aankomst')!) ? een('aankomst') : undefined,
+    vertrek: een('vertrek') && ISO.test(een('vertrek')!) ? een('vertrek') : undefined,
+    gasten: een('gasten') && /^\d{1,2}$/.test(een('gasten')!) ? Number(een('gasten')) : undefined,
+  }
   setRequestLocale(locale)
   const c = locale === 'nl' ? COPY.nl : COPY.en
 
@@ -79,7 +96,7 @@ export default async function BoekenPagina({ params }: { params: Promise<{ local
 
       <section className="w-full px-6 md:px-12 mt-mw-6 lg:mt-mw-8">
         <div className="mx-auto max-w-7xl bg-white/60 p-mw-5 md:p-mw-6">
-          <Beschikbaarheid woningen={woningen} locale={locale} />
+          <Beschikbaarheid woningen={woningen} locale={locale} begin={begin} />
         </div>
       </section>
 

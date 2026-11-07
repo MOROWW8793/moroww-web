@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import Image from 'next/image'
 import { Link } from '@/i18n/navigation'
 import type { KalenderDag } from '@/lib/boeking'
@@ -68,15 +68,17 @@ type Uitslag = { woning: ZoekWoning; status: 'vrij' | 'onbekend' }
 const VELD = 'w-full bg-transparent border-0 border-b border-moroww-dark/25 rounded-none py-3 text-base text-moroww-dark focus:outline-none focus:border-moroww-dark transition-colors'
 const LABEL = 'text-[0.875rem] text-moroww-ink-2'
 
-export function Beschikbaarheid({ woningen, locale }: { woningen: ZoekWoning[]; locale: string }) {
+export type ZoekBegin = { streek?: 'alles' | 'the shore' | 'the fields'; aankomst?: string; vertrek?: string; gasten?: number }
+
+export function Beschikbaarheid({ woningen, locale, begin }: { woningen: ZoekWoning[]; locale: string; begin?: ZoekBegin }) {
   const c = locale === 'nl' ? COPY.nl : COPY.en
   const vandaag = useMemo(() => new Date().toISOString().slice(0, 10), [])
   const maxGasten = Math.max(2, ...woningen.map((w) => w.maxGasten))
 
-  const [streek, setStreek] = useState<'alles' | 'the shore' | 'the fields'>('alles')
-  const [aankomst, setAankomst] = useState('')
-  const [vertrek, setVertrek] = useState('')
-  const [gasten, setGasten] = useState(2)
+  const [streek, setStreek] = useState<'alles' | 'the shore' | 'the fields'>(begin?.streek ?? 'alles')
+  const [aankomst, setAankomst] = useState(begin?.aankomst ?? '')
+  const [vertrek, setVertrek] = useState(begin?.vertrek ?? '')
+  const [gasten, setGasten] = useState(begin?.gasten ?? 2)
   const [bezig, setBezig] = useState(false)
   const [melding, setMelding] = useState<string | null>(null)
   const [uitslag, setUitslag] = useState<{ lijst: Uitslag[]; totaal: number } | null>(null)
@@ -96,8 +98,8 @@ export function Beschikbaarheid({ woningen, locale }: { woningen: ZoekWoning[]; 
     }
   }
 
-  async function zoek(e: React.FormEvent) {
-    e.preventDefault()
+  async function zoek(e?: React.FormEvent) {
+    e?.preventDefault()
     setMelding(null)
     if (!aankomst || !vertrek || vertrek <= aankomst) {
       setMelding(c.fout)
@@ -120,6 +122,17 @@ export function Beschikbaarheid({ woningen, locale }: { woningen: ZoekWoning[]; 
     setUitslag({ lijst, totaal: kandidaten.length })
     setBezig(false)
   }
+
+  // Komt de bezoeker van de zoekbalk op de home, zoek dan meteen.
+  const autoGezocht = useRef(false)
+  useEffect(() => {
+    if (autoGezocht.current) return
+    if (begin?.aankomst && begin?.vertrek && begin.vertrek > begin.aankomst) {
+      autoGezocht.current = true
+      void zoek()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const n = aankomst && vertrek && vertrek > aankomst ? nachten(aankomst, vertrek) : 0
   const vrijeAantal = uitslag?.lijst.filter((u) => u.status === 'vrij').length ?? 0

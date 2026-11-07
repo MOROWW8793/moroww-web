@@ -7,6 +7,7 @@ import { Deur } from "@/components/Deur";
 import { SneakPeek } from "@/components/sections/SneakPeek";
 import { WoningKaarten } from "@/components/sections/WoningKaarten";
 import { HomeVerhaal } from "@/components/sections/HomeVerhaal";
+import { HomeHero, type HeroSlide } from "@/components/sections/HomeHero";
 import { siteMetadata } from "@/lib/seo/siteMetadata";
 import { liveWoningen, type Locale } from "@/lib/woningen";
 import { liveLabelWoningen } from "@/lib/labelWoningen";
@@ -18,6 +19,17 @@ function beeldOfNull(publicPad: string): string | undefined {
   const abs = path.join(process.cwd(), "public", publicPad.replace(/^\//, ""));
   return existsSync(abs) ? publicPad : undefined;
 }
+
+// De mooiste beelden uit de collectie, in deze volgorde in de slideshow.
+// Liggende foto's van minstens 1600 px breed.
+const HERO_SLIDES: HeroSlide[] = [
+  { src: '/images/woningen/knokke-new/2026-AmelieBauwens-Moroww-V2-132.jpg', alt: 'leefruimte en keuken van Nosso Logies in Knokke', naam: 'Nosso Logies', plaats: 'Knokke' },
+  { src: '/images/woningen/nieuwpoort/the-eight-01.jpg', alt: 'leefruimte met zicht op zee in The Eighth, Nieuwpoort', naam: 'The Eighth', plaats: 'Nieuwpoort-Bad' },
+  { src: '/images/woningen/ursel-new/Bogaertstraat 17 Ursel-64.jpg', alt: 'Chalet Anna-Helena in het bos van Ursel', naam: 'Chalet Anna-Helena', plaats: 'Ursel' },
+  { src: '/images/woningen/penthouse-v8b/penthouse-v8b-28.jpg', alt: 'terras van Penthouse V8B met zicht op zee', naam: 'Penthouse V8B', plaats: 'Oostende' },
+  { src: '/images/woningen/beernem-new/WhatsApp Image 2025-11-02 at 14.42.01.jpeg', alt: 'tuin met serre van The Cozy Relax Home in Beernem', naam: 'The Cozy Relax Home', plaats: 'Beernem' },
+  { src: '/images/woningen/oostende-new/6e71ca30-bb8f-11f0-96ff-dd8382026135 kopie.jpg', alt: 'leefruimte van The Sixteenth in Oostende', naam: 'The Sixteenth', plaats: 'Oostende' },
+]
 
 export async function generateMetadata({
   params,
@@ -58,20 +70,13 @@ export default async function HomePage({
           niet met NL structured data te vervuilen. */}
       {isNl && <FaqJsonLd />}
 
-      {/* HERO — bouwspec sectie 2. Blush achtergrond, één regel display,
-          geen beeld, geen video, geen knop.
-          pt-mw-8 (5rem) houdt de kop onder de fixed nav (64px); overflow
-          visible zodat de ascenders van 'll' en 'é' niet klippen. */}
-      <section
-        className="w-full flex items-center px-6 md:px-12 pt-mw-8 overflow-visible"
-        style={{ minHeight: '18vh' }}
-      >
-        <div className="mx-auto max-w-7xl w-full overflow-visible">
-          <h1 className="text-display text-moroww-dark">
-            {isNl ? 'karaktervolle huizen. een standaard die niet wijkt.' : 'homes with character. a standard that does not bend.'}
-          </h1>
-        </div>
-      </section>
+      {/* HERO — slideshow van de huizen met kop en zoekbalk (nov 2026).
+          De zoekbalk stuurt door naar /boeken met data en gasten. */}
+      <HomeHero
+        slides={HERO_SLIDES}
+        locale={locale}
+        maxGasten={Math.max(2, ...liveWoningen().map((w) => w.maxGasten ?? 0))}
+      />
 
       {/* DE COLLECTIE — raster van live panden direct onder de H1, zelfde
           PandKaart als op /collectie. Zo landt een bezoeker op de home
