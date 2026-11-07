@@ -60,7 +60,7 @@ export function PlatNav({ naam, huis, beheerder, open, telefoon }: { naam: strin
           <strong>{telefoon}</strong>
         </a>
         <div className="plat-zij-links">
-          <Link href="/hub">moroww hub</Link>
+          <Link href="/hub/leden/wachtwoord">wachtwoord</Link>
           <form action="/hub/uitloggen" method="post"><button type="submit">uitloggen</button></form>
         </div>
       </div>

@@ -13,9 +13,9 @@ export default function HubSite({ children }: { children: React.ReactNode }) {
           { href: '/hub/academy', label: 'academy' },
           { href: '/hub/market', label: 'market' },
           { href: '/hub/property-managers', label: 'property managers' },
-          { href: '/hub/leden', label: 'inloggen' },
+          { href: '/hub/inloggen', label: 'inloggen' },
         ]}
-        cta={{ href: '/hub/lid-worden', label: 'lid worden' }}
+        cta={{ href: '/hub/aanmelden', label: 'meld je aan' }}
       />
       <main>{children}</main>
       <Footer donker merk={<span>where the stay stays.</span>} />

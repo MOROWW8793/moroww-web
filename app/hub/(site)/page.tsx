@@ -10,8 +10,8 @@ const deuren: { label: string; titel: React.ReactNode; tekst: string; href: stri
     label: 'voor eigenaars',
     titel: <>jij vraagt, <i>wij regelen.</i></>,
     tekst: 'Je huis draagt het label. In de hub vraag je wat je huis nodig heeft, en moroww zoekt de partner in de buurt.',
-    href: '/hub/lid-worden',
-    voet: 'lid worden',
+    href: '/hub/aanmelden',
+    voet: 'meld je aan',
   },
   {
     label: 'voor property managers',
@@ -59,8 +59,8 @@ export default function Hub() {
             wij zoeken een partner in de buurt en volgen op tot het klaar is. Je ziet het met een foto.
           </p>
           <div className="knoppen">
-            <Link href="/hub/lid-worden" className="btn btn-primair">lid worden</Link>
-            <Link href="/hub/leden" className="btn btn-lijn">al lid? log in</Link>
+            <Link href="/hub/aanmelden" className="btn btn-primair">meld je aan</Link>
+            <Link href="/hub/inloggen" className="btn btn-lijn">al lid? log in</Link>
           </div>
         </div>
       </section>

@@ -39,8 +39,8 @@ export async function mailLid(naar: string, naam: string) {
       subject: 'je hebt toegang tot moroww hub',
       html: `<div style="font-family:Arial,sans-serif;font-size:15px;line-height:1.6;color:#0F2238">
         <p>Dag ${esc(naam.split(' ')[0] || naam)},</p>
-        <p>Welkom in moroww hub. Je vindt er de voordelen bij de partners, de academy-sessies, de ledenbrief en de community.</p>
-        <p><a href="https://moroww.com/hub/inloggen">inloggen</a> · je krijgt een link per mail, geen wachtwoord nodig.</p>
+        <p>Welkom in moroww hub. Heeft je huis iets nodig, een extra schoonmaak, de ramen of een herstelling? Vraag het in de hub, en moroww regelt het met een partner in de buurt. Je vindt er ook de partners, de merken, de academy en de ledenbrief.</p>
+        <p><a href="https://moroww.com/hub/inloggen">inloggen</a> · met je e-mailadres en je wachtwoord. Nog geen wachtwoord? Kies er een via “wachtwoord vergeten”.</p>
         <p>Tot snel,<br>moroww</p></div>`,
     });
   } catch {

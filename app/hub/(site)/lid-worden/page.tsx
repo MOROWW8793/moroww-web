@@ -37,7 +37,7 @@ export default function LidWorden() {
         <ol className="stappen">
           <li><strong>vraag een bezoek aan</strong><span>Via de pagina van het label. We nemen contact op om een moment te plannen.</span></li>
           <li><strong>we komen langs</strong><span>Haalt je huis de standaard, dan krijgt het het label.</span></li>
-          <li><strong>welkom in de hub</strong><span>Log in met je e-mailadres en vraag toegang aan. Wij keuren goed, en je krijgt een mail.</span></li>
+          <li><strong>meld je aan</strong><span>Met je e-mailadres en een wachtwoord. Wij keuren goed, en je krijgt een mail.</span></li>
         </ol>
       </Sectie>
 
@@ -45,8 +45,8 @@ export default function LidWorden() {
         <div className="raster-2">
           <div className="kaart">
             <h2 className="kaart-titel">al het <i>label?</i></h2>
-            <p>Log in met je e-mailadres. Je krijgt een link, geen wachtwoord nodig. Vragen? Mail ons op <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>.</p>
-            <Link href="/hub/leden" className="btn btn-primair" style={{ alignSelf: 'flex-start' }}>naar de ledenzone</Link>
+            <p>Log in met je e-mailadres en je wachtwoord. Vragen? Mail ons op <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>.</p>
+            <div className="knoppen"><Link href="/hub/inloggen" className="btn btn-primair">inloggen</Link><Link href="/hub/aanmelden" className="btn btn-lijn">meld je aan</Link></div>
           </div>
           <div className="kaart kaart-donker">
             <h2 className="kaart-titel">nog geen <i>label?</i></h2>

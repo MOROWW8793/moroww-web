@@ -337,3 +337,12 @@
   .merk .plat-los-kop { padding: 18px 20px; }
 }
 @media (min-width: 901px) { .merk .plat-app { background: linear-gradient(to right, #0F2238 272px, #F4F7FB 272px); } }
+.merk .plat-toegang { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 64px; align-items: start; }
+.merk .plat-toegang-blok { display: flex; flex-direction: column; gap: 22px; }
+.merk .plat-toegang-nieuw { border-left: 1px solid rgba(255,255,255,0.18); padding-left: 48px; margin-top: 46px; }
+.merk .plat-toegang-nieuw .titel-2 { margin: 0; }
+.merk .plat-los-vlak { background: #FFFFFF; padding: 48px 0 96px; }
+@media (max-width: 900px) {
+  .merk .plat-toegang { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .merk .plat-toegang-nieuw { border-left: 0; border-top: 1px solid rgba(255,255,255,0.18); padding: 32px 0 0; margin: 0; }
+}
