@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
-import { supabase } from '@/lib/supabase';
 import { site, type Merk } from '@/lib/merk/site';
 
 export type Veld = {
@@ -42,19 +41,22 @@ export function ContactForm({ merk, soort, velden, knop = 'verstuur', bedankt = 
     e.preventDefault();
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries()) as Record<string, string>;
-    const { naam = '', email = '', telefoon = '', adres = '', bericht = '', ...extra } = data;
-
-    if (!supabase) {
-      // Nog niet gekoppeld: open een e-mail met de ingevulde gegevens.
-      const body = Object.entries(data).map(([k, v]) => `${k}: ${v}`).join('\n');
-      window.location.href = `mailto:${site.contact.email}?subject=${encodeURIComponent(`moroww ${merk} · ${soort}`)}&body=${encodeURIComponent(body)}`;
-      return;
-    }
+    const { naam = '', email = '', telefoon = '', adres = '', bericht = '', website_url = '', ...extra } = data;
+    if (website_url) return;
 
     setStatus('bezig');
-    const { error } = await supabase.from('aanvragen').insert({ merk, soort, naam, email, telefoon, adres, bericht, extra });
-    if (error) {
-      setStatus('fout');
+    try {
+      const res = await fetch('/api/aanvraag', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ merk, soort, naam, email, telefoon, adres, bericht, extra }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+    } catch {
+      // Valt de server weg: open een e-mail met de ingevulde gegevens.
+      const body = Object.entries(data).filter(([k]) => k !== 'website_url').map(([k, v]) => `${k}: ${v}`).join('\n');
+      window.location.href = `mailto:${site.contact.email}?subject=${encodeURIComponent(`moroww ${merk} · ${soort}`)}&body=${encodeURIComponent(body)}`;
+      setStatus('idle');
       return;
     }
     form.reset();
@@ -67,6 +69,7 @@ export function ContactForm({ merk, soort, velden, knop = 'verstuur', bedankt = 
 
   return (
     <form className={c.form} onSubmit={onSubmit}>
+      <input type="text" name="website_url" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }} />
       {velden.map((v) => {
         const id = `${soort}-${v.naam}`;
         return (
