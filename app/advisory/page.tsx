@@ -119,7 +119,7 @@ export default function Advisory() {
 
       <section className="wrap" style={{ paddingBottom: 8 }}>
         <div style={{ position: 'relative', aspectRatio: '21 / 8', overflow: 'hidden' }}>
-          <Image src="/images/standaard/V2-210.jpg" alt="Glas en magazine op een stenen tafel in een moroww-huis" fill sizes="100vw" style={{ objectFit: 'cover' }} />
+          <Image src="/images/advisory-terras-zee.jpg" alt="Dakterras met zicht op zee bij een moroww-huis" fill sizes="100vw" style={{ objectFit: 'cover' }} />
         </div>
       </section>
 
