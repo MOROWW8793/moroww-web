@@ -17,8 +17,8 @@ export async function generateMetadata({
       ? 'Over moroww — het kwaliteitslabel voor vakantiewoningen'
       : 'About moroww — the quality label for holiday homes',
     beschrijving: isNl
-      ? 'Iedere gast verdient te weten waarvoor hij betaalt. Wie achter het moroww-label staat, waarom we keuren en waar het begon.'
-      : 'Every guest deserves to know what they are paying for. Who is behind the moroww label, why we inspect and where it started.',
+      ? 'moroww brengt eigenaars, gasten en de juiste vakmensen samen rond één standaard. Waarom we moroww oprichtten, de drie takken en wie erachter staat.'
+      : 'moroww brings owners, guests and the right people together around one standard. Why we founded moroww, the three branches and who is behind it.',
     pad: isNl ? '/over-moroww' : '/en/about',
     locale: isNl ? 'nl' : 'en',
     hreflang: { nl: '/over-moroww', en: '/en/about' },

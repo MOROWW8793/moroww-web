@@ -2,36 +2,39 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { Register } from "@/components/Register";
 
-// Over moroww, herschreven nov 2026: wie achter het label staat. Beeldtaal
+// Over moroww, herschreven nov 2026 (2): waarom moroww bestaat (de juiste mensen
+// samen, eenvoud voor eigenaars en gasten), de drie takken en wie erachter staat. Beeldtaal
 // van de homepage. Staat er een /images/brent.jpg, dan tonen de oprichters
 // als twee portretten; anders een breed beeld met beide namen eronder.
 
 const COPY = {
   nl: {
     eyebrow: 'over moroww',
-    h1: 'iedere gast verdient te weten waarvoor hij betaalt.',
-    lead: 'moroww is een kwaliteitslabel voor karaktervolle vakantiewoningen in België. We keuren elk huis zelf, houden het aan de standaard en geven het label alleen aan wie die haalt.',
+    h1: 'een goed verblijf maak je niet alleen.',
+    lead: 'moroww brengt eigenaars, gasten en de vakmensen achter een goed verblijf samen rond één standaard. Het label voor het huis, hulp op maat voor eigenaars, en partners die we zelf kiezen.',
     heroAlt: 'Leefruimte van een moroww-woning, iemand schuift het gordijn open',
-    begonEyebrow: 'waar het begon',
-    begonH2: 'niemand had gelogen. er had gewoon niemand gekeken.',
+    begonEyebrow: 'waarom we begonnen',
+    begonH2: 'veel goede mensen. weinig samenhang.',
     begonP: [
-      'Edinburgh. Een mooie woning, goede foto’s, sterke reviews. De eerste nacht tilden we de matras op. Eronder zat schimmel.',
-      'Toen begrepen we het. Een gast betaalt vooraf, voor iets wat hij pas ziet als hij binnenstapt. Dat verschil willen we zichtbaar maken, voor de boeking.',
+      'Een goed verblijf hangt af van veel mensen. Wie poetst, wie het linnen brengt, wie de regels kent, wie de prijzen zet, wie het slot installeert, wie de gast verwelkomt. Ze bestaan allemaal, maar ze werken zelden samen.',
+      'Voor een eigenaar wordt het een puzzel met tien stukken en tien telefoonnummers. Voor een gast blijft het een gok: de foto’s zeggen weinig over wat er achter de deur gebeurt.',
+      'Daarom hebben we moroww opgericht. Om die mensen samen te brengen, rond één standaard en met één aanspreekpunt. Zodat het eenvoudig wordt, voor wie verhuurt en voor wie verblijft.',
     ],
-    labelEyebrow: 'waarom een label',
-    labelH2: 'geen platform. geen verhuurkantoor. een label.',
+    labelEyebrow: 'hoe we het doen',
+    labelH2: 'één naam. drie takken.',
     labelP: [
-      'We bouwen de plek waar je overal ter wereld een verblijf vindt dat klopt. We beginnen in België, huis per huis.',
-      'Een platform laat iedereen toe. Een label zegt nee. We komen zelf kijken, keuren elk huis op wat een gast het eerst opmerkt, en doen dat elk jaar opnieuw.',
-      'Eigenaars blijven verhuren zoals zij willen. Wie hulp wil, krijgt die, tot de volledige verhuur toe. Maar het label komt eerst.',
+      'moroww is het label voor het huis. We keuren elk huis zelf, zetten het in de collectie en doen dat elk jaar opnieuw. Zo weet een gast vooraf wat hij krijgt.',
+      'moroww how helpt eigenaars bij wat ze tegenkomen: een vergunning, een opstart, een eigen boekingssite. Op maat, want geen vraag is dezelfde.',
+      'moroww hub brengt de partners samen die het mogelijk maken: merken, vakmensen en tools die we eerst in onze eigen huizen gebruiken.',
     ],
+    takkenLink: 'de drie takken voor eigenaars →',
     teamEyebrow: 'wie wij zijn',
     teamH2: 'twee oprichters, één standaard.',
     team: [
-      { naam: 'Noam', rol: 'oprichter · visie, strategie en eigenaars', tekst: 'Bouwt het label en de collectie. Wie een huis kandidaat stelt, spreekt eerst met hem.' },
+      { naam: 'Noam', rol: 'oprichter · visie, strategie en eigenaars', tekst: 'Bouwt het label en brengt eigenaars en partners samen. Wie een huis kandidaat stelt, spreekt eerst met hem.' },
       { naam: 'Brent', rol: 'oprichter · kwaliteit en werking', tekst: 'Bewaakt de standaard in de praktijk: hoe we keuren, hoe huizen opgevolgd worden, en dat het elke keer klopt.' },
     ],
-    teamSlot: 'Wie een vraag heeft, gast of eigenaar, spreekt met ons. Niet met een callcenter.',
+    teamSlot: 'Eenvoud begint bij wie je aan de lijn krijgt. Gast of eigenaar: je spreekt met ons, niet met een callcenter.',
     noamAlt: 'Noam aan tafel in een moroww-woning',
     brentAlt: 'Brent, oprichter van moroww',
     steunEyebrow: 'supported by',
@@ -41,34 +44,36 @@ const COPY = {
     links: [
       { href: '/de-standaard', tekst: 'de standaard →' },
       { href: '/collectie', tekst: 'de collectie →' },
-      { href: '/eigenaar-worden', tekst: 'je huis in de collectie →' },
+      { href: '/voor-eigenaars', tekst: 'voor eigenaars →' },
     ],
   },
   en: {
     eyebrow: 'about moroww',
-    h1: 'every guest deserves to know what they are paying for.',
-    lead: 'moroww is a quality label for holiday homes with character in Belgium. We inspect every home ourselves, hold it to the standard and give the label only to those who meet it.',
+    h1: 'a good stay is never made alone.',
+    lead: 'moroww brings owners, guests and the people behind a good stay together around one standard. The label for the home, tailored help for owners, and partners we choose ourselves.',
     heroAlt: 'Living space of a moroww home, someone drawing back the curtain',
-    begonEyebrow: 'where it started',
-    begonH2: 'nobody had lied. nobody had looked.',
+    begonEyebrow: 'why we started',
+    begonH2: 'many good people. little coherence.',
     begonP: [
-      'Edinburgh. A beautiful flat, good photos, strong reviews. The first night we lifted the mattress. Underneath was mould.',
-      'That is when it clicked. A guest pays upfront for something they only see once they walk in. We want to make that difference visible, before the booking.',
+      'A good stay depends on many people. Who cleans, who brings the linen, who knows the rules, who sets the prices, who installs the lock, who welcomes the guest. They all exist, but they rarely work together.',
+      'For an owner it becomes a puzzle with ten pieces and ten phone numbers. For a guest it stays a gamble: the photos say little about what happens behind the door.',
+      'That is why we founded moroww. To bring those people together, around one standard and with one point of contact. So it becomes simple, for those who rent out and those who stay.',
     ],
-    labelEyebrow: 'why a label',
-    labelH2: 'not a platform. not a rental agency. a label.',
+    labelEyebrow: 'how we do it',
+    labelH2: 'one name. three branches.',
     labelP: [
-      'We are building the place where you find a stay that is right, anywhere in the world. We start in Belgium, one home at a time.',
-      'A platform lets everyone in. A label says no. We come to look ourselves, inspect every home on what a guest notices first, and do it again every year.',
-      'Owners keep renting the way they want. Those who want help get it, up to the full rental. But the label comes first.',
+      'moroww is the label for the home. We inspect every home ourselves, add it to the collection and do it again every year. So a guest knows what they get, before they go.',
+      'moroww how helps owners with whatever they run into: a permit, a start-up, their own booking site. Tailored, because no question is the same.',
+      'moroww hub brings together the partners who make it possible: brands, craftspeople and tools we first use in our own homes.',
     ],
+    takkenLink: 'the three branches for owners →',
     teamEyebrow: 'who we are',
     teamH2: 'two founders, one standard.',
     team: [
-      { naam: 'Noam', rol: 'founder · vision, strategy and owners', tekst: 'Builds the label and the collection. Whoever puts a home forward speaks with him first.' },
+      { naam: 'Noam', rol: 'founder · vision, strategy and owners', tekst: 'Builds the label and brings owners and partners together. Whoever puts a home forward speaks with him first.' },
       { naam: 'Brent', rol: 'founder · quality and operations', tekst: 'Guards the standard in practice: how we inspect, how homes are followed up, and that it is right every time.' },
     ],
-    teamSlot: 'Whoever has a question, guest or owner, speaks with us. Not with a call centre.',
+    teamSlot: 'Simplicity starts with who picks up the phone. Guest or owner: you speak with us, not with a call centre.',
     noamAlt: 'Noam at the table in a moroww home',
     brentAlt: 'Brent, founder of moroww',
     steunEyebrow: 'supported by',
@@ -78,7 +83,7 @@ const COPY = {
     links: [
       { href: '/de-standaard', tekst: 'the standard →' },
       { href: '/collectie', tekst: 'the collection →' },
-      { href: '/eigenaar-worden', tekst: 'your home in the collection →' },
+      { href: '/voor-eigenaars', tekst: 'for owners →' },
     ],
   },
 } as const
@@ -128,7 +133,7 @@ export function OverMorowwContent({ locale, brentFoto }: { locale: string; brent
           </div>
           <div className="lg:col-span-6 lg:col-start-7 space-y-mw-3 text-body-lg text-moroww-dark max-w-[52ch]">
             {c.labelP.map((p) => <p key={p}>{p}</p>)}
-            <p className="pt-mw-2"><Link href="/de-standaard" className={LINK}>{c.links[0].tekst}</Link></p>
+            <p className="pt-mw-2"><Link href="/voor-eigenaars" className={LINK}>{c.takkenLink}</Link></p>
           </div>
         </div>
       </section>
@@ -199,7 +204,7 @@ export function OverMorowwContent({ locale, brentFoto }: { locale: string; brent
       <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12 mb-mw-8 lg:mb-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-mw-6">
           {c.links.map((l) => (
-            <Link key={l.href} href={l.href as '/de-standaard' | '/collectie' | '/eigenaar-worden'} className="group border-t border-moroww-dark/20 pt-mw-4 text-h2 font-light text-moroww-dark hover:text-moroww-ink-2 transition-colors">
+            <Link key={l.href} href={l.href as '/de-standaard' | '/collectie' | '/voor-eigenaars'} className="group border-t border-moroww-dark/20 pt-mw-4 text-h2 font-light text-moroww-dark hover:text-moroww-ink-2 transition-colors">
               {l.tekst}
             </Link>
           ))}
