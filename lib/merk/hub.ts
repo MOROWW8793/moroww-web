@@ -25,7 +25,7 @@ export interface PartnerCategorie {
 export const partnerCategorieen: PartnerCategorie[] = [
   {
     sleutel: 'tools',
-    foto: '/images/standaard/V2-56.jpg',
+    foto: '/images/hub/tools-laptop.jpg',
     label: 'tools en software',
     titel: 'kalender, prijzen, gastberichten.',
     tekst: 'Voor wie zelf verhuurt: één kalender over alle platformen, prijzen die meebewegen, berichten die op tijd vertrekken.',
