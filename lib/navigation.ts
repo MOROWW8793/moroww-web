@@ -71,8 +71,8 @@ export interface EigenaarDropdownItem {
 export const eigenaarDropdown: EigenaarDropdownItem[] = [
   {
     titel: 'het label',
-    toelichting: 'keuring, collectie en boekingen voor je huis',
-    toelichtingEn: 'inspection, collection and bookings for your home',
+    toelichting: 'persoonlijk bezoek, collectie en boekingen voor je huis',
+    toelichtingEn: 'a personal visit, collection and bookings for your home',
     href: '/het-label',
     kleur: '#fea05e',
   },

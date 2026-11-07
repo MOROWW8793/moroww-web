@@ -65,7 +65,7 @@ export default function Partners() {
       <Sectie>
         <div className="rij">
           <div className="smal">
-            <Kop boven="toegang" titel={<>de partners horen <i>bij het label.</i></>} tekst="Je krijgt je toegang na de keuring van je huis." />
+            <Kop boven="toegang" titel={<>de partners horen <i>bij het label.</i></>} tekst="Je krijgt je toegang na ons bezoek aan je huis." />
             <div className="knoppen">
               <Link href="/hub/lid-worden" className="btn btn-primair">lid worden</Link>
             </div>

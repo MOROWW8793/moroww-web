@@ -23,7 +23,7 @@ const COPY = {
     labelEyebrow: 'hoe we het doen',
     labelH2: 'één naam. drie takken.',
     labelP: [
-      'moroww is het label voor het huis. We keuren elk huis zelf, zetten het in de collectie en doen dat elk jaar opnieuw. Zo weet een gast vooraf wat hij krijgt.',
+      'moroww is het label voor het huis. We bezoeken elk huis persoonlijk, zetten het in de collectie en doen dat elk jaar opnieuw. Zo weet een gast vooraf wat hij krijgt.',
       'moroww how helpt eigenaars bij wat ze tegenkomen: een vergunning, een opstart, een eigen boekingssite. Op maat, want geen vraag is dezelfde.',
       'moroww hub brengt de partners samen die het mogelijk maken: merken, vakmensen en tools die we eerst in onze eigen huizen gebruiken.',
     ],
@@ -32,7 +32,7 @@ const COPY = {
     teamH2: 'twee oprichters, één standaard.',
     team: [
       { naam: 'Noam', rol: 'oprichter · visie, strategie en eigenaars', tekst: 'Bouwt het label en brengt eigenaars en partners samen. Wie een huis kandidaat stelt, spreekt eerst met hem.' },
-      { naam: 'Brent', rol: 'oprichter · kwaliteit en werking', tekst: 'Bewaakt de standaard in de praktijk: hoe we keuren, hoe huizen opgevolgd worden, en dat het elke keer klopt.' },
+      { naam: 'Brent', rol: 'oprichter · kwaliteit en werking', tekst: 'Bewaakt de standaard in de praktijk: hoe we huizen bezoeken, hoe huizen opgevolgd worden, en dat het elke keer klopt.' },
     ],
     teamSlot: 'Eenvoud begint bij wie je aan de lijn krijgt. Gast of eigenaar: je spreekt met ons, niet met een callcenter.',
     noamAlt: 'Noam aan tafel in een moroww-woning',
@@ -62,7 +62,7 @@ const COPY = {
     labelEyebrow: 'how we do it',
     labelH2: 'one name. three branches.',
     labelP: [
-      'moroww is the label for the home. We inspect every home ourselves, add it to the collection and do it again every year. So a guest knows what they get, before they go.',
+      'moroww is the label for the home. We visit every home in person, add it to the collection and do it again every year. So a guest knows what they get, before they go.',
       'moroww how helps owners with whatever they run into: a permit, a start-up, their own booking site. Tailored, because no question is the same.',
       'moroww hub brings together the partners who make it possible: brands, craftspeople and tools we first use in our own homes.',
     ],
@@ -71,7 +71,7 @@ const COPY = {
     teamH2: 'two founders, one standard.',
     team: [
       { naam: 'Noam', rol: 'founder · vision, strategy and owners', tekst: 'Builds the label and brings owners and partners together. Whoever puts a home forward speaks with him first.' },
-      { naam: 'Brent', rol: 'founder · quality and operations', tekst: 'Guards the standard in practice: how we inspect, how homes are followed up, and that it is right every time.' },
+      { naam: 'Brent', rol: 'founder · quality and operations', tekst: 'Guards the standard in practice: how we visit homes, how homes are followed up, and that it is right every time.' },
     ],
     teamSlot: 'Simplicity starts with who picks up the phone. Guest or owner: you speak with us, not with a call centre.',
     noamAlt: 'Noam at the table in a moroww home',

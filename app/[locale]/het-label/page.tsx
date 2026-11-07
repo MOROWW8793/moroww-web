@@ -7,17 +7,17 @@ import { site } from '@/lib/merk/site'
 export const metadata: Metadata = {
   title: 'het label voor jouw huis',
   description:
-    'Het moroww-label voor eigenaars en beheerders die zelf verhuren: keuring, het label, een plaats in de collectie op moroww.com en toegang tot moroww hub.',
+    'Het moroww-label voor eigenaars en beheerders die zelf verhuren: een persoonlijk bezoek, het label, een plaats in de collectie op moroww.com en toegang tot moroww hub.',
   alternates: { canonical: 'https://www.moroww.com/het-label' },
 }
 
 const krijgt: [string, string][] = [
-  ['keuring en rapport', 'We bekijken het huis ter plaatse en zeggen wat in orde is en wat beter moet.'],
+  ['persoonlijk bezoek en rapport', 'We komen langs, lopen door het huis zoals een gast en zeggen wat in orde is en wat beter kan.'],
   ['stille systemen', 'Advies over slot, geur, licht en sensoren. De hardware wordt van jou.'],
   ['het label', 'Aan de deur, op je listings en in de gids voor je gasten.'],
   ['in de collectie', 'Je huis staat op moroww.com, met een rechtstreekse link naar je eigen boekingswebsite.'],
   ['moroww hub', 'Partners, merken en tools met voordelen voor leden, en de academy voor hosts.'],
-  ['elk jaar opnieuw', 'Een herkeuring en de reviews van gasten. Zo blijft het label waard wat het belooft.'],
+  ['elk jaar opnieuw', 'We komen elk jaar terug en lezen wat gasten schrijven. Zo blijft het label waard wat het belooft.'],
 ]
 
 export default async function HetLabelPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -34,12 +34,12 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
             jouw huis met het label.
           </h1>
           <p className="mt-mw-5 text-body-lg text-moroww-dark max-w-mw-eigenaar">
-            Je blijft zelf verhuren, of je beheerder doet het. Wij keuren, kennen het label toe, zetten je huis in de
+            Je blijft zelf verhuren, of je beheerder doet het. Wij komen langs, kennen het label toe, zetten je huis in de
             collectie en geven je toegang tot moroww hub.
           </p>
           <div className="mt-mw-6 flex flex-wrap gap-3">
             <a href="#aanvraag" className="inline-flex items-center min-h-[48px] bg-moroww-orange text-moroww-dark px-6 text-body font-semibold">
-              vraag een keuring aan
+              vraag een bezoek aan
             </a>
             <Link href="/how" className="inline-flex items-center min-h-[48px] border border-moroww-dark text-moroww-dark px-6 text-body">
               eerst weten wat mag? naar moroww how
@@ -70,7 +70,7 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
           <div className="lg:col-span-2 bg-moroww-paper p-mw-6">
             <h2 className="text-h3 text-moroww-dark">moroww label</h2>
             <p className="mt-mw-3 text-body text-moroww-dark">
-              Keuring, het label, een plaats in de collectie op moroww.com en toegang tot moroww hub.
+              Een persoonlijk bezoek, het label, een plaats in de collectie op moroww.com en toegang tot moroww hub.
             </p>
             <p className="mt-mw-5 text-body text-moroww-ink-2">
               Wat het kost, hangt af van je huis. Dat bespreken we in een eerste gesprek.
@@ -107,7 +107,7 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
             tw
             merk="moroww"
             soort="keuring"
-            knop="vraag een keuring aan"
+            knop="vraag een bezoek aan"
             velden={[
               { naam: 'naam', label: 'naam', verplicht: true },
               { naam: 'email', label: 'e-mail', type: 'email', verplicht: true },

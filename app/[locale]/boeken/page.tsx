@@ -18,7 +18,7 @@ const COPY = {
     zeker: [
       'rechtstreeks bij moroww, zonder servicekosten',
       'kosteloos annuleren tot 30 dagen voor aankomst',
-      'elk huis ter plaatse gekeurd, elk jaar opnieuw',
+      'elk huis persoonlijk bezocht, elk jaar opnieuw',
     ],
     collectie: 'liever eerst rondkijken? bekijk de collectie →',
   },
@@ -29,7 +29,7 @@ const COPY = {
     zeker: [
       'directly with moroww, no service fees',
       'free cancellation up to 30 days before arrival',
-      'every home inspected in person, every year again',
+      'every home visited in person, every year again',
     ],
     collectie: 'rather look around first? see the collection →',
   },
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params
   const isNl = locale === 'nl'
   return siteMetadata({
-    titel: isNl ? 'Boek een gekeurde vakantiewoning — moroww' : 'Book an inspected holiday home — moroww',
+    titel: isNl ? 'Boek een persoonlijk bezochte vakantiewoning — moroww' : 'Book a holiday home we visited in person — moroww',
     beschrijving: isNl
       ? 'Kies je data en zie meteen welke karaktervolle vakantiewoningen van moroww vrij zijn. Rechtstreeks boeken, zonder servicekosten.'
       : 'Choose your dates and see right away which moroww homes are free. Book directly, without service fees.',

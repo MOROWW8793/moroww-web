@@ -252,7 +252,7 @@ export function WelcomeClient({
               />
             </div>
             <p style={{ fontSize: 13, color: '#C08D6E', lineHeight: 1.4, maxWidth: 220 }}>
-              Dit verblijf is persoonlijk gekeurd door moroww.
+              Dit verblijf is persoonlijk bezocht door moroww.
             </p>
           </div>
 

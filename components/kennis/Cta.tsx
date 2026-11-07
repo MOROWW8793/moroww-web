@@ -32,7 +32,7 @@ const VARIANTS: Record<CtaKind, Variant> = {
   poortentoets: {
     actie:    'poortentoets',
     title:    'Haalt jouw woning de standaard?',
-    body:     'moroww neemt woningen op na een fysieke inspectie. De toets geeft je in twee minuten hetzelfde oordeel dat wij ter plaatse vellen, op de punten die je zelf kan nagaan.',
+    body:     'moroww neemt woningen op na een persoonlijk bezoek. De toets geeft je in twee minuten hetzelfde oordeel dat wij ter plaatse vellen, op de punten die je zelf kan nagaan.',
     label:    'Doe de poortentoets',
     href:     '/eigenaar-worden#poortentoets',
     external: false,

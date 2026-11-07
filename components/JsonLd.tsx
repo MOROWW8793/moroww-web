@@ -11,7 +11,7 @@ export function OrganizationJsonLd() {
           url: 'https://www.moroww.com',
           logo: 'https://www.moroww.com/images/moroww-logo.png',
           image: 'https://www.moroww.com/images/og-default.jpg',
-          description: 'moroww is een gecertificeerd kwaliteitslabel voor premium vakantiewoningen in België. Elke woning wordt fysiek geïnspecteerd voor opname.',
+          description: 'moroww is een gecertificeerd kwaliteitslabel voor premium vakantiewoningen in België. Elke woning wordt persoonlijk bezocht voor opname.',
           '@id': 'https://www.moroww.com',
           contactPoint: {
             '@type': 'ContactPoint',

@@ -28,7 +28,7 @@ export function FaqJsonLd() {
               name: 'Wat is moroww?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'moroww is het kwaliteitslabel voor vakantiewoningen in België: elke moroww-woning is geauditeerd, uitgerust en opgevolgd.',
+                text: 'moroww is het kwaliteitslabel voor vakantiewoningen in België: elke moroww-woning is persoonlijk bezocht, uitgerust en opgevolgd.',
               },
             },
             {

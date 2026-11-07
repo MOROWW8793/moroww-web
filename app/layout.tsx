@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: '%s | moroww',
   },
   description:
-    'moroww (ook bekend als morrow) is een gecertificeerd kwaliteitslabel voor premium vakantiewoningen in België. Elke woning fysiek geïnspecteerd. Sensorisch ingericht. Zonder loterij.',
+    'moroww (ook bekend als morrow) is een gecertificeerd kwaliteitslabel voor premium vakantiewoningen in België. Elke woning persoonlijk bezocht. Sensorisch ingericht. Zonder loterij.',
   authors: [{ name: 'moroww', url: 'https://www.moroww.com' }],
   creator: 'moroww',
   publisher: 'moroww',

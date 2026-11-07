@@ -40,11 +40,11 @@ export async function generateMetadata({
   const isNl = locale === 'nl'
   return siteMetadata({
     titel: isNl
-      ? 'moroww — gekeurde vakantiewoningen in België'
-      : 'moroww — inspected holiday homes in Belgium',
+      ? 'moroww — persoonlijk bezochte vakantiewoningen in België'
+      : 'moroww — holiday homes in Belgium, visited in person',
     beschrijving: isNl
-      ? 'Twee collecties, één standaard. Elke woning fysiek geïnspecteerd voor ze in de collectie komt.'
-      : 'Two collections, one standard. Every home inspected in person before it joins the collection.',
+      ? 'Twee collecties, één standaard. Elke woning persoonlijk bezocht voor ze in de collectie komt.'
+      : 'Two collections, one standard. Every home visited in person before it joins the collection.',
     pad: isNl ? '/' : '/en',
     locale: isNl ? 'nl' : 'en',
     hreflang: { nl: '/', en: '/en' },

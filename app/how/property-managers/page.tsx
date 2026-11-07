@@ -22,7 +22,7 @@ const aanbod: { label: string; titel: string; tekst: string; href: string }[] = 
     label: 'zichtbaarheid',
     titel: 'het label voor je huizen',
     tekst:
-      'Huizen die de keuring halen, dragen het moroww-label en staan in de collectie op moroww.com, met een rechtstreekse link naar jouw boekingssite. Jij blijft de beheerder, de boeking komt bij jou.',
+      'Huizen die de standaard halen, dragen het moroww-label en staan in de collectie op moroww.com, met een rechtstreekse link naar jouw boekingssite. Jij blijft de beheerder, de boeking komt bij jou.',
     href: '/het-label',
   },
   {

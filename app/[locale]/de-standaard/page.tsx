@@ -22,7 +22,7 @@ type Regel = { titel: string; kern: string; punten: string[]; beeld: string; alt
 const NL = {
   eyebrow: 'de standaard',
   h1: 'geen spoor van wie er voor jou was.',
-  lead: 'Elk huis in de collectie wordt ter plaatse gekeurd op wat een gast het eerst opmerkt: hoe proper het is, hoe het bed voelt, of alles klaarstaat. Elk jaar opnieuw. Wat de standaard niet haalt, draagt het label niet.',
+  lead: 'Elk huis in de collectie wordt persoonlijk bezocht en bekeken op wat een gast het eerst opmerkt: hoe proper het is, hoe het bed voelt, of alles klaarstaat. Elk jaar opnieuw. Wat de standaard niet haalt, draagt het label niet.',
   heroAlt: 'Gast leest in een vers opgemaakt bed',
   stats: ['bekeken', 'bezocht', 'opgenomen'],
   waaromEyebrow: 'waarom we hier beginnen',
@@ -32,7 +32,7 @@ const NL = {
     'Wat dan misloopt, is zelden echt vuil. Het is een restant van iemand anders. Een haar, een kruimel in de lade, een handdoek die niet fris ruikt. Daar is onze standaard op gebouwd.',
   ],
   regelsEyebrow: 'de vier regels',
-  regelsH2: 'wat een gast het eerst opmerkt, keuren we het strengst.',
+  regelsH2: 'wat een gast het eerst opmerkt, bekijken we het strengst.',
   regels: [
     {
       titel: 'geen spoor van de vorige gast',
@@ -83,12 +83,12 @@ const NL = {
       alt: 'Glas water en tijdschriften klaargezet op tafel',
     },
   ] as Regel[],
-  keuringEyebrow: 'hoe we keuren',
+  keuringEyebrow: 'ons bezoek',
   keuringH2: 'iemand van ons stond in die kamers.',
   keuring: [
     { titel: 'ter plaatse', tekst: 'We lopen door elke kamer. Geen fotoakkoord, geen videorondleiding.' },
     { titel: 'bij elke wissel', tekst: 'Onze partners komen er telkens weer over de vloer en werken volgens dezelfde regels.' },
-    { titel: 'elk jaar opnieuw', tekst: 'Een label is geen stempel. Elk jaar keuren we het huis opnieuw.' },
+    { titel: 'elk jaar opnieuw', tekst: 'Een label is geen stempel. Elk jaar komen we opnieuw langs.' },
   ],
   bandEyebrow: 'het label',
   bandH2: 'een label dat je niet kan verliezen, is geen label.',
@@ -102,7 +102,7 @@ const NL = {
 const EN: typeof NL = {
   eyebrow: 'the standard',
   h1: 'no trace of whoever was there before you.',
-  lead: 'Every home in the collection is inspected in person on what a guest notices first: how clean it is, how the bed feels, whether everything is ready. Every year again. What does not meet the standard does not carry the label.',
+  lead: 'Every home in the collection is visited in person and looked at on what a guest notices first: how clean it is, how the bed feels, whether everything is ready. Every year again. What does not meet the standard does not carry the label.',
   heroAlt: 'A guest reading in a freshly made bed',
   stats: ['reviewed', 'visited', 'accepted'],
   waaromEyebrow: 'why we start here',
@@ -112,7 +112,7 @@ const EN: typeof NL = {
     'What goes wrong then is rarely real dirt. It is a trace of someone else. A hair, a crumb in the drawer, a towel that does not smell fresh. That is what our standard is built on.',
   ],
   regelsEyebrow: 'the four rules',
-  regelsH2: 'what a guest notices first, we inspect most strictly.',
+  regelsH2: 'what a guest notices first, we look at most closely.',
   regels: [
     {
       titel: 'no trace of the last guest',
@@ -163,12 +163,12 @@ const EN: typeof NL = {
       alt: 'A glass of water and magazines set out on the table',
     },
   ],
-  keuringEyebrow: 'how we inspect',
+  keuringEyebrow: 'our visit',
   keuringH2: 'someone from our team stood in those rooms.',
   keuring: [
     { titel: 'in person', tekst: 'We walk through every room. No photo approval, no video tour.' },
     { titel: 'at every turnover', tekst: 'Our partners return to every home again and again and work to the same rules.' },
-    { titel: 'every year again', tekst: 'A label is not a stamp. Every year we inspect the home again.' },
+    { titel: 'every year again', tekst: 'A label is not a stamp. Every year we come back.' },
   ],
   bandEyebrow: 'the label',
   bandH2: 'a label you cannot lose is not a label.',

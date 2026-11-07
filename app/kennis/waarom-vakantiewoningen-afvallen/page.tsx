@@ -50,7 +50,7 @@ export default async function AfvalRedenenPage() {
       {cijfers && (
         <DatasetJsonLd
           naam="moroww · screenings van vakantiewoningen"
-          beschrijving={`Aantallen uit het moroww-auditsysteem: ${cijfers.aantal_dossier} dossiers bekeken, ${cijfers.aantal_bezoek} fysiek bezocht, ${cijfers.aantal_opgenomen} opgenomen.`}
+          beschrijving={`Aantallen uit het moroww-systeem: ${cijfers.aantal_dossier} dossiers bekeken, ${cijfers.aantal_bezoek} fysiek bezocht, ${cijfers.aantal_opgenomen} opgenomen.`}
           url={URL}
           datumGewijzigd={cijfers.bijgewerkt_op.slice(0, 10)}
         />
@@ -125,12 +125,12 @@ export default async function AfvalRedenenPage() {
             {
               vraag: 'Wordt elke woning echt fysiek bezocht?',
               antwoord:
-                'Ja. Er komt geen woning in de collectie op basis van foto\'s alleen. De audit gebeurt ter plaatse, met een vaste checklist.',
+                'Ja. Er komt geen woning in de collectie op basis van foto\'s alleen. We komen persoonlijk langs, met een vaste checklist.',
             },
             {
               vraag: 'Kan een woning er weer uit?',
               antwoord:
-                'Ja. We voeren heraudits uit en een woning die niet meer voldoet, verlaat de collectie. Het label weegt zwaarder dan eender welk contract.',
+                'Ja. We komen elk jaar terug, en een woning die niet meer voldoet, verlaat de collectie. Het label weegt zwaarder dan eender welk contract.',
             },
             {
               vraag: 'Publiceren jullie welke woningen afvielen?',

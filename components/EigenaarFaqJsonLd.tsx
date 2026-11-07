@@ -12,7 +12,7 @@ export function EigenaarFaqJsonLd() {
               name: 'Hoe kan ik mijn vakantiewoning verhuren via moroww?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Meld je woning aan via het formulier op moroww.com/eigenaar-worden. We nemen binnen 48u persoonlijk contact op. Elke woning wordt ter plaatse gekeurd op de standaard: geen spoor van de vorige gast, een badkamer zonder één haar, vers linnen bij elke wissel, en een huis dat klaar is vóór de gast aankomt. Haalt de woning de keuring, dan draagt ze het moroww-label en krijgt ze een plaats in de collectie.',
+                text: 'Meld je woning aan via het formulier op moroww.com/eigenaar-worden. We nemen binnen 48u persoonlijk contact op. Elke woning wordt persoonlijk bezocht en bekeken op de standaard: geen spoor van de vorige gast, een badkamer zonder één haar, vers linnen bij elke wissel, en een huis dat klaar is vóór de gast aankomt. Haalt de woning de keuring, dan draagt ze het moroww-label en krijgt ze een plaats in de collectie.',
               },
             },
             {
@@ -20,7 +20,7 @@ export function EigenaarFaqJsonLd() {
               name: 'Wat doet moroww voor eigenaars van vakantiewoningen?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'moroww keurt je woning ter plaatse en houdt ze elk jaar opnieuw aan de standaard. Je woning draagt het label op je eigen listings en staat op moroww.com. Je krijgt toegang tot de partners van het label. Wil je meer hulp, dan kies je voor hulp op maat of laat je de verhuur volledig aan ons over.',
+                text: 'moroww bezoekt je woning persoonlijk en houdt ze elk jaar opnieuw aan de standaard. Je woning draagt het label op je eigen listings en staat op moroww.com. Je krijgt toegang tot de partners van het label. Wil je meer hulp, dan kies je voor hulp op maat of laat je de verhuur volledig aan ons over.',
               },
             },
             {
@@ -44,7 +44,7 @@ export function EigenaarFaqJsonLd() {
               name: 'Kan ik mijn vakantiewoning aan de Belgische kust verhuren via moroww?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Ja. moroww is actief in België en de collectie breidt gestaag uit. Elke woning wordt ter plaatse gekeurd op de standaard en elk jaar opnieuw.',
+                text: 'Ja. moroww is actief in België en de collectie breidt gestaag uit. Elke woning wordt persoonlijk bezocht, en elk jaar opnieuw.',
               },
             },
             {
@@ -52,7 +52,7 @@ export function EigenaarFaqJsonLd() {
               name: 'Wat is het verschil tussen moroww en een platform zoals Airbnb?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Airbnb is een boekingsplatform: iedereen kan er een woning op zetten. moroww is het kwaliteitslabel voor vakantiewoningen in België: elke moroww-woning is geauditeerd, uitgerust en opgevolgd.',
+                text: 'Airbnb is een boekingsplatform: iedereen kan er een woning op zetten. moroww is het kwaliteitslabel voor vakantiewoningen in België: elke moroww-woning is persoonlijk bezocht, uitgerust en opgevolgd.',
               },
             },
             {

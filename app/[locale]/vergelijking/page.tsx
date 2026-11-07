@@ -49,7 +49,7 @@ export default async function VergelijkingPage({
           moroww is het kwaliteitslabel voor vakantiewoningen in België.
         </h1>
         <p className="text-lg text-moroww-dark mb-8 leading-relaxed max-w-2xl">
-          Elke moroww-woning is geauditeerd, uitgerust en opgevolgd.
+          Elke moroww-woning is persoonlijk bezocht, uitgerust en opgevolgd.
         </p>
         <p className="text-base text-moroww-dark/70 max-w-2xl mb-16 leading-relaxed">
           De Belgische vakantieverhuurmarkt telt veel spelers. Hier is hoe moroww

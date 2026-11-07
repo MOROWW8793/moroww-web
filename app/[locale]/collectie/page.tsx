@@ -16,10 +16,10 @@ export async function generateMetadata({
   const { locale } = await params
   const isNl = locale === 'nl'
   return siteMetadata({
-    titel: isNl ? 'De collectie — gekeurde vakantiewoningen' : 'The collection — inspected holiday homes',
+    titel: isNl ? 'De collectie — persoonlijk bezochte vakantiewoningen' : 'The collection — holiday homes visited in person',
     beschrijving: isNl
-      ? 'Karaktervolle vakantiewoningen, elk ter plaatse gekeurd. Per huis alles op een rij: slaapkamers, gasten, buitenruimte, parking en prijs.'
-      : 'Holiday homes with character, each inspected in person. Everything per home side by side: bedrooms, guests, outdoor space, parking and price.',
+      ? 'Karaktervolle vakantiewoningen, elk persoonlijk bezocht. Per huis alles op een rij: slaapkamers, gasten, buitenruimte, parking en prijs.'
+      : 'Holiday homes with character, each visited in person. Everything per home side by side: bedrooms, guests, outdoor space, parking and price.',
     pad: isNl ? '/collectie' : '/en/collection',
     locale: isNl ? 'nl' : 'en',
     hreflang: { nl: '/collectie', en: '/en/collection' },
@@ -49,8 +49,8 @@ export default async function CollectiePage({
           </h1>
           <p className="mw-in-2 mt-mw-6 text-body-lg text-moroww-dark max-w-[56ch]">
             {isNl
-              ? `We bouwen de plek waar je overal ter wereld een verblijf vindt dat klopt. We beginnen in België: ${aantal} karaktervolle huizen, elk ter plaatse gekeurd.`
-              : `We are building the place where you find a stay that is right, anywhere in the world. We start in Belgium: ${aantal} homes with character, each inspected in person.`}
+              ? `We bouwen de plek waar je overal ter wereld een verblijf vindt dat klopt. We beginnen in België: ${aantal} karaktervolle huizen, elk persoonlijk bezocht.`
+              : `We are building the place where you find a stay that is right, anywhere in the world. We start in Belgium: ${aantal} homes with character, each visited in person.`}
           </p>
           <nav aria-label={isNl ? 'streken' : 'regions'} className="mt-mw-6 flex flex-wrap gap-x-mw-5 gap-y-1">
             <span className={`${tab} text-moroww-dark underline decoration-moroww-dark decoration-2`}>{isNl ? 'alles' : 'all'}</span>

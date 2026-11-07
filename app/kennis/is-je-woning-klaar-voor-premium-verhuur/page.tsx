@@ -20,7 +20,7 @@ export default function IsJeWoningKlaarPage() {
     <>
       <ArticleJsonLd
         titel="Is je woning klaar voor het hogere segment?"
-        beschrijving="De punten waarop een woning in de auditfase struikelt bij moroww: welke zijn vast, welke zijn op te lossen."
+        beschrijving="De punten waarop een woning struikelt bij ons bezoek: welke zijn vast, welke zijn op te lossen."
         url={URL}
         datumGepubliceerd={KENNIS_GEPUBLICEERD}
         datumGewijzigd="2026-08-20"
@@ -162,7 +162,7 @@ export default function IsJeWoningKlaarPage() {
             {
               vraag: 'Kunnen jullie helpen bij de oplosbare punten?',
               antwoord:
-                'We verwijzen naar partners die aan onze standaard voldoen, en we geven interieuradvies bij de audit. De uitvoering en de kost blijven bij de eigenaar.',
+                'We verwijzen naar partners die aan onze standaard voldoen, en we geven interieuradvies bij ons bezoek. De uitvoering en de kost blijven bij de eigenaar.',
             },
           ]}
         />

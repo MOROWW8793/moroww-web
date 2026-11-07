@@ -51,7 +51,7 @@ export default async function VierModellenPage() {
             </thead>
             <tbody>
               <tr><th>Wie zoekt gasten</th><td>jij</td><td>het platform</td><td>de beheerder</td><td>het label en de platformen</td></tr>
-              <tr><th>Wie bepaalt de standaard</th><td>jij</td><td>niemand</td><td>de beheerder, vaak impliciet</td><td>het label, expliciet en met inspectie</td></tr>
+              <tr><th>Wie bepaalt de standaard</th><td>jij</td><td>niemand</td><td>de beheerder, vaak impliciet</td><td>het label, expliciet en met een persoonlijk bezoek</td></tr>
               <tr><th>Kost</th><td>tijd</td><td>platformcommissie</td><td>commissie, doorgaans hoger</td><td>op aanvraag, na een bezoek</td></tr>
               <tr><th>Tijdsbesteding per week</th><td>hoog</td><td>middelhoog</td><td>laag</td><td>laag</td></tr>
               <tr><th>Kwaliteitscontrole ter plaatse</th><td>jijzelf</td><td>geen</td><td>wisselend</td><td>fysieke audit, met heraudit</td></tr>
@@ -74,8 +74,8 @@ export default async function VierModellenPage() {
           controleren, en de stille systemen die het verblijf dragen.
         </p>
         <p>
-          De woning wordt fysiek geïnspecteerd voor ze in de collectie komt. Ze wordt
-          opnieuw geauditeerd. En ze gaat eruit als ze niet meer voldoet.
+          De woning wordt persoonlijk bezocht voor ze in de collectie komt. We komen
+          elk jaar terug. En ze gaat eruit als ze niet meer voldoet.
           {cijfers ? (
             <>
               {' '}Van de {cijfers.aantal_bezoek} woningen die we bezochten, kwamen er{' '}

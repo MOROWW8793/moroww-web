@@ -21,7 +21,7 @@ export default function LidWorden() {
       </section>
 
       <Sectie>
-        <Kop boven="wat leden krijgen" titel={<>vier dingen, <i>vanaf de keuring.</i></>} />
+        <Kop boven="wat leden krijgen" titel={<>vier dingen, <i>vanaf ons bezoek.</i></>} />
         <div className="raster">
           {ledenKrijgen.map(([titel, tekst]) => (
             <div key={titel} className="kaart kaart-zacht">
@@ -35,8 +35,8 @@ export default function LidWorden() {
       <Sectie toon="zacht">
         <Kop boven="zo word je lid" titel={<>drie stappen.</>} />
         <ol className="stappen">
-          <li><strong>vraag een keuring aan</strong><span>Via de pagina van het label. We nemen contact op voor een bezoek.</span></li>
-          <li><strong>we keuren je huis</strong><span>Haalt je huis de standaard, dan krijgt het het label.</span></li>
+          <li><strong>vraag een bezoek aan</strong><span>Via de pagina van het label. We nemen contact op om een moment te plannen.</span></li>
+          <li><strong>we komen langs</strong><span>Haalt je huis de standaard, dan krijgt het het label.</span></li>
           <li><strong>welkom in de hub</strong><span>Je toegang komt per mail, samen met de voordelen van de partners.</span></li>
         </ol>
       </Sectie>
@@ -45,11 +45,11 @@ export default function LidWorden() {
         <div className="raster-2">
           <div className="kaart">
             <h2 className="kaart-titel">al het <i>label?</i></h2>
-            <p>Je toegang kwam per mail na de keuring. Kwijt? Mail ons op <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>.</p>
+            <p>Je toegang kwam per mail na ons bezoek. Kwijt? Mail ons op <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>.</p>
           </div>
           <div className="kaart kaart-donker">
             <h2 className="kaart-titel">nog geen <i>label?</i></h2>
-            <p>Vraag een keuring aan voor je huis.</p>
+            <p>Vraag een bezoek aan voor je huis.</p>
             <Link href="/het-label#aanvraag" className="btn btn-primair" style={{ alignSelf: 'flex-start' }}>naar het label</Link>
           </div>
         </div>

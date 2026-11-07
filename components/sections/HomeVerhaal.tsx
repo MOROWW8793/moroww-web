@@ -35,12 +35,12 @@ export function HomeVerhaal({ locale }: Props) {
     ? [
         ['wij zijn er geweest', 'Elk huis wordt fysiek bezocht voor het in de collectie komt. Niet op basis van foto’s, maar ter plaatse.'],
         ['vier poorten', 'Minstens 100 m² en twee slaapkamers, karakter in natuurlijke materialen, een stille ligging. Geen uitzonderingen.'],
-        ['elk jaar opnieuw', 'Een huis krijgt het label niet voor altijd. Elk jaar keuren we opnieuw, en lezen we wat gasten schrijven.'],
+        ['elk jaar opnieuw', 'Een huis krijgt het label niet voor altijd. Elk jaar komen we terug, en lezen we wat gasten schrijven.'],
       ]
     : [
         ['we have been there', 'Every home is visited in person before it joins the collection. Not from photos, on site.'],
         ['four gates', 'At least 100 m² and two bedrooms, character in natural materials, a quiet location. No exceptions.'],
-        ['every year again', 'A home does not keep the label forever. We inspect again every year, and read what guests write.'],
+        ['every year again', 'A home does not keep the label forever. We come back every year, and read what guests write.'],
       ]
 
   return (
@@ -62,7 +62,7 @@ export function HomeVerhaal({ locale }: Props) {
               href="/de-standaard"
               className="mt-mw-5 inline-block text-body text-moroww-dark underline underline-offset-4 decoration-moroww-label"
             >
-              {nl ? 'lees hoe we keuren →' : 'how we inspect →'}
+              {nl ? 'lees hoe ons bezoek verloopt →' : 'how our visit works →'}
             </Link>
           </div>
           <ol className="lg:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-mw-5">

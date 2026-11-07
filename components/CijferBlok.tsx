@@ -19,7 +19,7 @@ export function CijferBlok({ data }: Props) {
       <div className="max-w-[62ch]">
         <AuditLijn density="quiet" items={['de cijfers']} />
         <p className="mt-mw-5 text-body text-moroww-ink-2">
-          Cijfers uit het moroww-systeem, bijgewerkt bij elke keuring.
+          Cijfers uit het moroww-systeem, bijgewerkt na elk bezoek.
           Ze zijn nu even niet bereikbaar — probeer later opnieuw.
         </p>
       </div>
@@ -47,7 +47,7 @@ export function CijferBlok({ data }: Props) {
       </div>
       <p className="mt-mw-5 text-body text-moroww-ink-2">
         Daarvoor lagen er {data.aantal_dossier} dossiers op tafel. Cijfers uit
-        het moroww-systeem, bijgewerkt bij elke keuring.
+        het moroww-systeem, bijgewerkt na elk bezoek.
       </p>
     </div>
   )

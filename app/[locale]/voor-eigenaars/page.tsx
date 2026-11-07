@@ -26,7 +26,7 @@ const takken: Tak[] = [
     kleur: '#fea05e',
     titel: 'jouw huis met het label.',
     tekst:
-      'We keuren je huis, kennen het label toe en zetten het in de collectie op moroww.com, met een rechtstreekse link naar je eigen boekingssite.',
+      'We komen persoonlijk langs, kennen het label toe en zetten het in de collectie op moroww.com, met een rechtstreekse link naar je eigen boekingssite.',
     href: '/het-label',
     knop: 'over het label',
   },
