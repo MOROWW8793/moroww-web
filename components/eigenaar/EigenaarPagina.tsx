@@ -184,7 +184,7 @@ export function EigenaarPagina({
           <h2 data-regels className="mt-mw-4 text-h2 font-light text-moroww-dark max-w-[22ch]">{c.standaardH2}</h2>
           <ol className="mt-mw-6 grid grid-cols-1 md:grid-cols-2 gap-2">
             {c.standaard.map((s, i) => (
-              <li key={s.titel} className="group relative aspect-[4/5] lg:aspect-[5/4] overflow-hidden bg-moroww-dark">
+              <li key={s.titel} data-beeld className="group relative aspect-[4/5] lg:aspect-[5/4] overflow-hidden bg-moroww-dark">
                 <Image
                   src={s.beeld}
                   alt={s.alt}
@@ -213,7 +213,7 @@ export function EigenaarPagina({
       {/* ── WAT ERBIJ HOORT ── beeld links, lijst rechts */}
       <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6 items-center">
-          <div className="lg:col-span-6 relative aspect-[4/5] overflow-hidden">
+          <div data-beeld className="lg:col-span-6 relative aspect-[4/5] overflow-hidden">
             <Image src="/images/standaard/V2-12.jpg" alt={c.erbijBeeldAlt} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
           </div>
           <div className="lg:col-span-5 lg:col-start-8">
