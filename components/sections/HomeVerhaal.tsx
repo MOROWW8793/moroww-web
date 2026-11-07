@@ -1,5 +1,4 @@
 import { Link } from '@/i18n/navigation'
-import { TOTAL_STAYS_REVIEWED } from '@/lib/reviews'
 
 // Drie blokken onder de deuren op de home (nov 2026): wat het label voor een
 // gast betekent, wat gasten zeggen, en waarom moroww bestaat. Bovenaan de
@@ -87,11 +86,6 @@ export function HomeVerhaal({ locale }: Props) {
                 {nl ? 'geen beloften. alleen ervaringen.' : 'no promises. only experiences.'}
               </h2>
             </div>
-            <p className="text-body text-moroww-ink-2">
-              <span className="text-moroww-orange">★★★★★</span>{' '}
-              <span className="font-semibold text-moroww-dark">10/10</span>{' '}
-              {nl ? `over ${TOTAL_STAYS_REVIEWED} verblijven` : `across ${TOTAL_STAYS_REVIEWED} stays`}
-            </p>
           </div>
           <div className="mt-mw-6 grid grid-cols-1 md:grid-cols-3 gap-mw-5">
             {reviews.map((r, i) => (

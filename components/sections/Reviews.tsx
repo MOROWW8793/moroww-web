@@ -19,8 +19,6 @@ export async function Reviews() {
             </h2>
           </div>
           <div className="flex items-center gap-2 text-sm text-moroww-dark/50 shrink-0">
-            <span className="text-moroww-orange text-base tracking-tight">★★★★★</span>
-            <span className="font-semibold text-moroww-dark">10 / 10</span>
             <span>{t('all_stays', { count: TOTAL_STAYS_REVIEWED })}</span>
           </div>
         </div>
