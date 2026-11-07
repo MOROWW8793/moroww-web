@@ -35,7 +35,7 @@ export const partnerCategorieen: PartnerCategorie[] = [
   },
   {
     sleutel: 'huis',
-    foto: '/images/standaard/V2-12.jpg',
+    foto: '/images/hub/huis-moro.jpg',
     label: 'in het huis',
     titel: 'wat de gast ruikt en voelt.',
     tekst: 'Geur, linnen en de essentials in de badkamer. Dezelfde die we in onze eigen huizen gebruiken.',
