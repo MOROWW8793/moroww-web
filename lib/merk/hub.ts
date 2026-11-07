@@ -1,0 +1,104 @@
+// Inhoud van moroww hub op één plek. Waarden tussen [HAKEN] zijn nog niet beslist.
+// Een partner komt pas met naam op de site als de samenwerking getekend is
+// (status 'live'). Tot dan blijft de categorie zichtbaar, zonder naam.
+
+export type PartnerStatus = 'live' | 'binnenkort';
+
+export interface HubPartner {
+  naam: string;
+  wat: string;
+  voordeel: string;
+  url?: string;
+  status: PartnerStatus;
+}
+
+export interface PartnerCategorie {
+  sleutel: string;
+  label: string;
+  titel: string;
+  tekst: string;
+  foto: string;
+  partners: HubPartner[];
+}
+
+export const partnerCategorieen: PartnerCategorie[] = [
+  {
+    sleutel: 'tools',
+    foto: '/images/standaard/V2-56.jpg',
+    label: 'tools en software',
+    titel: 'kalender, prijzen, gastberichten.',
+    tekst: 'Voor wie zelf verhuurt: één kalender over alle platformen, prijzen die meebewegen, berichten die op tijd vertrekken.',
+    partners: [
+      { naam: '[PARTNER]', wat: 'beheersoftware voor wie zelf verhuurt', voordeel: '[VOORDEEL VOOR LEDEN]', status: 'binnenkort' },
+    ],
+  },
+  {
+    sleutel: 'huis',
+    foto: '/images/standaard/V2-12.jpg',
+    label: 'in het huis',
+    titel: 'wat de gast ruikt en voelt.',
+    tekst: 'Geur, linnen en de essentials in de badkamer. Dezelfde die we in onze eigen huizen gebruiken.',
+    partners: [
+      { naam: '[PARTNER]', wat: 'geur', voordeel: '[VOORDEEL VOOR LEDEN]', status: 'binnenkort' },
+      { naam: '[PARTNER]', wat: 'huurlinnen', voordeel: '[VOORDEEL VOOR LEDEN]', status: 'binnenkort' },
+      { naam: '[PARTNER]', wat: 'badkamer-essentials', voordeel: '[VOORDEEL VOOR LEDEN]', status: 'binnenkort' },
+    ],
+  },
+  {
+    sleutel: 'stil',
+    foto: '/images/standaard/V2-63.jpg',
+    label: 'stille systemen',
+    titel: 'slot, licht, warmte, sensoren.',
+    tekst: 'Techniek die werkt zonder dat de gast ze ziet. Met advies over wat past bij je huis.',
+    partners: [
+      { naam: '[PARTNER]', wat: 'slimme sloten', voordeel: '[VOORDEEL VOOR LEDEN]', status: 'binnenkort' },
+    ],
+  },
+  {
+    sleutel: 'vakmensen',
+    foto: '/images/standaard/V2-19.jpg',
+    label: 'vakmensen',
+    titel: 'schoonmaak, onderhoud, foto.',
+    tekst: 'Mensen die weten wat een wissel is. Per regio, en alleen wie we zelf aan het werk zagen.',
+    partners: [
+      { naam: '[PARTNER]', wat: 'schoonmaak per regio', voordeel: '[VOORDEEL VOOR LEDEN]', status: 'binnenkort' },
+    ],
+  },
+];
+
+export const hoeWeKiezen: [string, string][] = [
+  ['het past bij het label', 'Wat een partner doet, moet een gast in een moroww-huis merken. Of net niet merken.'],
+  ['we gebruiken het zelf', 'Een partner werkt eerst in onze eigen huizen, voor hij in de hub komt.'],
+  ['een voordeel voor leden', 'Elke partner geeft eigenaars met het label iets wat anderen niet krijgen.'],
+  ['één aanspreekpunt', 'Leden weten wie ze moeten bellen, en krijgen snel antwoord.'],
+];
+
+export const ledenKrijgen: [string, string][] = [
+  ['partners met voordelen', 'Tools, merken en vakmensen die moroww zelf kiest, met een voordeel voor leden.'],
+  ['de academy', 'Kleine sessies van hosts voor hosts, in een moroww-huis.'],
+  ['de ledenbrief', 'Eén keer per maand: wat er verandert aan de regels, wat werkt bij andere leden, wat er komt.'],
+  ['andere eigenaars', 'Een netwerk van mensen die hun huis met dezelfde zorg verhuren.'],
+];
+
+export const academyThemas: [string, string][] = [
+  ['de eerste tien seconden', 'Geur, licht en warmte bij aankomst, en wat dat doet met je reviews.'],
+  ['je cijfers', 'Wat een nacht je echt kost, en hoe je prijzen zet die kloppen.'],
+  ['reviews', 'Waarom gasten vijf sterren geven, en waarom niet.'],
+  ['de regels', 'Wat verandert er, en wat betekent het voor jouw huis. Met moroww how.'],
+];
+
+export interface AcademySessie {
+  datum: string;
+  plaats: string;
+  titel: string;
+  tekst: string;
+}
+
+export const academySessies: AcademySessie[] = [
+  {
+    datum: '[DATUM]',
+    plaats: '[LOCATIE]',
+    titel: 'wat een gast ruikt voor hij binnenkomt.',
+    tekst: 'Over geur, licht en de eerste tien seconden. En wat dat doet met je reviews.',
+  },
+];
