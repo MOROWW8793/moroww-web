@@ -6,6 +6,7 @@ import { Hanken_Grotesk } from 'next/font/google'
 import { routing } from '@/i18n/routing'
 import { Nav } from '@/components/hallmark/Nav'
 import { Footer } from '@/components/hallmark/Footer'
+import { Motion } from '@/components/hallmark/Motion'
 import { OrganizationJsonLd } from '@/components/JsonLd'
 import type { ReactNode } from 'react'
 import '@/app/hallmark.css'
@@ -61,12 +62,21 @@ export default async function LocaleLayout({
   return (
     <html lang={htmlLang} className={hanken.variable}>
       <body className="hm">
+        {/* Zet html.hm-js vóór de rest van de body wordt gerenderd, zodat de
+            motion-primitives in hallmark.css hun initial hidden-state kunnen
+            toepassen zonder een flits van zichtbare content eerst. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('hm-js')",
+          }}
+        />
         <OrganizationJsonLd />
         <NextIntlClientProvider messages={messages}>
           <Nav locale={locale} />
           <main>{children}</main>
           <Footer locale={locale} />
         </NextIntlClientProvider>
+        <Motion />
         <Analytics />
       </body>
     </html>
