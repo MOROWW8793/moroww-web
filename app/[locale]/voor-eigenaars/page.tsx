@@ -95,22 +95,24 @@ export default async function VoorEigenaarsPage({ params }: { params: Promise<{ 
       <section className="w-full px-6 md:px-12 py-mw-8 mb-mw-8 border-t border-moroww-rule">
         <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-mw-6">
           <div>
-            <h2 className="text-h3 text-moroww-dark">weet je nog niet waar te beginnen?</h2>
+            <p className="text-audit uppercase text-moroww-label">kennisbank</p>
+            <h2 className="mt-mw-2 text-h3 text-moroww-dark">eerst zelf lezen?</h2>
             <p className="mt-mw-3 text-body text-moroww-ink-2">
-              Lees eerst in de kennisbank, of plan een gesprek. Een half uur volstaat meestal.
+              Regels en belasting, wat een nacht kost, verzekering, de vier manieren om te verhuren. Alles wat we weten,
+              in gewone taal.
             </p>
             <div className="mt-mw-5 flex flex-wrap gap-3">
+              <Link href="/kennis" className="inline-flex items-center min-h-[48px] bg-moroww-orange text-moroww-dark px-6 text-body font-semibold">
+                naar de kennisbank
+              </Link>
               <a
                 href="https://calendar.app.google/BH8wYeA9AGf6KrUz7"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center min-h-[48px] bg-moroww-orange text-moroww-dark px-6 text-body font-semibold"
+                className="inline-flex items-center min-h-[48px] border border-moroww-dark text-moroww-dark px-6 text-body"
               >
-                plan een gesprek
+                of plan een gesprek
               </a>
-              <Link href="/kennis" className="inline-flex items-center min-h-[48px] border border-moroww-dark text-moroww-dark px-6 text-body">
-                naar de kennisbank
-              </Link>
             </div>
           </div>
           <div>

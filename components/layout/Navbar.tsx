@@ -85,18 +85,6 @@ export function Navbar() {
             </Link>
           ))}
 
-          {/* Kennisbank: eigen ingang (nov 2026) */}
-          <Link
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            href={'/kennis' as any}
-            className={`text-sm font-medium transition-colors duration-150 ${
-              effectiveScrolled
-                ? 'text-moroww-dark hover:text-moroww-orange'
-                : 'text-white/90 hover:text-white'
-            }`}
-          >
-            {t('knowledge')}
-          </Link>
 
           {/* voor eigenaars: één knop naar het overzicht van de drie takken: label, how en hub (nov 2026). */}
           <Link
@@ -166,14 +154,6 @@ export function Navbar() {
               </Link>
             ))}
 
-            <Link
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              href={'/kennis' as any}
-              className="text-lg font-medium text-moroww-dark py-3 min-h-[44px] flex items-center"
-              onClick={() => setOpen(false)}
-            >
-              {t('knowledge')}
-            </Link>
             <Link
               href="/voor-eigenaars"
               className="mt-2 border border-moroww-dark text-moroww-dark rounded-full px-6 py-3 text-base font-semibold text-center min-h-[44px] flex items-center justify-center"
