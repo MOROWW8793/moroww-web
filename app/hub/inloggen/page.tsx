@@ -21,7 +21,7 @@ async function stuurLink(formData: FormData) {
     email,
     options: { emailRedirectTo: `${proto}://${host}/hub/auth/callback?naar=${encodeURIComponent(veilig)}` },
   });
-  if (error) redirect('/hub/inloggen?fout=versturen');
+  if (error) redirect(error.status === 429 ? '/hub/inloggen?fout=teveel' : '/hub/inloggen?fout=versturen');
   redirect('/hub/inloggen?verstuurd=1');
 }
 
@@ -46,6 +46,7 @@ export default async function Inloggen({ searchParams }: { searchParams: Promise
               <input id="email" name="email" type="email" required autoComplete="email" />
               {sp.fout === 'email' ? <p className="hub-fout">Dat e-mailadres klopt niet.</p> : null}
               {sp.fout === 'versturen' ? <p className="hub-fout">Versturen lukte niet. Probeer het straks opnieuw.</p> : null}
+              {sp.fout === 'teveel' ? <p className="hub-fout">Er zijn op korte tijd te veel links aangevraagd. Wacht even, en probeer het binnen een uur opnieuw.</p> : null}
               {sp.fout === 'link' ? <p className="hub-fout">Die link is verlopen of al gebruikt. Vraag een nieuwe aan.</p> : null}
               <button type="submit" className="btn btn-primair">stuur me een link</button>
             </form>
