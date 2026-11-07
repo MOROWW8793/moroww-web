@@ -2,7 +2,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { Analytics } from '@vercel/analytics/next'
-import { Fraunces, Instrument_Sans } from 'next/font/google'
+import { Hanken_Grotesk } from 'next/font/google'
 import { routing } from '@/i18n/routing'
 import { Nav } from '@/components/hallmark/Nav'
 import { Footer } from '@/components/hallmark/Footer'
@@ -10,18 +10,10 @@ import { OrganizationJsonLd } from '@/components/JsonLd'
 import type { ReactNode } from 'react'
 import '@/app/hallmark.css'
 
-const fraunces = Fraunces({
+const hanken = Hanken_Grotesk({
   subsets: ['latin'],
-  weight: ['400', '500'],
-  style: ['normal'],
-  variable: '--font-fraunces',
-  display: 'swap',
-})
-
-const instrument = Instrument_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-instrument',
+  weight: ['400', '500', '600'],
+  variable: '--font-hanken',
   display: 'swap',
 })
 
@@ -67,7 +59,7 @@ export default async function LocaleLayout({
   const htmlLang = locale === 'nl' ? 'nl-BE' : 'en'
 
   return (
-    <html lang={htmlLang} className={`${fraunces.variable} ${instrument.variable}`}>
+    <html lang={htmlLang} className={hanken.variable}>
       <body className="hm">
         <OrganizationJsonLd />
         <NextIntlClientProvider messages={messages}>

@@ -1,21 +1,23 @@
 /* Hallmark · v2.0.0 */
-/* critique: warm editorial paper, serif display, slow rhythm, one terracotta accent */
-/* theme: custom · shape: Letter · genre: editorial · signature: the promise as opening line */
+/* critique: warm paper, one grotesk family, rhythm by section background, moroww-orange as single accent */
+/* theme: moroww-brand · shape: Index-First + proof · signature: the label claim */
 
 :root {
-  --hm-paper: #F4F0E8;
-  --hm-paper-deep: #EBE5D9;
-  --hm-ink: #1A1613;
-  --hm-dim: #6C655C;
-  --hm-rule: #D9D3C7;
-  --hm-accent: #9B4A2A;
+  --hm-paper: #F4EFE6;
+  --hm-beige: #D7C7B3;
+  --hm-peach: #F7D9C4;
+  --hm-ink: #1A1A1A;
+  --hm-dim: #7A746A;
+  --hm-rule: #C7B99F;
+  --hm-rule-soft: #E3D9C6;
+  --hm-accent: #F39A58;
 
-  --hm-display: var(--font-fraunces), Georgia, serif;
-  --hm-sans: var(--font-instrument), -apple-system, system-ui, sans-serif;
+  --hm-display: var(--font-hanken), -apple-system, system-ui, 'Segoe UI', sans-serif;
+  --hm-sans:    var(--font-hanken), -apple-system, system-ui, 'Segoe UI', sans-serif;
 
   --hm-measure: 62ch;
   --hm-gutter: 1.5rem;
-  --hm-max: 78rem;
+  --hm-max: 80rem;
 
   --hm-ease: cubic-bezier(0.2, 0.7, 0.1, 1);
 }
@@ -39,31 +41,47 @@ body.hm {
   width: 100%;
   max-width: var(--hm-max);
   margin-inline: auto;
-  padding-inline: clamp(1.25rem, 3vw, 2rem);
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+/* eyebrow — lowercase body-face, dim, iets kleiner. Niet tracked, niet caps.
+   Signaal, geen opsmuk — zoals in de merkdeck. */
+.hm-eyebrow {
+  font-family: var(--hm-sans);
+  font-weight: 400;
+  font-size: 0.9375rem;
+  color: var(--hm-dim);
+  letter-spacing: 0;
 }
 
 .hm-display {
   font-family: var(--hm-display);
-  font-weight: 400;
-  letter-spacing: -0.015em;
-  line-height: 1.02;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
   overflow-wrap: break-word;
   min-width: 0;
   color: var(--hm-ink);
 }
 
-.hm-h-xl { font-size: clamp(2.75rem, 7vw, 6rem); }
-.hm-h-lg { font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.08; }
-.hm-h-md { font-size: clamp(1.5rem, 2.5vw, 2rem); line-height: 1.15; }
+.hm-h-xl { font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.02; }
+.hm-h-lg { font-size: clamp(2rem, 4.2vw, 3.5rem); line-height: 1.06; }
+.hm-h-md { font-size: clamp(1.5rem, 2.5vw, 2rem); line-height: 1.12; }
 
 .hm-lead {
-  font-family: var(--hm-display);
-  font-size: clamp(1.1875rem, 1.8vw, 1.5rem);
+  font-family: var(--hm-sans);
+  font-size: clamp(1.125rem, 1.8vw, 1.4rem);
   font-weight: 400;
-  line-height: 1.4;
+  line-height: 1.45;
   color: var(--hm-ink);
   max-width: var(--hm-measure);
-  letter-spacing: -0.005em;
+}
+
+/* Een korte ondersteunende regel; iets kleiner dan body, iets dimmer. */
+.hm-support {
+  font-size: 0.9375rem;
+  color: var(--hm-dim);
+  line-height: 1.55;
 }
 
 .hm-prose { max-width: var(--hm-measure); }
@@ -76,6 +94,11 @@ body.hm {
   border-top: 1px solid var(--hm-rule);
   margin: 0;
 }
+.hm-rule-soft {
+  border: 0;
+  border-top: 1px solid var(--hm-rule-soft);
+  margin: 0;
+}
 
 .hm-link {
   color: var(--hm-ink);
@@ -85,31 +108,32 @@ body.hm {
   text-decoration-thickness: 1px;
   transition: text-decoration-color 300ms var(--hm-ease), color 300ms var(--hm-ease);
 }
-.hm-link:hover {
-  text-decoration-color: var(--hm-accent);
-  color: var(--hm-accent);
-}
+.hm-link:hover { text-decoration-color: var(--hm-ink); color: var(--hm-ink); }
 .hm-link:focus-visible {
   outline: 2px solid var(--hm-accent);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
+/* Pil met vulling. Bewust rondom vol — de deck gebruikt geen zwevende
+   ghost-knoppen; actie is massief. */
 .hm-cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--hm-sans);
-  font-size: 0.9375rem;
   font-weight: 500;
+  font-size: 0.9375rem;
   color: var(--hm-paper);
   background: var(--hm-ink);
-  padding: 0.8125rem 1.375rem;
+  padding: 0.875rem 1.5rem;
   border: 0;
   border-radius: 999px;
   cursor: pointer;
   text-decoration: none;
   transition: background 300ms var(--hm-ease), transform 300ms var(--hm-ease);
 }
-.hm-cta:hover { background: var(--hm-accent); }
+.hm-cta:hover  { background: var(--hm-accent); color: var(--hm-ink); }
 .hm-cta:active { transform: translateY(1px); }
 .hm-cta:focus-visible {
   outline: 2px solid var(--hm-accent);
@@ -117,13 +141,15 @@ body.hm {
 }
 
 .hm-cta-ghost {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--hm-sans);
-  font-size: 0.9375rem;
   font-weight: 500;
+  font-size: 0.9375rem;
   color: var(--hm-ink);
   background: transparent;
-  padding: 0.8125rem 1.375rem;
+  padding: 0.875rem 1.5rem;
   border: 1px solid var(--hm-rule);
   border-radius: 999px;
   text-decoration: none;
@@ -135,29 +161,49 @@ body.hm {
   outline-offset: 3px;
 }
 
-.hm-img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
+.hm-img { display: block; width: 100%; height: auto; }
 
 .hm-frame {
   position: relative;
   overflow: hidden;
-  background: var(--hm-paper-deep);
+  background: var(--hm-beige);
 }
 
-.hm-grid {
-  display: grid;
-  gap: var(--hm-gutter);
-  min-width: 0;
-}
-
-.hm-section { padding-block: clamp(4rem, 8vw, 7rem); }
+.hm-section { padding-block: clamp(3.5rem, 7vw, 6rem); }
 .hm-section-tight { padding-block: clamp(2.5rem, 5vw, 4rem); }
 
+/* Secties kunnen hun eigen achtergrond krijgen; de deck wisselt papier,
+   beige en perzik om het ritme te zetten. Vol-breed wrapper zodat de
+   kleur over de hele viewport loopt. */
+.hm-tinted { width: 100%; }
+.hm-bg-paper { background: var(--hm-paper); }
+.hm-bg-beige { background: var(--hm-beige); }
+.hm-bg-peach { background: var(--hm-peach); }
+
+/* Een cel-rubriek binnen een genummerde of gezuilde lijst. Zelfde
+   font-stack, iets zwaarder dan body maar lichter dan display. */
+.hm-cell-head {
+  font-family: var(--hm-display);
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  color: var(--hm-ink);
+}
+
+/* Reusachtig cijfer voor het bewijs- en probleemblok. */
+.hm-figure {
+  font-family: var(--hm-display);
+  font-weight: 400;
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--hm-ink);
+  font-variant-numeric: lining-nums;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
