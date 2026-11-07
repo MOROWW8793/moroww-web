@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { setRequestLocale } from 'next-intl/server'
+import { EcosysteemSchema } from '@/components/hallmark/EcosysteemSchema'
 
 export const metadata: Metadata = {
   title: 'moroww — label voor karaktervolle vakantiewoningen in België',
@@ -288,14 +289,19 @@ export default async function HomePage({
             {isNl ? 'Wie erbij hoort, staat er niet alleen voor.' : 'Those who belong, do not stand alone.'}
           </h2>
 
+          {/* Op desktop verschijnt het schema; op mobiele breedte blijft de
+              5-zuilen-strook staan als fallback (CSS in hallmark.css). */}
+          <div style={{ marginTop: 'clamp(3rem, 6vw, 5rem)' }}>
+            <EcosysteemSchema locale={k} />
+          </div>
+
           <div
             style={{
               marginTop: 'clamp(3rem, 6vw, 5rem)',
-              display: 'grid',
               gap: '1.5rem 1.5rem',
               gridTemplateColumns: 'minmax(0, 1fr)',
             }}
-            className="hm-five-grid"
+            className="hm-five-grid hm-zuilen-fallback"
             data-anim="stagger"
           >
             {ZUILEN.map((z) => (

@@ -273,6 +273,95 @@ html.hm-js [data-anim="timeline"].is-in > * { opacity: 1; transform: none; }
 html.hm-js [data-anim="timeline"].is-in > :nth-child(2) { transition-delay: 400ms; }
 html.hm-js [data-anim="timeline"].is-in > :nth-child(3) { transition-delay: 800ms; }
 
+/* ───────────── ecosysteem-schema ─────────────
+   Hub-en-spoke SVG. Op klein scherm toont de pagina de 5-zuilen-fallback;
+   vanaf 720px breed verschijnt het schema en verdwijnt de fallback. */
+
+.hm-ecosysteem-wrap {
+  display: none;
+  margin-inline: auto;
+  width: 100%;
+  max-width: 820px;
+}
+.hm-zuilen-fallback { display: grid; }
+
+@media (min-width: 720px) {
+  .hm-ecosysteem-wrap { display: block; }
+  .hm-zuilen-fallback { display: none; }
+}
+
+.hm-ecosysteem {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.hm-ecosysteem text {
+  font-family: var(--hm-sans);
+  fill: var(--hm-ink);
+  text-anchor: middle;
+}
+
+/* Lijnen onder de cirkels, stroke-dasharray via inline style per lijn. */
+.hm-eco-line {
+  stroke: var(--hm-ink);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+  transition: stroke-dashoffset 1400ms var(--hm-ease);
+}
+
+/* Kern — oranje cirkel met 'het label' + 'moroww'. */
+.hm-eco-core circle {
+  fill: var(--hm-accent);
+  stroke: var(--hm-ink);
+  stroke-width: 1.5;
+}
+.hm-eco-core-title {
+  font-weight: 500;
+  font-size: 20px;
+  dominant-baseline: central;
+}
+.hm-eco-core-sub {
+  font-size: 13px;
+  opacity: 0.82;
+  dominant-baseline: central;
+}
+.hm-eco-core {
+  opacity: 0;
+  transition: opacity 700ms var(--hm-ease);
+}
+
+/* Satellieten — witte cirkels met tekst. Fill in paper zodat de lijn eronder
+   netjes verdwijnt waar de cirkel overheen ligt. */
+.hm-eco-node circle {
+  fill: var(--hm-paper);
+  stroke: var(--hm-ink);
+  stroke-width: 1.5;
+}
+.hm-eco-node-label {
+  font-size: 15px;
+  dominant-baseline: central;
+}
+.hm-eco-node {
+  opacity: 0;
+  transition: opacity 700ms var(--hm-ease);
+}
+
+/* Trigger: wrap krijgt .is-in via data-anim="rise" op de wrap. */
+html.hm-js .hm-ecosysteem-wrap.is-in .hm-eco-line { stroke-dashoffset: 0 !important; }
+html.hm-js .hm-ecosysteem-wrap.is-in .hm-eco-core,
+html.hm-js .hm-ecosysteem-wrap.is-in .hm-eco-node { opacity: 1; }
+
+/* Ademhaling op de kern: start na alle onthullingen (2.8s delay), eindeloos. */
+@keyframes hm-eco-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.03); }
+}
+html.hm-js .hm-ecosysteem-wrap.is-in .hm-eco-core circle {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: hm-eco-pulse 4.5s ease-in-out 2.8s infinite;
+}
+
 /* Reduced motion: alle animaties worden letterlijk uitgezet. */
 @media (prefers-reduced-motion: reduce) {
   html.hm-js [data-anim="rise"],
@@ -282,6 +371,18 @@ html.hm-js [data-anim="timeline"].is-in > :nth-child(3) { transition-delay: 800m
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+  html.hm-js .hm-ecosysteem-wrap .hm-eco-line {
+    stroke-dashoffset: 0 !important;
+    transition: none !important;
+  }
+  html.hm-js .hm-ecosysteem-wrap .hm-eco-core,
+  html.hm-js .hm-ecosysteem-wrap .hm-eco-node {
+    opacity: 1 !important;
+    transition: none !important;
+  }
+  html.hm-js .hm-ecosysteem-wrap.is-in .hm-eco-core circle {
+    animation: none !important;
   }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
