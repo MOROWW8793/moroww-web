@@ -61,40 +61,33 @@ export interface EigenaarDropdownItem {
    *  NL-only inhoud, daar heeft een EN-variant geen doel). */
   toelichtingEn?: string
   href: string
+  /** kleur van het blaadje van de tak */
+  kleur?: string
 }
+// Drie ingangen, één per tak van de merkfamilie. De kennisartikels staan
+// niet meer los in het menu: ze zitten samen achter "kennis voor eigenaars"
+// onderaan het paneel (→ /kennis), net als in de voettekst.
 export const eigenaarDropdown: EigenaarDropdownItem[] = [
   {
     titel: 'het label',
-    toelichting: 'keuring, collectie en hub voor wie zelf verhuurt',
-    toelichtingEn: 'inspection, collection and hub for owners who rent out themselves',
+    toelichting: 'keuring, collectie en boekingen voor je huis',
+    toelichtingEn: 'inspection, collection and bookings for your home',
     href: '/het-label',
+    kleur: '#fea05e',
   },
   {
     titel: 'moroww how',
-    toelichting: 'weten wat mag: scan, traject, website',
-    toelichtingEn: 'what is allowed: scan, project, website',
+    toelichting: 'vergunning, opstart en je eigen website',
+    toelichtingEn: 'permits, set-up and your own website',
     href: '/how',
+    kleur: '#a994f0',
   },
   {
     titel: 'moroww hub',
     toelichting: 'partners, academy en market',
     toelichtingEn: 'partners, academy and market',
     href: '/hub',
-  },
-  {
-    titel: 'regels en belasting',
-    toelichting: 'verblijfsbelasting en brandveiligheid',
-    href: '/kennis/verblijfsbelasting-vakantiewoning',
-  },
-  {
-    titel: 'wat een nacht kost',
-    toelichting: 'btw, schoonmaak, linnen, commissie',
-    href: '/kennis/wat-kost-een-nacht-vakantiewoning',
-  },
-  {
-    titel: 'vier manieren',
-    toelichting: 'zelf, platform, beheerder of label',
-    href: '/kennis/vakantiewoning-verhuren-zelf-platform-beheerder-label',
+    kleur: '#7fa0c9',
   },
 ]
 
