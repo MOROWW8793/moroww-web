@@ -7,7 +7,8 @@ export type PartnerStatus = 'live' | 'binnenkort';
 export interface HubPartner {
   naam: string;
   wat: string;
-  voordeel: string;
+  /** Voordeel voor leden; leeg laten tot het afgesproken is. */
+  voordeel?: string;
   url?: string;
   status: PartnerStatus;
 }
@@ -29,7 +30,7 @@ export const partnerCategorieen: PartnerCategorie[] = [
     titel: 'kalender, prijzen, gastberichten.',
     tekst: 'Voor wie zelf verhuurt: één kalender over alle platformen, prijzen die meebewegen, berichten die op tijd vertrekken.',
     partners: [
-      { naam: '[PARTNER]', wat: 'beheersoftware voor wie zelf verhuurt', voordeel: '[VOORDEEL VOOR LEDEN]', status: 'binnenkort' },
+      { naam: '[PARTNER]', wat: 'beheersoftware voor wie zelf verhuurt', status: 'binnenkort' },
     ],
   },
   {
@@ -39,9 +40,9 @@ export const partnerCategorieen: PartnerCategorie[] = [
     titel: 'wat de gast ruikt en voelt.',
     tekst: 'Geur, linnen en de essentials in de badkamer. Dezelfde die we in onze eigen huizen gebruiken.',
     partners: [
-      { naam: '[PARTNER]', wat: 'geur', voordeel: '[VOORDEEL VOOR LEDEN]', status: 'binnenkort' },
-      { naam: '[PARTNER]', wat: 'huurlinnen', voordeel: '[VOORDEEL VOOR LEDEN]', status: 'binnenkort' },
-      { naam: '[PARTNER]', wat: 'badkamer-essentials', voordeel: '[VOORDEEL VOOR LEDEN]', status: 'binnenkort' },
+      { naam: '[PARTNER]', wat: 'geur', status: 'binnenkort' },
+      { naam: '[PARTNER]', wat: 'huurlinnen', status: 'binnenkort' },
+      { naam: 'Moro Essentials', wat: 'badkamerproducten, Belgisch merk', url: 'https://moro-essentials.com/nl/collections/all-products-new', status: 'live' },
     ],
   },
   {
@@ -51,7 +52,7 @@ export const partnerCategorieen: PartnerCategorie[] = [
     titel: 'slot, licht, warmte, sensoren.',
     tekst: 'Techniek die werkt zonder dat de gast ze ziet. Met advies over wat past bij je huis.',
     partners: [
-      { naam: '[PARTNER]', wat: 'slimme sloten', voordeel: '[VOORDEEL VOOR LEDEN]', status: 'binnenkort' },
+      { naam: 'Nuki', wat: 'slimme sloten · moroww is gecertificeerd Nuki Pro Partner en installeert zelf', url: 'https://nuki.io/nl-nl/', status: 'live' },
     ],
   },
   {
@@ -61,7 +62,8 @@ export const partnerCategorieen: PartnerCategorie[] = [
     titel: 'schoonmaak, onderhoud, foto.',
     tekst: 'Mensen die weten wat een wissel is. Per regio, en alleen wie we zelf aan het werk zagen.',
     partners: [
-      { naam: '[PARTNER]', wat: 'schoonmaak per regio', voordeel: '[VOORDEEL VOOR LEDEN]', status: 'binnenkort' },
+      { naam: 'Opruimingen CB', wat: 'schoonmaak, dieptereiniging en ontruiming · West- en Oost-Vlaanderen', url: 'https://www.opruimingencb.be/', status: 'live' },
+      { naam: 'Amelie Bauwens', wat: 'fotografie volgens de moroww-standaard', url: 'https://www.ameliebauwens.com/', status: 'live' },
     ],
   },
 ];

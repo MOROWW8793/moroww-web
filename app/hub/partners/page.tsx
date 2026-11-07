@@ -39,9 +39,9 @@ export default function Partners() {
                       ) : (
                         <>{p.wat}</>
                       )}
-                      {p.status === 'live' && <span className="klein" style={{ display: 'block' }}>{p.wat} · {p.voordeel}</span>}
+                      {p.status === 'live' && <span className="klein" style={{ display: 'block' }}>{p.wat}{p.voordeel ? ` · ${p.voordeel}` : ''}</span>}
                     </span>
-                    <span>{p.status === 'live' ? 'voor leden' : 'binnenkort'}</span>
+                    <span>{p.status === 'live' ? (p.voordeel ? 'voordeel voor leden' : 'partner') : 'binnenkort'}</span>
                   </li>
                 ))}
               </ul>
