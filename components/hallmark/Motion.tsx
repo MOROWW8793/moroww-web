@@ -56,7 +56,6 @@ export function Motion() {
       counterEls.forEach(finalize)
     } else {
       counterEls.forEach((el) => {
-        const to = parseFloat(el.dataset.countTo ?? '0')
         const decimals = parseInt(el.dataset.countDecimals ?? '0', 10)
         const prefix = el.dataset.countPrefix ?? ''
         const suffix = el.dataset.countSuffix ?? ''
