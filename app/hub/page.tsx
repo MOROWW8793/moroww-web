@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { Sectie, Kop } from '@/components/merk/Shell';
-import { site } from '@/lib/merk/site';
 
 export default function Hub() {
   return (
@@ -22,7 +21,7 @@ export default function Hub() {
           <Link href="/hub/academy" className="kaart kaart-zacht" style={{ background: '#E4EBF3' }}>
             <h2 className="kaart-titel">hub <i>academy</i></h2>
             <p>Voor hosts. Sessies over cijfers en over de psychologie van de gast, van hosts voor hosts.</p>
-            <span className="klein" style={{ marginTop: 'auto' }}>lidmaatschap {site.prijzen.academyLid} per maand</span>
+            <span className="klein" style={{ marginTop: 'auto' }}>voor leden</span>
           </Link>
           <Link href="/hub/market" className="kaart kaart-zacht" style={{ background: '#DDE6F0' }}>
             <h2 className="kaart-titel">hub <i>market</i></h2>

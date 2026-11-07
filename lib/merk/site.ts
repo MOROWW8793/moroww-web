@@ -4,13 +4,15 @@
 export const site = {
   url: 'https://www.moroww.com',
   bedrijf: 'MOROWW BV',
-  ondernemingsnummer: '[ONDERNEMINGSNUMMER]',
+  ondernemingsnummer: 'BE 1030.667.956',
   plaats: 'Waregem',
   contact: {
     naam: 'Noam Landries',
     telefoon: '+32 456 91 20 24',
     email: 'info@moroww.com',
   },
+  // Prijzen worden voorlopig nergens op de site getoond (beslissing nov 2026).
+  // Ze staan hier enkel als referentie.
   prijzen: {
     label: '[PRIJS]',
     scan: '€ 450',

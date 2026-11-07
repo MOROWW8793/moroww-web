@@ -16,7 +16,7 @@ export default function Website() {
         <div className="wrap">
           <Kop
             niveau={1}
-            boven={`how website · ${site.prijzen.website} excl. btw`}
+            boven="how website"
             titel="je eigen boekingswebsite. in jouw naam."
             tekst="Voor eigenaars die zelf verhuren. Wij bouwen een website voor je huis waar gasten rechtstreeks boeken, zonder platformcommissie. Draag je het moroww-label, dan staat je huis ook in de collectie op moroww.com, met een link naar jouw site."
           />

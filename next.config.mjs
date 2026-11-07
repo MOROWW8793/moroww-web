@@ -50,6 +50,8 @@ const nextConfig = {
       { source: "/en/how/:path*", destination: "/how/:path*", permanent: false },
       { source: "/en/hub", destination: "/hub", permanent: false },
       { source: "/en/hub/:path*", destination: "/hub/:path*", permanent: false },
+      // how partner richt zich op property managers, niet meer op makelaars.
+      { source: "/how/makelaars", destination: "/how/property-managers", permanent: true },
       // Slug-fix Anna-Helena: oude URL bewaart permanent 301 → nieuwe URL.
       { source: "/collectie/ann-helena-ursel", destination: "/collectie/anna-helena-ursel", permanent: true },
       { source: "/en/collection/ann-helena-ursel", destination: "/en/collection/anna-helena-ursel", permanent: true },

@@ -64,7 +64,7 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
         </div>
       </section>
 
-      {/* PRIJS EN FORMULES */}
+      {/* FORMULE */}
       <section className="w-full px-6 md:px-12 py-mw-8 bg-moroww-blush">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-3 gap-mw-5">
           <div className="lg:col-span-2 bg-moroww-paper p-mw-6">
@@ -72,9 +72,12 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
             <p className="mt-mw-3 text-body text-moroww-dark">
               Keuring, het label, een plaats in de collectie op moroww.com en toegang tot moroww hub.
             </p>
-            <p className="mt-mw-5 text-h2 text-moroww-dark">
-              {site.prijzen.label} <span className="text-body text-moroww-ink-2">per jaar, excl. btw</span>
+            <p className="mt-mw-5 text-body text-moroww-ink-2">
+              Wat het kost, hangt af van je huis. Dat bespreken we in een eerste gesprek.
             </p>
+            <a href="#aanvraag" className="mt-mw-4 inline-block text-body text-moroww-dark underline underline-offset-4 decoration-moroww-label">
+              vertel ons over je huis →
+            </a>
           </div>
           <div className="bg-moroww-paper p-mw-6 flex flex-col gap-mw-3">
             <h2 className="text-h3 text-moroww-dark">nog geen eigen boekingssite?</h2>

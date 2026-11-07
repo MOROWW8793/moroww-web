@@ -23,7 +23,7 @@ export default function Market() {
             <div key={p.sleutel} className="kaart" style={{ padding: 0, background: 'transparent', border: 'none', gap: 10 }}>
               <span className="foto">[PRODUCTFOTO]</span>
               <h2 className="kaart-titel" style={{ fontSize: 22 }}>{p.naam}</h2>
-              <span className="klein">[PRIJS] · binnenkort te koop</span>
+              <span className="klein">binnenkort te koop</span>
             </div>
           ))}
         </div>

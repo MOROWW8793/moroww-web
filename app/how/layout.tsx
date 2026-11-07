@@ -16,7 +16,7 @@ import '@/components/merk/merk.css';
 
 export const metadata: Metadata = {
   title: { default: 'moroww how · weet wat mag. voor je verhuurt.', template: '%s · moroww how' },
-  description: 'moroww how zoekt per adres uit of kortverhuur toegelaten is, wat er ontbreekt en wat eerst moet. Scan, traject, een eigen boekingswebsite en how partner voor makelaars.',
+  description: 'moroww how zoekt per adres uit of kortverhuur toegelaten is, wat er ontbreekt en wat eerst moet. Scan, traject, een eigen boekingswebsite en how partner voor property managers.',
 };
 
 export default function HowLayout({ children }: { children: React.ReactNode }) {
@@ -32,7 +32,7 @@ export default function HowLayout({ children }: { children: React.ReactNode }) {
           { href: '/how/scan', label: 'scan' },
           { href: '/how/traject', label: 'traject' },
           { href: '/how/website', label: 'website' },
-          { href: '/how/makelaars', label: 'voor makelaars' },
+          { href: '/how/property-managers', label: 'voor property managers' },
         ]}
         cta={{ href: '/how/contact', label: 'plan een scan' }}
       />

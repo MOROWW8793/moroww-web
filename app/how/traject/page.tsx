@@ -1,16 +1,15 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Sectie, Kop } from '@/components/merk/Shell';
-import { site } from '@/lib/merk/site';
 
-export const metadata: Metadata = { title: 'how traject', description: `Volledige regie tot je pand verhuurklaar is. ${site.prijzen.traject} excl. btw.` };
+export const metadata: Metadata = { title: 'how traject', description: 'Volledige regie tot je pand verhuurklaar is.' };
 
 export default function Traject() {
   return (
     <>
       <section className="held">
         <div className="wrap">
-          <Kop niveau={1} boven={`how traject · ${site.prijzen.traject} excl. btw`} titel="wij regelen het. tot het verhuurklaar is." tekst="Volledige regie: van de scan tot de laatste handtekening. Je weet vooraf wat het kost en wanneer het klaar is." />
+          <Kop niveau={1} boven="how traject" titel="wij regelen het. tot het verhuurklaar is." tekst="Volledige regie: van de scan tot de laatste handtekening. Je weet vooraf wat het kost en wanneer het klaar is." />
           <div className="knoppen"><Link href="/how/contact" className="btn btn-primair">vraag een traject aan</Link></div>
         </div>
       </section>

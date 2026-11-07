@@ -1,17 +1,16 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Sectie, Kop } from '@/components/merk/Shell';
-import { site } from '@/lib/merk/site';
 import { vijfVragen } from '@/lib/merk/how';
 
-export const metadata: Metadata = { title: 'how scan', description: `Een analyse van je pand: wat mag, wat ontbreekt, wat eerst. ${site.prijzen.scan} excl. btw.` };
+export const metadata: Metadata = { title: 'how scan', description: 'Een analyse van je pand: wat mag, wat ontbreekt, wat eerst.' };
 
 export default function Scan() {
   return (
     <>
       <section className="held">
         <div className="wrap">
-          <Kop niveau={1} boven={`how scan · ${site.prijzen.scan} excl. btw`} titel="mag hier kortverhuur?" tekst="Een analyse van het pand: wat mag, wat ontbreekt, wat eerst. Met plaatsbezoek, actieplan en vier weken nazorg." />
+          <Kop niveau={1} boven="how scan" titel="mag hier kortverhuur?" tekst="Een analyse van het pand: wat mag, wat ontbreekt, wat eerst. Met plaatsbezoek, actieplan en vier weken nazorg." />
           <div className="knoppen"><Link href="/how/contact" className="btn btn-primair">plan een scan</Link></div>
         </div>
       </section>
