@@ -90,7 +90,7 @@ export function EigenaarPagina({
       <section className="w-full px-6 md:px-12 pt-mw-8 lg:pt-mw-10 overflow-visible">
         <div className="mx-auto max-w-7xl">
           <div className="mw-in"><Eyebrow>{c.eyebrow}</Eyebrow></div>
-          <h1 className="mw-in mt-mw-4 text-display font-light text-moroww-dark max-w-[14ch]">{c.h1}</h1>
+          <h1 data-regels className="mw-in mt-mw-4 text-display font-light text-moroww-dark max-w-[14ch]">{c.h1}</h1>
           <div className="mw-in-2 mt-mw-6 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto] gap-mw-5 items-end">
             <p className="text-body-lg text-moroww-dark max-w-[48ch]">{c.lead}</p>
             <div className="flex flex-wrap gap-mw-3">
@@ -116,7 +116,7 @@ export function EigenaarPagina({
       <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl">
           <Eyebrow>{c.waardeEyebrow}</Eyebrow>
-          <h2 className="mt-mw-4 text-h2 font-light text-moroww-dark max-w-[22ch]">{c.waardeH2}</h2>
+          <h2 data-regels className="mt-mw-4 text-h2 font-light text-moroww-dark max-w-[22ch]">{c.waardeH2}</h2>
           <div className="mt-mw-6 lg:mt-mw-8 grid grid-cols-1 md:grid-cols-2 gap-x-mw-8 gap-y-mw-6 lg:gap-y-mw-8">
             {c.waarde.map((w, i) => (
               <div key={w.titel} className="border-t border-moroww-dark/20 pt-mw-5 grid grid-cols-1 sm:grid-cols-[3.5rem_1fr] gap-mw-2 sm:gap-mw-4">
@@ -136,7 +136,7 @@ export function EigenaarPagina({
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6">
           <div className="lg:col-span-5">
             <Eyebrow>{c.kringEyebrow}</Eyebrow>
-            <h2 className="mt-mw-4 text-h2 font-light text-moroww-dark">{c.kringH2}</h2>
+            <h2 data-regels className="mt-mw-4 text-h2 font-light text-moroww-dark">{c.kringH2}</h2>
           </div>
           <div className="lg:col-span-6 lg:col-start-7 space-y-mw-3 text-body-lg text-moroww-dark max-w-[52ch]">
             {c.kringP.map((p) => <p key={p}>{p}</p>)}
@@ -150,7 +150,7 @@ export function EigenaarPagina({
           <div className="px-6 md:px-12">
             <div className="mx-auto max-w-7xl">
               <Eyebrow>{c.huizenEyebrow}</Eyebrow>
-              <h2 className="mt-mw-4 text-h2 font-light text-moroww-dark max-w-[24ch]">{c.huizenH2}</h2>
+              <h2 data-regels className="mt-mw-4 text-h2 font-light text-moroww-dark max-w-[24ch]">{c.huizenH2}</h2>
             </div>
           </div>
           {/* Strook lijnt links uit met het raster van de pagina en loopt rechts door tot de rand. */}
@@ -176,7 +176,7 @@ export function EigenaarPagina({
       <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl">
           <Eyebrow>{c.standaardEyebrow}</Eyebrow>
-          <h2 className="mt-mw-4 text-h2 font-light text-moroww-dark max-w-[22ch]">{c.standaardH2}</h2>
+          <h2 data-regels className="mt-mw-4 text-h2 font-light text-moroww-dark max-w-[22ch]">{c.standaardH2}</h2>
           <ol className="mt-mw-6 grid grid-cols-1 md:grid-cols-2 gap-2">
             {c.standaard.map((s, i) => (
               <li key={s.titel} className="group relative aspect-[4/5] lg:aspect-[5/4] overflow-hidden bg-moroww-dark">
@@ -213,7 +213,7 @@ export function EigenaarPagina({
           </div>
           <div className="lg:col-span-5 lg:col-start-8">
             <Eyebrow>{c.erbijEyebrow}</Eyebrow>
-            <h2 className="mt-mw-4 text-h2 font-light text-moroww-dark">{c.erbijH2}</h2>
+            <h2 data-regels className="mt-mw-4 text-h2 font-light text-moroww-dark">{c.erbijH2}</h2>
             <dl className="mt-mw-6 border-t border-moroww-rule">
               {c.erbij.map((e) => (
                 <div key={e.titel} className="border-b border-moroww-rule py-mw-4">
@@ -231,7 +231,7 @@ export function EigenaarPagina({
       <section className="w-full px-6 md:px-12 mt-mw-8 lg:mt-mw-12">
         <div className="mx-auto max-w-7xl">
           <Eyebrow>{c.keuzesEyebrow}</Eyebrow>
-          <h2 className="mt-mw-4 text-h2 font-light text-moroww-dark max-w-[22ch]">{c.keuzesH2}</h2>
+          <h2 data-regels className="mt-mw-4 text-h2 font-light text-moroww-dark max-w-[22ch]">{c.keuzesH2}</h2>
           <div className="mt-mw-6 grid grid-cols-1 md:grid-cols-3 gap-mw-6">
             {c.keuzes.map((k) => (
               <div key={k.titel} className="border-t border-moroww-dark/20 pt-mw-4">
@@ -250,7 +250,7 @@ export function EigenaarPagina({
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-6 items-end">
           <div className="lg:col-span-7">
             <Eyebrow licht>{c.batchEyebrow}</Eyebrow>
-            <h2 className="mt-mw-4 text-display font-light text-white">{c.batchH2}</h2>
+            <h2 data-regels className="mt-mw-4 text-display font-light text-white">{c.batchH2}</h2>
           </div>
           <div className="lg:col-span-5 space-y-mw-4">
             <p className="text-body-lg text-white/90">{c.batchP}</p>
@@ -287,7 +287,7 @@ export function EigenaarPagina({
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-mw-8">
           <div className="lg:col-span-6">
             <Eyebrow>{c.formEyebrow}</Eyebrow>
-            <h2 className="mt-mw-4 text-h2 font-light text-moroww-dark">{c.formH2}</h2>
+            <h2 data-regels className="mt-mw-4 text-h2 font-light text-moroww-dark">{c.formH2}</h2>
             <p className="mt-mw-4 text-body text-moroww-dark max-w-[52ch]">{c.formP}</p>
             <div id="poortentoets" className="mt-mw-5 max-w-[52ch]">
               <LeadForm />
