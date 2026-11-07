@@ -41,10 +41,10 @@ export type NavItem = {
 // 'partners' is uit de nav gehaald. De route blijft bestaan en blijft
 // bereikbaar via de voettekst; op de site moet partners bewijsmateriaal
 // zijn op /over-moroww, geen bestemming.
+// Nov 2026: de standaard en over moroww uit de bovenste navigatie gehaald.
+// De pagina's blijven bestaan en staan in de voettekst.
 export const gastenNavItems: NavItem[] = [
   { labelKey: 'collection', href: '/collectie' },
-  { labelKey: 'standard',   href: '/de-standaard' },
-  { labelKey: 'about',      href: '/over-moroww' },
 ]
 
 // Legacy — mainNavItems blijft geëxporteerd voor backwards-compat.
