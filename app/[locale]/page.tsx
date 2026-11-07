@@ -6,6 +6,7 @@ import { FaqJsonLd } from "@/components/FaqJsonLd";
 import { Deur } from "@/components/Deur";
 import { SneakPeek } from "@/components/sections/SneakPeek";
 import { WoningKaarten } from "@/components/sections/WoningKaarten";
+import { HomeVerhaal } from "@/components/sections/HomeVerhaal";
 import { siteMetadata } from "@/lib/seo/siteMetadata";
 import { liveWoningen, type Locale } from "@/lib/woningen";
 import { liveLabelWoningen } from "@/lib/labelWoningen";
@@ -107,6 +108,9 @@ export default async function HomePage({
           />
         </div>
       </section>
+
+      {/* HET LABEL, WAT GASTEN ZEGGEN, WAAROM MOROWW — onder de deuren (nov 2026). */}
+      <HomeVerhaal locale={locale} />
 
     </>
   );
