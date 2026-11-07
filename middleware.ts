@@ -7,6 +7,11 @@ const intlMiddleware = createIntlMiddleware(routing)
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
+  // moroww how en moroww hub hebben hun eigen layout buiten [locale] (NL-only).
+  if (/^\/(how|hub)(\/|$)/.test(pathname)) {
+    return NextResponse.next()
+  }
+
   // Admin protection
   if (pathname.startsWith('/admin/')) {
     const adminAuth = request.cookies.get('admin_auth')

@@ -56,6 +56,10 @@ export const routing = defineRouting({
     },
     // NL-only pagina's: 'en'-pad is dezelfde string, next.config.mjs
     // redirect /en/... naar de NL-URL. Taalwissel-knop verborgen via nlOnlyRoutes.
+    '/het-label': {
+      nl: '/het-label',
+      en: '/het-label',
+    },
     '/partners': {
       nl: '/partners',
       en: '/partners',

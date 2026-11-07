@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 import { type Locale, type Woning, sortForCollectie } from '@/lib/woningen'
 import { PandKaart } from '@/components/PandKaart'
+import type { LabelWoning } from '@/lib/labelWoningen'
 
 /**
  * Rendert een raster van pandkaarten zonder filter-tabs. Gebruikt op
@@ -11,9 +12,13 @@ import { PandKaart } from '@/components/PandKaart'
  */
 export async function WoningKaarten({
   woningen: items,
+  labelWoningen = [],
+  locale,
 }: {
   woningen: Woning[]
   locale: Locale
+  /** Labelhuizen die de eigenaar zelf verhuurt; komen na de eigen collectie. */
+  labelWoningen?: LabelWoning[]
 }) {
   const t = await getTranslations('collectie')
   const vanaf = t('from')
@@ -50,6 +55,24 @@ export async function WoningKaarten({
           />
         )
       })}
+      {labelWoningen.map((w) => (
+        <PandKaart
+          key={w.id}
+          href="/"
+          externeHref={w.eigenBoekingsUrl}
+          beeld={w.heroFoto}
+          beeldAlt={w.naam}
+          titel={w.naam}
+          plaats={w.locatie}
+          auditItems={[
+            w.oppervlakte ?? '',
+            w.slaapkamers ? `${w.slaapkamers} ${bedroomsLabel}` : '',
+            w.maxGasten ? `${w.maxGasten} ${gastenLabel}` : '',
+            locale === 'en' ? 'book with the owner ↗' : 'boek bij de eigenaar ↗',
+          ]}
+          label={w.gekeurd ? (locale === 'en' ? `moroww label ${w.gekeurd}` : `moroww-label ${w.gekeurd}`) : 'moroww-label'}
+        />
+      ))}
     </div>
   )
 }

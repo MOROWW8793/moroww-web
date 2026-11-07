@@ -8,6 +8,7 @@ import { SneakPeek } from "@/components/sections/SneakPeek";
 import { WoningKaarten } from "@/components/sections/WoningKaarten";
 import { siteMetadata } from "@/lib/seo/siteMetadata";
 import { liveWoningen, type Locale } from "@/lib/woningen";
+import { liveLabelWoningen } from "@/lib/labelWoningen";
 
 // Server-side check: als het bestand in /public niet bestaat, geef undefined
 // terug zodat de Deur alleen de placeholder-tegel toont. Zo staat er nooit
@@ -76,7 +77,7 @@ export default async function HomePage({
           meteen op woningen in plaats van op de twee collectie-tegels. */}
       <section className="w-full px-6 md:px-12 mt-mw-6">
         <div className="mx-auto max-w-7xl">
-          <WoningKaarten woningen={liveWoningen()} locale={locale as Locale} />
+          <WoningKaarten woningen={liveWoningen()} labelWoningen={liveLabelWoningen()} locale={locale as Locale} />
         </div>
       </section>
 

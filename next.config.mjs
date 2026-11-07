@@ -44,6 +44,12 @@ const nextConfig = {
       // NL-only pagina's: /en/... redirect naar de NL-URL.
       { source: "/en/vergelijking", destination: "/vergelijking", permanent: true },
       { source: "/en/privacy", destination: "/privacy", permanent: true },
+      // Merkfamilie (nov 2026): het label, how en hub zijn NL-only.
+      { source: "/en/het-label", destination: "/het-label", permanent: false },
+      { source: "/en/how", destination: "/how", permanent: false },
+      { source: "/en/how/:path*", destination: "/how/:path*", permanent: false },
+      { source: "/en/hub", destination: "/hub", permanent: false },
+      { source: "/en/hub/:path*", destination: "/hub/:path*", permanent: false },
       // Slug-fix Anna-Helena: oude URL bewaart permanent 301 → nieuwe URL.
       { source: "/collectie/ann-helena-ursel", destination: "/collectie/anna-helena-ursel", permanent: true },
       { source: "/en/collection/ann-helena-ursel", destination: "/en/collection/anna-helena-ursel", permanent: true },

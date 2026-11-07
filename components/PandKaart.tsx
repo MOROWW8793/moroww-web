@@ -37,17 +37,16 @@ interface Props {
   priority?: boolean
   /** Kort label linksboven op het beeld, bv. 'nieuw'. */
   label?: string
+  /** Labelhuizen die de eigenaar zelf verhuurt: de kaart linkt rechtstreeks
+   *  naar de eigen boekingswebsite, in een nieuw tabblad. */
+  externeHref?: string
 }
 
-export function PandKaart({ href, beeld, beeldAlt, titel, plaats, auditItems, priority, label }: Props) {
+export function PandKaart({ href, beeld, beeldAlt, titel, plaats, auditItems, priority, label, externeHref }: Props) {
   const items = auditItems.filter((it) => typeof it === 'string' && it.trim() !== '')
 
-  return (
-    <Link
-      href={href}
-      aria-label={`bekijk ${titel}`}
-      className="group block"
-    >
+  const inhoud = (
+    <>
       <div className="relative aspect-[4/5] overflow-hidden">
         <Image
           src={beeld}
@@ -72,6 +71,30 @@ export function PandKaart({ href, beeld, beeldAlt, titel, plaats, auditItems, pr
           <AuditLijn density="quiet" items={items} />
         </div>
       )}
+    </>
+  )
+
+  if (externeHref) {
+    return (
+      <a
+        href={externeHref}
+        target="_blank"
+        rel="noopener"
+        aria-label={`boek ${titel} op de website van de eigenaar`}
+        className="group block"
+      >
+        {inhoud}
+      </a>
+    )
+  }
+
+  return (
+    <Link
+      href={href}
+      aria-label={`bekijk ${titel}`}
+      className="group block"
+    >
+      {inhoud}
     </Link>
   )
 }

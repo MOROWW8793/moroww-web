@@ -1,0 +1,155 @@
+/* Stijlen voor moroww how en moroww hub. Alles zit onder .merk, zodat de rest van moroww.com er niets van merkt. */
+
+:root {
+  --font-fraunces: 'Fraunces';
+  --font-dm-sans: 'DM Sans';
+  --font-inter-tight: 'Inter Tight';
+}
+
+.merk *, .merk *::before, .merk *::after { box-sizing: border-box; }
+.merk a { color: inherit; }
+
+/* ---------- merkwerelden ---------- */
+.merk {
+  --bg: #FBFAF8; --ink: #1A1A1A; --muted: #4A4744; --line: #E3DED7;
+  --zacht: #FAE4D6; --wit: #FFFFFF; --donker: #1A1A1A; --donker-ink: #FBFAF8; --donker-muted: #E3DED7;
+  --knop: #FEA05E; --knop-ink: #1A1A1A; --accent: #C08D6E;
+  --font-titel: 'OverusedGrotesk', 'Overused Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --font-tekst: 'OverusedGrotesk', 'Overused Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --titel-gewicht: 300; --titel-cursief: normal;
+  background: var(--bg); color: var(--ink); font-family: var(--font-tekst);
+  min-height: 100vh; display: flex; flex-direction: column;
+}
+.merk > main { flex: 1 0 auto; }
+
+/* moroww: blush en paper als grond, oranje in kleine dosis, nooit een zwarte grond */
+.merk-moroww { --donker: #FAE4D6; --donker-ink: #1A1A1A; --donker-muted: #4A4744; }
+
+/* moroww how: de avond ervoor. night, dusk, glow, lavender */
+.merk-how {
+  --bg: #FBFAF8; --ink: #14122B; --muted: #3B3852; --line: #E6E1F2;
+  --zacht: #F2EFFA; --donker: #14122B; --donker-ink: #FBFAF8; --donker-muted: #CFC6F7;
+  --knop: #14122B; --knop-ink: #FBFAF8; --accent: #5B3FD0;
+  --font-titel: var(--font-inter-tight), 'Helvetica Neue', Arial, sans-serif;
+  --font-tekst: var(--font-inter-tight), 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* moroww hub: de dag buiten, in diep blauw. abyss, steel, powder, silver */
+.merk-hub {
+  --bg: #FFFFFF; --ink: #0F2238; --muted: #33465E; --line: #D6DFEA;
+  --zacht: #EEF3F8; --donker: #0F2238; --donker-ink: #F4F7FB; --donker-muted: #C9D8E8;
+  --knop: #0F2238; --knop-ink: #FFFFFF; --accent: #5F7896;
+  --font-titel: var(--font-fraunces), Georgia, serif;
+  --font-tekst: var(--font-dm-sans), 'Helvetica Neue', Arial, sans-serif;
+}
+.merk-hub .titel-1 i, .merk-hub .titel-2 i, .merk-hub .kaart-titel i { font-style: italic; }
+
+/* ---------- basis ---------- */
+.merk .wrap { max-width: 1152px; margin: 0 auto; padding: 0 32px; }
+@media (max-width: 640px) { .merk .wrap { padding: 0 20px; } }
+
+.merk .sectie { padding: 96px 0; }
+.merk .sectie-zacht { background: var(--zacht); }
+.merk .sectie-wit { background: var(--wit); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.merk .sectie-donker { background: var(--donker); color: var(--donker-ink); }
+.merk .sectie-donker .boven, .merk .sectie-donker .inleiding, .merk .sectie-donker .zacht-tekst { color: var(--donker-muted); }
+@media (max-width: 640px) { .merk .sectie { padding: 64px 0; } }
+
+.merk .held { padding: 112px 0 120px; }
+.merk-how .held { background: radial-gradient(90% 120% at 100% 0%, #5B3FD0 0%, #2A1F5C 38%, #14122B 72%); color: #FBFAF8; }
+.merk-hub .held { background: radial-gradient(80% 120% at 10% 0%, #2B4A70 0%, #0F2238 60%); color: #F4F7FB; }
+.merk-moroww .held { background: var(--zacht); }
+.merk-how .held .inleiding, .merk-how .held .boven { color: #E6E1FA; }
+.merk-hub .held .inleiding, .merk-hub .held .boven { color: #C9D8E8; }
+
+.merk .kopblok { display: flex; flex-direction: column; gap: 14px; max-width: 760px; margin-bottom: 40px; }
+.merk .boven { font-size: 15px; color: var(--muted); }
+.merk .titel-1 { margin: 0; font-family: var(--font-titel); font-weight: 300; font-size: clamp(2.6rem, 6vw, 4.6rem); letter-spacing: -0.03em; line-height: 1.02; }
+.merk .titel-2 { margin: 0; font-family: var(--font-titel); font-weight: 300; font-size: clamp(2rem, 4vw, 2.7rem); letter-spacing: -0.02em; line-height: 1.1; }
+.merk .inleiding { margin: 0; font-size: 1.15rem; line-height: 1.6; color: var(--muted); max-width: 640px; }
+.merk .zacht-tekst { color: var(--muted); }
+.merk p { line-height: 1.6; }
+
+.merk .knoppen { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 12px; }
+.merk .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; font: inherit; font-size: 16px; font-weight: 500; text-decoration: none; border: 1px solid transparent; cursor: pointer; }
+.merk .btn-primair { background: var(--knop); color: var(--knop-ink); }
+.merk .btn-primair:hover { filter: brightness(0.95); }
+.merk .btn-licht { background: #FFFFFF; color: var(--ink); }
+.merk .btn-lijn { border-color: currentColor; color: inherit; background: transparent; }
+.merk .btn-kop { min-height: 44px; padding: 0 18px; font-size: 15px; background: var(--knop); color: var(--knop-ink); }
+.merk-how .btn-kop { background: #CFC6F7; color: #14122B; }
+.merk-hub .btn-kop { background: #C9D8E8; color: #0F2238; }
+.merk .sectie-donker .btn-primair, .merk .held .btn-primair { background: #FFFFFF; color: var(--ink); }
+.merk-moroww .held .btn-primair { background: var(--knop); color: var(--knop-ink); }
+
+/* ---------- kop en voet ---------- */
+.merk .kop { border-bottom: 1px solid var(--line); background: var(--bg); }
+.merk .kop-donker { background: var(--donker); color: var(--donker-ink); border-bottom: none; }
+.merk .kop-binnen { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding-top: 20px; padding-bottom: 20px; }
+.merk .kop-logo { display: inline-flex; align-items: center; text-decoration: none; color: inherit; }
+.merk .kop-nav { display: flex; flex-wrap: wrap; gap: 8px 26px; align-items: center; font-size: 15px; }
+.merk .kop-nav a:not(.btn) { text-decoration: none; padding: 10px 0; }
+.merk .kop-nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 4px; }
+.merk .kop-donker .kop-nav a:not(.btn) { color: var(--donker-muted); }
+
+.merk .voet { border-top: 1px solid var(--line); padding: 40px 0; font-size: 14px; color: var(--muted); }
+.merk .voet-donker { background: var(--donker); color: var(--donker-muted); border-top: none; }
+.merk .voet-binnen { display: flex; flex-wrap: wrap; gap: 20px 40px; justify-content: space-between; align-items: center; }
+.merk .voet-familie { display: flex; gap: 24px; align-items: center; }
+.merk .voet-familie a { text-decoration: none; display: inline-flex; padding: 10px 0; }
+.merk .voet-gegevens { margin: 0; }
+
+.merkteken { display: inline-flex; align-items: baseline; gap: 0.25em; letter-spacing: -0.02em; line-height: 1; }
+.merkteken-how .merkteken-woord { font-family: var(--font-inter-tight), sans-serif; font-weight: 500; }
+.merkteken-hub .merkteken-woord { font-family: var(--font-fraunces), Georgia, serif; font-weight: 300; }
+
+/* ---------- blokken ---------- */
+.merk .raster { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.merk .raster-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+.merk .kaart { background: var(--wit); border: 1px solid var(--line); padding: 32px; display: flex; flex-direction: column; gap: 14px; text-decoration: none; color: inherit; }
+.merk .kaart-zacht { background: var(--zacht); border-color: transparent; }
+.merk .kaart-donker { background: var(--donker); color: var(--donker-ink); border-color: transparent; }
+.merk .kaart-donker .zacht-tekst, .merk .kaart-donker .kaart-label { color: var(--donker-muted); }
+.merk .kaart-label { font-size: 14px; color: var(--accent); }
+.merk .kaart-titel { font-family: var(--font-titel); font-size: 26px; font-weight: 500; margin: 0; }
+.merk-hub .kaart-titel { font-weight: 300; font-size: 30px; }
+.merk .kaart p { margin: 0; font-size: 16px; color: var(--muted); }
+.merk .kaart-donker p { color: var(--donker-muted); }
+.merk .kaart-voet { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); font-size: 22px; font-weight: 500; }
+.merk .kaart-donker .kaart-voet { border-color: rgba(255,255,255,0.2); }
+.merk .klein { font-size: 14px; font-weight: 400; color: var(--muted); }
+.merk .kaart-donker .klein { color: var(--donker-muted); }
+.merk a.kaart:hover { border-color: var(--ink); }
+
+.merk .lijst { list-style: none; margin: 0; padding: 0; background: var(--wit); border: 1px solid var(--line); }
+.merk .lijst li { display: flex; justify-content: space-between; gap: 16px; padding: 18px 24px; border-bottom: 1px solid var(--line); font-size: 17px; }
+.merk .lijst li:last-child { border-bottom: none; }
+.merk .lijst li span:last-child { color: var(--muted); font-size: 14px; }
+
+.merk .stappen { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; list-style: none; padding: 0; margin: 0; counter-reset: stap; }
+.merk .stappen li { border-top: 2px solid var(--ink); padding-top: 18px; display: flex; flex-direction: column; gap: 8px; counter-increment: stap; }
+.merk .stappen li::before { content: '0' counter(stap); font-size: 14px; color: var(--accent); }
+.merk .stappen strong { font-size: 20px; font-weight: 500; }
+.merk .stappen span { font-size: 15px; line-height: 1.55; color: var(--muted); }
+
+.merk .rij { display: flex; flex-wrap: wrap; gap: 40px 56px; align-items: flex-start; }
+.merk .rij > .smal { flex: 1 1 320px; }
+.merk .rij > .breed { flex: 999 1 480px; min-width: 0; }
+
+.merk .foto { background: #EFE7DF; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--muted); aspect-ratio: 4 / 3; }
+.merk-hub .foto { background: #DDE6F0; aspect-ratio: 1 / 1; }
+
+.merk .band { display: flex; flex-wrap: wrap; gap: 24px 40px; align-items: center; justify-content: space-between; }
+.merk .band-tekst { flex: 999 1 520px; min-width: 0; font-family: var(--font-titel); font-size: clamp(1.4rem, 2.5vw, 1.8rem); font-weight: 300; line-height: 1.3; margin: 0; }
+
+/* ---------- formulier ---------- */
+.merk .form { display: flex; flex-direction: column; gap: 18px; }
+.merk .form-veld { display: flex; flex-direction: column; gap: 6px; }
+.merk .form-veld label { font-size: 14px; font-weight: 500; }
+.merk .form-veld input, .merk .form-veld textarea, .merk .form-veld select { font: inherit; font-size: 16px; padding: 14px; border: 1px solid var(--line); background: #FFFFFF; color: var(--ink); border-radius: 0; }
+.merk .form-veld input:focus, .merk .form-veld textarea:focus, .merk .form-veld select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.merk .form .btn { align-self: flex-start; }
+.merk .form-bedankt { font-size: 18px; padding: 24px; background: var(--zacht); margin: 0; }
+.merk .form-fout { color: #8A1C1C; margin: 0; }
+
+.merk :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }

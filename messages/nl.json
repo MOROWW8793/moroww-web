@@ -60,7 +60,11 @@
     "calendar_link": "een gesprek inplannen",
     "column_collection": "de collectie",
     "column_for_owners": "voor eigenaars",
-    "supported_by": "supported by"
+    "supported_by": "supported by",
+    "cookie_settings": "cookie-instellingen",
+    "the_label": "het label",
+    "how": "moroww how",
+    "hub": "moroww hub"
   },
   "collectie": {
     "label": "Gecureerde selectie",

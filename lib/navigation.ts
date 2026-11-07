@@ -7,6 +7,7 @@ export type NavHref =
   | '/the-shore'
   | '/the-fields'
   | '/eigenaar-worden'
+  | '/het-label'
   | '/partners'
   | '/contact'
   | '/privacy'
@@ -63,20 +64,32 @@ export interface EigenaarDropdownItem {
 }
 export const eigenaarDropdown: EigenaarDropdownItem[] = [
   {
-    titel: 'voor eigenaars',
-    toelichting: 'wat het label doet en hoe het loopt',
-    toelichtingEn: 'what the label does and how it works',
-    href: '/eigenaar-worden',
+    titel: 'het label',
+    toelichting: 'keuring, collectie en hub voor wie zelf verhuurt',
+    toelichtingEn: 'inspection, collection and hub for owners who rent out themselves',
+    href: '/het-label',
   },
   {
-    titel: 'wat een nacht kost',
-    toelichting: 'btw, schoonmaak, linnen, commissie',
-    href: '/kennis/wat-kost-een-nacht-vakantiewoning',
+    titel: 'moroww how',
+    toelichting: 'weten wat mag: scan, traject, website',
+    toelichtingEn: 'what is allowed: scan, project, website',
+    href: '/how',
+  },
+  {
+    titel: 'moroww hub',
+    toelichting: 'partners, academy en market',
+    toelichtingEn: 'partners, academy and market',
+    href: '/hub',
   },
   {
     titel: 'regels en belasting',
     toelichting: 'verblijfsbelasting en brandveiligheid',
     href: '/kennis/verblijfsbelasting-vakantiewoning',
+  },
+  {
+    titel: 'wat een nacht kost',
+    toelichting: 'btw, schoonmaak, linnen, commissie',
+    href: '/kennis/wat-kost-een-nacht-vakantiewoning',
   },
   {
     titel: 'vier manieren',
@@ -112,6 +125,9 @@ export type FooterLabelKey =
   | 'partners'
   | 'for_owners'
   | 'knowledge_for_owners'
+  | 'the_label'
+  | 'how'
+  | 'hub'
   | 'contact'
   | 'calendar_link'
   | 'privacy'
@@ -135,6 +151,9 @@ export const footerCollectieLinks: FooterLink[] = [
 // Kolom 3 · voor eigenaars. Eén link naar /kennis (was tien) — de hub op
 // /kennis toont alle artikels, de voettekst hoeft dat niet te dupliceren.
 export const footerEigenaarLinks: FooterLink[] = [
+  { labelKey: 'the_label',            href: '/het-label' },
+  { labelKey: 'how',                  href: '/how' },
+  { labelKey: 'hub',                  href: '/hub' },
   { labelKey: 'for_owners',           href: '/eigenaar-worden' },
   { labelKey: 'knowledge_for_owners', href: '/kennis' },
   { labelKey: 'contact',              href: '/contact' },
@@ -149,6 +168,7 @@ export const footerEigenaarLinks: FooterLink[] = [
 // NL-only pagina's: taalwissel-knop is verborgen op deze pagina's, want
 // een taalwissel die naar een 404 of home leidt suggereert dat er iets stuk is.
 export const nlOnlyRoutes: NavHref[] = [
+  '/het-label',
   '/vergelijking',
   '/privacy',
 ]
