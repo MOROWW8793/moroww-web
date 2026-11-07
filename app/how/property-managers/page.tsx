@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 
 const aanbod: { label: string; titel: string; tekst: string; href: string }[] = [
   {
-    label: 'per adres',
-    titel: 'how scan en traject',
+    label: 'op maat, per huis',
+    titel: 'how voor je portefeuille',
     tekst:
-      'Elk huis dat je portefeuille binnenkomt, krijgt dezelfde vijf vragen en hetzelfde rapport: wat mag, wat ontbreekt, wat eerst. Op vraag regelen we het traject tot het verhuurklaar is.',
-    href: '/how/scan',
+      'Mag een nieuw huis verhuurd worden, wat ontbreekt er, wat moet eerst? We bekijken het per huis en regelen op vraag wat nodig is tot het verhuurklaar is.',
+    href: '/how',
   },
   {
     label: 'zichtbaarheid',
@@ -76,8 +76,8 @@ export default function PropertyManagers() {
         <Kop boven="de afspraken" titel="vaste afspraken. per huis." />
         <ol className="stappen">
           <li><strong>één aanspreekpunt</strong><span>Een vaste lijn voor jouw kantoor, voor elk huis in je portefeuille.</span></li>
-          <li><strong>vaste aanpak</strong><span>Elk adres dezelfde vijf vragen, hetzelfde rapport. Je eigenaars weten waar ze aan toe zijn.</span></li>
-          <li><strong>voorrang</strong><span>Scans en trajecten van partners plannen we eerst in.</span></li>
+          <li><strong>vaste aanpak</strong><span>Voor elk huis een voorstel vooraf: wat, wie, wanneer en wat het kost. Je eigenaars weten waar ze aan toe zijn.</span></li>
+          <li><strong>voorrang</strong><span>Vragen van partners plannen we eerst in.</span></li>
         </ol>
       </Sectie>
 

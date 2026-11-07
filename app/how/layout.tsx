@@ -15,8 +15,8 @@ import '@/components/merk/merk.css';
 
 
 export const metadata: Metadata = {
-  title: { default: 'moroww how · weet wat mag. voor je verhuurt.', template: '%s · moroww how' },
-  description: 'moroww how zoekt per adres uit of kortverhuur toegelaten is, wat er ontbreekt en wat eerst moet. Scan, traject, een eigen boekingswebsite en how partner voor property managers.',
+  title: { default: 'moroww how · consulting voor kortverhuur, op maat', template: '%s · moroww how' },
+  description: 'moroww how is consulting voor kortverhuur, op maat van de vraag waar je tegenaan loopt: vergunning, opstart, een eigen boekingswebsite of je cijfers. Ook voor property managers.',
 };
 
 export default function HowLayout({ children }: { children: React.ReactNode }) {
@@ -29,15 +29,14 @@ export default function HowLayout({ children }: { children: React.ReactNode }) {
         home="/how"
         merk={<MerkTeken merk="how" op="donker" size={22} />}
         nav={[
-          { href: '/how/scan', label: 'scan' },
-          { href: '/how/traject', label: 'traject' },
+          { href: '/how#werkwijze', label: 'werkwijze' },
           { href: '/how/website', label: 'website' },
           { href: '/how/property-managers', label: 'voor property managers' },
         ]}
-        cta={{ href: '/how/contact', label: 'plan een scan' }}
+        cta={{ href: '/how/contact', label: 'vertel je vraag' }}
       />
       <main>{children}</main>
-      <Footer donker merk={<span>weet wat mag. voor je verhuurt.</span>} />
+      <Footer donker merk={<span>elke vraag is anders. de aanpak ook.</span>} />
     </div>
         <Analytics />
       </body>

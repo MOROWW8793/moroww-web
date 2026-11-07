@@ -46,6 +46,10 @@ const nextConfig = {
       { source: "/en/privacy", destination: "/privacy", permanent: true },
       // Merkfamilie (nov 2026): het label, how en hub zijn NL-only.
       { source: "/en/het-label", destination: "/het-label", permanent: false },
+      { source: "/en/voor-eigenaars", destination: "/voor-eigenaars", permanent: false },
+      // moroww how werkt op maat: geen vaste scan- of trajectpagina meer.
+      { source: "/how/scan", destination: "/how", permanent: false },
+      { source: "/how/traject", destination: "/how", permanent: false },
       { source: "/en/how", destination: "/how", permanent: false },
       { source: "/en/how/:path*", destination: "/how/:path*", permanent: false },
       { source: "/en/hub", destination: "/hub", permanent: false },

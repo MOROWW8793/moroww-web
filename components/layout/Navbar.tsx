@@ -98,9 +98,9 @@ export function Navbar() {
             {t('knowledge')}
           </Link>
 
-          {/* voor eigenaars: één knop naar het label (nov 2026). how en hub zijn vanaf daar en in de voettekst bereikbaar. */}
+          {/* voor eigenaars: één knop naar het overzicht van de drie takken: label, how en hub (nov 2026). */}
           <Link
-            href="/het-label"
+            href="/voor-eigenaars"
             className={`rounded-full px-5 py-2.5 text-sm font-semibold border transition-colors duration-150 ${
               effectiveScrolled
                 ? 'border-moroww-dark text-moroww-dark hover:bg-moroww-dark hover:text-white'
@@ -175,7 +175,7 @@ export function Navbar() {
               {t('knowledge')}
             </Link>
             <Link
-              href="/het-label"
+              href="/voor-eigenaars"
               className="mt-2 border border-moroww-dark text-moroww-dark rounded-full px-6 py-3 text-base font-semibold text-center min-h-[44px] flex items-center justify-center"
               onClick={() => setOpen(false)}
             >

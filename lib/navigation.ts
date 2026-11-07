@@ -8,6 +8,7 @@ export type NavHref =
   | '/the-fields'
   | '/eigenaar-worden'
   | '/het-label'
+  | '/voor-eigenaars'
   | '/partners'
   | '/contact'
   | '/privacy'
@@ -189,6 +190,7 @@ export const footerJuridisch: FooterLink[] = [
 // een taalwissel die naar een 404 of home leidt suggereert dat er iets stuk is.
 export const nlOnlyRoutes: NavHref[] = [
   '/het-label',
+  '/voor-eigenaars',
   '/vergelijking',
   '/privacy',
 ]
