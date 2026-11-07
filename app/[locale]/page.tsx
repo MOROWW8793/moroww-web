@@ -77,7 +77,7 @@ export default async function HomePage({
           meteen op woningen in plaats van op de twee collectie-tegels. */}
       <section className="w-full px-6 md:px-12 mt-mw-6">
         <div className="mx-auto max-w-7xl">
-          <WoningKaarten woningen={liveWoningen()} labelWoningen={liveLabelWoningen()} locale={locale as Locale} />
+          <WoningKaarten woningen={liveWoningen()} labelWoningen={liveLabelWoningen()} locale={locale as Locale} plekVoorEigenaar />
         </div>
       </section>
 

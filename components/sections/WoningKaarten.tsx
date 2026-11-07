@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server'
 import { type Locale, type Woning, sortForCollectie } from '@/lib/woningen'
 import { PandKaart } from '@/components/PandKaart'
 import type { LabelWoning } from '@/lib/labelWoningen'
+import { Link } from '@/i18n/navigation'
 
 /**
  * Rendert een raster van pandkaarten zonder filter-tabs. Gebruikt op
@@ -14,11 +15,14 @@ export async function WoningKaarten({
   woningen: items,
   labelWoningen = [],
   locale,
+  plekVoorEigenaar = false,
 }: {
   woningen: Woning[]
   locale: Locale
   /** Labelhuizen die de eigenaar zelf verhuurt; komen na de eigen collectie. */
   labelWoningen?: LabelWoning[]
+  /** Toont na de huizen een lege kaart "jouw huis hier?" die naar het label leidt. */
+  plekVoorEigenaar?: boolean
 }) {
   const t = await getTranslations('collectie')
   const vanaf = t('from')
@@ -73,6 +77,35 @@ export async function WoningKaarten({
           label={w.gekeurd ? (locale === 'en' ? `moroww label ${w.gekeurd}` : `moroww-label ${w.gekeurd}`) : 'moroww-label'}
         />
       ))}
+      {plekVoorEigenaar && (
+        <Link href="/het-label" className="group block">
+          <div className="relative aspect-[4/5] flex flex-col items-center justify-center gap-mw-4 border-2 border-dashed border-moroww-dark/25 group-hover:border-moroww-orange transition-colors duration-300 text-center px-mw-6">
+            <svg aria-hidden viewBox="0 0 64 40" className="w-16 h-auto opacity-80 group-hover:opacity-100 transition-opacity">
+              <g fill="#fea05e">
+                <ellipse cx="32" cy="12" rx="5" ry="11" />
+                <ellipse cx="32" cy="12" rx="5" ry="11" transform="rotate(-38 32 30)" />
+                <ellipse cx="32" cy="12" rx="5" ry="11" transform="rotate(38 32 30)" />
+                <ellipse cx="32" cy="12" rx="4.5" ry="10" transform="rotate(-76 32 30)" />
+                <ellipse cx="32" cy="12" rx="4.5" ry="10" transform="rotate(76 32 30)" />
+              </g>
+            </svg>
+            <p className="text-h3 text-moroww-dark">
+              {locale === 'en' ? 'your home here?' : 'jouw huis hier?'}
+            </p>
+            <p className="text-body text-moroww-ink-2 max-w-[30ch]">
+              {locale === 'en'
+                ? 'With the moroww label, your home joins the collection, with a direct link to your own booking site.'
+                : 'Met het moroww-label staat je huis in de collectie, met een rechtstreekse link naar je eigen boekingssite.'}
+            </p>
+          </div>
+          <div className="mt-mw-4">
+            <h3 className="text-h3 text-moroww-dark">{locale === 'en' ? 'for owners' : 'voor eigenaars'}</h3>
+            <p className="mt-1 text-body text-moroww-ink-2 underline underline-offset-4 decoration-moroww-label group-hover:decoration-moroww-dark">
+              {locale === 'en' ? 'about the label →' : 'over het label →'}
+            </p>
+          </div>
+        </Link>
+      )}
     </div>
   )
 }

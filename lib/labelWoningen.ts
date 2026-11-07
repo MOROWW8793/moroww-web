@@ -22,20 +22,19 @@ export interface LabelWoning {
   voorbeeld?: boolean
 }
 
-const alle: LabelWoning[] = [
-  {
-    id: 'voorbeeld-labelhuis',
-    naam: '[VOORBEELD] labelhuis',
-    locatie: '[PLAATS]',
-    collectie: 'the fields',
-    heroFoto: '/images/home/fields-door.jpg',
-    eigenBoekingsUrl: 'https://www.example.com',
-    slaapkamers: 3,
-    maxGasten: 6,
-    gekeurd: 2026,
-    voorbeeld: true,
-  },
-]
+// Voorbeeld van een item:
+// {
+//   id: 'villa-x',
+//   naam: 'Villa X',
+//   locatie: 'Knokke',
+//   collectie: 'the shore',
+//   heroFoto: '/images/label/villa-x/hero.jpg',
+//   eigenBoekingsUrl: 'https://www.villa-x.be',
+//   slaapkamers: 3,
+//   maxGasten: 6,
+//   gekeurd: 2026,
+// },
+const alle: LabelWoning[] = []
 
 const isProductie = process.env.VERCEL_ENV === 'production'
 
