@@ -24,7 +24,7 @@ const COPY = {
     labelH2: 'één naam. drie takken.',
     labelP: [
       'moroww is het label voor het huis. We bezoeken elk huis persoonlijk, zetten het in de collectie en doen dat elk jaar opnieuw. Zo weet een gast vooraf wat hij krijgt.',
-      'moroww how helpt eigenaars bij wat ze tegenkomen: een vergunning, een opstart, een eigen boekingssite. Op maat, want geen vraag is dezelfde.',
+      'moroww advisory helpt eigenaars bij wat ze tegenkomen: een vergunning, een opstart, een eigen boekingssite. Op maat, want geen vraag is dezelfde.',
       'moroww hub brengt de partners samen die het mogelijk maken: merken, vakmensen en tools die we eerst in onze eigen huizen gebruiken.',
     ],
     takkenLink: 'de drie takken voor eigenaars →',
@@ -63,7 +63,7 @@ const COPY = {
     labelH2: 'one name. three branches.',
     labelP: [
       'moroww is the label for the home. We visit every home in person, add it to the collection and do it again every year. So a guest knows what they get, before they go.',
-      'moroww how helps owners with whatever they run into: a permit, a start-up, their own booking site. Tailored, because no question is the same.',
+      'moroww advisory helps owners with whatever they run into: a permit, a start-up, their own booking site. Tailored, because no question is the same.',
       'moroww hub brings together the partners who make it possible: brands, craftspeople and tools we first use in our own homes.',
     ],
     takkenLink: 'the three branches for owners →',

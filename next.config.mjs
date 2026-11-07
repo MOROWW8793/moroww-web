@@ -47,15 +47,18 @@ const nextConfig = {
       // Merkfamilie (nov 2026): het label, how en hub zijn NL-only.
       { source: "/en/het-label", destination: "/het-label", permanent: false },
       { source: "/en/voor-eigenaars", destination: "/voor-eigenaars", permanent: false },
-      // moroww how werkt op maat: geen vaste scan- of trajectpagina meer.
-      { source: "/how/scan", destination: "/how", permanent: false },
-      { source: "/how/traject", destination: "/how", permanent: false },
-      { source: "/en/how", destination: "/how", permanent: false },
-      { source: "/en/how/:path*", destination: "/how/:path*", permanent: false },
+      // moroww how heet sinds nov 2026 moroww advisory. Oude adressen verwijzen door.
+      { source: "/how/scan", destination: "/advisory", permanent: true },
+      { source: "/how/traject", destination: "/advisory", permanent: true },
+      { source: "/how/makelaars", destination: "/advisory/property-managers", permanent: true },
+      { source: "/how", destination: "/advisory", permanent: true },
+      { source: "/how/:path*", destination: "/advisory/:path*", permanent: true },
+      { source: "/en/how", destination: "/advisory", permanent: true },
+      { source: "/en/how/:path*", destination: "/advisory/:path*", permanent: true },
+      { source: "/en/advisory", destination: "/advisory", permanent: false },
+      { source: "/en/advisory/:path*", destination: "/advisory/:path*", permanent: false },
       { source: "/en/hub", destination: "/hub", permanent: false },
       { source: "/en/hub/:path*", destination: "/hub/:path*", permanent: false },
-      // how partner richt zich op property managers, niet meer op makelaars.
-      { source: "/how/makelaars", destination: "/how/property-managers", permanent: true },
       // Slug-fix Anna-Helena: oude URL bewaart permanent 301 → nieuwe URL.
       { source: "/collectie/ann-helena-ursel", destination: "/collectie/anna-helena-ursel", permanent: true },
       { source: "/en/collection/ann-helena-ursel", destination: "/en/collection/anna-helena-ursel", permanent: true },

@@ -41,8 +41,8 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
             <a href="#aanvraag" className="inline-flex items-center min-h-[48px] bg-moroww-orange text-moroww-dark px-6 text-body font-semibold">
               vraag een bezoek aan
             </a>
-            <Link href="/how" className="inline-flex items-center min-h-[48px] border border-moroww-dark text-moroww-dark px-6 text-body">
-              eerst weten wat mag? naar moroww how
+            <Link href="/advisory" className="inline-flex items-center min-h-[48px] border border-moroww-dark text-moroww-dark px-6 text-body">
+              eerst weten wat mag? naar moroww advisory
             </Link>
           </div>
         </div>
@@ -81,9 +81,9 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
           </div>
           <div className="bg-moroww-paper p-mw-6 flex flex-col gap-mw-3">
             <h2 className="text-h3 text-moroww-dark">nog geen eigen boekingssite?</h2>
-            <p className="text-body text-moroww-ink-2">moroww how bouwt er een voor je huis, in jouw naam.</p>
-            <Link href="/how/website" className="text-body text-moroww-dark underline underline-offset-4 decoration-moroww-label">
-              over how website →
+            <p className="text-body text-moroww-ink-2">moroww advisory bouwt er een voor je huis, in jouw naam.</p>
+            <Link href="/advisory/website" className="text-body text-moroww-dark underline underline-offset-4 decoration-moroww-label">
+              over je eigen boekingssite
             </Link>
             <p className="mt-auto pt-mw-4 border-t border-moroww-rule text-body text-moroww-ink-2">
               Liever niet zelf beheren? Vraag naar de mogelijkheden.

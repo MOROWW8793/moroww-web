@@ -8,7 +8,7 @@ const ONTVANGER = process.env.AANVRAAG_MAIL_NAAR || 'info@moroww.com'
 const MERKEN = ['moroww', 'how', 'hub'] as const
 type Merk = (typeof MERKEN)[number]
 
-const merkNaam: Record<Merk, string> = { moroww: 'moroww', how: 'moroww how', hub: 'moroww hub' }
+const merkNaam: Record<Merk, string> = { moroww: 'moroww', how: 'moroww advisory', hub: 'moroww hub' }
 
 function tekst(v: unknown, max: number): string {
   return typeof v === 'string' ? v.trim().slice(0, max) : ''

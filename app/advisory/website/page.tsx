@@ -5,7 +5,7 @@ import { ContactForm } from '@/components/merk/ContactForm';
 import { site } from '@/lib/merk/site';
 
 export const metadata: Metadata = {
-  title: 'how website',
+  title: 'je eigen boekingssite',
   description: 'Een eigen boekingswebsite voor je vakantiewoning. Gasten boeken rechtstreeks bij jou, zonder platformcommissie.',
 };
 
@@ -16,7 +16,7 @@ export default function Website() {
         <div className="wrap">
           <Kop
             niveau={1}
-            boven="how website"
+            boven="je eigen boekingssite"
             titel="je eigen boekingswebsite. in jouw naam."
             tekst="Voor eigenaars die zelf verhuren. Wij bouwen een website voor je huis waar gasten rechtstreeks boeken, zonder platformcommissie. Draag je het moroww-label, dan staat je huis ook in de collectie op moroww.com, met een link naar jouw site."
           />

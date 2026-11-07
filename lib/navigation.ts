@@ -77,11 +77,11 @@ export const eigenaarDropdown: EigenaarDropdownItem[] = [
     kleur: '#fea05e',
   },
   {
-    titel: 'moroww how',
+    titel: 'moroww advisory',
     toelichting: 'vergunning, opstart en je eigen website',
     toelichtingEn: 'permits, set-up and your own website',
-    href: '/how',
-    kleur: '#a994f0',
+    href: '/advisory',
+    kleur: '#C8A46B',
   },
   {
     titel: 'moroww hub',
@@ -136,7 +136,7 @@ export interface FooterLink {
 // Voettekst · drie kolommen, één per publiek.
 //   verblijven     → gasten: alles om een huis te kiezen
 //   voor eigenaars → één ingang (het label) + kennis + gesprek
-//   moroww         → het merk en de twee andere takken (how, hub)
+//   moroww         → het merk en de twee andere takken (advisory, hub)
 // Juridisch, cookies en socials staan in de onderste balk, niet in een kolom.
 // /eigenaar-worden en /partners blijven bestaan maar staan niet meer in de
 // voettekst: het label is de ingang voor eigenaars, partners leven in de hub.
@@ -173,7 +173,7 @@ export const footerKolommen: FooterKolom[] = [
     titelKey: 'column_moroww',
     links: [
       { labelKey: 'about',   href: '/over-moroww' },
-      { labelKey: 'how',     href: '/how' },
+      { labelKey: 'how',     href: '/advisory' },
       { labelKey: 'hub',     href: '/hub' },
       { labelKey: 'contact', href: '/contact' },
     ],

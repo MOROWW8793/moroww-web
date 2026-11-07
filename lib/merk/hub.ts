@@ -86,7 +86,7 @@ export const academyThemas: [string, string][] = [
   ['de eerste tien seconden', 'Geur, licht en warmte bij aankomst, en wat dat doet met je reviews.'],
   ['je cijfers', 'Wat een nacht je echt kost, en hoe je prijzen zet die kloppen.'],
   ['reviews', 'Waarom gasten vijf sterren geven, en waarom niet.'],
-  ['de regels', 'Wat verandert er, en wat betekent het voor jouw huis. Met moroww how.'],
+  ['de regels', 'Wat verandert er, en wat betekent het voor jouw huis. Met moroww advisory.'],
 ];
 
 export interface AcademySessie {

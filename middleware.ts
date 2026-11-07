@@ -27,8 +27,9 @@ function partnerCookie(request: NextRequest, response: NextResponse) {
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // moroww how en moroww hub hebben hun eigen layout buiten [locale] (NL-only).
-  if (/^\/(how|hub)(\/|$)/.test(pathname)) {
+  // moroww advisory en moroww hub hebben hun eigen layout buiten [locale] (NL-only).
+  // /how blijft hier staan zodat de doorverwijzing naar /advisory niet door next-intl gaat.
+  if (/^\/(advisory|how|hub)(\/|$)/.test(pathname)) {
     return NextResponse.next()
   }
 

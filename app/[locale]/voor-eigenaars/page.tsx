@@ -3,11 +3,12 @@ import Link from 'next/link'
 import type { ReactNode } from 'react'
 import { setRequestLocale } from 'next-intl/server'
 import { Logo, MerkTeken } from '@/components/merk/Logo'
+import '@fontsource/cormorant-garamond/500.css'
 
 export const metadata: Metadata = {
   title: 'voor eigenaars',
   description:
-    'Wat moroww voor eigenaars doet: het label voor je huis, moroww how voor de vraag waar je op vastloopt, en moroww hub met partners en academy.',
+    'Wat moroww voor eigenaars doet: het label voor je huis, moroww advisory voor de vraag waar je op vastloopt, en moroww hub met partners en academy.',
   alternates: { canonical: 'https://www.moroww.com/voor-eigenaars' },
 }
 
@@ -22,7 +23,7 @@ type Tak = {
 
 const takken: Tak[] = [
   {
-    merk: <Logo height={27} />,
+    merk: <Logo height={22} />,
     kleur: '#fea05e',
     titel: 'jouw huis met het label.',
     tekst:
@@ -31,16 +32,16 @@ const takken: Tak[] = [
     knop: 'over het label',
   },
   {
-    merk: <MerkTeken merk="how" op="licht" size={34} />,
-    kleur: '#a994f0',
+    merk: <MerkTeken merk="advisory" op="licht" size={28} />,
+    kleur: '#C8A46B',
     titel: 'loop je ergens op vast?',
     tekst:
       'Een vergunning, een opstart, een eigen boekingssite: elke vraag is anders. We kijken naar jouw situatie en stellen voor wat nodig is.',
-    href: '/how',
-    knop: 'naar moroww how',
+    href: '/advisory',
+    knop: 'naar moroww advisory',
   },
   {
-    merk: <MerkTeken merk="hub" op="licht" size={34} />,
+    merk: <MerkTeken merk="hub" op="licht" size={28} />,
     kleur: '#7fa0c9',
     titel: 'partners, academy en market.',
     tekst:
@@ -64,7 +65,7 @@ export default async function VoorEigenaarsPage({ params }: { params: Promise<{ 
             één naam. drie takken.
           </h1>
           <p className="mt-mw-5 text-body-lg text-moroww-dark max-w-mw-eigenaar">
-            moroww is het label voor je huis, moroww how helpt op maat bij wat je tegenkomt, en moroww hub brengt je
+            moroww is het label voor je huis, moroww advisory helpt op maat bij wat je tegenkomt, en moroww hub brengt je
             bij partners en andere hosts. Kies wat past, of combineer.
           </p>
         </div>
@@ -84,7 +85,7 @@ export default async function VoorEigenaarsPage({ params }: { params: Promise<{ 
               <h2 className="mt-mw-5 text-h3 text-moroww-dark">{t.titel}</h2>
               <p className="mt-mw-3 text-body text-moroww-ink-2">{t.tekst}</p>
               <span className="mt-auto pt-mw-6 text-body text-moroww-dark underline underline-offset-4 decoration-moroww-label group-hover:decoration-moroww-dark">
-                {t.knop} →
+                {t.knop}
               </span>
             </Link>
           ))}
@@ -118,13 +119,13 @@ export default async function VoorEigenaarsPage({ params }: { params: Promise<{ 
           <div>
             <h2 className="text-h3 text-moroww-dark">je beheert huizen voor anderen?</h2>
             <p className="mt-mw-3 text-body text-moroww-ink-2">
-              Voor property managers is er how partner: één aanpak voor je hele portefeuille.
+              Voor property managers is er moroww advisory: één aanpak voor je hele portefeuille.
             </p>
             <Link
-              href="/how/property-managers"
+              href="/advisory/property-managers"
               className="mt-mw-5 inline-block text-body text-moroww-dark underline underline-offset-4 decoration-moroww-label"
             >
-              over how partner →
+              advisory voor property managers
             </Link>
           </div>
         </div>

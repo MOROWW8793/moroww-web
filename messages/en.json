@@ -63,7 +63,7 @@
     "supported_by": "supported by",
     "cookie_settings": "cookie settings",
     "the_label": "the label",
-    "how": "moroww how",
+    "how": "moroww advisory",
     "hub": "moroww hub",
     "column_stays": "stays",
     "column_moroww": "moroww",
@@ -89,7 +89,7 @@
     "binnenkort_h3_plural": "{countWord} homes are waiting for their photo shoot",
     "binnenkort_body_singular": "One coastal home has been visited and included. It will appear here once the imagery is ready.",
     "binnenkort_body_plural": "{countWord} coastal homes have been visited and included. They will appear here once the imagery is ready.",
-    "binnenkort_link": "how our visit works →",
+    "binnenkort_link": "how our visit works",
     "new_label": "new"
   },
   "property": {

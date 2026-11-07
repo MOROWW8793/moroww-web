@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Sectie, Kop } from '@/components/merk/Shell';
 import { Logo } from '@/components/merk/Logo';
 
-// moroww how werkt op maat. Geen vaste pakketten: de vragen hieronder zijn
+// moroww advisory werkt op maat. Geen vaste pakketten: de vragen hieronder zijn
 // voorbeelden van waar eigenaars mee komen, geen menukaart.
 const vragen: { titel: string; tekst: string; href?: string }[] = [
   {
@@ -16,7 +16,7 @@ const vragen: { titel: string; tekst: string; href?: string }[] = [
   {
     titel: 'ik wil rechtstreeks boekingen.',
     tekst: 'Een eigen boekingswebsite voor je huis, in jouw naam, zonder platformcommissie.',
-    href: '/how/website',
+    href: '/advisory/website',
   },
   {
     titel: 'de cijfers kloppen niet.',
@@ -25,7 +25,7 @@ const vragen: { titel: string; tekst: string; href?: string }[] = [
   {
     titel: 'ik beheer huizen voor anderen.',
     tekst: 'Voor property managers: één aanpak voor je hele portefeuille.',
-    href: '/how/property-managers',
+    href: '/advisory/property-managers',
   },
   {
     titel: 'iets anders.',
@@ -38,15 +38,15 @@ export default function How() {
     <>
       <section className="held">
         <div className="wrap" style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
-          <span className="boven">consulting voor kortverhuur, op maat</span>
-          <h1 className="titel-1" style={{ maxWidth: 840 }}>elke vraag is anders. de aanpak ook.</h1>
+          <span className="boven">advies op maat voor eigenaars</span>
+          <h1 className="titel-1" style={{ maxWidth: 840 }}>every question, a plan.</h1>
           <p className="inleiding">
-            moroww how kijkt naar de situatie waar jij tegenaan loopt en stelt voor wat nodig is. Niet meer, niet minder.
-            Daarna voer je het zelf uit, of regelen wij het.
+            Een vergunning, een opstart, een eigen boekingssite, de cijfers. Vertel ons wat er speelt. Je krijgt een plan:
+            wat er moet gebeuren, wie het doet, wanneer en wat het kost. Uitvoeren doe je zelf, of wij doen het.
           </p>
           <div className="knoppen">
-            <Link href="/how/contact" className="btn btn-primair">vertel ons je vraag</Link>
-            <Link href="/how/property-managers" className="btn btn-lijn">ik ben property manager</Link>
+            <Link href="/advisory/contact" className="btn btn-primair">vertel ons je vraag</Link>
+            <Link href="/advisory/property-managers" className="btn btn-lijn">ik ben property manager</Link>
           </div>
         </div>
       </section>
@@ -87,7 +87,7 @@ export default function How() {
             <span className="boven">voor property managers</span>
             <span>jij beheert de huizen. wij zorgen dat ze mogen, en gezien worden.</span>
           </div>
-          <Link href="/how/property-managers" className="btn btn-primair">over how partner</Link>
+          <Link href="/advisory/property-managers" className="btn btn-primair">voor property managers</Link>
         </div>
       </Sectie>
 

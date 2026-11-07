@@ -5,7 +5,7 @@ import { ContactForm } from '@/components/merk/ContactForm';
 import { site } from '@/lib/merk/site';
 
 export const metadata: Metadata = {
-  title: 'how partner voor property managers',
+  title: 'voor property managers',
   description:
     'Voor property managers van vakantiewoningen: per adres weten wat mag, je beste huizen onder het moroww-label, een boekingssite in jouw naam en de hub voor je team.',
 };
@@ -16,7 +16,7 @@ const aanbod: { label: string; titel: string; tekst: string; href: string }[] = 
     titel: 'how voor je portefeuille',
     tekst:
       'Mag een nieuw huis verhuurd worden, wat ontbreekt er, wat moet eerst? We bekijken het per huis en regelen op vraag wat nodig is tot het verhuurklaar is.',
-    href: '/how',
+    href: '/advisory',
   },
   {
     label: 'zichtbaarheid',
@@ -27,10 +27,10 @@ const aanbod: { label: string; titel: string; tekst: string; href: string }[] = 
   },
   {
     label: 'rechtstreeks boeken',
-    titel: 'how website',
+    titel: 'een eigen boekingssite',
     tekst:
       'Nog geen eigen boekingssite, of één die beter kan? We bouwen ze in jouw naam, voor één huis of je hele portefeuille.',
-    href: '/how/website',
+    href: '/advisory/website',
   },
   {
     label: 'voor je team',
@@ -48,9 +48,9 @@ export default function PropertyManagers() {
         <div className="wrap">
           <Kop
             niveau={1}
-            boven="how partner · voor property managers"
+            boven="moroww advisory voor property managers"
             titel="jij beheert de huizen. wij zorgen dat ze mogen, en gezien worden."
-            tekst="Je beheert vakantiewoningen voor eigenaars. how partner geeft je portefeuille één vaste aanpak: per adres weten wat mag, je beste huizen onder het moroww-label, en de hub voor je team."
+            tekst="Je beheert vakantiewoningen voor eigenaars. moroww advisory geeft je portefeuille één vaste aanpak: per adres weten wat mag, je beste huizen onder het moroww-label, en de hub voor je team."
           />
           <div className="knoppen">
             <a href="#kennismaking" className="btn btn-primair">vraag een kennismaking</a>
@@ -87,7 +87,7 @@ export default function PropertyManagers() {
             <Kop
               boven="kennismaking"
               titel="een gesprek van een half uur."
-              tekst={`We bekijken je portefeuille en wat how partner voor jou kan doen. ${site.contact.naam} · ${site.contact.telefoon}`}
+              tekst={`We bekijken je portefeuille en wat moroww advisory voor jou kan doen. ${site.contact.naam} · ${site.contact.telefoon}`}
             />
           </div>
           <div className="breed">

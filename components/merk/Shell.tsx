@@ -28,7 +28,7 @@ export function Footer({ donker = false, merk }: { donker?: boolean; merk: React
         <div className="voet-merk">{merk}</div>
         <nav aria-label="merkfamilie" className="voet-familie">
           <Link href="/"><Logo height={14} ink={donker ? '#ffffff' : '#0b0700'} /></Link>
-          <Link href="/how"><MerkTeken merk="how" op={donker ? 'donker' : 'licht'} size={16} /></Link>
+          <Link href="/advisory"><MerkTeken merk="advisory" op={donker ? 'donker' : 'licht'} size={16} /></Link>
           <Link href="/hub"><MerkTeken merk="hub" op={donker ? 'donker' : 'licht'} size={16} /></Link>
         </nav>
         <p className="voet-gegevens">
