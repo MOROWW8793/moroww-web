@@ -2,11 +2,28 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { Analytics } from '@vercel/analytics/next'
+import { Fraunces, Instrument_Sans } from 'next/font/google'
 import { routing } from '@/i18n/routing'
-import { Navbar } from '@/components/layout/Navbar'
-import { Footer } from '@/components/layout/Footer'
+import { Nav } from '@/components/hallmark/Nav'
+import { Footer } from '@/components/hallmark/Footer'
 import { OrganizationJsonLd } from '@/components/JsonLd'
 import type { ReactNode } from 'react'
+import '@/app/hallmark.css'
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  style: ['normal'],
+  variable: '--font-fraunces',
+  display: 'swap',
+})
+
+const instrument = Instrument_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-instrument',
+  display: 'swap',
+})
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -47,17 +64,16 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale)
   const messages = await getMessages()
-
   const htmlLang = locale === 'nl' ? 'nl-BE' : 'en'
 
   return (
-    <html lang={htmlLang}>
-      <body className="antialiased font-sans bg-moroww-blush text-moroww-black">
+    <html lang={htmlLang} className={`${fraunces.variable} ${instrument.variable}`}>
+      <body className="hm">
         <OrganizationJsonLd />
         <NextIntlClientProvider messages={messages}>
-          <Navbar />
-          <main className="bg-[#FAE4D6]">{children}</main>
-          <Footer />
+          <Nav locale={locale} />
+          <main>{children}</main>
+          <Footer locale={locale} />
         </NextIntlClientProvider>
         <Analytics />
       </body>
