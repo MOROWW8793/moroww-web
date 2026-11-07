@@ -78,10 +78,15 @@ export async function WoningKaarten({
         />
       ))}
       {plekVoorEigenaar && (
-        <Link href="/het-label" className="group block">
-          <div className="relative aspect-[4/5] flex flex-col items-center justify-center gap-mw-4 border-2 border-dashed border-moroww-dark/25 group-hover:border-moroww-orange transition-colors duration-300 text-center px-mw-6">
-            <svg aria-hidden viewBox="0 0 64 40" className="w-16 h-auto opacity-80 group-hover:opacity-100 transition-opacity">
-              <g fill="#fea05e">
+        // Staat de kaart alleen op haar rij (even aantal huizen), dan neemt ze
+        // op desktop de volle breedte in plaats van een lege helft te laten.
+        <Link
+          href="/het-label"
+          className={`group block ${(sorted.length + labelWoningen.length) % 2 === 0 ? 'md:col-span-2' : ''}`}
+        >
+          <div className={`relative ${(sorted.length + labelWoningen.length) % 2 === 0 ? 'aspect-[4/5] md:aspect-[21/9]' : 'aspect-[4/5]'} flex flex-col items-center justify-center gap-mw-4 border-2 border-dashed border-moroww-dark/25 group-hover:border-moroww-orange transition-colors duration-300 text-center px-mw-6`}>
+            <svg aria-hidden viewBox="0 0 64 40" className="w-16 h-auto text-moroww-orange opacity-80 group-hover:opacity-100 transition-opacity motion-reduce:transition-none">
+              <g fill="currentColor">
                 <ellipse cx="32" cy="12" rx="5" ry="11" />
                 <ellipse cx="32" cy="12" rx="5" ry="11" transform="rotate(-38 32 30)" />
                 <ellipse cx="32" cy="12" rx="5" ry="11" transform="rotate(38 32 30)" />
@@ -101,7 +106,7 @@ export async function WoningKaarten({
           <div className="mt-mw-4">
             <h3 className="text-h3 text-moroww-dark">{locale === 'en' ? 'for owners' : 'voor eigenaars'}</h3>
             <p className="mt-1 text-body text-moroww-ink-2 underline underline-offset-4 decoration-moroww-label group-hover:decoration-moroww-dark">
-              {locale === 'en' ? 'about the label →' : 'over het label →'}
+              {locale === 'en' ? 'about the label' : 'over het label'}
             </p>
           </div>
         </Link>

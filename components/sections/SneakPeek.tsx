@@ -40,7 +40,7 @@ export function SneakPeek({ locale }: { locale: string }) {
         <div className="mt-mw-8 flex flex-col gap-mw-8">
           {TEASERS.map((teaser) => (
             <div key={teaser.naam}>
-              <p className="text-audit uppercase text-moroww-ink-2">
+              <p className="text-audit text-moroww-ink-2">
                 {teaser.naam} · {pick(teaser.plaats)}
               </p>
               <div className="mt-mw-3 grid grid-cols-1 md:grid-cols-3 gap-2">

@@ -72,7 +72,7 @@ export function CookieBanner() {
     <div
       role="dialog"
       aria-label={t('label')}
-      className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-md border border-moroww-rule bg-moroww-white p-5 text-sm text-moroww-black shadow-sm md:inset-x-auto md:right-6 md:bottom-6"
+      className="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-md border border-moroww-rule bg-moroww-white p-4 md:p-5 text-sm text-moroww-black shadow-sm md:inset-x-auto md:right-6 md:bottom-6"
     >
       <p className="leading-relaxed">
         {partner && <>{t('via_partner', { partner: PARTNERS[partner] })} </>}

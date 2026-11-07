@@ -101,7 +101,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="mt-8 inline-flex flex-col gap-2 opacity-80 hover:opacity-100 transition-opacity"
             >
-              <span className="text-audit uppercase text-white/40">{t('supported_by')}</span>
+              <span className="text-audit text-white/40">{t('supported_by')}</span>
               <Image
                 src="/images/partners/start-it-kbc.png"
                 alt="Start it @KBC"
@@ -118,7 +118,7 @@ export function Footer() {
               <div key={kolom.titelKey}>
                 <button
                   type="button"
-                  className="w-full flex items-center justify-between text-audit uppercase text-white/70 lg:pointer-events-none lg:cursor-default min-h-[44px] py-3 lg:min-h-0 lg:py-0 mb-2 lg:mb-4"
+                  className="w-full flex items-center justify-between text-audit text-white/70 lg:pointer-events-none lg:cursor-default min-h-[44px] py-3 lg:min-h-0 lg:py-0 mb-2 lg:mb-4"
                   onClick={() => wissel(i)}
                   aria-expanded={open[i]}
                   aria-controls={id}

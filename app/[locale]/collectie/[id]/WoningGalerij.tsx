@@ -102,7 +102,7 @@ export function GalerijProvider({
               alt={altFor(lightbox)}
               style={{ maxWidth: "100%", maxHeight: "85vh", objectFit: "contain" }}
             />
-            <p className="text-white/60 text-center text-audit uppercase mt-3">
+            <p className="text-white/60 text-center text-audit mt-3">
               {lightbox + 1} / {fotos.length}
             </p>
           </div>

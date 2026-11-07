@@ -45,11 +45,10 @@ export function HomeVerhaal({ locale }: Props) {
   return (
     <>
       {/* WAT HET LABEL BETEKENT VOOR EEN GAST */}
-      <section className="w-full px-6 md:px-12 py-mw-8 border-t border-moroww-rule">
+      <section className="w-full px-6 md:px-12 py-mw-10 mt-mw-10 border-t border-moroww-rule">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-3 gap-mw-6">
           <div>
-            <p className="text-audit uppercase text-moroww-label">{nl ? 'het label' : 'the label'}</p>
-            <h2 className="mt-mw-3 text-h2 text-moroww-dark">
+            <h2 className="text-h2 text-moroww-dark text-balance">
               {nl ? 'je weet vooraf wat je krijgt.' : 'you know what you get, before you go.'}
             </h2>
             <p className="mt-mw-4 text-body text-moroww-ink-2">
@@ -61,14 +60,13 @@ export function HomeVerhaal({ locale }: Props) {
               href="/de-standaard"
               className="mt-mw-5 inline-block text-body text-moroww-dark underline underline-offset-4 decoration-moroww-label"
             >
-              {nl ? 'lees hoe ons bezoek verloopt →' : 'how our visit works →'}
+              {nl ? 'zo verloopt ons bezoek' : 'how our visit works'}
             </Link>
           </div>
           <ol className="lg:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-mw-5">
             {beloftes.map(([titel, tekst], i) => (
               <li key={titel} className="border-t-2 border-moroww-dark pt-mw-4">
-                <p className="text-audit uppercase text-moroww-label">0{i + 1}</p>
-                <h3 className="mt-mw-2 text-h3 text-moroww-dark">{titel}</h3>
+                <h3 className="text-h3 text-moroww-dark">{titel}</h3>
                 <p className="mt-mw-2 text-body text-moroww-ink-2">{tekst}</p>
               </li>
             ))}
@@ -77,12 +75,11 @@ export function HomeVerhaal({ locale }: Props) {
       </section>
 
       {/* WAT GASTEN ZEGGEN */}
-      <section className="w-full px-6 md:px-12 py-mw-8 bg-moroww-paper">
+      <section className="w-full px-6 md:px-12 py-mw-10 bg-moroww-paper">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-mw-4">
             <div>
-              <p className="text-audit uppercase text-moroww-label">{nl ? 'wat gasten zeggen' : 'what guests say'}</p>
-              <h2 className="mt-mw-3 text-h2 text-moroww-dark">
+              <h2 className="text-h2 text-moroww-dark text-balance">
                 {nl ? 'geen beloften. alleen ervaringen.' : 'no promises. only experiences.'}
               </h2>
             </div>
@@ -97,7 +94,7 @@ export function HomeVerhaal({ locale }: Props) {
                 <blockquote className="text-body-lg leading-relaxed">“{r.tekst}”</blockquote>
                 <figcaption className={`pt-mw-4 border-t ${i === 1 ? 'border-white/15' : 'border-moroww-rule'}`}>
                   <p className="text-body font-semibold">{r.naam}</p>
-                  <p className={`text-audit uppercase mt-1 ${i === 1 ? 'text-white/60' : 'text-moroww-ink-2'}`}>{r.huis}</p>
+                  <p className={`text-audit mt-1 ${i === 1 ? 'text-white/60' : 'text-moroww-ink-2'}`}>{r.huis}</p>
                 </figcaption>
               </figure>
             ))}
@@ -106,11 +103,10 @@ export function HomeVerhaal({ locale }: Props) {
       </section>
 
       {/* WAAROM MOROWW */}
-      <section className="w-full px-6 md:px-12 py-mw-8 mb-mw-8 lg:mb-mw-12">
+      <section className="w-full px-6 md:px-12 py-mw-10 mb-mw-8 lg:mb-mw-12">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-mw-8">
           <div>
-            <p className="text-audit uppercase text-moroww-label">{nl ? 'waarom moroww' : 'why moroww'}</p>
-            <h2 className="mt-mw-3 text-h2 md:text-[clamp(2.25rem,4vw,3.5rem)] md:leading-[1.05] text-moroww-dark max-w-[16ch]">
+            <h2 className="text-h2 md:text-[clamp(2.25rem,4vw,3.5rem)] md:leading-[1.05] text-moroww-dark max-w-[16ch] text-balance">
               {nl ? 'de juiste mensen samen. zodat het eenvoudig wordt.' : 'the right people together. so it becomes simple.'}
             </h2>
           </div>
@@ -118,40 +114,35 @@ export function HomeVerhaal({ locale }: Props) {
             {nl ? (
               <>
                 <p>
-                  Een goed verblijf hangt af van veel mensen. Wie poetst, wie het linnen brengt, wie de regels kent,
-                  wie de prijzen zet, wie de gast verwelkomt. Voor een eigenaar is dat een puzzel. Voor een gast is het
-                  vaak een gok.
+                  Een goed verblijf hangt af van veel mensen: wie poetst, wie het linnen brengt, wie de regels kent,
+                  wie de gast verwelkomt. Voor een eigenaar is dat een puzzel, voor een gast een gok.
                 </p>
                 <p>
-                  Wij hebben moroww opgericht om die mensen samen te brengen rond één standaard. Eigenaars krijgen één
-                  aanspreekpunt in plaats van tien. Gasten weten vooraf wat ze krijgen.
-                </p>
-                <p className="text-body text-moroww-ink-2">
-                  Daarom zijn er drie takken: het label voor het huis, moroww how voor de vragen die eigenaars
-                  tegenkomen, en moroww hub voor de partners die het mogelijk maken.
+                  Wij brengen die mensen samen rond één standaard. Eigenaars krijgen één aanspreekpunt, gasten weten
+                  vooraf wat ze krijgen.
                 </p>
                 <p className="text-body text-moroww-ink-2">Noam en Brent, oprichters</p>
               </>
             ) : (
               <>
                 <p>
-                  A good stay depends on many people. Who cleans, who brings the linen, who knows the rules, who sets
-                  the prices, who welcomes the guest. For an owner, that is a puzzle. For a guest, it is often a gamble.
+                  A good stay depends on many people: who cleans, who brings the linen, who knows the rules, who
+                  welcomes the guest. For an owner that is a puzzle, for a guest a gamble.
                 </p>
                 <p>
-                  We founded moroww to bring those people together around one standard. Owners get one point of
-                  contact instead of ten. Guests know what they get before they arrive.
+                  We bring those people together around one standard. Owners get one point of contact, guests know
+                  what they get before they arrive.
                 </p>
                 <p className="text-body text-moroww-ink-2">Noam and Brent, founders</p>
               </>
             )}
             <div className="mt-mw-2 flex flex-wrap gap-x-mw-5 gap-y-mw-2 text-body">
               <Link href="/over-moroww" className="underline underline-offset-4 decoration-moroww-label">
-                {nl ? 'over moroww →' : 'about moroww →'}
+                {nl ? 'lees ons verhaal' : 'read our story'}
               </Link>
               {nl && (
                 <Link href="/voor-eigenaars" className="underline underline-offset-4 decoration-moroww-label">
-                  voor eigenaars →
+                  wat we eigenaars bieden
                 </Link>
               )}
             </div>

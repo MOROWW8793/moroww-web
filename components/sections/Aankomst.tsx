@@ -91,7 +91,7 @@ export function Aankomst() {
           <p className="mt-mw-5">
             <Link
               href={{ pathname: '/collectie/[id]', params: { id: 'zeedijk-nieuwpoort' } }}
-              className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+              className="text-audit text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
             >
               {t('aankomst_link')}
             </Link>

@@ -1,6 +1,6 @@
 // De signatuur van moroww. Bouwspec sectie 1.
 //
-// Een hairline in --moroww-label met daaronder metadata in kleine kapitalen.
+// Een hairline in --moroww-label met daaronder metadata in kleine letters.
 // Geen decoratie: de lijn draagt altijd echte gegevens uit het systeem.
 //
 // - density 'quiet' (gastenkant): alleen een lijn erboven, één regel eronder.
@@ -34,12 +34,12 @@ export function AuditLijn({ items, density }: Props) {
     return null
   }
 
-  const text = items.join(' · ')
+  const text = items.join(', ')
 
   return (
     <div className="w-full">
       <hr className="border-0 border-t border-moroww-label" aria-hidden />
-      <p className="mt-3 text-audit uppercase text-moroww-ink-2">{text}</p>
+      <p className="mt-3 text-audit text-moroww-ink-2">{text}</p>
       {density === 'structural' && (
         <hr className="mt-3 border-0 border-t border-moroww-label" aria-hidden />
       )}

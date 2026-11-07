@@ -194,7 +194,7 @@ export function EigenaarPagina({
                 />
                 <div className="absolute inset-x-0 bottom-0 p-mw-5 text-white">
                   <div className="h-[3px] w-10 bg-white" aria-hidden />
-                  <p className="mt-mw-3 text-audit uppercase text-white/80">0{i + 1}</p>
+                  <p className="mt-mw-3 text-audit text-white/80">0{i + 1}</p>
                   <h3 className="mt-mw-2 text-h2 font-light text-white max-w-[16ch]">{s.titel}</h3>
                   <p className="mt-mw-2 text-body text-white/90 max-w-[40ch]">{s.tekst}</p>
                 </div>

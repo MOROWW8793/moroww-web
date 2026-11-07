@@ -179,7 +179,7 @@ async function BoekingsPaneel({
         className="bg-white border border-moroww-rule p-mw-5"
         style={{ borderRadius: 4 }}
       >
-        <p className="text-audit uppercase text-moroww-label mb-mw-3">{t('coming_soon')}</p>
+        <p className="text-audit text-moroww-label mb-mw-3">{t('coming_soon')}</p>
         <p className="text-body text-moroww-dark">{t('coming_soon_body')}</p>
       </div>
     )
@@ -333,7 +333,7 @@ export default async function WoningDetailPage({ params }: Props) {
           />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 mx-auto max-w-7xl px-6 md:px-12 pb-mw-6 md:pb-mw-8 flex flex-col gap-mw-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-audit uppercase text-white/80">
+              <p className="text-audit text-white/80">
                 {woning.nieuw ? t('new_in', { collection: woning.collectie }) : woning.collectie} · {woning.locatie}
               </p>
               <h1
@@ -346,7 +346,7 @@ export default async function WoningDetailPage({ params }: Props) {
             </div>
             <AlleFotosKnop
               label={t('gallery_button', { count: woning.fotos.length })}
-              className="pointer-events-auto self-start md:self-auto shrink-0 bg-white text-moroww-dark text-audit uppercase font-semibold inline-flex items-center min-h-[44px] px-4 py-3 rounded-[2px] hover:bg-moroww-blush transition-colors"
+              className="pointer-events-auto self-start md:self-auto shrink-0 bg-white text-moroww-dark text-audit font-semibold inline-flex items-center min-h-[44px] px-4 py-3 rounded-[2px] hover:bg-moroww-blush transition-colors"
             />
           </div>
         </section>
@@ -356,7 +356,7 @@ export default async function WoningDetailPage({ params }: Props) {
 
             {/* LINKS · content — kolom 1 tot 7 */}
             <div className="lg:col-span-7">
-              <nav className="text-audit uppercase text-moroww-ink-2">
+              <nav className="text-audit text-moroww-ink-2">
                 <Link
                   href={isNl ? '/collectie' : '/en/collection'}
                   className="hover:text-moroww-dark transition-colors"
@@ -420,7 +420,7 @@ export default async function WoningDetailPage({ params }: Props) {
                     <div>
                       <h2 className="text-h2 text-moroww-dark">{t('highlights_title')}</h2>
                       {auditMaand && (
-                        <p className="mt-1 text-audit uppercase text-moroww-ink-2">
+                        <p className="mt-1 text-audit text-moroww-ink-2">
                           {t('audited_prefix')} {auditMaand}
                         </p>
                       )}
@@ -436,7 +436,7 @@ export default async function WoningDetailPage({ params }: Props) {
                   <p className="mt-mw-3">
                     <Link
                       href={isNl ? '/de-standaard' : '/en/the-standard'}
-                      className="text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+                      className="text-audit text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
                     >
                       {t('label_link_short')}
                     </Link>
@@ -483,7 +483,7 @@ export default async function WoningDetailPage({ params }: Props) {
                 )}
               </dl>
               {woning.tags.length > 0 && (
-                <p className="mt-mw-4 text-audit uppercase text-moroww-ink-2 max-w-[58ch]">
+                <p className="mt-mw-4 text-audit text-moroww-ink-2 max-w-[58ch]">
                   {lwArr(woning.tags, locale).join(' · ')}
                 </p>
               )}
@@ -503,7 +503,7 @@ export default async function WoningDetailPage({ params }: Props) {
               <h2 className="text-h2 text-moroww-dark">{t('tour_title', { name: woning.naam })}</h2>
               <AlleFotosKnop
                 label={t('gallery_button', { count: woning.fotos.length })}
-                className="shrink-0 py-3 text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+                className="shrink-0 py-3 text-audit text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
               />
             </div>
             <div className="mt-mw-5 grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-2 md:h-[72vh]">
@@ -584,7 +584,7 @@ export default async function WoningDetailPage({ params }: Props) {
                 <blockquote className="text-h3 font-normal text-moroww-dark">
                   &ldquo;{lw(citaat, locale)}&rdquo;
                 </blockquote>
-                <figcaption className="mt-mw-3 text-audit uppercase text-moroww-ink-2">
+                <figcaption className="mt-mw-3 text-audit text-moroww-ink-2">
                   {[naam, maandLang(datum, locale)].filter(Boolean).join(' · ')}
                 </figcaption>
               </figure>
@@ -648,7 +648,7 @@ export default async function WoningDetailPage({ params }: Props) {
 function PraktischRij({ label, value }: { label: string; value: string }) {
   return (
     <div className="grid grid-cols-[minmax(0,10rem)_1fr] gap-mw-3 py-mw-3">
-      <dt className="text-audit uppercase text-moroww-ink-2">{label}</dt>
+      <dt className="text-audit text-moroww-ink-2">{label}</dt>
       <dd className="text-body text-moroww-dark">{value}</dd>
     </div>
   )

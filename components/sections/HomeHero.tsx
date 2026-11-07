@@ -15,11 +15,13 @@ const COPY = {
     kop: 'karaktervolle huizen. een standaard die niet wijkt.',
     waar: 'waar', alles: 'de hele collectie', aankomst: 'aankomst', vertrek: 'vertrek', gasten: 'gasten',
     zoek: 'zoek', fout: 'Kies een aankomst- en vertrekdag.', dia: 'foto',
+    pauzeer: 'pauzeer de foto’s', speel: 'speel de foto’s af',
   },
   en: {
     kop: 'homes with character. a standard that does not bend.',
     waar: 'where', alles: 'the whole collection', aankomst: 'arrival', vertrek: 'departure', gasten: 'guests',
     zoek: 'search', fout: 'Choose an arrival and a departure date.', dia: 'photo',
+    pauzeer: 'pause the photos', speel: 'play the photos',
   },
 }
 
@@ -32,8 +34,8 @@ function plusDagen(iso: string, n: number) {
 }
 
 const VELD =
-  'w-full bg-transparent border-0 rounded-none p-0 pt-1 text-base text-moroww-dark focus:outline-none appearance-none'
-const LABEL = 'text-audit uppercase text-moroww-ink-2'
+  'w-full bg-transparent border-0 border-b border-moroww-ink-2 rounded-none p-0 pt-1 pb-1 text-base text-moroww-dark appearance-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-moroww-dark'
+const LABEL = 'text-audit text-moroww-ink-2'
 
 export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; locale: string; maxGasten: number }) {
   const c = locale === 'en' ? COPY.en : COPY.nl
@@ -41,7 +43,12 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
   const vandaag = useMemo(() => new Date().toISOString().slice(0, 10), [])
 
   const [actief, setActief] = useState(0)
-  const [pauze, setPauze] = useState(false)
+  // Gepauzeerd door de bezoeker (knop), of tijdelijk zolang de muis of de
+  // focus in de hero staat. Draaien doet de slideshow alleen als geen van
+  // beide geldt, en nooit bij minder-beweging.
+  const [gepauzeerd, setGepauzeerd] = useState(false)
+  const [erboven, setErboven] = useState(false)
+  const [focusBinnen, setFocusBinnen] = useState(false)
   const [rustig, setRustig] = useState(false)
 
   const [streek, setStreek] = useState<'alles' | 'the shore' | 'the fields'>('alles')
@@ -56,10 +63,10 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
   }, [])
 
   useEffect(() => {
-    if (pauze || slides.length < 2) return
+    if (gepauzeerd || erboven || focusBinnen || rustig || slides.length < 2) return
     const t = window.setTimeout(() => setActief((i) => (i + 1) % slides.length), INTERVAL)
     return () => window.clearTimeout(t)
-  }, [actief, pauze, slides.length])
+  }, [actief, gepauzeerd, erboven, focusBinnen, rustig, slides.length])
 
   function zoek(e: React.FormEvent) {
     e.preventDefault()
@@ -79,6 +86,12 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
     <section
       className="relative w-full min-h-[640px] h-[92svh] max-h-[960px] overflow-hidden bg-moroww-dark"
       aria-roledescription="carousel"
+      onMouseEnter={() => setErboven(true)}
+      onMouseLeave={() => setErboven(false)}
+      onFocusCapture={() => setFocusBinnen(true)}
+      onBlurCapture={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setFocusBinnen(false)
+      }}
     >
       {/* SLIDES */}
       {slides.map((s, i) => (
@@ -109,13 +122,12 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
       {/* KOP + ZOEKBALK */}
       <div className="relative z-10 h-full flex flex-col justify-end px-6 md:px-12 pb-mw-6 md:pb-mw-8">
         <div className="mx-auto max-w-7xl w-full">
-          <h1 className="text-[clamp(2.4rem,5vw,4.75rem)] leading-[1.02] tracking-[-0.02em] font-semibold text-white max-w-[18ch] drop-shadow-[0_1px_12px_rgba(0,0,0,0.25)]">{c.kop}</h1>
+          <h1 className="text-[clamp(2.4rem,5vw,4.75rem)] leading-[1.02] tracking-[-0.02em] font-semibold text-white max-w-[18ch] drop-shadow-md">{c.kop}</h1>
 
           <form
             onSubmit={zoek}
-            className="mt-mw-6 bg-moroww-paper grid grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_0.8fr_auto] gap-px shadow-[0_12px_40px_rgba(0,0,0,0.18)]"
+            className="mt-mw-6 bg-moroww-paper grid grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_0.8fr_auto] gap-px shadow-xl"
             style={{ borderRadius: 2 }}
-            onFocus={() => setPauze(true)}
           >
             <label className="col-span-2 lg:col-span-1 flex flex-col px-mw-5 py-mw-3 bg-moroww-paper">
               <span className={LABEL}>{c.waar}</span>
@@ -159,7 +171,7 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
             <div className="flex items-stretch p-2 bg-moroww-paper">
               <button
                 type="submit"
-                className="w-full lg:w-auto bg-moroww-orange text-white rounded-full px-8 min-h-[48px] text-body font-semibold hover:bg-moroww-orange/85 transition-colors"
+                className="w-full lg:w-auto bg-moroww-orange text-moroww-dark rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-moroww-dark active:bg-moroww-orange/75 px-8 min-h-[48px] text-body font-semibold hover:bg-moroww-orange/85 transition-colors"
               >
                 {c.zoek}
               </button>
@@ -169,24 +181,37 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
 
           {/* Bijschrift + bolletjes */}
           <div className="mt-mw-4 flex items-center justify-between gap-mw-4 text-white/85">
-            <p className="text-audit uppercase" aria-live="polite">
-              {huidig.naam} · {huidig.plaats}
+            <p className="text-audit" aria-live="polite">
+              {huidig.naam}, {huidig.plaats}
             </p>
             <div className="flex items-center gap-2">
               {slides.map((s, i) => (
                 <button
                   key={s.src}
                   type="button"
-                  onClick={() => { setActief(i); setPauze(true) }}
+                  onClick={() => { setActief(i); setGepauzeerd(true) }}
                   aria-label={`${c.dia} ${i + 1}: ${s.naam}`}
                   aria-current={i === actief}
                   className="p-2 -m-1"
                 >
                   <span
-                    className={`block h-[3px] transition-all duration-300 ${i === actief ? 'w-8 bg-white' : 'w-4 bg-white/45'}`}
+                    className={`block h-[3px] w-8 origin-left transition-[transform,opacity] duration-300 motion-reduce:transition-none ${i === actief ? 'scale-x-100 opacity-100' : 'scale-x-50 opacity-45'} bg-white`}
                   />
                 </button>
               ))}
+              <button
+                type="button"
+                onClick={() => setGepauzeerd((g) => !g)}
+                aria-pressed={gepauzeerd}
+                aria-label={gepauzeerd ? c.speel : c.pauzeer}
+                className="ml-2 inline-flex items-center justify-center w-11 h-11 -my-3 rounded-full text-white hover:bg-white/15 transition-colors motion-reduce:transition-none"
+              >
+                {gepauzeerd ? (
+                  <svg aria-hidden="true" viewBox="0 0 16 16" className="w-3.5 h-3.5" fill="currentColor"><path d="M4 2.5v11l9-5.5z" /></svg>
+                ) : (
+                  <svg aria-hidden="true" viewBox="0 0 16 16" className="w-3.5 h-3.5" fill="currentColor"><path d="M4 2.5h3v11H4zM9 2.5h3v11H9z" /></svg>
+                )}
+              </button>
             </div>
           </div>
         </div>

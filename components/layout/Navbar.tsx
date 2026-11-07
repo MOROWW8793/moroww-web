@@ -50,7 +50,7 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-150 ease-out ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow] duration-150 ease-out motion-reduce:transition-none ${
         effectiveScrolled ? 'bg-moroww-blush shadow-sm' : 'bg-transparent'
       }`}
     >
@@ -63,19 +63,19 @@ export function Navbar() {
             alt="moroww"
             width={120}
             height={32}
-            className={`h-8 w-auto object-contain transition-all duration-150 ${
+            className={`h-8 w-auto object-contain transition-[filter] duration-150 motion-reduce:transition-none ${
               effectiveScrolled ? '' : 'brightness-0 invert'
             }`}
           />
         </Link>
 
         {/* Desktop nav — gastenkant links, eigenaarskant rechts (bouwspec 5A) */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-5 lg:gap-8">
           {gastenNavItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`text-sm font-medium transition-colors duration-150 ${
+              className={`text-sm font-medium whitespace-nowrap transition-colors duration-150 ${
                 effectiveScrolled
                   ? 'text-moroww-dark hover:text-moroww-orange'
                   : 'text-white/90 hover:text-white'
@@ -89,7 +89,7 @@ export function Navbar() {
           {/* voor eigenaars: één knop naar het overzicht van de drie takken: label, how en hub (nov 2026). */}
           <Link
             href="/voor-eigenaars"
-            className={`rounded-full px-5 py-2.5 text-sm font-semibold border transition-colors duration-150 ${
+            className={`rounded-full px-5 py-2.5 text-sm font-semibold whitespace-nowrap border transition-colors duration-150 ${
               effectiveScrolled
                 ? 'border-moroww-dark text-moroww-dark hover:bg-moroww-dark hover:text-white'
                 : 'border-white/80 text-white hover:bg-white hover:text-moroww-dark'
@@ -116,7 +116,7 @@ export function Navbar() {
               hele collectie op moroww.com. Niet naar book.moroww.com. */}
           <Link
             href="/boeken"
-            className="bg-moroww-orange text-white rounded-full px-5 py-2.5 text-sm font-semibold hover:bg-moroww-orange/85 transition-colors"
+            className="bg-moroww-orange text-moroww-dark rounded-full px-5 py-2.5 text-sm font-semibold whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-moroww-dark active:bg-moroww-orange/75 hover:bg-moroww-orange/85 transition-colors"
           >
             {t('book')}
           </Link>
@@ -129,13 +129,13 @@ export function Navbar() {
           aria-label="Menu openen"
           aria-expanded={open}
         >
-          <span className={`block w-6 h-0.5 transition-all duration-200 ${
+          <span className={`block w-6 h-0.5 transition-[transform,opacity,background-color] duration-200 motion-reduce:transition-none ${
             effectiveScrolled ? 'bg-moroww-dark' : 'bg-white'
           } ${open ? 'rotate-45 translate-y-2' : ''}`} />
-          <span className={`block w-6 h-0.5 transition-all duration-200 ${
+          <span className={`block w-6 h-0.5 transition-[transform,opacity,background-color] duration-200 motion-reduce:transition-none ${
             effectiveScrolled ? 'bg-moroww-dark' : 'bg-white'
           } ${open ? 'opacity-0' : ''}`} />
-          <span className={`block w-6 h-0.5 transition-all duration-200 ${
+          <span className={`block w-6 h-0.5 transition-[transform,opacity,background-color] duration-200 motion-reduce:transition-none ${
             effectiveScrolled ? 'bg-moroww-dark' : 'bg-white'
           } ${open ? '-rotate-45 -translate-y-2' : ''}`} />
         </button>
@@ -172,7 +172,7 @@ export function Navbar() {
             )}
             <Link
               href="/boeken"
-              className="mt-2 bg-moroww-orange text-white rounded-full px-6 py-3 text-base font-semibold text-center min-h-[44px] flex items-center justify-center"
+              className="mt-2 bg-moroww-orange text-moroww-dark rounded-full px-6 py-3 text-base font-semibold text-center min-h-[44px] flex items-center justify-center"
               onClick={() => setOpen(false)}
             >
               {t('book')}

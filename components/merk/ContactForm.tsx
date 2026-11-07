@@ -28,7 +28,7 @@ export function ContactForm({ merk, soort, velden, knop = 'verstuur', bedankt = 
     ? {
         form: 'flex flex-col gap-mw-4',
         veld: 'flex flex-col gap-2',
-        label: 'text-audit uppercase text-moroww-ink-2',
+        label: 'text-audit text-moroww-ink-2',
         input: 'w-full border border-moroww-rule bg-white px-4 py-3 text-body text-moroww-dark focus:outline-none focus:border-moroww-dark',
         knop: 'self-start bg-moroww-orange text-moroww-dark px-6 py-3 text-body font-semibold min-h-[48px] disabled:opacity-60',
         bedankt: 'text-body-lg text-moroww-dark bg-moroww-blush p-mw-5',

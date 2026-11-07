@@ -81,7 +81,7 @@ export default async function HomePage({
       {/* DE COLLECTIE — raster van live panden direct onder de H1, zelfde
           PandKaart als op /collectie. Zo landt een bezoeker op de home
           meteen op woningen in plaats van op de twee collectie-tegels. */}
-      <section className="w-full px-6 md:px-12 mt-mw-6">
+      <section className="w-full px-6 md:px-12 mt-mw-10">
         <div className="mx-auto max-w-7xl">
           <WoningKaarten woningen={liveWoningen()} labelWoningen={liveLabelWoningen()} locale={locale as Locale} plekVoorEigenaar />
         </div>
@@ -95,7 +95,7 @@ export default async function HomePage({
       {/* DE TWEE DEUREN — verplaatst onder het woningenraster. Blijven de
           twee ingangen naar de streek-collecties (bouwspec sectie 3),
           nu als vervolg op wie al gescrold heeft. */}
-      <section className="w-full px-6 md:px-12 mt-mw-8 mb-mw-8 lg:mb-mw-12">
+      <section className="w-full px-6 md:px-12 mt-mw-10">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-2">
           <Deur
             naam="the shore"

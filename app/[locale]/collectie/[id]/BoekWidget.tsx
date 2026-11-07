@@ -186,7 +186,7 @@ export function BoekWidget({
         </button>
       </div>
 
-      <div className="mt-mw-3 grid grid-cols-7 text-center text-audit uppercase text-moroww-ink-2">
+      <div className="mt-mw-3 grid grid-cols-7 text-center text-audit text-moroww-ink-2">
         {weekdagen.map((w) => (
           <span key={w} className="py-1">{w}</span>
         ))}
@@ -274,7 +274,7 @@ export function BoekWidget({
           {t('continue')}
         </Link>
       ) : (
-        <p className="mt-mw-4 text-audit uppercase text-moroww-ink-2 text-center">
+        <p className="mt-mw-4 text-audit text-moroww-ink-2 text-center">
           {aankomst ? t('pick_checkout') : t('pick_checkin')}
         </p>
       )}

@@ -30,7 +30,7 @@ export function GridSectie({ titel, children, geenHairline, breed }: Props) {
           />
         )}
         {titel && (
-          <p className="text-audit uppercase text-moroww-ink-2 mb-mw-3">
+          <p className="text-audit text-moroww-ink-2 mb-mw-3">
             {titel}
           </p>
         )}

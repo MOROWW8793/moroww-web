@@ -425,7 +425,7 @@ export default async function PartnersPage({
               href="https://www.kbc.be/ondernemen/nl/artikel/zelfstandige-worden/eigen-zaak-starten/wat-is-kbc-start-it.html"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-4 text-audit uppercase text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
+              className="inline-block mt-4 text-audit text-moroww-dark underline underline-offset-4 decoration-moroww-label hover:decoration-moroww-dark transition-colors"
             >
               {t('startit_cta')} →
             </a>

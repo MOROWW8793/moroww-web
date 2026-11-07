@@ -47,7 +47,7 @@ const config: Config = {
         h3:        ["1.25rem",                       { lineHeight: "1.3",  letterSpacing: "-0.01em",  fontWeight: "600" }],
         body:      ["1.0625rem",                     { lineHeight: "1.65", letterSpacing: "0"                          }],
         "body-lg": ["1.25rem",                       { lineHeight: "1.55", letterSpacing: "0"                          }],
-        audit:     ["0.6875rem",                     { lineHeight: "1",    letterSpacing: "0.14em",   fontWeight: "600" }],
+        audit:     ["0.8125rem",                     { lineHeight: "1.35", letterSpacing: "0",        fontWeight: "500" }],
       },
       // Ritme — bouwspec sectie 2.3. Onder aparte prefix `mw` zodat Tailwinds
       // default spacing (p-4, m-8, gap-6) niet doorbroken wordt.

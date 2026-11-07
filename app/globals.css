@@ -34,7 +34,7 @@
   --type-h3:       1.25rem;
   --type-body:     1.0625rem;
   --type-body-lg:  1.25rem;
-  --type-audit:    0.6875rem;
+  --type-audit:    0.8125rem;
 
   /* ── Bouwspec sectie 2.3 — ritme ──────────────────────────────────────── */
   --space-2:  0.5rem;
@@ -142,8 +142,15 @@ button, a, [role="button"] {
 
 /* Focus styles voor toegankelijkheid */
 :focus-visible {
-  outline: 2px solid #FEA05E;
+  outline: 2px solid var(--moroww-dark);
   outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--moroww-paper);
+}
+/* Op donkere vlakken (footer, donkere kaarten) keert de rand om. */
+.bg-moroww-dark :focus-visible,
+footer :focus-visible {
+  outline-color: var(--moroww-paper);
+  box-shadow: 0 0 0 4px var(--moroww-dark);
 }
 
 /* Prevent iOS input zoom */
