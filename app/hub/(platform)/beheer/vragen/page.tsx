@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { Sectie, Kop } from '@/components/merk/Shell';
-import { LedenNav } from '@/components/hub/LedenNav';
-import { RegieNav } from '@/components/hub/RegieNav';
 import { eisBeheer } from '@/lib/hub/beheer';
 import { tekst, brusselNaarISO, type Profiel } from '@/lib/hub/supabase';
 import { soorten, soortLabel, statusNaam, kanaalNaam, wanneer, duur, berichten, type Vraag } from '@/lib/hub/vragen';
@@ -42,7 +40,7 @@ async function noteer(formData: FormData) {
 
 export default async function RegieVragen({ searchParams }: { searchParams: Promise<{ fout?: string; toon?: string }> }) {
   const sp = await searchParams;
-  const { db, profiel } = await eisBeheer('/hub/beheer/vragen');
+  const { db } = await eisBeheer('/hub/beheer/vragen');
   const [{ data: rijen }, { data: ptn }, { data: leden }] = await Promise.all([
     db.from('hub_vragen').select('*').order('created_at', { ascending: false }).limit(300),
     db.from('hub_partners').select('id,naam'),
@@ -81,7 +79,6 @@ export default async function RegieVragen({ searchParams }: { searchParams: Prom
 
   return (
     <>
-      <LedenNav actief="beheer" partner={profiel?.rol === 'partner'} beheerder />
       <section className="held">
         <div className="wrap" style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
           <span className="boven">moroww hub · regie</span>
@@ -95,7 +92,6 @@ export default async function RegieVragen({ searchParams }: { searchParams: Prom
         </div>
       </section>
       <Sectie>
-        <RegieNav actief="vragen" />
         <div style={{ marginTop: 28 }}>
           <Kop boven="open" titel="eerst wat het dringendst is." />
           {open.length ? <div style={{ borderTop: '1px solid var(--line)' }}>{open.map(rij)}</div> : <p className="hub-leeg">Geen open vragen.</p>}

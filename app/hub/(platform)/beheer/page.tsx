@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { Sectie, Kop } from '@/components/merk/Shell';
-import { LedenNav } from '@/components/hub/LedenNav';
-import { RegieNav } from '@/components/hub/RegieNav';
 import Link from 'next/link';
 import { hubSessie, hubBeheerClient, tekst, categorieNaam, soortNaam, datumNL, brusselNaarISO, type Profiel } from '@/lib/hub/supabase';
 import { mailLid } from '@/lib/hub/mail';
@@ -110,7 +108,6 @@ function Knop({ actie, velden, label, primair }: { actie: (f: FormData) => Promi
 
 export default async function Beheer() {
   const db = await eisBeheer();
-  const { profiel } = await hubSessie();
   const [{ data: profielen }, { data: partners }, { data: producten }, { data: sessies }, { data: inschrijvingen }, { data: brieven }] = await Promise.all([
     db.from('hub_profielen').select('*').order('created_at', { ascending: false }),
     db.from('hub_partners').select('*').order('naam'),
@@ -136,7 +133,6 @@ export default async function Beheer() {
 
   return (
     <>
-      <LedenNav actief="beheer" partner={profiel?.rol === 'partner'} beheerder />
       <section className="held">
         <div className="wrap" style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <span className="boven">moroww hub · beheer</span>
@@ -146,7 +142,6 @@ export default async function Beheer() {
       </section>
 
       <Sectie>
-        <RegieNav actief="rest" />
         <p style={{ margin: '20px 0 32px' }}>
           <Link href="/hub/beheer/vragen" className="btn btn-primair">{(openVragen ?? []).length} open {(openVragen ?? []).length === 1 ? 'vraag' : 'vragen'} opvolgen</Link>
         </p>

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { revalidatePath } from 'next/cache';
 import { Sectie, Kop } from '@/components/merk/Shell';
-import { LedenNav } from '@/components/hub/LedenNav';
 import { eisLid, tekst, datumNL } from '@/lib/hub/supabase';
 
 export const metadata: Metadata = { title: 'academy en ledenbrief', robots: { index: false } };
@@ -20,7 +19,7 @@ async function inschrijven(formData: FormData) {
 }
 
 export default async function LedenAcademy() {
-  const { sb, user, profiel, beheerder } = await eisLid('/hub/leden/academy');
+  const { sb, user } = await eisLid('/hub/leden/academy');
   const [{ data: sessies }, { data: mijn }, { data: brieven }] = await Promise.all([
     sb.from('hub_sessies').select('id,titel,tekst,datum,plaats').gte('datum', new Date().toISOString()).order('datum').limit(8),
     sb.from('hub_inschrijvingen').select('sessie_id').eq('profiel_id', user.id),
@@ -30,7 +29,6 @@ export default async function LedenAcademy() {
 
   return (
     <>
-      <LedenNav actief="academy" partner={profiel.rol === 'partner'} beheerder={beheerder} />
       <Sectie>
         <Kop boven="academy" titel={<>de volgende <i>sessies.</i></>} tekst="Kleine sessies in een moroww-huis, voor eigenaars, hosts en de teams van property managers." />
         {(sessies as Sessie[] | null)?.length ? (

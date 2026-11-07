@@ -263,3 +263,77 @@
 .merk .regie-rij:hover { background: #F4F7FB; }
 .merk .regie-laat { color: #B3261E; font-weight: 500; }
 @media (max-width: 700px) { .merk .regie-rij { grid-template-columns: 1fr; gap: 6px; } }
+
+/* ── platform (na het aanmelden) ─────────────────────────── */
+.merk .plat-app { display: grid; grid-template-columns: 272px minmax(0, 1fr); min-height: 100vh; background: #F4F7FB; }
+.merk .plat-zij { position: sticky; top: 0; height: 100vh; color: #FFFFFF; overflow-y: auto; background: #0F2238; color: #E6EEF6; display: flex; flex-direction: column; gap: 28px; padding: 28px 18px 22px; }
+.merk .plat-zij-top { display: flex; flex-direction: column; gap: 26px; padding: 0 10px; }
+.merk .plat-logo { display: inline-flex; }
+.merk .plat-wie { display: flex; gap: 12px; align-items: center; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.12); }
+.merk .plat-wie div { display: flex; flex-direction: column; min-width: 0; }
+.merk .plat-wie strong { font-weight: 500; font-size: 15px; color: #FFFFFF; }
+.merk .plat-wie span:not(.plat-avatar) { font-size: 13px; color: #9FB4CB; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.merk .plat-avatar { flex: none; width: 38px; height: 38px; border-radius: 50%; background: #2B4A70; color: #FFFFFF; display: grid; place-items: center; font-family: var(--font-titel); font-size: 18px; }
+.merk .plat-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.merk .plat-nav a { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 12px; color: #C9D8E8; text-decoration: none; font-size: 15px; }
+.merk .plat-nav a:hover { background: rgba(255,255,255,0.05); color: #FFFFFF; }
+.merk .plat-nav a[aria-current='page'] { background: rgba(255,255,255,0.09); color: #FFFFFF; box-shadow: inset 2px 0 0 #C9D8E8; }
+.merk .plat-groep { margin: 26px 12px 8px; font-size: 12px; letter-spacing: 0.08em; color: #7F97B3; }
+.merk .plat-teller { font-weight: 500; font-size: 12px; background: #C9D8E8; color: #0F2238; padding: 1px 8px; }
+.merk .plat-zij-voet { margin-top: auto; display: flex; flex-direction: column; gap: 14px; padding: 0 10px; }
+.merk .plat-bel { display: flex; flex-direction: column; gap: 2px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.12); text-decoration: none; color: inherit; }
+.merk .plat-bel span { font-size: 12px; color: #9FB4CB; }
+.merk .plat-bel strong { font-weight: 500; font-size: 15px; color: #FFFFFF; }
+.merk .plat-zij-links { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; }
+.merk .plat-zij-links a, .merk .plat-zij-links button { color: #9FB4CB; background: none; border: 0; padding: 0; font: inherit; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.merk .plat-zij-links a:hover, .merk .plat-zij-links button:hover { color: #FFFFFF; }
+
+.merk .plat-main { min-width: 0; padding-bottom: 80px; }
+.merk .plat-main .wrap { max-width: 1120px; margin: 0; padding: 0 48px; }
+.merk .plat-main .held { background: #FFFFFF; color: var(--ink); padding: 44px 0 32px; border-bottom: 1px solid var(--line); min-height: 0 !important; }
+.merk .plat-main .held .boven, .merk .plat-main .held .inleiding { color: var(--muted); }
+.merk .plat-main .held .btn-primair { background: var(--knop); color: var(--knop-ink); }
+.merk .plat-main .titel-1 { font-size: clamp(2.2rem, 3.6vw, 3.2rem); }
+.merk .plat-main .titel-2 { font-size: clamp(1.6rem, 2.4vw, 2.2rem); }
+.merk .plat-main .sectie { padding: 36px 0; }
+.merk .plat-main .sectie-zacht { background: transparent; border-top: 1px solid var(--line); }
+.merk .plat-main .hub-cijfers span { color: var(--muted); }
+
+.merk .plat-kop { background: #FFFFFF; border-bottom: 1px solid var(--line); padding: 40px 48px 30px; display: flex; justify-content: space-between; align-items: flex-end; gap: 28px; flex-wrap: wrap; }
+.merk .plat-kop > div:first-child { display: flex; flex-direction: column; gap: 10px; }
+.merk .plat-kop .hub-cijfers { gap: 36px; }
+.merk .plat-kop .hub-cijfers b { font-size: 34px; }
+.merk .plat-bureau { display: grid; grid-template-columns: minmax(320px, 400px) minmax(0, 1fr); gap: 32px; padding: 32px 48px; align-items: start; max-width: 1280px; }
+.merk .plat-paneel { background: #FFFFFF; border: 1px solid var(--line); padding: 28px; display: flex; flex-direction: column; gap: 16px; position: sticky; top: 24px; }
+.merk .plat-paneel-titel { margin: 0; font-family: var(--font-titel); font-weight: 300; font-size: 30px; letter-spacing: -0.02em; line-height: 1.1; }
+.merk .plat-paneel .hub-form { max-width: none; }
+.merk .plat-paneel .hub-chips span { font-size: 13px; }
+.merk .plat-stroom { display: flex; flex-direction: column; gap: 36px; min-width: 0; }
+.merk .plat-groep-titel { margin: 0 0 12px; font-size: 14px; font-weight: 500; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+.merk .plat-groep-titel span { font-size: 12px; background: #E4EBF3; color: var(--ink); padding: 1px 8px; }
+.merk .plat-kaarten { display: flex; flex-direction: column; gap: 16px; }
+.merk .plat-leeg { background: #FFFFFF; border: 1px dashed var(--line); padding: 28px; display: flex; flex-direction: column; gap: 6px; color: var(--muted); }
+.merk .plat-leeg strong { font-family: var(--font-titel); font-weight: 300; font-size: 24px; color: var(--ink); }
+.merk .plat-ok { margin: 0; background: #E4EBF3; padding: 10px 14px; font-size: 14px; }
+
+.merk .plat-los { min-height: 100vh; background: #0F2238; }
+.merk .plat-los-kop { display: flex; justify-content: space-between; align-items: center; padding: 22px 32px; background: #0F2238; color: #FFFFFF; }
+.merk .plat-terug { color: #C9D8E8; font-size: 14px; }
+
+@media (max-width: 900px) {
+  .merk .plat-app { grid-template-columns: minmax(0, 1fr); }
+  .merk .plat-zij { position: sticky; top: 0; z-index: 20; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px 0; }
+  .merk .plat-zij-top { padding: 0; }
+  .merk .plat-wie, .merk .plat-bel, .merk .plat-zij-links a, .merk .plat-groep { display: none; }
+  .merk .plat-zij-voet { margin: 0; padding: 0; order: 2; }
+  .merk .plat-nav { order: 3; width: calc(100% + 32px); margin: 0 -16px; overflow-x: auto; display: flex; padding: 0 8px; }
+  .merk .plat-nav ul { flex-direction: row; }
+  .merk .plat-nav a { white-space: nowrap; padding: 12px 10px; font-size: 14px; }
+  .merk .plat-nav a[aria-current='page'] { background: none; box-shadow: inset 0 -2px 0 #C9D8E8; }
+  .merk .plat-kop { padding: 28px 20px 22px; }
+  .merk .plat-bureau { grid-template-columns: minmax(0, 1fr); padding: 20px 16px; gap: 28px; }
+  .merk .plat-paneel { position: static; padding: 22px; }
+  .merk .plat-main .wrap { padding: 0 20px; }
+  .merk .plat-los-kop { padding: 18px 20px; }
+}
+@media (min-width: 901px) { .merk .plat-app { background: linear-gradient(to right, #0F2238 272px, #F4F7FB 272px); } }

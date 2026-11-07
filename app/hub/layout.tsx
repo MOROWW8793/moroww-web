@@ -1,6 +1,4 @@
 import type { Metadata } from 'next';
-import { Header, Footer } from '@/components/merk/Shell';
-import { MerkTeken } from '@/components/merk/Logo';
 import { Analytics } from '@vercel/analytics/next';
 import '@fontsource/fraunces/300.css';
 import '@fontsource/fraunces/300-italic.css';
@@ -23,23 +21,7 @@ export default function HubLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="nl-BE">
       <body>
-    <div className="merk merk-hub">
-      <Header
-        donker
-        home="/hub"
-        merk={<MerkTeken merk="hub" op="donker" size={26} />}
-        nav={[
-          { href: '/hub/partners', label: 'partners' },
-          { href: '/hub/academy', label: 'academy' },
-          { href: '/hub/market', label: 'market' },
-          { href: '/hub/property-managers', label: 'property managers' },
-          { href: '/hub/leden', label: 'inloggen' },
-        ]}
-        cta={{ href: '/hub/lid-worden', label: 'lid worden' }}
-      />
-      <main>{children}</main>
-      <Footer donker merk={<span>where the stay stays.</span>} />
-    </div>
+    <div className="merk merk-hub">{children}</div>
         <Analytics />
       </body>
     </html>

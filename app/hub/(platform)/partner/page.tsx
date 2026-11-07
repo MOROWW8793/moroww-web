@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { Sectie, Kop } from '@/components/merk/Shell';
-import { LedenNav } from '@/components/hub/LedenNav';
 import { hubSessie, tekst, categorieNaam } from '@/lib/hub/supabase';
 import { meldBeheer } from '@/lib/hub/mail';
 
@@ -71,7 +70,7 @@ async function productWeg(formData: FormData) {
 
 export default async function PartnerPortaal({ searchParams }: { searchParams: Promise<{ bewaard?: string; fout?: string }> }) {
   const sp = await searchParams;
-  const { sb, user, profiel, beheerder } = await hubSessie();
+  const { sb, user, profiel } = await hubSessie();
   if (!user) redirect('/hub/inloggen?naar=/hub/partner');
   if (profiel?.status !== 'actief' || profiel.rol !== 'partner') redirect('/hub/leden');
 
@@ -81,7 +80,6 @@ export default async function PartnerPortaal({ searchParams }: { searchParams: P
 
   return (
     <>
-      <LedenNav actief="partner" partner beheerder={beheerder} />
       <section className="held">
         <div className="wrap" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           <span className="boven">moroww hub · partnerportaal</span>

@@ -3,8 +3,6 @@ import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { Sectie, Kop } from '@/components/merk/Shell';
-import { LedenNav } from '@/components/hub/LedenNav';
-import { RegieNav } from '@/components/hub/RegieNav';
 import { Kopieer } from '@/components/hub/Kopieer';
 import { VraagKaart } from '@/components/hub/VraagKaart';
 import { eisBeheer } from '@/lib/hub/beheer';
@@ -86,7 +84,7 @@ interface Partner { id: string; naam: string; vak: string | null; regio: string 
 export default async function Dossier({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ verwijder?: string }> }) {
   const { id } = await params;
   const sp = await searchParams;
-  const { db, profiel } = await eisBeheer(`/hub/beheer/vragen/${id}`);
+  const { db } = await eisBeheer(`/hub/beheer/vragen/${id}`);
   const { data: v } = await db.from('hub_vragen').select('*').eq('id', id).maybeSingle();
   if (!v) notFound();
   const vraag = v as Vraag;
@@ -120,9 +118,7 @@ export default async function Dossier({ params, searchParams }: { params: Promis
 
   return (
     <>
-      <LedenNav actief="beheer" partner={profiel?.rol === 'partner'} beheerder />
       <Sectie>
-        <RegieNav actief="vragen" />
         <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 10 }}>
           <Link href="/hub/beheer/vragen" className="hub-meta">terug naar alle vragen</Link>
           <span className="kaart-label">{soortLabel(vraag.soort)} · via {kanaalNaam[vraag.kanaal] ?? vraag.kanaal} · {kort(vraag.created_at)}</span>

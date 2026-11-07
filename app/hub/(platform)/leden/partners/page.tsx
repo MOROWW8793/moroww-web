@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Sectie, Kop } from '@/components/merk/Shell';
-import { LedenNav } from '@/components/hub/LedenNav';
+import { Sectie } from '@/components/merk/Shell';
 import { eisLid, hubBeheerClient } from '@/lib/hub/supabase';
 
 export const metadata: Metadata = { title: 'partners', robots: { index: false } };
@@ -10,7 +9,7 @@ export const dynamic = 'force-dynamic';
 interface Partner { id: string; naam: string; vak: string | null; regio: string | null; wat: string | null; voordeel: string | null; code: string | null; url: string | null }
 
 export default async function LedenPartners() {
-  const { sb, profiel, beheerder } = await eisLid('/hub/leden/partners');
+  const { sb } = await eisLid('/hub/leden/partners');
   const { data } = await sb.from('hub_partners').select('id,naam,vak,regio,wat,voordeel,code,url').eq('status', 'live').eq('soort', 'dienst').order('naam');
   const partners = (data ?? []) as Partner[];
   // Cijfers over alle huizen heen: opdrachten en gemiddelde score per partner.
@@ -25,7 +24,6 @@ export default async function LedenPartners() {
 
   return (
     <>
-      <LedenNav actief="partners" partner={profiel.rol === 'partner'} beheerder={beheerder} />
       <section className="held">
         <div className="wrap" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           <span className="boven">moroww hub · partners</span>

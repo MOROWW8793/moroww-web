@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
-import { Sectie, Kop } from '@/components/merk/Shell';
-import { LedenNav } from '@/components/hub/LedenNav';
+import { Sectie } from '@/components/merk/Shell';
 import { hubSessie, hubBeheerClient, tekst, brusselNaarISO } from '@/lib/hub/supabase';
 import { soorten, berichten, duur, fotoLinks, type Vraag, type VraagUpdate } from '@/lib/hub/vragen';
 import { VraagKaart } from '@/components/hub/VraagKaart';
@@ -77,7 +76,7 @@ async function geefScore(formData: FormData) {
 
 export default async function Leden({ searchParams }: { searchParams: Promise<{ fout?: string; gesteld?: string }> }) {
   const sp = await searchParams;
-  const { sb, user, profiel, beheerder } = await hubSessie();
+  const { sb, user, profiel } = await hubSessie();
   if (!user) redirect('/hub/inloggen?naar=/hub/leden');
 
   if (!profiel) {
@@ -155,33 +154,31 @@ export default async function Leden({ searchParams }: { searchParams: Promise<{ 
     <VraagKaart key={v.id} v={v} updates={updates.filter((u) => u.vraag_id === v.id)} partner={v.partner_id ? partnerNaam.get(v.partner_id) : null} fotos={fotos} scoreActie={geefScore} />
   );
 
+  const voornaam = profiel.naam.split(' ')[0];
+  const uur = Number(new Intl.DateTimeFormat('nl-BE', { hour: 'numeric', hour12: false, timeZone: 'Europe/Brussels' }).format(new Date()));
+  const groet = uur < 12 ? 'goeiemorgen' : uur < 18 ? 'goeiemiddag' : 'goeienavond';
+
   return (
     <>
-      <LedenNav actief="vragen" partner={profiel.rol === 'partner'} beheerder={beheerder} />
-      <section className="held">
-        <div className="wrap" style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
-          <span className="boven">moroww hub · {profiel.huis || 'ledenzone'}</span>
-          <h1 className="titel-1">vraag het <i>moroww.</i></h1>
-          <p className="inleiding">Je vraagt, wij zoeken een partner in de buurt, en volgen op tot het klaar is. Je ziet het met een foto.</p>
-          {vragen.length ? (
-            <div className="hub-cijfers">
-              <div><b>{vragen.filter((v) => v.status === 'geregeld').length}</b><span>vragen geregeld</span></div>
-              {mediaan !== null ? <div><b>{duur(mediaan)}</b><span>van vraag tot geregeld, mediaan</span></div> : null}
-              <div><b>{loopt.length}</b><span>lopen nu</span></div>
-            </div>
-          ) : null}
+      <header className="plat-kop">
+        <div>
+          <span className="boven">{profiel.huis || 'je overzicht'}</span>
+          <h1 className="titel-1 plat-titel">{groet}, <i>{voornaam}.</i></h1>
         </div>
-      </section>
+        <div className="hub-cijfers">
+          <div><b>{loopt.length}</b><span>lopen nu</span></div>
+          <div><b>{vragen.filter((v) => v.status === 'geregeld').length}</b><span>geregeld</span></div>
+          {mediaan !== null ? <div><b>{duur(mediaan)}</b><span>van vraag tot geregeld</span></div> : null}
+        </div>
+      </header>
 
-      <Sectie id="vraag">
-        <div className="rij">
-          <div className="smal">
-            <Kop boven="nieuwe vraag" titel={<>wat moet er <i>gebeuren?</i></>} tekst="Wij kiezen de partner die het snelst kan en volgen op tot het klaar is." />
-            <p className="klein" style={{ marginTop: 16 }}>Liever bellen of een bericht sturen? {site.contact.telefoon}</p>
-          </div>
-          <form action={stelVraag} className="hub-form breed" style={{ maxWidth: 720 }}>
+      <div className="plat-bureau">
+        <section id="vraag" className="plat-paneel plat-vraag" aria-labelledby="vraag-titel">
+          <h2 id="vraag-titel" className="plat-paneel-titel">vraag het <i>moroww.</i></h2>
+          <p className="klein">Wij kiezen de partner die het snelst kan en volgen op tot het klaar is. Je ziet het met een foto.</p>
+          <form action={stelVraag} className="hub-form">
             <fieldset className="hub-chips">
-              <legend className="klein" style={{ marginBottom: 10 }}>soort vraag</legend>
+              <legend className="klein" style={{ marginBottom: 10 }}>wat moet er gebeuren</legend>
               {soorten.map((s, i) => (
                 <label key={s.sleutel}>
                   <input type="radio" name="soort" value={s.sleutel} defaultChecked={i === 0} />
@@ -189,29 +186,34 @@ export default async function Leden({ searchParams }: { searchParams: Promise<{ 
                 </label>
               ))}
             </fieldset>
-            <div className="rij-velden">
-              <div className="veld"><label htmlFor="huis">voor welk huis</label><input id="huis" name="huis" defaultValue={profiel.huis ?? ''} required /></div>
-              <div className="veld"><label htmlFor="tegen">klaar tegen</label><input id="tegen" name="tegen" type="datetime-local" /></div>
-            </div>
+            <div className="veld"><label htmlFor="huis">voor welk huis</label><input id="huis" name="huis" defaultValue={profiel.huis ?? ''} required /></div>
+            <div className="veld"><label htmlFor="tegen">klaar tegen</label><input id="tegen" name="tegen" type="datetime-local" /></div>
             <div className="veld"><label htmlFor="wat">je vraag</label><textarea id="wat" name="wat" required placeholder="Kunnen de ramen gepoetst zijn tegen 19 uur? Er komen gasten." /></div>
             {sp.fout === 'vraag' ? <p className="hub-fout">Je vraag kon niet bewaard worden. Probeer het opnieuw, of bel ons.</p> : null}
-            {sp.gesteld ? <p className="klein" style={{ margin: 0 }}>Je vraag is binnen. Je ziet hieronder hoe het loopt.</p> : null}
+            {sp.gesteld ? <p className="plat-ok">Je vraag is binnen. Je ziet ernaast hoe het loopt.</p> : null}
             <button type="submit" className="btn btn-primair">vraag het moroww</button>
           </form>
+          <p className="klein">Liever bellen of een bericht sturen? <a href={`tel:${site.contact.telefoon.replace(/\s/g, '')}`}>{site.contact.telefoon}</a></p>
+        </section>
+
+        <div className="plat-stroom">
+          <section aria-labelledby="loopt-titel">
+            <h2 id="loopt-titel" className="plat-groep-titel">loopt nu <span>{loopt.length}</span></h2>
+            {loopt.length ? <div className="plat-kaarten">{loopt.map(kaart)}</div> : (
+              <div className="plat-leeg">
+                <strong>alles is geregeld.</strong>
+                <span>Heb je iets nodig voor je huis? Vraag het hiernaast, of bel ons.</span>
+              </div>
+            )}
+          </section>
+          {klaar.length ? (
+            <section aria-labelledby="klaar-titel">
+              <h2 id="klaar-titel" className="plat-groep-titel">geregeld <span>{klaar.length}</span></h2>
+              <div className="plat-kaarten">{klaar.map(kaart)}</div>
+            </section>
+          ) : null}
         </div>
-      </Sectie>
-
-      <Sectie toon="zacht">
-        <Kop boven="loopt nu" titel={loopt.length ? <>{loopt.length} {loopt.length === 1 ? 'vraag' : 'vragen'} <i>onderweg.</i></> : <>alles is <i>geregeld.</i></>} />
-        {loopt.length ? <div className="raster-2" style={{ alignItems: 'start' }}>{loopt.map(kaart)}</div> : <p className="hub-leeg">Heb je iets nodig, vraag het hierboven.</p>}
-      </Sectie>
-
-      {klaar.length ? (
-        <Sectie>
-          <Kop boven="geregeld" titel={<>wat al <i>gebeurd is.</i></>} />
-          <div className="raster-2" style={{ alignItems: 'start' }}>{klaar.map(kaart)}</div>
-        </Sectie>
-      ) : null}
+      </div>
     </>
   );
 }

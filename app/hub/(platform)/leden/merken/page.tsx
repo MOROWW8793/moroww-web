@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { revalidatePath } from 'next/cache';
 import { Sectie, Kop } from '@/components/merk/Shell';
-import { LedenNav } from '@/components/hub/LedenNav';
 import { eisLid, tekst } from '@/lib/hub/supabase';
 import { meldBeheer } from '@/lib/hub/mail';
 
@@ -21,7 +20,7 @@ async function vraagMerk(formData: FormData) {
 }
 
 export default async function LedenMerken() {
-  const { sb, user, profiel, beheerder } = await eisLid('/hub/leden/merken');
+  const { sb, user } = await eisLid('/hub/leden/merken');
   const [{ data }, { data: mijn }] = await Promise.all([
     sb.from('hub_partners').select('id,naam,wat,plek,voordeel,url').eq('status', 'live').eq('soort', 'merk').order('naam'),
     sb.from('hub_merk_aanvragen').select('partner_id,status').eq('profiel_id', user.id),
@@ -31,7 +30,6 @@ export default async function LedenMerken() {
 
   return (
     <>
-      <LedenNav actief="merken" partner={profiel.rol === 'partner'} beheerder={beheerder} />
       <section className="held">
         <div className="wrap" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           <span className="boven">moroww hub · merken</span>
