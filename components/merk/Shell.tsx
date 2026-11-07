@@ -32,7 +32,7 @@ export function Footer({ donker = false, merk }: { donker?: boolean; merk: React
           <Link href="/hub"><MerkTeken merk="hub" op={donker ? 'donker' : 'licht'} size={16} /></Link>
         </nav>
         <p className="voet-gegevens">
-          {site.bedrijf} · {site.ondernemingsnummer} · {site.plaats} · <a href={`tel:${site.contact.telefoon.replace(/\s/g, '')}`}>{site.contact.telefoon}</a>
+          {site.bedrijf} · {site.ondernemingsnummer} · {site.plaats} · <a href={`tel:${site.contact.telefoon.replace(/\s/g, '')}`}>{site.contact.telefoon}</a> · <Link href="/het-label">het label</Link> · <Link href="/privacy">privacy</Link>
         </p>
       </div>
     </footer>

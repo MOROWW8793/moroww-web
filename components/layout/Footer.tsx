@@ -5,8 +5,8 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import {
-  footerCollectieLinks,
-  footerEigenaarLinks,
+  footerKolommen,
+  footerJuridisch,
   type FooterLink,
 } from '@/lib/navigation'
 
@@ -15,9 +15,10 @@ const LINKEDIN_URL = 'https://www.linkedin.com/company/moroww/'
 const CONTACT_EMAIL = 'info@moroww.com'
 const STARTIT_URL = 'https://www.kbc.be/ondernemen/nl/artikel/zelfstandige-worden/eigen-zaak-starten/wat-is-kbc-start-it.html'
 
-// Voettekst in drie kolommen op desktop, gestapeld met uitklapbare koppen
-// op mobiel. Kolom 1 (bedrijfsgegevens) staat altijd open — kolom 2 en 3
-// starten dicht op mobiel zodat de voettekst één scherm blijft.
+// Voettekst: merkblok + drie linkkolommen op desktop, gestapeld met
+// uitklapbare koppen op mobiel. Het merkblok staat altijd open, de
+// linkkolommen starten dicht op mobiel zodat de voettekst één scherm blijft.
+// Onderaan één balk met juridisch, cookies en socials.
 
 function FooterLinkItem({
   link,
@@ -53,9 +54,7 @@ export function Footer() {
   const t = useTranslations('footer')
 
   // Open-state per kolom. Op desktop altijd open, op mobiel start dicht.
-  // matchMedia bepaalt eenmalig bij mount + volgt resize.
-  const [col2Open, setCol2Open] = useState(true)
-  const [col3Open, setCol3Open] = useState(true)
+  const [open, setOpen] = useState<boolean[]>(() => footerKolommen.map(() => true))
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
@@ -63,21 +62,21 @@ export function Footer() {
     const update = () => {
       const mob = mq.matches
       setIsMobile(mob)
-      // Op resize naar mobiel: sluit beide kolommen. Naar desktop: open beide.
-      setCol2Open(!mob)
-      setCol3Open(!mob)
+      setOpen(footerKolommen.map(() => !mob))
     }
     update()
     mq.addEventListener('change', update)
     return () => mq.removeEventListener('change', update)
   }, [])
 
+  const wissel = (i: number) => setOpen((o) => o.map((v, j) => (j === i ? !v : v)))
+
   return (
     <footer className="bg-moroww-dark text-white w-full">
       <div className="mx-auto max-w-6xl px-6 md:px-16 lg:px-24 py-12 md:py-16 lg:py-24">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-12">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4 lg:gap-12">
 
-          {/* Kolom 1 — altijd open, ook op mobiel */}
+          {/* Merkblok — altijd open, ook op mobiel */}
           <div>
             <Image
               src="/images/logo.png"
@@ -94,9 +93,6 @@ export function Footer() {
             </p>
             <p className="text-xs text-white/25 mt-1">
               {t('vat_line')}
-            </p>
-            <p className="text-xs text-white/25 mt-6">
-              {t('copyright')}
             </p>
             <a
               href={STARTIT_URL}
@@ -115,76 +111,56 @@ export function Footer() {
             </a>
           </div>
 
-          {/* Kolom 2 — de collectie */}
-          <div>
-            <button
-              type="button"
-              className="w-full flex items-center justify-between text-audit uppercase text-white/70 lg:pointer-events-none lg:cursor-default min-h-[44px] py-3 lg:min-h-0 lg:py-0 mb-2 lg:mb-4"
-              onClick={() => setCol2Open((v) => !v)}
-              aria-expanded={col2Open}
-              aria-controls="footer-col-collectie"
-            >
-              <span>{t('column_collection')}</span>
-              {isMobile && (
-                <span aria-hidden className="text-sm">{col2Open ? '−' : '+'}</span>
-              )}
-            </button>
-            {col2Open && (
-              <ul id="footer-col-collectie" className="flex flex-col gap-2 text-sm text-white/50">
-                {footerCollectieLinks.map((link) => (
-                  <li key={link.href}>
-                    <FooterLinkItem link={link} label={t(link.labelKey)} />
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-
-          {/* Kolom 3 — voor eigenaars + contact/social */}
-          <div>
-            <button
-              type="button"
-              className="w-full flex items-center justify-between text-audit uppercase text-white/70 lg:pointer-events-none lg:cursor-default min-h-[44px] py-3 lg:min-h-0 lg:py-0 mb-2 lg:mb-4"
-              onClick={() => setCol3Open((v) => !v)}
-              aria-expanded={col3Open}
-              aria-controls="footer-col-eigenaars"
-            >
-              <span>{t('column_for_owners')}</span>
-              {isMobile && (
-                <span aria-hidden className="text-sm">{col3Open ? '−' : '+'}</span>
-              )}
-            </button>
-            {col3Open && (
-              <div id="footer-col-eigenaars" className="flex flex-col gap-2 text-sm text-white/50">
-                {footerEigenaarLinks.map((link) => (
-                  <FooterLinkItem key={link.href} link={link} label={t(link.labelKey)} />
-                ))}
-                <a
-                  href={`mailto:${CONTACT_EMAIL}`}
-                  className="hover:text-white transition-colors mt-4"
+          {footerKolommen.map((kolom, i) => {
+            const id = `footer-${kolom.titelKey}`
+            return (
+              <div key={kolom.titelKey}>
+                <button
+                  type="button"
+                  className="w-full flex items-center justify-between text-audit uppercase text-white/70 lg:pointer-events-none lg:cursor-default min-h-[44px] py-3 lg:min-h-0 lg:py-0 mb-2 lg:mb-4"
+                  onClick={() => wissel(i)}
+                  aria-expanded={open[i]}
+                  aria-controls={id}
                 >
-                  {CONTACT_EMAIL}
-                </a>
-                <a
-                  href={INSTAGRAM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
-                >
-                  Instagram
-                </a>
-                <a
-                  href={LINKEDIN_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
-                >
-                  LinkedIn
-                </a>
+                  <span>{t(kolom.titelKey)}</span>
+                  {isMobile && (
+                    <span aria-hidden className="text-sm">{open[i] ? '−' : '+'}</span>
+                  )}
+                </button>
+                {open[i] && (
+                  <ul id={id} className="flex flex-col gap-2 text-sm text-white/50">
+                    {kolom.links.map((link) => (
+                      <li key={link.href}>
+                        <FooterLinkItem link={link} label={t(link.labelKey)} />
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
-            )}
-          </div>
+            )
+          })}
 
+        </div>
+
+        {/* Onderste balk — juridisch, cookies, contact en socials */}
+        <div className="mt-12 lg:mt-16 pt-6 border-t border-white/10 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between text-xs text-white/40">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <span className="text-white/25">{t('copyright')}</span>
+            {footerJuridisch.map((link) => (
+              <FooterLinkItem key={link.href} link={link} label={t(link.labelKey)} />
+            ))}
+          </div>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white transition-colors">
+              {CONTACT_EMAIL}
+            </a>
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+              Instagram
+            </a>
+            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+              LinkedIn
+            </a>
+          </div>
         </div>
       </div>
     </footer>

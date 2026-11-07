@@ -64,7 +64,10 @@
     "cookie_settings": "cookie settings",
     "the_label": "the label",
     "how": "moroww how",
-    "hub": "moroww hub"
+    "hub": "moroww hub",
+    "column_stays": "stays",
+    "column_moroww": "moroww",
+    "terms": "terms"
   },
   "collectie": {
     "label": "Curated selection",

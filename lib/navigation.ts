@@ -131,6 +131,7 @@ export type FooterLabelKey =
   | 'contact'
   | 'calendar_link'
   | 'privacy'
+  | 'terms'
 
 export interface FooterLink {
   labelKey: FooterLabelKey
@@ -138,31 +139,57 @@ export interface FooterLink {
   extern?: boolean
 }
 
-// Kolom 2 · de collectie
-export const footerCollectieLinks: FooterLink[] = [
-  { labelKey: 'collection', href: '/collectie' },
-  { labelKey: 'the_shore',  href: '/the-shore' },
-  { labelKey: 'the_fields', href: '/the-fields' },
-  { labelKey: 'standard',   href: '/de-standaard' },
-  { labelKey: 'about',      href: '/over-moroww' },
-  { labelKey: 'partners',   href: '/partners' },
+// Voettekst · drie kolommen, één per publiek.
+//   verblijven     → gasten: alles om een huis te kiezen
+//   voor eigenaars → één ingang (het label) + kennis + gesprek
+//   moroww         → het merk en de twee andere takken (how, hub)
+// Juridisch, cookies en socials staan in de onderste balk, niet in een kolom.
+// /eigenaar-worden en /partners blijven bestaan maar staan niet meer in de
+// voettekst: het label is de ingang voor eigenaars, partners leven in de hub.
+export type FooterKolomKey = 'column_stays' | 'column_for_owners' | 'column_moroww'
+
+export interface FooterKolom {
+  titelKey: FooterKolomKey
+  links: FooterLink[]
+}
+
+export const footerKolommen: FooterKolom[] = [
+  {
+    titelKey: 'column_stays',
+    links: [
+      { labelKey: 'collection', href: '/collectie' },
+      { labelKey: 'the_shore',  href: '/the-shore' },
+      { labelKey: 'the_fields', href: '/the-fields' },
+      { labelKey: 'standard',   href: '/de-standaard' },
+    ],
+  },
+  {
+    titelKey: 'column_for_owners',
+    links: [
+      { labelKey: 'the_label',            href: '/het-label' },
+      { labelKey: 'knowledge_for_owners', href: '/kennis' },
+      {
+        labelKey: 'calendar_link',
+        href: 'https://calendar.app.google/BH8wYeA9AGf6KrUz7',
+        extern: true,
+      },
+    ],
+  },
+  {
+    titelKey: 'column_moroww',
+    links: [
+      { labelKey: 'about',   href: '/over-moroww' },
+      { labelKey: 'how',     href: '/how' },
+      { labelKey: 'hub',     href: '/hub' },
+      { labelKey: 'contact', href: '/contact' },
+    ],
+  },
 ]
 
-// Kolom 3 · voor eigenaars. Eén link naar /kennis (was tien) — de hub op
-// /kennis toont alle artikels, de voettekst hoeft dat niet te dupliceren.
-export const footerEigenaarLinks: FooterLink[] = [
-  { labelKey: 'the_label',            href: '/het-label' },
-  { labelKey: 'how',                  href: '/how' },
-  { labelKey: 'hub',                  href: '/hub' },
-  { labelKey: 'for_owners',           href: '/eigenaar-worden' },
-  { labelKey: 'knowledge_for_owners', href: '/kennis' },
-  { labelKey: 'contact',              href: '/contact' },
-  {
-    labelKey: 'calendar_link',
-    href: 'https://calendar.app.google/BH8wYeA9AGf6KrUz7',
-    extern: true,
-  },
-  { labelKey: 'privacy',              href: '/privacy' },
+// Onderste balk
+export const footerJuridisch: FooterLink[] = [
+  { labelKey: 'privacy', href: '/privacy' },
+  { labelKey: 'terms',   href: '/voorwaarden' },
 ]
 
 // NL-only pagina's: taalwissel-knop is verborgen op deze pagina's, want
