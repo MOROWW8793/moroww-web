@@ -73,12 +73,11 @@ export default function PropertyManagers() {
       </Sectie>
 
       <Sectie toon="zacht">
-        <Kop boven="de afspraken" titel="samenwerken, niet concurreren." />
+        <Kop boven="de afspraken" titel="vaste afspraken. per huis." />
         <ol className="stappen">
           <li><strong>één aanspreekpunt</strong><span>Een vaste lijn voor jouw kantoor, voor elk huis in je portefeuille.</span></li>
           <li><strong>vaste aanpak</strong><span>Elk adres dezelfde vijf vragen, hetzelfde rapport. Je eigenaars weten waar ze aan toe zijn.</span></li>
           <li><strong>voorrang</strong><span>Scans en trajecten van partners plannen we eerst in.</span></li>
-          <li><strong>jouw regio blijft van jou</strong><span>Vraagt een eigenaar in je regio om beheer, dan verwijzen we door naar jou.</span></li>
         </ol>
       </Sectie>
 
