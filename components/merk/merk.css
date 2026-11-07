@@ -170,3 +170,35 @@
 .merk .sectie-donker .stappen li { border-color: rgba(255,255,255,0.5); }
 .merk .sectie-donker .stappen span { color: var(--donker-muted); }
 .merk .raster-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+
+/* ---------- moroww advisory: het plan als beeld ---------- */
+.merk .held-twee { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+@media (max-width: 900px) { .merk .held-twee { grid-template-columns: 1fr; } }
+.merk-advisory .plan { background: #FFFFFF; border-top: 6px solid #F2C94C; padding: 32px; display: flex; flex-direction: column; gap: 24px; box-shadow: 0 24px 60px rgba(26, 26, 26, 0.08); }
+.merk-advisory .plan-kop { display: flex; flex-direction: column; gap: 10px; }
+.merk-advisory .plan-vraag { font-family: var(--font-titel); font-size: 26px; font-weight: 300; line-height: 1.2; letter-spacing: -0.01em; }
+.merk-advisory .plan-stappen { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; counter-reset: plan; }
+.merk-advisory .plan-stappen li { counter-increment: plan; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 17px; }
+.merk-advisory .plan-stappen li::before { content: counter(plan) '.'; color: var(--accent); min-width: 18px; }
+.merk-advisory .plan-stappen mark { background: #F2C94C; color: var(--ink); padding: 2px 8px; font-size: 15px; }
+.merk-advisory .plan-voet { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; font-size: 14px; color: var(--muted); }
+.merk-advisory .plan-voet strong { display: block; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+.merk-advisory .belofte { border-top: 2px solid #F2C94C; padding-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+.merk-advisory .belofte p { margin: 0; font-size: 16px; line-height: 1.55; color: var(--muted); }
+.merk .faq { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.merk .faq details { border-bottom: 1px solid var(--line); padding: 18px 0; }
+.merk .faq summary { cursor: pointer; font-size: 18px; font-weight: 500; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.merk .faq summary::-webkit-details-marker { display: none; }
+.merk .faq summary::after { content: '+'; color: var(--accent); }
+.merk .faq details[open] summary::after { content: '−'; }
+.merk .faq details p { margin: 12px 0 0; font-size: 16px; line-height: 1.6; color: var(--muted); max-width: 640px; }
+.merk-advisory .browser { background: #FFFFFF; box-shadow: 0 24px 60px rgba(26, 26, 26, 0.10); overflow: hidden; border: 1px solid var(--line); }
+.merk-advisory .browser-balk { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.merk-advisory .browser-balk span { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
+.merk-advisory .browser-balk em { margin-left: 12px; font-style: normal; font-size: 13px; color: var(--muted); }
+.merk-advisory .browser-boek { padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+.merk-advisory .browser-naam { font-family: var(--font-titel); font-size: 22px; font-weight: 300; }
+.merk-advisory .browser-velden { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) auto; gap: 8px; font-size: 13px; color: var(--muted); }
+.merk-advisory .browser-velden span { border: 1px solid var(--line); padding: 10px; }
+.merk-advisory .browser-velden strong { background: var(--ink); color: #FFFFFF; font-weight: 500; padding: 10px 18px; display: flex; align-items: center; }
+.merk .held-twee .titel-1 { font-size: clamp(2.6rem, 5vw, 4rem); }
