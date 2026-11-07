@@ -1,0 +1,165 @@
+/* Hallmark · v2.0.0 */
+/* critique: warm editorial paper, serif display, slow rhythm, one terracotta accent */
+/* theme: custom · shape: Letter · genre: editorial · signature: the promise as opening line */
+
+:root {
+  --hm-paper: #F4F0E8;
+  --hm-paper-deep: #EBE5D9;
+  --hm-ink: #1A1613;
+  --hm-dim: #6C655C;
+  --hm-rule: #D9D3C7;
+  --hm-accent: #9B4A2A;
+
+  --hm-display: var(--font-fraunces), Georgia, serif;
+  --hm-sans: var(--font-instrument), -apple-system, system-ui, sans-serif;
+
+  --hm-measure: 62ch;
+  --hm-gutter: 1.5rem;
+  --hm-max: 78rem;
+
+  --hm-ease: cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+
+html, body {
+  overflow-x: clip;
+}
+
+body.hm {
+  background: var(--hm-paper);
+  color: var(--hm-ink);
+  font-family: var(--hm-sans);
+  font-size: 17px;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hm-wrap {
+  width: 100%;
+  max-width: var(--hm-max);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 3vw, 2rem);
+}
+
+.hm-display {
+  font-family: var(--hm-display);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.02;
+  overflow-wrap: break-word;
+  min-width: 0;
+  color: var(--hm-ink);
+}
+
+.hm-h-xl { font-size: clamp(2.75rem, 7vw, 6rem); }
+.hm-h-lg { font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.08; }
+.hm-h-md { font-size: clamp(1.5rem, 2.5vw, 2rem); line-height: 1.15; }
+
+.hm-lead {
+  font-family: var(--hm-display);
+  font-size: clamp(1.1875rem, 1.8vw, 1.5rem);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--hm-ink);
+  max-width: var(--hm-measure);
+  letter-spacing: -0.005em;
+}
+
+.hm-prose { max-width: var(--hm-measure); }
+.hm-prose p + p { margin-top: 1rem; }
+
+.hm-dim { color: var(--hm-dim); }
+
+.hm-rule {
+  border: 0;
+  border-top: 1px solid var(--hm-rule);
+  margin: 0;
+}
+
+.hm-link {
+  color: var(--hm-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--hm-rule);
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 300ms var(--hm-ease), color 300ms var(--hm-ease);
+}
+.hm-link:hover {
+  text-decoration-color: var(--hm-accent);
+  color: var(--hm-accent);
+}
+.hm-link:focus-visible {
+  outline: 2px solid var(--hm-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.hm-cta {
+  display: inline-block;
+  font-family: var(--hm-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--hm-paper);
+  background: var(--hm-ink);
+  padding: 0.8125rem 1.375rem;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 300ms var(--hm-ease), transform 300ms var(--hm-ease);
+}
+.hm-cta:hover { background: var(--hm-accent); }
+.hm-cta:active { transform: translateY(1px); }
+.hm-cta:focus-visible {
+  outline: 2px solid var(--hm-accent);
+  outline-offset: 3px;
+}
+
+.hm-cta-ghost {
+  display: inline-block;
+  font-family: var(--hm-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--hm-ink);
+  background: transparent;
+  padding: 0.8125rem 1.375rem;
+  border: 1px solid var(--hm-rule);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: border-color 300ms var(--hm-ease), color 300ms var(--hm-ease);
+}
+.hm-cta-ghost:hover { border-color: var(--hm-ink); }
+.hm-cta-ghost:focus-visible {
+  outline: 2px solid var(--hm-accent);
+  outline-offset: 3px;
+}
+
+.hm-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hm-frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--hm-paper-deep);
+}
+
+.hm-grid {
+  display: grid;
+  gap: var(--hm-gutter);
+  min-width: 0;
+}
+
+.hm-section { padding-block: clamp(4rem, 8vw, 7rem); }
+.hm-section-tight { padding-block: clamp(2.5rem, 5vw, 4rem); }
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
