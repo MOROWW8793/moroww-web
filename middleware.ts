@@ -3,6 +3,7 @@ import { routing } from './i18n/routing'
 import { NextRequest, NextResponse } from 'next/server'
 import { PARTNER_COOKIE, isPartner, leesPartnerCookie, zetPartnerCookie } from './lib/partner'
 import { TOESTEMMING_COOKIE, leesToestemming } from './lib/toestemming'
+import { createServerClient, type CookieOptions } from '@supabase/ssr'
 
 const intlMiddleware = createIntlMiddleware(routing)
 
@@ -24,11 +25,34 @@ function partnerCookie(request: NextRequest, response: NextResponse) {
   else if (waarde) response.cookies.delete(PARTNER_COOKIE)
 }
 
-export default function middleware(request: NextRequest) {
+// moroww hub: vernieuwt de Supabase-sessie in de cookies voor de afgeschermde delen.
+async function hubSessie(request: NextRequest) {
+  let response = NextResponse.next({ request })
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  if (!url || !key) return response
+  const sb = createServerClient(url, key, {
+    cookies: {
+      getAll: () => request.cookies.getAll(),
+      setAll: (lijst: { name: string; value: string; options: CookieOptions }[]) => {
+        lijst.forEach(({ name, value }) => request.cookies.set(name, value))
+        response = NextResponse.next({ request })
+        lijst.forEach(({ name, value, options }) => response.cookies.set(name, value, options))
+      },
+    },
+  })
+  await sb.auth.getUser()
+  return response
+}
+
+export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   // moroww advisory en moroww hub hebben hun eigen layout buiten [locale] (NL-only).
   // /how blijft hier staan zodat de doorverwijzing naar /advisory niet door next-intl gaat.
+  if (/^\/hub\/(leden|partner|beheer)(\/|$)/.test(pathname)) {
+    return hubSessie(request)
+  }
   if (/^\/(advisory|how|hub)(\/|$)/.test(pathname)) {
     return NextResponse.next()
   }

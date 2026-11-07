@@ -2,6 +2,11 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Sectie, Kop } from '@/components/merk/Shell';
 import { ContactForm } from '@/components/merk/ContactForm';
+import { supabase } from '@/lib/supabase';
+
+export const revalidate = 300;
+
+interface MarktProduct { id: string; naam: string; tekst: string | null; foto: string | null; url: string | null; hub_partners: { naam: string } | null }
 
 export const metadata: Metadata = { title: 'market', description: 'hub market: de geur, het linnen en de essentials uit het verblijf, om thuis te hebben.' };
 
@@ -12,7 +17,9 @@ const producten = [
   { naam: <>de essentials <i>voor de badkamer</i></>, tekst: 'Zeep, shampoo en lotion uit de huizen.', sleutel: 'essentials', foto: '/images/standaard/V2-36.jpg' },
 ];
 
-export default function Market() {
+export default async function Market() {
+  const { data } = await supabase.from('hub_producten').select('id,naam,tekst,foto,url,hub_partners(naam)').eq('status', 'live').order('created_at');
+  const live = (data ?? []) as unknown as MarktProduct[];
   return (
     <>
       <section className="held">
@@ -25,6 +32,26 @@ export default function Market() {
           />
         </div>
       </section>
+
+      {live.length ? (
+        <Sectie>
+          <div className="raster-4">
+            {live.map((p) => (
+              <a key={p.id} href={p.url ?? '#'} target="_blank" rel="noopener noreferrer" className="kaart" style={{ padding: 0, background: 'transparent', border: 'none', gap: 10 }}>
+                <div className="foto" style={{ position: 'relative', overflow: 'hidden' }}>
+                  {p.foto ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={p.foto} alt={p.naam} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                  ) : null}
+                </div>
+                <h2 className="kaart-titel" style={{ fontSize: 22 }}>{p.naam}</h2>
+                {p.tekst ? <p className="klein" style={{ margin: 0 }}>{p.tekst}</p> : null}
+                <span className="klein">bij {p.hub_partners?.naam ?? 'de partner'}</span>
+              </a>
+            ))}
+          </div>
+        </Sectie>
+      ) : null}
 
       <Sectie toon="zacht">
         <div className="raster-4">

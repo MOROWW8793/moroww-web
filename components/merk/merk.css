@@ -202,3 +202,36 @@
 .merk-advisory .browser-velden span { border: 1px solid var(--line); padding: 10px; }
 .merk-advisory .browser-velden strong { background: var(--ink); color: #FFFFFF; font-weight: 500; padding: 10px 18px; display: flex; align-items: center; }
 .merk .held-twee .titel-1 { font-size: clamp(2.6rem, 5vw, 4rem); }
+
+/* ---------- moroww hub: ledenzone, partnerportaal, beheer ---------- */
+.merk .hub-form { display: flex; flex-direction: column; gap: 10px; max-width: 520px; }
+.merk .hub-form label { font-size: 14px; font-weight: 500; }
+.merk .hub-form input, .merk .hub-form select, .merk .hub-form textarea { font: inherit; font-size: 16px; padding: 12px 14px; border: 1px solid var(--line); background: #FFFFFF; color: #0F2238; border-radius: 0; }
+.merk .hub-form textarea { min-height: 120px; resize: vertical; }
+.merk .hub-form .btn { align-self: flex-start; margin-top: 8px; }
+.merk .hub-form .rij-velden { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.merk .hub-form .veld { display: flex; flex-direction: column; gap: 8px; }
+.merk .hub-fout { margin: 0; font-size: 15px; color: #B3261E; }
+.merk .held .hub-fout { color: #FFB4A9; }
+.merk .hub-subnav { background: #EEF3F8; border-bottom: 1px solid var(--line); }
+.merk .hub-subnav-binnen { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; min-height: 56px; }
+.merk .hub-subnav-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.merk .hub-subnav a { text-decoration: none; color: var(--muted); font-size: 15px; padding: 16px 0; border-bottom: 2px solid transparent; }
+.merk .hub-subnav a[aria-current='page'] { color: var(--ink); border-color: #7FA0C9; }
+.merk .hub-linkknop { background: none; border: none; padding: 12px 0; font: inherit; font-size: 15px; color: var(--muted); cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
+.merk .hub-code { display: inline-flex; align-self: flex-start; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 15px; letter-spacing: 0.04em; background: #EEF3F8; border: 1px dashed #7FA0C9; padding: 6px 12px; color: var(--ink); }
+.merk .hub-tabel { width: 100%; border-collapse: collapse; font-size: 15px; background: #FFFFFF; border: 1px solid var(--line); }
+.merk .hub-tabel th, .merk .hub-tabel td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.merk .hub-tabel th { font-weight: 500; color: var(--muted); font-size: 14px; }
+.merk .hub-tabel form { display: inline; }
+.merk .hub-tabel-wrap { overflow-x: auto; }
+.merk .hub-knopklein { font: inherit; font-size: 14px; padding: 8px 14px; border: 1px solid var(--line); background: #FFFFFF; color: var(--ink); cursor: pointer; }
+.merk .hub-knopklein.primair { background: #0F2238; color: #FFFFFF; border-color: #0F2238; }
+.merk .hub-label { display: inline-block; align-self: flex-start; font-size: 13px; padding: 3px 10px; background: #EEF3F8; color: var(--muted); }
+.merk .hub-label.live { background: #DDE6F0; color: #0F2238; }
+.merk .hub-draad { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.merk .hub-draad a, .merk .hub-draad .hub-bericht { padding: 20px 0; border-bottom: 1px solid var(--line); text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 6px; }
+.merk .hub-draad a:hover .kaart-titel { text-decoration: underline; text-underline-offset: 4px; }
+.merk .hub-meta { font-size: 14px; color: var(--muted); }
+.merk .hub-bericht p { margin: 0; font-size: 16px; line-height: 1.6; white-space: pre-wrap; }
+.merk .hub-leeg { padding: 28px; background: #FFFFFF; border: 1px dashed var(--line); color: var(--muted); font-size: 16px; margin: 0; }

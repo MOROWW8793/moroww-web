@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import type { Metadata } from 'next';
 import { Sectie, Kop } from '@/components/merk/Shell';
 import { ContactForm } from '@/components/merk/ContactForm';
@@ -29,7 +30,9 @@ export default function PartnerWorden() {
               <li><strong>kennismaking</strong><span>We bekijken of je aanbod past bij het label, en testen het in onze eigen huizen.</span></li>
               <li><strong>voordeel voor leden</strong><span>Een korting of extra voor eigenaars met het label.</span></li>
               <li><strong>in de hub</strong><span>Een partnerprofiel, en de badge voor je eigen site.</span></li>
+              <li><strong>je eigen portaal</strong><span>Log in met je e-mailadres en beheer zelf je fiche, je voordeel en je producten voor de market.</span></li>
             </ol>
+            <p className="klein" style={{ marginTop: 20 }}>Al partner? <Link href="/hub/partner">naar het partnerportaal</Link></p>
           </div>
           <div className="breed">
             <ContactForm
