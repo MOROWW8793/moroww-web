@@ -16,7 +16,7 @@ import '@/components/merk/merk.css';
 
 export const metadata: Metadata = {
   title: { default: 'moroww hub · where the stay stays.', template: '%s · moroww hub' },
-  description: 'De plek van de moroww-familie: partners en tools voor eigenaars, de academy voor hosts en de market voor gasten.',
+  description: 'Vraag het moroww: eigenaars en property managers met het label vragen wat hun huis nodig heeft, moroww regelt het met een partner in de buurt.',
 };
 
 export default function HubLayout({ children }: { children: React.ReactNode }) {

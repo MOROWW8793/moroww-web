@@ -14,11 +14,11 @@ export const metadata: Metadata = {
 const aanbod: { label: string; titel: React.ReactNode; tekst: string; href: string; voet: string }[] = [
   {
     label: 'voor je portefeuille',
-    titel: <>de <i>partners</i></>,
+    titel: <>vraag het <i>moroww</i></>,
     tekst:
-      'Schoonmaak, sloten, fotografie en badkamerproducten, binnenkort ook linnen en software. Dezelfde partners die in onze eigen huizen werken, voor al je huizen.',
+      'Een extra schoonmaak, de ramen of een herstelling in een van je huizen? Vraag het in de hub. Moroww plant de partner in, volgt op en toont het resultaat met een foto. Dezelfde partners die in onze eigen huizen werken.',
     href: '/hub/partners',
-    voet: 'naar de partners',
+    voet: 'bekijk de partners',
   },
   {
     label: 'voor je beste huizen',
@@ -54,8 +54,8 @@ export default function PropertyManagers() {
           <span className="boven">moroww hub · voor property managers</span>
           <h1 className="titel-1">jij beheert de huizen. <i>wij brengen de rest samen.</i></h1>
           <p className="inleiding">
-            Je beheert vakantiewoningen voor eigenaars. In de hub vind je de partners en tools die moroww zelf gebruikt,
-            het label voor je beste huizen, en de academy voor je team. Eén aanspreekpunt, voor je hele portefeuille.
+            Je beheert vakantiewoningen voor eigenaars. In de hub vraag je wat je huizen nodig hebben, en moroww regelt het
+            met de partners die we zelf gebruiken. Plus het label voor je beste huizen, en de academy voor je team. Eén aanspreekpunt, voor je hele portefeuille.
           </p>
           <div className="knoppen">
             <a href="#kennismaking" className="btn btn-primair">vraag een kennismaking</a>

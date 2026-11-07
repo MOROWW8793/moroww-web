@@ -7,7 +7,6 @@ export function LedenNav({ actief, partner, beheerder }: { actief: string; partn
     ['merken', '/hub/leden/merken', 'merken'],
     ['academy', '/hub/leden/academy', 'academy en ledenbrief'],
   ];
-  if (partner) items.push(['partner', '/hub/partner', 'mijn partnerfiche']);
   if (beheerder) items.push(['beheer', '/hub/beheer', 'regie']);
   return (
     <nav className="hub-subnav" aria-label="ledenzone">
