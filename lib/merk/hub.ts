@@ -76,10 +76,10 @@ export const hoeWeKiezen: [string, string][] = [
 ];
 
 export const ledenKrijgen: [string, string][] = [
-  ['partners met voordelen', 'Tools, merken en vakmensen die moroww zelf kiest, met een voordeel voor leden.'],
-  ['de academy', 'Kleine sessies van hosts voor hosts, in een moroww-huis.'],
-  ['de ledenbrief', 'Eén keer per maand: wat er verandert aan de regels, wat werkt bij andere leden, wat er komt.'],
-  ['andere eigenaars', 'Een netwerk van mensen die hun huis met dezelfde zorg verhuren.'],
+  ['vraag het moroww', 'Een extra schoonmaak, de ramen, een herstelling: jij vraagt, wij zoeken een partner in de buurt en volgen op tot het klaar is. Je ziet het met een foto.'],
+  ['partners met voordelen', 'Vakmensen, tools en merken die moroww zelf kiest, met een voordeel voor leden.'],
+  ['merken in je huis', 'Kleine merken die je gasten gebruiken, in de badkamer, de keuken of de living. Moroww plaatst ze.'],
+  ['de academy en de ledenbrief', 'Kleine sessies in een moroww-huis, en één keer per maand wat er verandert.'],
 ];
 
 export const academyThemas: [string, string][] = [

@@ -100,3 +100,12 @@ export function brusselNaarISO(v: string): string | null {
   const verschil = inBrussel.getTime() - inUtc.getTime();
   return new Date(gok - verschil).toISOString();
 }
+
+// Voor pagina's binnen de ledenzone: alleen actieve leden, anders naar inloggen of de aanvraag.
+export async function eisLid(naar: string) {
+  const { redirect } = await import('next/navigation');
+  const s = await hubSessie();
+  if (!s.user) redirect(`/hub/inloggen?naar=${naar}`);
+  if (s.profiel?.status !== 'actief') redirect('/hub/leden');
+  return s as typeof s & { user: NonNullable<typeof s.user>; profiel: Profiel };
+}

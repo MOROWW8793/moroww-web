@@ -3,6 +3,8 @@ import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { Sectie, Kop } from '@/components/merk/Shell';
 import { LedenNav } from '@/components/hub/LedenNav';
+import { RegieNav } from '@/components/hub/RegieNav';
+import Link from 'next/link';
 import { hubSessie, hubBeheerClient, tekst, categorieNaam, soortNaam, datumNL, brusselNaarISO, type Profiel } from '@/lib/hub/supabase';
 import { mailLid } from '@/lib/hub/mail';
 
@@ -49,8 +51,21 @@ async function partnerToevoegen(formData: FormData) {
     voordeel: tekst(formData.get('voordeel'), 300) || null,
     code: tekst(formData.get('code'), 60) || null,
     url: tekst(formData.get('url'), 300) || null,
+    soort: formData.get('soort') === 'merk' ? 'merk' : 'dienst',
+    vak: tekst(formData.get('vak'), 80) || null,
+    regio: tekst(formData.get('regio'), 120) || null,
+    telefoon: tekst(formData.get('telefoon'), 40) || null,
+    plek: tekst(formData.get('plek'), 80) || null,
     status: 'concept',
   });
+  revalidatePath('/hub/beheer');
+}
+
+async function zetMerk(formData: FormData) {
+  'use server';
+  const db = await eisBeheer();
+  const status = tekst(formData.get('status'), 20);
+  if (['aangevraagd', 'geplaatst', 'gestopt'].includes(status)) await db.from('hub_merk_aanvragen').update({ status }).eq('id', tekst(formData.get('id'), 60));
   revalidatePath('/hub/beheer');
 }
 
@@ -104,6 +119,10 @@ export default async function Beheer() {
     db.from('hub_inschrijvingen').select('sessie_id, hub_profielen(naam,email)'),
     db.from('hub_ledenbrieven').select('*').order('datum', { ascending: false }),
   ]);
+  const [{ data: merkAanvragen }, { data: openVragen }] = await Promise.all([
+    db.from('hub_merk_aanvragen').select('id,huis,status,created_at,hub_profielen(naam),hub_partners(naam)').order('created_at', { ascending: false }),
+    db.from('hub_vragen').select('id').in('status', ['binnen', 'ingepland']),
+  ]);
   const alle = (profielen ?? []) as Profiel[];
   const wachtend = alle.filter((p) => p.status === 'aangevraagd');
   const actief = alle.filter((p) => p.status === 'actief');
@@ -127,6 +146,10 @@ export default async function Beheer() {
       </section>
 
       <Sectie>
+        <RegieNav actief="rest" />
+        <p style={{ margin: '20px 0 32px' }}>
+          <Link href="/hub/beheer/vragen" className="btn btn-primair">{(openVragen ?? []).length} open {(openVragen ?? []).length === 1 ? 'vraag' : 'vragen'} opvolgen</Link>
+        </p>
         <Kop boven="aanvragen" titel="wie wil erbij?" />
         {wachtend.length ? (
           <div className="hub-tabel-wrap">
@@ -157,12 +180,12 @@ export default async function Beheer() {
         <Kop boven="partners" titel="fiches en voordelen." tekst="Een fiche op live zetten maakt ze zichtbaar in de ledenzone, met voordeel en code." />
         <div className="hub-tabel-wrap">
           <table className="hub-tabel">
-            <thead><tr><th>partner</th><th>categorie</th><th>voordeel</th><th>code</th><th>status</th><th></th></tr></thead>
+            <thead><tr><th>partner</th><th>soort</th><th>voordeel</th><th>code</th><th>status</th><th></th></tr></thead>
             <tbody>
-              {(partners ?? []).map((p: { id: string; naam: string; categorie: string; voordeel: string | null; code: string | null; status: string; eigenaar: string | null }) => (
+              {(partners ?? []).map((p: { id: string; naam: string; categorie: string; soort: string; vak: string | null; regio: string | null; plek: string | null; voordeel: string | null; code: string | null; status: string; eigenaar: string | null }) => (
                 <tr key={p.id}>
                   <td>{p.naam}{p.eigenaar ? <><br /><span className="hub-meta">beheerd door de partner</span></> : null}</td>
-                  <td>{categorieNaam[p.categorie] ?? p.categorie}</td>
+                  <td>{p.soort === 'merk' ? `merk · ${p.plek ?? 'in het huis'}` : [p.vak, p.regio].filter(Boolean).join(' · ') || 'dienst'}</td>
                   <td>{p.voordeel || '—'}</td>
                   <td>{p.code || '—'}</td>
                   <td><span className={`hub-label ${p.status === 'live' ? 'live' : ''}`}>{p.status}</span></td>
@@ -187,11 +210,47 @@ export default async function Beheer() {
             <div className="veld"><label htmlFor="pk">code</label><input id="pk" name="code" /></div>
             <div className="veld"><label htmlFor="pu">website</label><input id="pu" name="url" type="url" /></div>
           </div>
+          <div className="rij-velden">
+            <div className="veld"><label htmlFor="ps">soort</label><select id="ps" name="soort"><option value="dienst">dienst (vakman)</option><option value="merk">merk (product in het huis)</option></select></div>
+            <div className="veld"><label htmlFor="pva">vak</label><input id="pva" name="vak" placeholder="ramen, loodgieter, schoonmaak" /></div>
+            <div className="veld"><label htmlFor="pr">regio</label><input id="pr" name="regio" /></div>
+          </div>
+          <div className="rij-velden">
+            <div className="veld"><label htmlFor="pt">telefoon (alleen voor moroww)</label><input id="pt" name="telefoon" type="tel" /></div>
+            <div className="veld"><label htmlFor="pl">merk: waar in het huis</label><input id="pl" name="plek" placeholder="in de badkamer" /></div>
+          </div>
           <button type="submit" className="btn btn-primair">voeg partner toe</button>
         </form>
       </Sectie>
 
       <Sectie>
+        <Kop boven="merken" titel="aangevraagd door eigenaars." />
+        {(merkAanvragen ?? []).length ? (
+          <div className="hub-tabel-wrap">
+            <table className="hub-tabel">
+              <thead><tr><th>merk</th><th>eigenaar</th><th>huis</th><th>status</th><th></th></tr></thead>
+              <tbody>
+                {((merkAanvragen ?? []) as unknown as { id: string; huis: string | null; status: string; hub_profielen: { naam: string } | null; hub_partners: { naam: string } | null }[]).map((m) => (
+                  <tr key={m.id}>
+                    <td>{m.hub_partners?.naam ?? '—'}</td>
+                    <td>{m.hub_profielen?.naam ?? '—'}</td>
+                    <td>{m.huis || '—'}</td>
+                    <td><span className={`hub-label ${m.status === 'geplaatst' ? 'live' : ''}`}>{m.status}</span></td>
+                    <td><div style={{ display: 'flex', gap: 8 }}>
+                      {m.status !== 'geplaatst' ? <Knop actie={zetMerk} velden={{ id: m.id, status: 'geplaatst' }} label="geplaatst" primair /> : null}
+                      {m.status !== 'gestopt' ? <Knop actie={zetMerk} velden={{ id: m.id, status: 'gestopt' }} label="gestopt" /> : null}
+                    </div></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <p className="hub-leeg">Nog geen merken aangevraagd.</p>
+        )}
+      </Sectie>
+
+      <Sectie toon="zacht">
         <Kop boven="market" titel="producten van partners." />
         {(producten ?? []).length ? (
           <div className="hub-tabel-wrap">

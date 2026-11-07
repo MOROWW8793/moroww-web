@@ -2,11 +2,13 @@ import Link from 'next/link';
 
 export function LedenNav({ actief, partner, beheerder }: { actief: string; partner?: boolean; beheerder?: boolean }) {
   const items: [string, string, string][] = [
-    ['overzicht', '/hub/leden', 'overzicht'],
-    ['community', '/hub/leden/community', 'community'],
+    ['vragen', '/hub/leden', 'vraag het moroww'],
+    ['partners', '/hub/leden/partners', 'partners'],
+    ['merken', '/hub/leden/merken', 'merken'],
+    ['academy', '/hub/leden/academy', 'academy en ledenbrief'],
   ];
   if (partner) items.push(['partner', '/hub/partner', 'mijn partnerfiche']);
-  if (beheerder) items.push(['beheer', '/hub/beheer', 'beheer']);
+  if (beheerder) items.push(['beheer', '/hub/beheer', 'regie']);
   return (
     <nav className="hub-subnav" aria-label="ledenzone">
       <div className="wrap hub-subnav-binnen">

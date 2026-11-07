@@ -5,6 +5,8 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts')
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   compress: true,
+  // moroww hub: foto's van het resultaat gaan via een server action naar Supabase Storage.
+  experimental: { serverActions: { bodySizeLimit: '12mb' } },
   poweredByHeader: false,
   // Next 15 streamt metadata standaard in de body voor gewone browsers en
   // schrijft ze alleen in de <head> voor bots die in htmlLimitedBots

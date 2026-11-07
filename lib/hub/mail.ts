@@ -47,3 +47,28 @@ export async function mailLid(naar: string, naam: string) {
     // niets
   }
 }
+
+// Een update bij een vraag, naar de eigenaar. Zelfde stijl als de inlogmails.
+export async function mailVraag(naar: string, naam: string, huis: string, tekst: string, metFoto: boolean) {
+  const key = process.env.RESEND_API_KEY;
+  if (!key || !naar) return;
+  try {
+    const resend = new Resend(key);
+    const voornaam = (naam || '').split(' ')[0];
+    await resend.emails.send({
+      from: 'moroww hub <info@moroww.com>',
+      to: naar,
+      subject: `${huis} · ${tekst.split('.')[0].toLowerCase()} · moroww`,
+      html: `<div style="background:#EEF3F8;padding:32px 12px"><table role="presentation" width="100%" style="max-width:560px;margin:0 auto;background:#0F2238"><tr><td style="padding:36px 40px">
+        <p style="margin:0 0 20px;font-family:Georgia,serif;font-style:italic;font-size:18px;color:#C9D8E8">vraag het moroww · ${esc(huis)}</p>
+        <p style="margin:0 0 14px;font-family:Arial,sans-serif;font-size:16px;line-height:1.6;color:#F4F7FB">Dag ${esc(voornaam)},</p>
+        <p style="margin:0 0 14px;font-family:Arial,sans-serif;font-size:16px;line-height:1.6;color:#F4F7FB">${esc(tekst)}</p>
+        ${metFoto ? '<p style="margin:0 0 14px;font-family:Arial,sans-serif;font-size:16px;line-height:1.6;color:#F4F7FB">De foto van het resultaat staat in de hub.</p>' : ''}
+        <p style="margin:24px 0 0"><a href="https://moroww.com/hub/leden" style="display:inline-block;background:#C9D8E8;color:#0F2238;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;text-decoration:none;padding:13px 24px">bekijk in de hub</a></p>
+        <p style="margin:24px 0 0;font-family:Arial,sans-serif;font-size:14px;line-height:1.6;color:#C9D8E8">Warme groet,<br>moroww · +32 456 91 20 24</p>
+      </td></tr></table></div>`,
+    });
+  } catch {
+    // niets
+  }
+}

@@ -48,8 +48,8 @@ export default function Hub() {
           <span className="boven">de plek van de moroww-familie</span>
           <h1 className="titel-1" style={{ fontSize: 'clamp(3rem, 7vw, 5.4rem)' }}>where the stay <i>stays.</i></h1>
           <p className="inleiding">
-            moroww brengt de juiste mensen samen. In de hub vinden eigenaars en property managers de partners en tools die
-            moroww zelf gebruikt. Hosts leren van elkaar. Gasten nemen de rust mee naar huis.
+            moroww brengt de juiste mensen samen. Eigenaars en property managers vragen in de hub wat hun huis nodig heeft,
+            en moroww regelt het met de juiste partner. Gasten nemen de rust mee naar huis.
           </p>
           <div className="knoppen">
             <Link href="/hub/lid-worden" className="btn btn-primair">lid worden</Link>
