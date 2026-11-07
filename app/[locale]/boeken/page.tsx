@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params
   const isNl = locale === 'nl'
   return siteMetadata({
-    titel: isNl ? 'Boek een persoonlijk bezochte vakantiewoning — moroww' : 'Book a holiday home we visited in person — moroww',
+    titel: isNl ? 'Boek een geselecteerde vakantiewoning — moroww' : 'Book a selected holiday home — moroww',
     beschrijving: isNl
       ? 'Kies je data en zie meteen welke karaktervolle vakantiewoningen van moroww vrij zijn. Rechtstreeks boeken, zonder servicekosten.'
       : 'Choose your dates and see right away which moroww homes are free. Book directly, without service fees.',

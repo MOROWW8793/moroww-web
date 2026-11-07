@@ -40,8 +40,8 @@ export async function generateMetadata({
   const isNl = locale === 'nl'
   return siteMetadata({
     titel: isNl
-      ? 'moroww — persoonlijk bezochte vakantiewoningen in België'
-      : 'moroww — holiday homes in Belgium, visited in person',
+      ? 'moroww — geselecteerde vakantiewoningen in België'
+      : 'moroww — selected holiday homes in Belgium',
     beschrijving: isNl
       ? 'Twee collecties, één standaard. Elke woning persoonlijk bezocht voor ze in de collectie komt.'
       : 'Two collections, one standard. Every home visited in person before it joins the collection.',

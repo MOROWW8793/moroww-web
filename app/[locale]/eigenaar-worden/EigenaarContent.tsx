@@ -16,7 +16,7 @@ const COPY: EigenaarCopy = {
   waardeH2: 'meer dan een label op je listing.',
   waarde: [
     { titel: 'je verschil, vóór de boeking', tekst: 'Bijna elk huis heeft goede reviews, dus een gast ziet het verschil pas als hij binnenstapt. Het label toont het vooraf, op je eigen listings en op moroww.com.' },
-    { titel: 'gasten die bij je huis passen', tekst: 'Wie kiest voor een huis dat we zelf bezochten, zoekt rust en zorg, geen feestje. Dat zijn de gasten die goed omgaan met wat je gebouwd hebt.' },
+    { titel: 'gasten die bij je huis passen', tekst: 'Wie kiest voor een huis uit onze selectie, zoekt rust en zorg, geen feestje. Dat zijn de gasten die goed omgaan met wat je gebouwd hebt.' },
     { titel: 'de partners van de collectie', tekst: 'Vakmensen, techniek en lifestylemerken die we zelf kiezen en aan de standaard houden, aan voorwaarden die we voor alle huizen samen afspreken. Jij hoeft niet meer zelf te zoeken.' },
     { titel: 'rust, ook als je er niet bent', tekst: 'Wij houden je huis aan de standaard en kijken mee naar wat de regels vragen, van aanmelding tot brandveiligheid. Wringt er iets, dan hoor je het van ons voor een gast het merkt.' },
   ],
@@ -57,7 +57,7 @@ const COPY: EigenaarCopy = {
   keuzesSlot: 'De standaard is voor elk huis dezelfde.',
   batchEyebrow: 'de volgende batch',
   batchH2: 'tien woningen.',
-  batchP: 'We hebben onze volgende batch geopend voor tien woningen die het label samen met ons willen testen. Niet elk huis komt erin.',
+  batchP: 'We hebben onze volgende batch geopend voor tien woningen die het label samen met ons willen testen. Niet elk huis wordt geselecteerd.',
   batchStartIt: 'supported by',
   stappenEyebrow: 'hoe het loopt',
   stappen: [

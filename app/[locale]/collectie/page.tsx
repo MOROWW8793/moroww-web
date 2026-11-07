@@ -16,10 +16,10 @@ export async function generateMetadata({
   const { locale } = await params
   const isNl = locale === 'nl'
   return siteMetadata({
-    titel: isNl ? 'De collectie — persoonlijk bezochte vakantiewoningen' : 'The collection — holiday homes visited in person',
+    titel: isNl ? 'De collectie — geselecteerde vakantiewoningen' : 'The collection — selected holiday homes',
     beschrijving: isNl
-      ? 'Karaktervolle vakantiewoningen, elk persoonlijk bezocht. Per huis alles op een rij: slaapkamers, gasten, buitenruimte, parking en prijs.'
-      : 'Holiday homes with character, each visited in person. Everything per home side by side: bedrooms, guests, outdoor space, parking and price.',
+      ? 'Karaktervolle vakantiewoningen, elk persoonlijk bezocht en geselecteerd. Per huis alles op een rij: slaapkamers, gasten, buitenruimte, parking en prijs.'
+      : 'Holiday homes with character, each visited in person and selected. Everything per home side by side: bedrooms, guests, outdoor space, parking and price.',
     pad: isNl ? '/collectie' : '/en/collection',
     locale: isNl ? 'nl' : 'en',
     hreflang: { nl: '/collectie', en: '/en/collection' },
