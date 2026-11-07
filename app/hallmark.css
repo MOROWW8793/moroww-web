@@ -362,6 +362,34 @@ html.hm-js .hm-ecosysteem-wrap.is-in .hm-eco-core circle {
   animation: hm-eco-pulse 4.5s ease-in-out 2.8s infinite;
 }
 
+/* ───────────── bloem — merk-mascotte ─────────────
+   Vijf blaadjes uit het officiële logo. Elke blaadje zit in een eigen <g> met
+   .hm-bloem-petal. De ademhaling is een continue scale(1 ↔ 1.06) rond het
+   eigen midden, met staggered delay zodat de bloem 'golft' in plaats van alle
+   blaadjes tegelijk. transform-box: fill-box zorgt dat het midden van de g
+   relatief aan zijn eigen bounding box is, niet aan de SVG-canvas. */
+
+.hm-bloem { display: block; }
+
+.hm-bloem-petal {
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+@keyframes hm-bloem-adem {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.06); }
+}
+
+html.hm-js .hm-bloem-anim .hm-bloem-petal {
+  animation: hm-bloem-adem 4.5s ease-in-out infinite;
+}
+html.hm-js .hm-bloem-anim .hm-bloem-petal:nth-child(1) { animation-delay: 0s;    }
+html.hm-js .hm-bloem-anim .hm-bloem-petal:nth-child(2) { animation-delay: 0.35s; }
+html.hm-js .hm-bloem-anim .hm-bloem-petal:nth-child(3) { animation-delay: 0.7s;  }
+html.hm-js .hm-bloem-anim .hm-bloem-petal:nth-child(4) { animation-delay: 1.05s; }
+html.hm-js .hm-bloem-anim .hm-bloem-petal:nth-child(5) { animation-delay: 1.4s;  }
+
 /* Reduced motion: alle animaties worden letterlijk uitgezet. */
 @media (prefers-reduced-motion: reduce) {
   html.hm-js [data-anim="rise"],
@@ -382,6 +410,9 @@ html.hm-js .hm-ecosysteem-wrap.is-in .hm-eco-core circle {
     transition: none !important;
   }
   html.hm-js .hm-ecosysteem-wrap.is-in .hm-eco-core circle {
+    animation: none !important;
+  }
+  html.hm-js .hm-bloem-anim .hm-bloem-petal {
     animation: none !important;
   }
   *, *::before, *::after {

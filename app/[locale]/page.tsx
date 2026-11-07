@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { setRequestLocale } from 'next-intl/server'
 import { EcosysteemSchema } from '@/components/hallmark/EcosysteemSchema'
+import { MorowwBloem } from '@/components/hallmark/MorowwBloem'
 
 export const metadata: Metadata = {
   title: 'moroww — label voor karaktervolle vakantiewoningen in België',
@@ -158,6 +159,9 @@ export default async function HomePage({
           className="hm-hero-grid"
         >
           <div>
+            <div data-anim="rise" style={{ marginBottom: '1.25rem' }}>
+              <MorowwBloem size={44} />
+            </div>
             <p className="hm-eyebrow" data-anim="rise">
               {isNl
                 ? 'voor eigenaars van karaktervolle vakantiewoningen'
@@ -492,9 +496,13 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* CTA — pg 11. Lines-reveal op de slotvraag. */}
+      {/* CTA — pg 11. Lines-reveal op de slotvraag. Grote bloem bovenaan als
+          merk-handtekening onder de slotvraag die om toetreding vraagt. */}
       <section className="hm-tinted hm-bg-beige hm-section">
         <div className="hm-wrap">
+          <div data-anim="rise" style={{ marginBottom: '2rem' }}>
+            <MorowwBloem size={120} label="moroww" />
+          </div>
           <p className="hm-eyebrow" data-anim="rise">{isNl ? 'de stichtende huizen' : 'the founding homes'}</p>
           <h2
             className="hm-display hm-h-xl"
