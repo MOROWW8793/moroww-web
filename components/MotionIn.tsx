@@ -4,19 +4,21 @@ import { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 
 /**
- * Twee micro-motion lagen voor de homepage en de rest van de site:
+ * Twee micro-motion lagen voor de hele site:
  *
  *   data-mw-reveal              → krijgt .is-in bij intersection (één keer)
  *   data-mw-parallax            → translateY op basis van positie in viewport
- *   data-mw-parallax-strength   → optioneel, default 0.15 (ca. 15 % van
- *                                 element-hoogte max beweging)
+ *   data-mw-parallax-strength   → optioneel, default 0.15
  *
  * MotionIn zit in LocaleLayout; bij client-side navigatie blijft layout
- * gemount, dus useEffect moet opnieuw draaien bij elke route-wissel —
- * anders worden de nieuwe [data-mw-reveal]-elementen nooit geobserveerd
- * en blijven ze onzichtbaar op opacity 0. Daarom usePathname als dep.
+ * gemount, dus useEffect moet opnieuw draaien bij elke route-wissel.
+ * Daarom usePathname als dep.
  *
- * Geen externe dependency. reduced-motion zet beide lagen uit.
+ * Defensive-in-depth tegen edge cases (iOS Safari, Lenis-rAF-race,
+ * IntersectionObserver die niet vuurt): elementen die al in viewport
+ * staan bij mount krijgen meteen .is-in; na 1500 ms krijgt sowieso
+ * alles .is-in als fallback, zodat content nooit permanent onzichtbaar
+ * blijft hangen.
  */
 export function MotionIn() {
   const pathname = usePathname()
@@ -33,24 +35,43 @@ export function MotionIn() {
       return
     }
 
-    // ── Reveal ────────────────────────────────────────────────────────────
-    // threshold 0 + bottom-rootMargin 120px: triggert zodra element de
-    // viewport-bodem nadert, niet pas als 15 % erin staat.
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return
-          entry.target.classList.add('is-in')
-          io.unobserve(entry.target)
-        })
-      },
-      { threshold: 0, rootMargin: '0px 0px 120px 0px' },
-    )
-    revealEls.forEach((el) => io.observe(el))
+    // ── Reveal — direct in-viewport + IO + safety net ────────────────────
+    const markIfVisible = (el: HTMLElement): boolean => {
+      const r = el.getBoundingClientRect()
+      if (r.top < window.innerHeight && r.bottom > 0) {
+        el.classList.add('is-in')
+        return true
+      }
+      return false
+    }
+    const pending = revealEls.filter((el) => !markIfVisible(el))
+
+    let io: IntersectionObserver | null = null
+    if (typeof IntersectionObserver !== 'undefined') {
+      io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return
+            entry.target.classList.add('is-in')
+            io?.unobserve(entry.target)
+          })
+        },
+        { threshold: 0, rootMargin: '0px 0px 120px 0px' },
+      )
+      pending.forEach((el) => io!.observe(el))
+    } else {
+      // Geen IO: direct alles zichtbaar.
+      pending.forEach((el) => el.classList.add('is-in'))
+    }
+
+    // Safety net: na 1500 ms toch alles zichtbaar maken wat nog niet
+    // getriggerd is. Beschermt tegen iOS Safari + Lenis-race en tegen
+    // alle andere edge cases waar IO niet vuurt.
+    const safetyTimer = window.setTimeout(() => {
+      revealEls.forEach((el) => el.classList.add('is-in'))
+    }, 1500)
 
     // ── Parallax ─────────────────────────────────────────────────────────
-    // offset = (viewportMidden - elementMidden) / viewport * height * strength.
-    // rAF-throttled: één update per frame, zelfs bij flutter-scroll.
     let onScroll: (() => void) | null = null
     let onResize: (() => void) | null = null
 
@@ -82,7 +103,8 @@ export function MotionIn() {
     }
 
     return () => {
-      io.disconnect()
+      io?.disconnect()
+      window.clearTimeout(safetyTimer)
       if (onScroll) window.removeEventListener('scroll', onScroll)
       if (onResize) window.removeEventListener('resize', onResize)
     }
