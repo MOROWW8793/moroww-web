@@ -52,7 +52,7 @@ export default async function RendementPage() {
           id="module"
           className="my-10 rounded-2xl border border-moroww-brown/25 bg-white p-8 md:p-10"
         >
-          <p className="text-xs uppercase tracking-widest text-moroww-label mb-3">
+          <p className="text-xs uppercase tracking-widest text-moroww-label-tekst mb-3">
             module
           </p>
           <h2 className="mt-0 mb-3 font-bold text-moroww-dark" style={{ fontSize: 22 }}>

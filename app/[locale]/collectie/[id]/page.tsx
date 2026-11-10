@@ -179,7 +179,7 @@ async function BoekingsPaneel({
         className="bg-white border border-moroww-rule p-mw-5"
         style={{ borderRadius: 4 }}
       >
-        <p className="text-audit text-moroww-label mb-mw-3">{t('coming_soon')}</p>
+        <p className="text-audit text-moroww-label-tekst mb-mw-3">{t('coming_soon')}</p>
         <p className="text-body text-moroww-dark">{t('coming_soon_body')}</p>
       </div>
     )
@@ -209,16 +209,16 @@ async function BoekingsPaneel({
       {boekbaar && (
         <ul className="mt-mw-4 space-y-mw-2 border-t border-moroww-rule pt-mw-4 text-sm text-moroww-ink-2">
           <li className="flex gap-3">
-            <CalendarCheck className="h-4 w-4 shrink-0 mt-0.5 text-moroww-label" aria-hidden />
+            <CalendarCheck className="h-4 w-4 shrink-0 mt-0.5 text-moroww-label-tekst" aria-hidden />
             {t('trust_cancel')}
           </li>
           <li className="flex gap-3">
-            <Handshake className="h-4 w-4 shrink-0 mt-0.5 text-moroww-label" aria-hidden />
+            <Handshake className="h-4 w-4 shrink-0 mt-0.5 text-moroww-label-tekst" aria-hidden />
             {t('trust_direct')}
           </li>
           {auditMaand && (
             <li className="flex gap-3">
-              <BadgeCheck className="h-4 w-4 shrink-0 mt-0.5 text-moroww-label" aria-hidden />
+              <BadgeCheck className="h-4 w-4 shrink-0 mt-0.5 text-moroww-label-tekst" aria-hidden />
               {t('trust_audit', { month: auditMaand })}
             </li>
           )}
@@ -371,7 +371,7 @@ export default async function WoningDetailPage({ params }: Props) {
                 <ul className="mt-mw-5 flex flex-wrap gap-x-mw-5 gap-y-mw-2 border-y border-moroww-rule py-mw-3">
                   {kerncijfers.map(({ Icoon, tekst }) => (
                     <li key={tekst} className="flex items-center gap-2 text-body text-moroww-dark">
-                      <Icoon className="h-[18px] w-[18px] text-moroww-label" strokeWidth={1.5} aria-hidden />
+                      <Icoon className="h-[18px] w-[18px] text-moroww-label-tekst" strokeWidth={1.5} aria-hidden />
                       {tekst}
                     </li>
                   ))}

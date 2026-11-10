@@ -29,7 +29,7 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
       {/* KOP */}
       <section className="w-full px-6 md:px-12 pt-mw-10 pb-mw-8">
         <div className="mx-auto max-w-7xl">
-          <p className="text-audit text-moroww-label">voor eigenaars en beheerders</p>
+          <p className="text-audit text-moroww-label-tekst">voor eigenaars en beheerders</p>
           <h1 className="mt-mw-4 text-h2 md:text-[clamp(2.5rem,5vw,4.5rem)] md:leading-[1] text-moroww-dark max-w-[18ch]">
             jouw huis met het label.
           </h1>
@@ -56,7 +56,7 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
           <ol className="mt-mw-6 grid grid-cols-1 md:grid-cols-3 gap-x-mw-6 gap-y-mw-6">
             {krijgt.map(([titel, tekst], i) => (
               <li key={titel} className="border-t-2 border-moroww-dark pt-mw-4">
-                <p className="text-audit text-moroww-label">0{i + 1}</p>
+                <p className="text-audit text-moroww-label-tekst">0{i + 1}</p>
                 <h3 className="mt-mw-2 text-h3 text-moroww-dark">{titel}</h3>
                 <p className="mt-mw-2 text-body text-moroww-ink-2">{tekst}</p>
               </li>

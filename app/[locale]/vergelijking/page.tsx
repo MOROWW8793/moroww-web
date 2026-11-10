@@ -39,7 +39,7 @@ export default async function VergelijkingPage({
     <main className="bg-moroww-blush min-h-screen">
       <div className="max-w-4xl mx-auto px-6 py-24">
 
-        <p className="text-xs uppercase tracking-widest text-moroww-label mb-4">
+        <p className="text-xs uppercase tracking-widest text-moroww-label-tekst mb-4">
           het verschil
         </p>
         {/* De positioneringszin (Fix 8) is te lang voor één H1-regel. Zin

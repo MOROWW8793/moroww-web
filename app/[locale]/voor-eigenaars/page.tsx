@@ -59,7 +59,7 @@ export default async function VoorEigenaarsPage({ params }: { params: Promise<{ 
       {/* KOP */}
       <section className="w-full px-6 md:px-12 pt-mw-10 pb-mw-8">
         <div className="mx-auto max-w-7xl">
-          <p className="text-audit text-moroww-label">voor eigenaars</p>
+          <p className="text-audit text-moroww-label-tekst">voor eigenaars</p>
           <h1 className="mt-mw-4 text-h2 md:text-[clamp(2.5rem,5vw,4.5rem)] md:leading-[1] text-moroww-dark max-w-[18ch]">
             drie manieren waarop moroww je helpt.
           </h1>
@@ -96,7 +96,7 @@ export default async function VoorEigenaarsPage({ params }: { params: Promise<{ 
       <section className="w-full px-6 md:px-12 py-mw-8 mb-mw-8 border-t border-moroww-rule">
         <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-mw-6">
           <div>
-            <p className="text-audit text-moroww-label">kennisbank</p>
+            <p className="text-audit text-moroww-label-tekst">kennisbank</p>
             <h2 className="mt-mw-2 text-h3 text-moroww-dark">eerst zelf lezen?</h2>
             <p className="mt-mw-3 text-body text-moroww-ink-2">
               Regels en belasting, wat een nacht kost, verzekering, de vier manieren om te verhuren. Alles wat we weten,

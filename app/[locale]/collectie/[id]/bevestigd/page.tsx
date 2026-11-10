@@ -63,7 +63,7 @@ export default async function BevestigdPage({ params, searchParams }: Props) {
           <ol className="mt-mw-3 space-y-mw-3">
             {stappen.map((s, i) => (
               <li key={i} className="flex gap-mw-3 text-body text-moroww-dark">
-                <span className="tabular-nums text-moroww-label font-semibold">{i + 1}</span>
+                <span className="tabular-nums text-moroww-label-tekst font-semibold">{i + 1}</span>
                 <span>{s}</span>
               </li>
             ))}

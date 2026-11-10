@@ -38,7 +38,7 @@ export default async function VoorwaardenPage({ params }: Props) {
 
         {v.delen.map((deel) => (
           <section key={deel.titel} className="mt-mw-8">
-            <h2 className="text-audit text-moroww-label">{deel.titel}</h2>
+            <h2 className="text-audit text-moroww-label-tekst">{deel.titel}</h2>
             {deel.artikelen.map((artikel) => (
               <div key={artikel.titel} className="mt-mw-5">
                 <h3 className="text-h3 text-moroww-dark">{artikel.titel}</h3>

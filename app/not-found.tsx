@@ -5,7 +5,7 @@ export default function NotFound() {
     <main className="min-h-screen bg-moroww-blush flex items-center justify-center px-6">
       <div className="max-w-md text-center">
 
-        <p className="text-xs uppercase tracking-widest text-moroww-label mb-6">
+        <p className="text-xs uppercase tracking-widest text-moroww-label-tekst mb-6">
           pagina niet gevonden
         </p>
 

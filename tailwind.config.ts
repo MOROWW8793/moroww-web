@@ -19,7 +19,8 @@ const config: Config = {
         "moroww-dark":      "#1A1A1A",   // tekst, gastenoverlay
         "moroww-blush":     "#FAE4D6",   // gastenoppervlak
         "moroww-orange":    "#FEA05E",   // actie, uitsluitend
-        "moroww-label":     "#C08D6E",   // auditlijn, keurmerk
+        "moroww-label":     "#C08D6E",   // auditlijn, keurmerk (lijnen en vlakken)
+        "moroww-label-tekst": "#8A5A3C",  // zelfde tint, donker genoeg voor kleine tekst
         "moroww-shore":     "#829B9B",   // uitsluitend the shore
         "moroww-fields":    "#CBD085",   // uitsluitend the fields
         "moroww-paper":     "#FBFAF8",   // eigenaarsoppervlak, koeler dan blush

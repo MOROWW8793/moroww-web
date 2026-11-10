@@ -129,7 +129,7 @@ export function VerderLezen({ items }: { items: VerderLezenItem[] }) {
   ]
   return (
     <section className="my-16 border-t border-moroww-brown/20 pt-12">
-      <p className="text-xs uppercase tracking-widest text-moroww-label mb-6">verder lezen</p>
+      <p className="text-xs uppercase tracking-widest text-moroww-label-tekst mb-6">verder lezen</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {withPoort.map((it) => (
           <Link
@@ -138,7 +138,7 @@ export function VerderLezen({ items }: { items: VerderLezenItem[] }) {
             className="block bg-white rounded-2xl p-6 hover:shadow-md transition-shadow"
           >
             {it.eyebrow && (
-              <p className="text-[11px] uppercase tracking-widest text-moroww-label mb-2">{it.eyebrow}</p>
+              <p className="text-[11px] uppercase tracking-widest text-moroww-label-tekst mb-2">{it.eyebrow}</p>
             )}
             <p className="text-moroww-dark font-semibold leading-snug">{it.title} →</p>
           </Link>

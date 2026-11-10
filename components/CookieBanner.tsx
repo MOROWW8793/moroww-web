@@ -15,7 +15,7 @@ function huidigeToestemming() {
 
 // Weigeren en aanvaarden krijgen bewust dezelfde vorm: de GBA aanvaardt geen
 // banner die met kleur of grootte naar "aanvaarden" duwt.
-const knop = 'border border-moroww-black px-4 py-2 text-moroww-black'
+const knop = 'min-h-[44px] border border-moroww-black px-4 py-2 text-moroww-black'
 
 export function CookieBanner() {
   const t = useTranslations('cookies')
@@ -127,7 +127,7 @@ export function CookieBanner() {
           <button
             type="button"
             onClick={() => setDetails(true)}
-            className="px-1 py-2 text-moroww-ink-2 underline underline-offset-2"
+            className="min-h-[44px] px-1 py-2 text-moroww-ink-2 underline underline-offset-2"
           >
             {t('kiezen')}
           </button>

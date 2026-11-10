@@ -16,7 +16,7 @@
 .merk {
   --bg: #FBFAF8; --ink: #1A1A1A; --muted: #4A4744; --line: #E3DED7;
   --zacht: #FAE4D6; --wit: #FFFFFF; --donker: #1A1A1A; --donker-ink: #FBFAF8; --donker-muted: #E3DED7;
-  --knop: #FEA05E; --knop-ink: #1A1A1A; --accent: #C08D6E;
+  --knop: #FEA05E; --knop-ink: #1A1A1A; --accent: #8A5A3C;
   --font-titel: 'OverusedGrotesk', 'Overused Grotesk', 'Helvetica Neue', Arial, sans-serif;
   --font-tekst: 'OverusedGrotesk', 'Overused Grotesk', 'Helvetica Neue', Arial, sans-serif;
   --titel-gewicht: 300; --titel-cursief: normal;
@@ -78,11 +78,19 @@
 .merk .kop-nav a:not(.btn) { text-decoration: none; padding: 10px 0; }
 .merk .kop-nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 4px; }
 .merk .kop-donker .kop-nav a:not(.btn) { color: var(--donker-muted); }
+@media (max-width: 640px) {
+  .merk .kop-binnen { padding-top: 14px; padding-bottom: 10px; gap: 10px; }
+  .merk .kop-nav { flex-wrap: nowrap; width: calc(100% + 16px); margin-right: -16px; overflow-x: auto; gap: 22px; scrollbar-width: none; }
+  .merk .kop-nav::-webkit-scrollbar { display: none; }
+  .merk .kop-nav a { white-space: nowrap; flex: 0 0 auto; }
+  .merk .kop-nav .btn-kop { order: -2; }
+  .merk .kop-nav a[href$="/inloggen"] { order: -1; }
+}
 
 .merk .voet { border-top: 1px solid var(--line); padding: 40px 0; font-size: 14px; color: var(--muted); }
 .merk .voet-donker { background: var(--donker); color: var(--donker-muted); border-top: none; }
 .merk .voet-binnen { display: flex; flex-wrap: wrap; gap: 20px 40px; justify-content: space-between; align-items: center; }
-.merk .voet-familie { display: flex; gap: 24px; align-items: center; }
+.merk .voet-familie { display: flex; flex-wrap: wrap; gap: 4px 24px; align-items: center; }
 .merk .voet-familie a { text-decoration: none; display: inline-flex; padding: 10px 0; }
 .merk .voet-gegevens { margin: 0; }
 

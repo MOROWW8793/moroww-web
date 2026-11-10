@@ -33,12 +33,12 @@ export function ArticleLayout({ eyebrow, titel, korteAntwoord, terug, children }
             {terug ? (
               <Link
                 href={terug.href}
-                className="inline-block text-xs uppercase tracking-widest text-moroww-label mb-6 hover:text-moroww-dark transition-colors"
+                className="inline-block text-xs uppercase tracking-widest text-moroww-label-tekst mb-6 hover:text-moroww-dark transition-colors"
               >
                 ← {terug.label}
               </Link>
             ) : (
-              <p className="text-xs uppercase tracking-widest text-moroww-label mb-6">{eyebrow}</p>
+              <p className="text-xs uppercase tracking-widest text-moroww-label-tekst mb-6">{eyebrow}</p>
             )}
             <h1
               className="font-bold text-moroww-dark leading-[1.05] tracking-[-0.02em] mb-10"

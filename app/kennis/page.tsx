@@ -135,7 +135,7 @@ export default function KennisHubPage() {
     <>
       <section className="w-full pt-32 pb-12 md:pt-40 md:pb-16 px-6">
         <div className="max-w-3xl mx-auto">
-          <p className="text-xs uppercase tracking-widest text-moroww-label mb-6">kennisbank</p>
+          <p className="text-xs uppercase tracking-widest text-moroww-label-tekst mb-6">kennisbank</p>
           <h1
             className="font-bold text-moroww-dark leading-[1.05] tracking-[-0.02em] mb-8"
             style={{ fontSize: 'clamp(2.25rem, 6vw, 4.5rem)' }}
@@ -158,7 +158,7 @@ export default function KennisHubPage() {
               href={k.href}
               className="group block bg-white rounded-2xl p-8 no-underline [&_*]:no-underline"
             >
-              <p className="text-[11px] uppercase tracking-widest text-moroww-label mb-3">{k.eyebrow}</p>
+              <p className="text-[11px] uppercase tracking-widest text-moroww-label-tekst mb-3">{k.eyebrow}</p>
               <h2
                 className="font-bold text-moroww-dark leading-tight mb-4 transition-transform duration-300 group-hover:translate-x-[2px]"
                 style={{ fontSize: 22 }}

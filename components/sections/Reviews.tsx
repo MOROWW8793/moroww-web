@@ -10,7 +10,7 @@ export async function Reviews() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-6">
           <div>
-            <p className="text-xs uppercase tracking-widest text-moroww-label mb-4">
+            <p className="text-xs uppercase tracking-widest text-moroww-label-tekst mb-4">
               {t('reviews_label')}
             </p>
             <h2 className="text-[clamp(1.8rem,4vw,3.2rem)] font-bold leading-[1.1] text-moroww-dark">
@@ -39,11 +39,11 @@ export async function Reviews() {
             </div>
             <div className="flex items-center gap-4 pt-6 border-t border-moroww-blush">
               <div className="w-10 h-10 rounded-full bg-moroww-brown/15 flex items-center justify-center shrink-0">
-                <span className="text-sm font-semibold text-moroww-label">S</span>
+                <span className="text-sm font-semibold text-moroww-label-tekst">S</span>
               </div>
               <div>
                 <p className="text-sm font-semibold text-moroww-dark">Stephen</p>
-                <p className="text-xs text-moroww-label">The Sixteenth, Oostende</p>
+                <p className="text-xs text-moroww-label-tekst">The Sixteenth, Oostende</p>
               </div>
             </div>
           </div>
@@ -65,7 +65,7 @@ export async function Reviews() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-white">Sabrina</p>
-                <p className="text-xs text-moroww-label">Chalet Anna-Helena, Ursel</p>
+                <p className="text-xs text-moroww-label-tekst">Chalet Anna-Helena, Ursel</p>
               </div>
             </div>
           </div>
@@ -82,11 +82,11 @@ export async function Reviews() {
             </div>
             <div className="flex items-center gap-4 pt-6 border-t border-moroww-blush">
               <div className="w-10 h-10 rounded-full bg-moroww-brown/15 flex items-center justify-center shrink-0">
-                <span className="text-sm font-semibold text-moroww-label">L</span>
+                <span className="text-sm font-semibold text-moroww-label-tekst">L</span>
               </div>
               <div>
                 <p className="text-sm font-semibold text-moroww-dark">Lucie</p>
-                <p className="text-xs text-moroww-label">The Cozy Relax Home, Beernem</p>
+                <p className="text-xs text-moroww-label-tekst">The Cozy Relax Home, Beernem</p>
               </div>
             </div>
           </div>

@@ -411,17 +411,17 @@ export function Checkout({ woning, aankomst, vertrek, gasten }: Props) {
 
               <ul className="mt-mw-5 space-y-mw-2 text-sm text-moroww-ink-2">
                 <li className="flex gap-3">
-                  <CalendarCheck className="h-4 w-4 shrink-0 mt-0.5 text-moroww-label" aria-hidden />
+                  <CalendarCheck className="h-4 w-4 shrink-0 mt-0.5 text-moroww-label-tekst" aria-hidden />
                   {kosteloosAnnuleerbaar
                     ? t('free_cancel_until', { date: datum(annulerenTot, true) })
                     : t('no_free_cancel')}
                 </li>
                 <li className="flex gap-3">
-                  <KeyRound className="h-4 w-4 shrink-0 mt-0.5 text-moroww-label" aria-hidden />
+                  <KeyRound className="h-4 w-4 shrink-0 mt-0.5 text-moroww-label-tekst" aria-hidden />
                   {t('access_code_note')}
                 </li>
                 <li className="flex gap-3">
-                  <Lock className="h-4 w-4 shrink-0 mt-0.5 text-moroww-label" aria-hidden />
+                  <Lock className="h-4 w-4 shrink-0 mt-0.5 text-moroww-label-tekst" aria-hidden />
                   {t('secure_payment')}
                 </li>
               </ul>

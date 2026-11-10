@@ -120,7 +120,7 @@ export function EigenaarPagina({
           <div className="mt-mw-6 lg:mt-mw-8 grid grid-cols-1 md:grid-cols-2 gap-x-mw-8 gap-y-mw-6 lg:gap-y-mw-8">
             {c.waarde.map((w, i) => (
               <div key={w.titel} className="border-t border-moroww-dark/20 pt-mw-5 grid grid-cols-1 sm:grid-cols-[3.5rem_1fr] gap-mw-2 sm:gap-mw-4">
-                <p className="text-h2 font-light text-moroww-label">0{i + 1}</p>
+                <p className="text-h2 font-light text-moroww-label-tekst">0{i + 1}</p>
                 <div>
                   <h3 className="text-h2 font-light text-moroww-dark">{w.titel}</h3>
                   <p className="mt-mw-3 text-body-lg text-moroww-ink-2 max-w-[44ch]">{w.tekst}</p>
