@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Header, Footer } from '@/components/merk/Shell';
 import { MerkTeken } from '@/components/merk/Logo';
 import { Analytics } from '@vercel/analytics/next';
+import { MotionIn } from '@/components/MotionIn';
+import { SmoothScroll } from '@/components/SmoothScroll';
 import '@fontsource/fraunces/300.css';
 import '@fontsource/fraunces/300-italic.css';
 import '@fontsource/fraunces/400.css';
@@ -23,19 +25,28 @@ export default function AdvisoryLayout({ children }: { children: React.ReactNode
   return (
     <html lang="nl-BE">
       <body>
-    <div className="merk merk-advisory">
-      <Header
-        home="/advisory"
-        merk={<MerkTeken merk="advisory" op="licht" size={24} />}
-        nav={[
-          { href: '/advisory#werkwijze', label: 'werkwijze' },
-          { href: '/advisory/website', label: 'website' },
-        ]}
-        cta={{ href: '/advisory/contact', label: 'vertel je vraag' }}
-      />
-      <main>{children}</main>
-      <Footer merk={<span>elke vraag, een plan.</span>} />
-    </div>
+        {/* mw-js zet een flag vóór render zodat data-mw-reveal zijn hidden
+            state kan aannemen zonder flash. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('mw-js')",
+          }}
+        />
+        <div className="merk merk-advisory">
+          <Header
+            home="/advisory"
+            merk={<MerkTeken merk="advisory" op="licht" size={24} />}
+            nav={[
+              { href: '/advisory#werkwijze', label: 'werkwijze' },
+              { href: '/advisory/website', label: 'website' },
+            ]}
+            cta={{ href: '/advisory/contact', label: 'vertel je vraag' }}
+          />
+          <main>{children}</main>
+          <Footer merk={<span>elke vraag, een plan.</span>} />
+        </div>
+        <SmoothScroll />
+        <MotionIn />
         <Analytics />
       </body>
     </html>
