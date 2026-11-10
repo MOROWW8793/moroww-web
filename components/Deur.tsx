@@ -43,14 +43,23 @@ export function Deur({ naam, tagline, href, beeld, beeldAlt }: Props) {
     >
       {heeftBeeld && (
         <>
-          <Image
-            src={beeld as string}
-            alt={beeldAlt}
-            fill
-            className="object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-[1.03] motion-reduce:group-hover:scale-100 motion-reduce:transition-none"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            priority
-          />
+          {/* Parallax-laag: 10 % overmaat boven en onder, zodat de translateY
+              uit MotionIn binnen deze marge blijft en de container kan
+              blijven maskeren (overflow-hidden op de Link). */}
+          <div
+            data-mw-parallax
+            data-mw-parallax-strength="0.2"
+            className="absolute inset-x-0 -top-[10%] -bottom-[10%]"
+          >
+            <Image
+              src={beeld as string}
+              alt={beeldAlt}
+              fill
+              className="object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-[1.03] motion-reduce:group-hover:scale-100 motion-reduce:transition-none"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+            />
+          </div>
           <div
             className="absolute inset-x-0 bottom-0 h-[60%] pointer-events-none"
             style={{ background: 'linear-gradient(to top, rgba(26,26,26,0.65), rgba(26,26,26,0))' }}

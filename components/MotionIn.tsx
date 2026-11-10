@@ -3,30 +3,31 @@
 import { useEffect } from 'react'
 
 /**
- * Scroll-reveal observer voor data-mw-reveal elementen. Zet .is-in bij
- * intersection (één keer per element). Reduced-motion toont de content
- * direct in eindstaat (CSS regelt dat met !important).
+ * Twee micro-motion lagen voor de homepage:
  *
- * De html.mw-js klasse wordt in layout.tsx meteen bij body-render gezet
- * zodat er geen flits is van zichtbare content voor de eerste scroll.
+ *   data-mw-reveal              → krijgt .is-in bij intersection (één keer)
+ *   data-mw-parallax            → translateY op basis van positie in viewport
+ *   data-mw-parallax-strength   → optioneel, default 0.15 (ca. 15 % van
+ *                                 element-hoogte max beweging)
+ *
+ * Geen externe dependency. reduced-motion zet beide lagen uit.
  */
 export function MotionIn() {
   useEffect(() => {
     if (typeof window === 'undefined') return
 
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const els = Array.from(document.querySelectorAll<HTMLElement>('[data-mw-reveal]'))
+    const revealEls = Array.from(document.querySelectorAll<HTMLElement>('[data-mw-reveal]'))
+    const parallaxEls = Array.from(document.querySelectorAll<HTMLElement>('[data-mw-parallax]'))
 
     if (reduce) {
-      els.forEach((el) => el.classList.add('is-in'))
+      revealEls.forEach((el) => el.classList.add('is-in'))
       return
     }
 
-    // threshold 0 + een genereuze positieve bottom-rootMargin: het element
-    // telt al als 'intersecting' zodra zijn bovenrand de viewport-bodem
-    // nadert (120px ervoor). Zonder dit moet eerst 15 % van een blok (±300px
-    // voor het collectie-raster) in beeld zijn voor er iets reveal triggert,
-    // en dat voelt alsof de pagina leeg is tot je voorbij de content scrolt.
+    // ── Reveal ────────────────────────────────────────────────────────────
+    // threshold 0 + bottom-rootMargin 120px: triggert zodra element de
+    // viewport-bodem nadert, niet pas als 15 % erin staat.
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -37,10 +38,46 @@ export function MotionIn() {
       },
       { threshold: 0, rootMargin: '0px 0px 120px 0px' },
     )
+    revealEls.forEach((el) => io.observe(el))
 
-    els.forEach((el) => io.observe(el))
+    // ── Parallax ─────────────────────────────────────────────────────────
+    // offset = (viewportMidden - elementMidden) / viewport * height * strength.
+    // rAF-throttled: één update per frame, zelfs bij flutter-scroll.
+    let onScroll: (() => void) | null = null
+    let onResize: (() => void) | null = null
 
-    return () => io.disconnect()
+    if (parallaxEls.length > 0) {
+      let ticking = false
+      const update = () => {
+        const vh = window.innerHeight
+        const vhHalf = vh / 2
+        parallaxEls.forEach((el) => {
+          const r = el.getBoundingClientRect()
+          const centerY = r.top + r.height / 2
+          const dist = (vhHalf - centerY) / vh
+          const strength = parseFloat(el.dataset.mwParallaxStrength ?? '0.15')
+          const offset = dist * r.height * strength
+          el.style.transform = `translate3d(0, ${offset.toFixed(2)}px, 0)`
+        })
+        ticking = false
+      }
+      onScroll = () => {
+        if (!ticking) {
+          requestAnimationFrame(update)
+          ticking = true
+        }
+      }
+      onResize = onScroll
+      window.addEventListener('scroll', onScroll, { passive: true })
+      window.addEventListener('resize', onResize, { passive: true })
+      update()
+    }
+
+    return () => {
+      io.disconnect()
+      if (onScroll) window.removeEventListener('scroll', onScroll)
+      if (onResize) window.removeEventListener('resize', onResize)
+    }
   }, [])
 
   return null
