@@ -70,7 +70,7 @@ export const soortNaam: Record<string, string> = {
 export const categorieNaam: Record<string, string> = {
   tools: 'tools en software',
   huis: 'in het huis',
-  stil: 'stille systemen',
+  stil: 'slimme toestellen',
   vakmensen: 'vakmensen',
 };
 

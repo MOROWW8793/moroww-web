@@ -59,7 +59,7 @@ export function MerkTeken({ merk, op = 'licht', size = 22 }: { merk: 'how' | 'hu
       ) : merk === 'how' ? (
         <span className="merkteken-woord">how</span>
       ) : (
-        <i className="merkteken-woord">hub</i>
+        <span className="merkteken-woord">hub</span>
       )}
     </span>
   );

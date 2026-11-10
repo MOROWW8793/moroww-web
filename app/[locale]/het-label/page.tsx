@@ -7,13 +7,13 @@ import { site } from '@/lib/merk/site'
 export const metadata: Metadata = {
   title: 'het label voor jouw huis',
   description:
-    'Het moroww-label voor eigenaars en beheerders die zelf verhuren: een persoonlijk bezoek, het label, een plaats in de collectie op moroww.com en toegang tot moroww hub.',
+    'Het moroww-label is een kwaliteitsstempel voor vakantiewoningen, B&B\'s en hotels. We komen persoonlijk langs, en wie de standaard haalt, krijgt het label, een plaats op moroww.com en toegang tot moroww hub.',
   alternates: { canonical: 'https://www.moroww.com/het-label' },
 }
 
 const krijgt: [string, string][] = [
   ['persoonlijk bezoek en rapport', 'We komen langs, lopen door het huis zoals een gast en zeggen wat in orde is en wat beter kan.'],
-  ['stille systemen', 'Advies over slot, geur, licht en sensoren. De hardware wordt van jou.'],
+  ['slimme toestellen', 'Advies over een slot met code, geur, licht en sensoren, zodat de aankomst vanzelf loopt. De toestellen worden van jou.'],
   ['het label', 'Aan de deur, op je listings en in de gids voor je gasten.'],
   ['in de collectie', 'Je huis staat op moroww.com, met een rechtstreekse link naar je eigen boekingswebsite.'],
   ['moroww hub', 'Partners, merken en tools met voordelen voor leden, en de academy voor hosts.'],
@@ -34,8 +34,9 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
             jouw huis met het label.
           </h1>
           <p className="mt-mw-5 text-body-lg text-moroww-dark max-w-mw-eigenaar">
-            Je blijft zelf verhuren, of je beheerder doet het. Wij komen langs, kennen het label toe, zetten je huis in de
-            collectie en geven je toegang tot moroww hub.
+            Het label is een kwaliteitsstempel. Het zegt aan gasten: dit huis is persoonlijk bezocht en het klopt. Wij komen
+            langs, en haalt je huis de standaard, dan krijgt het het label, een plaats op moroww.com en toegang tot moroww
+            hub. Jij blijft zelf verhuren, of je beheerder doet het.
           </p>
           <div className="mt-mw-6 flex flex-wrap gap-3">
             <a href="#aanvraag" className="inline-flex items-center min-h-[48px] bg-moroww-orange text-moroww-dark px-6 text-body font-semibold">

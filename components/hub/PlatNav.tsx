@@ -36,7 +36,7 @@ export function PlatNav({ naam, huis, beheerder, open, telefoon }: { naam: strin
   return (
     <aside className="plat-zij">
       <div className="plat-zij-top">
-        <Link href="/hub/leden" className="plat-logo" aria-label="moroww hub, naar je overzicht"><MerkTeken merk="hub" op="donker" size={24} /></Link>
+        <Link href="/hub/leden" className="plat-logo" aria-label="moroww hub, naar je overzicht"><MerkTeken merk="hub" op="licht" size={24} /></Link>
         <div className="plat-wie">
           <span className="plat-avatar" aria-hidden>{voornaam.slice(0, 1).toUpperCase()}</span>
           <div>

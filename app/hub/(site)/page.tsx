@@ -14,12 +14,12 @@ const deuren: { label: string; titel: React.ReactNode; tekst: string; href: stri
     voet: 'meld je aan',
   },
   {
-    label: 'voor property managers',
+    label: 'voor beheerders',
     titel: <>al je huizen, <i>één lijn.</i></>,
     tekst: 'Eén plek om te vragen wat je huizen nodig hebben, het label voor je beste huizen, de academy voor je team.',
     href: '/hub/property-managers',
     voet: 'voor property managers',
-    tint: '#E4EBF3',
+    tint: '#F5ECE3',
   },
   {
     label: 'voor vakmensen en merken',
@@ -27,7 +27,7 @@ const deuren: { label: string; titel: React.ReactNode; tekst: string; href: stri
     tekst: 'Een vakman krijgt opdrachten in zijn regio, via moroww. Een merk komt in de huizen van de leden.',
     href: '/hub/partner-worden',
     voet: 'partner worden',
-    tint: '#DDE6F0',
+    tint: '#FAE4D6',
   },
   {
     label: 'voor gasten',
@@ -35,7 +35,7 @@ const deuren: { label: string; titel: React.ReactNode; tekst: string; href: stri
     tekst: 'De geur, het linnen en de essentials uit het verblijf. Om thuis te hebben. Binnenkort.',
     href: '/hub/market',
     voet: 'naar de market',
-    tint: '#D6DFEA',
+    tint: '#FBF7F2',
   },
 ];
 
@@ -52,7 +52,7 @@ export default function Hub() {
     <>
       <section className="held">
         <div className="wrap" style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
-          <span className="boven">moroww hub · voor eigenaars en property managers met het label</span>
+          <span className="boven">moroww hub · voor eigenaars, beheerders en hotels met het label</span>
           <h1 className="titel-1" style={{ fontSize: 'clamp(3rem, 7vw, 5.4rem)' }}>vraag het <i>moroww.</i></h1>
           <p className="inleiding">
             Een extra schoonmaak, de ramen, een herstelling, de koelkast vullen voor de gasten. Jij vraagt het in de hub,

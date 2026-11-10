@@ -15,8 +15,8 @@ import '@/components/merk/merk.css';
 
 
 export const metadata: Metadata = {
-  title: { default: 'moroww advisory · every question, a plan', template: '%s · moroww advisory' },
-  description: 'moroww advisory is advies op maat voor eigenaars van vakantiewoningen: per vraag een plan, voor een vergunning, de opstart, een eigen boekingswebsite of je cijfers.',
+  title: { default: 'moroww advisory · elke vraag, een plan', template: '%s · moroww advisory' },
+  description: 'moroww advisory helpt wie een vakantiewoning wil verhuren of ergens op vastloopt: een vergunning, de opstart, je prijzen, foto\'s of teksten. Per vraag een plan, zwart op wit.',
 };
 
 export default function AdvisoryLayout({ children }: { children: React.ReactNode }) {
@@ -34,7 +34,7 @@ export default function AdvisoryLayout({ children }: { children: React.ReactNode
         cta={{ href: '/advisory/contact', label: 'vertel je vraag' }}
       />
       <main>{children}</main>
-      <Footer merk={<span>every question, a plan.</span>} />
+      <Footer merk={<span>elke vraag, een plan.</span>} />
     </div>
         <Analytics />
       </body>

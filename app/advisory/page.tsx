@@ -23,11 +23,15 @@ const vragen: { titel: string; tekst: string; href?: string; voet?: string }[] =
   },
   {
     titel: 'de cijfers kloppen niet.',
-    tekst: 'Wat een nacht je echt kost, hoe je prijzen zet en wat je huis kan opbrengen.',
+    tekst: 'Wat een nacht je echt kost, hoe je prijzen zet en wat je huis kan opbrengen. We kijken je prijzen na en zeggen wat beter kan.',
+  },
+  {
+    titel: 'mijn listing valt niet op.',
+    tekst: 'Foto\'s die tonen hoe het huis echt voelt, en teksten die gasten in een paar zinnen vertellen waarom ze hier willen zijn.',
   },
   {
     titel: 'ik beheer huizen voor anderen.',
-    tekst: 'Property managers vinden de partners, het label en de academy in moroww hub. Met een concrete vraag kun je hier terecht.',
+    tekst: 'Voor beheerders is er moroww hub: vakmensen, het label en de academy voor al je huizen. Met een concrete vraag kun je ook hier terecht.',
     href: '/hub/property-managers',
     voet: 'naar moroww hub',
   },
@@ -82,11 +86,12 @@ export default function Advisory() {
       <section className="held">
         <div className="wrap held-twee">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
-            <span className="boven">advies op maat voor eigenaars</span>
-            <h1 className="titel-1" style={{ fontSize: 'clamp(2.6rem, 5vw, 4rem)' }}>every question, a plan.</h1>
+            <span className="boven">hulp op maat voor wie start of vastloopt</span>
+            <h1 className="titel-1" style={{ fontSize: 'clamp(2.6rem, 5vw, 4rem)' }}>elke vraag, een plan.</h1>
             <p className="inleiding">
-              Een vergunning, een opstart, een eigen boekingssite, de cijfers. Vertel ons wat er speelt. Je krijgt een plan:
-              wat er moet gebeuren, wie het doet, wanneer en wat het kost. Uitvoeren doe je zelf, of wij doen het.
+              Je wil je huis verhuren, maar weet niet waar te beginnen. Of je verhuurt al en loopt ergens op vast: een
+              vergunning, je prijzen, je foto's. Vertel ons wat er speelt. Je krijgt een plan: wat er moet gebeuren, wie het
+              doet, wanneer en wat het kost. Uitvoeren doe je zelf, of wij doen het.
             </p>
             <div className="knoppen">
               <Link href="/advisory/contact" className="btn btn-primair">vertel ons je vraag</Link>

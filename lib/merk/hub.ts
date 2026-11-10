@@ -48,7 +48,7 @@ export const partnerCategorieen: PartnerCategorie[] = [
   {
     sleutel: 'stil',
     foto: '/images/standaard/V2-63.jpg',
-    label: 'stille systemen',
+    label: 'slimme toestellen',
     titel: 'slot, licht, warmte, sensoren.',
     tekst: 'Techniek die werkt zonder dat de gast ze ziet. Met advies over wat past bij je huis.',
     partners: [

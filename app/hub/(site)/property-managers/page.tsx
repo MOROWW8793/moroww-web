@@ -6,7 +6,7 @@ import { ContactForm } from '@/components/merk/ContactForm';
 import { site } from '@/lib/merk/site';
 
 export const metadata: Metadata = {
-  title: 'voor property managers',
+  title: 'voor beheerders',
   description:
     'moroww hub voor property managers van vakantiewoningen: de partners en tools van moroww voor je hele portefeuille, het moroww-label voor je beste huizen en de academy voor je team.',
 };
@@ -51,7 +51,7 @@ export default function PropertyManagers() {
     <>
       <section className="held">
         <div className="wrap" style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
-          <span className="boven">moroww hub · voor property managers</span>
+          <span className="boven">moroww hub · voor beheerders (property managers)</span>
           <h1 className="titel-1">jij beheert de huizen. <i>wij brengen de rest samen.</i></h1>
           <p className="inleiding">
             Je beheert vakantiewoningen voor eigenaars. In de hub vraag je wat je huizen nodig hebben, en moroww regelt het

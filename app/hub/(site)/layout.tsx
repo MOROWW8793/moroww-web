@@ -5,20 +5,19 @@ export default function HubSite({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Header
-        donker
         home="/hub"
-        merk={<MerkTeken merk="hub" op="donker" size={26} />}
+        merk={<MerkTeken merk="hub" op="licht" size={24} />}
         nav={[
           { href: '/hub/partners', label: 'partners' },
           { href: '/hub/academy', label: 'academy' },
           { href: '/hub/market', label: 'market' },
-          { href: '/hub/property-managers', label: 'property managers' },
+          { href: '/hub/property-managers', label: 'voor beheerders' },
           { href: '/hub/inloggen', label: 'inloggen' },
         ]}
         cta={{ href: '/hub/aanmelden', label: 'meld je aan' }}
       />
       <main>{children}</main>
-      <Footer donker merk={<span>where the stay stays.</span>} />
+      <Footer merk={<span>jij vraagt, wij regelen.</span>} />
     </>
   );
 }

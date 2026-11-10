@@ -13,8 +13,8 @@ import '@/components/merk/merk.css';
 
 
 export const metadata: Metadata = {
-  title: { default: 'moroww hub · where the stay stays.', template: '%s · moroww hub' },
-  description: 'Vraag het moroww: eigenaars en property managers met het label vragen wat hun huis nodig heeft, moroww regelt het met een partner in de buurt.',
+  title: { default: 'moroww hub · voor wie huizen verhuurt of beheert', template: '%s · moroww hub' },
+  description: 'moroww hub is de plek voor eigenaars, beheerders en hotels met het moroww-label: je vraagt wat je huis nodig heeft, moroww regelt het met een vakman in de buurt. Met merken, events en de academy.',
 };
 
 export default function HubLayout({ children }: { children: React.ReactNode }) {

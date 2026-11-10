@@ -32,7 +32,7 @@ const takken: Tak[] = [
   },
   {
     merk: <MerkTeken merk="advisory" op="licht" size={28} />,
-    kleur: '#F2C94C',
+    kleur: '#fea05e',
     titel: 'loop je ergens op vast?',
     tekst:
       'Een vergunning, een opstart, een eigen boekingssite: elke vraag is anders. We kijken naar jouw situatie en stellen voor wat nodig is.',
@@ -41,7 +41,7 @@ const takken: Tak[] = [
   },
   {
     merk: <MerkTeken merk="hub" op="licht" size={28} />,
-    kleur: '#7fa0c9',
+    kleur: '#fea05e',
     titel: 'partners, academy en market.',
     tekst:
       'Merken, vakmensen en tools met voordelen voor leden, en sessies van hosts voor hosts.',
@@ -61,11 +61,12 @@ export default async function VoorEigenaarsPage({ params }: { params: Promise<{ 
         <div className="mx-auto max-w-7xl">
           <p className="text-audit text-moroww-label">voor eigenaars</p>
           <h1 className="mt-mw-4 text-h2 md:text-[clamp(2.5rem,5vw,4.5rem)] md:leading-[1] text-moroww-dark max-w-[18ch]">
-            één naam. drie takken.
+            drie manieren waarop moroww je helpt.
           </h1>
           <p className="mt-mw-5 text-body-lg text-moroww-dark max-w-mw-eigenaar">
-            moroww is het label voor je huis, moroww advisory helpt op maat bij wat je tegenkomt, en moroww hub brengt je
-            bij partners en andere hosts. Kies wat past, of combineer.
+            Het label laat gasten zien dat je huis klopt. moroww hub brengt je bij vakmensen, merken en andere hosts, en
+            regelt wat je huis nodig heeft. moroww advisory helpt als je start of ergens op vastloopt. Kies wat past, of
+            combineer.
           </p>
         </div>
       </section>

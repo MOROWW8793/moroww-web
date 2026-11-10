@@ -15,7 +15,7 @@ export default async function HubPlatform({ children }: { children: React.ReactN
     return (
       <div className="plat plat-los">
         <header className="plat-los-kop">
-          <Link href="/hub" className="plat-logo" aria-label="moroww hub"><MerkTeken merk="hub" op="donker" size={26} /></Link>
+          <Link href="/hub" className="plat-logo" aria-label="moroww hub"><MerkTeken merk="hub" op="licht" size={26} /></Link>
           <Link href="/hub" className="plat-terug">naar moroww hub</Link>
         </header>
         <main>{children}</main>
