@@ -1,18 +1,26 @@
 'use client'
 
 import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 /**
- * Twee micro-motion lagen voor de homepage:
+ * Twee micro-motion lagen voor de homepage en de rest van de site:
  *
  *   data-mw-reveal              → krijgt .is-in bij intersection (één keer)
  *   data-mw-parallax            → translateY op basis van positie in viewport
  *   data-mw-parallax-strength   → optioneel, default 0.15 (ca. 15 % van
  *                                 element-hoogte max beweging)
  *
+ * MotionIn zit in LocaleLayout; bij client-side navigatie blijft layout
+ * gemount, dus useEffect moet opnieuw draaien bij elke route-wissel —
+ * anders worden de nieuwe [data-mw-reveal]-elementen nooit geobserveerd
+ * en blijven ze onzichtbaar op opacity 0. Daarom usePathname als dep.
+ *
  * Geen externe dependency. reduced-motion zet beide lagen uit.
  */
 export function MotionIn() {
+  const pathname = usePathname()
+
   useEffect(() => {
     if (typeof window === 'undefined') return
 
@@ -78,7 +86,7 @@ export function MotionIn() {
       if (onScroll) window.removeEventListener('scroll', onScroll)
       if (onResize) window.removeEventListener('resize', onResize)
     }
-  }, [])
+  }, [pathname])
 
   return null
 }
