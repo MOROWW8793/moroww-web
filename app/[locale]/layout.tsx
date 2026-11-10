@@ -7,6 +7,7 @@ import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { OrganizationJsonLd } from '@/components/JsonLd'
 import { CookieBanner } from '@/components/CookieBanner'
+import { MotionIn } from '@/components/MotionIn'
 import type { ReactNode } from 'react'
 
 export function generateStaticParams() {
@@ -42,6 +43,13 @@ export default async function LocaleLayout({
   return (
     <html lang={htmlLang}>
       <body className="antialiased font-sans bg-moroww-blush text-moroww-black">
+        {/* Zet html.mw-js vóór de rest van de body rendert zodat data-mw-reveal
+            zijn initial hidden-state kan aannemen zonder flash. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('mw-js')",
+          }}
+        />
         <OrganizationJsonLd />
         <NextIntlClientProvider messages={messages}>
           <Navbar />
@@ -49,6 +57,7 @@ export default async function LocaleLayout({
           <Footer />
           <CookieBanner />
         </NextIntlClientProvider>
+        <MotionIn />
         <Analytics />
       </body>
     </html>

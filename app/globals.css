@@ -350,3 +350,27 @@ body {
 .mw-in { animation: mw-fade 1.2s cubic-bezier(.2,.7,.2,1) both; }
 .mw-in-2 { animation: mw-fade 1.2s cubic-bezier(.2,.7,.2,1) .25s both; }
 @media (prefers-reduced-motion: reduce) { .mw-in, .mw-in-2 { animation: none; } }
+
+/* ── Scroll-reveal voor secties onder de hero ──
+   Zonder html.mw-js (gezet door een inline script in body vóór de content
+   wordt gerenderd) blijft content zichtbaar — scripting-off en SSR zien
+   de pagina gewoon staan. Reduced motion idem. */
+html.mw-js [data-mw-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 900ms cubic-bezier(.2,.7,.2,1),
+    transform 900ms cubic-bezier(.2,.7,.2,1);
+  will-change: opacity, transform;
+}
+html.mw-js [data-mw-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.mw-js [data-mw-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
