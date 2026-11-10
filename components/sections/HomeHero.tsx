@@ -93,6 +93,24 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
         if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setFocusBinnen(false)
       }}
     >
+      {/* PROGRESS BAR — dunne lijn bovenaan die in INTERVAL-tijd vol groeit.
+          key={actief} resett de animatie bij elke slide-wissel; pauzeert
+          mee met de slideshow (knop, hover, focus of reduced motion). */}
+      <div className="absolute inset-x-0 top-0 h-[2px] bg-white/15 pointer-events-none z-20">
+        <div
+          key={actief}
+          className="mw-hero-progress-bar h-full origin-left bg-white/85"
+          style={{
+            animation: `mw-hero-progress ${INTERVAL}ms linear forwards`,
+            animationPlayState:
+              gepauzeerd || erboven || focusBinnen || rustig || slides.length < 2
+                ? 'paused'
+                : 'running',
+          }}
+          aria-hidden
+        />
+      </div>
+
       {/* SLIDES */}
       {slides.map((s, i) => (
         <div

@@ -351,6 +351,15 @@ body {
 .mw-in-2 { animation: mw-fade 1.2s cubic-bezier(.2,.7,.2,1) .25s both; }
 @media (prefers-reduced-motion: reduce) { .mw-in, .mw-in-2 { animation: none; } }
 
+/* ── Progress-bar voor de hero-slideshow ── */
+@keyframes mw-hero-progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mw-hero-progress-bar { animation: none !important; transform: scaleX(0); }
+}
+
 /* ── Scroll-reveal voor secties onder de hero ──
    Zonder html.mw-js (gezet door een inline script in body vóór de content
    wordt gerenderd) blijft content zichtbaar — scripting-off en SSR zien
