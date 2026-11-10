@@ -57,7 +57,7 @@ export default async function VoorEigenaarsPage({ params }: { params: Promise<{ 
   return (
     <div className="bg-moroww-paper">
       {/* KOP */}
-      <section className="w-full px-6 md:px-12 pt-mw-10 pb-mw-8">
+      <section className="w-full px-6 md:px-12 pt-mw-10 pb-mw-8" data-mw-reveal>
         <div className="mx-auto max-w-7xl">
           <p className="text-audit text-moroww-label-tekst">voor eigenaars</p>
           <h1 className="mt-mw-4 text-h2 md:text-[clamp(2.5rem,5vw,4.5rem)] md:leading-[1] text-moroww-dark max-w-[18ch]">
@@ -72,13 +72,13 @@ export default async function VoorEigenaarsPage({ params }: { params: Promise<{ 
       </section>
 
       {/* DE DRIE TAKKEN */}
-      <section className="w-full px-6 md:px-12 pb-mw-8">
+      <section className="w-full px-6 md:px-12 pb-mw-8" data-mw-reveal>
         <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-mw-5">
           {takken.map((t) => (
             <Link
               key={t.href}
               href={t.href}
-              className="group flex flex-col bg-white border border-moroww-rule p-mw-6 hover:border-moroww-dark transition-colors"
+              className="group flex flex-col bg-white border border-moroww-rule p-mw-6 hover:border-moroww-dark hover:-translate-y-1 hover:shadow-[0_12px_32px_-18px_rgba(26,26,26,0.25)] transition-[transform,border-color,box-shadow] duration-500 ease-out motion-reduce:hover:translate-y-0 motion-reduce:transition-none"
               style={{ borderTop: `4px solid ${t.kleur}` }}
             >
               <span className="h-12 flex items-center">{t.merk}</span>
@@ -93,7 +93,7 @@ export default async function VoorEigenaarsPage({ params }: { params: Promise<{ 
       </section>
 
       {/* VERDER */}
-      <section className="w-full px-6 md:px-12 py-mw-8 mb-mw-8 border-t border-moroww-rule">
+      <section className="w-full px-6 md:px-12 py-mw-8 mb-mw-8 border-t border-moroww-rule" data-mw-reveal>
         <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-mw-6">
           <div>
             <p className="text-audit text-moroww-label-tekst">kennisbank</p>
