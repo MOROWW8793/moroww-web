@@ -6,8 +6,9 @@
 // de effen collectiekleur met de tekst er normaal overheen in --moroww-dark
 // in plaats van wit. Zo staat er nooit een broken-image-icoon of een
 // blootgestelde alt-tekst op de pagina.
-// Hover: de tagline krijgt een onderlijn; het beeld zelf staat stil.
-// Focus: 2px --moroww-orange, offset 4px.
+// Hover: beeld zoomt zacht naar 1.03 (1600ms), de streep groeit van 40 naar
+// 64 px (600ms), de tagline krijgt een onderlijn. Reduced motion zet alle
+// drie uit. Focus: 2px --moroww-orange, offset 4px.
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -46,7 +47,7 @@ export function Deur({ naam, tagline, href, beeld, beeldAlt }: Props) {
             src={beeld as string}
             alt={beeldAlt}
             fill
-            className="object-cover"
+            className="object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-[1.03] motion-reduce:group-hover:scale-100 motion-reduce:transition-none"
             sizes="(max-width: 1024px) 100vw, 50vw"
             priority
           />
@@ -59,7 +60,10 @@ export function Deur({ naam, tagline, href, beeld, beeldAlt }: Props) {
       )}
 
       <div className="absolute inset-x-0 bottom-0 p-mw-5">
-        <div className={`h-[3px] w-10 ${streepClass}`} aria-hidden />
+        <div
+          className={`h-[3px] w-10 group-hover:w-16 transition-[width] duration-[600ms] ease-out motion-reduce:transition-none motion-reduce:group-hover:w-10 ${streepClass}`}
+          aria-hidden
+        />
         <p className={`mt-mw-3 text-audit ${tekstKleur}`}>{naam}</p>
         <h2 className={`mt-mw-2 text-h2 underline-offset-[6px] decoration-2 group-hover:underline ${tekstKleur}`}>{tagline}</h2>
       </div>
