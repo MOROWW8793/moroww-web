@@ -8,6 +8,7 @@ import { Footer } from '@/components/layout/Footer'
 import { OrganizationJsonLd } from '@/components/JsonLd'
 import { CookieBanner } from '@/components/CookieBanner'
 import { MotionIn } from '@/components/MotionIn'
+import { SmoothScroll } from '@/components/SmoothScroll'
 import type { ReactNode } from 'react'
 
 export function generateStaticParams() {
@@ -57,6 +58,7 @@ export default async function LocaleLayout({
           <Footer />
           <CookieBanner />
         </NextIntlClientProvider>
+        <SmoothScroll />
         <MotionIn />
         <Analytics />
       </body>
