@@ -35,6 +35,9 @@
 
 /* ---------- basis ---------- */
 .merk .wrap { max-width: 1152px; margin: 0 auto; padding: 0 32px; }
+@media (max-width: 640px) {
+  .merk .wrap { padding: 0 20px; }
+}
 @media (max-width: 640px) { .merk .wrap { padding: 0 20px; } }
 
 .merk .sectie { padding: 96px 0; }
@@ -327,4 +330,391 @@
 @media (max-width: 900px) {
   .merk .plat-toegang { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .merk .plat-toegang-nieuw { border-left: 0; border-top: 1px solid rgba(26,26,26,0.12); padding: 32px 0 0; margin: 0; }
+}
+
+/* ── advisory inlet · editorial typographic layout (nov 2026) ──
+   Volgt usehallmark.com/made/ribbon-meditation-app: typografie leidt,
+   generous whitespace, documentary photo-breaks, geen oranje vlakken
+   als decor. Zit op .adv-* zodat de bestaande advisory-componenten
+   (plan, kaart, band) verder kunnen bestaan. */
+
+.merk-advisory .adv-held {
+  padding: 160px 0 120px;
+  background: var(--zacht);
+  color: var(--ink);
+}
+@media (max-width: 760px) {
+  .merk-advisory .adv-held { padding: 96px 0 72px; }
+}
+.merk-advisory .adv-held-binnen {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: min(820px, 100%);
+}
+.merk-advisory .adv-eyebrow {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+.merk-advisory .adv-mast {
+  font-family: var(--font-titel);
+  font-weight: 300;
+  font-size: clamp(2.25rem, 7.5vw, 6rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0;
+  overflow-wrap: break-word;
+  min-width: 0;
+  max-width: 100%;
+}
+.merk-advisory .adv-mast i {
+  font-style: italic;
+  font-weight: 300;
+}
+.merk-advisory .adv-sub {
+  font-family: var(--font-titel);
+  font-weight: 300;
+  font-size: clamp(1rem, 1.8vw, 1.5rem);
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  max-width: min(42ch, 100%);
+  margin: 0;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+.merk-advisory .adv-held-acties {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.merk-advisory .adv-rust {
+  padding: 120px 0;
+}
+.merk-advisory .adv-rust-smal {
+  padding: 80px 0;
+}
+
+.merk-advisory .adv-prose {
+  max-width: min(54ch, 100%);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.merk-advisory .adv-prose p + p {
+  margin-top: 1rem;
+}
+.merk-advisory .adv-prose em {
+  font-style: italic;
+  color: var(--ink);
+}
+
+.merk-advisory .adv-kopblok-boven {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 20px;
+}
+.merk-advisory .adv-sectie-titel {
+  font-family: var(--font-titel);
+  font-weight: 300;
+  font-size: clamp(1.75rem, 4.2vw, 3.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 48px;
+  max-width: min(24ch, 100%);
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+.merk-advisory .adv-sectie-titel i {
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Genummerde lijst — de 7 voorbeeldvragen als editorial, niet als kaarten.
+   Nummer dim en small, vraag groot in display, prose in body eronder,
+   dunne regel tussen rijen. */
+.merk-advisory .adv-genummerd {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(26,26,26,0.14);
+}
+.merk-advisory .adv-genummerd > li {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 24px 40px;
+  padding: 36px 0;
+  border-bottom: 1px solid rgba(26,26,26,0.14);
+  align-items: baseline;
+}
+@media (max-width: 640px) {
+  .merk-advisory .adv-genummerd > li {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 12px 16px;
+    padding: 28px 0;
+  }
+}
+.merk-advisory .adv-genummerd .adv-nr {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  padding-top: 10px;
+}
+.merk-advisory .adv-genummerd .adv-vraag {
+  font-family: var(--font-titel);
+  font-weight: 300;
+  font-size: clamp(1.25rem, 2.6vw, 2rem);
+  line-height: 1.14;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0;
+  overflow-wrap: break-word;
+  min-width: 0;
+  max-width: 100%;
+}
+.merk-advisory a.adv-genummerd-link {
+  text-decoration: none;
+  color: inherit;
+  display: contents;
+}
+.merk-advisory a.adv-genummerd-link:hover .adv-vraag {
+  color: var(--accent);
+}
+.merk-advisory .adv-genummerd-tekst {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 12px 0 0;
+  max-width: 56ch;
+}
+.merk-advisory .adv-genummerd-voet {
+  display: inline-block;
+  margin-top: 16px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--ink);
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 2px;
+}
+
+/* Documentary photo — full-bleed, geen cards, geen bijschrift. */
+.merk-advisory .adv-beeld-vol {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  overflow: hidden;
+  background: var(--zacht);
+}
+.merk-advisory .adv-beeld-vol img {
+  object-fit: cover;
+}
+
+/* Vier beloftes — geen kaarten, geen borders. Editorial-rij met
+   nummer/titel/prose onder elkaar in elke kolom. */
+.merk-advisory .adv-rij-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 48px 32px;
+}
+@media (max-width: 1024px) {
+  .merk-advisory .adv-rij-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .merk-advisory .adv-rij-4 { grid-template-columns: minmax(0, 1fr); }
+}
+.merk-advisory .adv-belofte {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.merk-advisory .adv-belofte-nr {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+}
+.merk-advisory .adv-belofte-titel {
+  font-family: var(--font-titel);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0;
+}
+.merk-advisory .adv-belofte p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+/* Werkwijze — comparison-regel. Elke stap op één horizontale lijn met
+   nummer, titel en toelichting in dezelfde rij. Dunne lijnen tussen. */
+.merk-advisory .adv-werkwijze {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(26,26,26,0.14);
+}
+.merk-advisory .adv-werkwijze > li {
+  display: grid;
+  grid-template-columns: 56px 1fr 2fr;
+  gap: 24px 40px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(26,26,26,0.14);
+  align-items: baseline;
+}
+@media (max-width: 760px) {
+  .merk-advisory .adv-werkwijze > li {
+    grid-template-columns: 40px 1fr;
+    gap: 8px 16px;
+  }
+  .merk-advisory .adv-werkwijze > li > :last-child {
+    grid-column: 2;
+  }
+}
+.merk-advisory .adv-werkwijze .adv-nr {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.merk-advisory .adv-werkwijze .adv-wijze-titel {
+  font-family: var(--font-titel);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.merk-advisory .adv-werkwijze .adv-wijze-tekst {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 54ch;
+}
+
+/* Gesprek — portret smal links, prose rechts. Zacht oppervlak. */
+.merk-advisory .adv-gesprek {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .merk-advisory .adv-gesprek { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+}
+.merk-advisory .adv-gesprek-beeld {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--zacht);
+}
+.merk-advisory .adv-gesprek-beeld img {
+  object-fit: cover;
+}
+.merk-advisory .adv-gesprek-contact {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--muted);
+  margin: 24px 0 0;
+}
+.merk-advisory .adv-gesprek-contact a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(26,26,26,0.3);
+}
+.merk-advisory .adv-gesprek-contact a:hover {
+  text-decoration-color: var(--accent);
+}
+
+/* FAQ plain. De native <details> krijgt een zachte zoom op open. */
+.merk-advisory .adv-faq {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.merk-advisory .adv-faq > details {
+  border-top: 1px solid rgba(26,26,26,0.14);
+  padding: 24px 0;
+}
+.merk-advisory .adv-faq > details:last-child {
+  border-bottom: 1px solid rgba(26,26,26,0.14);
+}
+.merk-advisory .adv-faq summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  font-family: var(--font-titel);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.merk-advisory .adv-faq summary::-webkit-details-marker { display: none; }
+.merk-advisory .adv-faq summary::after {
+  content: '+';
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: transform 300ms cubic-bezier(.2,.7,.2,1);
+  transform-origin: center;
+}
+.merk-advisory .adv-faq > details[open] summary::after {
+  transform: rotate(45deg);
+}
+.merk-advisory .adv-faq > details > p {
+  margin: 16px 0 0;
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 64ch;
+}
+
+/* Slot — closing band typografisch, geen kaart om heen. Een regel in
+   display, één CTA, een dunne regel bovenaan. */
+.merk-advisory .adv-slot {
+  padding: 120px 0;
+  border-top: 1px solid rgba(26,26,26,0.14);
+}
+.merk-advisory .adv-slot-regel {
+  font-family: var(--font-titel);
+  font-weight: 300;
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 0 32px;
+  max-width: 24ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .merk-advisory .adv-faq summary::after { transition: none; }
 }

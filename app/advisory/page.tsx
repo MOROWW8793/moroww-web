@@ -1,11 +1,18 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Sectie, Kop } from '@/components/merk/Shell';
+import { Sectie } from '@/components/merk/Shell';
 import { Logo } from '@/components/merk/Logo';
 import { site } from '@/lib/merk/site';
 
-// moroww advisory werkt op maat. Geen vaste pakketten: de vragen hieronder zijn
-// voorbeelden van waar eigenaars mee komen, geen menukaart. Geen prijzen op de site.
+// moroww advisory · inlet editorial-stijl (nov 2026).
+// Volgt de typografisch-rustige richting van usehallmark.com/made/ribbon,
+// binnen het bestaande merk-advisory token-systeem (fraunces + dm-sans +
+// moroww-oranje als accent).
+//
+// Content en wiring blijven ongewijzigd: elke link, elke href, elke tekst,
+// alle 7 voorbeeldvragen, de 4 beloftes, de 4 werkwijze-stappen, de 4 FAQ
+// en het plan-voorbeeld.
+
 const vragen: { titel: string; tekst: string; href?: string; voet?: string }[] = [
   {
     titel: 'mag hier kortverhuur?',
@@ -48,6 +55,20 @@ const belofte: [string, string][] = [
   ['de juiste mensen', 'Waar we zelf niet de beste zijn, brengen we je bij wie het wel is: dezelfde partners die in onze huizen werken.'],
 ];
 
+const werkwijze: [string, string][] = [
+  ['vertel je vraag', 'Via het formulier of in een kort gesprek. Wat speelt er, en wat wil je bereiken?'],
+  ['we kijken samen', 'Waar nodig komen we langs en bekijken we de documenten die er al zijn.'],
+  ['je krijgt een plan', 'Wat er moet gebeuren, wie het doet, wanneer, en wat het kost. Vooraf, zwart op wit.'],
+  ['jij of wij', 'Je voert het plan zelf uit, of wij regelen het voor je.'],
+];
+
+const planStappen: [string, string?][] = [
+  ['regels voor jouw adres nagaan', 'deze week'],
+  ['registratie bij de bevoegde overheid'],
+  ['brandveiligheidsattest laten opmaken'],
+  ['verzekering voor verhuur aanpassen'],
+];
+
 const vragenFaq: [string, string][] = [
   ['Moet ik daarna met moroww verhuren?', 'Nee. Een plan van moroww advisory staat los van het label. Wil je later het label voor je huis, dan kan dat, maar het hoeft niet.'],
   ['Wat kost een plan?', 'Dat hangt af van je vraag. Na het eerste gesprek weet je vooraf wat het plan kost, en in het plan staat per stap wat de uitvoering kost.'],
@@ -55,125 +76,165 @@ const vragenFaq: [string, string][] = [
   ['Komen jullie langs?', 'Als dat nodig is voor je vraag, ja. Voor sommige vragen volstaan de documenten en een gesprek.'],
 ];
 
-function PlanVoorbeeld() {
-  return (
-    <div className="plan" aria-label="Voorbeeld van een plan van moroww advisory">
-      <div className="plan-kop">
-        <span className="klein">het plan · voorbeeld</span>
-        <span className="plan-vraag">mag ik mijn huis aan zee als vakantiewoning verhuren?</span>
-      </div>
-      <ol className="plan-stappen">
-        <li>
-          <span>regels voor jouw adres nagaan</span>
-          <mark>deze week</mark>
-        </li>
-        <li><span>registratie bij de bevoegde overheid</span></li>
-        <li><span>brandveiligheidsattest laten opmaken</span></li>
-        <li><span>verzekering voor verhuur aanpassen</span></li>
-      </ol>
-      <div className="plan-voet">
-        <span><strong>wie</strong>jij, een partner of wij</span>
-        <span><strong>wanneer</strong>per stap een datum</span>
-        <span><strong>wat het kost</strong>vooraf, per stap</span>
-      </div>
-    </div>
-  );
-}
-
 export default function Advisory() {
   return (
     <>
-      <section className="held">
-        <div className="wrap held-twee">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
-            <span className="boven">hulp op maat voor wie start of vastloopt</span>
-            <h1 className="titel-1" style={{ fontSize: 'clamp(2.6rem, 5vw, 4rem)' }}>elke vraag, een plan.</h1>
-            <p className="inleiding">
-              Je wil je huis verhuren, maar weet niet waar te beginnen. Of je verhuurt al en loopt ergens op vast: een
-              vergunning, je prijzen, je foto&apos;s. Vertel ons wat er speelt. Je krijgt een plan: wat er moet gebeuren, wie het
-              doet, wanneer en wat het kost. Uitvoeren doe je zelf, of wij doen het.
+      {/* HERO · typografisch, geen beeld. Eén zin boven de CTA zoals Hallmark
+          F13 vraagt; de verdere inleiding komt in sectie 2. */}
+      <section className="adv-held" data-mw-reveal>
+        <div className="wrap">
+          <div className="adv-held-binnen">
+            <span className="adv-eyebrow">hulp op maat voor wie start of vastloopt</span>
+            <h1 className="adv-mast">elke vraag, een plan.</h1>
+            <p className="adv-sub">
+              Vertel ons wat er speelt. Je krijgt een plan op papier: wat er moet gebeuren, wie het doet, wanneer, en wat het kost.
             </p>
-            <div className="knoppen">
+            <div className="adv-held-acties">
               <Link href="/advisory/contact" className="btn btn-primair">vertel ons je vraag</Link>
               <a href="#werkwijze" className="btn btn-lijn">hoe het werkt</a>
             </div>
           </div>
-          <PlanVoorbeeld />
         </div>
       </section>
 
+      {/* VOORBEELDEN · de zeven vragen als genummerde editorial lijst.
+          Twee met een href krijgen een hover-accent op de vraag. */}
       <Sectie>
-        <Kop boven="waar eigenaars mee komen" titel="een paar voorbeelden." tekst="Geen pakketten. Elk plan begint bij jouw vraag." />
-        <div className="raster">
-          {vragen.map((v) =>
-            v.href ? (
-              <Link key={v.titel} href={v.href} className="kaart">
-                <h3 className="kaart-titel">{v.titel}</h3>
-                <p>{v.tekst}</p>
-                <span className="kaart-voet" style={{ fontSize: 16 }}>{v.voet}</span>
-              </Link>
-            ) : (
-              <div key={v.titel} className="kaart">
-                <h3 className="kaart-titel">{v.titel}</h3>
-                <p>{v.tekst}</p>
-              </div>
-            ),
-          )}
+        <div data-mw-reveal>
+          <span className="adv-kopblok-boven">waar eigenaars mee komen</span>
+          <h2 className="adv-sectie-titel">een paar voorbeelden.</h2>
+          <ol className="adv-genummerd">
+            {vragen.map((v, i) => {
+              const nr = String(i + 1).padStart(2, '0');
+              if (v.href) {
+                return (
+                  <li key={v.titel}>
+                    <Link href={v.href} className="adv-genummerd-link">
+                      <span className="adv-nr">{nr}</span>
+                      <div>
+                        <h3 className="adv-vraag">{v.titel}</h3>
+                        <p className="adv-genummerd-tekst">{v.tekst}</p>
+                        {v.voet && <span className="adv-genummerd-voet">{v.voet}</span>}
+                      </div>
+                    </Link>
+                  </li>
+                );
+              }
+              return (
+                <li key={v.titel}>
+                  <span className="adv-nr">{nr}</span>
+                  <div>
+                    <h3 className="adv-vraag">{v.titel}</h3>
+                    <p className="adv-genummerd-tekst">{v.tekst}</p>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
         </div>
       </Sectie>
 
-      <section className="wrap" style={{ paddingBottom: 8 }}>
-        <div style={{ position: 'relative', aspectRatio: '21 / 8', overflow: 'hidden' }}>
-          <Image src="/images/advisory-terras-zee.jpg" alt="Dakterras met zicht op zee bij een moroww-huis" fill sizes="100vw" style={{ objectFit: 'cover' }} />
-        </div>
-      </section>
-
-      <Sectie>
-        <Kop boven="wat je krijgt" titel="een plan waar je iets mee kan." />
-        <div className="raster-4">
-          {belofte.map(([titel, tekst]) => (
-            <div key={titel} className="belofte">
-              <h3 className="kaart-titel" style={{ fontSize: 22 }}>{titel}</h3>
-              <p>{tekst}</p>
-            </div>
-          ))}
-        </div>
-      </Sectie>
-
-      <Sectie toon="zacht" id="werkwijze">
-        <Kop boven="werkwijze" titel="van vraag tot plan." />
-        <ol className="stappen">
-          <li><strong>vertel je vraag</strong><span>Via het formulier of in een kort gesprek. Wat speelt er, en wat wil je bereiken?</span></li>
-          <li><strong>we kijken samen</strong><span>Waar nodig komen we langs en bekijken we de documenten die er al zijn.</span></li>
-          <li><strong>je krijgt een plan</strong><span>Wat er moet gebeuren, wie het doet, wanneer, en wat het kost. Vooraf, zwart op wit.</span></li>
-          <li><strong>jij of wij</strong><span>Je voert het plan zelf uit, of wij regelen het voor je.</span></li>
-        </ol>
-      </Sectie>
-
-      <Sectie>
-        <div className="rij" style={{ alignItems: 'center' }}>
-          <div className="smal">
-            <div style={{ position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden' }}>
-              <Image src="/images/noam-portret.jpg" alt={`${site.contact.naam} aan tafel in een moroww-huis`} fill sizes="(min-width: 1024px) 40vw, 100vw" style={{ objectFit: 'cover' }} />
-            </div>
-          </div>
-          <div className="breed" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-            <Kop
-              boven="met wie je praat"
-              titel="geen callcenter. een gesprek."
-              tekst={`Je vraag komt bij ${site.contact.naam}, medeoprichter van moroww. Hij kijkt mee, zoekt uit wat nodig is en brengt je bij de juiste mensen.`}
-            />
-            <p className="klein" style={{ margin: 0 }}>{site.contact.telefoon} · <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></p>
-          </div>
-        </div>
-      </Sectie>
-
+      {/* PLAN-VOORBEELD · concrete illustratie van hoe een plan eruitziet.
+          Zelfde genummerde opmaak als de voorbeelden, geen 'card'-achtige
+          box meer; de dunne regels dragen de structuur. */}
       <Sectie toon="zacht">
-        <div className="rij">
-          <div className="smal">
-            <Kop boven="vaak gevraagd" titel="kort beantwoord." />
+        <div data-mw-reveal>
+          <span className="adv-kopblok-boven">een plan · voorbeeld</span>
+          <h2 className="adv-sectie-titel">mag ik mijn huis aan zee als vakantiewoning verhuren?</h2>
+          <ol className="adv-genummerd" aria-label="Stappen in het voorbeeld-plan">
+            {planStappen.map(([stap, badge], i) => (
+              <li key={stap}>
+                <span className="adv-nr">{String(i + 1).padStart(2, '0')}</span>
+                <div>
+                  <h3 className="adv-vraag" style={{ fontSize: 'clamp(1.25rem, 2vw, 1.625rem)' }}>{stap}</h3>
+                  {badge && <p className="adv-genummerd-tekst" style={{ color: 'var(--accent)' }}>{badge}</p>}
+                </div>
+              </li>
+            ))}
+          </ol>
+          <p className="adv-prose" style={{ marginTop: 40 }}>
+            <em>wie</em> jij, een partner of wij. <em>wanneer</em> per stap een datum. <em>wat het kost</em> vooraf, per stap.
+          </p>
+        </div>
+      </Sectie>
+
+      {/* DOCUMENTARY foto · full-bleed rustmoment tussen de twee lijsten. */}
+      <section data-mw-reveal>
+        <div className="adv-beeld-vol">
+          <Image
+            src="/images/advisory-terras-zee.jpg"
+            alt="Dakterras met zicht op zee bij een moroww-huis"
+            fill
+            sizes="100vw"
+          />
+        </div>
+      </section>
+
+      {/* VIER BELOFTES · editorial-rij, geen kaarten, nummers subtiel. */}
+      <Sectie>
+        <div data-mw-reveal>
+          <span className="adv-kopblok-boven">wat je krijgt</span>
+          <h2 className="adv-sectie-titel">een plan waar je iets mee kan.</h2>
+          <div className="adv-rij-4">
+            {belofte.map(([titel, tekst], i) => (
+              <div key={titel} className="adv-belofte">
+                <span className="adv-belofte-nr">{String(i + 1).padStart(2, '0')}</span>
+                <h3 className="adv-belofte-titel">{titel}</h3>
+                <p>{tekst}</p>
+              </div>
+            ))}
           </div>
-          <div className="breed faq">
+        </div>
+      </Sectie>
+
+      {/* WERKWIJZE · comparison-regels, één rij per stap. Anchor-id blijft
+          /advisory#werkwijze zodat de header-nav werkt. */}
+      <Sectie toon="zacht" id="werkwijze">
+        <div data-mw-reveal>
+          <span className="adv-kopblok-boven">werkwijze</span>
+          <h2 className="adv-sectie-titel">van vraag tot plan.</h2>
+          <ol className="adv-werkwijze">
+            {werkwijze.map(([titel, tekst], i) => (
+              <li key={titel}>
+                <span className="adv-nr">{String(i + 1).padStart(2, '0')}</span>
+                <span className="adv-wijze-titel">{titel}</span>
+                <span className="adv-wijze-tekst">{tekst}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </Sectie>
+
+      {/* GESPREK · portret smal, prose breed. Contact onderaan. */}
+      <Sectie>
+        <div className="adv-gesprek" data-mw-reveal>
+          <div className="adv-gesprek-beeld">
+            <Image
+              src="/images/noam-portret.jpg"
+              alt={`${site.contact.naam} aan tafel in een moroww-huis`}
+              fill
+              sizes="(min-width: 900px) 320px, 100vw"
+            />
+          </div>
+          <div>
+            <span className="adv-kopblok-boven">met wie je praat</span>
+            <h2 className="adv-sectie-titel">geen callcenter. een gesprek.</h2>
+            <p className="adv-prose">
+              Je vraag komt bij {site.contact.naam}, medeoprichter van moroww. Hij kijkt mee, zoekt uit wat nodig is en brengt je bij de juiste mensen.
+            </p>
+            <p className="adv-gesprek-contact">
+              {site.contact.telefoon} · <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+            </p>
+          </div>
+        </div>
+      </Sectie>
+
+      {/* FAQ · native <details>, plus-teken draait 45° bij open. */}
+      <Sectie toon="zacht">
+        <div data-mw-reveal>
+          <span className="adv-kopblok-boven">vaak gevraagd</span>
+          <h2 className="adv-sectie-titel">kort beantwoord.</h2>
+          <div className="adv-faq">
             {vragenFaq.map(([v, a]) => (
               <details key={v}>
                 <summary>{v}</summary>
@@ -184,19 +245,19 @@ export default function Advisory() {
         </div>
       </Sectie>
 
-      <Sectie>
-        <div className="band">
-          <p className="band-tekst">loop je ergens op vast? vertel het ons.</p>
-          <Link href="/advisory/contact" className="btn btn-primair">vertel ons je vraag</Link>
+      {/* SLOT · typografisch, één regel, één CTA. Tweede slot-rij
+          verbindt naar /het-label. */}
+      <section className="adv-slot">
+        <div className="wrap" data-mw-reveal>
+          <p className="adv-slot-regel">loop je ergens op vast? vertel het ons.</p>
+          <div className="adv-held-acties">
+            <Link href="/advisory/contact" className="btn btn-primair">vertel ons je vraag</Link>
+            <Link href="/het-label" className="btn btn-lijn" style={{ gap: 10 }}>
+              naar <Logo height={15} />
+            </Link>
+          </div>
         </div>
-      </Sectie>
-
-      <Sectie toon="zacht">
-        <div className="band">
-          <p className="band-tekst">klaar om te verhuren? het label van moroww neemt het over.</p>
-          <Link href="/het-label" className="btn btn-lijn" style={{ gap: 10 }}>naar <Logo height={15} /></Link>
-        </div>
-      </Sectie>
+      </section>
     </>
   );
 }
