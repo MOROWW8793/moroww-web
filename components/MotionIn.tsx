@@ -22,6 +22,11 @@ export function MotionIn() {
       return
     }
 
+    // threshold 0 + een genereuze positieve bottom-rootMargin: het element
+    // telt al als 'intersecting' zodra zijn bovenrand de viewport-bodem
+    // nadert (120px ervoor). Zonder dit moet eerst 15 % van een blok (±300px
+    // voor het collectie-raster) in beeld zijn voor er iets reveal triggert,
+    // en dat voelt alsof de pagina leeg is tot je voorbij de content scrolt.
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -30,7 +35,7 @@ export function MotionIn() {
           io.unobserve(entry.target)
         })
       },
-      { threshold: 0.15, rootMargin: '0px 0px -6% 0px' },
+      { threshold: 0, rootMargin: '0px 0px 120px 0px' },
     )
 
     els.forEach((el) => io.observe(el))
