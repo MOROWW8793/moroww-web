@@ -90,7 +90,7 @@ export default function Advisory() {
             <h1 className="titel-1" style={{ fontSize: 'clamp(2.6rem, 5vw, 4rem)' }}>elke vraag, een plan.</h1>
             <p className="inleiding">
               Je wil je huis verhuren, maar weet niet waar te beginnen. Of je verhuurt al en loopt ergens op vast: een
-              vergunning, je prijzen, je foto's. Vertel ons wat er speelt. Je krijgt een plan: wat er moet gebeuren, wie het
+              vergunning, je prijzen, je foto&apos;s. Vertel ons wat er speelt. Je krijgt een plan: wat er moet gebeuren, wie het
               doet, wanneer en wat het kost. Uitvoeren doe je zelf, of wij doen het.
             </p>
             <div className="knoppen">
