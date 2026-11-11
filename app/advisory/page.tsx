@@ -79,22 +79,58 @@ const vragenFaq: [string, string][] = [
 export default function Advisory() {
   return (
     <>
-      {/* HERO · typografisch, geen beeld. Eén zin boven de CTA zoals Hallmark
-          F13 vraagt; de verdere inleiding komt in sectie 2. */}
+      {/* HERO · twee-koloms: tekst links, lifecycle rechts. De lifecycle
+          'van vraag tot plan' maakt de belofte visueel; voorheen was de
+          rechterkolom leeg witruimte. */}
       <section className="adv-held" data-mw-reveal>
         <div className="wrap">
-          <div className="adv-held-binnen">
-            <span className="adv-eyebrow">hulp op maat voor wie start of vastloopt</span>
-            <h1 className="adv-mast" data-mw-lines>
-              <span><span>elke vraag,</span></span>
-              <span><span>een plan.</span></span>
-            </h1>
-            <p className="adv-sub">
-              Vertel ons wat er speelt. Je krijgt een plan op papier: wat er moet gebeuren, wie het doet, wanneer, en wat het kost.
-            </p>
-            <div className="adv-held-acties">
-              <Link href="/advisory/contact" className="btn btn-primair">vertel ons je vraag</Link>
-              <a href="#werkwijze" className="btn btn-lijn">hoe het werkt</a>
+          <div className="adv-held-grid">
+            <div className="adv-held-binnen">
+              <span className="adv-eyebrow">hulp op maat voor wie start of vastloopt</span>
+              <h1 className="adv-mast" data-mw-lines>
+                <span><span>elke vraag,</span></span>
+                <span><span>een plan.</span></span>
+              </h1>
+              <p className="adv-sub">
+                Vertel ons wat er speelt. Je krijgt een plan op papier: wat er moet gebeuren, wie het doet, wanneer, en wat het kost.
+              </p>
+              <div className="adv-held-acties">
+                <Link href="/advisory/contact" className="btn btn-primair">vertel ons je vraag</Link>
+                <a href="#werkwijze" className="btn btn-lijn">hoe het werkt</a>
+              </div>
+            </div>
+
+            {/* Lifecycle · vier fases met tijd. De eerste is oranje-accent
+                omdat daar de bezoeker nu staat (zijn vraag). */}
+            <div className="adv-lifecycle" data-mw-stagger aria-label="Van vraag tot uitvoering">
+              <div className="adv-lifecycle-rij">
+                <h2 className="adv-lifecycle-titel">je vraag</h2>
+                <span className="adv-lifecycle-tijd">nu</span>
+                <p className="adv-lifecycle-tekst">
+                  Vertel wat er speelt. In een paar zinnen, of met de documenten die er al zijn.
+                </p>
+              </div>
+              <div className="adv-lifecycle-rij">
+                <h2 className="adv-lifecycle-titel">het gesprek</h2>
+                <span className="adv-lifecycle-tijd">binnen twee werkdagen</span>
+                <p className="adv-lifecycle-tekst">
+                  Een kort gesprek. Waar nodig komen we langs en bekijken we wat er al is.
+                </p>
+              </div>
+              <div className="adv-lifecycle-rij">
+                <h2 className="adv-lifecycle-titel">het plan</h2>
+                <span className="adv-lifecycle-tijd">op papier</span>
+                <p className="adv-lifecycle-tekst">
+                  Wat er moet gebeuren, wie het doet, wanneer, en wat het kost. Vooraf.
+                </p>
+              </div>
+              <div className="adv-lifecycle-rij">
+                <h2 className="adv-lifecycle-titel">uitvoering</h2>
+                <span className="adv-lifecycle-tijd">jij of wij</span>
+                <p className="adv-lifecycle-tekst">
+                  Je voert het plan zelf uit, met een partner, of wij regelen het.
+                </p>
+              </div>
             </div>
           </div>
         </div>

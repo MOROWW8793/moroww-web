@@ -412,18 +412,85 @@
    (plan, kaart, band) verder kunnen bestaan. */
 
 .merk-advisory .adv-held {
-  padding: 160px 0 120px;
+  padding: 96px 0 96px;
   background: var(--zacht);
   color: var(--ink);
 }
 @media (max-width: 760px) {
-  .merk-advisory .adv-held { padding: 96px 0 72px; }
+  .merk-advisory .adv-held { padding: 72px 0 72px; }
+}
+/* Hero-grid: op lg tekst links (col 1–7), lifecycle rechts (col 8–12).
+   Op kleinere viewports stacken onder elkaar. */
+.merk-advisory .adv-held-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+}
+@media (min-width: 960px) {
+  .merk-advisory .adv-held-grid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: 80px;
+  }
 }
 .merk-advisory .adv-held-binnen {
   display: flex;
   flex-direction: column;
   gap: 32px;
   max-width: min(820px, 100%);
+}
+
+/* Lifecycle — vier verticale fases met tijd + korte beschrijving.
+   Dunne lijnen ertussen, geen box erom. Rust binnen de hero. */
+.merk-advisory .adv-lifecycle {
+  position: relative;
+  padding-top: 8px;
+}
+.merk-advisory .adv-lifecycle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(26, 26, 26, 0.18);
+}
+.merk-advisory .adv-lifecycle-rij {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px 24px;
+  align-items: baseline;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.18);
+}
+.merk-advisory .adv-lifecycle-titel {
+  font-family: var(--font-titel);
+  font-weight: 300;
+  font-size: clamp(1.25rem, 1.7vw, 1.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0;
+}
+.merk-advisory .adv-lifecycle-tijd {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0;
+  white-space: nowrap;
+  text-align: right;
+}
+.merk-advisory .adv-lifecycle-tekst {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 44ch;
+}
+.merk-advisory .adv-lifecycle-rij:first-of-type .adv-lifecycle-titel {
+  color: var(--accent);
 }
 .merk-advisory .adv-eyebrow {
   font-family: var(--font-body);
