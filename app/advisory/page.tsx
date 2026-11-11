@@ -146,8 +146,8 @@ export default function Advisory() {
         <div data-mw-reveal>
           <span className="adv-kopblok-boven">een plan · voorbeeld</span>
           <h2 className="adv-sectie-titel" data-mw-lines>
-            <span><span>mag ik mijn huis aan zee als</span></span>
-            <span><span>vakantiewoning verhuren?</span></span>
+            <span><span>mag ik mijn huis aan zee</span></span>
+            <span><span>als vakantiewoning verhuren?</span></span>
           </h2>
           <ol className="adv-genummerd" aria-label="Stappen in het voorbeeld-plan" data-mw-stagger>
             {planStappen.map(([stap, badge], i) => (

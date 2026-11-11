@@ -379,10 +379,17 @@ html.mw-js [data-mw-reveal].is-in {
 
 /* data-mw-lines: elke directe <span> is een mask (overflow hidden, block),
    elke binnenste <span> is de regel die van onder opstijgt. Stagger per
-   nth-child zodat de regel-beat gelezen kan worden. */
+   nth-child zodat de regel-beat gelezen kan worden.
+   padding-bottom op de mask + negative margin-top op opeenvolgende masks:
+   voorkomt dat descenders (g, p, j) door de mask-rand worden afgeknipt
+   zonder de regel-afstand te veranderen. */
 html.mw-js [data-mw-lines] > span {
   display: block;
   overflow: hidden;
+  padding-bottom: 0.3em;
+}
+html.mw-js [data-mw-lines] > span + span {
+  margin-top: -0.22em;
 }
 html.mw-js [data-mw-lines] > span > span {
   display: inline-block;
