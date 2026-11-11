@@ -34,8 +34,8 @@ function plusDagen(iso: string, n: number) {
 }
 
 const VELD =
-  'w-full bg-transparent border-0 rounded-none p-0 pt-0.5 text-base text-moroww-dark appearance-none cursor-pointer focus-visible:outline-none'
-const LABEL = 'text-audit text-moroww-ink-2'
+  'w-full bg-transparent border-0 rounded-none p-0 pt-0.5 text-base text-white appearance-none cursor-pointer focus-visible:outline-none [&>option]:text-moroww-dark'
+const LABEL = 'text-audit text-white/65'
 
 export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; locale: string; maxGasten: number }) {
   const c = locale === 'en' ? COPY.en : COPY.nl
@@ -144,9 +144,9 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
 
           <form
             onSubmit={zoek}
-            className="mt-mw-6 grid grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_0.8fr_auto] items-center gap-y-1 p-1.5 lg:p-2 rounded-[28px] lg:rounded-full bg-moroww-paper/90 backdrop-blur-md shadow-[0_12px_40px_-16px_rgba(0,0,0,0.45)]"
+            className="mt-mw-6 grid grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_0.8fr_auto] items-center gap-y-1 p-1.5 lg:p-2 rounded-[28px] lg:rounded-full bg-white/[0.12] backdrop-blur-xl backdrop-saturate-150 border border-white/25 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.7)] [color-scheme:dark]"
           >
-            <label className="col-span-2 lg:col-span-1 flex flex-col px-mw-5 py-mw-2 rounded-full hover:bg-white/70 focus-within:bg-white focus-within:ring-2 focus-within:ring-moroww-dark/25 transition-colors motion-reduce:transition-none">
+            <label className="col-span-2 lg:col-span-1 flex flex-col px-mw-5 py-mw-2 rounded-full hover:bg-white/10 focus-within:bg-white/15 focus-within:ring-1 focus-within:ring-white/40 transition-colors motion-reduce:transition-none">
               <span className={LABEL}>{c.waar}</span>
               <select value={streek} onChange={(e) => setStreek(e.target.value as typeof streek)} className={VELD}>
                 <option value="alles">{c.alles}</option>
@@ -154,7 +154,7 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
                 <option value="the fields">the fields · {locale === 'en' ? 'the countryside' : 'het platteland'}</option>
               </select>
             </label>
-            <label className="flex flex-col px-mw-5 py-mw-2 rounded-full hover:bg-white/70 focus-within:bg-white focus-within:ring-2 focus-within:ring-moroww-dark/25 transition-colors motion-reduce:transition-none relative lg:before:absolute lg:before:left-0 lg:before:top-1/4 lg:before:h-1/2 lg:before:w-px lg:before:bg-moroww-rule">
+            <label className="flex flex-col px-mw-5 py-mw-2 rounded-full hover:bg-white/10 focus-within:bg-white/15 focus-within:ring-1 focus-within:ring-white/40 transition-colors motion-reduce:transition-none relative lg:before:absolute lg:before:left-0 lg:before:top-1/4 lg:before:h-1/2 lg:before:w-px lg:before:bg-white/25">
               <span className={LABEL}>{c.aankomst}</span>
               <input
                 type="date"
@@ -167,7 +167,7 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
                 className={VELD}
               />
             </label>
-            <label className="flex flex-col px-mw-5 py-mw-2 rounded-full hover:bg-white/70 focus-within:bg-white focus-within:ring-2 focus-within:ring-moroww-dark/25 transition-colors motion-reduce:transition-none relative before:absolute before:left-0 before:top-1/4 before:h-1/2 before:w-px before:bg-moroww-rule">
+            <label className="flex flex-col px-mw-5 py-mw-2 rounded-full hover:bg-white/10 focus-within:bg-white/15 focus-within:ring-1 focus-within:ring-white/40 transition-colors motion-reduce:transition-none relative before:absolute before:left-0 before:top-1/4 before:h-1/2 before:w-px before:bg-white/25">
               <span className={LABEL}>{c.vertrek}</span>
               <input
                 type="date"
@@ -177,7 +177,7 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
                 className={VELD}
               />
             </label>
-            <label className="flex flex-col px-mw-5 py-mw-2 rounded-full hover:bg-white/70 focus-within:bg-white focus-within:ring-2 focus-within:ring-moroww-dark/25 transition-colors motion-reduce:transition-none relative lg:before:absolute lg:before:left-0 lg:before:top-1/4 lg:before:h-1/2 lg:before:w-px lg:before:bg-moroww-rule">
+            <label className="flex flex-col px-mw-5 py-mw-2 rounded-full hover:bg-white/10 focus-within:bg-white/15 focus-within:ring-1 focus-within:ring-white/40 transition-colors motion-reduce:transition-none relative lg:before:absolute lg:before:left-0 lg:before:top-1/4 lg:before:h-1/2 lg:before:w-px lg:before:bg-white/25">
               <span className={LABEL}>{c.gasten}</span>
               <select value={gasten} onChange={(e) => setGasten(Number(e.target.value))} className={VELD}>
                 {Array.from({ length: maxGasten }, (_, i) => i + 1).map((g) => (
@@ -188,8 +188,9 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
             <div className="flex items-stretch">
               <button
                 type="submit"
-                className="w-full lg:w-auto bg-moroww-orange text-moroww-dark rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-moroww-dark active:bg-moroww-orange/75 px-8 min-h-[48px] text-body font-semibold hover:bg-moroww-orange/85 transition-colors"
+                className="w-full lg:w-auto inline-flex items-center justify-center gap-2 bg-moroww-orange text-moroww-dark rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:scale-[0.98] px-7 min-h-[52px] text-body font-semibold hover:bg-white transition-[background-color,transform] duration-200 motion-reduce:transition-none"
               >
+                <svg aria-hidden="true" viewBox="0 0 20 20" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="8.5" cy="8.5" r="5.5" /><path d="m13 13 4 4" /></svg>
                 {c.zoek}
               </button>
             </div>
