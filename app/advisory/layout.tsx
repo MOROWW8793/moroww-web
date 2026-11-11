@@ -14,6 +14,7 @@ import '@fontsource/inter-tight/400.css';
 import '@fontsource/inter-tight/500.css';
 import '@fontsource/inter-tight/600.css';
 import '@/components/merk/merk.css';
+import '@/components/merk/zwitsers.css';
 
 
 export const metadata: Metadata = {
@@ -33,6 +34,7 @@ export default function AdvisoryLayout({ children }: { children: React.ReactNode
           }}
         />
         <div className="merk merk-advisory">
+          <div className="z z-advisory">
           <Header
             home="/advisory"
             merk={<MerkTeken merk="advisory" op="licht" size={24} />}
@@ -44,6 +46,7 @@ export default function AdvisoryLayout({ children }: { children: React.ReactNode
           />
           <main>{children}</main>
           <Footer merk={<span>elke vraag, een plan.</span>} />
+          </div>
         </div>
         <SmoothScroll />
         <MotionIn />
