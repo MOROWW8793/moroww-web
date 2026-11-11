@@ -46,7 +46,7 @@ export default function Hub() {
               </div>
             ))}
             <div className="z-foto" style={{ aspectRatio: '16 / 6' }}>
-              <Image src="/images/standaard/V2-36.jpg" alt="Foto van het afgewerkte werk, als bewijs" fill sizes="(min-width: 1024px) 35vw, 100vw" style={{ objectFit: 'cover' }} />
+              <Image src="/images/standaard/V2-12.jpg" alt="Foto van het afgewerkte werk, als bewijs" fill sizes="(min-width: 1024px) 35vw, 100vw" style={{ objectFit: 'cover', objectPosition: 'center 60%' }} />
             </div>
           </figure>
         }
