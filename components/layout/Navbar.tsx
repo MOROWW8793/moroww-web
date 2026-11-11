@@ -64,15 +64,14 @@ export function Navbar() {
 
   // Geen doorlopende balk: het logo staat los, de navigatie zit in een
   // glazen eiland rechts, net zo breed als wat erin staat. Over een donkere
-  // hero donker glas en wit; daarbuiten licht glas. Het logo krijgt pas glas
-  // als er inhoud onder schuift.
+  // hero donker glas en wit; daarbuiten licht glas.
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-5 md:pt-4 pointer-events-none">
       <nav className="relative mx-auto flex h-14 max-w-7xl items-center justify-between">
         <Link
           href="/"
           aria-label="moroww"
-          className={`pointer-events-auto shrink-0 flex h-14 items-center px-4 ${scrolled ? eiland : 'border border-transparent'}`}
+          className="pointer-events-auto shrink-0 flex h-14 items-center px-3"
         >
           <Image
             src="/images/logo.png"
