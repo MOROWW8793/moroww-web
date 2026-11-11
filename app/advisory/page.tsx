@@ -47,6 +47,11 @@ export default function Advisory() {
       <ZHeld
         nr="01 · hulp op maat voor wie start of vastloopt"
         titel={<>elke vraag,<br />een plan.</>}
+        fotos={[
+          { src: '/images/advisory-terras-zee.jpg', alt: 'Dakterras met zicht op zee bij een moroww-huis' },
+          { src: '/images/over-hero.jpg', alt: 'Leefruimte van een moroww-huis, met iemand die de gordijnen opent' },
+          { src: '/images/collectie-1.jpg', alt: 'Badkamer met stenen wastafel in een moroww-huis' },
+        ]}
         lead="Vertel ons wat er speelt. Je krijgt een plan op papier: wat er moet gebeuren, wie het doet, wanneer, en wat het kost."
         acties={
           <>

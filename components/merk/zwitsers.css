@@ -183,3 +183,99 @@
 /* De ledenzone houdt zijn eigen, links uitgelijnde kolom naast de zijbalk. */
 .merk .z .plat-main .wrap { max-width: 1120px; margin: 0; padding: 0 48px; }
 @media (max-width: 900px) { .merk .z .plat-main .wrap { padding: 0 20px; } }
+
+/* ---------- moderne laag voor advisory en hub (nov 2026) ----------
+   Zelfde papier, inkt en accent per tak. Wat verandert: afgeronde vlakken,
+   zachte schaduw in plaats van inktkaders, glas waar iets over beeld ligt,
+   en lijnen in --line in plaats van --ink. */
+.merk .z:is(.z-advisory, .z-hub) {
+  --rond: 24px;
+  --schaduw: 0 30px 60px -40px rgba(26, 26, 26, 0.35);
+  --glas: rgba(255, 255, 255, 0.72);
+}
+.merk .z:is(.z-advisory, .z-hub) .kop {
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  -webkit-backdrop-filter: saturate(150%) blur(16px);
+  backdrop-filter: saturate(150%) blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+.merk .z:is(.z-advisory, .z-hub) :is(.btn, .btn-kop, .z-knop) { border-radius: 999px; }
+.merk .z:is(.z-advisory, .z-hub) .z-knop { transition: filter .2s, transform .2s; }
+.merk .z:is(.z-advisory, .z-hub) .z-knop:hover { transform: translateY(-1px); }
+
+.merk .z:is(.z-advisory, .z-hub) .z-held { border-bottom: 0; }
+.merk .z:is(.z-advisory, .z-hub) .z-sectie { border-bottom: 1px solid var(--line); }
+.merk .z:is(.z-advisory, .z-hub) .z-sectie:last-child { border-bottom: 0; }
+
+.merk .z:is(.z-advisory, .z-hub) .z-object {
+  border: 1px solid var(--line); border-radius: var(--rond); overflow: hidden; box-shadow: var(--schaduw);
+}
+.merk .z:is(.z-advisory, .z-hub) .z-object-kop { border-bottom: 1px solid var(--line); }
+.merk .z:is(.z-advisory, .z-hub) .z-foto { border-radius: var(--rond); }
+.merk .z:is(.z-advisory, .z-hub) .z-object .z-foto { border-radius: 0; }
+.merk .z:is(.z-advisory, .z-hub) .z-foto-onder { border-top-color: var(--line); }
+
+.merk .z:is(.z-advisory, .z-hub) .z-raster { column-gap: 16px; row-gap: 16px; }
+.merk .z:is(.z-advisory, .z-hub) .z-raster > * {
+  border: 1px solid var(--line); border-radius: var(--rond); background: var(--wit); padding: 28px; box-shadow: var(--schaduw);
+}
+
+.merk .z:is(.z-advisory, .z-hub) .z-tegels { gap: 16px; background: none; border: 0; }
+.merk .z:is(.z-advisory, .z-hub) .z-tegels > * {
+  border: 1px solid var(--line); border-radius: var(--rond); box-shadow: var(--schaduw); transition: transform .25s ease, box-shadow .25s ease;
+}
+.merk .z:is(.z-advisory, .z-hub) .z-tegels > a:hover { transform: translateY(-3px); box-shadow: 0 36px 70px -40px rgba(26, 26, 26, 0.45); }
+.merk .z:is(.z-advisory, .z-hub) .z-tegel-accent { border-color: transparent; }
+
+.merk .z:is(.z-advisory, .z-hub) .z-register { border-top: 1px solid var(--line); }
+.merk .z:is(.z-advisory, .z-hub) .z-register > li > :first-child { border-radius: 16px; transition: background .2s; }
+.merk .z:is(.z-advisory, .z-hub) .z-register a:hover { background: var(--wit); box-shadow: var(--schaduw); }
+
+.merk .z:is(.z-advisory, .z-hub) .z-cijfers {
+  border: 1px solid var(--line); border-radius: var(--rond); background: var(--wit); padding: 0 28px; box-shadow: var(--schaduw);
+}
+.merk .z:is(.z-advisory, .z-hub) .z-faq { border-top: 1px solid var(--line); }
+
+.merk .z:is(.z-advisory, .z-hub) .form-veld textarea,
+.merk .z:is(.z-advisory, .z-hub) .hub-form textarea { border: 1px solid var(--line); border-radius: 16px; }
+.merk .z:is(.z-advisory, .z-hub) .form-bedankt { border: 1px solid var(--line); border-radius: var(--rond); }
+.merk .z:is(.z-advisory, .z-hub) :is(.plat-paneel, .vraag, .kaart, .plat-leeg, .plat-ok, .hub-tabel) { border-radius: var(--rond); overflow: hidden; }
+.merk .z:is(.z-advisory, .z-hub) :is(.hub-chips span, .hub-knopklein) { border-radius: 999px; }
+
+/* fotohero: afgeronde plaat, kop in wit, voorbeeldobject als licht glas */
+.merk .z .z-held-foto { padding: 24px 0 72px; }
+.z-held-paneel {
+  position: relative; overflow: hidden; border-radius: 32px; background: #1A1A1A; color: #fff;
+  min-height: min(84svh, 820px); padding: 56px; display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-end;
+}
+.z-held-beeld { position: absolute; inset: 0; opacity: 0; transition: opacity 1.4s ease-out; }
+.z-held-beeld[data-aan='true'] { opacity: 1; }
+.z-held-beeld img { transform: scale(1); transition: transform 8s ease-out; }
+.z-held-beeld img[data-zoom='true'] { transform: scale(1.06); }
+.z-held-waas { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, rgba(0,0,0,.66), rgba(0,0,0,.1) 55%, rgba(0,0,0,.3)); }
+.z-held-paneel .z-held-tekst { position: relative; flex: 999 1 520px; }
+.z-held-paneel .z-nr { color: rgba(255,255,255,.75); }
+.z-held-paneel .z-h1 { color: #fff; text-shadow: 0 2px 24px rgba(0,0,0,.25); }
+.z-held-paneel .z-lead { color: rgba(255,255,255,.9); }
+.merk .z .z-held-paneel .z-link, .merk .z .z-held-paneel a.z-link { color: #fff; }
+.merk .z .z-held-paneel .z-object {
+  position: relative; flex: 1 1 360px; max-width: 460px; color: var(--ink);
+  background: var(--glas, rgba(255,255,255,.72)); border: 1px solid rgba(255,255,255,.7);
+  -webkit-backdrop-filter: saturate(150%) blur(20px); backdrop-filter: saturate(150%) blur(20px);
+  box-shadow: 0 30px 80px -30px rgba(0,0,0,.6);
+}
+.merk .z .z-held-paneel .z-object :is(.z-object-voet, .z-object-rij) { border-color: rgba(26,26,26,.1); }
+.merk .z .z-held-paneel .z-object .z-nr { color: var(--muted); }
+.z-held-dias { position: absolute; right: 40px; top: 32px; display: flex; align-items: center; gap: 4px; }
+.z-held-dias button { background: none; border: 0; padding: 8px 4px; cursor: pointer; color: #fff; }
+.z-held-dias button span { display: block; width: 28px; height: 3px; background: #fff; opacity: .45; transform: scaleX(.5); transform-origin: left; transition: transform .3s, opacity .3s; }
+.z-held-dias button[aria-current='true'] span { opacity: 1; transform: scaleX(1); }
+.z-held-dias .z-held-pauze { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin-left: 6px; border-radius: 999px; background: rgba(255,255,255,.14); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.3); }
+@media (max-width: 640px) {
+  .merk .z .z-held-foto { padding: 12px 0 48px; }
+  .z-held-paneel { padding: 88px 22px 24px; border-radius: 24px; gap: 28px; }
+  .z-held-dias { right: 16px; top: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .z-held-beeld, .z-held-beeld img { transition: none; }
+}

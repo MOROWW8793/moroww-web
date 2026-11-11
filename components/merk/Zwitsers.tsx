@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
+import { HeldDiashow, type HeldFoto } from './HeldDiashow';
 
 // Bouwstenen van het Zwitserse raster (zwitsers.css). Enkel opmaak en
 // structuur; de inhoud komt van de pagina's en lib/merk.
@@ -8,15 +9,25 @@ export const nr = (i: number) => String(i + 1).padStart(2, '0');
 
 type Item = { titel: ReactNode; tekst?: ReactNode; href?: string; voet?: string };
 
-export function ZHeld({ nr: n, titel, lead, acties, object }: { nr: string; titel: ReactNode; lead: ReactNode; acties?: ReactNode; object?: ReactNode }) {
+export function ZHeld({ nr: n, titel, lead, acties, object, fotos }: { nr: string; titel: ReactNode; lead: ReactNode; acties?: ReactNode; object?: ReactNode; fotos?: HeldFoto[] }) {
+  const tekst = (
+    <>
+      <span className="z-nr">{n}</span>
+      <h1 className="z-h1">{titel}</h1>
+      <p className="z-lead">{lead}</p>
+      {acties && <div className="z-knoppen">{acties}</div>}
+    </>
+  );
+  if (fotos?.length) {
+    return (
+      <section className="z-held z-held-foto" data-mw-reveal>
+        <HeldDiashow fotos={fotos} object={object}>{tekst}</HeldDiashow>
+      </section>
+    );
+  }
   return (
     <section className="z-held" data-mw-reveal>
-      <div className="z-held-tekst">
-        <span className="z-nr">{n}</span>
-        <h1 className="z-h1">{titel}</h1>
-        <p className="z-lead">{lead}</p>
-        {acties && <div className="z-knoppen">{acties}</div>}
-      </div>
+      <div className="z-held-tekst">{tekst}</div>
       {object}
     </section>
   );

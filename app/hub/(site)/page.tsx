@@ -24,6 +24,11 @@ export default function Hub() {
       <ZHeld
         nr="01 · voor eigenaars, beheerders en hotels met het label"
         titel={<>vraag het<br />moroww.</>}
+        fotos={[
+          { src: '/images/hub/huis-moro-badkamer.jpg', alt: 'Handdoek en MORO-producten in een badkamer van een moroww-huis' },
+          { src: '/images/standaard/V2-12.jpg', alt: 'Handdoeken worden klaargelegd op het bed', positie: 'center 70%' },
+          { src: '/images/standaard/V2-40.jpg', alt: 'Een gast leest in bed in een moroww-huis' },
+        ]}
         lead="Een extra schoonmaak, de ramen, een herstelling, de koelkast vullen voor de gasten. Jij vraagt het in de hub, wij zoeken een partner in de buurt en volgen op tot het klaar is. Je ziet het met een foto."
         acties={
           <>
