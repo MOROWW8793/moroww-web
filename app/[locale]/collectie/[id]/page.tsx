@@ -298,6 +298,8 @@ export default async function WoningDetailPage({ params }: Props) {
     )
 
   const GLAS = 'bg-white/[0.12] backdrop-blur-xl backdrop-saturate-150 border border-white/25'
+  // Op een lichte pagina leest donker glas als een gat; buiten de hero is het glas licht.
+  const GLAS_LICHT = 'bg-white/70 backdrop-blur-xl backdrop-saturate-150 border border-white/70 shadow-[0_30px_60px_-30px_rgba(26,26,26,0.45)]'
 
   return (
     <Register kant="gast">
@@ -532,16 +534,15 @@ export default async function WoningDetailPage({ params }: Props) {
           </section>
         )}
 
-        {/* De buurt — tekst als glasplaat over het beeld */}
+        {/* De buurt — tekst als lichte glasplaat over het beeld */}
         {woning.buurt && (
-          <section className="relative mt-mw-10 min-h-[80vh] w-full overflow-hidden bg-moroww-dark flex items-end">
+          <section className="relative mt-mw-10 h-[80vh] min-h-[560px] w-full overflow-hidden">
             {fotoNaBuurt && beeld(fotoNaBuurt, '100vw', 'absolute inset-0 h-full w-full', t('surroundings_alt_suffix'))}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" aria-hidden />
-            <div className="pointer-events-none relative mx-auto w-full max-w-7xl px-6 md:px-12 py-mw-6 md:py-mw-8">
-              <div className={`${GLAS} pointer-events-auto max-w-xl rounded-3xl p-mw-5 md:p-mw-6 text-white shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)]`}>
-                <p className="text-audit text-white/70">{woning.locatie}</p>
-                <h2 className="mt-mw-2 text-h2">{t('neighbourhood_title')}</h2>
-                <p className="mt-mw-4 text-body text-white/90">{lw(woning.buurt, locale)}</p>
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 mx-auto w-full max-w-7xl px-6 md:px-12 pb-mw-6 md:pb-mw-8">
+              <div className={`${GLAS_LICHT} pointer-events-auto max-w-xl rounded-3xl p-mw-5 md:p-mw-6`}>
+                <p className="text-audit text-moroww-label-tekst">{woning.locatie}</p>
+                <h2 className="mt-mw-2 text-h2 text-moroww-dark">{t('neighbourhood_title')}</h2>
+                <p className="mt-mw-4 text-body text-moroww-dark">{lw(woning.buurt, locale)}</p>
               </div>
             </div>
           </section>
@@ -571,19 +572,18 @@ export default async function WoningDetailPage({ params }: Props) {
           aangereikt in plaats van terug te moeten scrollen. */}
       {boekbaar && (
         <section className="mx-auto max-w-7xl px-6 md:px-12 mt-mw-10">
-          <div className="relative overflow-hidden rounded-[32px] bg-moroww-dark">
-            <Image src={woning.heroFoto} alt="" fill sizes="(max-width: 1280px) 100vw, 80rem" className="object-cover opacity-70" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/10" aria-hidden />
+          <div className="relative overflow-hidden rounded-[32px]">
+            <Image src={woning.heroFoto} alt="" fill sizes="(max-width: 1280px) 100vw, 80rem" className="object-cover" />
             <div className="relative px-mw-4 py-mw-8 md:px-mw-8 md:py-mw-10">
-              <div className={`${GLAS} max-w-lg rounded-3xl p-mw-5 md:p-mw-6 text-white`}>
-                <h2 className="text-h2">{t('closing_title', { name: woning.naam })}</h2>
-                <p className="mt-mw-3 text-body text-white/80">
+              <div className={`${GLAS_LICHT} max-w-lg rounded-3xl p-mw-5 md:p-mw-6`}>
+                <h2 className="text-h2 text-moroww-dark">{t('closing_title', { name: woning.naam })}</h2>
+                <p className="mt-mw-3 text-body text-moroww-ink-2">
                   {[prijsLabel, t('trust_cancel')].filter(Boolean).join(' · ')}
                 </p>
                 <NaarBoekenKnop
                   doelIds={['boeken', 'boeken-mobiel']}
                   label={t('mobile_cta')}
-                  className="mt-mw-5 rounded-full px-mw-5 py-3 font-semibold bg-moroww-orange text-moroww-dark hover:bg-white transition-colors"
+                  className="mt-mw-5 rounded-full px-mw-5 py-3 font-semibold bg-moroww-orange text-moroww-dark hover:bg-moroww-orange/85 transition-colors"
                 />
               </div>
             </div>
