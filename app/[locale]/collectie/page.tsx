@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { CollectieOverzicht } from "@/components/collectie/CollectieOverzicht";
+import { CollectieHero } from "@/components/collectie/CollectieHero";
 import { SneakPeek } from "@/components/sections/SneakPeek";
 import { Register } from "@/components/Register";
 import { siteMetadata } from "@/lib/seo/siteMetadata";
-import { liveWoningen, type Locale } from "@/lib/woningen";
+import { liveWoningen, sortForCollectie, type Locale } from "@/lib/woningen";
 import { countWord } from "@/lib/getallen";
 
 export async function generateMetadata({
@@ -37,29 +38,38 @@ export default async function CollectiePage({
   const loc: Locale = isNl ? 'nl' : 'en'
   const woningen = liveWoningen()
   const aantal = countWord(woningen.length, loc, false)
-  const tab = 'inline-flex items-center min-h-[44px] text-[0.9375rem] underline-offset-[8px] transition-colors'
+  const slides = sortForCollectie(woningen).map((w) => ({ id: w.id, src: w.heroFoto, naam: w.naam, plaats: w.locatie }))
+  const pil = 'inline-flex items-center min-h-[44px] rounded-full px-mw-4 text-[0.9375rem] transition-colors'
   return (
     <Register kant="gast">
       {/* ── HERO ── */}
-      <section className="w-full px-6 md:px-12 pt-mw-8 lg:pt-mw-10">
-        <div className="mx-auto max-w-7xl">
-          <p className="mw-in text-[0.9375rem] text-moroww-ink-2">{isNl ? 'de collectie' : 'the collection'}</p>
-          <h1 className="mw-in mt-mw-4 text-display font-light text-moroww-dark max-w-[14ch]">
-            {isNl ? 'verblijven die kloppen.' : 'stays that are right.'}
-          </h1>
-          <p className="mw-in-2 mt-mw-6 text-body-lg text-moroww-dark max-w-[56ch]">
-            {isNl
-              ? `We bouwen de plek waar je overal ter wereld een verblijf vindt dat klopt. We beginnen in België: ${aantal} karaktervolle huizen, elk persoonlijk bezocht.`
-              : `We are building the place where you find a stay that is right, anywhere in the world. We start in Belgium: ${aantal} homes with character, each visited in person.`}
-          </p>
-          <nav aria-label={isNl ? 'streken' : 'regions'} className="mt-mw-6 flex flex-wrap gap-x-mw-5 gap-y-1">
-            <span className={`${tab} text-moroww-dark underline decoration-moroww-dark decoration-2`}>{isNl ? 'alles' : 'all'}</span>
-            <Link href="/the-shore" className={`${tab} text-moroww-ink-2 hover:text-moroww-dark`}>the shore →</Link>
-            <Link href="/the-fields" className={`${tab} text-moroww-ink-2 hover:text-moroww-dark`}>the fields →</Link>
-            <Link href="/boeken" className={`${tab} text-moroww-ink-2 hover:text-moroww-dark`}>{isNl ? 'zoek op data →' : 'search by date →'}</Link>
-          </nav>
-        </div>
-      </section>
+      <CollectieHero
+        slides={slides}
+        labels={{
+          pauzeer: isNl ? 'pauzeer de foto’s' : 'pause the photos',
+          speel: isNl ? 'speel de foto’s af' : 'play the photos',
+          dia: isNl ? 'foto' : 'photo',
+        }}
+      >
+        <p className="text-audit text-white/80">{isNl ? 'de collectie' : 'the collection'}</p>
+        <h1 className="mt-mw-3 text-display font-light text-white max-w-[14ch] drop-shadow-md">
+          {isNl ? 'verblijven die kloppen.' : 'stays that are right.'}
+        </h1>
+        <p className="mt-mw-4 text-body-lg text-white/90 max-w-[56ch]">
+          {isNl
+            ? `We bouwen de plek waar je overal ter wereld een verblijf vindt dat klopt. We beginnen in België: ${aantal} karaktervolle huizen, elk persoonlijk bezocht.`
+            : `We are building the place where you find a stay that is right, anywhere in the world. We start in Belgium: ${aantal} homes with character, each visited in person.`}
+        </p>
+        <nav
+          aria-label={isNl ? 'streken' : 'regions'}
+          className="mt-mw-5 inline-flex max-w-full flex-wrap items-center gap-1 rounded-[28px] md:rounded-full p-1.5 bg-white/[0.12] backdrop-blur-xl backdrop-saturate-150 border border-white/25 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.7)]"
+        >
+          <span className={`${pil} bg-white text-moroww-dark`} aria-current="page">{isNl ? 'alles' : 'all'}</span>
+          <Link href="/the-shore" className={`${pil} text-white hover:bg-white/15`}>the shore</Link>
+          <Link href="/the-fields" className={`${pil} text-white hover:bg-white/15`}>the fields</Link>
+          <Link href="/boeken" className={`${pil} bg-moroww-orange text-moroww-dark font-semibold hover:bg-white`}>{isNl ? 'zoek op data' : 'search by date'}</Link>
+        </nav>
+      </CollectieHero>
 
       {/* ── OVERZICHT ── */}
       <section className="w-full px-6 md:px-12 mt-mw-8 mb-mw-8 lg:mb-mw-10">

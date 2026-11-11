@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import { Check, Minus } from 'lucide-react'
 import { Link } from '@/i18n/navigation'
-import { lw, sortForCollectie, type Locale, type Woning } from '@/lib/woningen'
+import { lw, lwArr, sortForCollectie, type Locale, type Woning } from '@/lib/woningen'
 import { kenmerkenVan, KENMERK_LABELS, type Kenmerk } from '@/lib/kenmerken'
+import { KaartBeelden, GlasChip } from './KaartBeelden'
 
 // Collectie-overzicht (nov 2026): per woning in één oogopslag wat ze te
 // bieden heeft, plus een tabel om alles naast elkaar te leggen.
@@ -15,7 +16,7 @@ const T = {
     vanaf: 'vanaf', nacht: '/ nacht', bekijk: 'bekijk woning', boek: 'boek', nieuw: 'nieuw',
     tabelKop: 'alles op een rij', tabelIntro: 'Leg de huizen naast elkaar en kies wat bij je verblijf past.',
     kol: { woning: 'woning', streek: 'streek', m2: 'm²', slk: 'slaapk.', badk: 'badk.', gasten: 'gasten', prijs: 'vanaf / nacht' },
-    ja: 'ja', nee: 'nee', opAanvraag: 'bekijk data',
+    ja: 'ja', nee: 'nee', opAanvraag: 'bekijk data', vorige: 'vorige foto', volgende: 'volgende foto',
   },
   en: {
     slk: (n: number) => (n === 1 ? '1 bedroom' : `${n} bedrooms`),
@@ -24,7 +25,7 @@ const T = {
     vanaf: 'from', nacht: '/ night', bekijk: 'see the home', boek: 'book', nieuw: 'new',
     tabelKop: 'everything side by side', tabelIntro: 'Put the homes next to each other and choose what fits your stay.',
     kol: { woning: 'home', streek: 'region', m2: 'm²', slk: 'bedr.', badk: 'bathr.', gasten: 'guests', prijs: 'from / night' },
-    ja: 'yes', nee: 'no', opAanvraag: 'see dates',
+    ja: 'yes', nee: 'no', opAanvraag: 'see dates', vorige: 'previous photo', volgende: 'next photo',
   },
 }
 
@@ -42,32 +43,47 @@ function feitenLijn(w: Woning, locale: Locale) {
 
 const TEKSTLINK = 'inline-flex items-center min-h-[44px] text-[0.9375rem] text-moroww-dark underline underline-offset-[6px] decoration-moroww-dark/30 hover:decoration-moroww-dark transition-colors'
 
-// Raster (collectiepagina): beeld, naam, één regel feiten, één regel
-// kenmerken in woorden, twee tekstlinks. Geen badges, geen iconen.
+// Raster (collectiepagina): een paar foto's om door te swipen, collectie
+// en prijs als glas op het beeld, daaronder naam, slogan en feiten.
 function Kaart({ w, locale, priority }: { w: Woning; locale: Locale; priority: boolean }) {
   const t = T[locale]
   const kenmerken = kenmerkenVan(w).map((k) => KENMERK_LABELS[k][locale])
+  const alts = w.fotoAlts ? lwArr(w.fotoAlts, locale) : []
+  const heroIndex = Math.max(0, w.fotos.indexOf(w.heroFoto))
+  const fotos = [heroIndex, ...w.fotos.map((_, i) => i).filter((i) => i !== heroIndex)]
+    .slice(0, 5)
+    .map((i) => ({ src: w.fotos[i] ?? w.heroFoto, alt: alts[i] || w.naam }))
   return (
     <article className="flex flex-col">
-      <Link href={{ pathname: '/collectie/[id]', params: { id: w.id } }} className="group block" aria-label={w.naam}>
-        <div className="relative aspect-[4/5] overflow-hidden">
-          <Image
-            src={w.heroFoto}
-            alt={w.naam}
-            fill
-            priority={priority}
-            className="object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-[1.02] motion-reduce:group-hover:scale-100"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-        </div>
-      </Link>
-      <p className="mt-mw-4 text-[0.875rem] text-moroww-ink-2">{w.collectie}{w.nieuw ? `  ·  ${t.nieuw}` : ''}</p>
-      <h2 className="mt-1 text-h2 font-light text-moroww-dark">{w.naam}</h2>
-      <p className="mt-1 text-body text-moroww-ink-2">{w.locatie}</p>
-      <p className="mt-mw-3 text-body text-moroww-dark">{feitenLijn(w, locale)}</p>
-      {kenmerken.length > 0 && <p className="mt-1 text-body text-moroww-ink-2">{kenmerken.join(', ')}</p>}
-      <div className="mt-mw-3 flex flex-wrap items-center gap-x-mw-5">
-        <Link href={{ pathname: '/collectie/[id]', params: { id: w.id }, hash: 'boeken' }} className={TEKSTLINK}>
+      <KaartBeelden
+        id={w.id}
+        naam={w.naam}
+        fotos={fotos}
+        priority={priority}
+        labels={{ vorige: t.vorige, volgende: t.volgende }}
+        links={<GlasChip>{w.collectie}{w.nieuw ? ` · ${t.nieuw}` : ''}</GlasChip>}
+        rechts={w.prijs ? <GlasChip>{t.vanaf} <span className="ml-1 font-semibold">€{w.prijs}</span></GlasChip> : undefined}
+      />
+      <p className="mt-mw-4 text-audit text-moroww-ink-2">{w.locatie}</p>
+      <h2 className="mt-1 text-h2 font-light text-moroww-dark">
+        <Link href={{ pathname: '/collectie/[id]', params: { id: w.id } }} className="hover:underline underline-offset-[6px] decoration-1">
+          {w.naam}
+        </Link>
+      </h2>
+      <p className="mt-mw-2 text-body-lg text-moroww-dark max-w-[40ch]">{lw(w.slogan, locale)}</p>
+      <p className="mt-mw-3 text-body text-moroww-ink-2">{feitenLijn(w, locale)}</p>
+      {kenmerken.length > 0 && (
+        <ul className="mt-mw-3 flex flex-wrap gap-2">
+          {kenmerken.map((k) => (
+            <li key={k} className="rounded-full border border-moroww-rule bg-white/60 px-3 py-1 text-audit text-moroww-ink-2">{k}</li>
+          ))}
+        </ul>
+      )}
+      <div className="mt-mw-4">
+        <Link
+          href={{ pathname: '/collectie/[id]', params: { id: w.id }, hash: 'boeken' }}
+          className="inline-flex items-center min-h-[44px] rounded-full border border-moroww-dark/20 px-mw-4 text-[0.9375rem] text-moroww-dark hover:bg-moroww-dark hover:text-white transition-colors"
+        >
           {w.prijs ? `${t.vanaf} €${w.prijs} ${t.nacht}  ·  ${t.boek} →` : `${t.boek} →`}
         </Link>
       </div>
@@ -183,10 +199,10 @@ export function CollectieOverzicht({ woningen, locale, tabel = true, variant = '
       )}
 
       {tabel && (
-      <section className="mt-mw-8 lg:mt-mw-10" aria-labelledby="tabel-kop">
+      <section className="mt-mw-8 lg:mt-mw-10 rounded-3xl bg-white/70 border border-white p-mw-4 md:p-mw-6 shadow-[0_30px_60px_-40px_rgba(26,26,26,0.35)]" aria-labelledby="tabel-kop">
         <h2 id="tabel-kop" className="text-h2 font-light text-moroww-dark">{t.tabelKop}</h2>
         <p className="mt-mw-2 text-body text-moroww-ink-2">{t.tabelIntro}</p>
-        <div className="mt-mw-5 overflow-x-auto -mx-6 px-6 md:mx-0 md:px-0">
+        <div className="mt-mw-5 overflow-x-auto -mx-mw-4 px-mw-4 md:mx-0 md:px-0">
           <table className="w-full min-w-[56rem] text-left text-body">
             <thead>
               <tr className="border-b border-moroww-dark/30 text-[0.875rem] text-moroww-ink-2">

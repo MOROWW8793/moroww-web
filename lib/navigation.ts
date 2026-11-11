@@ -201,5 +201,7 @@ export const nlOnlyRoutes: NavHref[] = [
 export function isDarkHeroPath(pathname: string): boolean {
   // Home heeft sinds nov 2026 een foto-slideshow als hero.
   if (pathname === '/' || pathname === '') return true
+  // /collectie heeft net als de pandpagina's een slideshow onder de navbar.
+  if (/\/(collectie|collection)\/?$/.test(pathname)) return true
   return /\/(collectie|collection)\/[^/]+(\/(boeken|book|bevestigd|confirmed))?\/?$/.test(pathname)
 }
