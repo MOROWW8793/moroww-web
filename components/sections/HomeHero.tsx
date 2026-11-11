@@ -34,7 +34,7 @@ function plusDagen(iso: string, n: number) {
 }
 
 const VELD =
-  'w-full bg-transparent border-0 border-b border-moroww-ink-2 rounded-none p-0 pt-1 pb-1 text-base text-moroww-dark appearance-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-moroww-dark'
+  'w-full bg-transparent border-0 rounded-none p-0 pt-0.5 text-base text-moroww-dark appearance-none cursor-pointer focus-visible:outline-none'
 const LABEL = 'text-audit text-moroww-ink-2'
 
 export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; locale: string; maxGasten: number }) {
@@ -144,10 +144,9 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
 
           <form
             onSubmit={zoek}
-            className="mt-mw-6 bg-moroww-paper grid grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_0.8fr_auto] gap-px shadow-xl"
-            style={{ borderRadius: 2 }}
+            className="mt-mw-6 grid grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_0.8fr_auto] items-center gap-y-1 p-1.5 lg:p-2 rounded-[28px] lg:rounded-full bg-moroww-paper/90 backdrop-blur-md shadow-[0_12px_40px_-16px_rgba(0,0,0,0.45)]"
           >
-            <label className="col-span-2 lg:col-span-1 flex flex-col px-mw-5 py-mw-3 bg-moroww-paper">
+            <label className="col-span-2 lg:col-span-1 flex flex-col px-mw-5 py-mw-2 rounded-full hover:bg-white/70 focus-within:bg-white focus-within:ring-2 focus-within:ring-moroww-dark/25 transition-colors motion-reduce:transition-none">
               <span className={LABEL}>{c.waar}</span>
               <select value={streek} onChange={(e) => setStreek(e.target.value as typeof streek)} className={VELD}>
                 <option value="alles">{c.alles}</option>
@@ -155,7 +154,7 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
                 <option value="the fields">the fields · {locale === 'en' ? 'the countryside' : 'het platteland'}</option>
               </select>
             </label>
-            <label className="flex flex-col px-mw-5 py-mw-3 bg-moroww-paper lg:border-l border-moroww-rule">
+            <label className="flex flex-col px-mw-5 py-mw-2 rounded-full hover:bg-white/70 focus-within:bg-white focus-within:ring-2 focus-within:ring-moroww-dark/25 transition-colors motion-reduce:transition-none relative lg:before:absolute lg:before:left-0 lg:before:top-1/4 lg:before:h-1/2 lg:before:w-px lg:before:bg-moroww-rule">
               <span className={LABEL}>{c.aankomst}</span>
               <input
                 type="date"
@@ -168,7 +167,7 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
                 className={VELD}
               />
             </label>
-            <label className="flex flex-col px-mw-5 py-mw-3 bg-moroww-paper border-l border-moroww-rule">
+            <label className="flex flex-col px-mw-5 py-mw-2 rounded-full hover:bg-white/70 focus-within:bg-white focus-within:ring-2 focus-within:ring-moroww-dark/25 transition-colors motion-reduce:transition-none relative before:absolute before:left-0 before:top-1/4 before:h-1/2 before:w-px before:bg-moroww-rule">
               <span className={LABEL}>{c.vertrek}</span>
               <input
                 type="date"
@@ -178,7 +177,7 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
                 className={VELD}
               />
             </label>
-            <label className="flex flex-col px-mw-5 py-mw-3 bg-moroww-paper lg:border-l border-moroww-rule">
+            <label className="flex flex-col px-mw-5 py-mw-2 rounded-full hover:bg-white/70 focus-within:bg-white focus-within:ring-2 focus-within:ring-moroww-dark/25 transition-colors motion-reduce:transition-none relative lg:before:absolute lg:before:left-0 lg:before:top-1/4 lg:before:h-1/2 lg:before:w-px lg:before:bg-moroww-rule">
               <span className={LABEL}>{c.gasten}</span>
               <select value={gasten} onChange={(e) => setGasten(Number(e.target.value))} className={VELD}>
                 {Array.from({ length: maxGasten }, (_, i) => i + 1).map((g) => (
@@ -186,7 +185,7 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
                 ))}
               </select>
             </label>
-            <div className="flex items-stretch p-2 bg-moroww-paper">
+            <div className="flex items-stretch">
               <button
                 type="submit"
                 className="w-full lg:w-auto bg-moroww-orange text-moroww-dark rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-moroww-dark active:bg-moroww-orange/75 px-8 min-h-[48px] text-body font-semibold hover:bg-moroww-orange/85 transition-colors"
