@@ -73,21 +73,94 @@
 .merk-advisory .held .btn-primair, .merk-advisory .sectie-donker .btn-primair { background: var(--knop); color: var(--knop-ink); }
 
 /* ---------- kop en voet ---------- */
-.merk .kop { border-bottom: 1px solid var(--line); background: var(--bg); }
-.merk .kop-donker { background: var(--donker); color: var(--donker-ink); border-bottom: none; }
-.merk .kop-binnen { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding-top: 20px; padding-bottom: 20px; }
-.merk .kop-logo { display: inline-flex; align-items: center; text-decoration: none; color: inherit; }
-.merk .kop-nav { display: flex; flex-wrap: wrap; gap: 8px 26px; align-items: center; font-size: 15px; }
-.merk .kop-nav a:not(.btn) { text-decoration: none; padding: 10px 0; }
-.merk .kop-nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 4px; }
+/* Header — sticky, frosted glass over scrollende content, grotere nav
+   en een hover-underline die van links groeit. Fallback zonder backdrop-
+   filter: bg valt terug op var(--bg) effen wit. */
+.merk .kop {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+@supports (backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px)) {
+  .merk .kop {
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    backdrop-filter: saturate(140%) blur(10px);
+  }
+}
+.merk .kop-donker {
+  background: var(--donker);
+  color: var(--donker-ink);
+  border-bottom: none;
+}
+@supports (backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px)) {
+  .merk .kop-donker {
+    background: color-mix(in srgb, var(--donker) 82%, transparent);
+  }
+}
+.merk .kop-binnen {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+.merk .kop-logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 200ms ease;
+}
+.merk .kop-logo:hover { opacity: 0.72; }
+.merk .kop-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 30px;
+  align-items: center;
+  font-size: 16px;
+}
+/* Hover-underline die van links naar rechts groeit — luxer dan de native
+   underline-flip. :focus-visible toont de hele streep meteen. */
+.merk .kop-nav a:not(.btn) {
+  position: relative;
+  text-decoration: none;
+  padding: 10px 0;
+  color: inherit;
+}
+.merk .kop-nav a:not(.btn)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 350ms cubic-bezier(.2,.7,.2,1);
+}
+.merk .kop-nav a:not(.btn):hover::after,
+.merk .kop-nav a:not(.btn):focus-visible::after { transform: scaleX(1); }
 .merk .kop-donker .kop-nav a:not(.btn) { color: var(--donker-muted); }
+@media (prefers-reduced-motion: reduce) {
+  .merk .kop-logo { transition: none; }
+  .merk .kop-nav a:not(.btn)::after { transition: none; }
+}
 @media (max-width: 640px) {
-  .merk .kop-binnen { padding-top: 14px; padding-bottom: 10px; gap: 10px; }
-  .merk .kop-nav { flex-wrap: nowrap; width: calc(100% + 16px); margin-right: -16px; overflow-x: auto; gap: 22px; scrollbar-width: none; }
+  .merk .kop-binnen { padding-top: 16px; padding-bottom: 14px; gap: 10px; }
+  .merk .kop-nav { flex-wrap: nowrap; width: calc(100% + 16px); margin-right: -16px; overflow-x: auto; gap: 22px; scrollbar-width: none; font-size: 15px; }
   .merk .kop-nav::-webkit-scrollbar { display: none; }
   .merk .kop-nav a { white-space: nowrap; flex: 0 0 auto; }
   .merk .kop-nav .btn-kop { order: -2; }
   .merk .kop-nav a[href$="/inloggen"] { order: -1; }
+  /* Op mobile is de underline-animatie te druk in een horizontaal
+     scrollbaar menu — gewoon weg. */
+  .merk .kop-nav a:not(.btn)::after { display: none; }
 }
 
 .merk .voet { border-top: 1px solid var(--line); padding: 40px 0; font-size: 14px; color: var(--muted); }
