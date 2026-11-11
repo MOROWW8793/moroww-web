@@ -1,0 +1,119 @@
+/* Zwitsers raster voor de eigenaarskant: het label, advisory en hub.
+   Zit onder .merk .z, zodat de gastenkant van moroww.com er niets van merkt.
+   Eén accent per tak, enkel voor actie; de rest is papier, inkt en lijnen van 1 px. */
+
+.merk .z {
+  --bg: #FBF8F4; --ink: #1A1A1A; --muted: #5F5148; --line: #E3D8CE;
+  --zacht: #FBF8F4; --wit: #FFFFFF; --accent: #1A1A1A;
+  --z-accent: #FEA05E; --knop: var(--z-accent); --knop-ink: #1A1A1A;
+  font-weight: 400; background: var(--bg); color: var(--ink);
+}
+.merk .z-advisory { --z-accent: #F2C94C; }
+.merk .z-hub { --z-accent: #7FA0C9; }
+
+.merk .z .wrap, .z-wrap { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+@media (max-width: 640px) { .merk .z .wrap, .z-wrap { padding: 0 20px; } }
+
+/* kop en voet */
+.merk .z .kop { background: var(--bg); border-bottom: 1px solid var(--ink); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.merk .z .kop-binnen { padding-top: 20px; padding-bottom: 20px; }
+.merk .z .kop-nav { font-size: 15px; gap: 8px 28px; }
+.merk .z .btn-kop { min-height: 44px; padding: 0 20px; background: var(--z-accent); color: var(--ink); font-weight: 500; }
+.merk .z .voet { border-top: 1px solid var(--ink); color: var(--muted); background: var(--bg); }
+
+/* knoppen en links */
+.merk .z .btn { border-radius: 0; font-weight: 500; }
+.merk .z .btn-primair, .z-knop { background: var(--z-accent); color: var(--ink); }
+.z-knop { display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; font: inherit; font-size: 17px; font-weight: 500; text-decoration: none; border: 0; cursor: pointer; }
+.z-knop:hover { filter: brightness(0.95); }
+.z-knop-donker { background: var(--ink); color: var(--bg); }
+.z-link { font-size: 17px; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+.z-knoppen { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; }
+
+/* typografie */
+.z-nr { font-size: 12px; letter-spacing: 0.06em; font-variant-numeric: tabular-nums; color: var(--muted); }
+.z-h1 { margin: 0; font-size: clamp(3.2rem, 8vw, 7rem); line-height: 0.95; font-weight: 500; letter-spacing: -0.035em; }
+.z-h2 { margin: 0; font-size: clamp(2.2rem, 4.2vw, 3.5rem); line-height: 1; font-weight: 500; letter-spacing: -0.03em; }
+.z-h3 { margin: 0; font-size: 24px; line-height: 1.2; font-weight: 500; letter-spacing: -0.01em; }
+.z-lead { margin: 0; font-size: clamp(1.15rem, 1.6vw, 1.375rem); line-height: 1.45; font-weight: 300; max-width: 620px; }
+.z-tekst { margin: 0; font-size: 17px; line-height: 1.55; font-weight: 300; }
+.z-klein { margin: 0; font-size: 14px; line-height: 1.5; font-weight: 300; color: var(--muted); }
+
+/* blokken */
+.z-held { display: flex; flex-wrap: wrap; gap: 48px; padding: 88px 0 72px; border-bottom: 1px solid var(--ink); align-items: flex-end; }
+.z-held-tekst { flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 32px; }
+.z-sectie { padding: 88px 0; border-bottom: 1px solid var(--ink); }
+.z-sectie:last-child { border-bottom: 0; }
+.z-sectie-kop { display: flex; flex-wrap: wrap; gap: 16px 24px; justify-content: space-between; align-items: baseline; margin-bottom: 48px; }
+.z-twee { display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start; }
+.z-smal { flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
+.z-breed { flex: 999 1 560px; min-width: 0; }
+@media (max-width: 640px) { .z-held { padding: 56px 0 48px; } .z-sectie { padding: 64px 0; } }
+
+/* een document als object: plaat, plan, rapport */
+.z-object { flex: 1 1 380px; min-width: 0; border: 1px solid var(--ink); background: var(--wit); display: flex; flex-direction: column; }
+.z-object-kop { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 18px 22px; border-bottom: 1px solid var(--ink); font-size: 16px; font-weight: 500; }
+.z-object-rij { display: flex; gap: 12px; align-items: baseline; padding: 14px 22px; border-bottom: 1px solid var(--line); font-size: 15px; }
+.z-object-rij:last-child { border-bottom: 0; }
+.z-object-rij > :nth-child(2) { flex: 1 1 auto; min-width: 0; }
+.z-object-voet { padding: 14px 22px; font-size: 13px; line-height: 1.5; color: var(--muted); border-top: 1px solid var(--line); }
+.z-vink { flex: 0 0 auto; width: 15px; height: 15px; margin-top: 2px; }
+
+/* raster van onderdelen met een lijn erboven */
+.z-raster { display: flex; flex-wrap: wrap; column-gap: 40px; row-gap: 48px; list-style: none; margin: 0; padding: 0; }
+.z-raster > * { flex: 1 1 280px; min-width: 0; border-top: 1px solid var(--ink); padding-top: 18px; display: flex; flex-direction: column; gap: 12px; }
+.z-raster a { text-decoration: none; }
+
+/* register: genummerde rijen */
+.z-register { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.z-register > li > :first-child { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; padding: 22px 12px; border-bottom: 1px solid var(--line); text-decoration: none; color: inherit; }
+.z-register a:hover { background: var(--wit); }
+.z-reg-nr { flex: 0 0 48px; }
+.z-reg-titel { flex: 1 1 240px; min-width: 0; font-size: 24px; font-weight: 500; letter-spacing: -0.01em; }
+.z-reg-tekst { flex: 2 1 320px; min-width: 0; font-size: 16px; line-height: 1.5; font-weight: 300; }
+.z-reg-pijl { flex: 0 0 auto; font-size: 20px; }
+
+/* tijdlijn */
+.z-tijdlijn { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; row-gap: 40px; }
+.z-tijdlijn > li { flex: 1 1 220px; min-width: 0; display: flex; flex-direction: column; gap: 14px; padding-right: 28px; }
+.z-punt { display: flex; align-items: center; }
+.z-punt::before { content: ''; width: 14px; height: 14px; border-radius: 50%; border: 1px solid var(--ink); background: var(--bg); flex: 0 0 auto; }
+.z-punt::after { content: ''; flex: 1 1 auto; height: 1px; background: var(--ink); }
+.z-tijdlijn > li:first-child .z-punt::before { background: var(--z-accent); }
+.z-tijdlijn > li:last-child .z-punt::after { background: transparent; }
+.z-tijdlijn-kop { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+
+/* cijferbalk */
+.z-cijfers { display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--ink); }
+.z-cijfers > div { flex: 1 1 220px; min-width: 0; padding: 40px 28px 36px 0; margin-right: 28px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; }
+.z-cijfers > div:last-child { border-right: 0; margin-right: 0; }
+.z-getal { font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 1; font-weight: 500; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+
+/* tegels in een raster met lijnen van 1 px */
+.z-tegels { display: flex; flex-wrap: wrap; gap: 1px; background: var(--ink); border: 1px solid var(--ink); }
+.z-tegels > * { flex: 1 1 300px; min-width: 0; background: var(--wit); padding: 28px; display: flex; flex-direction: column; gap: 10px; text-decoration: none; color: inherit; }
+.z-tegel-accent { background: var(--z-accent) !important; }
+
+/* beeld */
+.z-foto { position: relative; overflow: hidden; background: var(--line); }
+.z-foto-onder { display: flex; justify-content: space-between; gap: 12px; border-top: 1px solid var(--ink); padding-top: 10px; font-size: 16px; }
+
+/* veelgestelde vragen */
+.z-faq { border-top: 1px solid var(--ink); }
+.z-faq details { border-bottom: 1px solid var(--line); }
+.z-faq summary { list-style: none; display: flex; justify-content: space-between; gap: 24px; align-items: center; padding: 24px 0; font-size: 22px; font-weight: 500; cursor: pointer; }
+.z-faq summary::-webkit-details-marker { display: none; }
+.z-faq summary::after { content: '+'; font-weight: 300; font-size: 24px; }
+.z-faq details[open] summary::after { content: '\2212'; }
+.z-faq details p { margin: 0 0 24px; max-width: 640px; font-size: 17px; line-height: 1.55; font-weight: 300; }
+
+/* formulieren: velden als lijnen */
+.merk .z .form { flex-direction: row; flex-wrap: wrap; column-gap: 32px; row-gap: 28px; }
+.merk .z .form-veld { flex: 1 1 260px; min-width: 0; }
+.merk .z .form-veld:has(textarea) { flex-basis: 100%; }
+.merk .z .form-veld label { font-size: 14px; font-weight: 400; color: var(--muted); }
+.merk .z .form-veld input, .merk .z .form-veld select { border: 0; border-bottom: 1px solid var(--ink); background: transparent; font-size: 19px; padding: 8px 0; }
+.merk .z .form-veld textarea { border: 1px solid var(--ink); background: var(--wit); }
+.merk .z .form .btn { align-self: flex-end; margin-left: auto; min-height: 52px; padding: 0 28px; font-size: 17px; }
+.merk .z .form-bedankt { flex-basis: 100%; background: var(--wit); border: 1px solid var(--ink); }
+.merk .z :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }

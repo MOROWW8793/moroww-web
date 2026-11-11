@@ -1,23 +1,43 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { setRequestLocale } from 'next-intl/server'
 import { ContactForm } from '@/components/merk/ContactForm'
+import { ZHeld, ZSectie, ZSectieTwee, ZRaster, ZTijdlijn, ZCijfers, ZVink } from '@/components/merk/Zwitsers'
 import { site } from '@/lib/merk/site'
+import '@/components/merk/merk.css'
+import '@/components/merk/zwitsers.css'
 
 export const metadata: Metadata = {
   title: 'het label voor jouw huis',
   description:
-    'Het moroww-label is een kwaliteitsstempel voor vakantiewoningen, B&B\'s en hotels. We komen persoonlijk langs, en wie de standaard haalt, krijgt het label, een plaats op moroww.com en toegang tot moroww hub.',
+    'Het moroww-label voor vakantiewoningen, B&B\'s en hotels. We komen persoonlijk langs; wie de standaard haalt, krijgt het label, een plaats op moroww.com en toegang tot moroww hub.',
   alternates: { canonical: 'https://www.moroww.com/het-label' },
 }
 
-const krijgt: [string, string][] = [
-  ['persoonlijk bezoek en rapport', 'We komen langs, lopen door het huis zoals een gast en zeggen wat in orde is en wat beter kan.'],
-  ['slimme toestellen', 'Advies over een slot met code, geur, licht en sensoren, zodat de aankomst vanzelf loopt. De toestellen worden van jou.'],
-  ['het label', 'Aan de deur, op je listings en in de gids voor je gasten.'],
-  ['in de collectie', 'Je huis staat op moroww.com, met een rechtstreekse link naar je eigen boekingswebsite.'],
-  ['moroww hub', 'Partners, merken en tools met voordelen voor leden, en de academy voor hosts.'],
-  ['elk jaar opnieuw', 'We komen elk jaar terug en lezen wat gasten schrijven. Zo blijft het label waard wat het belooft.'],
+const krijgt = [
+  { titel: 'persoonlijk bezoek en rapport', tekst: 'We komen langs, lopen door het huis zoals een gast en zeggen wat in orde is en wat beter kan.' },
+  { titel: 'slimme toestellen', tekst: 'Advies over een slot met code, geur, licht en sensoren, zodat de aankomst vanzelf loopt. De toestellen worden van jou.' },
+  { titel: 'het label', tekst: 'Aan de deur, op je listings en in de gids voor je gasten.' },
+  { titel: 'in de collectie', tekst: 'Je huis staat op moroww.com, met een rechtstreekse link naar je eigen boekingswebsite.' },
+  { titel: 'moroww hub', tekst: 'Vakmensen en merken die we zelf gebruiken, korting bij de merken in je huis, en de academy voor hosts.', href: '/hub', voet: 'naar moroww hub' },
+  { titel: 'elk jaar opnieuw', tekst: 'We komen elk jaar terug en lezen wat gasten schrijven. Zo blijft het label waard wat het belooft.' },
+]
+
+// De vier regels van /de-standaard, als fragment van een bezoekrapport.
+const rapport: [string, string[]][] = [
+  ['geen spoor van de vorige gast', ['zetel tot in de naden gezogen, ook onder de meubels', 'koelkast leeg, uitgewassen en geurloos', 'deurklinken en schakelaars gereinigd']],
+  ['een badkamer zonder één haar', ['douchehoek, afvoer en achter de wc nagekeken', 'geen kalk op glas, kranen en douchekop']],
+  ['vers linnen, elke keer', ['professioneel gewassen, nooit thuis', 'volledig gewisseld bij elke gast', 'handdoeken per gast, en een extra set in zicht']],
+  ['klaar vóór aankomst', ['een eigen code op het slot', 'de verwarming op temperatuur, het licht klaar']],
+]
+
+const stappen = [
+  { titel: 'aanvraag', tekst: 'Je vertelt over je huis, via het formulier of in een gesprek.' },
+  { titel: 'bezoek', tekst: 'We lopen door elke kamer. Geen fotoakkoord, geen videorondleiding.' },
+  { titel: 'rapport', tekst: 'Wat in orde is, en wat nog moet gebeuren voor het label.' },
+  { titel: 'label', tekst: 'Haalt je huis de standaard, dan komt het in de collectie.' },
+  { titel: 'elk jaar', tekst: 'We komen terug en lezen wat gasten schrijven.' },
 ]
 
 export default async function HetLabelPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -25,102 +45,157 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
   setRequestLocale(locale)
 
   return (
-    <div className="bg-moroww-paper">
-      {/* KOP */}
-      <section className="w-full px-6 md:px-12 pt-mw-10 pb-mw-8">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-audit text-moroww-label-tekst">voor eigenaars en beheerders</p>
-          <h1 className="mt-mw-4 text-h2 md:text-[clamp(2.5rem,5vw,4.5rem)] md:leading-[1] text-moroww-dark max-w-[18ch]">
-            jouw huis met het label.
-          </h1>
-          <p className="mt-mw-5 text-body-lg text-moroww-dark max-w-mw-eigenaar">
-            Het label is een kwaliteitsstempel. Het zegt aan gasten: dit huis is persoonlijk bezocht en het klopt. Wij komen
-            langs, en haalt je huis de standaard, dan krijgt het het label, een plaats op moroww.com en toegang tot moroww
-            hub. Jij blijft zelf verhuren, of je beheerder doet het.
-          </p>
-          <div className="mt-mw-6 flex flex-wrap gap-3">
-            <a href="#aanvraag" className="inline-flex items-center min-h-[48px] bg-moroww-orange text-moroww-dark px-6 text-body font-semibold">
-              vraag een bezoek aan
-            </a>
-            <Link href="/advisory" className="inline-flex items-center min-h-[48px] border border-moroww-dark text-moroww-dark px-6 text-body">
-              eerst weten wat mag? naar moroww advisory
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* WAT JE KRIJGT */}
-      <section className="w-full px-6 md:px-12 py-mw-8 border-t border-moroww-rule">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="text-h2 text-moroww-dark">wat je krijgt.</h2>
-          <ol className="mt-mw-6 grid grid-cols-1 md:grid-cols-3 gap-x-mw-6 gap-y-mw-6">
-            {krijgt.map(([titel, tekst], i) => (
-              <li key={titel} className="border-t-2 border-moroww-dark pt-mw-4">
-                <p className="text-audit text-moroww-label-tekst">0{i + 1}</p>
-                <h3 className="mt-mw-2 text-h3 text-moroww-dark">{titel}</h3>
-                <p className="mt-mw-2 text-body text-moroww-ink-2">{tekst}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* FORMULE */}
-      <section className="w-full px-6 md:px-12 py-mw-8 bg-moroww-blush">
-        <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-3 gap-mw-5">
-          <div className="lg:col-span-2 bg-moroww-paper p-mw-6">
-            <h2 className="text-h3 text-moroww-dark">moroww label</h2>
-            <p className="mt-mw-3 text-body text-moroww-dark">
-              Een persoonlijk bezoek, het label, een plaats in de collectie op moroww.com en toegang tot moroww hub.
-            </p>
-            <p className="mt-mw-5 text-body text-moroww-ink-2">
-              Wat het kost, hangt af van je huis. Dat bespreken we in een eerste gesprek.
-            </p>
-            <a href="#aanvraag" className="mt-mw-4 inline-block text-body text-moroww-dark underline underline-offset-4 decoration-moroww-label">
-              vertel ons over je huis →
-            </a>
-          </div>
-          <div className="bg-moroww-paper p-mw-6 flex flex-col gap-mw-3">
-            <h2 className="text-h3 text-moroww-dark">nog geen eigen boekingssite?</h2>
-            <p className="text-body text-moroww-ink-2">moroww advisory bouwt er een voor je huis, in jouw naam.</p>
-            <Link href="/advisory/website" className="text-body text-moroww-dark underline underline-offset-4 decoration-moroww-label">
-              over je eigen boekingssite
-            </Link>
-            <p className="mt-auto pt-mw-4 border-t border-moroww-rule text-body text-moroww-ink-2">
-              Liever niet zelf beheren? Vraag naar de mogelijkheden.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* AANVRAAG */}
-      <section id="aanvraag" className="w-full px-6 md:px-12 py-mw-8 mb-mw-8">
-        <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-mw-8">
-          <div>
-            <h2 className="text-h2 text-moroww-dark">vertel ons over je huis.</h2>
-            <p className="mt-mw-4 text-body text-moroww-ink-2">
-              {site.contact.naam}
-              <br />
-              {site.contact.email} · {site.contact.telefoon}
-            </p>
-          </div>
-          <ContactForm
-            tw
-            merk="moroww"
-            soort="keuring"
-            knop="vraag een bezoek aan"
-            velden={[
-              { naam: 'naam', label: 'naam', verplicht: true },
-              { naam: 'email', label: 'e-mail', type: 'email', verplicht: true },
-              { naam: 'telefoon', label: 'telefoon', type: 'tel' },
-              { naam: 'adres', label: 'waar staat je huis', verplicht: true },
-              { naam: 'wie_verhuurt', label: 'wie verhuurt vandaag', type: 'select', opties: ['ik zelf', 'een beheerder', 'nog niemand'] },
-              { naam: 'boekingssite', label: 'link naar je eigen boekingswebsite, als je die hebt', type: 'text' },
-              { naam: 'bericht', label: 'iets dat we moeten weten', type: 'textarea' },
-            ]}
+    <div className="merk merk-moroww">
+      <div className="z">
+        <div className="wrap">
+          <ZHeld
+            nr="01 · voor eigenaars en beheerders"
+            titel={<>jouw huis<br />met het label.</>}
+            lead="We komen langs. Haalt je huis de standaard, dan krijgt het het label, een plaats op moroww.com en toegang tot moroww hub. Jij blijft zelf verhuren, of je beheerder doet het."
+            acties={
+              <>
+                <a href="#aanvraag" className="z-knop">vraag een bezoek aan</a>
+                <Link href="/de-standaard" className="z-link">lees eerst de standaard</Link>
+              </>
+            }
+            object={
+              <figure className="z-object" style={{ margin: 0, alignItems: 'center', padding: 32, gap: 20 }}>
+                <Image src="/images/Moroww_Certified_01_RGB.png" alt="moroww certified, het label aan de deur" width={200} height={200} />
+                <figcaption style={{ width: '100%', borderTop: '1px solid var(--ink)' }}>
+                  {[['aan de deur', 'plaat'], ['op je listings', 'badge'], ['in de gastengids', 'pagina']].map(([w, s]) => (
+                    <span key={w} className="z-object-rij" style={{ padding: '12px 0', justifyContent: 'space-between' }}>
+                      <span>{w}</span>
+                      <span className="z-nr">{s}</span>
+                    </span>
+                  ))}
+                </figcaption>
+              </figure>
+            }
           />
         </div>
-      </section>
+
+        <div className="wrap">
+          <ZCijfers
+            items={[
+              { getal: '931', label: 'dossiers bekeken', noot: 'op papier' },
+              { getal: '19', label: 'huizen bezocht', noot: 'ter plaatse' },
+              { getal: '8', label: 'opgenomen', noot: 'in de collectie' },
+              { getal: '1×', label: 'per jaar opnieuw', noot: 'elk huis' },
+            ]}
+          />
+
+          <ZSectie id="wat" nr="02 · zes onderdelen" titel="wat je krijgt.">
+            <ZRaster items={krijgt} prefix="2" />
+          </ZSectie>
+
+          <section id="standaard" className="z-sectie" data-mw-reveal>
+            <div className="z-twee">
+              <div className="z-smal" style={{ flexBasis: 400 }}>
+                <span className="z-nr">03 · de standaard</span>
+                <h2 className="z-h2">wat een gast het eerst opmerkt, bekijken we het strengst.</h2>
+                <p className="z-tekst" style={{ fontSize: 19 }}>Een kleinere keuken vergeeft een gast. Een haar in de douche niet. Daarom draait het bezoek om vier regels.</p>
+                <div style={{ display: 'flex', gap: 16 }}>
+                  <div className="z-foto" style={{ flex: '1 1 0', aspectRatio: '3 / 4' }}>
+                    <Image src="/images/standaard/V2-12.jpg" alt="Handdoeken worden gevouwen op een opgemaakt bed" fill sizes="(min-width: 1024px) 20vw, 50vw" style={{ objectFit: 'cover' }} />
+                  </div>
+                  <div className="z-foto" style={{ flex: '1 1 0', aspectRatio: '3 / 4' }}>
+                    <Image src="/images/standaard/V2-36.jpg" alt="Een badkamer wordt nagekeken" fill sizes="(min-width: 1024px) 20vw, 50vw" style={{ objectFit: 'cover' }} />
+                  </div>
+                </div>
+                <Link href="/de-standaard" className="z-link">de standaard volledig →</Link>
+              </div>
+              <div className="z-object" style={{ flex: '999 1 480px' }}>
+                <div className="z-object-kop">
+                  <span>bezoekrapport</span>
+                  <span className="z-nr">uit de standaard</span>
+                </div>
+                {rapport.map(([titel, punten], i) => (
+                  <div key={titel} style={{ padding: '20px 22px', borderBottom: '1px solid var(--line)', display: 'flex', flexDirection: 'column', gap: 10 }}>
+                    <div style={{ display: 'flex', gap: 14, alignItems: 'baseline' }}>
+                      <span className="z-nr">3.{i + 1}</span>
+                      <span style={{ fontSize: 20, fontWeight: 500 }}>{titel}</span>
+                    </div>
+                    {punten.map((p) => (
+                      <div key={p} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', paddingLeft: 28, fontSize: 15, fontWeight: 300 }}>
+                        <ZVink />
+                        <span>{p}</span>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+                <div className="z-object-rij" style={{ justifyContent: 'space-between' }}>
+                  <span>resultaat</span>
+                  <span style={{ fontWeight: 500, textAlign: 'right' }}>haalt de standaard</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <ZSectie nr="04 · van aanvraag tot label" titel="zo verloopt het.">
+            <ZTijdlijn items={stappen} prefix="4" />
+            <p style={{ margin: '40px 0 0', paddingTop: 28, borderTop: '1px solid var(--line)', display: 'flex', flexWrap: 'wrap', gap: '8px 16px', alignItems: 'baseline' }}>
+              <span style={{ fontSize: 40, fontWeight: 500, letterSpacing: '-0.03em' }}>30 dagen.</span>
+              <span className="z-tekst" style={{ fontSize: 18, maxWidth: 720 }}>
+                Haalt een huis de standaard niet meer, dan krijgt de eigenaar dertig dagen. Daarna verlaat het de collectie, ook als het goed verhuurt.
+              </span>
+            </p>
+          </ZSectie>
+
+          <section className="z-sectie" data-mw-reveal>
+            <div className="z-twee">
+              <div className="z-smal">
+                <span className="z-nr">05 · wie komt langs</span>
+                <h2 className="z-h2">geen callcenter. twee oprichters.</h2>
+                <p className="z-tekst" style={{ fontSize: 18 }}>Wie een huis kandidaat stelt, spreekt eerst met Noam. Brent bewaakt hoe we huizen bezoeken en opvolgen.</p>
+              </div>
+              {[
+                ['/images/noam-portret.jpg', 'Noam', 'visie, strategie en eigenaars'],
+                ['/images/brent.jpg', 'Brent', 'kwaliteit en werking'],
+              ].map(([src, naam, rol]) => (
+                <figure key={naam} style={{ flex: '1 1 300px', minWidth: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
+                  <div className="z-foto" style={{ aspectRatio: '4 / 3' }}>
+                    <Image src={src} alt={`${naam} aan tafel in een moroww-huis`} fill sizes="(min-width: 1024px) 30vw, 100vw" style={{ objectFit: 'cover' }} />
+                  </div>
+                  <figcaption className="z-foto-onder"><span style={{ fontWeight: 500 }}>{naam}</span><span style={{ fontWeight: 300 }}>{rol}</span></figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+
+          <ZSectieTwee
+            id="aanvraag"
+            nr="06 · aanvraag"
+            titel="vertel ons over je huis."
+            tekst="Wat het kost, hangt af van je huis. Dat bespreken we in een eerste gesprek."
+            extra={
+              <p className="z-tekst" style={{ fontWeight: 400, lineHeight: 1.7 }}>
+                {site.contact.naam}
+                <br />
+                <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+                <br />
+                <a href={`tel:${site.contact.telefoon.replace(/\s/g, '')}`}>{site.contact.telefoon}</a>
+                <br />
+                <Link href="/advisory/website" className="z-link" style={{ fontSize: 15 }}>nog geen eigen boekingssite?</Link>
+              </p>
+            }
+          >
+            <ContactForm
+              merk="moroww"
+              soort="keuring"
+              knop="vraag een bezoek aan"
+              velden={[
+                { naam: 'naam', label: 'naam', verplicht: true },
+                { naam: 'email', label: 'e-mail', type: 'email', verplicht: true },
+                { naam: 'telefoon', label: 'telefoon', type: 'tel' },
+                { naam: 'adres', label: 'waar staat je huis', verplicht: true },
+                { naam: 'wie_verhuurt', label: 'wie verhuurt vandaag', type: 'select', opties: ['ik zelf', 'een beheerder', 'nog niemand'] },
+                { naam: 'boekingssite', label: 'link naar je eigen boekingswebsite, als je die hebt', type: 'text' },
+                { naam: 'bericht', label: 'iets dat we moeten weten', type: 'textarea' },
+              ]}
+            />
+          </ZSectieTwee>
+        </div>
+      </div>
     </div>
   )
 }
