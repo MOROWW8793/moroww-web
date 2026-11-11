@@ -4,6 +4,7 @@ import { MerkTeken } from '@/components/merk/Logo';
 import { PlatNav } from '@/components/hub/PlatNav';
 import { hubSessie, hubBeheerClient } from '@/lib/hub/supabase';
 import { site } from '@/lib/merk/site';
+import '@/components/merk/zwitsers.css';
 
 export const metadata: Metadata = { robots: { index: false } };
 export const dynamic = 'force-dynamic';
@@ -13,7 +14,7 @@ export default async function HubPlatform({ children }: { children: React.ReactN
 
   if (!user || profiel?.status !== 'actief') {
     return (
-      <div className="plat plat-los">
+      <div className="plat plat-los z z-hub">
         <header className="plat-los-kop">
           <Link href="/hub" className="plat-logo" aria-label="moroww hub"><MerkTeken merk="hub" op="licht" size={26} /></Link>
           <Link href="/hub" className="plat-terug">naar moroww hub</Link>
@@ -30,7 +31,7 @@ export default async function HubPlatform({ children }: { children: React.ReactN
   }
 
   return (
-    <div className="plat plat-app">
+    <div className="plat plat-app z z-hub">
       <PlatNav
         naam={profiel.naam}
         huis={profiel.huis}

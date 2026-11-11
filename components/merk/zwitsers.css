@@ -121,3 +121,65 @@
 .merk .z .form .btn { align-self: flex-end; margin-left: auto; min-height: 52px; padding: 0 28px; font-size: 17px; }
 .merk .z .form-bedankt { flex-basis: 100%; background: var(--wit); border: 1px solid var(--ink); }
 .merk .z :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+/* ---------- de ledenzone (hub-platform) ----------
+   Zelfde raster als de publieke hub: papier, inkt, lijnen van 1 px, het blauw
+   van de hub enkel voor actie en voor wat geselecteerd is. */
+.merk .z.plat-app, .merk .z.plat-los { background: var(--bg); }
+@media (min-width: 901px) { .merk .z.plat-app { background: var(--bg); } }
+.merk .z .plat-zij { background: var(--wit); border-right: 1px solid var(--ink); }
+.merk .z .plat-wie { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 14px 0; }
+.merk .z .plat-avatar { background: var(--z-accent); font-family: inherit; font-weight: 500; font-size: 16px; }
+.merk .z .plat-nav a { font-size: 16px; padding: 12px; }
+.merk .z .plat-nav a:hover { background: var(--bg); }
+.merk .z .plat-nav a[aria-current='page'] { background: #F1ECE6; box-shadow: none; font-weight: 500; }
+.merk .z .plat-groep { color: var(--muted); letter-spacing: 0.06em; }
+.merk .z .plat-teller { background: var(--z-accent); }
+.merk .z .plat-bel { border-top-color: var(--line); }
+.merk .z .plat-bel span, .merk .z .plat-zij-links a, .merk .z .plat-zij-links button { color: var(--muted); }
+
+.merk .z .titel-1, .merk .z .titel-2, .merk .z .plat-paneel-titel, .merk .z .kaart-titel { font-family: inherit; font-weight: 500; letter-spacing: -0.03em; }
+.merk .z .plat-paneel-titel i, .merk .z .titel-1 i, .merk .z .titel-2 i, .merk .z .kaart-titel i { font-style: normal; }
+.merk .z .boven, .merk .z .kaart-label { font-size: 12px; letter-spacing: 0.06em; color: var(--muted); }
+
+.merk .z .plat-kop, .merk .z .plat-main .held { background: var(--bg); border-bottom: 1px solid var(--ink); }
+.merk .z .plat-kop .hub-cijfers { gap: 0; border: 1px solid var(--ink); background: var(--wit); }
+.merk .z .plat-kop .hub-cijfers div { padding: 14px 22px; border-right: 1px solid var(--ink); }
+.merk .z .plat-kop .hub-cijfers div:last-child { border-right: 0; }
+.merk .z .hub-cijfers b { font-family: inherit; font-weight: 500; font-size: 36px; letter-spacing: -0.03em; }
+.merk .z .hub-cijfers span { font-size: 12px; letter-spacing: 0.06em; color: var(--muted); }
+
+.merk .z .plat-paneel, .merk .z .vraag, .merk .z .kaart { border: 1px solid var(--ink); background: var(--wit); }
+.merk .z .kaart-zacht { background: var(--wit); }
+.merk .z .plat-leeg { border: 1px solid var(--line); background: var(--wit); }
+.merk .z .plat-leeg strong { font-family: inherit; font-weight: 500; }
+.merk .z .plat-groep-titel { justify-content: space-between; border-top: 1px solid var(--ink); padding-top: 14px; font-size: 20px; color: var(--ink); }
+.merk .z .plat-groep-titel span { background: transparent; color: var(--muted); font-size: 12px; }
+.merk .z .plat-ok { background: var(--wit); border: 1px solid var(--ink); }
+
+.merk .z .hub-chips span { border: 1px solid var(--ink); background: transparent; }
+.merk .z .hub-chips input:checked + span { background: var(--z-accent); color: var(--ink); border-color: var(--ink); }
+.merk .z .hub-chips input:focus-visible + span { outline-color: var(--ink); }
+.merk .z .hub-form label { font-weight: 400; font-size: 13px; letter-spacing: 0.04em; color: var(--muted); }
+.merk .z .hub-form input, .merk .z .hub-form select { border: 0; border-bottom: 1px solid var(--ink); background: transparent; padding: 8px 0; font-size: 18px; }
+.merk .z .hub-form textarea { border: 1px solid var(--ink); background: var(--wit); }
+.merk .z .hub-form .btn-primair, .merk .z .plat-main .btn-primair { background: var(--z-accent); color: var(--ink); }
+
+.merk .z .vraag-stappen span { border-top: 1px solid var(--ink); }
+.merk .z .vraag-stappen span.aan { border-top: 3px solid var(--z-accent); }
+.merk .z .vraag-tijdlijn { border-left: 1px solid var(--ink); }
+.merk .z .hub-label, .merk .z .hub-label.live { background: var(--bg); border: 1px solid var(--line); color: var(--ink); }
+.merk .z .hub-tabel { border: 1px solid var(--ink); }
+.merk .z .hub-knopklein { border-color: var(--ink); background: transparent; }
+.merk .z .hub-knopklein.primair { background: var(--ink); color: var(--bg); }
+
+.merk .z .plat-los-kop { background: var(--bg); border-bottom: 1px solid var(--ink); }
+.merk .z .plat-los-vlak { background: var(--bg); }
+.merk .z .plat-toegang-nieuw { border-color: var(--ink); }
+@media (max-width: 900px) {
+  .merk .z .plat-zij { border-right: 0; border-bottom: 1px solid var(--ink); }
+  .merk .z .plat-nav a[aria-current='page'] { background: none; box-shadow: inset 0 -2px 0 var(--ink); }
+}
+/* De ledenzone houdt zijn eigen, links uitgelijnde kolom naast de zijbalk. */
+.merk .z .plat-main .wrap { max-width: 1120px; margin: 0; padding: 0 48px; }
+@media (max-width: 900px) { .merk .z .plat-main .wrap { padding: 0 20px; } }
