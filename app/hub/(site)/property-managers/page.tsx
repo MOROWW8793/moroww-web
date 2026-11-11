@@ -51,6 +51,11 @@ export default function PropertyManagers() {
       <ZHeld
         nr="01 · voor beheerders"
         titel={<>jij beheert de huizen.<br />wij brengen de rest samen.</>}
+        fotos={[
+          { src: '/images/over-hero.jpg', alt: 'Een gast komt binnen in de living van een moroww-huis' },
+          { src: '/images/collectie-4.jpg', alt: 'Interieur van een moroww-huis' },
+          { src: '/images/woningen/nieuwpoort/the-eight-01.jpg', alt: 'Woonkamer met zicht op de Noordzee' },
+        ]}
         lead="In de hub vraag je wat je huizen nodig hebben, en moroww regelt het met de partners die we zelf gebruiken. Plus het label voor je beste huizen, en de academy voor je team. Eén aanspreekpunt, voor je hele portefeuille."
         acties={
           <>

@@ -38,6 +38,10 @@ export default function Website() {
       <ZHeld
         nr="01 · je eigen boekingssite"
         titel={<>je eigen boekingswebsite.<br />in jouw naam.</>}
+        fotos={[
+          { src: '/images/collectie-3.jpg', alt: 'Living van een vakantiewoning' },
+          { src: '/images/woningen/nieuwpoort/the-eight-01.jpg', alt: 'Woonkamer met zicht op de Noordzee' },
+        ]}
         lead="Voor eigenaars die zelf verhuren. Wij bouwen een website voor je huis waar gasten rechtstreeks boeken, zonder platformcommissie. Draag je het moroww-label, dan staat je huis ook in de collectie op moroww.com, met een link naar jouw site."
         acties={
           <>
@@ -51,7 +55,7 @@ export default function Website() {
             <div className="z-foto" style={{ aspectRatio: '16 / 10' }}>
               <Image src="/images/collectie-3.jpg" alt="Living van een vakantiewoning" fill sizes="(min-width: 900px) 40vw, 100vw" style={{ objectFit: 'cover' }} />
             </div>
-            <div className="z-object-rij" style={{ borderTop: '1px solid var(--ink)', flexWrap: 'wrap' }}>
+            <div className="z-object-rij" style={{ borderTop: '1px solid var(--line)', flexWrap: 'wrap' }}>
               <span style={{ fontWeight: 500 }}>jouw huis</span>
               <span className="z-nr">aankomst · vertrek · gasten</span>
               <span className="z-knop" style={{ minHeight: 36, padding: '0 14px', fontSize: 14 }} aria-hidden="true">boek</span>

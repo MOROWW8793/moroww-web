@@ -184,63 +184,63 @@
 .merk .z .plat-main .wrap { max-width: 1120px; margin: 0; padding: 0 48px; }
 @media (max-width: 900px) { .merk .z .plat-main .wrap { padding: 0 20px; } }
 
-/* ---------- moderne laag voor advisory en hub (nov 2026) ----------
+/* ---------- moderne laag voor de eigenaarskant (nov 2026) ----------
    Zelfde papier, inkt en accent per tak. Wat verandert: afgeronde vlakken,
    zachte schaduw in plaats van inktkaders, glas waar iets over beeld ligt,
    en lijnen in --line in plaats van --ink. */
-.merk .z:is(.z-advisory, .z-hub) {
+.merk .z {
   --rond: 24px;
   --schaduw: 0 30px 60px -40px rgba(26, 26, 26, 0.35);
   --glas: rgba(255, 255, 255, 0.72);
 }
-.merk .z:is(.z-advisory, .z-hub) .kop {
+.merk .z .kop {
   background: color-mix(in srgb, var(--bg) 78%, transparent);
   -webkit-backdrop-filter: saturate(150%) blur(16px);
   backdrop-filter: saturate(150%) blur(16px);
   border-bottom: 1px solid var(--line);
 }
-.merk .z:is(.z-advisory, .z-hub) :is(.btn, .btn-kop, .z-knop) { border-radius: 999px; }
-.merk .z:is(.z-advisory, .z-hub) .z-knop { transition: filter .2s, transform .2s; }
-.merk .z:is(.z-advisory, .z-hub) .z-knop:hover { transform: translateY(-1px); }
+.merk .z :is(.btn, .btn-kop, .z-knop) { border-radius: 999px; }
+.merk .z .z-knop { transition: filter .2s, transform .2s; }
+.merk .z .z-knop:hover { transform: translateY(-1px); }
 
-.merk .z:is(.z-advisory, .z-hub) .z-held { border-bottom: 0; }
-.merk .z:is(.z-advisory, .z-hub) .z-sectie { border-bottom: 1px solid var(--line); }
-.merk .z:is(.z-advisory, .z-hub) .z-sectie:last-child { border-bottom: 0; }
+.merk .z .z-held { border-bottom: 0; }
+.merk .z .z-sectie { border-bottom: 1px solid var(--line); }
+.merk .z .z-sectie:last-child { border-bottom: 0; }
 
-.merk .z:is(.z-advisory, .z-hub) .z-object {
+.merk .z .z-object {
   border: 1px solid var(--line); border-radius: var(--rond); overflow: hidden; box-shadow: var(--schaduw);
 }
-.merk .z:is(.z-advisory, .z-hub) .z-object-kop { border-bottom: 1px solid var(--line); }
-.merk .z:is(.z-advisory, .z-hub) .z-foto { border-radius: var(--rond); }
-.merk .z:is(.z-advisory, .z-hub) .z-object .z-foto { border-radius: 0; }
-.merk .z:is(.z-advisory, .z-hub) .z-foto-onder { border-top-color: var(--line); }
+.merk .z .z-object-kop { border-bottom: 1px solid var(--line); }
+.merk .z .z-foto { border-radius: var(--rond); }
+.merk .z .z-object .z-foto { border-radius: 0; }
+.merk .z .z-foto-onder { border-top-color: var(--line); }
 
-.merk .z:is(.z-advisory, .z-hub) .z-raster { column-gap: 16px; row-gap: 16px; }
-.merk .z:is(.z-advisory, .z-hub) .z-raster > * {
+.merk .z .z-raster { column-gap: 16px; row-gap: 16px; }
+.merk .z .z-raster > * {
   border: 1px solid var(--line); border-radius: var(--rond); background: var(--wit); padding: 28px; box-shadow: var(--schaduw);
 }
 
-.merk .z:is(.z-advisory, .z-hub) .z-tegels { gap: 16px; background: none; border: 0; }
-.merk .z:is(.z-advisory, .z-hub) .z-tegels > * {
+.merk .z .z-tegels { gap: 16px; background: none; border: 0; }
+.merk .z .z-tegels > * {
   border: 1px solid var(--line); border-radius: var(--rond); box-shadow: var(--schaduw); transition: transform .25s ease, box-shadow .25s ease;
 }
-.merk .z:is(.z-advisory, .z-hub) .z-tegels > a:hover { transform: translateY(-3px); box-shadow: 0 36px 70px -40px rgba(26, 26, 26, 0.45); }
-.merk .z:is(.z-advisory, .z-hub) .z-tegel-accent { border-color: transparent; }
+.merk .z .z-tegels > a:hover { transform: translateY(-3px); box-shadow: 0 36px 70px -40px rgba(26, 26, 26, 0.45); }
+.merk .z .z-tegel-accent { border-color: transparent; }
 
-.merk .z:is(.z-advisory, .z-hub) .z-register { border-top: 1px solid var(--line); }
-.merk .z:is(.z-advisory, .z-hub) .z-register > li > :first-child { border-radius: 16px; transition: background .2s; }
-.merk .z:is(.z-advisory, .z-hub) .z-register a:hover { background: var(--wit); box-shadow: var(--schaduw); }
+.merk .z .z-register { border-top: 1px solid var(--line); }
+.merk .z .z-register > li > :first-child { border-radius: 16px; transition: background .2s; }
+.merk .z .z-register a:hover { background: var(--wit); box-shadow: var(--schaduw); }
 
-.merk .z:is(.z-advisory, .z-hub) .z-cijfers {
+.merk .z .z-cijfers {
   border: 1px solid var(--line); border-radius: var(--rond); background: var(--wit); padding: 0 28px; box-shadow: var(--schaduw);
 }
-.merk .z:is(.z-advisory, .z-hub) .z-faq { border-top: 1px solid var(--line); }
+.merk .z .z-faq { border-top: 1px solid var(--line); }
 
-.merk .z:is(.z-advisory, .z-hub) .form-veld textarea,
-.merk .z:is(.z-advisory, .z-hub) .hub-form textarea { border: 1px solid var(--line); border-radius: 16px; }
-.merk .z:is(.z-advisory, .z-hub) .form-bedankt { border: 1px solid var(--line); border-radius: var(--rond); }
-.merk .z:is(.z-advisory, .z-hub) :is(.plat-paneel, .vraag, .kaart, .plat-leeg, .plat-ok, .hub-tabel) { border-radius: var(--rond); overflow: hidden; }
-.merk .z:is(.z-advisory, .z-hub) :is(.hub-chips span, .hub-knopklein) { border-radius: 999px; }
+.merk .z .form-veld textarea,
+.merk .z .hub-form textarea { border: 1px solid var(--line); border-radius: 16px; }
+.merk .z .form-bedankt { border: 1px solid var(--line); border-radius: var(--rond); }
+.merk .z :is(.plat-paneel, .vraag, .kaart, .plat-leeg, .plat-ok, .hub-tabel) { border-radius: var(--rond); overflow: hidden; }
+.merk .z :is(.hub-chips span, .hub-knopklein) { border-radius: 999px; }
 
 /* fotohero: afgeronde plaat, kop in wit, voorbeeldobject als licht glas */
 .merk .z .z-held-foto { padding: 24px 0 72px; }
@@ -279,3 +279,9 @@
 @media (prefers-reduced-motion: reduce) {
   .z-held-beeld, .z-held-beeld img { transition: none; }
 }
+
+/* formulieren en het label-object als witte kaart */
+.merk .z .z-breed:has(.form), .merk .z .z-held > .z-breed:has(.form) {
+  background: var(--wit); border: 1px solid var(--line); border-radius: var(--rond); padding: 32px; box-shadow: var(--schaduw);
+}
+@media (max-width: 640px) { .merk .z .z-breed:has(.form) { padding: 22px; } }

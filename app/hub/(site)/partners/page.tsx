@@ -15,6 +15,11 @@ export default function Partners() {
       <ZHeld
         nr="01 · hub partners · voor eigenaars en beheerders met het label"
         titel={<>wat wij gebruiken,<br />voor jouw huis.</>}
+        fotos={[
+          { src: '/images/partners/nuki-smart-lock.jpg', alt: 'Een Nuki smart lock aan de deur' },
+          { src: '/images/partners/moro-essentials-sfeer.jpg', alt: 'Producten van MORO Essentials' },
+          { src: '/images/standaard/V2-36.jpg', alt: 'Handen wassen aan een stenen wastafel' },
+        ]}
         lead="De merken, tools en vakmensen achter elk moroww-huis. Wie het label draagt, krijgt er een voordeel bij, ook als je zelf verhuurt. Zet je de producten van onze merken in je huis, dan krijg je korting bij die merken."
         acties={<Link href="/hub/lid-worden" className="z-knop">lid worden</Link>}
       />
@@ -26,7 +31,7 @@ export default function Partners() {
               <span className="z-nr">{String(i + 2).padStart(2, '0')} · {c.label}</span>
               <h2 className="z-h2">{c.titel}</h2>
               <p className="z-tekst" style={{ fontSize: 18 }}>{c.tekst}</p>
-              <ul style={{ listStyle: 'none', margin: 0, padding: 0, borderTop: '1px solid var(--ink)' }}>
+              <ul style={{ listStyle: 'none', margin: 0, padding: 0, borderTop: '1px solid var(--line)' }}>
                 {c.partners.map((p, j) => {
                   const toonNaam = p.status === 'live' && p.naamPubliek && p.naam;
                   return (

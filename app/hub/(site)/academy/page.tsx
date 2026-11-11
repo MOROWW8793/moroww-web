@@ -19,6 +19,11 @@ export default function Academy() {
       <ZHeld
         nr="01 · hub academy · voor hosts"
         titel={<>hosts leren<br />van hosts.</>}
+        fotos={[
+          { src: '/images/over-interieur-2.jpg', alt: 'Leefruimte van een moroww-huis' },
+          { src: '/images/standaard/V2-210.jpg', alt: 'Een glas met citrus op een stenen blad' },
+          { src: '/images/standaard/V2-56.jpg', alt: 'Een interieurboek op tafel in een moroww-huis' },
+        ]}
         lead="Kleine sessies, in een moroww-huis. Over cijfers, en over hoe licht, geur en rust tot betere reviews leiden."
         acties={<a href="#inschrijven" className="z-knop">schrijf je in</a>}
       />

@@ -18,6 +18,11 @@ export default function LidWorden() {
       <ZHeld
         nr="01 · lid worden"
         titel={<>de hub hoort<br />bij het label.</>}
+        fotos={[
+          { src: '/images/hub/huis-moro-badkamer.jpg', alt: 'Handdoek en MORO-producten in een badkamer' },
+          { src: '/images/standaard/V2-12.jpg', alt: 'Handdoeken worden klaargelegd op het bed' },
+          { src: '/images/standaard/V2-63.jpg', alt: 'Slaapkamer met kunst aan de muur' },
+        ]}
         lead="Elk huis met het moroww-label krijgt toegang. Of je nu zelf verhuurt, een beheerder hebt, of moroww het voor je doet."
         acties={
           <>

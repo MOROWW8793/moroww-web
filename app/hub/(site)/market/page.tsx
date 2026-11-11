@@ -38,6 +38,11 @@ export default async function Market() {
       <ZHeld
         nr="01 · hub market · voor gasten"
         titel={<>neem het<br />mee.</>}
+        fotos={[
+          { src: '/images/partners/moro-essentials-sfeer.jpg', alt: 'Producten van MORO Essentials' },
+          { src: '/images/collectie-2.jpg', alt: 'Flessen in een badkamer van een moroww-huis' },
+          { src: '/images/standaard/V2-19.jpg', alt: 'Wit linnen op een bed' },
+        ]}
         lead="Dezelfde geur als bij je aankomst. Hetzelfde linnen. Voor thuis, wanneer je weer even daar wil zijn."
         acties={<a href="#wachtlijst" className="z-knop">als eerste weten</a>}
       />

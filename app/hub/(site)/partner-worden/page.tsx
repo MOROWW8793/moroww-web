@@ -33,6 +33,11 @@ export default function PartnerWorden() {
       <ZHeld
         nr="01 · partner worden"
         titel={<>weinig partners,<br />bewust gekozen.</>}
+        fotos={[
+          { src: '/images/partners/moro-essentials-sfeer.jpg', alt: 'Producten van MORO Essentials' },
+          { src: '/images/partners/nuki-smart-lock.jpg', alt: 'Een Nuki smart lock aan de deur' },
+          { src: '/images/hub/tools-laptop.jpg', alt: 'Laptop op tafel in een moroww-huis' },
+        ]}
         lead="Een merk, een vakman of een tool die past bij wat gasten in een moroww-huis voelen? Vertel ons wat je doet, in welke regio, en welk voordeel je leden geeft."
         acties={<a href="#aanmelden" className="z-knop">vertel ons wat je doet</a>}
       />

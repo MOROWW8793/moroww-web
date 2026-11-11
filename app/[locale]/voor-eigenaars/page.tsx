@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import type { ReactNode } from 'react'
 import { setRequestLocale } from 'next-intl/server'
+import { liveWoningen, sortForCollectie } from '@/lib/woningen'
 import { Logo, MerkTeken, BLAADJES } from '@/components/merk/Logo'
 import { ZHeld, ZSectie, ZSectieTwee, ZRegister } from '@/components/merk/Zwitsers'
 import '@/components/merk/merk.css'
@@ -66,6 +67,7 @@ export default async function VoorEigenaarsPage({ params }: { params: Promise<{ 
           <ZHeld
             nr="01 · voor eigenaars en beheerders"
             titel={<>drie manieren<br />waarop moroww je helpt.</>}
+            fotos={sortForCollectie(liveWoningen()).slice(0, 5).map((w) => ({ src: w.heroFoto, alt: `${w.naam}, ${w.locatie}` }))}
             lead="Het label laat gasten zien dat je huis klopt. moroww advisory helpt als je start of ergens op vastloopt. moroww hub regelt wat je huis nodig heeft. Kies wat past, of combineer."
             acties={
               <>
@@ -85,7 +87,7 @@ export default async function VoorEigenaarsPage({ params }: { params: Promise<{ 
                   </span>
                   <span className="z-h3" style={{ fontSize: 28, marginTop: 8 }}>{t.titel}</span>
                   <span className="z-tekst">{t.tekst}</span>
-                  <span style={{ display: 'flex', flexDirection: 'column', borderTop: '1px solid var(--ink)', marginTop: 'auto' }}>
+                  <span style={{ display: 'flex', flexDirection: 'column', borderTop: '1px solid var(--line)', marginTop: 'auto' }}>
                     {t.punten.map((p) => (
                       <span key={p} style={{ padding: '10px 0', borderBottom: '1px solid var(--line)', fontSize: 15 }}>{p}</span>
                     ))}

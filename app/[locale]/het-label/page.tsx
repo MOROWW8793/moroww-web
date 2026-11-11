@@ -51,6 +51,11 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
           <ZHeld
             nr="01 · voor eigenaars en beheerders"
             titel={<>jouw huis<br />met het label.</>}
+            fotos={[
+              { src: '/images/standaard/V2-19.jpg', alt: 'Een bed wordt opgemaakt met wit linnen' },
+              { src: '/images/over-interieur-2.jpg', alt: 'Opgeruimde leefruimte met een rode stoel en zicht op de tuin' },
+              { src: '/images/collectie-1.jpg', alt: 'Badkamer met stenen wastafel in een moroww-huis' },
+            ]}
             lead="We komen langs. Haalt je huis de standaard, dan krijgt het het label, een plaats op moroww.com en toegang tot moroww hub. Jij blijft zelf verhuren, of je beheerder doet het."
             acties={
               <>
@@ -61,7 +66,7 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
             object={
               <figure className="z-object" style={{ margin: 0, alignItems: 'center', padding: 32, gap: 20 }}>
                 <Image src="/images/Moroww_Certified_01_RGB.png" alt="moroww certified, het label aan de deur" width={200} height={200} />
-                <figcaption style={{ width: '100%', borderTop: '1px solid var(--ink)' }}>
+                <figcaption style={{ width: '100%', borderTop: '1px solid var(--line)' }}>
                   {[['aan de deur', 'plaat'], ['op je listings', 'badge'], ['in de gastengids', 'pagina']].map(([w, s]) => (
                     <span key={w} className="z-object-rij" style={{ padding: '12px 0', justifyContent: 'space-between' }}>
                       <span>{w}</span>

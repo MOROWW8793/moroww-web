@@ -45,7 +45,7 @@ export default function Hub() {
             </div>
             {opgevolgd.map(([tekst, stap], i) => (
               <div key={tekst} className="z-object-rij">
-                <span aria-hidden="true" style={{ flex: '0 0 auto', width: 12, height: 12, borderRadius: '50%', border: '1px solid var(--ink)', background: i < 3 ? 'var(--z-accent)' : 'var(--wit)', alignSelf: 'center' }} />
+                <span aria-hidden="true" style={{ flex: '0 0 auto', width: 12, height: 12, borderRadius: '50%', border: '1px solid var(--line)', background: i < 3 ? 'var(--z-accent)' : 'var(--wit)', alignSelf: 'center' }} />
                 <span>{tekst}</span>
                 <span className="z-nr">{stap}</span>
               </div>
@@ -85,7 +85,7 @@ export default function Hub() {
               Gasten gebruiken je product in de badkamer, de keuken of aan de voordeur van een huis uit de collectie. Tijdens hun verblijf, niet in een winkelrek.
             </p>
             <p className="z-tekst" style={{ fontSize: 18, fontWeight: 500 }}>Zet je als eigenaar hun producten in je huis, dan krijg je korting bij die merken.</p>
-            <div style={{ borderTop: '1px solid var(--ink)' }}>
+            <div style={{ borderTop: '1px solid var(--line)' }}>
               <span className="z-nr" style={{ display: 'block', padding: '14px 0 6px' }}>hoe we kiezen</span>
               {hoeWeKiezen.map(([t]) => (
                 <span key={t} style={{ display: 'block', padding: '10px 0', borderBottom: '1px solid var(--line)', fontSize: 16 }}>{t}</span>
@@ -110,7 +110,7 @@ export default function Hub() {
                 <span className="z-link" style={{ fontSize: 16 }}>vertel ons over je product →</span>
               </Link>
             </div>
-            <div style={{ borderTop: '1px solid var(--ink)' }}>
+            <div style={{ borderTop: '1px solid var(--line)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', gap: 16, alignItems: 'baseline', padding: '14px 0' }}>
                 <span style={{ fontSize: 20, fontWeight: 500 }}>en de vakmensen</span>
                 <span className="z-nr">via moroww</span>

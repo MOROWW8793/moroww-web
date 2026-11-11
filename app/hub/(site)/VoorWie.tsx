@@ -51,7 +51,7 @@ export function VoorWie() {
   const a = ingangen[actief];
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
-      <div role="tablist" aria-label="voor wie" style={{ display: 'flex', flexWrap: 'wrap', borderBottom: '1px solid var(--ink)' }}>
+      <div role="tablist" aria-label="voor wie" style={{ display: 'flex', flexWrap: 'wrap', borderBottom: '1px solid var(--line)' }}>
         {ingangen.map((x, i) => (
           <button
             key={x.naam}
@@ -76,7 +76,7 @@ export function VoorWie() {
           <p className="z-tekst" style={{ fontSize: 18 }}>{a.tekst}</p>
           <Link href={a.href} className="z-link" style={{ alignSelf: 'flex-start' }}>{a.cta} →</Link>
         </div>
-        <ul style={{ flex: '1 1 420px', minWidth: 0, listStyle: 'none', margin: 0, padding: 0, borderTop: '1px solid var(--ink)' }}>
+        <ul style={{ flex: '1 1 420px', minWidth: 0, listStyle: 'none', margin: 0, padding: 0, borderTop: '1px solid var(--line)' }}>
           {a.punten.map((p) => (
             <li key={p} style={{ display: 'flex', gap: 14, alignItems: 'baseline', padding: '16px 0', borderBottom: '1px solid var(--line)', fontSize: 17 }}>
               <span className="z-nr" aria-hidden="true">—</span>

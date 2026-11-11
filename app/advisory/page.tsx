@@ -107,7 +107,7 @@ export default function Advisory() {
               <h2 className="z-h2">geen callcenter. een gesprek.</h2>
               <p className="z-tekst" style={{ fontSize: 19 }}>Je vraag komt bij Noam. Hij kijkt mee, zoekt uit wat nodig is en brengt je bij de juiste mensen.</p>
             </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', borderTop: '1px solid var(--ink)' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', borderTop: '1px solid var(--line)' }}>
               <a href={`tel:${site.contact.telefoon.replace(/\s/g, '')}`} style={{ flex: '1 1 200px', padding: '18px 0', fontSize: 18, textDecoration: 'none', borderBottom: '1px solid var(--line)' }}>{site.contact.telefoon}</a>
               <a href={`mailto:${site.contact.email}`} style={{ flex: '1 1 200px', padding: '18px 0', fontSize: 18, textDecoration: 'none', borderBottom: '1px solid var(--line)' }}>{site.contact.email}</a>
             </div>
