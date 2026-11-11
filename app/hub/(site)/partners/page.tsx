@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function Partners() {
   return (
     <>
-      <section className="held">
+      <section className="held" data-mw-reveal>
         <div className="wrap">
           <Kop
             niveau={1}

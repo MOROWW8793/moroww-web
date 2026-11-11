@@ -39,9 +39,13 @@ export function Footer({ donker = false, merk }: { donker?: boolean; merk: React
   );
 }
 
-export function Sectie({ children, toon = 'basis', id }: { children: ReactNode; toon?: 'basis' | 'zacht' | 'donker' | 'wit'; id?: string }) {
+export function Sectie({ children, toon = 'basis', id, reveal = true }: { children: ReactNode; toon?: 'basis' | 'zacht' | 'donker' | 'wit'; id?: string; reveal?: boolean }) {
+  // reveal default true: elke sectie krijgt een subtle fade-in bij
+  // intersection. Opt-out met reveal={false} als de sectie bewust stil
+  // moet blijven.
+  const revealProps = reveal ? { 'data-mw-reveal': '' } : {};
   return (
-    <section id={id} className={`sectie sectie-${toon}`}>
+    <section id={id} className={`sectie sectie-${toon}`} {...revealProps}>
       <div className="wrap">{children}</div>
     </section>
   );

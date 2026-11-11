@@ -50,7 +50,7 @@ const livePartners = partnerCategorieen.flatMap((c) => c.partners.filter((p) => 
 export default function Hub() {
   return (
     <>
-      <section className="held">
+      <section className="held" data-mw-reveal>
         <div className="wrap" style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
           <span className="boven">moroww hub · voor eigenaars, beheerders en hotels met het label</span>
           <h1 className="titel-1" style={{ fontSize: 'clamp(3rem, 7vw, 5.4rem)' }}>vraag het <i>moroww.</i></h1>
@@ -104,7 +104,7 @@ export default function Hub() {
         </div>
       </Sectie>
 
-      <section className="wrap" style={{ paddingBottom: 8 }}>
+      <section className="wrap" style={{ paddingBottom: 8 }} data-mw-reveal>
         <div style={{ position: 'relative', aspectRatio: '21 / 9', overflow: 'hidden' }}>
           <Image src="/images/standaard/V2-40.jpg" alt="Een gast leest in bed in een moroww-huis" fill sizes="100vw" style={{ objectFit: 'cover' }} />
         </div>

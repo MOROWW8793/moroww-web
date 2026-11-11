@@ -9,7 +9,7 @@ export const metadata: Metadata = { title: 'lid worden', description: 'Toegang t
 export default function LidWorden() {
   return (
     <>
-      <section className="held">
+      <section className="held" data-mw-reveal>
         <div className="wrap">
           <Kop
             niveau={1}

@@ -8,7 +8,7 @@ export const metadata: Metadata = { title: 'partner worden', description: 'Een v
 export default function PartnerWorden() {
   return (
     <>
-      <section className="held">
+      <section className="held" data-mw-reveal>
         <div className="wrap">
           <Kop niveau={1} boven="partner worden" titel={<>weinig partners, <i>bewust gekozen.</i></>} tekst="Een vakman, een merk of een tool die past bij wat gasten in een moroww-huis voelen? Vertel ons wat je doet, in welke regio, en welk voordeel je leden geeft." />
         </div>

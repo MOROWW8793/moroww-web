@@ -22,7 +22,7 @@ export default async function Market() {
   const live = (data ?? []) as unknown as MarktProduct[];
   return (
     <>
-      <section className="held">
+      <section className="held" data-mw-reveal>
         <div className="wrap">
           <Kop
             niveau={1}
