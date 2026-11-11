@@ -4,13 +4,11 @@
 // pagina en per sectie. Zo hoort een CTA nooit als losse knoppen in de body
 // geschreven te worden — dat maakt van de kennisbank een verkooppagina.
 //
-// Bouwspec sectie 4: geen kader, geen rand, geen achtergrondvlak.
-// AuditLijn quiet met het type actie erboven, kop in type-h3, één alinea
-// in type-body, knop in oranje. Ruimte: space-8 boven, space-6 onder.
+// Een witte kaart met zachte schaduw, zodat de actie loskomt van de lopende
+// tekst zonder er een verkoopblok van te maken.
 
 import Link from 'next/link'
 import type { ReactNode } from 'react'
-import { AuditLijn } from '@/components/AuditLijn'
 
 type CtaKind = 'poortentoets' | 'rekenmodule' | 'vraag' | 'gesprek'
 
@@ -97,9 +95,9 @@ export function Cta({ kind, intro }: Props) {
   const v = VARIANTS[kind]
 
   return (
-    <section className="mt-mw-8 mb-mw-6">
-      <AuditLijn density="quiet" items={[v.actie]} />
-      <h3 className="mt-mw-4 text-h3 text-moroww-dark">{v.title}</h3>
+    <section className="mt-mw-8 mb-mw-6 rounded-3xl border border-moroww-rule bg-white p-6 md:p-8 shadow-[0_30px_60px_-40px_rgba(26,26,26,0.45)]">
+      <p className="text-audit text-moroww-label-tekst">{v.actie}</p>
+      <h3 className="mt-mw-3 text-h3 text-moroww-dark">{v.title}</h3>
       <p className="mt-mw-3 text-body text-moroww-dark">
         {intro ? `${intro} ` : ''}
         {v.body}
@@ -128,19 +126,20 @@ export function VerderLezen({ items }: { items: VerderLezenItem[] }) {
     { href: '/eigenaar-worden#poortentoets', title: 'Doe de poortentoets', eyebrow: 'in twee minuten' },
   ]
   return (
-    <section className="my-16 border-t border-moroww-brown/20 pt-12">
+    <section className="my-16 pt-4">
       <p className="text-xs uppercase tracking-widest text-moroww-label-tekst mb-6">verder lezen</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {withPoort.map((it) => (
           <Link
             key={it.href}
             href={it.href}
-            className="block bg-white rounded-2xl p-6 hover:shadow-md transition-shadow"
+            className="group flex flex-col justify-between gap-6 min-h-[150px] bg-white border border-moroww-rule rounded-3xl p-6 shadow-[0_30px_60px_-40px_rgba(26,26,26,0.35)] hover:-translate-y-0.5 hover:shadow-[0_36px_70px_-40px_rgba(26,26,26,0.5)] transition-[transform,box-shadow] duration-300 motion-reduce:transition-none"
           >
             {it.eyebrow && (
               <p className="text-[11px] uppercase tracking-widest text-moroww-label-tekst mb-2">{it.eyebrow}</p>
             )}
-            <p className="text-moroww-dark font-semibold leading-snug">{it.title} →</p>
+            <p className="text-moroww-dark font-semibold leading-snug">{it.title}</p>
+            <span className="self-end inline-flex h-9 w-9 items-center justify-center rounded-full bg-moroww-blush text-moroww-dark group-hover:bg-moroww-orange transition-colors" aria-hidden>→</span>
           </Link>
         ))}
       </div>

@@ -321,8 +321,13 @@ body {
 }
 .prose-kennis table {
   width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 15px;
-  background: #fff; border-radius: 12px; overflow: hidden;
+  background: #fff; border-radius: 20px; overflow: hidden;
+  box-shadow: 0 30px 60px -40px rgba(26,26,26,0.35);
 }
+/* Kaarten en knoppen in de kennisbank dragen hun eigen opmaak; de
+   tekstlinkstijl en de alinea-marges van de lopende tekst horen er niet in. */
+.prose-kennis section a, .prose-kennis details a { text-decoration: none; }
+.prose-kennis section > h3:first-of-type, .prose-kennis details p { margin-top: 0; }
 .prose-kennis th, .prose-kennis td {
   padding: 0.75rem 1rem; text-align: left; vertical-align: top;
   border-bottom: 1px solid rgba(192,141,110,0.15);

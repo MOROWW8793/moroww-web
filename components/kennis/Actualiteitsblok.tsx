@@ -13,7 +13,7 @@ interface Props {
 
 export function Actualiteitsblok({ nagekekenOp, bron, bronUrl }: Props) {
   return (
-    <aside className="mt-16 border-t border-moroww-brown/20 pt-8 text-sm text-moroww-dark/70 leading-relaxed">
+    <aside className="mt-16 rounded-3xl border border-white/80 bg-white/60 p-6 md:p-8 text-sm text-moroww-dark/70 leading-relaxed backdrop-blur">
       <p className="font-semibold text-moroww-dark">Nagekeken op {nagekekenOp}</p>
       {bron && (
         <p className="mt-1">

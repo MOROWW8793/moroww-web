@@ -4,6 +4,7 @@
 import Link from 'next/link'
 import { kennisMetadata } from '@/lib/kennis/meta'
 import { Actualiteitsblok } from '@/components/kennis/Actualiteitsblok'
+import { KennisHero } from '@/components/kennis/KennisHero'
 
 export const metadata = kennisMetadata({
   titel: 'Kennisbank vakantieverhuur België · moroww',
@@ -133,42 +134,44 @@ const KAARTEN: Kaart[] = [
 export default function KennisHubPage() {
   return (
     <>
-      <section className="w-full pt-32 pb-12 md:pt-40 md:pb-16 px-6">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-xs uppercase tracking-widest text-moroww-label-tekst mb-6">kennisbank</p>
-          <h1
-            className="font-bold text-moroww-dark leading-[1.05] tracking-[-0.02em] mb-8"
-            style={{ fontSize: 'clamp(2.25rem, 6vw, 4.5rem)' }}
-          >
-            Alles wat we onderweg leerden over vakantieverhuur in België.
-          </h1>
-          <p className="text-moroww-dark/70 leading-relaxed" style={{ fontSize: 20 }}>
-            <HubIntro count={KAARTEN.length} />
-          </p>
-        </div>
-      </section>
+      <KennisHero
+        beelden={[
+          { src: '/images/standaard/V2-56.jpg', alt: 'Een interieurboek op een stenen tafel in een moroww-huis' },
+          { src: '/images/over-hero.jpg', alt: 'Leefruimte van een moroww-huis' },
+          { src: '/images/standaard/V2-210.jpg', alt: 'Een glas met citrus op een stenen blad' },
+        ]}
+      >
+        <p className="text-audit text-white/80">kennisbank</p>
+        <h1
+          className="mt-4 max-w-[20ch] font-semibold text-white leading-[1.02] tracking-[-0.025em] drop-shadow-md"
+          style={{ fontSize: 'clamp(2.25rem, 6vw, 4.5rem)' }}
+        >
+          Alles wat we onderweg leerden over vakantieverhuur in België.
+        </h1>
+        <p className="mt-6 max-w-[58ch] text-body-lg text-white/90">
+          <HubIntro count={KAARTEN.length} />
+        </p>
+      </KennisHero>
 
-      <section className="w-full pb-24 px-6">
+      <section className="w-full pt-mw-8 pb-24 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5">
           {KAARTEN.map((k) => (
-            // group + hover: alleen de titel verschuift 2px, verder niets.
-            // no-underline op elk kind — de link-decoratie mag niet doorlekken.
             <Link
               key={k.href}
               href={k.href}
-              className="group block bg-white rounded-2xl p-8 no-underline [&_*]:no-underline"
+              className="group flex flex-col bg-white border border-moroww-rule rounded-3xl p-8 no-underline [&_*]:no-underline shadow-[0_30px_60px_-40px_rgba(26,26,26,0.35)] hover:-translate-y-1 hover:shadow-[0_40px_80px_-40px_rgba(26,26,26,0.5)] transition-[transform,box-shadow] duration-300 motion-reduce:transition-none"
             >
-              <p className="text-[11px] uppercase tracking-widest text-moroww-label-tekst mb-3">{k.eyebrow}</p>
-              <h2
-                className="font-bold text-moroww-dark leading-tight mb-4 transition-transform duration-300 group-hover:translate-x-[2px]"
-                style={{ fontSize: 22 }}
-              >
+              <span className="self-start rounded-full bg-moroww-blush px-3 py-1 text-audit text-moroww-label-tekst">{k.eyebrow}</span>
+              <h2 className="mt-5 font-semibold text-moroww-dark leading-tight tracking-[-0.01em]" style={{ fontSize: 24 }}>
                 {k.titel}
               </h2>
-              <p className="text-moroww-dark/75 leading-relaxed" style={{ fontSize: 16 }}>
+              <p className="mt-3 text-moroww-dark/75 leading-relaxed" style={{ fontSize: 16 }}>
                 {k.intro}
               </p>
-              <p className="mt-5 text-moroww-orange font-semibold">Lees verder →</p>
+              <span className="mt-auto pt-6 flex items-center justify-between font-semibold text-moroww-dark">
+                Lees verder
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-moroww-blush group-hover:bg-moroww-orange transition-colors" aria-hidden>→</span>
+              </span>
             </Link>
           ))}
         </div>
