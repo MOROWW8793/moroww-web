@@ -923,3 +923,127 @@
   .merk-advisory .adv-planwissel-paneel { animation: none; }
   .merk-advisory .adv-planwissel-tab { transition: none; }
 }
+
+/* ── advisory · vragen-wizard (interactief) ─────────────────────────── */
+
+.merk-advisory .adv-wizard {
+  background: var(--wit);
+  padding: clamp(32px, 4vw, 48px);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.merk-advisory .adv-wizard-boven {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0;
+  display: block;
+}
+.merk-advisory .adv-wizard-voortgang {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.merk-advisory .adv-wizard-staaf {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 6px;
+}
+.merk-advisory .adv-wizard-staaf-stuk {
+  height: 2px;
+  background: rgba(26, 26, 26, 0.14);
+  transition: background 300ms ease;
+}
+.merk-advisory .adv-wizard-staaf-vol { background: var(--knop); }
+.merk-advisory .adv-wizard-vraag {
+  font-family: var(--font-titel);
+  font-weight: 300;
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  line-height: 1.14;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0;
+  overflow-wrap: break-word;
+  animation: adv-wizard-fade 400ms cubic-bezier(.2,.7,.2,1);
+}
+@keyframes adv-wizard-fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+.merk-advisory .adv-wizard-opties {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+}
+@media (min-width: 640px) {
+  .merk-advisory .adv-wizard-opties { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.merk-advisory .adv-wizard-optie {
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid rgba(26, 26, 26, 0.18);
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: background 220ms ease, border-color 220ms ease, transform 220ms ease;
+}
+.merk-advisory .adv-wizard-optie:hover {
+  background: var(--zacht);
+  border-color: var(--ink);
+}
+.merk-advisory .adv-wizard-optie:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Klaar-staat: gepersonaliseerde eerste stap */
+.merk-advisory .adv-wizard-klaar {
+  animation: adv-wizard-fade 550ms cubic-bezier(.2,.7,.2,1);
+}
+.merk-advisory .adv-wizard-uitkomst {
+  font-family: var(--font-titel);
+  font-weight: 300;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0;
+  max-width: 34ch;
+}
+.merk-advisory .adv-wizard-keuzes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.merk-advisory .adv-wizard-keuze {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 12px 20px;
+  align-items: baseline;
+  font-family: var(--font-body);
+  font-size: 15px;
+}
+.merk-advisory .adv-wizard-keuze-label {
+  color: var(--muted);
+}
+.merk-advisory .adv-wizard-keuze-waarde {
+  color: var(--ink);
+}
+.merk-advisory .adv-wizard-acties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .merk-advisory .adv-wizard-vraag,
+  .merk-advisory .adv-wizard-klaar { animation: none; }
+  .merk-advisory .adv-wizard-optie { transition: none; }
+}

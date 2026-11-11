@@ -4,6 +4,7 @@ import { Sectie } from '@/components/merk/Shell';
 import { Logo } from '@/components/merk/Logo';
 import { site } from '@/lib/merk/site';
 import { PlanWisselaar } from '@/components/advisory/PlanWisselaar';
+import { VraagWizard } from '@/components/advisory/VraagWizard';
 
 // moroww advisory · inlet editorial-stijl (nov 2026).
 // Volgt de typografisch-rustige richting van usehallmark.com/made/ribbon,
@@ -166,6 +167,20 @@ export default function Advisory() {
               );
             })}
           </ol>
+        </div>
+      </Sectie>
+
+      {/* WIZARD · drie vragen, één gepersonaliseerde eerste stap. De
+          keuzes gaan als query mee naar /advisory/contact zodat het
+          formulier meteen weet waarmee de bezoeker start. */}
+      <Sectie>
+        <div data-mw-reveal>
+          <span className="adv-kopblok-boven">weet je het nog niet?</span>
+          <h2 className="adv-sectie-titel" data-mw-lines>
+            <span><span>drie vragen,</span></span>
+            <span><span>een eerste stap.</span></span>
+          </h2>
+          <VraagWizard />
         </div>
       </Sectie>
 
