@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { Header, Footer } from '@/components/merk/Shell';
+import { Header } from '@/components/merk/Shell';
+import { NlFooter } from '@/components/layout/NlFooter';
 import { MerkTeken } from '@/components/merk/Logo';
 import { Analytics } from '@vercel/analytics/next';
 import { MotionIn } from '@/components/MotionIn';
@@ -45,9 +46,9 @@ export default function AdvisoryLayout({ children }: { children: React.ReactNode
             cta={{ href: '/advisory/contact', label: 'vertel je vraag' }}
           />
           <main>{children}</main>
-          <Footer merk={<span>elke vraag, een plan.</span>} />
           </div>
         </div>
+        <NlFooter />
         <SmoothScroll />
         <MotionIn />
         <Analytics />

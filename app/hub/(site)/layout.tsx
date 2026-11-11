@@ -1,4 +1,5 @@
-import { Header, Footer } from '@/components/merk/Shell';
+import { Header } from '@/components/merk/Shell';
+import { NlFooter } from '@/components/layout/NlFooter';
 import { MerkTeken } from '@/components/merk/Logo';
 import '@/components/merk/zwitsers.css';
 
@@ -18,7 +19,7 @@ export default function HubSite({ children }: { children: React.ReactNode }) {
         cta={{ href: '/hub/aanmelden', label: 'meld je aan' }}
       />
       <main>{children}</main>
-      <Footer merk={<span>jij vraagt, wij regelen.</span>} />
+      <NlFooter />
     </div>
   );
 }
