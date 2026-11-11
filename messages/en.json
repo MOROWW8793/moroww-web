@@ -136,7 +136,13 @@
     "gallery_prev": "previous photo",
     "gallery_next": "next photo",
     "gallery_photo": "view photo {n} of {name}",
-    "new_in": "new in {collection}"
+    "new_in": "new in {collection}",
+    "worth_title": "what makes this stay worth moroww",
+    "in_short": "in short",
+    "slideshow_pause": "pause slideshow",
+    "slideshow_play": "play slideshow",
+    "slide": "slide",
+    "all_photos": "all {count} photos"
   },
   "contact": {
     "meta_title": "Contact",

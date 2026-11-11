@@ -136,7 +136,13 @@
     "gallery_prev": "vorige foto",
     "gallery_next": "volgende foto",
     "gallery_photo": "bekijk foto {n} van {name}",
-    "new_in": "nieuw in {collection}"
+    "new_in": "nieuw in {collection}",
+    "worth_title": "wat dit verblijf moroww waard maakt",
+    "in_short": "in het kort",
+    "slideshow_pause": "pauzeer diavoorstelling",
+    "slideshow_play": "speel diavoorstelling",
+    "slide": "dia",
+    "all_photos": "alle {count} foto's"
   },
   "contact": {
     "meta_title": "Contact",
