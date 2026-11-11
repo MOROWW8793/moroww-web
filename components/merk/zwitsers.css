@@ -26,7 +26,11 @@
 .merk .z .btn-primair, .z-knop { background: var(--z-accent); color: var(--ink); }
 .z-knop { display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; font: inherit; font-size: 17px; font-weight: 500; text-decoration: none; border: 0; cursor: pointer; }
 .z-knop:hover { filter: brightness(0.95); }
-.z-knop-donker { background: var(--ink); color: var(--bg); }
+.z-knop-donker { background: var(--ink); }
+/* .merk a { color: inherit } uit merk.css weegt zwaarder dan een losse klasse;
+   zonder deze regels wordt de knoptekst zwart op zwart. */
+.merk .z .z-knop, .merk .z a.z-knop { color: var(--ink); }
+.merk .z .z-knop-donker, .merk .z a.z-knop-donker { color: var(--bg); }
 .z-link { font-size: 17px; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
 .z-knoppen { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; }
 
