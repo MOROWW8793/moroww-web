@@ -5,6 +5,7 @@ import { Logo } from '@/components/merk/Logo';
 import { site } from '@/lib/merk/site';
 import { PlanWisselaar } from '@/components/advisory/PlanWisselaar';
 import { VraagWizard } from '@/components/advisory/VraagWizard';
+import { Tilt3D } from '@/components/advisory/Tilt3D';
 
 // moroww advisory · inlet editorial-stijl (nov 2026).
 // Volgt de typografisch-rustige richting van usehallmark.com/made/ribbon,
@@ -180,7 +181,9 @@ export default function Advisory() {
             <span><span>drie vragen,</span></span>
             <span><span>een eerste stap.</span></span>
           </h2>
-          <VraagWizard />
+          <Tilt3D max={5}>
+            <VraagWizard />
+          </Tilt3D>
         </div>
       </Sectie>
 
@@ -194,7 +197,9 @@ export default function Advisory() {
             <span><span>kies een vraag,</span></span>
             <span><span>zie het plan.</span></span>
           </h2>
-          <PlanWisselaar />
+          <Tilt3D max={4}>
+            <PlanWisselaar />
+          </Tilt3D>
         </div>
       </Sectie>
 
