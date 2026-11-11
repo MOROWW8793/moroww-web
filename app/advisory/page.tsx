@@ -85,7 +85,10 @@ export default function Advisory() {
         <div className="wrap">
           <div className="adv-held-binnen">
             <span className="adv-eyebrow">hulp op maat voor wie start of vastloopt</span>
-            <h1 className="adv-mast">elke vraag, een plan.</h1>
+            <h1 className="adv-mast" data-mw-lines>
+              <span><span>elke vraag,</span></span>
+              <span><span>een plan.</span></span>
+            </h1>
             <p className="adv-sub">
               Vertel ons wat er speelt. Je krijgt een plan op papier: wat er moet gebeuren, wie het doet, wanneer, en wat het kost.
             </p>
@@ -102,8 +105,10 @@ export default function Advisory() {
       <Sectie>
         <div data-mw-reveal>
           <span className="adv-kopblok-boven">waar eigenaars mee komen</span>
-          <h2 className="adv-sectie-titel">een paar voorbeelden.</h2>
-          <ol className="adv-genummerd">
+          <h2 className="adv-sectie-titel" data-mw-lines>
+            <span><span>een paar voorbeelden.</span></span>
+          </h2>
+          <ol className="adv-genummerd" data-mw-stagger>
             {vragen.map((v, i) => {
               const nr = String(i + 1).padStart(2, '0');
               if (v.href) {
@@ -140,8 +145,11 @@ export default function Advisory() {
       <Sectie toon="zacht">
         <div data-mw-reveal>
           <span className="adv-kopblok-boven">een plan · voorbeeld</span>
-          <h2 className="adv-sectie-titel">mag ik mijn huis aan zee als vakantiewoning verhuren?</h2>
-          <ol className="adv-genummerd" aria-label="Stappen in het voorbeeld-plan">
+          <h2 className="adv-sectie-titel" data-mw-lines>
+            <span><span>mag ik mijn huis aan zee als</span></span>
+            <span><span>vakantiewoning verhuren?</span></span>
+          </h2>
+          <ol className="adv-genummerd" aria-label="Stappen in het voorbeeld-plan" data-mw-stagger>
             {planStappen.map(([stap, badge], i) => (
               <li key={stap}>
                 <span className="adv-nr">{String(i + 1).padStart(2, '0')}</span>
@@ -158,15 +166,23 @@ export default function Advisory() {
         </div>
       </Sectie>
 
-      {/* DOCUMENTARY foto · full-bleed rustmoment tussen de twee lijsten. */}
+      {/* DOCUMENTARY foto · full-bleed rustmoment tussen de twee lijsten.
+          Binnen een overmaat-laag met data-mw-parallax: het beeld beweegt
+          traag mee tegen de scroll; de outer container maskt. */}
       <section data-mw-reveal>
         <div className="adv-beeld-vol">
-          <Image
-            src="/images/advisory-terras-zee.jpg"
-            alt="Dakterras met zicht op zee bij een moroww-huis"
-            fill
-            sizes="100vw"
-          />
+          <div
+            className="adv-beeld-parallax"
+            data-mw-parallax
+            data-mw-parallax-strength="0.22"
+          >
+            <Image
+              src="/images/advisory-terras-zee.jpg"
+              alt="Dakterras met zicht op zee bij een moroww-huis"
+              fill
+              sizes="100vw"
+            />
+          </div>
         </div>
       </section>
 
@@ -174,8 +190,10 @@ export default function Advisory() {
       <Sectie>
         <div data-mw-reveal>
           <span className="adv-kopblok-boven">wat je krijgt</span>
-          <h2 className="adv-sectie-titel">een plan waar je iets mee kan.</h2>
-          <div className="adv-rij-4">
+          <h2 className="adv-sectie-titel" data-mw-lines>
+            <span><span>een plan waar je iets mee kan.</span></span>
+          </h2>
+          <div className="adv-rij-4" data-mw-stagger>
             {belofte.map(([titel, tekst], i) => (
               <div key={titel} className="adv-belofte">
                 <span className="adv-belofte-nr">{String(i + 1).padStart(2, '0')}</span>
@@ -192,8 +210,10 @@ export default function Advisory() {
       <Sectie toon="zacht" id="werkwijze">
         <div data-mw-reveal>
           <span className="adv-kopblok-boven">werkwijze</span>
-          <h2 className="adv-sectie-titel">van vraag tot plan.</h2>
-          <ol className="adv-werkwijze">
+          <h2 className="adv-sectie-titel" data-mw-lines>
+            <span><span>van vraag tot plan.</span></span>
+          </h2>
+          <ol className="adv-werkwijze" data-mw-stagger>
             {werkwijze.map(([titel, tekst], i) => (
               <li key={titel}>
                 <span className="adv-nr">{String(i + 1).padStart(2, '0')}</span>
@@ -218,7 +238,10 @@ export default function Advisory() {
           </div>
           <div>
             <span className="adv-kopblok-boven">met wie je praat</span>
-            <h2 className="adv-sectie-titel">geen callcenter. een gesprek.</h2>
+            <h2 className="adv-sectie-titel" data-mw-lines>
+              <span><span>geen callcenter.</span></span>
+              <span><span>een gesprek.</span></span>
+            </h2>
             <p className="adv-prose">
               Je vraag komt bij {site.contact.naam}, medeoprichter van moroww. Hij kijkt mee, zoekt uit wat nodig is en brengt je bij de juiste mensen.
             </p>
@@ -233,8 +256,10 @@ export default function Advisory() {
       <Sectie toon="zacht">
         <div data-mw-reveal>
           <span className="adv-kopblok-boven">vaak gevraagd</span>
-          <h2 className="adv-sectie-titel">kort beantwoord.</h2>
-          <div className="adv-faq">
+          <h2 className="adv-sectie-titel" data-mw-lines>
+            <span><span>kort beantwoord.</span></span>
+          </h2>
+          <div className="adv-faq" data-mw-stagger>
             {vragenFaq.map(([v, a]) => (
               <details key={v}>
                 <summary>{v}</summary>

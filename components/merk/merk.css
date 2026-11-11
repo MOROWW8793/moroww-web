@@ -511,13 +511,22 @@
   padding-bottom: 2px;
 }
 
-/* Documentary photo — full-bleed, geen cards, geen bijschrift. */
+/* Documentary photo — full-bleed, geen cards, geen bijschrift. Binnenin
+   een overmaat-laag (−10 % top en bottom) met data-mw-parallax zodat het
+   beeld traag mee beweegt tegen de scroll, binnen de masker van outer. */
 .merk-advisory .adv-beeld-vol {
   position: relative;
   width: 100%;
   aspect-ratio: 21 / 9;
   overflow: hidden;
   background: var(--zacht);
+}
+.merk-advisory .adv-beeld-parallax {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -10%;
+  bottom: -10%;
 }
 .merk-advisory .adv-beeld-vol img {
   object-fit: cover;
