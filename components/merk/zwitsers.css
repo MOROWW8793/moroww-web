@@ -286,19 +286,26 @@
 }
 @media (max-width: 640px) { .merk .z .z-breed:has(.form) { padding: 22px; } }
 
-/* kop als zwevende glazen balk, zoals op moroww.com */
+/* kop: geen doorlopende balk. Logo los, de navigatie als glazen eiland
+   rechts, zo breed als wat erin staat. */
 .merk .z .kop {
   top: 12px; margin: 12px auto 0; width: calc(100% - 24px); max-width: 1280px;
-  border: 1px solid rgba(255, 255, 255, 0.7); border-radius: 999px;
+  background: transparent; border: 0; box-shadow: none;
+  -webkit-backdrop-filter: none; backdrop-filter: none; pointer-events: none;
+}
+.merk .z .kop-binnen { padding: 0; max-width: none; }
+.merk .z :is(.kop-logo, .kop-nav) { pointer-events: auto; }
+.merk .z .kop-logo { display: inline-flex; align-items: center; padding: 14px 18px; border-radius: 999px; }
+.merk .z .kop-nav {
+  gap: 4px; padding: 6px; border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
   background: color-mix(in srgb, #FFFFFF 72%, transparent);
+  -webkit-backdrop-filter: saturate(150%) blur(16px); backdrop-filter: saturate(150%) blur(16px);
   box-shadow: 0 20px 50px -30px rgba(26, 26, 26, 0.45);
 }
-.merk .z .kop-binnen { padding: 8px 8px 8px 24px; }
 .merk .z .kop-nav a:not(.btn) { border-radius: 999px; padding: 8px 14px; transition: background-color .15s; }
 .merk .z .kop-nav a:not(.btn):hover { background: rgba(26, 26, 26, 0.06); }
-@media (max-width: 900px) {
-  .merk .z .kop { border-radius: 24px; }
-  .merk .z .kop-binnen { padding: 12px 16px; }
-}
-.merk .z .kop-nav { gap: 4px 6px; }
 .merk .z .kop-nav a:not(.btn)::after { display: none; }
+@media (max-width: 900px) {
+  .merk .z .kop-nav { border-radius: 24px; }
+}

@@ -57,18 +57,23 @@ export function Navbar() {
         : aan ? 'bg-moroww-dark/[0.06] text-moroww-dark' : 'text-moroww-dark hover:bg-moroww-dark/[0.06]'
     }`
 
-  // Zwevende glazen balk. Over een donkere hero is het glas donker en de
-  // tekst wit; zodra je scrolt of op een lichte pagina staat, licht glas.
+  const glas = donker
+    ? 'bg-white/[0.12] border-white/25 shadow-[0_20px_50px_-25px_rgba(0,0,0,0.6)]'
+    : 'bg-white/75 border-white/70 shadow-[0_20px_50px_-30px_rgba(26,26,26,0.45)]'
+  const eiland = `rounded-full border backdrop-blur-xl backdrop-saturate-150 transition-[background-color,border-color,box-shadow] duration-200 ease-out motion-reduce:transition-none ${glas}`
+
+  // Geen doorlopende balk: het logo staat los, de navigatie zit in een
+  // glazen eiland rechts, net zo breed als wat erin staat. Over een donkere
+  // hero donker glas en wit; daarbuiten licht glas. Het logo krijgt pas glas
+  // als er inhoud onder schuift.
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-5 md:pt-4">
-      <nav
-        className={`relative mx-auto flex h-14 max-w-7xl items-center justify-between rounded-full border pl-5 pr-2 backdrop-blur-xl backdrop-saturate-150 transition-[background-color,border-color,box-shadow] duration-200 ease-out motion-reduce:transition-none ${
-          donker
-            ? 'bg-white/[0.12] border-white/25 shadow-[0_20px_50px_-25px_rgba(0,0,0,0.6)]'
-            : 'bg-white/75 border-white/70 shadow-[0_20px_50px_-30px_rgba(26,26,26,0.45)]'
-        }`}
-      >
-        <Link href="/" className="shrink-0" aria-label="moroww">
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-5 md:pt-4 pointer-events-none">
+      <nav className="relative mx-auto flex h-14 max-w-7xl items-center justify-between">
+        <Link
+          href="/"
+          aria-label="moroww"
+          className={`pointer-events-auto shrink-0 flex h-14 items-center px-4 ${scrolled ? eiland : 'border border-transparent'}`}
+        >
           <Image
             src="/images/logo.png"
             alt="moroww"
@@ -79,7 +84,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop nav: gastenkant, dan de eigenaarskant, taal en de boekknop. */}
-        <div className="hidden md:flex items-center gap-1">
+        <div className={`pointer-events-auto hidden md:flex h-14 items-center gap-1 pl-2 pr-2 ${eiland}`}>
           {gastenNavItems.map((item) => (
             <Link key={item.href} href={item.href} className={link(actief(item.href))} aria-current={actief(item.href) ? 'page' : undefined}>
               {t(item.labelKey)}
@@ -120,7 +125,7 @@ export function Navbar() {
 
         {/* Hamburger */}
         <button
-          className={`md:hidden flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-full transition-colors ${donker ? 'hover:bg-white/15' : 'hover:bg-moroww-dark/[0.06]'}`}
+          className={`pointer-events-auto md:hidden flex h-12 w-12 flex-col items-center justify-center gap-1.5 ${eiland}`}
           onClick={() => setOpen(!open)}
           aria-label="Menu openen"
           aria-expanded={open}
@@ -135,7 +140,7 @@ export function Navbar() {
 
         {/* Mobiel menu: glazen kaart onder de balk. */}
         {open && (
-          <div className="md:hidden absolute top-full left-0 right-0 mt-2 rounded-3xl border border-white/70 bg-white/90 backdrop-blur-xl backdrop-saturate-150 p-4 z-50 flex flex-col gap-1 shadow-[0_30px_80px_-30px_rgba(26,26,26,0.5)]">
+          <div className="pointer-events-auto md:hidden absolute top-full left-0 right-0 mt-2 rounded-3xl border border-white/70 bg-white/90 backdrop-blur-xl backdrop-saturate-150 p-4 z-50 flex flex-col gap-1 shadow-[0_30px_80px_-30px_rgba(26,26,26,0.5)]">
             {gastenNavItems.map((item) => (
               <Link
                 key={item.href}
