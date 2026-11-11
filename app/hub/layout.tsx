@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/next';
+import { MotionIn } from '@/components/MotionIn';
+import { SmoothScroll } from '@/components/SmoothScroll';
 import '@fontsource/fraunces/300.css';
 import '@fontsource/fraunces/300-italic.css';
 import '@fontsource/fraunces/400.css';
@@ -21,7 +23,16 @@ export default function HubLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="nl-BE">
       <body>
-    <div className="merk merk-hub">{children}</div>
+        {/* mw-js vóór render zodat data-mw-reveal zijn hidden state kan
+            aannemen zonder flash. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('mw-js')",
+          }}
+        />
+        <div className="merk merk-hub">{children}</div>
+        <SmoothScroll />
+        <MotionIn />
         <Analytics />
       </body>
     </html>
