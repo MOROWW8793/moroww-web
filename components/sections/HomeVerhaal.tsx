@@ -33,12 +33,12 @@ export function HomeVerhaal({ locale }: Props) {
   const beloftes = nl
     ? [
         ['wij zijn er geweest', 'Elk huis wordt fysiek bezocht voor het in de collectie komt. Niet op basis van foto’s, maar ter plaatse.'],
-        ['vier poorten', 'Minstens 100 m² en twee slaapkamers, karakter in natuurlijke materialen, een stille ligging. Geen uitzonderingen.'],
+        ['vier regels', 'Geen spoor van de vorige gast, een badkamer zonder één haar, vers linnen bij elke gast, en alles klaar vóór aankomst. Geen uitzonderingen.'],
         ['elk jaar opnieuw', 'Een huis krijgt het label niet voor altijd. Elk jaar komen we terug, en lezen we wat gasten schrijven.'],
       ]
     : [
         ['we have been there', 'Every home is visited in person before it joins the collection. Not from photos, on site.'],
-        ['four gates', 'At least 100 m² and two bedrooms, character in natural materials, a quiet location. No exceptions.'],
+        ['four rules', 'No trace of the last guest, a bathroom without one hair, fresh linen for every guest, and everything ready before arrival. No exceptions.'],
         ['every year again', 'A home does not keep the label forever. We come back every year, and read what guests write.'],
       ]
 

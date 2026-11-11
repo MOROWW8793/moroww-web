@@ -156,7 +156,6 @@ export default async function RendementPage() {
             <tr><th>Poort</th><th>Voorwaarde</th></tr>
           </thead>
           <tbody>
-            <tr><td>Ruimte</td><td>minimaal 100 m², minstens twee slaapkamers</td></tr>
             <tr><td>Ligging</td><td>natuurlijk, landelijk, kust of rustige regio. Geen drukke stadskern</td></tr>
             <tr><td>Karakter</td><td>de woning heeft een eigen gezicht. Geen showroom</td></tr>
             <tr><td>Staat</td><td>klaar vanaf de sleuteloverdracht, volledig ingericht</td></tr>

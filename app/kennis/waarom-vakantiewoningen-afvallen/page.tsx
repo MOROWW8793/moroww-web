@@ -78,11 +78,9 @@ export default async function AfvalRedenenPage() {
           een cijfer te koppelen. Alleen aantallen per reden.
         </p>
         <p>
-          Tot dan houden we ons hier aan wat we wél kunnen zeggen: de vier poorten waarop
+          Tot dan houden we ons hier aan wat we wél kunnen zeggen: de vier regels waarop
           een woning wordt beoordeeld staan al publiek op{' '}
-          <Link href="/de-standaard">de standaard</Link>, en de meest voorkomende reden waarom
-          een woning afvalt is een combinatie van oppervlakte en karakter — te klein voor
-          het segment, of gerenoveerd tot een showroom.
+          <Link href="/de-standaard">de standaard</Link>.
         </p>
 
         <h2>Waarom we dit publiceren</h2>
@@ -146,7 +144,7 @@ export default async function AfvalRedenenPage() {
           items={[
             {
               href: '/de-standaard',
-              title: 'De vier poorten',
+              title: 'De standaard',
               eyebrow: 'over moroww',
             },
             {

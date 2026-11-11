@@ -147,8 +147,8 @@ export default async function VerblijfsbelastingHubPage() {
           </tbody>
         </table>
         <p>
-          Voor woningen die aan de moroww-standaard voldoen, minstens 100 m² en minstens
-          twee slaapkamers, weegt het forfaitaire systeem per slaapplaats het zwaarst. Een
+          Voor grotere woningen met veel slaapplaatsen weegt het forfaitaire systeem per
+          slaapplaats het zwaarst. Een
           woning in Knokke-Heist met tien slaapplaatsen betaalt aan € 250 per slaapplaats
           € 2.500 per jaar, of er nu vijftig of tweehonderd nachten geboekt worden. Het
           is een vaste kost die in geen enkele publieke rekentool staat, en die je dus

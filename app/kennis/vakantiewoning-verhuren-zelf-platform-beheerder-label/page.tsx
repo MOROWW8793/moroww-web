@@ -98,9 +98,9 @@ export default async function VierModellenPage() {
         <p>Vier situaties waarin je beter iets anders kiest, en we zeggen dat liever nu dan in maand zes.</p>
 
         <p>
-          <strong>Je woning haalt de poorten niet.</strong> Onder 100 m², minder dan twee
-          slaapkamers, of in een drukke stadskern. Dat zijn geen richtlijnen maar
-          voorwaarden, en we maken er geen uitzonderingen op.
+          <strong>Je woning haalt de standaard niet.</strong> Geen spoor van de vorige gast,
+          een badkamer zonder één haar, vers linnen bij elke gast, alles klaar vóór aankomst.
+          Dat zijn geen richtlijnen maar voorwaarden, en we maken er geen uitzonderingen op.
         </p>
         <p>
           <strong>Je wil zelf de standaard bepalen.</strong> Het label betekent dat wij
