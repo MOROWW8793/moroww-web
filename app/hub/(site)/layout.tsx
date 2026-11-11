@@ -1,9 +1,10 @@
 import { Header, Footer } from '@/components/merk/Shell';
 import { MerkTeken } from '@/components/merk/Logo';
+import '@/components/merk/zwitsers.css';
 
 export default function HubSite({ children }: { children: React.ReactNode }) {
   return (
-    <>
+    <div className="z z-hub">
       <Header
         home="/hub"
         merk={<MerkTeken merk="hub" op="licht" size={24} />}
@@ -18,6 +19,6 @@ export default function HubSite({ children }: { children: React.ReactNode }) {
       />
       <main>{children}</main>
       <Footer merk={<span>jij vraagt, wij regelen.</span>} />
-    </>
+    </div>
   );
 }

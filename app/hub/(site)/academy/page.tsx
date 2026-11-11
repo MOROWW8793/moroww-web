@@ -1,82 +1,80 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { Sectie, Kop } from '@/components/merk/Shell';
 import { ContactForm } from '@/components/merk/ContactForm';
+import { ZHeld, ZSectie, ZSectieTwee, ZRaster, ZRegister } from '@/components/merk/Zwitsers';
 import { academySessies, academyThemas } from '@/lib/merk/hub';
 
 export const metadata: Metadata = { title: 'academy', description: 'hub academy: kleine sessies van hosts voor hosts, in een moroww-huis.' };
 
+const werkwijze = [
+  { titel: 'een handvol hosts per sessie, zodat iedereen vragen kan stellen' },
+  { titel: 'in een huis uit de collectie: je ziet wat we bedoelen' },
+  { titel: 'van hosts voor hosts, met cijfers uit echte verblijven' },
+  { titel: 'je gaat naar huis met iets wat je de week erna toepast' },
+];
+
 export default function Academy() {
   return (
-    <>
-      <section className="held" data-mw-reveal>
-        <div className="wrap">
-          <Kop
-            niveau={1}
-            boven="hub academy · voor hosts"
-            titel={<>hosts leren <i>van hosts.</i></>}
-            tekst="Kleine sessies, in een moroww-huis. Over cijfers, en over hoe licht, geur en rust tot betere reviews leiden."
-          />
+    <div className="wrap">
+      <ZHeld
+        nr="01 · hub academy · voor hosts"
+        titel={<>hosts leren<br />van hosts.</>}
+        lead="Kleine sessies, in een moroww-huis. Over cijfers, en over hoe licht, geur en rust tot betere reviews leiden."
+        acties={<a href="#inschrijven" className="z-knop">schrijf je in</a>}
+      />
+
+      <section className="z-sectie" data-mw-reveal>
+        <div className="z-twee" style={{ alignItems: 'stretch' }}>
+          <div className="z-foto" style={{ flex: '1 1 360px', minHeight: 360 }}>
+            <Image src="/images/over-interieur-2.jpg" alt="" fill sizes="(min-width: 1024px) 35vw, 100vw" style={{ objectFit: 'cover' }} />
+          </div>
+          <div className="z-smal" style={{ flex: '999 1 520px' }}>
+            <span className="z-nr">02 · zo werkt het</span>
+            <h2 className="z-h2">klein, op locatie, praktisch.</h2>
+            <ZRegister items={werkwijze} prefix="2" />
+          </div>
         </div>
       </section>
 
-      <Sectie>
-        <div className="rij">
-          <div className="smal">
-            <Kop boven="zo werkt het" titel={<>klein, op locatie, <i>praktisch.</i></>} />
-            <div className="foto" style={{ position: 'relative', overflow: 'hidden', marginTop: 28, aspectRatio: '4 / 3' }}>
-              <Image src="/images/over-interieur-2.jpg" alt="" fill sizes="(min-width: 1024px) 33vw, 100vw" style={{ objectFit: 'cover' }} />
-            </div>
-          </div>
-          <ul className="lijst breed">
-            <li><span>een handvol hosts per sessie, zodat iedereen vragen kan stellen</span><span>01</span></li>
-            <li><span>in een huis uit de collectie: je ziet wat we bedoelen</span><span>02</span></li>
-            <li><span>van hosts voor hosts, met cijfers uit echte verblijven</span><span>03</span></li>
-            <li><span>je gaat naar huis met iets wat je de week erna toepast</span><span>04</span></li>
-          </ul>
-        </div>
-      </Sectie>
+      <ZSectie nr="03 · thema's" titel="waar het over gaat.">
+        <ZRaster prefix="3" items={academyThemas.map(([titel, tekst]) => ({ titel, tekst }))} />
+      </ZSectie>
 
-      <Sectie toon="zacht">
-        <Kop boven="thema's" titel={<>waar het <i>over gaat.</i></>} />
-        <div className="raster-4">
-          {academyThemas.map(([titel, tekst]) => (
-            <div key={titel} className="kaart">
-              <h3 className="kaart-titel" style={{ fontSize: 24 }}>{titel}</h3>
-              <p>{tekst}</p>
-            </div>
-          ))}
-        </div>
-      </Sectie>
-
-      <Sectie id="inschrijven">
-        <div className="rij">
-          <div className="breed" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+      <ZSectieTwee
+        id="inschrijven"
+        nr="04 · inschrijven"
+        titel="de volgende sessie."
+        extra={
+          <>
             {academySessies.map((s) => (
-              <div key={s.titel} className="kaart kaart-donker">
-                <span className="kaart-label">volgende sessie · {s.datum} · {s.plaats}</span>
-                <h2 className="kaart-titel" style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)' }}>{s.titel}</h2>
-                <p>{s.tekst}</p>
+              <div key={s.titel} className="z-object" style={{ flex: '0 0 auto' }}>
+                <div className="z-object-kop">
+                  <span>{s.datum ?? 'datum volgt'}</span>
+                  <span className="z-nr">{s.plaats ?? 'in een moroww-huis'}</span>
+                </div>
+                <div style={{ padding: '20px 22px', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  <span className="z-h3">{s.titel}</span>
+                  <span className="z-tekst">{s.tekst}</span>
+                </div>
               </div>
             ))}
-            <p className="klein">Voor leden met het label. Externe hosts zijn welkom: vraag naar de voorwaarden.</p>
-          </div>
-          <div className="smal">
-            <ContactForm
-              merk="hub"
-              soort="academy"
-              knop="schrijf je in"
-              bedankt="bedankt. je hoort van ons voor de volgende sessie."
-              velden={[
-                { naam: 'naam', label: 'naam', verplicht: true },
-                { naam: 'email', label: 'e-mail', type: 'email', verplicht: true },
-                { naam: 'label', label: 'heb je het moroww-label', type: 'select', opties: ['ja', 'nee', 'binnenkort'] },
-                { naam: 'thema', label: 'wat interesseert je het meest', type: 'select', opties: academyThemas.map(([t]) => t) },
-              ]}
-            />
-          </div>
-        </div>
-      </Sectie>
-    </>
+            <p className="z-klein">Voor leden met het label. Externe hosts zijn welkom: vraag naar de voorwaarden.</p>
+          </>
+        }
+      >
+        <ContactForm
+          merk="hub"
+          soort="academy"
+          knop="schrijf je in"
+          bedankt="bedankt. je hoort van ons voor de volgende sessie."
+          velden={[
+            { naam: 'naam', label: 'naam', verplicht: true },
+            { naam: 'email', label: 'e-mail', type: 'email', verplicht: true },
+            { naam: 'label', label: 'heb je het moroww-label', type: 'select', opties: ['ja', 'nee', 'binnenkort'] },
+            { naam: 'thema', label: 'wat interesseert je het meest', type: 'select', opties: academyThemas.map(([t]) => t) },
+          ]}
+        />
+      </ZSectieTwee>
+    </div>
   );
 }

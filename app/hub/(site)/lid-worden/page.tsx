@@ -1,60 +1,59 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Sectie, Kop } from '@/components/merk/Shell';
+import { ZHeld, ZSectie, ZRaster, ZTijdlijn } from '@/components/merk/Zwitsers';
 import { ledenKrijgen } from '@/lib/merk/hub';
 import { site } from '@/lib/merk/site';
 
-export const metadata: Metadata = { title: 'lid worden', description: 'Toegang tot moroww hub hoort bij het moroww-label: partners met voordelen, de academy en de ledenbrief.' };
+export const metadata: Metadata = { title: 'lid worden', description: 'Toegang tot moroww hub hoort bij het moroww-label: vraag het moroww, merken in je huis met korting, de academy en de ledenbrief.' };
+
+const stappen = [
+  { titel: 'vraag een bezoek aan', tekst: 'Via de pagina van het label. We nemen contact op om een moment te plannen.' },
+  { titel: 'we komen langs', tekst: 'Haalt je huis de standaard, dan krijgt het het label.' },
+  { titel: 'meld je aan', tekst: 'Met je e-mailadres en een wachtwoord. Wij keuren goed, en je krijgt een mail.' },
+];
 
 export default function LidWorden() {
   return (
-    <>
-      <section className="held" data-mw-reveal>
-        <div className="wrap">
-          <Kop
-            niveau={1}
-            boven="lid worden"
-            titel={<>de hub hoort <i>bij het label.</i></>}
-            tekst="Elk huis met het moroww-label krijgt toegang. Of je nu zelf verhuurt, een beheerder hebt, of moroww het voor je doet."
-          />
+    <div className="wrap">
+      <ZHeld
+        nr="01 · lid worden"
+        titel={<>de hub hoort<br />bij het label.</>}
+        lead="Elk huis met het moroww-label krijgt toegang. Of je nu zelf verhuurt, een beheerder hebt, of moroww het voor je doet."
+        acties={
+          <>
+            <Link href="/het-label#aanvraag" className="z-knop">vraag een bezoek aan</Link>
+            <Link href="/hub/inloggen" className="z-link">al lid? log in</Link>
+          </>
+        }
+      />
+
+      <ZSectie nr="02 · wat leden krijgen" titel="vier dingen, vanaf ons bezoek.">
+        <ZRaster prefix="2" items={ledenKrijgen.map(([titel, tekst]) => ({ titel, tekst }))} />
+      </ZSectie>
+
+      <ZSectie nr="03 · zo word je lid" titel="drie stappen.">
+        <ZTijdlijn items={stappen} prefix="3" />
+      </ZSectie>
+
+      <section className="z-sectie" data-mw-reveal>
+        <div className="z-tegels">
+          <div className="z-tegel-accent">
+            <span className="z-h3">al het label?</span>
+            <span className="z-tekst">
+              Log in met je e-mailadres en je wachtwoord. Vragen? Mail ons op <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>.
+            </span>
+            <span className="z-knoppen">
+              <Link href="/hub/inloggen" className="z-knop z-knop-donker">inloggen</Link>
+              <Link href="/hub/aanmelden" className="z-link" style={{ fontSize: 16 }}>meld je aan</Link>
+            </span>
+          </div>
+          <div>
+            <span className="z-h3">nog geen label?</span>
+            <span className="z-tekst">Vraag een bezoek aan voor je huis.</span>
+            <Link href="/het-label#aanvraag" className="z-link" style={{ fontSize: 16 }}>naar het label →</Link>
+          </div>
         </div>
       </section>
-
-      <Sectie>
-        <Kop boven="wat leden krijgen" titel={<>vier dingen, <i>vanaf ons bezoek.</i></>} />
-        <div className="raster">
-          {ledenKrijgen.map(([titel, tekst]) => (
-            <div key={titel} className="kaart kaart-zacht">
-              <h3 className="kaart-titel" style={{ fontSize: 24 }}>{titel}</h3>
-              <p>{tekst}</p>
-            </div>
-          ))}
-        </div>
-      </Sectie>
-
-      <Sectie toon="zacht">
-        <Kop boven="zo word je lid" titel={<>drie stappen.</>} />
-        <ol className="stappen">
-          <li><strong>vraag een bezoek aan</strong><span>Via de pagina van het label. We nemen contact op om een moment te plannen.</span></li>
-          <li><strong>we komen langs</strong><span>Haalt je huis de standaard, dan krijgt het het label.</span></li>
-          <li><strong>meld je aan</strong><span>Met je e-mailadres en een wachtwoord. Wij keuren goed, en je krijgt een mail.</span></li>
-        </ol>
-      </Sectie>
-
-      <Sectie>
-        <div className="raster-2">
-          <div className="kaart">
-            <h2 className="kaart-titel">al het <i>label?</i></h2>
-            <p>Log in met je e-mailadres en je wachtwoord. Vragen? Mail ons op <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>.</p>
-            <div className="knoppen"><Link href="/hub/inloggen" className="btn btn-primair">inloggen</Link><Link href="/hub/aanmelden" className="btn btn-lijn">meld je aan</Link></div>
-          </div>
-          <div className="kaart kaart-donker">
-            <h2 className="kaart-titel">nog geen <i>label?</i></h2>
-            <p>Vraag een bezoek aan voor je huis.</p>
-            <Link href="/het-label#aanvraag" className="btn btn-primair" style={{ alignSelf: 'flex-start' }}>naar het label</Link>
-          </div>
-        </div>
-      </Sectie>
-    </>
+    </div>
   );
 }

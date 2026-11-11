@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { Sectie, Kop } from '@/components/merk/Shell';
+import type { ReactNode } from 'react';
 import { ContactForm } from '@/components/merk/ContactForm';
+import { ZHeld, ZSectie, ZSectieTwee } from '@/components/merk/Zwitsers';
 import { supabase } from '@/lib/supabase';
 
 export const revalidate = 300;
@@ -11,87 +12,86 @@ interface MarktProduct { id: string; naam: string; tekst: string | null; foto: s
 export const metadata: Metadata = { title: 'market', description: 'hub market: de geur, het linnen en de essentials uit het verblijf, om thuis te hebben.' };
 
 const producten = [
-  { naam: <>de geur <i>van the shore</i></>, tekst: 'De signatuurgeur van de kusthuizen.', sleutel: 'geur-shore', foto: '/images/hub/geur-shore.png' },
-  { naam: <>de geur <i>van the fields</i></>, tekst: 'De signatuurgeur van de huizen op het platteland.', sleutel: 'geur-fields', foto: '/images/hub/geur-fields.png' },
-  { naam: <>het linnen <i>uit het verblijf</i></>, tekst: 'Hetzelfde beddengoed en dezelfde handdoeken.', sleutel: 'linnen', foto: '/images/standaard/V2-19.jpg' },
-  { naam: <>de essentials <i>voor de badkamer</i></>, tekst: 'Zeep, shampoo en lotion uit de huizen.', sleutel: 'essentials', foto: '/images/standaard/V2-36.jpg' },
+  { naam: 'de geur van the shore', tekst: 'De signatuurgeur van de kusthuizen.', foto: '/images/hub/geur-shore.png' },
+  { naam: 'de geur van the fields', tekst: 'De signatuurgeur van de huizen op het platteland.', foto: '/images/hub/geur-fields.png' },
+  { naam: 'het linnen uit het verblijf', tekst: 'Hetzelfde beddengoed en dezelfde handdoeken.', foto: '/images/standaard/V2-19.jpg' },
+  { naam: 'de essentials voor de badkamer', tekst: 'Zeep, shampoo en lotion uit de huizen.', foto: '/images/standaard/V2-36.jpg' },
 ];
+
+function Tegel({ naam, tekst, voet, foto, extern }: { naam: string; tekst: string | null; voet: string; foto: ReactNode; extern?: string }) {
+  const binnen = (
+    <>
+      <div className="z-foto" style={{ aspectRatio: '4 / 5', margin: '-28px -28px 8px' }}>{foto}</div>
+      <span className="z-h3" style={{ fontSize: 21 }}>{naam}</span>
+      {tekst ? <span className="z-tekst" style={{ fontSize: 15 }}>{tekst}</span> : null}
+      <span className="z-nr" style={{ marginTop: 'auto' }}>{voet}</span>
+    </>
+  );
+  return extern ? <a href={extern} target="_blank" rel="noopener noreferrer" style={{ flexBasis: 240 }}>{binnen}</a> : <div style={{ flexBasis: 240 }}>{binnen}</div>;
+}
 
 export default async function Market() {
   const { data } = await supabase.from('hub_producten').select('id,naam,tekst,foto,url,hub_partners(naam)').eq('status', 'live').order('created_at');
   const live = (data ?? []) as unknown as MarktProduct[];
   return (
-    <>
-      <section className="held" data-mw-reveal>
-        <div className="wrap">
-          <Kop
-            niveau={1}
-            boven="hub market · voor gasten"
-            titel={<>neem het <i>mee.</i></>}
-            tekst="Dezelfde geur als bij je aankomst. Hetzelfde linnen. Voor thuis, wanneer je weer even daar wil zijn."
-          />
-        </div>
-      </section>
+    <div className="wrap">
+      <ZHeld
+        nr="01 · hub market · voor gasten"
+        titel={<>neem het<br />mee.</>}
+        lead="Dezelfde geur als bij je aankomst. Hetzelfde linnen. Voor thuis, wanneer je weer even daar wil zijn."
+        acties={<a href="#wachtlijst" className="z-knop">als eerste weten</a>}
+      />
 
       {live.length ? (
-        <Sectie>
-          <div className="raster-4">
+        <ZSectie nr="02 · nu te koop" titel="uit de huizen.">
+          <div className="z-tegels">
             {live.map((p) => (
-              <a key={p.id} href={p.url ?? '#'} target="_blank" rel="noopener noreferrer" className="kaart" style={{ padding: 0, background: 'transparent', border: 'none', gap: 10 }}>
-                <div className="foto" style={{ position: 'relative', overflow: 'hidden' }}>
-                  {p.foto ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={p.foto} alt={p.naam} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-                  ) : null}
-                </div>
-                <h2 className="kaart-titel" style={{ fontSize: 22 }}>{p.naam}</h2>
-                {p.tekst ? <p className="klein" style={{ margin: 0 }}>{p.tekst}</p> : null}
-                <span className="klein">bij {p.hub_partners?.naam ?? 'de partner'}</span>
-              </a>
+              <Tegel
+                key={p.id}
+                naam={p.naam}
+                tekst={p.tekst}
+                voet={`bij ${p.hub_partners?.naam ?? 'de partner'}`}
+                extern={p.url ?? undefined}
+                // eslint-disable-next-line @next/next/no-img-element
+                foto={p.foto ? <img src={p.foto} alt={p.naam} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} /> : null}
+              />
             ))}
           </div>
-        </Sectie>
+        </ZSectie>
       ) : null}
 
-      <Sectie toon="zacht">
-        <div className="raster-4">
+      <ZSectie nr={live.length ? '03 · binnenkort' : '02 · binnenkort'} titel="wat er komt.">
+        <div className="z-tegels">
           {producten.map((p) => (
-            <div key={p.sleutel} className="kaart" style={{ padding: 0, background: 'transparent', border: 'none', gap: 10 }}>
-              <div className="foto" style={{ position: 'relative', overflow: 'hidden' }}>
-                <Image src={p.foto} alt="" fill sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" style={{ objectFit: 'cover' }} />
-              </div>
-              <h2 className="kaart-titel" style={{ fontSize: 22 }}>{p.naam}</h2>
-              <p className="klein" style={{ margin: 0 }}>{p.tekst}</p>
-              <span className="klein">binnenkort</span>
-            </div>
+            <Tegel
+              key={p.naam}
+              naam={p.naam}
+              tekst={p.tekst}
+              voet="binnenkort"
+              foto={<Image src={p.foto} alt="" fill sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" style={{ objectFit: 'cover' }} />}
+            />
           ))}
         </div>
-      </Sectie>
+      </ZSectie>
 
-      <Sectie>
-        <div className="rij">
-          <div className="smal">
-            <Kop
-              boven="als eerste weten"
-              titel={<>de market <i>opent binnenkort.</i></>}
-              tekst="Laat je e-mail achter. Je hoort het als eerste, met een voordeel voor wie al bij ons verbleef."
-            />
-          </div>
-          <div className="breed">
-            <ContactForm
-              merk="hub"
-              soort="market-wachtlijst"
-              knop="hou me op de hoogte"
-              bedankt="bedankt. je hoort het als eerste."
-              velden={[
-                { naam: 'naam', label: 'naam', verplicht: true },
-                { naam: 'email', label: 'e-mail', type: 'email', verplicht: true },
-                { naam: 'interesse', label: 'waar kijk je het meest naar uit', type: 'select', opties: ['de geur', 'het linnen', 'de essentials', 'alles'] },
-              ]}
-            />
-          </div>
-        </div>
-      </Sectie>
-    </>
+      <ZSectieTwee
+        id="wachtlijst"
+        nr={live.length ? '04 · als eerste weten' : '03 · als eerste weten'}
+        titel="de market opent binnenkort."
+        tekst="Laat je e-mail achter. Je hoort het als eerste, met een voordeel voor wie al bij ons verbleef."
+      >
+        <ContactForm
+          merk="hub"
+          soort="market-wachtlijst"
+          knop="hou me op de hoogte"
+          bedankt="bedankt. je hoort het als eerste."
+          velden={[
+            { naam: 'naam', label: 'naam', verplicht: true },
+            { naam: 'email', label: 'e-mail', type: 'email', verplicht: true },
+            { naam: 'interesse', label: 'waar kijk je het meest naar uit', type: 'select', opties: ['de geur', 'het linnen', 'de essentials', 'alles'] },
+          ]}
+        />
+      </ZSectieTwee>
+    </div>
   );
 }
