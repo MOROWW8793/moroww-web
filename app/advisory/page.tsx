@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Sectie } from '@/components/merk/Shell';
 import { Logo } from '@/components/merk/Logo';
 import { site } from '@/lib/merk/site';
+import { PlanWisselaar } from '@/components/advisory/PlanWisselaar';
 
 // moroww advisory · inlet editorial-stijl (nov 2026).
 // Volgt de typografisch-rustige richting van usehallmark.com/made/ribbon,
@@ -60,13 +61,6 @@ const werkwijze: [string, string][] = [
   ['we kijken samen', 'Waar nodig komen we langs en bekijken we de documenten die er al zijn.'],
   ['je krijgt een plan', 'Wat er moet gebeuren, wie het doet, wanneer, en wat het kost. Vooraf, zwart op wit.'],
   ['jij of wij', 'Je voert het plan zelf uit, of wij regelen het voor je.'],
-];
-
-const planStappen: [string, string?][] = [
-  ['regels voor jouw adres nagaan', 'deze week'],
-  ['registratie bij de bevoegde overheid'],
-  ['brandveiligheidsattest laten opmaken'],
-  ['verzekering voor verhuur aanpassen'],
 ];
 
 const vragenFaq: [string, string][] = [
@@ -175,30 +169,17 @@ export default function Advisory() {
         </div>
       </Sectie>
 
-      {/* PLAN-VOORBEELD · concrete illustratie van hoe een plan eruitziet.
-          Zelfde genummerde opmaak als de voorbeelden, geen 'card'-achtige
-          box meer; de dunne regels dragen de structuur. */}
+      {/* PLAN-VOORBEELD · interactieve wisselaar met drie scenarios.
+          Bezoeker kiest mag-ik-verhuren, opstart of eigen-boekingssite
+          en ziet direct het plan voor zijn vraag. */}
       <Sectie toon="zacht">
         <div data-mw-reveal>
           <span className="adv-kopblok-boven">een plan · voorbeeld</span>
           <h2 className="adv-sectie-titel" data-mw-lines>
-            <span><span>mag ik mijn huis aan zee</span></span>
-            <span><span>als vakantiewoning verhuren?</span></span>
+            <span><span>kies een vraag,</span></span>
+            <span><span>zie het plan.</span></span>
           </h2>
-          <ol className="adv-genummerd" aria-label="Stappen in het voorbeeld-plan" data-mw-stagger>
-            {planStappen.map(([stap, badge], i) => (
-              <li key={stap}>
-                <span className="adv-nr">{String(i + 1).padStart(2, '0')}</span>
-                <div>
-                  <h3 className="adv-vraag" style={{ fontSize: 'clamp(1.25rem, 2vw, 1.625rem)' }}>{stap}</h3>
-                  {badge && <p className="adv-genummerd-tekst" style={{ color: 'var(--accent)' }}>{badge}</p>}
-                </div>
-              </li>
-            ))}
-          </ol>
-          <p className="adv-prose" style={{ marginTop: 40 }}>
-            <em>wie</em> jij, een partner of wij. <em>wanneer</em> per stap een datum. <em>wat het kost</em> vooraf, per stap.
-          </p>
+          <PlanWisselaar />
         </div>
       </Sectie>
 

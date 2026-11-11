@@ -867,3 +867,59 @@
 @media (prefers-reduced-motion: reduce) {
   .merk-advisory .adv-faq summary::after { transition: none; }
 }
+
+/* ── advisory · plan-wisselaar (interactief) ────────────────────────── */
+
+.merk-advisory .adv-planwissel-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin-bottom: 40px;
+}
+.merk-advisory .adv-planwissel-tab {
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 10px 18px;
+  border: 1px solid rgba(26, 26, 26, 0.22);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: 999px;
+  transition: background 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+.merk-advisory .adv-planwissel-tab:hover {
+  border-color: var(--ink);
+}
+.merk-advisory .adv-planwissel-tab:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.merk-advisory .adv-planwissel-tab-actief {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+.merk-advisory .adv-planwissel-vraag {
+  font-family: var(--font-titel);
+  font-weight: 300;
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  line-height: 1.14;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 0 32px;
+  max-width: 28ch;
+  overflow-wrap: break-word;
+}
+/* Paneel fade-in bij wissel. React remount via key={scenario.id} laat
+   opacity reset lopen. */
+.merk-advisory .adv-planwissel-paneel {
+  animation: adv-planwissel-fade 450ms cubic-bezier(.2,.7,.2,1);
+}
+@keyframes adv-planwissel-fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .merk-advisory .adv-planwissel-paneel { animation: none; }
+  .merk-advisory .adv-planwissel-tab { transition: none; }
+}
