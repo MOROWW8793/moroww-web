@@ -21,6 +21,8 @@ export interface Woning {
   naam: string
   collectie: 'the shore' | 'the fields'
   locatie: string
+  // Filterwaarde voor 'waar' in de zoekbalk; locatie is vrije weergavetekst.
+  stad: string
   // Optioneel: als niet gezet of 0, rendert de UI het veld helemaal niet
   // in plaats van "€0" of "0 slaapkamers" te tonen.
   prijs?: number
@@ -88,6 +90,7 @@ const _woningenRaw: Woning[] = [
     naam: 'Nosso Logies',
     collectie: 'the shore',
     locatie: 'Heist-aan-Zee, Knokke',
+    stad: 'Knokke',
     prijs: 230,
     slaapkamers: 2,
     badkamers: 2,
@@ -257,6 +260,7 @@ const _woningenRaw: Woning[] = [
     naam: 'Chalet Anna-Helena',
     collectie: 'the fields',
     locatie: 'Ursel, Meetjesland',
+    stad: 'Ursel',
     prijs: 220,
     slaapkamers: 2,
     badkamers: 1,
@@ -424,6 +428,7 @@ const _woningenRaw: Woning[] = [
     naam: 'The Sixteenth',
     collectie: 'the shore',
     locatie: 'Oostende',
+    stad: 'Oostende',
     prijs: 210,
     slaapkamers: 2,
     badkamers: 2,
@@ -596,6 +601,7 @@ const _woningenRaw: Woning[] = [
     naam: 'The Cozy Relax Home',
     collectie: 'the fields',
     locatie: 'Beernem',
+    stad: 'Beernem',
     prijs: 600,
     slaapkamers: 4,
     badkamers: 2,
@@ -763,6 +769,7 @@ const _woningenRaw: Woning[] = [
     naam: 'Sophora',
     collectie: 'the fields',
     locatie: 'Elst (Brakel), Vlaamse Ardennen',
+    stad: 'Brakel',
     prijs: 800,
     slaapkamers: 9,
     badkamers: 9,
@@ -921,6 +928,7 @@ const _woningenRaw: Woning[] = [
     naam: 'The Eighth',
     collectie: 'the shore',
     locatie: 'Nieuwpoort-Bad',
+    stad: 'Nieuwpoort',
     prijs: 270,
     slaapkamers: 3,
     badkamers: 1,
@@ -1043,6 +1051,7 @@ const _woningenRaw: Woning[] = [
     naam: 'Penthouse V8B',
     collectie: 'the shore',
     locatie: 'Oostende',
+    stad: 'Oostende',
     prijs: 300,
     slaapkamers: 2,
     badkamers: 2,
@@ -1192,6 +1201,7 @@ const _woningenRaw: Woning[] = [
     naam: 'House 1783-11',
     collectie: 'the shore',
     locatie: 'Heist-aan-Zee, Knokke',
+    stad: 'Knokke',
     slaapkamers: 3,
     badkamers: 2,
     maxGasten: 6,

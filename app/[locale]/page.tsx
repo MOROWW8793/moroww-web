@@ -75,7 +75,7 @@ export default async function HomePage({
       <HomeHero
         slides={HERO_SLIDES}
         locale={locale}
-        maxGasten={Math.max(2, ...liveWoningen().map((w) => w.maxGasten ?? 0))}
+        maxGasten={Math.max(2, ...liveWoningen().map((w) => w.maxGasten ?? 0))} steden={Array.from(new Set(liveWoningen().map((w) => w.stad))).sort()}
       />
 
       {/* DE COLLECTIE — raster van live panden direct onder de H1, zelfde

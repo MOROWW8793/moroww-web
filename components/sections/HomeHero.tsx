@@ -37,7 +37,7 @@ const VELD =
   'w-full bg-transparent border-0 rounded-none p-0 pt-0.5 text-base text-white appearance-none cursor-pointer focus-visible:outline-none [&>option]:text-moroww-dark'
 const LABEL = 'text-audit text-white/65'
 
-export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; locale: string; maxGasten: number }) {
+export function HomeHero({ slides, locale, maxGasten, steden }: { slides: HeroSlide[]; locale: string; maxGasten: number; steden: string[] }) {
   const c = locale === 'en' ? COPY.en : COPY.nl
   const router = useRouter()
   const vandaag = useMemo(() => new Date().toISOString().slice(0, 10), [])
@@ -51,7 +51,7 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
   const [focusBinnen, setFocusBinnen] = useState(false)
   const [rustig, setRustig] = useState(false)
 
-  const [streek, setStreek] = useState<'alles' | 'the shore' | 'the fields'>('alles')
+  const [stad, setStad] = useState('alles')
   const [aankomst, setAankomst] = useState('')
   const [vertrek, setVertrek] = useState('')
   const [gasten, setGasten] = useState(2)
@@ -76,7 +76,7 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
     }
     setFout(false)
     const query: Record<string, string> = { aankomst, vertrek, gasten: String(gasten) }
-    if (streek !== 'alles') query.streek = streek
+    if (stad !== 'alles') query.stad = stad
     router.push({ pathname: '/boeken', query })
   }
 
@@ -138,7 +138,7 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
       <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/45 via-black/10 to-black/55" />
 
       {/* KOP + ZOEKBALK */}
-      <div className="relative z-10 h-full flex flex-col justify-end px-6 md:px-12 pb-mw-6 md:pb-mw-8">
+      <div className="relative z-10 h-full flex flex-col justify-end px-6 md:px-12 pb-mw-4 md:pb-mw-5">
         <div className="mx-auto max-w-7xl w-full">
           <h1 className="text-[clamp(2.4rem,5vw,4.75rem)] leading-[1.02] tracking-[-0.02em] font-semibold text-white max-w-[18ch] drop-shadow-md">{c.kop}</h1>
 
@@ -148,10 +148,11 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
           >
             <label className="col-span-2 lg:col-span-1 flex flex-col px-mw-5 py-mw-2 rounded-full hover:bg-white/10 focus-within:bg-white/15 focus-within:ring-1 focus-within:ring-white/40 transition-colors motion-reduce:transition-none">
               <span className={LABEL}>{c.waar}</span>
-              <select value={streek} onChange={(e) => setStreek(e.target.value as typeof streek)} className={VELD}>
+              <select value={stad} onChange={(e) => setStad(e.target.value)} className={VELD}>
                 <option value="alles">{c.alles}</option>
-                <option value="the shore">the shore · {locale === 'en' ? 'the coast' : 'de kust'}</option>
-                <option value="the fields">the fields · {locale === 'en' ? 'the countryside' : 'het platteland'}</option>
+                {steden.map((s) => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
               </select>
             </label>
             <label className="flex flex-col px-mw-5 py-mw-2 rounded-full hover:bg-white/10 focus-within:bg-white/15 focus-within:ring-1 focus-within:ring-white/40 transition-colors motion-reduce:transition-none relative lg:before:absolute lg:before:left-0 lg:before:top-1/4 lg:before:h-1/2 lg:before:w-px lg:before:bg-white/25">
@@ -198,7 +199,7 @@ export function HomeHero({ slides, locale, maxGasten }: { slides: HeroSlide[]; l
           {fout && <p className="mt-2 text-body text-white" role="alert">{c.fout}</p>}
 
           {/* Bijschrift + bolletjes */}
-          <div className="mt-mw-4 flex items-center justify-end sm:justify-between gap-mw-4 text-white/85">
+          <div className="mt-mw-6 md:mt-mw-8 flex items-center justify-end sm:justify-between gap-mw-4 text-white/85">
             <p className="hidden sm:block text-audit" aria-live="polite">
               {huidig.naam}, {huidig.plaats}
             </p>

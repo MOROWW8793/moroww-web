@@ -61,9 +61,9 @@ export default async function BoekenPagina({
   const { locale } = await params
   const sp = await searchParams
   const een = (k: string) => (typeof sp[k] === 'string' ? (sp[k] as string) : undefined)
-  const streekIn = een('streek')
+  const stadIn = een('stad')
   const begin: ZoekBegin = {
-    streek: streekIn === 'the shore' || streekIn === 'the fields' ? streekIn : undefined,
+    stad: stadIn && liveWoningen().some((w) => w.stad === stadIn) ? stadIn : undefined,
     aankomst: een('aankomst') && ISO.test(een('aankomst')!) ? een('aankomst') : undefined,
     vertrek: een('vertrek') && ISO.test(een('vertrek')!) ? een('vertrek') : undefined,
     gasten: een('gasten') && /^\d{1,2}$/.test(een('gasten')!) ? Number(een('gasten')) : undefined,
@@ -77,6 +77,7 @@ export default async function BoekenPagina({
       id: w.id,
       naam: w.naam,
       locatie: w.locatie,
+      stad: w.stad,
       collectie: w.collectie,
       maxGasten: w.maxGasten as number,
       prijs: w.prijs,

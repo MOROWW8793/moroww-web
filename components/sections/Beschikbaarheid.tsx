@@ -15,6 +15,7 @@ export type ZoekWoning = {
   id: string
   naam: string
   locatie: string
+  stad: string
   collectie: 'the shore' | 'the fields'
   maxGasten: number
   prijs?: number
@@ -68,14 +69,15 @@ type Uitslag = { woning: ZoekWoning; status: 'vrij' | 'onbekend' }
 const VELD = 'w-full bg-transparent border-0 border-b border-moroww-dark/25 rounded-none py-3 text-base text-moroww-dark focus:outline-none focus:border-moroww-dark transition-colors'
 const LABEL = 'text-[0.875rem] text-moroww-ink-2'
 
-export type ZoekBegin = { streek?: 'alles' | 'the shore' | 'the fields'; aankomst?: string; vertrek?: string; gasten?: number }
+export type ZoekBegin = { stad?: string; aankomst?: string; vertrek?: string; gasten?: number }
 
 export function Beschikbaarheid({ woningen, locale, begin }: { woningen: ZoekWoning[]; locale: string; begin?: ZoekBegin }) {
   const c = locale === 'nl' ? COPY.nl : COPY.en
   const vandaag = useMemo(() => new Date().toISOString().slice(0, 10), [])
   const maxGasten = Math.max(2, ...woningen.map((w) => w.maxGasten))
 
-  const [streek, setStreek] = useState<'alles' | 'the shore' | 'the fields'>(begin?.streek ?? 'alles')
+  const [stad, setStad] = useState(begin?.stad ?? 'alles')
+  const steden = Array.from(new Set(woningen.map((w) => w.stad))).sort()
   const [aankomst, setAankomst] = useState(begin?.aankomst ?? '')
   const [vertrek, setVertrek] = useState(begin?.vertrek ?? '')
   const [gasten, setGasten] = useState(begin?.gasten ?? 2)
@@ -107,7 +109,7 @@ export function Beschikbaarheid({ woningen, locale, begin }: { woningen: ZoekWon
     }
     setBezig(true)
     const kandidaten = woningen.filter(
-      (w) => w.boekbaar && w.maxGasten >= gasten && (streek === 'alles' || w.collectie === streek),
+      (w) => w.boekbaar && w.maxGasten >= gasten && (stad === 'alles' || w.stad === stad),
     )
     const lijst: Uitslag[] = []
     await Promise.all(
@@ -142,10 +144,11 @@ export function Beschikbaarheid({ woningen, locale, begin }: { woningen: ZoekWon
       <form onSubmit={zoek} className="grid grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_0.7fr_auto] gap-x-mw-5 gap-y-mw-4 items-end">
         <label className="col-span-2 lg:col-span-1 flex flex-col gap-1">
           <span className={LABEL}>{c.streek}</span>
-          <select value={streek} onChange={(e) => setStreek(e.target.value as typeof streek)} className={VELD}>
+          <select value={stad} onChange={(e) => setStad(e.target.value)} className={VELD}>
             <option value="alles">{c.alles}</option>
-            <option value="the shore">the shore</option>
-            <option value="the fields">the fields</option>
+            {steden.map((s) => (
+              <option key={s} value={s}>{s}</option>
+            ))}
           </select>
         </label>
         <label className="flex flex-col gap-1">
