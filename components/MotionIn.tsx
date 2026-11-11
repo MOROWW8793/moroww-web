@@ -7,6 +7,8 @@ import { usePathname } from 'next/navigation'
  * Twee micro-motion lagen voor de hele site:
  *
  *   data-mw-reveal              → krijgt .is-in bij intersection (één keer)
+ *   data-mw-lines               → zelfde trigger; CSS laat per span-regel rijzen
+ *   data-mw-stagger             → zelfde trigger; CSS stagger direct children
  *   data-mw-parallax            → translateY op basis van positie in viewport
  *   data-mw-parallax-strength   → optioneel, default 0.15
  *
@@ -27,7 +29,9 @@ export function MotionIn() {
     if (typeof window === 'undefined') return
 
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const revealEls = Array.from(document.querySelectorAll<HTMLElement>('[data-mw-reveal]'))
+    const revealEls = Array.from(
+      document.querySelectorAll<HTMLElement>('[data-mw-reveal], [data-mw-lines], [data-mw-stagger]'),
+    )
     const parallaxEls = Array.from(document.querySelectorAll<HTMLElement>('[data-mw-parallax]'))
 
     if (reduce) {

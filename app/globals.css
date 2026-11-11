@@ -376,8 +376,51 @@ html.mw-js [data-mw-reveal].is-in {
   opacity: 1;
   transform: none;
 }
+
+/* data-mw-lines: elke directe <span> is een mask (overflow hidden, block),
+   elke binnenste <span> is de regel die van onder opstijgt. Stagger per
+   nth-child zodat de regel-beat gelezen kan worden. */
+html.mw-js [data-mw-lines] > span {
+  display: block;
+  overflow: hidden;
+}
+html.mw-js [data-mw-lines] > span > span {
+  display: inline-block;
+  transform: translateY(105%);
+  transition: transform 1000ms cubic-bezier(.2,.7,.2,1);
+  will-change: transform;
+}
+html.mw-js [data-mw-lines].is-in > span > span {
+  transform: translateY(0);
+}
+html.mw-js [data-mw-lines].is-in > span:nth-child(2) > span { transition-delay:  90ms; }
+html.mw-js [data-mw-lines].is-in > span:nth-child(3) > span { transition-delay: 180ms; }
+html.mw-js [data-mw-lines].is-in > span:nth-child(4) > span { transition-delay: 270ms; }
+
+/* data-mw-stagger: direct children rijzen één voor één; eerste zonder delay. */
+html.mw-js [data-mw-stagger] > * {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 650ms cubic-bezier(.2,.7,.2,1),
+    transform 650ms cubic-bezier(.2,.7,.2,1);
+  will-change: opacity, transform;
+}
+html.mw-js [data-mw-stagger].is-in > * {
+  opacity: 1;
+  transform: none;
+}
+html.mw-js [data-mw-stagger].is-in > :nth-child(2) { transition-delay:  80ms; }
+html.mw-js [data-mw-stagger].is-in > :nth-child(3) { transition-delay: 160ms; }
+html.mw-js [data-mw-stagger].is-in > :nth-child(4) { transition-delay: 240ms; }
+html.mw-js [data-mw-stagger].is-in > :nth-child(5) { transition-delay: 320ms; }
+html.mw-js [data-mw-stagger].is-in > :nth-child(6) { transition-delay: 400ms; }
+html.mw-js [data-mw-stagger].is-in > :nth-child(7) { transition-delay: 480ms; }
+
 @media (prefers-reduced-motion: reduce) {
-  html.mw-js [data-mw-reveal] {
+  html.mw-js [data-mw-reveal],
+  html.mw-js [data-mw-stagger] > *,
+  html.mw-js [data-mw-lines] > span > span {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
