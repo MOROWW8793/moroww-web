@@ -326,3 +326,14 @@ html[data-held-onder] .merk .z .kop-nav a:not(.btn):hover { background: rgba(255
 @media (max-width: 900px) {
   .merk .z .kop-nav { border-radius: 24px; }
 }
+
+/* vervaagstrook achter de kop: inhoud vervaagt onder het logo, zonder kader */
+.merk .z .kop::before {
+  content: ''; position: absolute; z-index: -1; pointer-events: none;
+  top: -12px; left: 50%; width: 100vw; height: calc(100% + 44px); transform: translateX(-50%);
+  background: color-mix(in srgb, var(--bg) 55%, transparent);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 45%, transparent); mask-image: linear-gradient(to bottom, #000 45%, transparent);
+  transition: opacity .3s;
+}
+html[data-held-onder] .merk .z .kop::before { opacity: 0; }

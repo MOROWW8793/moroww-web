@@ -67,7 +67,13 @@ export function Navbar() {
   // hero donker glas en wit; daarbuiten licht glas.
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-5 md:pt-4 pointer-events-none">
-      <nav className="relative mx-auto flex h-14 max-w-7xl items-center justify-between">
+      {/* Vervaagstrook: zodra er inhoud onder de kop schuift, vervaagt die
+          naar boven toe, zodat het logo vrij blijft staan zonder eigen kader. */}
+      <div
+        aria-hidden
+        className={`absolute inset-x-0 top-0 h-24 md:h-28 bg-white/40 backdrop-blur-md [mask-image:linear-gradient(to_bottom,black_45%,transparent)] transition-opacity duration-300 motion-reduce:transition-none ${scrolled ? 'opacity-100' : 'opacity-0'}`}
+      />
+      <nav className="relative z-10 mx-auto flex h-14 max-w-7xl items-center justify-between">
         <Link
           href="/"
           aria-label="moroww"
