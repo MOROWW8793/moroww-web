@@ -10,6 +10,7 @@ const vragen = [
   { titel: 'de cijfers kloppen niet.', tekst: 'Wat een nacht je echt kost, hoe je prijzen zet en wat je huis kan opbrengen. We kijken je prijzen na en zeggen wat beter kan.' },
   { titel: 'mijn listing valt niet op.', tekst: 'Foto\'s die tonen hoe het huis echt voelt, en teksten die gasten in een paar zinnen vertellen waarom ze hier willen zijn.' },
   { titel: 'ik beheer huizen voor anderen.', tekst: 'Voor beheerders is er moroww hub: vakmensen, het label en de academy voor al je huizen. Met een concrete vraag kun je ook hier terecht.', href: '/hub/property-managers' },
+  { titel: 'ik wil het beheer uit handen geven.', tekst: 'Gasten, prijzen, schoonmaak en onderhoud: we kunnen het volledige beheer van je huis overnemen. Wat dat inhoudt en kost, bespreken we in een eerste gesprek.', href: '/advisory/contact' },
   { titel: 'iets anders.', tekst: 'Staat je vraag er niet bij? Vertel ze ons. Kunnen we niet helpen, dan zeggen we dat meteen, en wie wel kan.', href: '/advisory/contact' },
 ];
 
