@@ -203,5 +203,7 @@ export function isDarkHeroPath(pathname: string): boolean {
   if (pathname === '/' || pathname === '') return true
   // /collectie heeft net als de pandpagina's een slideshow onder de navbar.
   if (/\/(collectie|collection)\/?$/.test(pathname)) return true
+  // Streekpagina's en de eigenaarspagina's openen met een foto over de volle breedte.
+  if (/^\/(the-shore|the-fields|het-label|voor-eigenaars)\/?$/.test(pathname.replace(/^\/en(?=\/)/, ''))) return true
   return /\/(collectie|collection)\/[^/]+(\/(boeken|book|bevestigd|confirmed))?\/?$/.test(pathname)
 }

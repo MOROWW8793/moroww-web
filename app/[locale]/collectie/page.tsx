@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 import { CollectieOverzicht } from "@/components/collectie/CollectieOverzicht";
 import { CollectieHero } from "@/components/collectie/CollectieHero";
+import { StreekNav } from "@/components/collectie/StreekNav";
 import { SneakPeek } from "@/components/sections/SneakPeek";
 import { Register } from "@/components/Register";
 import { siteMetadata } from "@/lib/seo/siteMetadata";
@@ -39,7 +39,6 @@ export default async function CollectiePage({
   const woningen = liveWoningen()
   const aantal = countWord(woningen.length, loc, false)
   const slides = sortForCollectie(woningen).map((w) => ({ id: w.id, src: w.heroFoto, naam: w.naam, plaats: w.locatie }))
-  const pil = 'inline-flex items-center min-h-[44px] rounded-full px-mw-4 text-[0.9375rem] transition-colors'
   return (
     <Register kant="gast">
       {/* ── HERO ── */}
@@ -60,15 +59,7 @@ export default async function CollectiePage({
             ? `We bouwen de plek waar je overal ter wereld een verblijf vindt dat klopt. We beginnen in België: ${aantal} karaktervolle huizen, elk persoonlijk bezocht.`
             : `We are building the place where you find a stay that is right, anywhere in the world. We start in Belgium: ${aantal} homes with character, each visited in person.`}
         </p>
-        <nav
-          aria-label={isNl ? 'streken' : 'regions'}
-          className="mt-mw-5 inline-flex max-w-full flex-wrap items-center gap-1 rounded-[28px] md:rounded-full p-1.5 bg-white/[0.12] backdrop-blur-xl backdrop-saturate-150 border border-white/25 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.7)]"
-        >
-          <span className={`${pil} bg-white text-moroww-dark`} aria-current="page">{isNl ? 'alles' : 'all'}</span>
-          <Link href="/the-shore" className={`${pil} text-white hover:bg-white/15`}>the shore</Link>
-          <Link href="/the-fields" className={`${pil} text-white hover:bg-white/15`}>the fields</Link>
-          <Link href="/boeken" className={`${pil} bg-moroww-orange text-moroww-dark font-semibold hover:bg-white`}>{isNl ? 'zoek op data' : 'search by date'}</Link>
-        </nav>
+        <StreekNav actief="alles" isNl={isNl} />
       </CollectieHero>
 
       {/* ── OVERZICHT ── */}

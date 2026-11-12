@@ -242,43 +242,61 @@
 .merk .z :is(.plat-paneel, .vraag, .kaart, .plat-leeg, .plat-ok, .hub-tabel) { border-radius: var(--rond); overflow: hidden; }
 .merk .z :is(.hub-chips span, .hub-knopklein) { border-radius: 999px; }
 
-/* fotohero: afgeronde plaat, kop in wit, voorbeeldobject als licht glas */
-.merk .z .z-held-foto { padding: 24px 0 72px; }
+/* fotohero: beeld over de volle breedte, tot onder de kop of de navbar.
+   Tekst linksonder, voorbeeldobject rechts als licht glas, de dia-streepjes
+   onder de knoppen. */
+.merk .z { overflow-x: clip; }
+.merk .z .z-held-foto { display: block; padding: 0; margin: 0 calc(50% - 50vw) 72px; }
+.merk .z .kop ~ main .z-held-foto:first-child,
+.merk .z .kop ~ main > .wrap > .z-held-foto:first-child { margin-top: -80px; }
 .z-held-paneel {
-  position: relative; overflow: hidden; border-radius: 32px; background: #1A1A1A; color: #fff;
-  min-height: min(84svh, 820px); padding: 56px; display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-end;
+  position: relative; overflow: hidden; background: #1A1A1A; color: #fff; width: 100%;
+  min-height: 92svh; display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-end;
+  padding: 150px max(24px, calc((100vw - 1280px) / 2)) 48px;
 }
 .z-held-beeld { position: absolute; inset: 0; opacity: 0; transition: opacity 1.4s ease-out; }
 .z-held-beeld[data-aan='true'] { opacity: 1; }
 .z-held-beeld img { transform: scale(1); transition: transform 8s ease-out; }
 .z-held-beeld img[data-zoom='true'] { transform: scale(1.06); }
-.z-held-waas { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, rgba(0,0,0,.66), rgba(0,0,0,.1) 55%, rgba(0,0,0,.3)); }
-.z-held-paneel .z-held-tekst { position: relative; flex: 999 1 520px; }
+.z-held-waas { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, rgba(0,0,0,.62), rgba(0,0,0,.08) 50%, rgba(0,0,0,.35)); }
+.z-held-paneel .z-held-tekst { position: relative; flex: 999 1 520px; gap: 24px; }
 .z-held-paneel .z-nr { color: rgba(255,255,255,.75); }
-.z-held-paneel .z-h1 { color: #fff; text-shadow: 0 2px 24px rgba(0,0,0,.25); }
-.z-held-paneel .z-lead { color: rgba(255,255,255,.9); }
+.z-held-paneel .z-h1 { color: #fff; font-size: clamp(2.8rem, 6vw, 5.25rem); line-height: 0.98; max-width: 14ch; text-shadow: 0 2px 24px rgba(0,0,0,.25); }
+.z-held-paneel .z-lead { color: rgba(255,255,255,.9); max-width: 560px; }
 .merk .z .z-held-paneel .z-link, .merk .z .z-held-paneel a.z-link { color: #fff; }
 .merk .z .z-held-paneel .z-object {
-  position: relative; flex: 1 1 360px; max-width: 460px; color: var(--ink);
-  background: var(--glas, rgba(255,255,255,.72)); border: 1px solid rgba(255,255,255,.7);
+  position: relative; flex: 1 1 340px; max-width: 420px; color: var(--ink);
+  background: rgba(255,255,255,.86); border: 1px solid rgba(255,255,255,.8);
   -webkit-backdrop-filter: saturate(150%) blur(20px); backdrop-filter: saturate(150%) blur(20px);
-  box-shadow: 0 30px 80px -30px rgba(0,0,0,.6);
+  box-shadow: 0 30px 80px -30px rgba(0,0,0,.55);
 }
-.merk .z .z-held-paneel .z-object :is(.z-object-voet, .z-object-rij) { border-color: rgba(26,26,26,.1); }
+.merk .z .z-held-paneel .z-object :is(.z-object-voet, .z-object-rij, .z-object-kop) { border-color: rgba(26,26,26,.08); }
 .merk .z .z-held-paneel .z-object .z-nr { color: var(--muted); }
-.z-held-dias { position: absolute; right: 40px; top: 32px; display: flex; align-items: center; gap: 4px; }
-.z-held-dias button { background: none; border: 0; padding: 8px 4px; cursor: pointer; color: #fff; }
-.z-held-dias button span { display: block; width: 28px; height: 3px; background: #fff; opacity: .45; transform: scaleX(.5); transform-origin: left; transition: transform .3s, opacity .3s; }
+.z-held-dias { display: flex; align-items: center; gap: 2px; margin-top: 8px; }
+.z-held-dias button { background: none; border: 0; padding: 8px 3px; cursor: pointer; color: #fff; }
+.z-held-dias button span { display: block; width: 26px; height: 3px; background: #fff; opacity: .45; transform: scaleX(.5); transform-origin: left; transition: transform .3s, opacity .3s; }
 .z-held-dias button[aria-current='true'] span { opacity: 1; transform: scaleX(1); }
-.z-held-dias .z-held-pauze { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin-left: 6px; border-radius: 999px; background: rgba(255,255,255,.14); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.3); }
+.z-held-dias .z-held-pauze { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; margin-left: 8px; padding: 0; border-radius: 999px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.3); }
 @media (max-width: 640px) {
-  .merk .z .z-held-foto { padding: 12px 0 48px; }
-  .z-held-paneel { padding: 88px 22px 24px; border-radius: 24px; gap: 28px; }
-  .z-held-dias { right: 16px; top: 16px; }
+  .merk .z .z-held-foto { margin-bottom: 48px; }
+  .z-held-paneel { padding: 120px 20px 28px; gap: 28px; min-height: 88svh; }
+  /* advisory en hub: de kop met zijn links loopt op smalle schermen over meer regels */
+  .merk .z .kop ~ main .z-held-paneel { padding-top: 220px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .z-held-beeld, .z-held-beeld img { transition: none; }
 }
+
+/* zolang de hero onder de kop ligt: logo en links wit, donker glas */
+html[data-held-onder] .merk .z .kop-logo { filter: brightness(0) invert(1); }
+html[data-held-onder] .merk .z .kop-nav {
+  background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.25);
+  box-shadow: 0 20px 50px -25px rgba(0,0,0,.6);
+}
+html[data-held-onder] .merk .z .kop-nav a:not(.btn) { color: #fff; }
+html[data-held-onder] .merk .z .kop-nav a:not(.btn):hover { background: rgba(255,255,255,.15); }
+.merk .z .kop { z-index: 50; }
+.merk .z .kop-logo, .merk .z .kop-nav, .merk .z .kop-nav a { transition: filter .2s, background-color .2s, color .2s, border-color .2s; }
 
 /* formulieren en het label-object als witte kaart */
 .merk .z .z-breed:has(.form), .merk .z .z-held > .z-breed:has(.form) {
