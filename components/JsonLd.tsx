@@ -7,11 +7,15 @@ export function OrganizationJsonLd() {
           '@context': 'https://schema.org',
           '@type': ['Organization', 'LocalBusiness'],
           name: 'moroww',
+          legalName: 'MOROWW BV',
+          vatID: 'BE1030667956',
+          telephone: '+32 456 91 20 24',
+          email: 'info@moroww.com',
           alternateName: ['morrow', 'moroww vakantiewoningen'],
           url: 'https://www.moroww.com',
-          logo: 'https://www.moroww.com/images/moroww-logo.png',
+          logo: 'https://www.moroww.com/images/logo.png',
           image: 'https://www.moroww.com/images/og-default.jpg',
-          description: 'moroww is een gecertificeerd kwaliteitslabel voor premium vakantiewoningen in België. Elke woning wordt persoonlijk bezocht voor opname.',
+          description: 'moroww is een kwaliteitslabel voor vakantiewoningen in België. Elk huis in de collectie wordt persoonlijk bezocht, elk jaar opnieuw, en is rechtstreeks te boeken op moroww.com. Voor eigenaars: het label, moroww advisory, moroww hub en volledig beheer.',
           '@id': 'https://www.moroww.com',
           contactPoint: {
             '@type': 'ContactPoint',
@@ -22,7 +26,8 @@ export function OrganizationJsonLd() {
           address: {
             '@type': 'PostalAddress',
             addressCountry: 'BE',
-            addressRegion: 'Oost-Vlaanderen',
+            addressRegion: 'West-Vlaanderen',
+            addressLocality: 'Waregem',
           },
           sameAs: [
             'https://www.instagram.com/moroww.com_/',
@@ -116,6 +121,37 @@ export function VacationRentalJsonLd({
             addressCountry: 'BE',
           },
           ...(amenityFeatures.length > 0 ? { amenityFeature: amenityFeatures } : {}),
+        }),
+      }}
+    />
+  )
+}
+
+/** Service-schema voor de eigenaarsdiensten (label, advisory, beheer). */
+export function ServiceJsonLd({
+  naam,
+  beschrijving,
+  url,
+  soort,
+}: {
+  naam: string
+  beschrijving: string
+  url: string
+  soort: string
+}) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: naam,
+          description: beschrijving,
+          url,
+          serviceType: soort,
+          areaServed: { '@type': 'Country', name: 'Belgium' },
+          provider: { '@id': 'https://www.moroww.com' },
         }),
       }}
     />

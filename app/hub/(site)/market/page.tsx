@@ -9,7 +9,7 @@ export const revalidate = 300;
 
 interface MarktProduct { id: string; naam: string; tekst: string | null; foto: string | null; url: string | null; hub_partners: { naam: string } | null }
 
-export const metadata: Metadata = { title: 'market', description: 'hub market: de geur, het linnen en de essentials uit het verblijf, om thuis te hebben.' };
+export const metadata: Metadata = { alternates: { canonical: '/hub/market' }, title: 'market', description: 'hub market: de geur, het linnen en de essentials uit het verblijf, om thuis te hebben.' };
 
 const producten = [
   { naam: 'de geur van the shore', tekst: 'De signatuurgeur van de kusthuizen.', foto: '/images/hub/geur-shore.png' },

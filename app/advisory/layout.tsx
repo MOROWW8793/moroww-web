@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { OrganizationJsonLd, ServiceJsonLd } from '@/components/JsonLd';
 import { Header } from '@/components/merk/Shell';
 import { NlFooter } from '@/components/layout/NlFooter';
 import { MerkTeken } from '@/components/merk/Logo';
@@ -27,6 +28,8 @@ export default function AdvisoryLayout({ children }: { children: React.ReactNode
   return (
     <html lang="nl-BE">
       <body>
+        <OrganizationJsonLd />
+        <ServiceJsonLd naam="moroww advisory" beschrijving="Advies op maat voor eigenaars van een vakantiewoning in België: vergunning en regels, opstart, prijzen, foto's, teksten en een eigen boekingswebsite. Per vraag een plan op papier: wat, wie, wanneer en wat het kost." url="https://www.moroww.com/advisory" soort="advies voor vakantieverhuur" />
         {/* mw-js zet een flag vóór render zodat data-mw-reveal zijn hidden
             state kan aannemen zonder flash. */}
         <script

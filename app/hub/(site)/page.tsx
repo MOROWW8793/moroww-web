@@ -1,9 +1,13 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ZHeld, ZSectie, ZSectieTwee, ZRaster, ZRegister, ZTijdlijn } from '@/components/merk/Zwitsers';
 import { ledenKrijgen, publiekeMerken, hoeWeKiezen, academyThemas } from '@/lib/merk/hub';
 import { soorten } from '@/lib/hub/vragen';
 import { VoorWie } from './VoorWie';
+
+
+export const metadata: Metadata = { alternates: { canonical: '/hub' } };
 
 const stappen = [
   { titel: 'je vraagt', tekst: 'In de hub, of gewoon via WhatsApp of telefoon. Wat moet er gebeuren, in welk huis, en tegen wanneer.' },

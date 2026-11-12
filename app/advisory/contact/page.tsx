@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { ContactForm } from '@/components/merk/ContactForm';
 import { site } from '@/lib/merk/site';
 
-export const metadata: Metadata = { title: 'vertel je vraag', description: 'Vertel waar je tegenaan loopt. We stellen voor wat nodig is.' };
+export const metadata: Metadata = { alternates: { canonical: '/advisory/contact' }, title: 'vertel je vraag', description: 'Vertel waar je tegenaan loopt. We stellen voor wat nodig is.' };
 
 export default function HowContact() {
   return (

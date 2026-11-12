@@ -9,7 +9,7 @@ import '@/components/merk/merk.css'
 import '@/components/merk/zwitsers.css'
 
 export const metadata: Metadata = {
-  title: 'voor eigenaars',
+  title: 'Voor eigenaars · label, advisory, hub en beheer',
   description:
     'Wat moroww voor eigenaars doet: het label voor je huis, moroww advisory voor de vraag waar je op vastloopt, en moroww hub met partners, merken en de academy.',
   alternates: { canonical: 'https://www.moroww.com/voor-eigenaars' },

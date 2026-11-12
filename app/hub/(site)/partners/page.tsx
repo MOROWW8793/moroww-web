@@ -5,6 +5,7 @@ import { ZHeld, ZSectie, ZTijdlijn } from '@/components/merk/Zwitsers';
 import { partnerCategorieen, hoeWeKiezen } from '@/lib/merk/hub';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/hub/partners' },
   title: 'partners',
   description: 'Merken, tools en vakmensen voor eigenaars en beheerders met het moroww-label. Met een voordeel voor leden.',
 };

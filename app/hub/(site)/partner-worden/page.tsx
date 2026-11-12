@@ -3,7 +3,7 @@ import { ContactForm } from '@/components/merk/ContactForm';
 import { ZHeld, ZSectie, ZSectieTwee, ZRaster, ZTijdlijn } from '@/components/merk/Zwitsers';
 import { hoeWeKiezen, partnerCategorieen } from '@/lib/merk/hub';
 
-export const metadata: Metadata = { title: 'partner worden', description: 'Een merk, een vakman of een tool die past bij moroww? Word partner van moroww hub.' };
+export const metadata: Metadata = { alternates: { canonical: '/hub/partner-worden' }, title: 'partner worden', description: 'Een merk, een vakman of een tool die past bij moroww? Word partner van moroww hub.' };
 
 const stappen = [
   { titel: 'kennismaking', tekst: 'We bekijken of je aanbod past bij het label, en testen het in de huizen van de collectie.' },

@@ -1,7 +1,11 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { site } from '@/lib/merk/site';
 import { ZHeld, ZSectie, ZSectieTwee, ZRaster, ZRegister, ZTijdlijn, ZFaq } from '@/components/merk/Zwitsers';
+
+
+export const metadata: Metadata = { alternates: { canonical: '/advisory' } };
 
 const vragen = [
   { titel: 'mag hier kortverhuur?', tekst: 'Vergunning, registratie, brandveiligheid, de regels van je gemeente. We zoeken uit wat geldt voor jouw adres en wat eerst moet.' },

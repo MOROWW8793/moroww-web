@@ -4,7 +4,7 @@ import { ZHeld, ZSectie, ZRaster, ZTijdlijn } from '@/components/merk/Zwitsers';
 import { ledenKrijgen } from '@/lib/merk/hub';
 import { site } from '@/lib/merk/site';
 
-export const metadata: Metadata = { title: 'lid worden', description: 'Toegang tot moroww hub hoort bij het moroww-label: vraag het moroww, merken in je huis met korting, de academy en de ledenbrief.' };
+export const metadata: Metadata = { alternates: { canonical: '/hub/lid-worden' }, title: 'lid worden', description: 'Toegang tot moroww hub hoort bij het moroww-label: vraag het moroww, merken in je huis met korting, de academy en de ledenbrief.' };
 
 const stappen = [
   { titel: 'vraag een bezoek aan', tekst: 'Via de pagina van het label. We nemen contact op om een moment te plannen.' },

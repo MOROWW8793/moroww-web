@@ -5,11 +5,12 @@ import { setRequestLocale } from 'next-intl/server'
 import { ContactForm } from '@/components/merk/ContactForm'
 import { ZHeld, ZSectie, ZSectieTwee, ZRaster, ZTijdlijn, ZCijfers, ZVink } from '@/components/merk/Zwitsers'
 import { site } from '@/lib/merk/site'
+import { ServiceJsonLd } from '@/components/JsonLd'
 import '@/components/merk/merk.css'
 import '@/components/merk/zwitsers.css'
 
 export const metadata: Metadata = {
-  title: 'het label voor jouw huis',
+  title: 'Kwaliteitslabel voor je vakantiewoning',
   description:
     'Het moroww-label voor vakantiewoningen, B&B\'s en hotels. We komen persoonlijk langs; wie de standaard haalt, krijgt het label, een plaats op moroww.com en toegang tot moroww hub.',
   alternates: { canonical: 'https://www.moroww.com/het-label' },
@@ -46,6 +47,12 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
 
   return (
     <div className="merk merk-moroww">
+      <ServiceJsonLd
+        naam="het moroww-label"
+        beschrijving="Kwaliteitslabel voor vakantiewoningen in België. moroww bezoekt het huis persoonlijk; haalt het de standaard, dan krijgt het het label, een plaats in de collectie op moroww.com en toegang tot moroww hub. Elk jaar opnieuw bezocht."
+        url="https://www.moroww.com/het-label"
+        soort="kwaliteitslabel voor vakantiewoningen"
+      />
       <div className="z">
         <div className="wrap">
           <ZHeld

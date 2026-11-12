@@ -4,7 +4,7 @@ import { ContactForm } from '@/components/merk/ContactForm';
 import { ZHeld, ZSectie, ZSectieTwee, ZRaster, ZRegister } from '@/components/merk/Zwitsers';
 import { academySessies, academyThemas } from '@/lib/merk/hub';
 
-export const metadata: Metadata = { title: 'academy', description: 'hub academy: kleine sessies van hosts voor hosts, in een moroww-huis.' };
+export const metadata: Metadata = { alternates: { canonical: '/hub/academy' }, title: 'academy', description: 'hub academy: kleine sessies van hosts voor hosts, in een moroww-huis.' };
 
 const werkwijze = [
   { titel: 'een handvol hosts per sessie, zodat iedereen vragen kan stellen' },

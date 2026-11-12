@@ -58,6 +58,19 @@ const NL_ONLY_ROUTES: Array<{
 }> = [
   { path: '/privacy',         freq: 'yearly',  priority: 0.3 },
   { path: '/beheer',          freq: 'monthly', priority: 0.7 },
+  // Eigenaarskant: het label, advisory en hub (NL-only).
+  { path: '/het-label',                 freq: 'monthly', priority: 0.8 },
+  { path: '/voor-eigenaars',            freq: 'monthly', priority: 0.8 },
+  { path: '/advisory',                  freq: 'monthly', priority: 0.8 },
+  { path: '/advisory/website',          freq: 'monthly', priority: 0.7 },
+  { path: '/advisory/contact',          freq: 'yearly',  priority: 0.4 },
+  { path: '/hub',                       freq: 'monthly', priority: 0.7 },
+  { path: '/hub/property-managers',     freq: 'monthly', priority: 0.6 },
+  { path: '/hub/partners',              freq: 'monthly', priority: 0.5 },
+  { path: '/hub/academy',               freq: 'monthly', priority: 0.5 },
+  { path: '/hub/lid-worden',            freq: 'monthly', priority: 0.5 },
+  { path: '/hub/partner-worden',        freq: 'yearly',  priority: 0.4 },
+  { path: '/hub/market',                freq: 'monthly', priority: 0.4 },
 ]
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

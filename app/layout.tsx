@@ -16,11 +16,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.moroww.com'),
   title: {
-    default: 'moroww — premium vakantiewoningen in België',
+    default: 'moroww — geselecteerde vakantiewoningen in België',
     template: '%s | moroww',
   },
   description:
-    'moroww (ook bekend als morrow) is een gecertificeerd kwaliteitslabel voor premium vakantiewoningen in België. Elke woning persoonlijk bezocht. Sensorisch ingericht. Zonder loterij.',
+    'moroww is een kwaliteitslabel voor vakantiewoningen in België. Elk huis persoonlijk bezocht, elk jaar opnieuw, en rechtstreeks te boeken.',
   authors: [{ name: 'moroww', url: 'https://www.moroww.com' }],
   creator: 'moroww',
   publisher: 'moroww',

@@ -6,6 +6,7 @@ import { ZHeld, ZSectie, ZSectieTwee, ZRaster, ZTijdlijn } from '@/components/me
 import { site } from '@/lib/merk/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/hub/property-managers' },
   title: 'voor beheerders',
   description:
     'moroww hub voor beheerders van vakantiewoningen: de partners van moroww voor je hele portefeuille, het moroww-label voor je beste huizen en de academy voor je team.',

@@ -4,12 +4,13 @@ import { setRequestLocale } from 'next-intl/server'
 import { ContactForm } from '@/components/merk/ContactForm'
 import { ZHeld, ZSectie, ZSectieTwee, ZRaster, ZTijdlijn, ZFaq, ZVink } from '@/components/merk/Zwitsers'
 import { site } from '@/lib/merk/site'
+import { ServiceJsonLd } from '@/components/JsonLd'
 import { liveWoningen, sortForCollectie } from '@/lib/woningen'
 import '@/components/merk/merk.css'
 import '@/components/merk/zwitsers.css'
 
 export const metadata: Metadata = {
-  title: 'volledig beheer',
+  title: 'Volledig beheer van je vakantiewoning',
   description:
     'moroww neemt het volledige beheer van je vakantiewoning over: listings, prijzen, gasten, schoonmaak en onderhoud. Jouw huis met het label, wij doen de rest.',
   alternates: { canonical: 'https://www.moroww.com/beheer' },
@@ -56,6 +57,12 @@ export default async function BeheerPage({ params }: { params: Promise<{ locale:
 
   return (
     <div className="merk merk-moroww">
+      <ServiceJsonLd
+        naam="volledig beheer door moroww"
+        beschrijving="moroww neemt het beheer van een vakantiewoning met het label volledig over: listings, prijzen, gastencommunicatie, schoonmaak, linnen en onderhoud. De eigenaar volgt alles in een eigen portaal."
+        url="https://www.moroww.com/beheer"
+        soort="beheer van vakantiewoningen"
+      />
       <div className="z">
         <div className="wrap">
           <ZHeld

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { OrganizationJsonLd, ServiceJsonLd } from '@/components/JsonLd';
 import { Analytics } from '@vercel/analytics/next';
 import { MotionIn } from '@/components/MotionIn';
 import { SmoothScroll } from '@/components/SmoothScroll';
@@ -23,6 +24,8 @@ export default function HubLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="nl-BE">
       <body>
+        <OrganizationJsonLd />
+        <ServiceJsonLd naam="moroww hub" beschrijving="Platform voor eigenaars, beheerders en hotels met het moroww-label: vraag wat je huis nodig heeft en moroww plant een partner in de buurt in, met opvolging en foto. Met merken, de academy en de ledenbrief." url="https://www.moroww.com/hub" soort="diensten voor vakantiewoningen" />
         {/* mw-js vóór render zodat data-mw-reveal zijn hidden state kan
             aannemen zonder flash. */}
         <script

@@ -6,6 +6,7 @@ import { ZHeld, ZSectie, ZSectieTwee, ZRaster, ZRegister, ZTijdlijn } from '@/co
 import { site } from '@/lib/merk/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/advisory/website' },
   title: 'je eigen boekingssite',
   description: 'Een eigen boekingswebsite voor je vakantiewoning. Gasten boeken rechtstreeks bij jou, zonder platformcommissie.',
 };
