@@ -280,8 +280,7 @@
 @media (max-width: 640px) {
   .merk .z .z-held-foto { margin-bottom: 48px; }
   .z-held-paneel { padding: 120px 20px 28px; gap: 28px; min-height: 88svh; }
-  /* advisory en hub: de kop met zijn links loopt op smalle schermen over meer regels */
-  .merk .z .kop ~ main .z-held-paneel { padding-top: 220px; }
+
 }
 @media (prefers-reduced-motion: reduce) {
   .z-held-beeld, .z-held-beeld img { transition: none; }
@@ -337,3 +336,44 @@ html[data-held-onder] .merk .z .kop-nav a:not(.btn):hover { background: rgba(255
   transition: opacity .3s;
 }
 html[data-held-onder] .merk .z .kop::before { opacity: 0; }
+
+/* menu van de kop op smalle schermen */
+.merk .z .kop-menu { display: none; position: relative; }
+@media (max-width: 900px) {
+  .merk .z .kop-binnen { flex-wrap: nowrap; align-items: center; }
+  .merk .z .kop-nav { border-radius: 999px; flex-wrap: nowrap; width: auto; margin: 0; overflow: visible; gap: 2px; flex: 0 0 auto; }
+  .merk .z .kop-binnen { justify-content: space-between; padding: 0; gap: 12px; }
+  .merk .z .kop-nav .kop-link { display: none; }
+  .merk .z .kop-menu { display: block; }
+}
+.merk .z .kop-menu summary {
+  list-style: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border-radius: 999px;
+}
+.merk .z .kop-menu summary::-webkit-details-marker { display: none; }
+.merk .z .kop-menu summary span, .merk .z .kop-menu summary span::before, .merk .z .kop-menu summary span::after {
+  display: block; width: 18px; height: 1.5px; background: currentColor; position: relative; transition: transform .2s;
+}
+.merk .z .kop-menu summary span::before, .merk .z .kop-menu summary span::after { content: ''; position: absolute; left: 0; }
+.merk .z .kop-menu summary span::before { top: -6px; }
+.merk .z .kop-menu summary span::after { top: 6px; }
+.merk .z .kop-menu[open] summary span { background: transparent; }
+.merk .z .kop-menu[open] summary span::before { transform: translateY(6px) rotate(45deg); }
+.merk .z .kop-menu[open] summary span::after { transform: translateY(-6px) rotate(-45deg); }
+.merk .z .kop-menu-lijst {
+  position: absolute; right: -6px; top: calc(100% + 14px); min-width: 220px; padding: 8px;
+  display: flex; flex-direction: column; gap: 2px; color: var(--ink);
+  background: rgba(255,255,255,.92); border: 1px solid rgba(255,255,255,.8); border-radius: 20px;
+  -webkit-backdrop-filter: saturate(150%) blur(20px); backdrop-filter: saturate(150%) blur(20px);
+  box-shadow: 0 30px 70px -30px rgba(26,26,26,.5);
+}
+.merk .z .kop-nav .kop-menu-lijst a { display: block; padding: 12px 14px; border-radius: 14px; font-size: 17px; text-decoration: none; color: var(--ink); }
+.merk .z .kop-nav .kop-menu-lijst a:hover { background: rgba(26,26,26,.05); }
+html[data-held-onder] .merk .z .kop-menu summary { color: #fff; }
+html[data-held-onder] .merk .z .kop-nav .kop-menu-lijst a { color: var(--ink); }
+
+/* cijferbalk op een telefoon: lijnen tussen de rijen, niet ernaast */
+@media (max-width: 640px) {
+  .merk .z .z-cijfers > div { flex-basis: 100%; margin-right: 0; padding: 28px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+  .merk .z .z-cijfers > div:last-child { border-bottom: 0; }
+}

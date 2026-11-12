@@ -42,7 +42,7 @@ export function CollectieHero({
 
   return (
     <section
-      className="relative h-[82svh] min-h-[560px] w-full overflow-hidden bg-moroww-dark"
+      className="relative min-h-[82svh] w-full overflow-hidden bg-moroww-dark"
       onMouseEnter={() => setErboven(true)}
       onMouseLeave={() => setErboven(false)}
       onFocus={() => setErboven(true)}
@@ -66,7 +66,7 @@ export function CollectieHero({
       ))}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/45 via-black/10 to-black/70" aria-hidden />
 
-      <div className="relative z-10 h-full flex flex-col justify-end px-6 md:px-12 pb-mw-4 md:pb-mw-5">
+      <div className="relative z-10 min-h-[82svh] flex flex-col justify-end px-6 md:px-12 pt-28 pb-mw-4 md:pb-mw-5">
         <div className="mx-auto max-w-7xl w-full">
           {children}
           <div className="mt-mw-6 md:mt-mw-8 flex items-center justify-end sm:justify-between gap-mw-4 text-white/85">

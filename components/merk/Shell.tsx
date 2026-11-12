@@ -12,9 +12,21 @@ export function Header({ home, merk, nav, cta, donker = false }: { home: string;
         <Link href={home} className="kop-logo">{merk}</Link>
         <nav aria-label="hoofdmenu" className="kop-nav">
           {nav.map((n) => (
-            <Link key={n.href} href={n.href}>{n.label}</Link>
+            <Link key={n.href} href={n.href} className="kop-link">{n.label}</Link>
           ))}
           <Link href={cta.href} className="btn btn-kop">{cta.label}</Link>
+          {/* Op een telefoon passen de links niet naast de knop: ze zitten
+              dan achter dit menu. Zonder JS, gewoon een details-element. */}
+          <details className="kop-menu">
+            <summary aria-label="menu">
+              <span aria-hidden="true" />
+            </summary>
+            <div className="kop-menu-lijst">
+              {nav.map((n) => (
+                <Link key={n.href} href={n.href}>{n.label}</Link>
+              ))}
+            </div>
+          </details>
         </nav>
       </div>
     </header>

@@ -7,6 +7,8 @@ import { createServerClient, type CookieOptions } from '@supabase/ssr'
 
 const intlMiddleware = createIntlMiddleware(routing)
 
+const NL_ONLY = /^\/(het-label|voor-eigenaars|beheer|vergelijking|privacy)\/?$/
+
 // Verlengt de partnercookie bij elk bezoek (Chrome houdt een cookie maximaal
 // 400 dagen bij) en zet ze meteen bij een partnerlink als de bezoeker al
 // toestemming gaf. Zonder keuze gebeurt hier niets: dat beslist de banner.
@@ -64,6 +66,16 @@ export default async function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL('/admin', request.url))
     }
     return NextResponse.next()
+  }
+
+  // NL-only pagina's: next.config.mjs stuurt /en/... terug naar de NL-URL. Liet
+  // next-intl hier zijn taaldetectie op los, dan stuurde het een bezoeker met
+  // een Engelse browser naar /en/... en ontstond een eindeloze lus. Deze pagina's
+  // bestaan alleen in het Nederlands, dus rechtstreeks naar de NL-route.
+  if (NL_ONLY.test(pathname)) {
+    const response = NextResponse.rewrite(new URL(`/nl${pathname}${request.nextUrl.search}`, request.url))
+    partnerCookie(request, response)
+    return response
   }
 
   const response = intlMiddleware(request)

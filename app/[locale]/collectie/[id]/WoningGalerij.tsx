@@ -263,7 +263,7 @@ export function HeroDiashow({
             <button
               type="button"
               onClick={() => open(0)}
-              className={`${GLAS} ml-2 rounded-full px-4 py-2 text-audit hover:bg-white/25 transition-colors`}
+              className={`${GLAS} ml-2 whitespace-nowrap rounded-full px-4 py-2 text-audit hover:bg-white/25 transition-colors`}
             >
               {labels.alle}
             </button>

@@ -36,9 +36,9 @@ export function ArticleLayout({ eyebrow, titel, korteAntwoord, terug, beeld, chi
       <KennisHero
         beelden={[b]}
         onder={
-          <div className="mt-8 max-w-3xl rounded-3xl border border-white/70 bg-white/75 p-6 md:p-8 text-moroww-dark backdrop-blur-xl backdrop-saturate-150 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)]">
+          <div className="mt-6 md:mt-8 max-w-3xl rounded-3xl border border-white/70 bg-white/75 p-5 md:p-8 text-moroww-dark backdrop-blur-xl backdrop-saturate-150 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)]">
             <p className="text-audit text-moroww-label-tekst">het korte antwoord</p>
-            <p className="mt-3 text-body-lg text-moroww-dark">{korteAntwoord}</p>
+            <p className="mt-2 md:mt-3 text-body md:text-body-lg text-moroww-dark">{korteAntwoord}</p>
           </div>
         }
       >
