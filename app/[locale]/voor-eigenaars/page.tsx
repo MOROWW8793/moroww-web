@@ -52,6 +52,7 @@ const situaties = [
   { titel: 'mag ik hier wel verhuren?', tekst: 'moroww advisory zoekt uit wat geldt voor jouw adres en wat eerst moet.', href: '/advisory' },
   { titel: 'ik wil rechtstreeks boekingen.', tekst: 'Een eigen boekingswebsite voor je huis, in jouw naam, zonder platformcommissie.', href: '/advisory/website' },
   { titel: 'tussen twee gasten moet er iets gebeuren.', tekst: 'In moroww hub vraag je het; wij plannen een partner in en volgen op.', href: '/hub' },
+  { titel: 'ik wil het niet zelf doen.', tekst: 'Gasten, prijzen, schoonmaak en onderhoud: moroww kan het volledige beheer van je huis overnemen. Wat dat inhoudt en kost, bespreken we in een eerste gesprek.', href: '/advisory/contact' },
   { titel: 'ik beheer huizen voor anderen.', tekst: 'De hub voor beheerders: één aanspreekpunt, het label voor je beste huizen, de academy voor je team.', href: '/hub/property-managers' },
   { titel: 'ik wil eerst zelf lezen.', tekst: 'Regels en belasting, wat een nacht kost, verzekering, de manieren om te verhuren. In gewone taal.', href: '/kennis' },
 ]
@@ -98,7 +99,7 @@ export default async function VoorEigenaarsPage({ params }: { params: Promise<{ 
             </div>
           </ZSectie>
 
-          <ZSectieTwee nr="03 · waar sta je?" titel="welke past bij jou." tekst="Zes vragen waar eigenaars mee komen, en waar je antwoord ligt.">
+          <ZSectieTwee nr="03 · waar sta je?" titel="welke past bij jou." tekst="Zeven vragen waar eigenaars mee komen, en waar je antwoord ligt.">
             <ZRegister items={situaties} prefix="3" />
           </ZSectieTwee>
 
