@@ -8,6 +8,7 @@ export type NavHref =
   | '/the-fields'
   | '/eigenaar-worden'
   | '/het-label'
+  | '/beheer'
   | '/voor-eigenaars'
   | '/partners'
   | '/contact'
@@ -119,6 +120,7 @@ export type FooterLabelKey =
   | 'partners'
   | 'for_owners'
   | 'knowledge_for_owners'
+  | 'management'
   | 'the_label'
   | 'how'
   | 'hub'
@@ -161,6 +163,7 @@ export const footerKolommen: FooterKolom[] = [
     titelKey: 'column_for_owners',
     links: [
       { labelKey: 'the_label',            href: '/het-label' },
+      { labelKey: 'management',           href: '/beheer' },
       { labelKey: 'knowledge_for_owners', href: '/kennis' },
       {
         labelKey: 'calendar_link',
@@ -190,6 +193,7 @@ export const footerJuridisch: FooterLink[] = [
 // een taalwissel die naar een 404 of home leidt suggereert dat er iets stuk is.
 export const nlOnlyRoutes: NavHref[] = [
   '/het-label',
+  '/beheer',
   '/voor-eigenaars',
   '/vergelijking',
   '/privacy',
@@ -204,6 +208,6 @@ export function isDarkHeroPath(pathname: string): boolean {
   // /collectie heeft net als de pandpagina's een slideshow onder de navbar.
   if (/\/(collectie|collection)\/?$/.test(pathname)) return true
   // Streekpagina's en de eigenaarspagina's openen met een foto over de volle breedte.
-  if (/^\/(the-shore|the-fields|het-label|voor-eigenaars)\/?$/.test(pathname.replace(/^\/en(?=\/)/, ''))) return true
+  if (/^\/(the-shore|the-fields|het-label|voor-eigenaars|beheer)\/?$/.test(pathname.replace(/^\/en(?=\/)/, ''))) return true
   return /\/(collectie|collection)\/[^/]+(\/(boeken|book|bevestigd|confirmed))?\/?$/.test(pathname)
 }

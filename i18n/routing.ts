@@ -60,6 +60,10 @@ export const routing = defineRouting({
       nl: '/voor-eigenaars',
       en: '/voor-eigenaars',
     },
+    '/beheer': {
+      nl: '/beheer',
+      en: '/beheer',
+    },
     '/het-label': {
       nl: '/het-label',
       en: '/het-label',

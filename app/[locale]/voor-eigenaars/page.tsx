@@ -52,7 +52,7 @@ const situaties = [
   { titel: 'mag ik hier wel verhuren?', tekst: 'moroww advisory zoekt uit wat geldt voor jouw adres en wat eerst moet.', href: '/advisory' },
   { titel: 'ik wil rechtstreeks boekingen.', tekst: 'Een eigen boekingswebsite voor je huis, in jouw naam, zonder platformcommissie.', href: '/advisory/website' },
   { titel: 'tussen twee gasten moet er iets gebeuren.', tekst: 'In moroww hub vraag je het; wij plannen een partner in en volgen op.', href: '/hub' },
-  { titel: 'ik wil het niet zelf doen.', tekst: 'Gasten, prijzen, schoonmaak en onderhoud: moroww kan het volledige beheer van je huis overnemen. Wat dat inhoudt en kost, bespreken we in een eerste gesprek.', href: '/advisory/contact' },
+  { titel: 'ik wil het niet zelf doen.', tekst: 'Gasten, prijzen, schoonmaak en onderhoud: moroww kan het volledige beheer van je huis overnemen. Wat dat inhoudt en kost, bespreken we in een eerste gesprek.', href: '/beheer' },
   { titel: 'ik beheer huizen voor anderen.', tekst: 'De hub voor beheerders: één aanspreekpunt, het label voor je beste huizen, de academy voor je team.', href: '/hub/property-managers' },
   { titel: 'ik wil eerst zelf lezen.', tekst: 'Regels en belasting, wat een nacht kost, verzekering, de manieren om te verhuren. In gewone taal.', href: '/kennis' },
 ]
@@ -110,6 +110,12 @@ export default async function VoorEigenaarsPage({ params }: { params: Promise<{ 
                 <span className="z-h3">liever eerst praten?</span>
                 <span className="z-tekst">Over je huis en wat je wil bereiken. Je spreekt met Noam.</span>
                 <a href="https://calendar.app.google/BH8wYeA9AGf6KrUz7" target="_blank" rel="noopener noreferrer" className="z-knop z-knop-donker" style={{ alignSelf: 'flex-start' }}>plan een gesprek</a>
+              </div>
+              <div>
+                <span className="z-nr">volledig beheer</span>
+                <span className="z-h3">liever alles uit handen?</span>
+                <span className="z-tekst">Listings, prijzen, gasten, schoonmaak en onderhoud. moroww verhuurt je huis voor je.</span>
+                <Link href="/beheer" className="z-link" style={{ fontSize: 16 }}>over volledig beheer →</Link>
               </div>
               <div>
                 <span className="z-nr">kennisbank</span>

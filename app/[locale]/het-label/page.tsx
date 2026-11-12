@@ -181,6 +181,8 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
                 <a href={`tel:${site.contact.telefoon.replace(/\s/g, '')}`}>{site.contact.telefoon}</a>
                 <br />
                 <Link href="/advisory/website" className="z-link" style={{ fontSize: 15 }}>nog geen eigen boekingssite?</Link>
+                <br />
+                <Link href="/beheer" className="z-link" style={{ fontSize: 15 }}>liever dat wij verhuren?</Link>
               </p>
             }
           >

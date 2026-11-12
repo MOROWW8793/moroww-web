@@ -57,6 +57,7 @@ const NL_ONLY_ROUTES: Array<{
   priority: number
 }> = [
   { path: '/privacy',         freq: 'yearly',  priority: 0.3 },
+  { path: '/beheer',          freq: 'monthly', priority: 0.7 },
 ]
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
