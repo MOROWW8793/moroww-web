@@ -50,6 +50,7 @@ const nextConfig = {
       { source: "/en/het-label", destination: "/het-label", permanent: false },
       { source: "/en/voor-eigenaars", destination: "/voor-eigenaars", permanent: false },
       { source: "/en/beheer", destination: "/beheer", permanent: false },
+      { source: "/en/webinar", destination: "/webinar", permanent: false },
       // moroww how heet sinds nov 2026 moroww advisory. Oude adressen verwijzen door.
       { source: "/how/scan", destination: "/advisory", permanent: true },
       { source: "/how/traject", destination: "/advisory", permanent: true },

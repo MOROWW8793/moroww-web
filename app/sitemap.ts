@@ -61,6 +61,7 @@ const NL_ONLY_ROUTES: Array<{
   // Eigenaarskant: het label, advisory en hub (NL-only).
   { path: '/het-label',                 freq: 'monthly', priority: 0.8 },
   { path: '/voor-eigenaars',            freq: 'monthly', priority: 0.8 },
+  { path: '/webinar',                   freq: 'monthly', priority: 0.6 },
   { path: '/advisory',                  freq: 'monthly', priority: 0.8 },
   { path: '/advisory/website',          freq: 'monthly', priority: 0.7 },
   { path: '/advisory/contact',          freq: 'yearly',  priority: 0.4 },

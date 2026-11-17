@@ -7,7 +7,7 @@ import { createServerClient, type CookieOptions } from '@supabase/ssr'
 
 const intlMiddleware = createIntlMiddleware(routing)
 
-const NL_ONLY = /^\/(het-label|voor-eigenaars|beheer|vergelijking|privacy)\/?$/
+const NL_ONLY = /^\/(het-label|voor-eigenaars|beheer|webinar|vergelijking|privacy)\/?$/
 
 // Verlengt de partnercookie bij elk bezoek (Chrome houdt een cookie maximaal
 // 400 dagen bij) en zet ze meteen bij een partnerlink als de bezoeker al
