@@ -18,7 +18,7 @@ const praktisch: [string, string][] = [
   ['wanneer', 'dinsdag 15 december 2026'],
   ['uur', '19.30 u.'],
   ['duur', '45 minuten'],
-  ['waar', 'online'],
+  ['waar', 'online, via Google Meet'],
   ['prijs', 'gratis'],
 ]
 
@@ -86,7 +86,7 @@ export default async function WebinarPage({ params }: { params: Promise<{ locale
               merk="moroww"
               soort="webinar"
               knop="meld je aan"
-              bedankt="je bent aangemeld. je krijgt nu een bevestiging per mail; de link om mee te volgen sturen we vooraf."
+              bedankt="je bent aangemeld. de link om mee te volgen staat in de mail die je nu krijgt."
               velden={[
                 { naam: 'naam', label: 'naam', verplicht: true },
                 { naam: 'email', label: 'e-mail', type: 'email', verplicht: true },
