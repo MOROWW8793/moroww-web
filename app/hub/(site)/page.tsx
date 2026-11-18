@@ -26,7 +26,7 @@ export default function Hub() {
   return (
     <div className="wrap">
       <ZHeld
-        nr="01 · voor eigenaars, beheerders en hotels met het label"
+        nr="voor eigenaars, beheerders en hotels met het label"
         titel={<>vraag het<br />moroww.</>}
         fotos={[
           { src: '/images/hub/huis-moro-badkamer.jpg', alt: 'Handdoek en MORO-producten in een badkamer van een moroww-huis' },
@@ -61,29 +61,29 @@ export default function Hub() {
         }
       />
 
-      <ZSectie id="zo" nr="02 · zo werkt het" titel="drie stappen, één aanspreekpunt.">
-        <ZTijdlijn items={stappen} prefix="2" />
+      <ZSectie id="zo" nr="zo werkt het" titel="drie stappen, één aanspreekpunt.">
+        <ZTijdlijn items={stappen} />
       </ZSectie>
 
-      <ZSectieTwee nr="03 · wat je kan vragen" titel="alles wat je huis nodig heeft." tekst="Staat het er niet bij? Vraag het toch. moroww zoekt wie het kan.">
+      <ZSectieTwee nr="wat je kan vragen" titel="alles wat je huis nodig heeft." tekst="Staat het er niet bij? Vraag het toch. moroww zoekt wie het kan.">
         <ZRegister
-          prefix="3"
+         
           items={soorten.map((s) => ({ titel: s.label, tekst: s.voorbeeld ? s.voorbeeld.replace(/: $/, '.') : 'Staat het er niet bij? Vraag het toch.' }))}
         />
       </ZSectieTwee>
 
-      <ZSectie id="voorwie" nr="04 · vijf ingangen" titel="voor wie de hub is.">
+      <ZSectie id="voorwie" nr="vijf ingangen" titel="voor wie de hub is.">
         <VoorWie />
       </ZSectie>
 
-      <ZSectie nr="05 · wat er in de hub zit" titel="vier dingen, voor leden.">
-        <ZRaster prefix="5" items={ledenKrijgen.map(([titel, tekst]) => ({ titel, tekst }))} />
+      <ZSectie nr="wat er in de hub zit" titel="vier dingen, voor leden.">
+        <ZRaster items={ledenKrijgen.map(([titel, tekst]) => ({ titel, tekst }))} />
       </ZSectie>
 
       <section id="merken" className="z-sectie" data-mw-reveal>
         <div className="z-twee">
           <div className="z-smal">
-            <span className="z-nr">06 · merken in de huizen</span>
+            <span className="z-nr">merken in de huizen</span>
             <h2 className="z-h2">je merk, waar het gebruikt wordt.</h2>
             <p className="z-tekst" style={{ fontSize: 18 }}>
               Gasten gebruiken je product in de badkamer, de keuken of aan de voordeur van een huis uit de collectie. Tijdens hun verblijf, niet in een winkelrek.
@@ -140,10 +140,10 @@ export default function Hub() {
             <Image src="/images/standaard/V2-40.jpg" alt="Een gast leest in bed in een moroww-huis" fill sizes="(min-width: 1024px) 35vw, 100vw" style={{ objectFit: 'cover' }} />
           </div>
           <div className="z-smal" style={{ flex: '999 1 520px' }}>
-            <span className="z-nr">07 · academy en ledenbrief</span>
+            <span className="z-nr">academy en ledenbrief</span>
             <h2 className="z-h2">kleine sessies, in een moroww-huis.</h2>
             <p className="z-tekst" style={{ fontSize: 18 }}>Voor eigenaars, hosts en de teams van property managers. En één keer per maand een ledenbrief met wat er verandert.</p>
-            <ZRegister prefix="7" items={academyThemas.map(([titel, tekst]) => ({ titel, tekst }))} />
+            <ZRegister items={academyThemas.map(([titel, tekst]) => ({ titel, tekst }))} />
             <Link href="/hub/academy" className="z-link">naar de academy →</Link>
           </div>
         </div>
@@ -152,7 +152,7 @@ export default function Hub() {
       <section id="lid" className="z-sectie" data-mw-reveal>
         <div className="z-sectie-kop">
           <h2 className="z-h2">toegang tot de hub hoort bij het label.</h2>
-          <span className="z-nr">08 · lid worden</span>
+          <span className="z-nr">lid worden</span>
         </div>
         <div className="z-tegels">
           <div className="z-tegel-accent">

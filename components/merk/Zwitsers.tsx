@@ -5,8 +5,6 @@ import { HeldDiashow, type HeldFoto } from './HeldDiashow';
 // Bouwstenen van het Zwitserse raster (zwitsers.css). Enkel opmaak en
 // structuur; de inhoud komt van de pagina's en lib/merk.
 
-export const nr = (i: number) => String(i + 1).padStart(2, '0');
-
 type Item = { titel: ReactNode; tekst?: ReactNode; href?: string; voet?: string };
 
 export function ZHeld({ nr: n, titel, lead, acties, object, fotos }: { nr: string; titel: ReactNode; lead: ReactNode; acties?: ReactNode; object?: ReactNode; fotos?: HeldFoto[] }) {
@@ -62,13 +60,12 @@ export function ZSectieTwee({ id, nr: n, titel, tekst, extra, children }: { id?:
   );
 }
 
-export function ZRaster({ items, prefix }: { items: Item[]; prefix?: string }) {
+export function ZRaster({ items }: { items: Item[] }) {
   return (
     <ul className="z-raster">
       {items.map((it, i) => {
         const binnen = (
           <>
-            <span className="z-nr">{prefix ? `${prefix}.${i + 1}` : nr(i)}</span>
             <h3 className="z-h3">{it.titel}</h3>
             {it.tekst && <p className="z-tekst">{it.tekst}</p>}
             {it.voet && <span className="z-link" style={{ fontSize: 16 }}>{it.voet} →</span>}
@@ -80,13 +77,12 @@ export function ZRaster({ items, prefix }: { items: Item[]; prefix?: string }) {
   );
 }
 
-export function ZRegister({ items, prefix }: { items: Item[]; prefix?: string }) {
+export function ZRegister({ items }: { items: Item[] }) {
   return (
     <ol className="z-register">
       {items.map((it, i) => {
         const inhoud = (
           <>
-            <span className="z-nr z-reg-nr">{prefix ? `${prefix}.${i + 1}` : nr(i)}</span>
             <span className="z-reg-titel">{it.titel}</span>
             {it.tekst && <span className="z-reg-tekst">{it.tekst}</span>}
             {it.href && <span className="z-reg-pijl" aria-hidden="true">→</span>}
@@ -98,16 +94,13 @@ export function ZRegister({ items, prefix }: { items: Item[]; prefix?: string })
   );
 }
 
-export function ZTijdlijn({ items, prefix }: { items: (Item & { wanneer?: string })[]; prefix?: string }) {
+export function ZTijdlijn({ items }: { items: (Item & { wanneer?: string })[] }) {
   return (
     <ol className="z-tijdlijn">
       {items.map((it, i) => (
         <li key={i}>
           <span className="z-punt" aria-hidden="true" />
-          <span className="z-tijdlijn-kop">
-            <span className="z-nr">{prefix ? `${prefix}.${i + 1}` : nr(i)}</span>
-            {it.wanneer && <span className="z-nr" style={{ color: 'var(--ink)' }}>{it.wanneer}</span>}
-          </span>
+          {it.wanneer && <span className="z-nr" style={{ color: 'var(--ink)' }}>{it.wanneer}</span>}
           <span className="z-h3">{it.titel}</span>
           {it.tekst && <span className="z-tekst" style={{ fontSize: 16 }}>{it.tekst}</span>}
         </li>

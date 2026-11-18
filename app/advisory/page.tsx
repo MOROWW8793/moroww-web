@@ -49,7 +49,7 @@ export default function Advisory() {
   return (
     <div className="wrap">
       <ZHeld
-        nr="01 · hulp op maat voor wie start of vastloopt"
+        nr="hulp op maat voor wie start of vastloopt"
         titel={<>elke vraag,<br />een plan.</>}
         fotos={[
           { src: '/images/advisory-terras-zee.jpg', alt: 'Dakterras met zicht op zee bij een moroww-huis' },
@@ -79,12 +79,12 @@ export default function Advisory() {
         }
       />
 
-      <ZSectie id="werkwijze" nr="02 · werkwijze" titel="van vraag tot plan.">
-        <ZTijdlijn items={werkwijze} prefix="2" />
+      <ZSectie id="werkwijze" nr="werkwijze" titel="van vraag tot plan.">
+        <ZTijdlijn items={werkwijze} />
       </ZSectie>
 
-      <ZSectieTwee nr="03 · waar eigenaars mee komen" titel="een paar voorbeelden." tekst="Staat je vraag er niet bij? Vertel ze ons. Kunnen we niet helpen, dan zeggen we dat meteen, en wie wel kan.">
-        <ZRegister items={vragen} prefix="3" />
+      <ZSectieTwee nr="waar eigenaars mee komen" titel="een paar voorbeelden." tekst="Staat je vraag er niet bij? Vertel ze ons. Kunnen we niet helpen, dan zeggen we dat meteen, en wie wel kan.">
+        <ZRegister items={vragen} />
       </ZSectieTwee>
 
       <section className="z-sectie" data-mw-reveal style={{ paddingTop: 0, paddingBottom: 0, borderBottom: 0 }}>
@@ -93,8 +93,8 @@ export default function Advisory() {
         </div>
       </section>
 
-      <ZSectie nr="04 · wat je krijgt" titel="een plan waar je iets mee kan.">
-        <ZRaster items={belofte} prefix="4" />
+      <ZSectie nr="wat je krijgt" titel="een plan waar je iets mee kan.">
+        <ZRaster items={belofte} />
       </ZSectie>
 
       <section className="z-sectie" data-mw-reveal>
@@ -107,7 +107,7 @@ export default function Advisory() {
           </figure>
           <div className="z-smal" style={{ flex: '1 1 420px', justifyContent: 'space-between', gap: 32 }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-              <span className="z-nr">05 · met wie je praat</span>
+              <span className="z-nr">met wie je praat</span>
               <h2 className="z-h2">geen callcenter. een gesprek.</h2>
               <p className="z-tekst" style={{ fontSize: 19 }}>Je vraag komt bij Noam. Hij kijkt mee, zoekt uit wat nodig is en brengt je bij de juiste mensen.</p>
             </div>
@@ -119,7 +119,7 @@ export default function Advisory() {
         </div>
       </section>
 
-      <ZSectieTwee nr="06 · vaak gevraagd" titel="kort beantwoord.">
+      <ZSectieTwee nr="vaak gevraagd" titel="kort beantwoord.">
         <ZFaq items={faq} />
       </ZSectieTwee>
 

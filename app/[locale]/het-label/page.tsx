@@ -56,7 +56,7 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
       <div className="z">
         <div className="wrap">
           <ZHeld
-            nr="01 · voor eigenaars en beheerders"
+            nr="voor eigenaars en beheerders"
             titel={<>jouw huis<br />met het label.</>}
             fotos={[
               { src: '/images/standaard/V2-19.jpg', alt: 'Een bed wordt opgemaakt met wit linnen' },
@@ -96,14 +96,14 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
             ]}
           />
 
-          <ZSectie id="wat" nr="02 · zes onderdelen" titel="wat je krijgt.">
-            <ZRaster items={krijgt} prefix="2" />
+          <ZSectie id="wat" nr="zes onderdelen" titel="wat je krijgt.">
+            <ZRaster items={krijgt} />
           </ZSectie>
 
           <section id="standaard" className="z-sectie" data-mw-reveal>
             <div className="z-twee">
               <div className="z-smal" style={{ flexBasis: 400 }}>
-                <span className="z-nr">03 · de standaard</span>
+                <span className="z-nr">de standaard</span>
                 <h2 className="z-h2">wat een gast het eerst opmerkt, bekijken we het strengst.</h2>
                 <p className="z-tekst" style={{ fontSize: 19 }}>Een kleinere keuken vergeeft een gast. Een haar in de douche niet. Daarom draait het bezoek om vier regels.</p>
                 <div style={{ display: 'flex', gap: 16 }}>
@@ -121,14 +121,13 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
                   <span>bezoekrapport</span>
                   <span className="z-nr">uit de standaard</span>
                 </div>
-                {rapport.map(([titel, punten], i) => (
+                {rapport.map(([titel, punten]) => (
                   <div key={titel} style={{ padding: '20px 22px', borderBottom: '1px solid var(--line)', display: 'flex', flexDirection: 'column', gap: 10 }}>
                     <div style={{ display: 'flex', gap: 14, alignItems: 'baseline' }}>
-                      <span className="z-nr">3.{i + 1}</span>
                       <span style={{ fontSize: 20, fontWeight: 500 }}>{titel}</span>
                     </div>
                     {punten.map((p) => (
-                      <div key={p} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', paddingLeft: 28, fontSize: 15, fontWeight: 300 }}>
+                      <div key={p} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', fontSize: 15, fontWeight: 300 }}>
                         <ZVink />
                         <span>{p}</span>
                       </div>
@@ -143,8 +142,8 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
             </div>
           </section>
 
-          <ZSectie nr="04 · van aanvraag tot label" titel="zo verloopt het.">
-            <ZTijdlijn items={stappen} prefix="4" />
+          <ZSectie nr="van aanvraag tot label" titel="zo verloopt het.">
+            <ZTijdlijn items={stappen} />
             <p style={{ margin: '40px 0 0', paddingTop: 28, borderTop: '1px solid var(--line)', display: 'flex', flexWrap: 'wrap', gap: '8px 16px', alignItems: 'baseline' }}>
               <span style={{ fontSize: 40, fontWeight: 500, letterSpacing: '-0.03em' }}>30 dagen.</span>
               <span className="z-tekst" style={{ fontSize: 18, maxWidth: 720 }}>
@@ -156,7 +155,7 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
           <section className="z-sectie" data-mw-reveal>
             <div className="z-twee">
               <div className="z-smal">
-                <span className="z-nr">05 · wie komt langs</span>
+                <span className="z-nr">wie komt langs</span>
                 <h2 className="z-h2">geen callcenter. twee oprichters.</h2>
                 <p className="z-tekst" style={{ fontSize: 18 }}>Wie een huis kandidaat stelt, spreekt eerst met Noam. Brent bewaakt hoe we huizen bezoeken en opvolgen.</p>
               </div>
@@ -176,7 +175,7 @@ export default async function HetLabelPage({ params }: { params: Promise<{ local
 
           <ZSectieTwee
             id="aanvraag"
-            nr="06 · aanvraag"
+            nr="aanvraag"
             titel="vertel ons over je huis."
             tekst="Wat het kost, hangt af van je huis. Dat bespreken we in een eerste gesprek."
             extra={

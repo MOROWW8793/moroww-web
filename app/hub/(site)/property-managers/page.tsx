@@ -50,7 +50,7 @@ export default function PropertyManagers() {
   return (
     <div className="wrap">
       <ZHeld
-        nr="01 · voor beheerders"
+        nr="voor beheerders"
         titel={<>jij beheert de huizen.<br />wij brengen de rest samen.</>}
         fotos={[
           { src: '/images/over-hero.jpg', alt: 'Een gast komt binnen in de living van een moroww-huis' },
@@ -66,8 +66,8 @@ export default function PropertyManagers() {
         }
       />
 
-      <ZSectie nr="02 · wat je krijgt" titel="vier dingen, één aanspreekpunt.">
-        <ZRaster items={aanbod} prefix="2" />
+      <ZSectie nr="wat je krijgt" titel="vier dingen, één aanspreekpunt.">
+        <ZRaster items={aanbod} />
       </ZSectie>
 
       <section className="z-sectie" data-mw-reveal style={{ borderBottom: 0, paddingBottom: 0 }}>
@@ -76,13 +76,13 @@ export default function PropertyManagers() {
         </div>
       </section>
 
-      <ZSectie nr="03 · de afspraken" titel="helder, per huis.">
-        <ZTijdlijn items={afspraken} prefix="3" />
+      <ZSectie nr="de afspraken" titel="helder, per huis.">
+        <ZTijdlijn items={afspraken} />
       </ZSectie>
 
       <ZSectieTwee
         id="kennismaking"
-        nr="04 · kennismaking"
+        nr="kennismaking"
         titel="een gesprek van een half uur."
         tekst={`We bekijken je portefeuille en wat de hub voor jou en je team kan doen. ${site.contact.naam} · ${site.contact.telefoon}`}
       >

@@ -17,7 +17,7 @@ export default function Academy() {
   return (
     <div className="wrap">
       <ZHeld
-        nr="01 · hub academy · voor hosts"
+        nr="hub academy · voor hosts"
         titel={<>hosts leren<br />van hosts.</>}
         fotos={[
           { src: '/images/over-interieur-2.jpg', alt: 'Leefruimte van een moroww-huis' },
@@ -34,20 +34,20 @@ export default function Academy() {
             <Image src="/images/over-interieur-2.jpg" alt="" fill sizes="(min-width: 1024px) 35vw, 100vw" style={{ objectFit: 'cover' }} />
           </div>
           <div className="z-smal" style={{ flex: '999 1 520px' }}>
-            <span className="z-nr">02 · zo werkt het</span>
+            <span className="z-nr">zo werkt het</span>
             <h2 className="z-h2">klein, op locatie, praktisch.</h2>
-            <ZRegister items={werkwijze} prefix="2" />
+            <ZRegister items={werkwijze} />
           </div>
         </div>
       </section>
 
-      <ZSectie nr="03 · thema's" titel="waar het over gaat.">
-        <ZRaster prefix="3" items={academyThemas.map(([titel, tekst]) => ({ titel, tekst }))} />
+      <ZSectie nr="thema's" titel="waar het over gaat.">
+        <ZRaster items={academyThemas.map(([titel, tekst]) => ({ titel, tekst }))} />
       </ZSectie>
 
       <ZSectieTwee
         id="inschrijven"
-        nr="04 · inschrijven"
+        nr="inschrijven"
         titel="de volgende sessie."
         extra={
           <>

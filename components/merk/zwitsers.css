@@ -72,7 +72,6 @@
 .z-register { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
 .z-register > li > :first-child { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; padding: 22px 12px; border-bottom: 1px solid var(--line); text-decoration: none; color: inherit; }
 .z-register a:hover { background: var(--wit); }
-.z-reg-nr { flex: 0 0 48px; }
 .z-reg-titel { flex: 1 1 240px; min-width: 0; font-size: 24px; font-weight: 500; letter-spacing: -0.01em; }
 .z-reg-tekst { flex: 2 1 320px; min-width: 0; font-size: 16px; line-height: 1.5; font-weight: 300; }
 .z-reg-pijl { flex: 0 0 auto; font-size: 20px; }
@@ -85,7 +84,6 @@
 .z-punt::after { content: ''; flex: 1 1 auto; height: 1px; background: var(--ink); }
 .z-tijdlijn > li:first-child .z-punt::before { background: var(--z-accent); }
 .z-tijdlijn > li:last-child .z-punt::after { background: transparent; }
-.z-tijdlijn-kop { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
 
 /* cijferbalk */
 .z-cijfers { display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--ink); }

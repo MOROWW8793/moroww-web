@@ -66,7 +66,7 @@ export default async function VoorEigenaarsPage({ params }: { params: Promise<{ 
       <div className="z">
         <div className="wrap">
           <ZHeld
-            nr="01 · voor eigenaars en beheerders"
+            nr="voor eigenaars en beheerders"
             titel={<>drie manieren<br />waarop moroww je helpt.</>}
             fotos={sortForCollectie(liveWoningen()).slice(0, 5).map((w) => ({ src: w.heroFoto, alt: `${w.naam}, ${w.locatie}` }))}
             lead="Het label laat gasten zien dat je huis klopt. moroww advisory helpt als je start of ergens op vastloopt. moroww hub regelt wat je huis nodig heeft. Kies wat past, of combineer."
@@ -78,13 +78,12 @@ export default async function VoorEigenaarsPage({ params }: { params: Promise<{ 
             }
           />
 
-          <ZSectie id="takken" nr="02 · één naam, drie takken" titel="label, advisory, hub.">
+          <ZSectie id="takken" nr="één naam, drie takken" titel="label, advisory, hub.">
             <div className="z-tegels">
-              {takken.map((t, i) => (
+              {takken.map((t) => (
                 <Link key={t.href} href={t.href} style={{ borderTop: `4px solid ${t.kleur}`, gap: 16, minHeight: 420 }}>
                   <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, minHeight: 40 }}>
                     {t.merk}
-                    <span className="z-nr">2.{i + 1}</span>
                   </span>
                   <span className="z-h3" style={{ fontSize: 28, marginTop: 8 }}>{t.titel}</span>
                   <span className="z-tekst">{t.tekst}</span>
@@ -99,8 +98,8 @@ export default async function VoorEigenaarsPage({ params }: { params: Promise<{ 
             </div>
           </ZSectie>
 
-          <ZSectieTwee nr="03 · waar sta je?" titel="welke past bij jou." tekst="Zeven vragen waar eigenaars mee komen, en waar je antwoord ligt.">
-            <ZRegister items={situaties} prefix="3" />
+          <ZSectieTwee nr="waar sta je?" titel="welke past bij jou." tekst="Zeven vragen waar eigenaars mee komen, en waar je antwoord ligt.">
+            <ZRegister items={situaties} />
           </ZSectieTwee>
 
           <section className="z-sectie" data-mw-reveal>

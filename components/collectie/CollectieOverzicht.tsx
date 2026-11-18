@@ -117,7 +117,7 @@ function Hoofdstuk({ w, locale, i }: { w: Woning; locale: Locale; i: number }) {
       </Link>
       <div className={`lg:col-span-4 ${rechts ? 'lg:order-1 lg:col-start-1' : 'lg:col-start-9'} pb-mw-2`}>
         <p className="text-[0.875rem] text-moroww-ink-2">
-          {String(i + 1).padStart(2, '0')}  ·  {w.collectie}  ·  {w.locatie}
+          {w.collectie}  ·  {w.locatie}
         </p>
         <h2 className="mt-mw-3 text-h2 lg:text-[3rem] lg:leading-[1.02] font-light text-moroww-dark">{w.naam}</h2>
         <p className="mt-mw-3 text-body-lg text-moroww-dark">{lw(w.slogan, locale)}</p>

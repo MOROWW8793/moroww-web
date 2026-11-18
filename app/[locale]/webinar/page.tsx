@@ -38,7 +38,7 @@ export default async function WebinarPage({ params }: { params: Promise<{ locale
       <div className="z">
         <div className="wrap">
           <ZHeld
-            nr="01 · gratis webinar"
+            nr="gratis webinar"
             titel={<>waar moroww<br />naartoe gaat.</>}
             lead="Dinsdag 15 december om 19.30 u. In 45 minuten vertellen we waar moroww naartoe gaat, en wat dat betekent voor wie een vakantiewoning, een B&B of een klein hotel verhuurt."
             acties={
@@ -63,13 +63,13 @@ export default async function WebinarPage({ params }: { params: Promise<{ locale
             }
           />
 
-          <ZSectie id="inhoud" nr="02 · wat je hoort" titel="45 minuten, vier delen.">
-            <ZRaster items={inhoud} prefix="2" />
+          <ZSectie id="inhoud" nr="wat je hoort" titel="45 minuten, vier delen.">
+            <ZRaster items={inhoud} />
           </ZSectie>
 
           <ZSectieTwee
             id="aanmelden"
-            nr="03 · aanmelden"
+            nr="aanmelden"
             titel="meld je aan."
             tekst="Gratis. De link om mee te volgen krijg je per mail."
             extra={

@@ -37,7 +37,7 @@ export default function Website() {
   return (
     <div className="wrap">
       <ZHeld
-        nr="01 · je eigen boekingssite"
+        nr="je eigen boekingssite"
         titel={<>je eigen boekingswebsite.<br />in jouw naam.</>}
         fotos={[
           { src: '/images/collectie-3.jpg', alt: 'Living van een vakantiewoning' },
@@ -65,16 +65,16 @@ export default function Website() {
         }
       />
 
-      <ZSectieTwee nr="02 · inbegrepen" titel="klaar om te boeken.">
-        <ZRegister items={inbegrepen} prefix="2" />
+      <ZSectieTwee nr="inbegrepen" titel="klaar om te boeken.">
+        <ZRegister items={inbegrepen} />
       </ZSectieTwee>
 
-      <ZSectie id="hoe" nr="03 · waarom rechtstreeks" titel="je gasten, je voorwaarden.">
-        <ZRaster items={waarom} prefix="3" />
+      <ZSectie id="hoe" nr="waarom rechtstreeks" titel="je gasten, je voorwaarden.">
+        <ZRaster items={waarom} />
       </ZSectie>
 
-      <ZSectie nr="04 · zo werkt het" titel="van gesprek tot eerste boeking.">
-        <ZTijdlijn items={stappen} prefix="4" />
+      <ZSectie nr="zo werkt het" titel="van gesprek tot eerste boeking.">
+        <ZTijdlijn items={stappen} />
       </ZSectie>
 
       <section className="z-sectie" data-mw-reveal>
@@ -96,7 +96,7 @@ export default function Website() {
 
       <ZSectieTwee
         id="aanvraag"
-        nr="05 · aanvraag"
+        nr="aanvraag"
         titel="vertel ons over je huis."
         tekst={`${site.contact.naam} · ${site.contact.telefoon}`}
       >

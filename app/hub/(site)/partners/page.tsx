@@ -14,7 +14,7 @@ export default function Partners() {
   return (
     <div className="wrap">
       <ZHeld
-        nr="01 · hub partners · voor eigenaars en beheerders met het label"
+        nr="hub partners · voor eigenaars en beheerders met het label"
         titel={<>wat wij gebruiken,<br />voor jouw huis.</>}
         fotos={[
           { src: '/images/partners/nuki-smart-lock.jpg', alt: 'Een Nuki smart lock aan de deur' },
@@ -29,7 +29,7 @@ export default function Partners() {
         <section key={c.sleutel} id={c.sleutel} className="z-sectie" data-mw-reveal>
           <div className="z-twee" style={{ alignItems: 'stretch' }}>
             <div className="z-smal" style={{ flex: '1 1 420px' }}>
-              <span className="z-nr">{String(i + 2).padStart(2, '0')} · {c.label}</span>
+              <span className="z-nr">{c.label}</span>
               <h2 className="z-h2">{c.titel}</h2>
               <p className="z-tekst" style={{ fontSize: 18 }}>{c.tekst}</p>
               <ul style={{ listStyle: 'none', margin: 0, padding: 0, borderTop: '1px solid var(--line)' }}>
@@ -59,7 +59,7 @@ export default function Partners() {
         </section>
       ))}
 
-      <ZSectie nr={`${String(partnerCategorieen.length + 2).padStart(2, '0')} · hoe we kiezen`} titel="vier vragen, voor elke partner.">
+      <ZSectie nr="hoe we kiezen" titel="vier vragen, voor elke partner.">
         <ZTijdlijn items={hoeWeKiezen.map(([titel, tekst]) => ({ titel, tekst }))} />
       </ZSectie>
 

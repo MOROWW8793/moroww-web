@@ -32,7 +32,7 @@ export default function PartnerWorden() {
   return (
     <div className="wrap">
       <ZHeld
-        nr="01 · partner worden"
+        nr="partner worden"
         titel={<>weinig partners,<br />bewust gekozen.</>}
         fotos={[
           { src: '/images/partners/moro-essentials-sfeer.jpg', alt: 'Producten van MORO Essentials' },
@@ -48,19 +48,19 @@ export default function PartnerWorden() {
         }
       />
 
-      <ZSectie nr="02 · drie soorten partners" titel="wat je bij ons doet.">
-        <ZRaster items={soorten} prefix="2" />
+      <ZSectie nr="drie soorten partners" titel="wat je bij ons doet.">
+        <ZRaster items={soorten} />
       </ZSectie>
 
-      <ZSectie nr="03 · hoe we kiezen" titel="vier vragen, voor elke partner.">
-        <ZRaster prefix="3" items={hoeWeKiezen.map(([titel, tekst]) => ({ titel, tekst }))} />
+      <ZSectie nr="hoe we kiezen" titel="vier vragen, voor elke partner.">
+        <ZRaster items={hoeWeKiezen.map(([titel, tekst]) => ({ titel, tekst }))} />
       </ZSectie>
 
-      <ZSectie nr="04 · zo gaat het" titel="van kennismaking tot in de huizen.">
-        <ZTijdlijn items={stappen} prefix="4" />
+      <ZSectie nr="zo gaat het" titel="van kennismaking tot in de huizen.">
+        <ZTijdlijn items={stappen} />
       </ZSectie>
 
-      <ZSectieTwee id="aanmelden" nr="05 · aanmelden" titel="vertel ons wat je doet.">
+      <ZSectieTwee id="aanmelden" nr="aanmelden" titel="vertel ons wat je doet.">
         <ContactForm
           merk="hub"
           soort="partner"

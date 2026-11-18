@@ -66,7 +66,7 @@ export default async function BeheerPage({ params }: { params: Promise<{ locale:
       <div className="z">
         <div className="wrap">
           <ZHeld
-            nr="01 · volledig beheer"
+            nr="volledig beheer"
             titel={<>wij verhuren het<br />voor je.</>}
             fotos={fotos}
             lead="Je huis draagt het label, wij doen de rest: de listings, de prijzen, de gasten, de schoonmaak en het onderhoud. Jij volgt alles mee in je eigen portaal."
@@ -90,21 +90,21 @@ export default async function BeheerPage({ params }: { params: Promise<{ locale:
             }
           />
 
-          <ZSectie id="wat" nr="02 · wat we overnemen" titel="alles tussen boeking en vertrek.">
-            <ZRaster items={overnemen} prefix="2" />
+          <ZSectie id="wat" nr="wat we overnemen" titel="alles tussen boeking en vertrek.">
+            <ZRaster items={overnemen} />
           </ZSectie>
 
-          <ZSectie nr="03 · van gesprek tot beheer" titel="zo starten we.">
-            <ZTijdlijn items={stappen} prefix="3" />
+          <ZSectie nr="van gesprek tot beheer" titel="zo starten we.">
+            <ZTijdlijn items={stappen} />
           </ZSectie>
 
-          <ZSectieTwee nr="04 · vaak gevraagd" titel="kort beantwoord.">
+          <ZSectieTwee nr="vaak gevraagd" titel="kort beantwoord.">
             <ZFaq items={faq} />
           </ZSectieTwee>
 
           <ZSectieTwee
             id="aanvraag"
-            nr="05 · aanvraag"
+            nr="aanvraag"
             titel="vertel ons over je huis."
             tekst="Wat het kost, hangt af van je huis en van wat we overnemen. Dat bespreken we in een eerste gesprek."
             extra={

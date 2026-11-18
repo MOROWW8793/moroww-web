@@ -16,7 +16,7 @@ export default function LidWorden() {
   return (
     <div className="wrap">
       <ZHeld
-        nr="01 · lid worden"
+        nr="lid worden"
         titel={<>de hub hoort<br />bij het label.</>}
         fotos={[
           { src: '/images/hub/huis-moro-badkamer.jpg', alt: 'Handdoek en MORO-producten in een badkamer' },
@@ -32,12 +32,12 @@ export default function LidWorden() {
         }
       />
 
-      <ZSectie nr="02 · wat leden krijgen" titel="vier dingen, vanaf ons bezoek.">
-        <ZRaster prefix="2" items={ledenKrijgen.map(([titel, tekst]) => ({ titel, tekst }))} />
+      <ZSectie nr="wat leden krijgen" titel="vier dingen, vanaf ons bezoek.">
+        <ZRaster items={ledenKrijgen.map(([titel, tekst]) => ({ titel, tekst }))} />
       </ZSectie>
 
-      <ZSectie nr="03 · zo word je lid" titel="drie stappen.">
-        <ZTijdlijn items={stappen} prefix="3" />
+      <ZSectie nr="zo word je lid" titel="drie stappen.">
+        <ZTijdlijn items={stappen} />
       </ZSectie>
 
       <section className="z-sectie" data-mw-reveal>

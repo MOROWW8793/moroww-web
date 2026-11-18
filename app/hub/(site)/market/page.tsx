@@ -36,7 +36,7 @@ export default async function Market() {
   return (
     <div className="wrap">
       <ZHeld
-        nr="01 · hub market · voor gasten"
+        nr="hub market · voor gasten"
         titel={<>neem het<br />mee.</>}
         fotos={[
           { src: '/images/partners/moro-essentials-sfeer.jpg', alt: 'Producten van MORO Essentials' },
@@ -48,7 +48,7 @@ export default async function Market() {
       />
 
       {live.length ? (
-        <ZSectie nr="02 · nu te koop" titel="uit de huizen.">
+        <ZSectie nr="nu te koop" titel="uit de huizen.">
           <div className="z-tegels">
             {live.map((p) => (
               <Tegel
@@ -65,7 +65,7 @@ export default async function Market() {
         </ZSectie>
       ) : null}
 
-      <ZSectie nr={live.length ? '03 · binnenkort' : '02 · binnenkort'} titel="wat er komt.">
+      <ZSectie nr={live.length ? 'binnenkort' : 'binnenkort'} titel="wat er komt.">
         <div className="z-tegels">
           {producten.map((p) => (
             <Tegel
@@ -81,7 +81,7 @@ export default async function Market() {
 
       <ZSectieTwee
         id="wachtlijst"
-        nr={live.length ? '04 · als eerste weten' : '03 · als eerste weten'}
+        nr={live.length ? 'als eerste weten' : 'als eerste weten'}
         titel="de market opent binnenkort."
         tekst="Laat je e-mail achter. Je hoort het als eerste, met een voordeel voor wie al bij ons verbleef."
       >

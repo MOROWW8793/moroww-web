@@ -9,7 +9,7 @@ export default function HowContact() {
     <div className="wrap">
       <section className="z-held" style={{ alignItems: 'flex-start' }} data-mw-reveal>
         <div className="z-smal" style={{ gap: 28 }}>
-          <span className="z-nr">01 · je vraag</span>
+          <span className="z-nr">je vraag</span>
           <h1 className="z-h2" style={{ fontSize: 'clamp(2.6rem, 5vw, 4.4rem)' }}>vertel waar je tegenaan loopt.</h1>
           <p className="z-tekst" style={{ fontSize: 18 }}>In een paar zinnen, of met de documenten die er al zijn. Een kort gesprek binnen twee werkdagen.</p>
           <p className="z-tekst" style={{ fontWeight: 400, lineHeight: 1.7 }}>
