@@ -7,6 +7,8 @@ import { soorten, berichten, duur, fotoLinks, type Vraag, type VraagUpdate } fro
 import { VraagKaart } from '@/components/hub/VraagKaart';
 import { meldBeheer } from '@/lib/hub/mail';
 import { site } from '@/lib/merk/site';
+import { huisLabel, type Huis } from '@/lib/hub/huizen';
+import Link from 'next/link';
 
 export const metadata: Metadata = { title: 'ledenzone', robots: { index: false } };
 export const dynamic = 'force-dynamic';
@@ -50,12 +52,16 @@ async function stelVraag(formData: FormData) {
   if (!user || profiel?.status !== 'actief') redirect('/hub/leden');
   const soort = tekst(formData.get('soort'), 30);
   const wat = tekst(formData.get('wat'), 2000);
-  const huis = tekst(formData.get('huis'), 200) || profiel.huis || 'mijn huis';
+  // Met huizen in de hub kiest het lid er één; de naam gaat mee als tekst in de vraag.
+  const huisId = tekst(formData.get('huis_id'), 60) || null;
+  const { data: gekozen } = huisId ? await sb.from('hub_huizen').select('id,naam,gemeente').eq('id', huisId).eq('profiel_id', user.id).maybeSingle() : { data: null };
+  if (huisId && !gekozen) redirect('/hub/leden?fout=vraag#vraag');
+  const huis = gekozen ? huisLabel(gekozen) : tekst(formData.get('huis'), 200) || profiel.huis || 'mijn huis';
   const tegen = brusselNaarISO(tekst(formData.get('tegen'), 20));
   if (!wat) redirect('/hub/leden?fout=vraag#vraag');
   const { data, error } = await sb
     .from('hub_vragen')
-    .insert({ eigenaar: user.id, eigenaar_naam: profiel.naam, huis, soort: soorten.some((x) => x.sleutel === soort) ? soort : 'andere', wat, tegen, kanaal: 'hub', status: 'binnen' })
+    .insert({ eigenaar: user.id, eigenaar_naam: profiel.naam, huis, huis_id: gekozen?.id ?? null, soort: soorten.some((x) => x.sleutel === soort) ? soort : 'andere', wat, tegen, kanaal: 'hub', status: 'binnen' })
     .select('id')
     .single();
   if (error || !data) redirect('/hub/leden?fout=vraag#vraag');
@@ -140,10 +146,12 @@ export default async function Leden({ searchParams }: { searchParams: Promise<{ 
   const vragen = (rijen ?? []) as Vraag[];
   const ids = vragen.map((v) => v.id);
   const db = hubBeheerClient();
-  const [{ data: ups }, { data: ptn }] = await Promise.all([
+  const [{ data: ups }, { data: ptn }, { data: hzn }] = await Promise.all([
     ids.length ? sb.from('hub_vraag_updates').select('*').in('vraag_id', ids).order('created_at') : Promise.resolve({ data: [] }),
     db.from('hub_partners').select('id,naam').in('id', [...new Set(vragen.map((v) => v.partner_id).filter(Boolean))] as string[]),
+    sb.from('hub_huizen').select('id,naam,gemeente').eq('profiel_id', user.id).order('naam'),
   ]);
+  const huizen = (hzn ?? []) as Pick<Huis, 'id' | 'naam' | 'gemeente'>[];
   const updates = (ups ?? []) as VraagUpdate[];
   const partnerNaam = new Map(((ptn ?? []) as { id: string; naam: string }[]).map((p) => [p.id, p.naam]));
   const fotos = await fotoLinks([...vragen.map((v) => v.foto), ...updates.map((u) => u.foto)]);
@@ -187,7 +195,19 @@ export default async function Leden({ searchParams }: { searchParams: Promise<{ 
                 </label>
               ))}
             </fieldset>
-            <div className="veld"><label htmlFor="huis">voor welk huis</label><input id="huis" name="huis" defaultValue={profiel.huis ?? ''} required /></div>
+            {huizen.length ? (
+              <div className="veld">
+                <label htmlFor="huis_id">voor welk huis</label>
+                <select id="huis_id" name="huis_id" required defaultValue={huizen[0].id}>
+                  {huizen.map((h) => <option key={h.id} value={h.id}>{huisLabel(h)}</option>)}
+                </select>
+              </div>
+            ) : (
+              <>
+                <div className="veld"><label htmlFor="huis">voor welk huis</label><input id="huis" name="huis" defaultValue={profiel.huis ?? ''} required /></div>
+                <p className="klein" style={{ margin: 0 }}><Link href="/hub/leden/huizen">Zet je huizen in de hub</Link>, dan hoef je adres en toegang maar één keer te geven.</p>
+              </>
+            )}
             <div className="veld"><label htmlFor="tegen">klaar tegen</label><input id="tegen" name="tegen" type="datetime-local" /></div>
             <div className="veld"><label htmlFor="wat">je vraag</label><textarea id="wat" name="wat" required placeholder="Kunnen de ramen gepoetst zijn tegen 19 uur? Er komen gasten." /></div>
             {sp.fout === 'vraag' ? <p className="hub-fout">Je vraag kon niet bewaard worden. Probeer het opnieuw, of bel ons.</p> : null}

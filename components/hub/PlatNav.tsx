@@ -11,6 +11,7 @@ export function PlatNav({ naam, huis, beheerder, open, telefoon }: { naam: strin
   const actief = (i: Item) => (i.exact ? pad === i.href : pad === i.href || pad.startsWith(i.href + '/'));
   const leden: Item[] = [
     { href: '/hub/leden', label: 'vraag het moroww', exact: true },
+    { href: '/hub/leden/huizen', label: 'mijn huizen' },
     { href: '/hub/leden/partners', label: 'partners' },
     { href: '/hub/leden/merken', label: 'merken' },
     { href: '/hub/leden/academy', label: 'academy en ledenbrief' },

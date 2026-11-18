@@ -8,6 +8,7 @@ export interface Vraag {
   eigenaar: string | null;
   eigenaar_naam: string | null;
   huis: string;
+  huis_id: string | null;
   soort: string;
   wat: string;
   tegen: string | null;

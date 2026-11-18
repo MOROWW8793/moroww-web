@@ -9,6 +9,7 @@ import { eisBeheer } from '@/lib/hub/beheer';
 import { tekst, brusselNaarISO } from '@/lib/hub/supabase';
 import { soortLabel, statusNaam, kanaalNaam, wanneer, kort, berichten, fotoLinks, bewaarFoto, type Vraag, type VraagUpdate } from '@/lib/hub/vragen';
 import { mailVraag } from '@/lib/hub/mail';
+import { huisRegels, type Huis } from '@/lib/hub/huizen';
 
 export const metadata: Metadata = { title: 'regie · dossier', robots: { index: false } };
 export const dynamic = 'force-dynamic';
@@ -88,12 +89,14 @@ export default async function Dossier({ params, searchParams }: { params: Promis
   const { data: v } = await db.from('hub_vragen').select('*').eq('id', id).maybeSingle();
   if (!v) notFound();
   const vraag = v as Vraag;
-  const [{ data: ups }, { data: ptn }, { data: nts }, { data: eig }] = await Promise.all([
+  const [{ data: ups }, { data: ptn }, { data: nts }, { data: eig }, { data: hs }] = await Promise.all([
     db.from('hub_vraag_updates').select('*').eq('vraag_id', id).order('created_at'),
     db.from('hub_partners').select('id,naam,vak,regio,telefoon,soort').eq('soort', 'dienst').order('naam'),
     db.from('hub_vraag_notities').select('*').eq('vraag_id', id).order('created_at'),
     vraag.eigenaar ? db.from('hub_profielen').select('email,telefoon,naam').eq('id', vraag.eigenaar).maybeSingle() : Promise.resolve({ data: null }),
+    vraag.huis_id ? db.from('hub_huizen').select('*').eq('id', vraag.huis_id).maybeSingle() : Promise.resolve({ data: null }),
   ]);
+  const huis = hs as Huis | null;
   const updates = (ups ?? []) as VraagUpdate[];
   const partners = (ptn ?? []) as Partner[];
   const partner = partners.find((p) => p.id === vraag.partner_id);
@@ -129,6 +132,18 @@ export default async function Dossier({ params, searchParams }: { params: Promis
             {eigenaar?.email ? ` · ${eigenaar.email}` : ''}{eigenaar?.telefoon ? ` · ${eigenaar.telefoon}` : ''}
             {vraag.tegen ? ` · klaar tegen ${wanneer(vraag.tegen)}` : ' · geen deadline'}
           </p>
+          {huis ? (
+            <div className="kaart" style={{ margin: '12px 0 0', maxWidth: 720, gap: 10 }}>
+              <span className="kaart-label">het huis · voor de partner</span>
+              <dl style={{ margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {huisRegels(huis).map(([k, w]) => (
+                <div key={k} style={{ display: 'flex', flexWrap: 'wrap', gap: '2px 16px' }}><dt className="hub-meta" style={{ flex: '0 0 150px' }}>{k}</dt><dd style={{ margin: 0, flex: '1 1 260px', whiteSpace: 'pre-wrap' }}>{w}</dd></div>
+              ))}
+              </dl>
+            </div>
+          ) : (
+            <p className="hub-meta" style={{ margin: 0 }}>Dit huis staat nog niet met adres en toegang in de hub.</p>
+          )}
         </div>
       </Sectie>
 

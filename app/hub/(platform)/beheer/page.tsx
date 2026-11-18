@@ -22,8 +22,8 @@ async function zetStatus(formData: FormData) {
   const id = tekst(formData.get('id'), 60);
   const status = tekst(formData.get('status'), 20);
   if (!['actief', 'geweigerd', 'aangevraagd'].includes(status)) return;
-  const { data } = await db.from('hub_profielen').update({ status }).eq('id', id).select('email,naam').single();
-  if (status === 'actief' && data) await mailLid(data.email, data.naam);
+  const { data } = await db.from('hub_profielen').update({ status }).eq('id', id).select('email,naam,rol').single();
+  if (status === 'actief' && data) await mailLid(data.email, data.naam, data.rol === 'partner');
   revalidatePath('/hub/beheer');
 }
 
