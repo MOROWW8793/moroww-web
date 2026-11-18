@@ -119,6 +119,7 @@ export default async function Leden({ searchParams }: { searchParams: Promise<{ 
 
   if (profiel.status !== 'actief') {
     const geweigerd = profiel.status === 'geweigerd';
+    if (profiel.rol === 'partner' && !geweigerd) redirect('/hub/partner');
     return (
       <section className="held" style={{ minHeight: '60vh' }}>
         <div className="wrap" style={{ display: 'flex', flexDirection: 'column', gap: 22, maxWidth: 760 }}>

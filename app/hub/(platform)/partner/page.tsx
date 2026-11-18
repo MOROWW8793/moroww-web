@@ -2,14 +2,19 @@ import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { Sectie, Kop } from '@/components/merk/Shell';
-import { hubSessie, tekst, categorieNaam } from '@/lib/hub/supabase';
+import { hubSessie, tekst, categorieNaam, type Profiel } from '@/lib/hub/supabase';
 import { meldBeheer } from '@/lib/hub/mail';
 
 export const metadata: Metadata = { title: 'partnerportaal', robots: { index: false } };
 export const dynamic = 'force-dynamic';
 
-interface Fiche { id: string; naam: string; categorie: string; wat: string | null; voordeel: string | null; code: string | null; url: string | null; contact: string | null; status: string }
+interface Fiche { id: string; naam: string; categorie: string; soort: string; plek: string | null; wat: string | null; voordeel: string | null; code: string | null; url: string | null; contact: string | null; status: string }
 interface Product { id: string; naam: string; tekst: string | null; foto: string | null; url: string | null; status: string }
+
+// Een merk dat zich aanmeldde, vult zijn fiche al aan terwijl beheer de aanmelding nakijkt.
+function magPortaal(p: Profiel | null): p is Profiel {
+  return p?.rol === 'partner' && p.status !== 'geweigerd';
+}
 
 function velden(f: FormData) {
   const cat = tekst(f.get('categorie'), 20);
@@ -17,6 +22,8 @@ function velden(f: FormData) {
     naam: tekst(f.get('naam'), 120),
     categorie: Object.keys(categorieNaam).includes(cat) ? cat : 'huis',
     wat: tekst(f.get('wat'), 300) || null,
+    // Alleen de fiche van een merk heeft dit veld; anders blijft de kolom ongemoeid.
+    ...(f.has('plek') ? { plek: tekst(f.get('plek'), 80) || null } : {}),
     voordeel: tekst(f.get('voordeel'), 300) || null,
     code: tekst(f.get('code'), 60) || null,
     url: tekst(f.get('url'), 300) || null,
@@ -27,14 +34,16 @@ function velden(f: FormData) {
 async function bewaarFiche(formData: FormData) {
   'use server';
   const { sb, user, profiel } = await hubSessie();
-  if (!user || profiel?.status !== 'actief' || profiel.rol !== 'partner') redirect('/hub/leden');
+  if (!user || !magPortaal(profiel)) redirect('/hub/leden');
   const v = velden(formData);
   if (!v.naam) redirect('/hub/partner?fout=naam');
   const id = tekst(formData.get('id'), 60);
   if (id) {
-    await sb.from('hub_partners').update({ ...v, updated_at: new Date().toISOString() }).eq('id', id).eq('eigenaar', user.id);
+    const { error } = await sb.from('hub_partners').update({ ...v, updated_at: new Date().toISOString() }).eq('id', id).eq('eigenaar', user.id);
+    if (error) redirect('/hub/partner?fout=opslaan');
   } else {
-    await sb.from('hub_partners').insert({ ...v, eigenaar: user.id, status: 'concept' });
+    const { error } = await sb.from('hub_partners').insert({ ...v, eigenaar: user.id, status: 'concept' });
+    if (error) redirect('/hub/partner?fout=opslaan');
     await meldBeheer(`nieuwe partnerfiche · ${v.naam}`, [['partner', profiel.naam], ['wat', v.wat ?? ''], ['voordeel', v.voordeel ?? '']]);
   }
   revalidatePath('/hub/partner');
@@ -44,7 +53,7 @@ async function bewaarFiche(formData: FormData) {
 async function productToevoegen(formData: FormData) {
   'use server';
   const { sb, user, profiel } = await hubSessie();
-  if (!user || profiel?.status !== 'actief' || profiel.rol !== 'partner') redirect('/hub/leden');
+  if (!user || !magPortaal(profiel)) redirect('/hub/leden');
   const partner = tekst(formData.get('partner'), 60);
   const naam = tekst(formData.get('naam'), 120);
   if (!naam) redirect('/hub/partner?fout=product');
@@ -72,7 +81,8 @@ export default async function PartnerPortaal({ searchParams }: { searchParams: P
   const sp = await searchParams;
   const { sb, user, profiel } = await hubSessie();
   if (!user) redirect('/hub/inloggen?naar=/hub/partner');
-  if (profiel?.status !== 'actief' || profiel.rol !== 'partner') redirect('/hub/leden');
+  if (!magPortaal(profiel)) redirect('/hub/leden');
+  const wacht = profiel.status !== 'actief';
 
   const { data: fiche } = await sb.from('hub_partners').select('*').eq('eigenaar', user.id).maybeSingle();
   const f = fiche as Fiche | null;
@@ -85,6 +95,12 @@ export default async function PartnerPortaal({ searchParams }: { searchParams: P
           <span className="boven">moroww hub · partnerportaal</span>
           <h1 className="titel-1">jouw fiche <i>in de hub.</i></h1>
           <p className="inleiding">Wat leden over je zien: wat je doet, je voordeel en je code. Wijzigingen staan meteen online; een nieuwe fiche of een nieuw product zetten wij live na een korte controle.</p>
+          {wacht ? (
+            <>
+              <p className="inleiding">We kijken je aanmelding na en laten je per mail weten wanneer je merk in de hub staat. Intussen kan je je fiche aanvullen en producten toevoegen.</p>
+              <form action="/hub/uitloggen" method="post"><button type="submit" className="btn btn-lijn">uitloggen</button></form>
+            </>
+          ) : null}
         </div>
       </section>
 
@@ -107,6 +123,7 @@ export default async function PartnerPortaal({ searchParams }: { searchParams: P
               </div>
             </div>
             <div className="veld"><label htmlFor="wat">wat je doet, in één zin</label><input id="wat" name="wat" defaultValue={f?.wat ?? ''} /></div>
+            {f?.soort === 'merk' ? <div className="veld"><label htmlFor="plek">waar in het huis staat je product</label><input id="plek" name="plek" defaultValue={f.plek ?? ''} placeholder="in de badkamer" /></div> : null}
             <div className="rij-velden">
               <div className="veld"><label htmlFor="voordeel">voordeel voor leden</label><input id="voordeel" name="voordeel" defaultValue={f?.voordeel ?? ''} placeholder="bv. 10% op je eerste bestelling" /></div>
               <div className="veld"><label htmlFor="code">kortingscode</label><input id="code" name="code" defaultValue={f?.code ?? ''} /></div>
@@ -116,6 +133,7 @@ export default async function PartnerPortaal({ searchParams }: { searchParams: P
               <div className="veld"><label htmlFor="contact">contact voor leden</label><input id="contact" name="contact" defaultValue={f?.contact ?? profiel.email} /></div>
             </div>
             {sp.fout === 'naam' ? <p className="hub-fout">Vul een naam in.</p> : null}
+            {sp.fout === 'opslaan' ? <p className="hub-fout">Bewaren lukte niet. Probeer het opnieuw, of mail ons op info@moroww.com.</p> : null}
             <button type="submit" className="btn btn-primair">{f ? 'bewaar' : 'maak mijn fiche'}</button>
           </form>
         </div>

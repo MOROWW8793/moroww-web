@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { ContactForm } from '@/components/merk/ContactForm';
 import { ZHeld, ZSectie, ZSectieTwee, ZRaster, ZTijdlijn } from '@/components/merk/Zwitsers';
 import { hoeWeKiezen, partnerCategorieen } from '@/lib/merk/hub';
@@ -39,7 +40,12 @@ export default function PartnerWorden() {
           { src: '/images/hub/tools-laptop.jpg', alt: 'Laptop op tafel in een moroww-huis' },
         ]}
         lead="Een merk, een vakman of een tool die past bij wat gasten in een moroww-huis voelen? Vertel ons wat je doet, in welke regio, en welk voordeel je leden geeft."
-        acties={<a href="#aanmelden" className="z-knop">vertel ons wat je doet</a>}
+        acties={
+          <>
+            <Link href="/hub/merk-aanmelden" className="z-knop">meld je merk aan</Link>
+            <a href="#aanmelden" className="z-link">vakman of tool? vertel ons wat je doet</a>
+          </>
+        }
       />
 
       <ZSectie nr="02 · drie soorten partners" titel="wat je bij ons doet.">
