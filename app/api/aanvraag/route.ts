@@ -96,6 +96,32 @@ export async function POST(request: NextRequest) {
     }
   }
 
+  // Webinar: de deelnemer krijgt meteen een bevestiging. De link om mee te
+  // volgen staat er niet in; die versturen we apart zodra het platform vastligt.
+  if (soort === 'webinar' && process.env.RESEND_API_KEY) {
+    const voornaam = naam.split(' ')[0]
+    try {
+      const { error } = await new Resend(process.env.RESEND_API_KEY).emails.send({
+        from: 'moroww <info@moroww.com>',
+        to: email,
+        replyTo: ONTVANGER,
+        subject: 'je bent aangemeld · webinar 15 december',
+        text: `Dag ${voornaam},\n\nJe bent aangemeld voor de webinar "waar moroww naartoe gaat".\n\nDinsdag 15 december 2026, 19.30 u.\n45 minuten, online, gratis.\n\nDe link om mee te volgen krijg je vooraf per mail. Een vraag die je beantwoord wil zien? Antwoord op deze mail.\n\nmoroww\nwww.moroww.com/webinar`,
+        html: `
+          <div style="font-family:sans-serif;max-width:560px;margin:0 auto;padding:24px;color:#1A1A1A;font-size:16px;line-height:1.6">
+            <p>Dag ${esc(voornaam)},</p>
+            <p>Je bent aangemeld voor de webinar <strong>waar moroww naartoe gaat</strong>.</p>
+            <p style="padding:16px 0;border-top:1px solid #E3DED7;border-bottom:1px solid #E3DED7">Dinsdag 15 december 2026, 19.30 u.<br>45 minuten, online, gratis.</p>
+            <p>De link om mee te volgen krijg je vooraf per mail. Een vraag die je beantwoord wil zien? Antwoord op deze mail.</p>
+            <p>moroww<br><a href="https://www.moroww.com/webinar" style="color:#1A1A1A">www.moroww.com/webinar</a></p>
+          </div>`,
+      })
+      if (error) console.error('webinar bevestiging fout', error)
+    } catch (e) {
+      console.error('webinar bevestiging fout', e)
+    }
+  }
+
   if (dbError) console.error('aanvraag db fout', dbError)
   if (dbError && !mailOk) return NextResponse.json({ ok: false }, { status: 500 })
   return NextResponse.json({ ok: true })

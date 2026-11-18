@@ -86,7 +86,7 @@ export default async function WebinarPage({ params }: { params: Promise<{ locale
               merk="moroww"
               soort="webinar"
               knop="meld je aan"
-              bedankt="je bent aangemeld. de link voor 15 december krijg je per mail."
+              bedankt="je bent aangemeld. je krijgt nu een bevestiging per mail; de link om mee te volgen sturen we vooraf."
               velden={[
                 { naam: 'naam', label: 'naam', verplicht: true },
                 { naam: 'email', label: 'e-mail', type: 'email', verplicht: true },
