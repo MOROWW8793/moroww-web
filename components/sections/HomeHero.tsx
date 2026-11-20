@@ -12,13 +12,13 @@ export type HeroSlide = { src: string; alt: string; naam: string; plaats: string
 
 const COPY = {
   nl: {
-    kop: 'karaktervolle huizen. een standaard die niet wijkt.',
+    kop: ['karaktervolle huizen.', 'een standaard die niet wijkt.'],
     waar: 'waar', alles: 'de hele collectie', aankomst: 'aankomst', vertrek: 'vertrek', gasten: 'gasten',
     zoek: 'zoek', fout: 'Kies een aankomst- en vertrekdag.', dia: 'foto',
     pauzeer: 'pauzeer de foto’s', speel: 'speel de foto’s af',
   },
   en: {
-    kop: 'homes with character. a standard that does not bend.',
+    kop: ['homes with character.', 'a standard that does not bend.'],
     waar: 'where', alles: 'the whole collection', aankomst: 'arrival', vertrek: 'departure', gasten: 'guests',
     zoek: 'search', fout: 'Choose an arrival and a departure date.', dia: 'photo',
     pauzeer: 'pause the photos', speel: 'play the photos',
@@ -140,7 +140,7 @@ export function HomeHero({ slides, locale, maxGasten, steden }: { slides: HeroSl
       {/* KOP + ZOEKBALK */}
       <div className="relative z-10 h-full flex flex-col justify-end px-6 md:px-12 pb-mw-4 md:pb-mw-5">
         <div className="mx-auto max-w-7xl w-full">
-          <h1 className="text-[clamp(2.4rem,5vw,4.75rem)] leading-[1.02] tracking-[-0.02em] font-semibold text-white max-w-[18ch] drop-shadow-md">{c.kop}</h1>
+          <h1 className="text-[clamp(2.4rem,5vw,4.75rem)] leading-[1.02] tracking-[-0.02em] font-semibold text-white max-w-[18ch] drop-shadow-md">{c.kop[0]}<br />{c.kop[1]}</h1>
 
           <form
             onSubmit={zoek}
