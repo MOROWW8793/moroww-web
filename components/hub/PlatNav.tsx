@@ -6,9 +6,12 @@ import { MerkTeken } from '@/components/merk/Logo';
 
 type Item = { href: string; label: string; exact?: boolean; teller?: number };
 
-export function PlatNav({ naam, huis, beheerder, open, telefoon }: { naam: string; huis: string | null; beheerder: boolean; open: number; telefoon: string }) {
+export function PlatNav({ naam, huis, rol, beheerder, open, telefoon }: { naam: string; huis: string | null; rol: 'lid' | 'partner'; beheerder: boolean; open: number; telefoon: string }) {
   const pad = usePathname();
   const actief = (i: Item) => (i.exact ? pad === i.href : pad === i.href || pad.startsWith(i.href + '/'));
+  // Een partner ziet alleen zijn portaal: opdrachten, fiche en producten.
+  const partner: Item[] = [{ href: '/hub/partner', label: 'opdrachten en fiche' }];
+  const start = rol === 'partner' ? '/hub/partner' : '/hub/leden';
   const leden: Item[] = [
     { href: '/hub/leden', label: 'vraag het moroww', exact: true },
     { href: '/hub/leden/huizen', label: 'mijn huizen' },
@@ -37,7 +40,7 @@ export function PlatNav({ naam, huis, beheerder, open, telefoon }: { naam: strin
   return (
     <aside className="plat-zij">
       <div className="plat-zij-top">
-        <Link href="/hub/leden" className="plat-logo" aria-label="moroww hub, naar je overzicht"><MerkTeken merk="hub" op="licht" size={24} /></Link>
+        <Link href={start} className="plat-logo" aria-label="moroww hub, naar je overzicht"><MerkTeken merk="hub" op="licht" size={24} /></Link>
         <div className="plat-wie">
           <span className="plat-avatar" aria-hidden>{voornaam.slice(0, 1).toUpperCase()}</span>
           <div>
@@ -47,7 +50,7 @@ export function PlatNav({ naam, huis, beheerder, open, telefoon }: { naam: strin
         </div>
       </div>
       <nav aria-label="platform" className="plat-nav">
-        {lijst(leden)}
+        {lijst(rol === 'partner' ? partner : leden)}
         {beheerder ? (
           <>
             <p className="plat-groep">regie</p>

@@ -107,5 +107,6 @@ export async function eisLid(naar: string) {
   const s = await hubSessie();
   if (!s.user) redirect(`/hub/inloggen?naar=${naar}`);
   if (s.profiel?.status !== 'actief') redirect('/hub/leden');
+  if (s.profiel?.rol === 'partner') redirect('/hub/partner');
   return s as typeof s & { user: NonNullable<typeof s.user>; profiel: Profiel };
 }

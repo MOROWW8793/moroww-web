@@ -35,6 +35,7 @@ export default async function HubPlatform({ children }: { children: React.ReactN
       <PlatNav
         naam={profiel.naam}
         huis={profiel.huis}
+        rol={profiel.rol}
         beheerder={beheerder}
         open={open}
         telefoon={site.contact.telefoon}

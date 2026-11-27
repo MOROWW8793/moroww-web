@@ -142,6 +142,9 @@ export default async function Leden({ searchParams }: { searchParams: Promise<{ 
     );
   }
 
+  // Een partner hoort in zijn portaal, niet in de ledenzone.
+  if (profiel.rol === 'partner') redirect('/hub/partner');
+
   const { data: rijen } = await sb.from('hub_vragen').select('*').eq('eigenaar', user.id).order('created_at', { ascending: false }).limit(60);
   const vragen = (rijen ?? []) as Vraag[];
   const ids = vragen.map((v) => v.id);
