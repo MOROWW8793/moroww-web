@@ -15,7 +15,8 @@ export function PlatNav({ naam, huis, rol, beheerder, open, telefoon }: { naam: 
   const leden: Item[] = [
     { href: '/hub/leden', label: 'vraag het moroww', exact: true },
     { href: '/hub/leden/huizen', label: 'mijn huizen' },
-    { href: '/hub/leden/partners', label: 'partners' },
+    { href: '/hub/leden/mijn-partners', label: 'mijn partners' },
+    { href: '/hub/leden/partners', label: 'netwerk' },
     { href: '/hub/leden/merken', label: 'merken' },
     { href: '/hub/leden/academy', label: 'academy en ledenbrief' },
   ];

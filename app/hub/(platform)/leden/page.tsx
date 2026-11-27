@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
+import { cookies } from 'next/headers';
 import { revalidatePath } from 'next/cache';
 import { Sectie } from '@/components/merk/Shell';
 import { hubSessie, hubBeheerClient, tekst, brusselNaarISO } from '@/lib/hub/supabase';
@@ -9,6 +10,7 @@ import { meldBeheer } from '@/lib/hub/mail';
 import { site } from '@/lib/merk/site';
 import { huisLabel, type Huis } from '@/lib/hub/huizen';
 import Link from 'next/link';
+import { AanvraagBinnen } from '@/components/hub/AanvraagBinnen';
 
 export const metadata: Metadata = { title: 'ledenzone', robots: { index: false } };
 export const dynamic = 'force-dynamic';
@@ -126,20 +128,20 @@ export default async function Leden({ searchParams }: { searchParams: Promise<{ 
   if (profiel.status !== 'actief') {
     const geweigerd = profiel.status === 'geweigerd';
     if (profiel.rol === 'partner' && !geweigerd) redirect('/hub/partner');
-    return (
-      <section className="held" style={{ minHeight: '60vh' }}>
-        <div className="wrap" style={{ display: 'flex', flexDirection: 'column', gap: 22, maxWidth: 760 }}>
-          <span className="boven">moroww hub · aanvraag</span>
-          <h1 className="titel-1">{geweigerd ? <>nog <i>niet.</i></> : <>bedankt, <i>{profiel.naam.split(' ')[0]}.</i></>}</h1>
-          <p className="inleiding">
-            {geweigerd
-              ? 'We kunnen je aanvraag nu niet goedkeuren. Wil je weten waarom, of is er iets veranderd? Mail ons op info@moroww.com.'
-              : 'We kijken je aanvraag na en laten je per mail weten wanneer je toegang hebt. Meestal binnen enkele werkdagen.'}
-          </p>
-          <form action="/hub/uitloggen" method="post"><button type="submit" className="btn btn-lijn">uitloggen</button></form>
+    const voornaam = profiel.naam.split(' ')[0];
+    const uit = <form action="/hub/uitloggen" method="post"><button type="submit" className="btn btn-lijn">uitloggen</button></form>;
+    if (geweigerd) {
+      return (
+        <div className="aanmeld">
+          <div className="aanmeld-kaart">
+            <h1 className="aanmeld-titel">nog niet.</h1>
+            <p className="klein">We kunnen je aanvraag nu niet goedkeuren. Wil je weten waarom, of is er iets veranderd? Mail ons op info@moroww.com.</p>
+            {uit}
+          </div>
         </div>
-      </section>
-    );
+      );
+    }
+    return <AanvraagBinnen titel={<>bedankt, {voornaam}. je aanvraag is binnen.</>} inleiding="Je hoort van ons binnen enkele werkdagen. Je hoeft nu niets te doen." voet={uit} />;
   }
 
   // Een partner hoort in zijn portaal, niet in de ledenzone.
@@ -149,10 +151,11 @@ export default async function Leden({ searchParams }: { searchParams: Promise<{ 
   const vragen = (rijen ?? []) as Vraag[];
   const ids = vragen.map((v) => v.id);
   const db = hubBeheerClient();
-  const [{ data: ups }, { data: ptn }, { data: hzn }] = await Promise.all([
+  const [{ data: ups }, { data: ptn }, { data: hzn }, { count: eigen }] = await Promise.all([
     ids.length ? sb.from('hub_vraag_updates').select('*').in('vraag_id', ids).order('created_at') : Promise.resolve({ data: [] }),
     db.from('hub_partners').select('id,naam').in('id', [...new Set(vragen.map((v) => v.partner_id).filter(Boolean))] as string[]),
     sb.from('hub_huizen').select('id,naam,gemeente').eq('profiel_id', user.id).order('naam'),
+    sb.from('hub_eigen_partners').select('id', { count: 'exact', head: true }).eq('profiel_id', user.id),
   ]);
   const huizen = (hzn ?? []) as Pick<Huis, 'id' | 'naam' | 'gemeente'>[];
   const updates = (ups ?? []) as VraagUpdate[];
@@ -166,6 +169,15 @@ export default async function Leden({ searchParams }: { searchParams: Promise<{ 
     <VraagKaart key={v.id} v={v} updates={updates.filter((u) => u.vraag_id === v.id)} partner={v.partner_id ? partnerNaam.get(v.partner_id) : null} fotos={fotos} scoreActie={geefScore} />
   );
 
+  // Opstarten: huizen en vaste partners. Zolang dat niet rond is, staat het bovenaan.
+  const over = (await cookies()).get('hub_start_over')?.value === '1';
+  const start: { titel: string; tekst: string; href: string; knop: string; klaar: boolean }[] = [
+    { titel: 'zet je huizen in de hub', tekst: 'Adres, toegang en bedden. Eén keer invullen.', href: '/hub/leden/huizen', knop: 'huis toevoegen', klaar: huizen.length > 0 },
+    { titel: 'geef je vaste partners door', tekst: 'Zij krijgen je vraag eerst. Heb je er geen, dan zoekt de hub.', href: '/hub/leden/mijn-partners', knop: 'partners kiezen', klaar: (eigen ?? 0) > 0 || over },
+  ];
+  const gedaan = start.filter((x) => x.klaar).length;
+  const opstarten = gedaan < start.length;
+
   const voornaam = profiel.naam.split(' ')[0];
   const uur = Number(new Intl.DateTimeFormat('nl-BE', { hour: 'numeric', hour12: false, timeZone: 'Europe/Brussels' }).format(new Date()));
   const groet = uur < 12 ? 'goeiemorgen' : uur < 18 ? 'goeiemiddag' : 'goeienavond';
@@ -175,7 +187,7 @@ export default async function Leden({ searchParams }: { searchParams: Promise<{ 
       <header className="plat-kop">
         <div>
           <span className="boven">{profiel.huis || 'je overzicht'}</span>
-          <h1 className="titel-1 plat-titel">{groet}, <i>{voornaam}.</i></h1>
+          <h1 className="titel-1 plat-titel">{opstarten ? 'welkom' : groet}, <i>{voornaam}.</i></h1>
         </div>
         <div className="hub-cijfers">
           <div><b>{loopt.length}</b><span>lopen nu</span></div>
@@ -183,6 +195,25 @@ export default async function Leden({ searchParams }: { searchParams: Promise<{ 
           {mediaan !== null ? <div><b>{duur(mediaan)}</b><span>van vraag tot geregeld</span></div> : null}
         </div>
       </header>
+
+      {opstarten ? (
+        <section className="opstart" aria-labelledby="opstart-titel">
+          <div className="opstart-kop">
+            <h2 id="opstart-titel">opstarten</h2>
+            <span>{gedaan} van {start.length} klaar</span>
+          </div>
+          <div className="opstart-balk"><span style={{ width: `${(gedaan / start.length) * 100}%` }} /></div>
+          <ol>
+            {start.map((x, i) => (
+              <li key={x.href} className={x.klaar ? 'klaar' : ''}>
+                <span className="opstart-nr" aria-hidden>{x.klaar ? '✓' : i + 1}</span>
+                <div><strong>{x.titel}</strong><p>{x.tekst}</p></div>
+                {x.klaar ? <span className="hub-label s-ok">klaar</span> : <Link href={x.href} className="hub-knopklein">{x.knop}</Link>}
+              </li>
+            ))}
+          </ol>
+        </section>
+      ) : null}
 
       <div className="plat-bureau">
         <section id="vraag" className="plat-paneel plat-vraag" aria-labelledby="vraag-titel">

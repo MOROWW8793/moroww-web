@@ -7,10 +7,13 @@ import { stuurNaarPartner } from '@/lib/hub/opdracht-acties';
 // Alleen te gebruiken op pagina's die al door eisBeheer gegaan zijn.
 export async function OpdrachtBlok({ vraag, uitkomst }: { vraag: Vraag; uitkomst?: string }) {
   const db = hubBeheerClient();
-  const [{ data: ops }, { data: ptn }] = await Promise.all([
+  const [{ data: ops }, { data: ptn }, { data: vast }] = await Promise.all([
     db.from('hub_opdrachten').select('*').eq('vraag_id', vraag.id).order('verstuurd_om'),
     db.from('hub_partners').select('id,naam,vak,regio,telefoon,email,kanaal,preferred').eq('soort', 'dienst').order('preferred', { ascending: false }).order('naam'),
+    // De vaste partner van dit lid voor dit soort werk: die krijgt de vraag eerst.
+    vraag.eigenaar ? db.from('hub_eigen_partners').select('naam,telefoon').eq('profiel_id', vraag.eigenaar).eq('soort', vraag.soort).maybeSingle() : Promise.resolve({ data: null }),
   ]);
+  const eigen = vast as { naam: string; telefoon: string | null } | null;
   const opdrachten = (ops ?? []) as Opdracht[];
   const partners = (ptn ?? []) as DienstPartner[];
   const naam = new Map(partners.map((p) => [p.id, p.naam]));
@@ -24,6 +27,12 @@ export async function OpdrachtBlok({ vraag, uitkomst }: { vraag: Vraag; uitkomst
       {open ? (
         <p className="klein" style={{ margin: 0 }}>
           {rest > 0 ? `Nog ${duur(rest)} tot de eigenaar een antwoord moet hebben (2 uur na zijn vraag).` : 'De 2 uur zijn voorbij. Laat de eigenaar nu weten waar hij staat.'}
+        </p>
+      ) : null}
+
+      {eigen ? (
+        <p className="plat-ok" style={{ margin: 0 }}>
+          Vaste partner van dit lid: <strong>{eigen.naam}</strong>{eigen.telefoon ? <> · <a href={`tel:${eigen.telefoon.replace(/\s/g, '')}`}>{eigen.telefoon}</a></> : null}. Vraag die eerst, zonder marge.
         </p>
       ) : null}
 

@@ -46,13 +46,15 @@ export async function mailLid(naar: string, naam: string, partner = false) {
     ? p(`Dag ${voornaam},`) +
       p('Je aanmelding is goedgekeurd. In je portaal vul je je fiche aan en voeg je producten toe. Staat je fiche live, dan zien eigenaars je in de hub.') +
       p('Inloggen doe je met je e-mailadres en je wachtwoord. Nog geen wachtwoord? Kies er een via “wachtwoord vergeten”.')
-    : p(`Dag ${voornaam},`) +
-      p('Welkom in moroww hub. Zet eerst je huizen in de hub: adres, toegang en wat er staat. Daarna vraag je met een paar klikken wat een huis nodig heeft, en regelt moroww het met een partner in de buurt.') +
-      p('Je vindt er ook de partners, de merken, de academy en de ledenbrief. Inloggen doe je met je e-mailadres en je wachtwoord. Nog geen wachtwoord? Kies er een via “wachtwoord vergeten”.');
+    : p(`<strong style="font-size:20px">Welkom, ${voornaam}.</strong>`) +
+      p('Je aanvraag is goedgekeurd. Je kan nu inloggen, je huizen toevoegen en je eerste vraag stellen.') +
+      p('Voldoet je pand aan de moroww-standaard, dan krijgt het het label erbij. Daarvoor komen we eerst persoonlijk langs.') +
+      p('Inloggen doe je met je e-mailadres en je wachtwoord.') +
+      p('Warme groet,<br>Noam');
   await stuur(
     naar,
-    partner ? 'je merk is goedgekeurd · moroww hub' : 'je hebt toegang tot moroww hub',
-    kader('moroww hub', inhoud, { href: `https://www.moroww.com/hub/inloggen?naar=${partner ? '/hub/partner' : '/hub/leden/huizen'}`, label: 'log in' }),
+    partner ? 'je merk is goedgekeurd · moroww hub' : 'je toegang tot de moroww hub staat klaar',
+    kader('moroww hub', inhoud, { href: `https://www.moroww.com/hub/inloggen?naar=${partner ? '/hub/partner' : '/hub/leden'}`, label: partner ? 'log in' : 'open de hub' }),
   );
 }
 

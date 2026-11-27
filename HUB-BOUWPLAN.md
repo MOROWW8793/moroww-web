@@ -82,3 +82,19 @@ Gebouwd, nog te testen op preview:
 - **Platformstijl**: `components/hub/platform.css`, geladen in de layout van `(platform)`. Geldt alleen onder `.plat-app` (na inloggen). Panelen per sectie, velden met kader, tabellen, statuskleuren (`s-ok`, `s-let`, `s-fout`).
 
 Geen nieuwe SQL nodig.
+
+## Aanmeldproces naar de schermen in Miro (27 nov)
+
+Gebouwd, nog te testen:
+
+- **Scherm 2 en 3**: `/hub/aanmelden` in twee stappen (account, over jou) met de stappenbalk. Eén formulier, één keer versturen. Aantal huizen en streek komen in het bericht bij de aanvraag.
+- **Scherm 4**: wachten op goedkeuring, na aanmelden en bij elke login zolang de aanvraag loopt.
+- **Scherm 5**: de mail met toegang (`mailLid`), getekend door Noam.
+- **Scherm 6**: "opstarten" bovenaan het overzicht, tot huizen en vaste partners rond zijn.
+- **Scherm 8**: `/hub/leden/mijn-partners`, één vaste partner per soort werk. Vraagt migratie 010. In het dossier ziet de regie de vaste partner van het lid.
+
+Nog niet gebouwd:
+
+- **Scherm 1** (publieke pagina met prijs): wacht op de keuze om 29 euro publiek te tonen.
+- **Scherm 9** (abonnement): wacht op marge, opzegtermijn en betaalwijze.
+- De vaste partner krijgt nog geen bericht en geen opdracht via de hub: hij staat alleen als naam en telefoon in het dossier.
