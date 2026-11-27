@@ -69,3 +69,25 @@ export async function mailVraag(naar: string, naam: string, huis: string, tekst:
     ),
   );
 }
+
+// Een opdracht voor een partner. Adres en toegang staan niet in de mail: die
+// ziet de partner pas na het aanvaarden.
+export async function mailOpdracht(
+  naar: string,
+  o: { soort: string; huis: string; wat: string; tegen: string | null; vervalt: string; bericht: string | null; link: string },
+) {
+  await stuur(
+    naar,
+    `opdracht · ${o.soort} · ${o.huis} · moroww`,
+    kader(
+      `moroww hub · opdracht · ${o.huis}`,
+      p('Dag,') +
+        p(`moroww heeft een opdracht voor je: <strong>${esc(o.soort)}</strong> in ${esc(o.huis)}.`) +
+        p(esc(o.wat)) +
+        (o.tegen ? p(`Klaar tegen ${esc(o.tegen)}.`) : '') +
+        (o.bericht ? p(esc(o.bericht)) : '') +
+        p(`Laat ons weten of je kan, ten laatste ${esc(o.vervalt)}. Het adres en de toegang zie je zodra je aanvaardt.`),
+      { href: o.link, label: 'bekijk de opdracht' },
+    ),
+  );
+}

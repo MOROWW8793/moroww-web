@@ -53,6 +53,9 @@ async function partnerToevoegen(formData: FormData) {
     vak: tekst(formData.get('vak'), 80) || null,
     regio: tekst(formData.get('regio'), 120) || null,
     telefoon: tekst(formData.get('telefoon'), 40) || null,
+    email: tekst(formData.get('email'), 200).toLowerCase() || null,
+    kanaal: formData.get('kanaal') === 'login' ? 'login' : 'mail',
+    preferred: formData.get('preferred') === 'ja',
     plek: tekst(formData.get('plek'), 80) || null,
     status: 'concept',
   });
@@ -213,6 +216,11 @@ export default async function Beheer() {
           <div className="rij-velden">
             <div className="veld"><label htmlFor="pt">telefoon (alleen voor moroww)</label><input id="pt" name="telefoon" type="tel" /></div>
             <div className="veld"><label htmlFor="pl">merk: waar in het huis</label><input id="pl" name="plek" placeholder="in de badkamer" /></div>
+          </div>
+          <div className="rij-velden">
+            <div className="veld"><label htmlFor="pe">e-mail voor opdrachten</label><input id="pe" name="email" type="email" /></div>
+            <div className="veld"><label htmlFor="pka">opdrachten komen binnen</label><select id="pka" name="kanaal"><option value="mail">via mail, zonder login</option><option value="login">via mail en in het portaal, met login</option></select></div>
+            <div className="veld"><label htmlFor="ppr">voorrang</label><select id="ppr" name="preferred"><option value="nee">gewone partner</option><option value="ja">preferred partner</option></select></div>
           </div>
           <button type="submit" className="btn btn-primair">voeg partner toe</button>
         </form>

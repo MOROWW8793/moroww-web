@@ -5,6 +5,7 @@ import { revalidatePath } from 'next/cache';
 import { Sectie, Kop } from '@/components/merk/Shell';
 import { Kopieer } from '@/components/hub/Kopieer';
 import { VraagKaart } from '@/components/hub/VraagKaart';
+import { OpdrachtBlok } from '@/components/hub/OpdrachtBlok';
 import { eisBeheer } from '@/lib/hub/beheer';
 import { tekst, brusselNaarISO } from '@/lib/hub/supabase';
 import { soortLabel, statusNaam, kanaalNaam, wanneer, kort, berichten, fotoLinks, bewaarFoto, type Vraag, type VraagUpdate } from '@/lib/hub/vragen';
@@ -82,7 +83,7 @@ async function verwijder(formData: FormData) {
 
 interface Partner { id: string; naam: string; vak: string | null; regio: string | null; telefoon: string | null; soort: string }
 
-export default async function Dossier({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ verwijder?: string }> }) {
+export default async function Dossier({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ verwijder?: string; opdracht?: string }> }) {
   const { id } = await params;
   const sp = await searchParams;
   const { db } = await eisBeheer(`/hub/beheer/vragen/${id}`);
@@ -162,6 +163,7 @@ export default async function Dossier({ params, searchParams }: { params: Promis
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+            <OpdrachtBlok vraag={vraag} uitkomst={sp.opdracht} />
             {vraag.status === 'binnen' || vraag.status === 'ingepland' ? (
               <>
                 <form action={stap} className="hub-form kaart" style={{ maxWidth: 'none' }}>
