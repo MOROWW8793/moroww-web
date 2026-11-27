@@ -144,3 +144,7 @@
   .merk .z.plat-app .plat-bureau { padding: 14px 12px; }
   .plat-band { padding: 10px 16px; }
 }
+
+/* Geen infade in het platform. Na het bewaren van een formulier laadt de
+   pagina zonder dat de infade opnieuw start, en bleven panelen onzichtbaar. */
+html.mw-js .merk .z.plat-app [data-mw-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
