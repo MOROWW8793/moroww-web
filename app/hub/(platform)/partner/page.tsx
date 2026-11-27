@@ -87,7 +87,7 @@ export default async function PartnerPortaal({ searchParams }: { searchParams: P
   if (!magPortaal(profiel)) redirect('/hub/leden');
   const wacht = profiel.status !== 'actief';
 
-  const { data: fiche } = await sb.from('hub_partners').select('*').eq('eigenaar', user.id).maybeSingle();
+  const { data: fiche } = await sb.from('hub_partners').select('id,naam,categorie,soort,plek,wat,voordeel,code,url,contact,status').eq('eigenaar', user.id).maybeSingle();
   const f = fiche as Fiche | null;
   // De opdrachten van deze partner. De vraag zelf is van de eigenaar, dus die lezen we via de service role.
   const { data: ops } = f
@@ -101,8 +101,8 @@ export default async function PartnerPortaal({ searchParams }: { searchParams: P
       <section className="held">
         <div className="wrap" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           <span className="boven">moroww hub · partnerportaal</span>
-          <h1 className="titel-1">jouw fiche <i>in de hub.</i></h1>
-          <p className="inleiding">Wat leden over je zien: wat je doet, je voordeel en je code. Wijzigingen staan meteen online; een nieuwe fiche of een nieuw product zetten wij live na een korte controle.</p>
+          <h1 className="titel-1">{f?.soort === 'dienst' ? <>opdrachten en <i>fiche.</i></> : <>jouw fiche <i>in de hub.</i></>}</h1>
+          <p className="inleiding">{f?.soort === 'dienst' ? 'De opdrachten die moroww je stuurt, en je fiche: wat je doet en in welke regio. Andere partners zien je fiche niet.' : 'Wat leden over je zien: wat je doet, je voordeel en je code. Wijzigingen staan meteen online; een nieuwe fiche of een nieuw product zetten wij live na een korte controle.'}</p>
           {wacht ? (
             <>
               <p className="inleiding">We kijken je aanmelding na en laten je per mail weten wanneer je merk in de hub staat. Intussen kan je je fiche aanvullen en producten toevoegen.</p>
@@ -165,7 +165,7 @@ export default async function PartnerPortaal({ searchParams }: { searchParams: P
         </div>
       </Sectie>
 
-      {f ? (
+      {f?.soort === 'merk' ? (
         <Sectie toon="zacht">
           <Kop boven="market" titel={<>je producten <i>voor gasten.</i></>} tekst="Producten die gasten in een moroww-huis tegenkomen en thuis willen. De knop op de market leidt naar jouw webshop." />
           <div className="rij">
