@@ -2,7 +2,10 @@ import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { Sectie, Kop } from '@/components/merk/Shell';
-import { hubSessie, tekst, categorieNaam, type Profiel } from '@/lib/hub/supabase';
+import Link from 'next/link';
+import { hubSessie, hubBeheerClient, tekst, categorieNaam, type Profiel } from '@/lib/hub/supabase';
+import { soortLabel, kort } from '@/lib/hub/vragen';
+import { opdrachtStatusNaam, type OpdrachtStatus } from '@/lib/hub/opdrachten';
 import { meldBeheer } from '@/lib/hub/mail';
 
 export const metadata: Metadata = { title: 'partnerportaal', robots: { index: false } };
@@ -86,6 +89,11 @@ export default async function PartnerPortaal({ searchParams }: { searchParams: P
 
   const { data: fiche } = await sb.from('hub_partners').select('*').eq('eigenaar', user.id).maybeSingle();
   const f = fiche as Fiche | null;
+  // De opdrachten van deze partner. De vraag zelf is van de eigenaar, dus die lezen we via de service role.
+  const { data: ops } = f
+    ? await hubBeheerClient().from('hub_opdrachten').select('id,token,status,verstuurd_om,hub_vragen(huis,soort,wat)').eq('partner_id', f.id).order('verstuurd_om', { ascending: false }).limit(30)
+    : { data: [] };
+  const opdrachten = (ops ?? []) as unknown as { id: string; token: string; status: OpdrachtStatus; verstuurd_om: string; hub_vragen: { huis: string; soort: string; wat: string } | null }[];
   const { data: producten } = f ? await sb.from('hub_producten').select('*').eq('partner_id', f.id).order('created_at') : { data: [] };
 
   return (
@@ -103,6 +111,24 @@ export default async function PartnerPortaal({ searchParams }: { searchParams: P
           ) : null}
         </div>
       </section>
+
+      {opdrachten.length ? (
+        <Sectie>
+          <Kop boven="opdrachten" titel="wat moroww je stuurde." />
+          <ul style={{ margin: '24px 0 0', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 820 }}>
+            {opdrachten.map((o) => (
+              <li key={o.id} className="kaart" style={{ gap: 8 }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px 12px', alignItems: 'baseline', justifyContent: 'space-between' }}>
+                  <span className="kaart-label">{o.hub_vragen ? `${soortLabel(o.hub_vragen.soort)} · ${o.hub_vragen.huis}` : 'opdracht'} · {kort(o.verstuurd_om)}</span>
+                  <span className="hub-label">{opdrachtStatusNaam[o.status]}</span>
+                </div>
+                {o.hub_vragen ? <p style={{ margin: 0 }}>{o.hub_vragen.wat}</p> : null}
+                <Link href={`/hub/opdracht/${o.token}`} className="hub-meta">{o.status === 'verstuurd' ? 'bekijk en antwoord' : 'bekijk de opdracht'}</Link>
+              </li>
+            ))}
+          </ul>
+        </Sectie>
+      ) : null}
 
       <Sectie>
         <div className="rij">

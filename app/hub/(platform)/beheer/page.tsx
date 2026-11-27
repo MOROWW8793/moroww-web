@@ -187,7 +187,8 @@ export default async function Beheer() {
                   <td>{p.voordeel || '—'}</td>
                   <td>{p.code || '—'}</td>
                   <td><span className={`hub-label ${p.status === 'live' ? 'live' : ''}`}>{p.status}</span></td>
-                  <td><div style={{ display: 'flex', gap: 8 }}>
+                  <td><div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                    <Link href={`/hub/beheer/partners/${p.id}`} className="hub-knopklein">bewerk</Link>
                     <Knop actie={zetPartner} velden={{ id: p.id, tabel: 'partners', status: p.status === 'live' ? 'concept' : 'live' }} label={p.status === 'live' ? 'offline' : 'zet live'} primair={p.status !== 'live'} />
                     <Knop actie={verwijder} velden={{ id: p.id, soort: 'partner' }} label="verwijder" />
                   </div></td>

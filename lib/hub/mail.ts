@@ -91,3 +91,18 @@ export async function mailOpdracht(
     ),
   );
 }
+
+// Een partner die van moroww een login krijgt.
+export async function mailUitnodiging(naar: string, naam: string, link: string) {
+  await stuur(
+    naar,
+    'je login voor moroww hub',
+    kader(
+      'moroww hub · partnerportaal',
+      p('Dag,') +
+        p(`moroww heeft een login gemaakt voor ${esc(naam)}. In het portaal zie je de opdrachten die we je sturen en vul je je fiche aan.`) +
+        p('Inloggen doe je met dit e-mailadres. De eerste keer vraag je een link om in te loggen; daarna kan je een wachtwoord kiezen.'),
+      { href: link, label: 'log in' },
+    ),
+  );
+}

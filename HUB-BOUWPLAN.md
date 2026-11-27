@@ -32,6 +32,17 @@ tijdlijn, foto en score, regie onder /hub/beheer, partnerfiches, merken, academy
 
 **Wat stap 1 nog niet doet:** doorschuiven gebeurt met de hand (jij kiest de volgende partner). Een verlopen termijn wordt pas gezien wanneer iemand de opdracht of het dossier opent.
 
+**Getest op 27 nov op de preview:** opdracht versturen, aanvaarden via de link, vraag op ingepland. Werkt.
+
+## 3b. Stap 2, eerste deel · partners bewerken en een login geven (geschreven op 27 nov, typecontrole groen, nog niet getest op een draaiende site)
+
+- `app/hub/(platform)/beheer/partners/[id]`: elke partner volledig bewerken, ook e-mail, postcode en voorrang. Knop "geef een login en stuur de uitnodiging": maakt het account, het profiel, koppelt de fiche en mailt de partner.
+- `lib/hub/mail.ts`: `mailUitnodiging`.
+- `/hub/beheer`: knop "bewerk" bij elke partner.
+- `/hub/partner`: een partner met login ziet zijn opdrachten, met de link om te antwoorden.
+
+Nog te doen in stap 2: leden en huizen bewerken, en "bekijk als".
+
 ## 4. Volgende stappen, in volgorde
 
 2. **Beheer en rollen.** Partner uitnodigen met een login vanuit het beheer. Partners, leden en huizen bewerken (nu kan je alleen toevoegen en de status zetten). "Bekijk als": de beheerder opent de hub als een gekozen lid of partner, alleen-lezen, via de service role en met een duidelijke balk bovenaan.
