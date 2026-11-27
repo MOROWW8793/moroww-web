@@ -7,6 +7,7 @@ import { eisBeheer } from '@/lib/hub/beheer';
 import { tekst, categorieNaam } from '@/lib/hub/supabase';
 import { geldigEmail, basisUrl } from '@/lib/hub/toegang';
 import { mailUitnodiging } from '@/lib/hub/mail';
+import { bewaarFoto, fotoLinks } from '@/lib/hub/vragen';
 
 export const metadata: Metadata = { title: 'beheer · partner', robots: { index: false } };
 export const dynamic = 'force-dynamic';
@@ -15,7 +16,7 @@ interface PartnerRij {
   id: string; naam: string; categorie: string; soort: string; status: string; eigenaar: string | null;
   wat: string | null; voordeel: string | null; code: string | null; url: string | null; plek: string | null;
   vak: string | null; regio: string | null; postcode: string | null; telefoon: string | null;
-  email: string | null; kanaal: string; preferred: boolean;
+  email: string | null; kanaal: string; preferred: boolean; logo: string | null; foto: string | null;
 }
 
 // Alles aan een partner aanpassen, ook de fiche van een partner met login.
@@ -49,8 +50,18 @@ async function bewaar(formData: FormData) {
       updated_at: new Date().toISOString(),
     })
     .eq('id', id);
+  // Logo en foto: alleen vervangen als er een nieuw bestand gekozen is.
+  let beeldFout = false;
+  for (const veld of ['logo', 'foto'] as const) {
+    const bestand = formData.get(veld);
+    if (formData.get(`${veld}-weg`) === 'ja') await db.from('hub_partners').update({ [veld]: null }).eq('id', id);
+    if (!bestand || typeof bestand === 'string' || bestand.size === 0) continue;
+    const pad = await bewaarFoto(`partners/${id}/${veld}`, bestand);
+    if (pad) await db.from('hub_partners').update({ [veld]: pad }).eq('id', id);
+    else beeldFout = true;
+  }
   revalidatePath('/hub/beheer');
-  redirect(`/hub/beheer/partners/${id}?${error ? 'fout=opslaan' : 'bewaard=1'}`);
+  redirect(`/hub/beheer/partners/${id}?${error ? 'fout=opslaan' : beeldFout ? 'fout=beeld' : 'bewaard=1'}`);
 }
 
 // Maakt een login voor de partner, koppelt die aan zijn fiche en stuurt de uitnodiging.
@@ -99,6 +110,7 @@ const fouten: Record<string, string> = {
   naam: 'Vul een naam in.',
   email: 'Vul eerst een geldig e-mailadres in en bewaar.',
   opslaan: 'Opslaan lukte niet. Probeer het opnieuw.',
+  beeld: 'De tekst is bewaard, maar een beeld lukte niet. Gebruik een jpg, png, webp of svg van minder dan 12 MB.',
   lid: 'Dit adres is al een lid van de hub. Gebruik voor de partner een ander adres.',
   login: 'De login kon niet gemaakt worden. Probeer het opnieuw.',
   fiche: 'Dit adres beheert al een andere fiche.',
@@ -111,6 +123,7 @@ export default async function PartnerBewerken({ params, searchParams }: { params
   const { data } = await db.from('hub_partners').select('*').eq('id', id).maybeSingle();
   if (!data) notFound();
   const p = data as PartnerRij;
+  const beeld = await fotoLinks([p.logo, p.foto]);
 
   return (
     <>
@@ -145,6 +158,24 @@ export default async function PartnerBewerken({ params, searchParams }: { params
             <div className="veld"><label htmlFor="voordeel">voordeel</label><input id="voordeel" name="voordeel" defaultValue={p.voordeel ?? ''} /></div>
             <div className="veld"><label htmlFor="code">code</label><input id="code" name="code" defaultValue={p.code ?? ''} /></div>
             <div className="veld"><label htmlFor="url">website</label><input id="url" name="url" type="url" defaultValue={p.url ?? ''} /></div>
+          </div>
+          <div className="beeld-kies">
+            {(['logo', 'foto'] as const).map((veld) => {
+              const nu = p[veld] ? beeld.get(p[veld]!) : null;
+              return (
+                <div key={veld} className="veld">
+                  <label htmlFor={veld}>{veld === 'logo' ? 'logo (vierkant, liefst png of svg)' : 'foto (liggend, van het werk of het product)'}</label>
+                  <div className="beeld-vak">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    {nu ? <img src={nu} alt="" className={veld === 'foto' ? 'dek' : ''} /> : <span>geen</span>}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 8, minWidth: 0 }}>
+                      <input id={veld} name={veld} type="file" accept="image/*" />
+                      {nu ? <label style={{ display: 'flex', gap: 8, alignItems: 'center' }}><input type="checkbox" name={`${veld}-weg`} value="ja" style={{ width: 'auto' }} /> haal weg</label> : null}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
           {sp.bewaard ? <p className="plat-ok">Bewaard.</p> : null}
           {sp.fout ? <p className="hub-fout">{fouten[sp.fout] ?? 'Er ging iets mis.'}</p> : null}

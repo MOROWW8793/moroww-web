@@ -98,3 +98,10 @@ Nog niet gebouwd:
 - **Scherm 1** (publieke pagina met prijs): wacht op de keuze om 29 euro publiek te tonen.
 - **Scherm 9** (abonnement): wacht op marge, opzegtermijn en betaalwijze.
 - De vaste partner krijgt nog geen bericht en geen opdracht via de hub: hij staat alleen als naam en telefoon in het dossier.
+
+## Partners met logo en foto (27 nov)
+
+- Migratie 011: kolommen `logo` en `foto` op `hub_partners`. Eerst de SQL, dan de code.
+- Uploaden in het beheer, op de bewerkpagina van een partner. Bestanden in de privé-opslag `hub-fotos` onder `partners/<id>/`.
+- `components/hub/PartnerKaart.tsx`: de kaart voor "netwerk" en "merken" in de ledenzone.
+- Nog niet: een partner met login kan zijn eigen logo niet zelf opladen. De publieke pagina's tonen geen logo's.

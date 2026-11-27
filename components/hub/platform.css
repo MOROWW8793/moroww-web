@@ -203,3 +203,32 @@ html.mw-js .merk .z.plat-app [data-mw-reveal] { opacity: 1 !important; transform
   .merk .z.plat-app .opstart { margin: 14px 12px 0; }
   .opstart li { flex-wrap: wrap; }
 }
+
+/* ---------- partners en merken: kaarten met foto en logo ---------- */
+.pk-raster { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 18px; }
+.pk { display: flex; flex-direction: column; background: var(--wit); border: 1px solid var(--app-lijn); border-radius: 18px; overflow: hidden; box-shadow: var(--app-schaduw); transition: transform .2s ease, box-shadow .2s ease; }
+.pk:hover { transform: translateY(-2px); box-shadow: 0 2px 4px rgba(26,26,26,.05), 0 22px 40px -24px rgba(26,26,26,.32); }
+.pk-beeld { position: relative; aspect-ratio: 16 / 9; background: #EDE6DD; }
+.pk-beeld.leeg { background: linear-gradient(135deg, color-mix(in srgb, var(--z-accent) 34%, #fff), #F3ECE4 70%); }
+.pk-beeld > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.pk-logo { position: absolute; left: 20px; bottom: -26px; width: 64px; height: 64px; border-radius: 16px; background: #fff; border: 1px solid var(--app-lijn); box-shadow: 0 6px 16px -8px rgba(26,26,26,.35); display: grid; place-items: center; overflow: hidden; }
+.pk-logo img { width: 100%; height: 100%; object-fit: contain; padding: 8px; display: block; }
+.pk-logo b { font-size: 24px; font-weight: 500; color: var(--ink); }
+.pk-tekst { padding: 40px 22px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto; }
+.pk-naam { margin: 0; font-size: 20px; line-height: 1.2; font-weight: 500; letter-spacing: -0.015em; }
+.merk .z.plat-app .pk-tekst p { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--muted); }
+.merk .z.plat-app .pk-tekst .pk-voordeel { margin-top: 4px; padding: 10px 12px; border-radius: 12px; background: color-mix(in srgb, var(--z-accent) 16%, #fff); color: var(--ink); display: flex; flex-direction: column; gap: 2px; }
+.pk-voordeel span { font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); }
+.merk .z.plat-app .pk .hub-code { border-radius: 8px; background: var(--bg); border: 1px dashed var(--app-veld); font-size: 13px; }
+.pk-voet { padding: 14px 22px; border-top: 1px solid var(--app-lijn); display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; font-size: 14px; }
+.merk .z.plat-app .pk-voet a:not(.hub-knopklein) { color: var(--muted); text-underline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .pk { transition: none; } .pk:hover { transform: none; } }
+
+/* beeld kiezen in het beheer */
+.beeld-kies { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.beeld-vak { display: flex; gap: 14px; align-items: center; border: 1px dashed var(--app-veld); border-radius: 12px; padding: 12px; background: var(--bg); }
+.beeld-vak > img, .beeld-vak > span { flex: none; width: 72px; height: 72px; border-radius: 12px; background: #fff; border: 1px solid var(--app-lijn); object-fit: contain; display: grid; place-items: center; font-size: 12px; color: var(--muted); }
+.beeld-vak > img.dek { object-fit: cover; width: 112px; }
+.merk .z.plat-app .hub-form .beeld-vak input[type='file'] { border: 0; padding: 0; background: none; font-size: 13px; }
+/* Kaarten met beeld staan los op de grond, niet nog eens in een paneel. */
+.merk .z.plat-app .plat-main .sectie > .wrap:has(> .pk-raster) { background: none; border: 0; box-shadow: none; padding: 0; }

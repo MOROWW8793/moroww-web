@@ -22,21 +22,36 @@ const opgevolgd = [
   ['jij zegt hoe het ging', 'stap 4'],
 ];
 
+// De prijs van de hub, op één plek. Excl. btw.
+const prijs = {
+  bedrag: '29,99 euro',
+  kort: '29,99 euro per maand per listing, excl. btw',
+  voet: 'Excl. btw. Korting vanaf 5 listings.',
+};
+
+const waarom: [string, string][] = [
+  ['één plek', 'Elke vraag, voor elk huis, volg je op dezelfde plek op. Geen vijf nummers meer in je telefoon.'],
+  ['je eigen mensen eerst', 'Wie vandaag voor je werkt, blijft voor je werken. Het netwerk vangt op als iemand niet kan.'],
+  ['antwoord binnen 2 uur', 'Ook als we niemand vinden, hoor je dat op tijd om zelf nog te schakelen.'],
+  ['het label erbij', 'Voldoet je pand aan de moroww-standaard, dan krijgt het het label zonder meerkost.'],
+];
+
 export default function Hub() {
   return (
     <div className="wrap">
       <ZHeld
-        nr="voor eigenaars, beheerders en hotels met het label"
-        titel={<>vraag het<br />moroww.</>}
+        nr="voor eigenaars, beheerders en hotels"
+        titel={<>één aanspreekpunt voor alles rond je vakantiewoning.</>}
         fotos={[
           { src: '/images/hub/huis-moro-badkamer.jpg', alt: 'Handdoek en MORO-producten in een badkamer van een moroww-huis' },
           { src: '/images/standaard/V2-12.jpg', alt: 'Handdoeken worden klaargelegd op het bed', positie: 'center 70%' },
           { src: '/images/standaard/V2-40.jpg', alt: 'Een gast leest in bed in een moroww-huis' },
         ]}
-        lead="Een extra schoonmaak, de ramen, een herstelling, de koelkast vullen voor de gasten. Jij vraagt het in de hub, wij zoeken een partner in de buurt en volgen op tot het klaar is. Je ziet het met een foto."
+        lead="Schoonmaak, een herstelling, linnen of de tuin: je vraagt het aan moroww en wij regelen het met een professional in de buurt. Binnen de 2 uur weet je waar je staat."
         acties={
           <>
-            <Link href="/hub/aanmelden" className="z-knop">meld je aan</Link>
+            <Link href="/hub/aanmelden" className="z-knop">lid worden</Link>
+            <span className="z-klein" style={{ color: 'inherit' }}>{prijs.kort}</span>
             <Link href="/hub/inloggen" className="z-link">al lid? log in</Link>
           </>
         }
@@ -151,19 +166,20 @@ export default function Hub() {
 
       <section id="lid" className="z-sectie" data-mw-reveal>
         <div className="z-sectie-kop">
-          <h2 className="z-h2">toegang tot de hub hoort bij het label.</h2>
+          <h2 className="z-h2">{prijs.bedrag} per maand, per listing.</h2>
           <span className="z-nr">lid worden</span>
         </div>
-        <div className="z-tegels">
+        <ZRaster items={waarom.map(([titel, tekst]) => ({ titel, tekst }))} />
+        <div className="z-tegels" style={{ marginTop: 16 }}>
           <div className="z-tegel-accent">
-            <span className="z-h3">al het label?</span>
-            <span className="z-tekst">Log in met je e-mailadres en wachtwoord.</span>
-            <Link href="/hub/inloggen" className="z-knop z-knop-donker" style={{ alignSelf: 'flex-start' }}>log in</Link>
+            <span className="z-h3">{prijs.bedrag} per maand, per listing</span>
+            <span className="z-tekst">{prijs.voet}</span>
+            <Link href="/hub/aanmelden" className="z-knop z-knop-donker" style={{ alignSelf: 'flex-start' }}>lid worden</Link>
           </div>
           <div>
-            <span className="z-h3">nog geen label?</span>
-            <span className="z-tekst">Vraag een bezoek aan voor je huis.</span>
-            <Link href="/het-label#aanvraag" className="z-link" style={{ fontSize: 16 }}>naar het label →</Link>
+            <span className="z-h3">al lid?</span>
+            <span className="z-tekst">Log in met je e-mailadres en wachtwoord.</span>
+            <Link href="/hub/inloggen" className="z-link" style={{ fontSize: 16 }}>log in →</Link>
           </div>
           <div>
             <span className="z-h3">een vakman of een merk?</span>
