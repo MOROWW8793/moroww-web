@@ -1,6 +1,6 @@
 import { hubBeheerClient } from '@/lib/hub/supabase';
 import { kort, wanneer, duur, type Vraag } from '@/lib/hub/vragen';
-import { opdrachtStatusNaam, restVanBelofte, type Opdracht, type DienstPartner } from '@/lib/hub/opdrachten';
+import { opdrachtStatusNaam, opdrachtKleur, restVanBelofte, type Opdracht, type DienstPartner } from '@/lib/hub/opdrachten';
 import { stuurNaarPartner } from '@/lib/hub/opdracht-acties';
 
 // Regie: stuur de vraag als opdracht naar een partner en volg wie antwoordt.
@@ -34,7 +34,7 @@ export async function OpdrachtBlok({ vraag, uitkomst }: { vraag: Vraag; uitkomst
             return (
               <li key={o.id} style={{ display: 'flex', flexWrap: 'wrap', gap: '2px 12px', alignItems: 'baseline' }}>
                 <strong style={{ fontWeight: 500 }}>{naam.get(o.partner_id) ?? 'partner'}</strong>
-                <span className="hub-label">{verlopen ? opdrachtStatusNaam.verlopen : opdrachtStatusNaam[o.status]}</span>
+                <span className={`hub-label ${verlopen ? opdrachtKleur.verlopen : opdrachtKleur[o.status]}`}>{verlopen ? opdrachtStatusNaam.verlopen : opdrachtStatusNaam[o.status]}</span>
                 <span className="hub-meta">verstuurd {kort(o.verstuurd_om)}{o.status === 'verstuurd' && o.vervalt_om && !verlopen ? ` · antwoord ten laatste ${wanneer(o.vervalt_om)}` : ''}</span>
                 {o.antwoord ? <span className="klein" style={{ flexBasis: '100%' }}>{o.antwoord}</span> : null}
               </li>

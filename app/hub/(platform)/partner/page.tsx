@@ -5,7 +5,7 @@ import { Sectie, Kop } from '@/components/merk/Shell';
 import Link from 'next/link';
 import { hubSessie, hubBeheerClient, tekst, categorieNaam, type Profiel } from '@/lib/hub/supabase';
 import { soortLabel, kort } from '@/lib/hub/vragen';
-import { opdrachtStatusNaam, type OpdrachtStatus } from '@/lib/hub/opdrachten';
+import { opdrachtStatusNaam, opdrachtKleur, type OpdrachtStatus } from '@/lib/hub/opdrachten';
 import { meldBeheer } from '@/lib/hub/mail';
 
 export const metadata: Metadata = { title: 'partnerportaal', robots: { index: false } };
@@ -120,7 +120,7 @@ export default async function PartnerPortaal({ searchParams }: { searchParams: P
               <li key={o.id} className="kaart" style={{ gap: 8 }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px 12px', alignItems: 'baseline', justifyContent: 'space-between' }}>
                   <span className="kaart-label">{o.hub_vragen ? `${soortLabel(o.hub_vragen.soort)} · ${o.hub_vragen.huis}` : 'opdracht'} · {kort(o.verstuurd_om)}</span>
-                  <span className="hub-label">{opdrachtStatusNaam[o.status]}</span>
+                  <span className={`hub-label ${opdrachtKleur[o.status]}`}>{opdrachtStatusNaam[o.status]}</span>
                 </div>
                 {o.hub_vragen ? <p style={{ margin: 0 }}>{o.hub_vragen.wat}</p> : null}
                 <Link href={`/hub/opdracht/${o.token}`} className="hub-meta">{o.status === 'verstuurd' ? 'bekijk en antwoord' : 'bekijk de opdracht'}</Link>

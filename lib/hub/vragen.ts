@@ -43,6 +43,9 @@ export const statusNaam: Record<VraagStatus, string> = {
   'lukt-niet': 'lukt niet',
 };
 
+// De kleur van een statuslabel in het platform.
+export const statusKleur: Record<VraagStatus, string> = { binnen: 's-let', ingepland: 's-let', geregeld: 's-ok', 'lukt-niet': 's-fout' };
+
 export const kanaalNaam: Record<string, string> = { hub: 'de hub', whatsapp: 'WhatsApp', telefoon: 'telefoon', mail: 'mail' };
 
 function brussel(iso: string) {

@@ -71,3 +71,14 @@ De twee met mail kunnen erin zodra migratie 008 gedraaid is. De twee met login w
 - **moroww-os niet verwijderen.** `lib/screenings.ts` in deze repo leest de Supabase van moroww-os. In moroww-os draaien ook de afrekeningen, de Guesty-sync, de sloten en de prospectmails. Eerst nagaan wat na de overdracht van het beheer nog nodig is, dan pas uitzetten.
 - **Leden kunnen de kolommen `telefoon` en `email` van live partners lezen** via de policy "leden zien live partners". De site toont ze niet, maar de API geeft ze wel. Oplossen met kolomrechten of een view voor stap 3.
 - **`@supabase/ssr` ontbreekt in de lokale node_modules**, en `tsc` geeft fouten die los staan van de hub (Set-iteratie, `components/PartnerToestemming.tsx`). `npm install` en een build lokaal nakijken voor de deploy.
+
+## Stap 2 · beheer, rollen en vormgeving (27 nov)
+
+Gebouwd, nog te testen op preview:
+
+- **Leden bewerken**: `/hub/beheer/leden/[id]`. Naam, soort, toegang, huis, bedrijf, telefoon. Het e-mailadres is de login en blijft staan.
+- **Huizen van een lid beheren**: op dezelfde pagina. Toevoegen, aanpassen, verwijderen, via de service role.
+- **Bekijk als**: `/hub/beheer/leden/[id]/bekijk`. Toont wat het lid of de partner ziet, alleen lezen, met een zwarte band bovenaan. Geen echte overname van de sessie: er gebeurt niets in naam van de ander.
+- **Platformstijl**: `components/hub/platform.css`, geladen in de layout van `(platform)`. Geldt alleen onder `.plat-app` (na inloggen). Panelen per sectie, velden met kader, tabellen, statuskleuren (`s-ok`, `s-let`, `s-fout`).
+
+Geen nieuwe SQL nodig.

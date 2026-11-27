@@ -1,0 +1,144 @@
+/* moroww hub · het platform na inloggen.
+   Zelfde papier, inkt en hub-blauw als de site, maar gezet als een werkplek:
+   compacte koppen, panelen per onderwerp, velden met een kader, tabellen die
+   je kan scannen en statussen in kleur. Alles zit onder .plat-app, zodat de
+   publieke hub en de inlogpagina's er niets van merken. */
+
+.merk .z.plat-app {
+  --app-bg: #F5F1EB;
+  --app-lijn: #E6DDD3;
+  --app-veld: #D8CCC0;
+  --app-rond: 16px;
+  --app-schaduw: 0 1px 2px rgba(26, 26, 26, 0.04), 0 12px 28px -20px rgba(26, 26, 26, 0.22);
+  --ok: #1F6B3A; --ok-bg: #E5F2E8;
+  --let: #8A5A00; --let-bg: #FBF0D9;
+  --fout: #A3261E; --fout-bg: #FBE9E7;
+  background: var(--app-bg);
+  font-size: 15px;
+}
+@media (min-width: 901px) { .merk .z.plat-app { background: var(--app-bg); grid-template-columns: 264px minmax(0, 1fr); } }
+
+/* ---------- zijbalk ---------- */
+.merk .z.plat-app .plat-zij { background: var(--wit); border-right: 1px solid var(--app-lijn); padding: 24px 14px 20px; gap: 22px; }
+.merk .z.plat-app .plat-wie { border: 1px solid var(--app-lijn); border-radius: 14px; padding: 10px 12px; background: var(--bg); }
+.merk .z.plat-app .plat-avatar { width: 34px; height: 34px; font-size: 14px; color: var(--ink); }
+.merk .z.plat-app .plat-wie strong { font-size: 14px; }
+.merk .z.plat-app .plat-nav ul { gap: 2px; }
+.merk .z.plat-app .plat-nav a { font-size: 15px; padding: 10px 12px; border-radius: 10px; color: var(--muted); transition: background-color .15s, color .15s; }
+.merk .z.plat-app .plat-nav a:hover { background: var(--bg); color: var(--ink); }
+.merk .z.plat-app .plat-nav a[aria-current='page'] { background: color-mix(in srgb, var(--z-accent) 20%, #fff); color: var(--ink); font-weight: 500; box-shadow: none; }
+.merk .z.plat-app .plat-groep { margin: 22px 12px 6px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.merk .z.plat-app .plat-teller { border-radius: 999px; padding: 1px 8px; font-size: 12px; }
+.merk .z.plat-app .plat-bel { border-top: 1px solid var(--app-lijn); }
+
+/* ---------- paginakop ---------- */
+.merk .z.plat-app .plat-main { padding-bottom: 64px; }
+.merk .z.plat-app .plat-main .wrap { max-width: 1180px; padding: 0 32px; }
+.merk .z.plat-app .plat-main .held,
+.merk .z.plat-app .plat-kop { background: var(--wit); border-bottom: 1px solid var(--app-lijn); }
+.merk .z.plat-app .plat-main .held { padding: 26px 0 22px; }
+.merk .z.plat-app .plat-main .held .wrap { gap: 8px !important; }
+.merk .z.plat-app .plat-kop { padding: 26px 32px 22px; align-items: center; }
+.merk .z.plat-app .plat-main .titel-1 { font-size: 28px; line-height: 1.15; font-weight: 500; letter-spacing: -0.02em; }
+.merk .z.plat-app .plat-main .titel-2 { font-size: 19px; line-height: 1.25; font-weight: 500; letter-spacing: -0.01em; }
+.merk .z.plat-app .plat-main .inleiding { font-size: 15px; line-height: 1.55; max-width: 720px; }
+.merk .z.plat-app .plat-main .boven,
+.merk .z.plat-app .plat-main .kaart-label { font-size: 12px; letter-spacing: 0.04em; color: var(--muted); }
+.merk .z.plat-app .plat-main p { font-size: 15px; line-height: 1.55; }
+
+/* cijfers in de kop: losse tegels */
+.merk .z.plat-app .plat-kop .hub-cijfers { border: 0; background: none; gap: 10px; }
+.merk .z.plat-app .plat-kop .hub-cijfers div { border: 1px solid var(--app-lijn); border-radius: 12px; background: var(--bg); padding: 10px 16px; min-width: 104px; }
+.merk .z.plat-app .plat-kop .hub-cijfers div:last-child { border-right: 1px solid var(--app-lijn); }
+.merk .z.plat-app .hub-cijfers b { font-size: 26px; font-weight: 500; letter-spacing: -0.02em; }
+.merk .z.plat-app .hub-cijfers span { font-size: 12px; letter-spacing: 0.02em; }
+
+/* ---------- elke sectie is een paneel ---------- */
+.merk .z.plat-app .plat-main .sectie { padding: 0; background: none; border: 0; }
+.merk .z.plat-app .plat-main .sectie > .wrap {
+  max-width: 1116px; margin: 20px 32px 0; padding: 24px 26px 26px;
+  background: var(--wit); border: 1px solid var(--app-lijn); border-radius: var(--app-rond); box-shadow: var(--app-schaduw);
+}
+.merk .z.plat-app .plat-main .kopblok { gap: 4px; margin-bottom: 18px; max-width: 760px; }
+.merk .z.plat-app .plat-main .rij { gap: 24px 40px; }
+.merk .z.plat-app .plat-main .raster { gap: 14px; }
+.merk .z.plat-app .plat-main .raster-2 { gap: 32px; }
+.merk .z.plat-app .plat-bureau { padding: 20px 32px; gap: 20px; }
+
+/* ---------- kaarten ---------- */
+.merk .z.plat-app :is(.kaart, .vraag, .plat-paneel) { border: 1px solid var(--app-lijn); border-radius: var(--app-rond); box-shadow: var(--app-schaduw); padding: 22px; gap: 10px; }
+.merk .z.plat-app .sectie .kaart { background: var(--bg); box-shadow: none; padding: 18px 20px; border-radius: 12px; }
+.merk .z.plat-app .plat-main .kaart-titel { font-size: 18px !important; font-weight: 500; letter-spacing: -0.01em; }
+.merk .z.plat-app .plat-paneel-titel { font-size: 22px; font-weight: 500; letter-spacing: -0.02em; }
+.merk .z.plat-app .plat-groep-titel { border-top: 0; padding-top: 0; font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: 0.04em; justify-content: flex-start; }
+.merk .z.plat-app .plat-groep-titel span { background: var(--wit); border: 1px solid var(--app-lijn); border-radius: 999px; padding: 0 8px; color: var(--ink); }
+.merk .z.plat-app .plat-leeg, .merk .z.plat-app .hub-leeg { border: 1px dashed var(--app-veld); border-radius: 12px; background: var(--bg); padding: 22px; font-size: 15px; }
+.merk .z.plat-app .plat-leeg strong { font-size: 17px; font-weight: 500; }
+
+/* ---------- tabellen ---------- */
+.merk .z.plat-app .hub-tabel-wrap { border: 1px solid var(--app-lijn); border-radius: 12px; overflow-x: auto; background: var(--wit); }
+.merk .z.plat-app .hub-tabel { border: 0; border-radius: 0; font-size: 14px; }
+.merk .z.plat-app .hub-tabel th { background: var(--bg); font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); padding: 10px 16px; border-bottom: 1px solid var(--app-lijn); white-space: nowrap; }
+.merk .z.plat-app .hub-tabel td { padding: 12px 16px; border-bottom: 1px solid var(--app-lijn); vertical-align: middle; }
+.merk .z.plat-app .hub-tabel tbody tr:last-child td { border-bottom: 0; }
+.merk .z.plat-app .hub-tabel tbody tr:hover td { background: #FCFAF7; }
+.merk .z.plat-app .hub-meta { font-size: 13px; }
+
+/* ---------- formulieren: velden met een kader ---------- */
+.merk .z.plat-app .hub-form { gap: 14px; }
+.merk .z.plat-app .hub-form .rij-velden { gap: 14px 16px; }
+.merk .z.plat-app .hub-form .veld { gap: 6px; }
+.merk .z.plat-app .hub-form label { font-size: 13px; font-weight: 500; letter-spacing: 0; color: var(--muted); }
+.merk .z.plat-app .hub-form :is(input, select, textarea) {
+  border: 1px solid var(--app-veld); border-radius: 10px; background: var(--wit); padding: 10px 12px; font-size: 15px; line-height: 1.4; width: 100%;
+  transition: border-color .15s, box-shadow .15s;
+}
+.merk .z.plat-app .hub-form select { min-height: 43px; }
+.merk .z.plat-app .hub-form textarea { min-height: 96px; }
+.merk .z.plat-app .hub-form :is(input, select, textarea):hover { border-color: #BFB1A3; }
+.merk .z.plat-app .hub-form :is(input, select, textarea):focus { outline: 0; border-color: var(--z-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--z-accent) 30%, transparent); }
+.merk .z.plat-app .hub-form ::placeholder { color: #A89C90; }
+.merk .z.plat-app .hub-chips span { border: 1px solid var(--app-veld); background: var(--wit); font-size: 13px; padding: 7px 14px; }
+.merk .z.plat-app .hub-chips input:checked + span { border-color: var(--ink); }
+.merk .z.plat-app details > summary { color: var(--muted); }
+
+/* ---------- knoppen ---------- */
+.merk .z.plat-app .plat-main .btn { min-height: 42px; padding: 0 20px; font-size: 15px; border-radius: 10px; }
+.merk .z.plat-app .plat-main .btn-primair { background: var(--ink); color: #fff; }
+.merk .z.plat-app .plat-main .btn-primair:hover { filter: none; background: #000; }
+.merk .z.plat-app .plat-main .btn-primair:disabled { background: var(--app-veld); color: #fff; cursor: not-allowed; }
+.merk .z.plat-app .plat-main .btn-lijn { border-color: var(--app-veld); }
+.merk .z.plat-app .hub-knopklein { display: inline-flex; align-items: center; min-height: 32px; font-size: 13px; padding: 0 12px; border: 1px solid var(--app-veld); border-radius: 8px; background: var(--wit); color: var(--ink); text-decoration: none; white-space: nowrap; transition: background-color .15s, border-color .15s; }
+.merk .z.plat-app .hub-knopklein:hover { background: var(--bg); border-color: #BFB1A3; }
+.merk .z.plat-app .hub-knopklein.primair { background: var(--ink); border-color: var(--ink); color: #fff; }
+.merk .z.plat-app .hub-knopklein.primair:hover { background: #000; }
+
+/* ---------- statussen in kleur ---------- */
+.merk .z.plat-app .hub-label { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--app-lijn); background: var(--bg); color: var(--muted); white-space: nowrap; }
+.merk .z.plat-app .hub-label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: .7; }
+.merk .z.plat-app .hub-label:is(.live, .s-ok) { background: var(--ok-bg); border-color: transparent; color: var(--ok); }
+.merk .z.plat-app .hub-label.s-let { background: var(--let-bg); border-color: transparent; color: var(--let); }
+.merk .z.plat-app .hub-label.s-fout { background: var(--fout-bg); border-color: transparent; color: var(--fout); }
+.merk .z.plat-app .plat-ok { border: 0; border-radius: 10px; background: var(--ok-bg); color: var(--ok); font-size: 14px; padding: 10px 14px; }
+.merk .z.plat-app .hub-fout { border-radius: 10px; background: var(--fout-bg); color: var(--fout); font-size: 14px; padding: 10px 14px; }
+
+/* de voortgang van een vraag */
+.merk .z.plat-app .vraag-stappen span { border-top: 3px solid var(--app-lijn); font-size: 12px; }
+.merk .z.plat-app .vraag-stappen span.aan { border-top: 3px solid var(--z-accent); }
+.merk .z.plat-app .vraag-tijdlijn { border-left: 2px solid var(--app-lijn); }
+.merk .z.plat-app .vraag-foto { border-radius: 12px; }
+
+/* ---------- "bekijk als": de band bovenaan ---------- */
+.plat-band { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; padding: 10px 32px; background: #1A1A1A; color: #fff; font-size: 14px; }
+.merk .z.plat-app .plat-band a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.merk .z.plat-app .plat-kijk :is(input, select, textarea, button) { pointer-events: none; }
+
+@media (max-width: 900px) {
+  .merk .z.plat-app .plat-zij { border-right: 0; border-bottom: 1px solid var(--app-lijn); padding: 12px 16px 0; }
+  .merk .z.plat-app .plat-nav a[aria-current='page'] { background: none; box-shadow: inset 0 -2px 0 var(--ink); border-radius: 0; }
+  .merk .z.plat-app .plat-main .wrap { padding: 0 16px; }
+  .merk .z.plat-app .plat-main .sectie > .wrap { margin: 14px 12px 0; padding: 18px 16px 20px; }
+  .merk .z.plat-app .plat-kop { padding: 20px 16px 18px; }
+  .merk .z.plat-app .plat-bureau { padding: 14px 12px; }
+  .plat-band { padding: 10px 16px; }
+}

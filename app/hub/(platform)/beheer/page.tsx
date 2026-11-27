@@ -160,7 +160,8 @@ export default async function Beheer() {
                     <td>{soortNaam[p.soort] ?? p.soort}</td>
                     <td>{[p.huis, p.bedrijf].filter(Boolean).join(' · ') || '—'}</td>
                     <td style={{ maxWidth: 320 }}>{p.bericht || '—'}</td>
-                    <td><div style={{ display: 'flex', gap: 8 }}>
+                    <td><div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                      <Link href={`/hub/beheer/leden/${p.id}`} className="hub-knopklein">bewerk</Link>
                       <Knop actie={zetStatus} velden={{ id: p.id, status: 'actief' }} label="goedkeuren" primair />
                       <Knop actie={zetStatus} velden={{ id: p.id, status: 'geweigerd' }} label="weigeren" />
                     </div></td>
@@ -338,10 +339,14 @@ export default async function Beheer() {
               {actief.map((p) => (
                 <tr key={p.id}>
                   <td>{p.naam}<br /><span className="hub-meta">{p.email}</span></td>
-                  <td>{soortNaam[p.soort] ?? p.soort}</td>
+                  <td>{p.rol === 'partner' ? 'partner' : soortNaam[p.soort] ?? p.soort}</td>
                   <td>{[p.huis, p.bedrijf].filter(Boolean).join(' · ') || '—'}</td>
                   <td>{datumNL(p.created_at)}</td>
-                  <td><Knop actie={zetStatus} velden={{ id: p.id, status: 'geweigerd' }} label="toegang intrekken" /></td>
+                  <td><div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                    <Link href={`/hub/beheer/leden/${p.id}`} className="hub-knopklein">bewerk</Link>
+                    <Link href={`/hub/beheer/leden/${p.id}/bekijk`} className="hub-knopklein">bekijk als</Link>
+                    <Knop actie={zetStatus} velden={{ id: p.id, status: 'geweigerd' }} label="toegang intrekken" />
+                  </div></td>
                 </tr>
               ))}
             </tbody>

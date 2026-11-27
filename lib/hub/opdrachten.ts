@@ -41,6 +41,8 @@ export const opdrachtStatusNaam: Record<OpdrachtStatus, string> = {
 };
 
 // De eigenaar heeft binnen de 2 uur een antwoord, ook als we niemand vinden.
+export const opdrachtKleur: Record<OpdrachtStatus, string> = { verstuurd: 's-let', aanvaard: 's-ok', geweigerd: 's-fout', verlopen: 's-fout', ingetrokken: '' };
+
 export const BELOFTE_MS = 2 * 60 * 60 * 1000;
 export const restVanBelofte = (vraag: Pick<Vraag, 'created_at'>, nu = Date.now()) => new Date(vraag.created_at).getTime() + BELOFTE_MS - nu;
 

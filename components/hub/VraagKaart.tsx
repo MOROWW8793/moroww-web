@@ -1,4 +1,4 @@
-import { soortLabel, statusNaam, wanneer, kort, type Vraag, type VraagUpdate } from '@/lib/hub/vragen';
+import { soortLabel, statusNaam, statusKleur, wanneer, kort, type Vraag, type VraagUpdate } from '@/lib/hub/vragen';
 
 // Eén vraag zoals de eigenaar ze ziet: status, wie het doet, de tijdlijn en de foto.
 export function VraagKaart({
@@ -24,7 +24,7 @@ export function VraagKaart({
     <article className={`vraag vraag-${v.status}`}>
       <div className="vraag-kop">
         <span className="kaart-label">{soortLabel(v.soort)} · {v.huis}</span>
-        <span className={`hub-label ${v.status === 'geregeld' ? 'live' : ''}`}>{statusNaam[v.status]}</span>
+        <span className={`hub-label ${statusKleur[v.status]}`}>{statusNaam[v.status]}</span>
       </div>
       <h3 className="kaart-titel" style={{ fontSize: 22 }}>{v.wat}</h3>
       <div className="vraag-stappen" aria-label="voortgang">

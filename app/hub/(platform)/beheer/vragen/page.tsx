@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 import { Sectie, Kop } from '@/components/merk/Shell';
 import { eisBeheer } from '@/lib/hub/beheer';
 import { tekst, brusselNaarISO, type Profiel } from '@/lib/hub/supabase';
-import { soorten, soortLabel, statusNaam, kanaalNaam, wanneer, duur, berichten, type Vraag } from '@/lib/hub/vragen';
+import { soorten, soortLabel, statusNaam, statusKleur, kanaalNaam, wanneer, duur, berichten, type Vraag } from '@/lib/hub/vragen';
 
 export const metadata: Metadata = { title: 'regie · vragen', robots: { index: false } };
 export const dynamic = 'force-dynamic';
@@ -72,7 +72,7 @@ export default async function RegieVragen({ searchParams }: { searchParams: Prom
             ? over === null ? 'geen deadline' : over < 0 ? <span className="regie-laat">te laat</span> : `nog ${duur(over)}`
             : v.geregeld_om ? wanneer(v.geregeld_om) : ''}
         </span>
-        <span className={`hub-label ${v.status === 'geregeld' ? 'live' : ''}`}>{statusNaam[v.status]}</span>
+        <span className={`hub-label ${statusKleur[v.status]}`}>{statusNaam[v.status]}</span>
       </Link>
     );
   };

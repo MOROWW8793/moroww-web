@@ -5,6 +5,7 @@ import { PlatNav } from '@/components/hub/PlatNav';
 import { hubSessie, hubBeheerClient } from '@/lib/hub/supabase';
 import { site } from '@/lib/merk/site';
 import '@/components/merk/zwitsers.css';
+import '@/components/hub/platform.css';
 
 export const metadata: Metadata = { robots: { index: false } };
 export const dynamic = 'force-dynamic';
